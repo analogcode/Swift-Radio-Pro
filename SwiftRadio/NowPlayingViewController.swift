@@ -126,10 +126,10 @@ class NowPlayingViewController: UIViewController {
         radioPlayer.view.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
         radioPlayer.view.sizeToFit()
         radioPlayer.movieSourceType = MPMovieSourceType.Streaming
-        radioPlayer.fullscreen = false;
-        radioPlayer.shouldAutoplay = true;
+        radioPlayer.fullscreen = false
+        radioPlayer.shouldAutoplay = true
         radioPlayer.prepareToPlay()
-        radioPlayer.controlStyle = MPMovieControlStyle.None;
+        radioPlayer.controlStyle = MPMovieControlStyle.None
     }
     
     func setupVolumeSlider() {
