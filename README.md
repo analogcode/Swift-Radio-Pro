@@ -23,13 +23,14 @@ View this [Getting started video](http://youtu.be/2t25dE-WVNs)
 - Pull to Refresh Stations
 - Volume slider adjusted by volume +/- buttons on phone
 
-*Created by [Matthew Fecher](http://matthewfecher.com), Twitter: [goFecher](http://twitter.com/goFecher)*
-
 ##Important Notes
 
 - Volume slider does not show up in Xcode simulator, only in device. Hopefully @Apple fixes that soon. 
 - For a production product, you may want to swap out the MPMoviePlayerController for a more robust streaming library/SDK (with stream stitching, interruption handling, etc).
 - Uses Meng To's [Spring](https://github.com/MengTo/Spring) library for animation, making it easy experiment with different UI/UX animations
+
+##Credits
+*Created by [Matthew Fecher](http://matthewfecher.com), Twitter: [goFecher](http://twitter.com/goFecher)*
 
 ##Requirements
 
