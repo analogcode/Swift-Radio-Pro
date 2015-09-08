@@ -2,9 +2,12 @@
 
 Swift Radio is an open source radio station player with robust and professional features. This is a fully realized Radio App built entirely in Swift 2. 
 
+![alt text](http://matthewfecher.com/wp-content/uploads/2015/09/screen-1.jpg "Swift Radio")
+
+##Video
 View this [Getting started video](http://youtu.be/Gmjf9Z75gUA)
 
-![alt text](http://matthewfecher.com/wp-content/uploads/2015/09/screen-1.jpg "Swift Radio")
+##Features
 
 - LastFM API Integration to automatically download Album Art
 - Loads and parses metadata (track & artist information)
