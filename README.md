@@ -5,7 +5,7 @@ Swift Radio is an open source radio station player with robust and professional 
 ![alt text](http://matthewfecher.com/wp-content/uploads/2015/09/screen-1.jpg "Swift Radio")
 
 ##Video
-View this [Getting started video](http://youtu.be/Gmjf9Z75gUA)
+View this [Getting started video](http://youtu.be/2t25dE-WVNs)
 
 ##Features
 
