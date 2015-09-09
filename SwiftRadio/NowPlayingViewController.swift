@@ -140,8 +140,10 @@ class NowPlayingViewController: UIViewController {
         // best to replace the MPVolumeView w/ a UISlider
     
         volumeParentView.backgroundColor = UIColor.clearColor()
-        let volumeView = MPVolumeView(frame: volumeParentView.frame)
+        let volumeView = MPVolumeView(frame: volumeParentView.bounds)
         volumeParentView.addSubview(volumeView)
+ 
+        volumeView.volumeSliderRectForBounds(volumeParentView.bounds)
         volumeView.sizeToFit()
         
         let thumbImageNormal = UIImage(named: "slider-ball")
