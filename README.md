@@ -25,7 +25,8 @@ View this [Getting started video](https://youtu.be/LFvBU0odV4A).
 
 ##Important Notes
 
-- Volume slider does not show up in Xcode simulator, only in device. Hopefully @Apple fixes that soon. 
+- Volume slider does not show up in Xcode simulator, only in device. Hopefully Apple fixes soon. 
+- Radio stations in demo are for demonstration purposes only. 
 - For a production product, you may want to swap out the MPMoviePlayerController for a more robust streaming library/SDK (with stream stitching, interruption handling, etc).
 - Uses Meng To's [Spring](https://github.com/MengTo/Spring) library for animation, making it easy experiment with different UI/UX animations
 
@@ -39,7 +40,7 @@ View this [Getting started video](https://youtu.be/LFvBU0odV4A).
 
 ##Setup
 
-The "SwiftRadio-Settings.swift" file contains some project settings to get you started. Enter your own LastFM Key.
+The "SwiftRadio-Settings.swift" file contains some project settings to get you started. Please enter your own LastFM Key. Watch this [Getting started video](https://youtu.be/LFvBU0odV4A) to get up and running quickly.
 
 ##Integration
 
@@ -58,4 +59,8 @@ Includes an example "stations.json" file. You may upload the JSON file to a serv
 - **desc**: Short 2 or 3 world description of the station as you want it displayed (e.g. "Outlaw Country")
 
 - **longDesc**: Long description of the station to be used on the "info screen". This is optional.
+
+##Streaming 
+
+- In addition to the MPMoviePlayer, I've tested it with the following . and it works rather nicely. You can use this Swift code as a front-end with a more robust Streaming backend.'
 
