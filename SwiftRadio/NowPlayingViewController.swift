@@ -140,7 +140,7 @@ class NowPlayingViewController: UIViewController {
         // best to replace the MPVolumeView w/ a UISlider
     
         volumeParentView.backgroundColor = UIColor.clearColor()
-        let volumeView = MPVolumeView(frame: volumeParentView.bounds)
+        let volumeView = MPVolumeView(frame: volumeParentView.frame)
         volumeParentView.addSubview(volumeView)
         volumeView.sizeToFit()
         
