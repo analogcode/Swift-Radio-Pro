@@ -5,7 +5,7 @@ Swift Radio is an open source radio station player with robust and professional 
 ![alt text](http://matthewfecher.com/wp-content/uploads/2015/09/screen-1.jpg "Swift Radio")
 
 ##Video
-View this [Getting started video](https://youtu.be/LFvBU0odV4A).
+View this [Getting started video](https://youtu.be/qi_F5epEpdM).
 
 ##Features
 
@@ -60,7 +60,8 @@ Includes an example "stations.json" file. You may upload the JSON file to a serv
 
 - **longDesc**: Long description of the station to be used on the "info screen". This is optional.
 
-##Streaming 
+##Streaming Libraries
 
-- In addition to the MPMoviePlayer, I've tested it with the following . and it works rather nicely. You can use this Swift code as a front-end with a more robust Streaming backend.'
-
+- You can use this Swift code as a front-end for a more robust streaming backend.
+- In addition to the MPMoviePlayer, I've briefly tested it with the following two streaming libraries (and it works rather nicely): [Radio](https://github.com/hamedh/Radio) & [RadioKit](http://stormyprods.com/products/radiokit.php) 
+- If you test it with a library, let me know!
