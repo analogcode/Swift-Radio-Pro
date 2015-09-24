@@ -32,7 +32,7 @@ View this [Getting started video](https://youtu.be/qi_F5epEpdM).
 
 ##Credits
 *Created by [Matthew Fecher](http://matthewfecher.com), Twitter: [@goFecher](http://twitter.com/goFecher)*  
-*Thanks to Basel Farag, from [Denver Swift Heads](http://www.meetup.com/Denver-Swift-Heads/) for the code review. Twitter: [@kacheflowe](http://twitter.com/kacheflowe)*
+*Thanks to Basel Farag, from [Denver Swift Heads](http://www.meetup.com/Denver-Swift-Heads/) for the code review.*
 
 ##Requirements
 
