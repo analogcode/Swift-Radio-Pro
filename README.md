@@ -31,7 +31,7 @@ View this [Getting started video](https://youtu.be/qi_F5epEpdM).
 - Uses Meng To's [Spring](https://github.com/MengTo/Spring) library for animation, making it easy experiment with different UI/UX animations
 
 ##Credits
-*Created by [Matthew Fecher](http://matthewfecher.com), Twitter: [@goFecher](http://twitter.com/goFecher)*
+*Created by [Matthew Fecher](http://matthewfecher.com), Twitter: [@goFecher](http://twitter.com/goFecher)*  
 *Thanks to Basel Farag, from [Denver Swift Heads](http://www.meetup.com/Denver-Swift-Heads/) for the code review. Twitter: [@kacheflowe](http://twitter.com/kacheflowe)*
 
 ##Requirements
