@@ -1,12 +1,13 @@
 #Swift Radio
 
-Swift Radio is an open source radio station player with robust and professional features. This is a fully realized Radio App built entirely in Swift 2. 
+Swift Radio is an open source radio station app with robust and professional features. This is a fully realized Radio App built entirely in Swift 2.
 
 ![alt text](http://matthewfecher.com/wp-content/uploads/2015/09/screen-1.jpg "Swift Radio")
 
 ##Video
-View this [GETTING STARTED VIDEO](https://youtu.be/m7jiajCHFvc).
-It's short & sweet to give you a quick overview. Give it a quick watch.
+View this [**GETTING STARTED VIDEO**](https://youtu.be/m7jiajCHFvc).
+It's short & sweet to give you a quick overview.  
+Give it a quick watch.
 
 ##Features
 
@@ -30,7 +31,7 @@ It's short & sweet to give you a quick overview. Give it a quick watch.
 - Radio stations in demo are for demonstration purposes only. 
 - For a production product, you may want to swap out the MPMoviePlayerController for a more robust streaming library/SDK (with stream stitching, interruption handling, etc).
 - Uses Meng To's [Spring](https://github.com/MengTo/Spring) library for animation, making it easy experiment with different UI/UX animations
-- SwiftyJSON & Spring are included in the repo to get you up & running quickly. It's on the roadmap to utilize CocoaPods instead. 
+- SwiftyJSON & Spring are included in the repo to get you up & running quickly. It's on the roadmap to utilize CocoaPods in the future. 
 
 ##Credits
 *Created by [Matthew Fecher](http://matthewfecher.com), Twitter: [@goFecher](http://twitter.com/goFecher)*  
