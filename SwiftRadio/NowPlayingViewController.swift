@@ -65,7 +65,7 @@ class NowPlayingViewController: UIViewController {
         createNowPlayingAnimation()
         
         // Setup MPMoviePlayerController
-        // In a production environment, you would want to 
+        // In a production environment, you would want to
         // replace the MediaPlayer player with a more robust 
         // streaming library/SDK. Preferably one that supports interruptions,
         // buffering, stream stitching, backup streams, etc.

@@ -5,14 +5,15 @@ Swift Radio is an open source radio station player with robust and professional 
 ![alt text](http://matthewfecher.com/wp-content/uploads/2015/09/screen-1.jpg "Swift Radio")
 
 ##Video
-View this [Getting started video](https://youtu.be/qi_F5epEpdM).
+View this [GETTING STARTED VIDEO](https://youtu.be/m7jiajCHFvc).
+It's short & sweet to give you a quick overview. Give it a quick watch.
 
 ##Features
 
 - LastFM API Integration to automatically download Album Art
-- Loads and parses metadata (track & artist information)
-- Current artist & track displayed on Stations page
-- Displays Artist, Track and Album art on Lock Screen
+- Loads and parses metadata (Track & Artist information)
+- Current Artist & Track displayed on Stations page
+- Displays Artist, Track, & Album Art on Lock Screen
 - Ability to update playlist from server or locally. (Update stations anytime without resubmitting to app store!)
 - Custom views optimized for iPhone 4s, 5, 6 and 6+ for backwards compatibility
 - Compiles with Xcode 7 & Swift 2.0
@@ -29,10 +30,11 @@ View this [Getting started video](https://youtu.be/qi_F5epEpdM).
 - Radio stations in demo are for demonstration purposes only. 
 - For a production product, you may want to swap out the MPMoviePlayerController for a more robust streaming library/SDK (with stream stitching, interruption handling, etc).
 - Uses Meng To's [Spring](https://github.com/MengTo/Spring) library for animation, making it easy experiment with different UI/UX animations
+- SwiftyJSON & Spring are included in the repo to get you up & running quickly. It's on the roadmap to utilize CocoaPods instead. 
 
 ##Credits
 *Created by [Matthew Fecher](http://matthewfecher.com), Twitter: [@goFecher](http://twitter.com/goFecher)*  
-*Thanks to Basel Farag, from [Denver Swift Heads](http://www.meetup.com/Denver-Swift-Heads/) for the code review.*
+*Thanks to Basel Farag, from [Denver Swift Heads](http://www.meetup.com/Denver-Swift-Heads/) for the code review.*  
 
 ##Requirements
 
@@ -41,11 +43,12 @@ View this [Getting started video](https://youtu.be/qi_F5epEpdM).
 
 ##Setup
 
-The "SwiftRadio-Settings.swift" file contains some project settings to get you started. Please enter your own LastFM Key. Watch this [Getting started video](https://youtu.be/LFvBU0odV4A) to get up and running quickly.
+The "SwiftRadio-Settings.swift" file contains some project settings to get you started. Please enter your own LastFM Key.  
+Watch this [Getting Started Video](https://youtu.be/m7jiajCHFvc) to get up & running quickly.
 
 ##Integration
 
-Includes full Xcode Project that will jumpstart development.
+Includes full Xcode Project to jumpstart development.
 
 ##Stations 
 
