@@ -23,7 +23,6 @@ Give it a quick watch.
 - "About" page with ability to send email & visit website
 - Uses industry standard SwiftyJSON library for easy JSON manipulation
 - Pull to Refresh Stations
-- Volume slider adjusted by volume +/- buttons on phone
 
 ##Important Notes
 
