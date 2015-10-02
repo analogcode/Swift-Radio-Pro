@@ -139,31 +139,20 @@ class NowPlayingViewController: UIViewController {
     @IBOutlet weak var slider = UISlider()
     func setupVolumeSlider() {
         
-        // Note: iOS simulator does not display the volume slider,
-        // you must use a device to see. Hopefully Apple fixes this soon.
-        // If you're using a 3rd Party streaming library, it is probably
-        // best to replace the MPVolumeView w/ a UISlider
+        // Note: volume slider does not work in simulator
+        // You must use a device to test.
     
         volumeParentView.backgroundColor = UIColor.clearColor()
         let volumeView = MPVolumeView(frame: volumeParentView.bounds)
-        //volumeParentView.addSubview(volumeView)
         for view in volumeView.subviews {
             let uiview: UIView = view as UIView
-            //println("\(uiview.description)")
-            if (uiview.description as NSString).rangeOfString("MPVolumeSlider").location != NSNotFound {
+             if (uiview.description as NSString).rangeOfString("MPVolumeSlider").location != NSNotFound {
                 mpVolumeSlider = (uiview as! UISlider)
-//                currentDeviceVolume = mpVolumeSilder!.value
-//                return
             }
         }
- 
-//        volumeView.volumeSliderRectForBounds(volumeParentView.bounds)
-        //volumeView.sizeToFit()
         
         let thumbImageNormal = UIImage(named: "slider-ball")
         slider?.setThumbImage(thumbImageNormal, forState: .Normal);
-//        volumeView.setMaximumVolumeSliderImage(thumbImageNormal, forState: .Normal)
-//        volumeView.setMinimumVolumeSliderImage(thumbImageNormal, forState: .Normal)
     }
     
     func stationDidChange() {
