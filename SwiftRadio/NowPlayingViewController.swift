@@ -57,7 +57,7 @@ class NowPlayingViewController: UIViewController {
         
         // Setup slider
         setupVolumeSlider()
-        
+
         // Set View Title
         self.title = currentStation.stationName
         
@@ -131,23 +131,28 @@ class NowPlayingViewController: UIViewController {
         radioPlayer.prepareToPlay()
         radioPlayer.controlStyle = MPMovieControlStyle.None
     }
-    
+
+    @IBAction func volumeChanged(sender:UISlider) {
+        mpVolumeSlider.value = sender.value
+    }
+    var mpVolumeSlider = UISlider()
+    @IBOutlet weak var slider = UISlider()
     func setupVolumeSlider() {
         
-        // Note: iOS simulator does not display the volume slider,
-        // you must use a device to see. Hopefully Apple fixes this soon.
-        // If you're using a 3rd Party streaming library, it is probably
-        // best to replace the MPVolumeView w/ a UISlider
+        // Note: volume slider does not work in simulator
+        // You must use a device to test.
     
         volumeParentView.backgroundColor = UIColor.clearColor()
         let volumeView = MPVolumeView(frame: volumeParentView.bounds)
-        volumeParentView.addSubview(volumeView)
- 
-        volumeView.volumeSliderRectForBounds(volumeParentView.bounds)
-        volumeView.sizeToFit()
+        for view in volumeView.subviews {
+            let uiview: UIView = view as UIView
+             if (uiview.description as NSString).rangeOfString("MPVolumeSlider").location != NSNotFound {
+                mpVolumeSlider = (uiview as! UISlider)
+            }
+        }
         
         let thumbImageNormal = UIImage(named: "slider-ball")
-        volumeView.setVolumeThumbImage(thumbImageNormal, forState: .Normal)
+        slider?.setThumbImage(thumbImageNormal, forState: .Normal);
     }
     
     func stationDidChange() {
@@ -351,7 +356,7 @@ class NowPlayingViewController: UIViewController {
         // Force app to update display
         self.view.setNeedsDisplay()
     }
-    
+
     // Call LastFM API to get album art url
     
     func queryAlbumArt() {

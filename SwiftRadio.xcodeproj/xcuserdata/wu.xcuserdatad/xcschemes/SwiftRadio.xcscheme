@@ -20,20 +20,6 @@
                ReferencedContainer = "container:SwiftRadio.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9409E12D1ABF6FEA00312E2B"
-               BuildableName = "SwiftRadio.xctest"
-               BlueprintName = "SwiftRadioTests"
-               ReferencedContainer = "container:SwiftRadio.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -42,16 +28,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9409E12D1ABF6FEA00312E2B"
-               BuildableName = "SwiftRadio.xctest"
-               BlueprintName = "SwiftRadioTests"
-               ReferencedContainer = "container:SwiftRadio.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
@@ -85,13 +61,6 @@
             ReferencedContainer = "container:SwiftRadio.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "CG_CONTEXT_SHOW_BACKTRACE"
-            value = "YES"
-            isEnabled = "NO">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

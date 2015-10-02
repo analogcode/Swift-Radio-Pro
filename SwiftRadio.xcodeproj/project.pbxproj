@@ -111,6 +111,7 @@
 		94DB0A8F1B98B762005ED993 /* UnwindSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnwindSegue.swift; sourceTree = "<group>"; };
 		94E9761B1B1A8F3200F52B1E /* UIImage+DropShadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+DropShadow.swift"; sourceTree = "<group>"; };
 		94ECF2661B94D80600D120A8 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = SwiftRadio/Libraries/SwiftyJSON.swift; sourceTree = SOURCE_ROOT; };
+		B90086461BBE40AF00E5372C /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +128,7 @@
 		9409E10D1ABF6FE900312E2B = {
 			isa = PBXGroup;
 			children = (
+				B90086461BBE40AF00E5372C /* MediaPlayer.framework */,
 				9409E1181ABF6FEA00312E2B /* SwiftRadio */,
 				949BBB411ACCA2B6005B7C26 /* Libraries */,
 				9409E1171ABF6FEA00312E2B /* Products */,
