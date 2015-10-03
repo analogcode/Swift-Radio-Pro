@@ -282,7 +282,7 @@ extension StationsViewController: UITableViewDelegate {
 extension StationsViewController: NowPlayingViewControllerDelegate {
     
     func artworkDidUpdate(track: Track) {
-        currentTrack?.artworkURL   = track.artworkURL
+        currentTrack?.artworkURL = track.artworkURL
         currentTrack?.artworkImage = track.artworkImage
     }
     
@@ -291,4 +291,5 @@ extension StationsViewController: NowPlayingViewControllerDelegate {
         let title = currentStation!.stationName + ": " + currentTrack!.title + " - " + currentTrack!.artist + "..."
         stationNowPlayingButton.setTitle(title, forState: .Normal)
     }
+
 }

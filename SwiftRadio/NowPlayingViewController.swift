@@ -56,9 +56,6 @@ class NowPlayingViewController: UIViewController {
         
         // Set AlbumArtwork Constraints
         optimizeForDeviceSize()
-        
-        // Setup slider
-        setupVolumeSlider()
 
         // Set View Title
         self.title = currentStation.stationName
@@ -101,6 +98,9 @@ class NowPlayingViewController: UIViewController {
                 nowPlayingImageView.startAnimating()
             }
         }
+        
+        // Setup slider
+        setupVolumeSlider()
     }
     
     func didBecomeActiveNotificationReceived() {
@@ -133,14 +133,11 @@ class NowPlayingViewController: UIViewController {
         radioPlayer.prepareToPlay()
         radioPlayer.controlStyle = MPMovieControlStyle.None
     }
-
-    @IBAction func volumeChanged(sender:UISlider) {
-        mpVolumeSlider.value = sender.value
-    }
   
     func setupVolumeSlider() {
-        // Note: Volume slider does not work in simulator.
-        // You must use a device to test.
+        // Note: This implementation uses a MediaPlayerVolumeView
+        // The slider does not work in simulator, only in devices.
+  
         volumeParentView.backgroundColor = UIColor.clearColor()
         let volumeView = MPVolumeView(frame: volumeParentView.bounds)
         for view in volumeView.subviews {
@@ -151,7 +148,8 @@ class NowPlayingViewController: UIViewController {
         }
         
         let thumbImageNormal = UIImage(named: "slider-ball")
-        slider?.setThumbImage(thumbImageNormal, forState: .Normal);
+        slider?.setThumbImage(thumbImageNormal, forState: .Normal)
+        
     }
     
     func stationDidChange() {
@@ -174,7 +172,7 @@ class NowPlayingViewController: UIViewController {
     }
     
     //*****************************************************************
-    // MARK: - Player Controls (Play/Pause)
+    // MARK: - Player Controls (Play/Pause/Volume)
     //*****************************************************************
     
     @IBAction func playPressed() {
@@ -199,6 +197,10 @@ class NowPlayingViewController: UIViewController {
         radioPlayer.pause()
         updateLabels("Station Paused...")
         nowPlayingImageView.stopAnimating()
+    }
+    
+    @IBAction func volumeChanged(sender:UISlider) {
+        mpVolumeSlider.value = sender.value
     }
     
     //*****************************************************************
