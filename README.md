@@ -26,7 +26,7 @@ Give it a quick watch.
 
 ##Important Notes
 
-- Volume slider does not work up in Simulator, only in device. This appears to be a known Xcode issue.
+- Volume slider does not work in Simulator, only in device. This appears to be an Xcode issue.
 - Radio stations in demo are for demonstration purposes only. 
 - For a production product, you may want to swap out the MPMoviePlayerController for a more robust streaming library/SDK (with stream stitching, interruption handling, etc).
 - Uses Meng To's [Spring](https://github.com/MengTo/Spring) library for animation, making it easy experiment with different UI/UX animations
