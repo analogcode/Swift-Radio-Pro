@@ -33,6 +33,7 @@ class NowPlayingViewController: UIViewController {
     @IBOutlet weak var songLabel: SpringLabel!
     @IBOutlet weak var stationDescLabel: UILabel!
     @IBOutlet weak var volumeParentView: UIView!
+    @IBOutlet weak var slider = UISlider()
     
     var currentStation: RadioStation!
     var downloadTask: NSURLSessionDownloadTask?
@@ -42,6 +43,7 @@ class NowPlayingViewController: UIViewController {
     var nowPlayingImageView: UIImageView!
     let radioPlayer = Player.radio
     var track: Track!
+    var mpVolumeSlider = UISlider()
     
     weak var delegate: NowPlayingViewControllerDelegate?
     
@@ -135,13 +137,10 @@ class NowPlayingViewController: UIViewController {
     @IBAction func volumeChanged(sender:UISlider) {
         mpVolumeSlider.value = sender.value
     }
-    var mpVolumeSlider = UISlider()
-    @IBOutlet weak var slider = UISlider()
+  
     func setupVolumeSlider() {
-        
-        // Note: volume slider does not work in simulator
+        // Note: Volume slider does not work in simulator.
         // You must use a device to test.
-    
         volumeParentView.backgroundColor = UIColor.clearColor()
         let volumeView = MPVolumeView(frame: volumeParentView.bounds)
         for view in volumeView.subviews {
