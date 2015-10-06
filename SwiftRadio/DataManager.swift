@@ -17,15 +17,15 @@ class DataManager {
     class func getStationDataWithSuccess(success: ((metaData: NSData!) -> Void)) {
         
         if useLocalStations {
-            getDataFromFileWithSuccess() { (data) in
+            getDataFromFileWithSuccess() { data in
                 success(metaData: data)
             }
         } else {
-            loadDataFromURL(NSURL(string: stationDataURL)!, completion: {(data, error) in
+            loadDataFromURL(NSURL(string: stationDataURL)!) { data, error in
                 if let urlData = data {
                     success(metaData: urlData)
                 }
-            })
+            }
         }
     }
     
@@ -33,9 +33,9 @@ class DataManager {
     // Load local JSON Data
     //*****************************************************************
     
-    class func getDataFromFileWithSuccess(success: ((data: NSData) -> Void)) {
+    class func getDataFromFileWithSuccess(success: (data: NSData) -> Void) {
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             
             let filePath = NSBundle.mainBundle().pathForResource("stations", ofType:"json")
             do {
@@ -45,7 +45,7 @@ class DataManager {
             } catch {
                 fatalError()
             }
-        })
+        }
     }
     
     //*****************************************************************
@@ -54,16 +54,14 @@ class DataManager {
     
     class func getTrackDataWithSuccess(queryURL: String, success: ((metaData: NSData!) -> Void)) {
 
-        loadDataFromURL(NSURL(string: queryURL)!, completion: {
-            (data, _) in
-            
+        loadDataFromURL(NSURL(string: queryURL)!) { data, _ in
             // Return Data
             if let urlData = data {
                 success(metaData: urlData)
             } else {
                 if DEBUG_LOG { print("LAST FM TIMEOUT OR ERROR") }
             }
-        })
+        }
     }
     
     //*****************************************************************
@@ -81,9 +79,7 @@ class DataManager {
         let session = NSURLSession(configuration: sessionConfig)
         
         // Use NSURLSession to get data from an NSURL
-        let loadDataTask = session.dataTaskWithURL(url, completionHandler: {
-            (data, response, error) in
-            
+        let loadDataTask = session.dataTaskWithURL(url){ data, response, error in
             if let responseError = error {
                 completion(data: nil, error: responseError)
                 
@@ -106,7 +102,7 @@ class DataManager {
                     completion(data: data, error: nil)
                 }
             }
-        })
+        }
         
         loadDataTask.resume()
     }
