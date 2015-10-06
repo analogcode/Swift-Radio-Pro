@@ -66,7 +66,7 @@ Includes an example "stations.json" file. You may upload the JSON file to a serv
 
 ##Contributions
 
-- Contributions are very welcome. Please create a separate branch (i.e. features/, etc). Please don't commit on master.
+Contributions are very welcome. Please create a separate branch (e.g. features/3dtouch). Please do not commit on master.
 
 ##Streaming Libraries
 
