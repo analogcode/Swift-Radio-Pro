@@ -64,8 +64,12 @@ Includes an example "stations.json" file. You may upload the JSON file to a serv
 
 - **longDesc**: Long description of the station to be used on the "info screen". This is optional.
 
+##Contributions
+
+- Contributions are very welcome. Please create a separate branch (i.e. features/, etc). Please don't commit on master.
+
 ##Streaming Libraries
 
 - You can use this Swift code as a front-end for a more robust streaming backend.
-- In addition to the MPMoviePlayer, I've briefly tested it with the following two streaming libraries (and it works rather nicely): [Radio](https://github.com/hamedh/Radio) & [RadioKit](http://stormyprods.com/products/radiokit.php) 
+- In addition to the MPMoviePlayer, I've briefly tested it with the following two streaming libraries (and it works rather nicely): [RadioKit](http://stormyprods.com/products/radiokit.php) & [Radio](https://github.com/hamedh/Radio) 
 - If you test it with a library, let me know!
