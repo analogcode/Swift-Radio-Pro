@@ -228,7 +228,7 @@ extension StationsViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        if stations.count == 0 {
+        if stations.isEmpty {
             let cell = tableView.dequeueReusableCellWithIdentifier("NothingFound", forIndexPath: indexPath) 
             cell.backgroundColor = UIColor.clearColor()
             cell.selectionStyle = UITableViewCellSelectionStyle.None
@@ -263,7 +263,7 @@ extension StationsViewController: UITableViewDelegate {
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        if stations.count != 0 {
+        if !stations.isEmpty {
             
             // Set Now Playing Buttons
             let title = stations[indexPath.row].stationName + " - Now Playing..."
