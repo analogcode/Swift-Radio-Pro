@@ -60,7 +60,7 @@ class StationsViewController: UIViewController {
             success = false
         }
         if !success {
-            print("Failed to set audio session category.  Error: \(error)")
+            if DEBUG_LOG { print("Failed to set audio session category.  Error: \(error)") }
         }
     }
     
@@ -141,7 +141,10 @@ class StationsViewController: UIViewController {
     
     func loadStationsFromJSON() {
         
+        // Turn on network indicator in status bar
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        
+        // Get the Radio Stations
         DataManager.getStationDataWithSuccess() { (data) in
             
             if DEBUG_LOG { print("Stations JSON Found") }
@@ -155,14 +158,17 @@ class StationsViewController: UIViewController {
                     self.stations.append(station)
                 }
                 
+                // stations array populated, update table on main queue
                 dispatch_async(dispatch_get_main_queue()) {
                     self.tableView.reloadData()
                     self.view.setNeedsDisplay()
                 }
+                
             } else {
                 if DEBUG_LOG { print("JSON Station Loading Error") }
             }
             
+            // Turn off network indicator in status bar
             UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         }
     }

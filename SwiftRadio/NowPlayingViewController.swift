@@ -372,6 +372,7 @@ class NowPlayingViewController: UIViewController {
         // Query API
         DataManager.getTrackDataWithSuccess(escapedURL!) { (data) in
             
+            // Turn on network indicator in status bar
             UIApplication.sharedApplication().networkActivityIndicatorVisible = false
             
             if DEBUG_LOG {
@@ -396,6 +397,7 @@ class NowPlayingViewController: UIViewController {
                         self.resetAlbumArtwork()
                         
                     } else {
+                        // LastFM image found!
                         self.track.artworkURL = artURL
                         self.track.artworkLoaded = true
                         self.updateAlbumArtwork()
