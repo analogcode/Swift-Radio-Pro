@@ -483,7 +483,7 @@ class NowPlayingViewController: UIViewController {
             track.artist = stringParts[0]
             track.title = stringParts[0]
             
-            if stringParts.count > 0 {
+            if stringParts.count > 1 {
                 track.title = stringParts[1]
             }
             
