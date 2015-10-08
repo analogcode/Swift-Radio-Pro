@@ -64,7 +64,7 @@ class NowPlayingViewController: UIViewController {
         createNowPlayingAnimation()
         
         // Setup MPMoviePlayerController
-        // In a production environment, you would want to
+        // If you're building an app for a client, you may want to
         // replace the MediaPlayer player with a more robust 
         // streaming library/SDK. Preferably one that supports interruptions,
         // buffering, stream stitching, backup streams, etc.
@@ -135,8 +135,8 @@ class NowPlayingViewController: UIViewController {
     }
   
     func setupVolumeSlider() {
-        // Note: This implementation uses a MediaPlayerVolumeView
-        // The slider does not work in simulator, only in devices.
+        // Note: This slider implementation uses a MPVolumeView
+        // The volume slider only works in devices, not the simulator.
   
         volumeParentView.backgroundColor = UIColor.clearColor()
         let volumeView = MPVolumeView(frame: volumeParentView.bounds)
