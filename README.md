@@ -79,8 +79,11 @@ A: Rovi has a pretty sweet [music API](http://prod-doc.rovicorp.com/mashery/inde
 Q: My radio station isn't playing?  
 A: Paste your stream URL into a browser to see if it will play there. The stream may be offline or have a weak connection.
 
-Q: The song names aren't appearing for my station?
-A: Check with your stream provider to make sure they are sending Metadata properly.
+Q: The song names aren't appearing for my station?  
+A: Check with your stream provider to make sure they are sending Metadata properly. If a station sends data in a unique way, you can modify the way the app parses the metadata in the "metadataUpdated" method in the NowPlayingViewController.
+
+Q: Sometimes the station desc does not disappear when the album art loads?  
+A: We are working on that, thank you for your patience.
 
 ##Streaming Libraries
 
