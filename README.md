@@ -70,7 +70,10 @@ Contributions are very welcome. Please create a separate branch (e.g. features/3
 
 ##FAQ
 
-Q: I'm not interested in using LastFM, how do I disable the album download?  
+Q: Do I have to pay you anything if I make an app with this code?  
+A: Nope. This is completely open source, you can do whatever you want with it. It's usually cool to thank the project if you use the code. However, I'm not really worried about credit. Go build stuff. Enjoy.
+
+Q: How do I disable using LastFM?  
 A: Simply comment out the method call to "queryAlbumArt()" in the NowPlayingViewController (approx. line #520).
 
 Q: Is there another API to get album/track information besides LastFM?  
