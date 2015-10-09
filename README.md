@@ -32,14 +32,6 @@ Give it a quick watch.
 - Uses Meng To's [Spring](https://github.com/MengTo/Spring) library for animation, making it easy experiment with different UI/UX animations
 - SwiftyJSON & Spring are included in the repo to get you up & running quickly. It's on the roadmap to utilize CocoaPods in the future. 
 
-##FAQ
-
-Q: I'm not interested in using LastFM, how do I disable the album download?  
-A: Simply comment out the method call to "queryAlbumArt()" in the NowPlayingViewController (approx. line #520).
-
-Q: Is there another album artwork download service besides LastFM?
-A: Rovi has a pretty sweet [music API](http://prod-doc.rovicorp.com/mashery/index.php/Data/APIs/Rovi-Music). It shouldn't be too difficult to switch it out.
-
 ##Credits
 *Created by [Matthew Fecher](http://matthewfecher.com), Twitter: [@goFecher](http://twitter.com/goFecher)*  
 *Thanks to Basel Farag, from [Denver Swift Heads](http://www.meetup.com/Denver-Swift-Heads/) for the code review.*  
@@ -75,6 +67,20 @@ Includes an example "stations.json" file. You may upload the JSON file to a serv
 ##Contributions
 
 Contributions are very welcome. Please create a separate branch (e.g. features/3dtouch). Please do not commit on master.
+
+##FAQ
+
+Q: I'm not interested in using LastFM, how do I disable the album download?  
+A: Simply comment out the method call to "queryAlbumArt()" in the NowPlayingViewController (approx. line #520).
+
+Q: Is there another API to get album/track information besides LastFM?  
+A: Rovi has a pretty sweet [music API](http://prod-doc.rovicorp.com/mashery/index.php/Data/APIs/Rovi-Music). It shouldn't be too difficult to switch it out.
+
+Q: My radio station isn't playing?  
+A: Paste your stream URL into a browser to see if it will play there. The stream may be offline or have a weak connection.
+
+Q: The song names aren't appearing for my station?
+A: Check with your stream provider to make sure they are sending Metadata properly.
 
 ##Streaming Libraries
 
