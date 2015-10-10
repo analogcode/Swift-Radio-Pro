@@ -26,8 +26,14 @@ Give it a quick watch.
 
 ##Important Notes
 
+<<<<<<< HEAD
 - LastFM is working on their API signups. So, you may have trouble signing up for a LastFM key today, hopefully they fix that soon. More info in FAQ below.  
 - Volume slider does not work in Simulator, only in device. This appears to be an Xcode issue.  
+=======
+- LastFM is working on their API signups. So, you may have trouble signing up for a LastFM key today, hopefully they fix that soon. More info in FAQ below.
+
+- Volume slider does not work in Simulator, only in device. This appears to be an Xcode issue.
+>>>>>>> 04e2e285ba4cfb04cccec22124dd7412c256f2d7
 - The App works better in devices than it does in the Simulator.
 - Radio stations in demo are for demonstration purposes only. 
 - For a production product, you may want to swap out the MPMoviePlayerController for a more robust streaming library/SDK (with stream stitching, interruption handling, etc).
