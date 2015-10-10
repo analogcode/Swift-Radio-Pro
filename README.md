@@ -74,7 +74,7 @@ Contributions are very welcome. Please create a separate branch (e.g. features/3
 Q: Do I have to pay you anything if I make an app with this code?  
 A: Nope. This is completely open source, you can do whatever you want with it. It's usually cool to thank the project if you use the code. Go build stuff. Enjoy.
 
-Q: The LastFM site isn't working properly? I can't create an API key.
+Q: The LastFM site isn't working properly? I can't create an API key.  
 A: Hopefully they fix that soon. 
 
 Q: How do I disable LastFM?  
