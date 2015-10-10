@@ -27,8 +27,8 @@ Give it a quick watch.
 ##Important Notes
 
 - Volume slider does not work in Simulator, only in device. This appears to be an Xcode issue.
-- Radio stations in demo are for demonstration purposes only. 
 - The App works better in devices than it does in the Simulator.
+- Radio stations in demo are for demonstration purposes only. 
 - For a production product, you may want to swap out the MPMoviePlayerController for a more robust streaming library/SDK (with stream stitching, interruption handling, etc).
 - Uses Meng To's [Spring](https://github.com/MengTo/Spring) library for animation, making it easy experiment with different UI/UX animations
 - SwiftyJSON & Spring are included in the repo to get you up & running quickly. It's on the roadmap to utilize CocoaPods in the future. 
@@ -73,6 +73,9 @@ Contributions are very welcome. Please create a separate branch (e.g. features/3
 
 Q: Do I have to pay you anything if I make an app with this code?  
 A: Nope. This is completely open source, you can do whatever you want with it. It's usually cool to thank the project if you use the code. Go build stuff. Enjoy.
+
+Q: The LastFM site isn't working properly? I can't create an API key.
+A: Hopefully they fix that soon. 
 
 Q: How do I disable LastFM?  
 A: Simply comment out the method call to "queryAlbumArt()" in the NowPlayingViewController (approx. line #520).
