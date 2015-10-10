@@ -26,6 +26,8 @@ Give it a quick watch.
 
 ##Important Notes
 
+- LastFM is working on their API signups. So, you may have trouble signing up for a LastFM key today, hopefully they fix that soon. More info in FAQ below.
+
 - Volume slider does not work in Simulator, only in device. This appears to be an Xcode issue.
 - The App works better in devices than it does in the Simulator.
 - Radio stations in demo are for demonstration purposes only. 
@@ -75,7 +77,7 @@ Q: Do I have to pay you anything if I make an app with this code?
 A: Nope. This is completely open source, you can do whatever you want with it. It's usually cool to thank the project if you use the code. Go build stuff. Enjoy.
 
 Q: The LastFM site isn't working properly? I can't create an API key.  
-A: Hopefully they fix that soon. 
+A: Official word from LastFM "the team are working to add support as soon as possible". 
 
 Q: How do I disable LastFM?  
 A: Simply comment out the method call to "queryAlbumArt()" in the NowPlayingViewController (approx. line #520).
