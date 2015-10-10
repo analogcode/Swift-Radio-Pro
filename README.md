@@ -28,6 +28,7 @@ Give it a quick watch.
 
 - Volume slider does not work in Simulator, only in device. This appears to be an Xcode issue.
 - Radio stations in demo are for demonstration purposes only. 
+- The App works better in devices than it does in the Simulator.
 - For a production product, you may want to swap out the MPMoviePlayerController for a more robust streaming library/SDK (with stream stitching, interruption handling, etc).
 - Uses Meng To's [Spring](https://github.com/MengTo/Spring) library for animation, making it easy experiment with different UI/UX animations
 - SwiftyJSON & Spring are included in the repo to get you up & running quickly. It's on the roadmap to utilize CocoaPods in the future. 
@@ -71,19 +72,22 @@ Contributions are very welcome. Please create a separate branch (e.g. features/3
 ##FAQ
 
 Q: Do I have to pay you anything if I make an app with this code?  
-A: Nope. This is completely open source, you can do whatever you want with it. It's usually cool to thank the project if you use the code. However, I'm not really worried about credit. Go build stuff. Enjoy.
+A: Nope. This is completely open source, you can do whatever you want with it. It's usually cool to thank the project if you use the code. Go build stuff. Enjoy.
 
-Q: How do I disable using LastFM?  
+Q: How do I disable LastFM?  
 A: Simply comment out the method call to "queryAlbumArt()" in the NowPlayingViewController (approx. line #520).
 
-Q: Is there another API to get album/track information besides LastFM?  
-A: Rovi has a pretty sweet [music API](http://prod-doc.rovicorp.com/mashery/index.php/Data/APIs/Rovi-Music). It shouldn't be too difficult to switch it out.
+Q: Is there another API to get music & album/track information besides LastFM?  
+A: Rovi has a pretty sweet [music API](http://prod-doc.rovicorp.com/mashery/index.php/Data/APIs/Rovi-Music). The [Echo Nest](http://developer.echonest.com/) has all kinds of APIs that are fun to play with. They shouldn't be too difficult to add.
 
 Q: My radio station isn't playing?  
 A: Paste your stream URL into a browser to see if it will play there. The stream may be offline or have a weak connection.
 
 Q: The song names aren't appearing for my station?  
 A: Check with your stream provider to make sure they are sending Metadata properly. If a station sends data in a unique way, you can modify the way the app parses the metadata in the "metadataUpdated" method in the NowPlayingViewController.
+
+Q: I'm getting an Xcode notification "CGContextSaveGState: invalid context 0x0"
+A: That appears to be an Xcode 7 error, it should not affect your code. Read more here: "
 
 Q: Sometimes the station desc does not disappear when the album art loads?  
 A: We are working on that, thank you for your patience.

@@ -33,6 +33,8 @@ class StationsViewController: UIViewController {
         let cellNib = UINib(nibName: "NothingFoundCell", bundle: nil)
         tableView.registerNib(cellNib, forCellReuseIdentifier: "NothingFound")
         
+        preferredStatusBarStyle()
+        
         // Load Data
         loadStationsFromJSON()
         
