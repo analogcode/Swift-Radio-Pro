@@ -95,4 +95,4 @@ A: We are working on that, thank you for your patience.
 ##RadioKit SDK Example 
 
 - You can use this Swift code as a front-end for a more robust streaming backend.
-- Brian Stormont, creator of RadioKit, has created a branch with the professional [RadioKit](http://stormyprods.com/products/radiokit.php) SDK already integrated. Plus, his branch adds rewind & fast forward stream playback. This is an excellent learning tool for those who are interested in seeing how a streaming library integrates with Swift Radio Pro. View the [branch here](https://github.com/MostTornBrain/Swift-Radio-Pro).
+- Brian Stormont, creator of RadioKit, has created a branch with the professional [RadioKit](http://stormyprods.com/products/radiokit.php) SDK already integrated. Plus, his branch adds rewind & fast forward stream playback. This is an excellent learning tool for those who are interested in seeing how a streaming library integrates with Swift Radio Pro. View the [branch here](https://github.com/MostTornBrain/Swift-Radio-Pro/tree/RadioKit).
