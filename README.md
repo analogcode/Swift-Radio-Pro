@@ -27,10 +27,9 @@ Give it a quick watch.
 ##Important Notes
 
 - LastFM is working on their API signups. So, you may have trouble signing up for a LastFM key today, hopefully they fix that soon. More info in FAQ below.  
-- Volume slider does not work in Simulator, only in device. This appears to be an Xcode issue.  
-- The App works better in devices than it does in the Simulator.
+- Volume slider only works in device, not simulator. This appears to be an Xcode issue.  
 - Radio stations in demo are for demonstration purposes only. 
-- For a production product, you may want to swap out the MPMoviePlayerController for a more robust streaming library/SDK (with stream stitching, interruption handling, etc).
+- For a production product, you may want to swap out the MPMoviePlayerController for a more robust streaming library/SDK (with stream stitching, interruption handling, etc). See RadioKit branch below.
 - Uses Meng To's [Spring](https://github.com/MengTo/Spring) library for animation, making it easy experiment with different UI/UX animations
 - SwiftyJSON & Spring are included in the repo to get you up & running quickly. It's on the roadmap to utilize CocoaPods in the future. 
 
@@ -70,6 +69,11 @@ Includes an example "stations.json" file. You may upload the JSON file to a serv
 
 Contributions are very welcome. Please create a separate branch (e.g. features/3dtouch). Please do not commit on master.
 
+##RadioKit SDK Example 
+
+- You can use this Swift code as a front-end for a more robust streaming backend.
+- Brian Stormont, creator of RadioKit, has created a branch with the professional [RadioKit](http://stormyprods.com/products/radiokit.php) SDK already integrated. Plus, his branch adds rewind & fast forward stream playback. This is an excellent learning tool for those who are interested in seeing how a streaming library integrates with Swift Radio Pro. View the [branch here](https://github.com/MostTornBrain/Swift-Radio-Pro).
+
 ##FAQ
 
 Q: Do I have to pay you anything if I make an app with this code?  
@@ -92,9 +96,3 @@ A: Check with your stream provider to make sure they are sending Metadata proper
 
 Q: Sometimes the station desc does not disappear when the album art loads?  
 A: We are working on that, thank you for your patience.
-
-##Streaming Libraries
-
-- You can use this Swift code as a front-end for a more robust streaming backend.
-- In addition to the MPMoviePlayer, I've briefly tested it with the following two streaming libraries (and it works rather nicely): [RadioKit](http://stormyprods.com/products/radiokit.php) & [Radio](https://github.com/hamedh/Radio) 
-- If you test it with a library, let me know!
