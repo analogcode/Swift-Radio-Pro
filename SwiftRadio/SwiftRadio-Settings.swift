@@ -29,8 +29,13 @@ let stationDataURL   = "http://yoururl.com/json/stations.json"
 // LASTFM API
 //**************************************
 
-// USE YOUR OWN API KEY HERE!
+// Use LastFM or iTunes API
+// set to "false" to use iTunes
+let useLastFM = false
+
+// IF "TRUE", USE YOUR OWN API KEY HERE
 // Visit: http://www.last.fm/api
 
 let apiKey    = "9a267c245324cfa4f887366d497d3dd3"
 let apiSecret = "f1191864d7ae71e580b89238129768b8"
+

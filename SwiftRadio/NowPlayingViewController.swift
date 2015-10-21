@@ -364,8 +364,13 @@ class NowPlayingViewController: UIViewController {
         
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         
-        // Construct LastFM API Call URL
-        let queryURL = String(format: "http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=%@&artist=%@&track=%@&format=json", apiKey, track.artist, track.title)
+        // Construct either LastFM or iTunes API call URL
+        let queryURL: String
+        if useLastFM {
+            queryURL = String(format: "http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=%@&artist=%@&track=%@&format=json", apiKey, track.artist, track.title)
+        } else {
+            queryURL = String(format: "https://itunes.apple.com/search?term=%@+%@&entity=song", track.artist, track.title)
+        }
         
         let escapedURL = queryURL.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
         
@@ -376,39 +381,55 @@ class NowPlayingViewController: UIViewController {
             UIApplication.sharedApplication().networkActivityIndicatorVisible = false
             
             if DEBUG_LOG {
-                print("LAST FM API SUCCESSFUL RETURN")
+                print("API SUCCESSFUL RETURN")
                 print("url: \(escapedURL!)")
             }
             
             let json = JSON(data: data)
             
-            // Get Largest Sized Image
-            if let imageArray = json["track"]["album"]["image"].array {
-                
-                let arrayCount = imageArray.count
-                let lastImage = imageArray[arrayCount - 1]
-                
-                if let artURL = lastImage["#text"].string {
+            if useLastFM {
+                // Get Largest Sized LastFM Image
+                if let imageArray = json["track"]["album"]["image"].array {
                     
-                    UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+                    let arrayCount = imageArray.count
+                    let lastImage = imageArray[arrayCount - 1]
                     
-                    // Check for Default Last FM Image
-                    if artURL.rangeOfString("/noimage/") != nil {
-                        self.resetAlbumArtwork()
+                    if let artURL = lastImage["#text"].string {
+                        
+                        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+                        
+                        // Check for Default Last FM Image
+                        if artURL.rangeOfString("/noimage/") != nil {
+                            self.resetAlbumArtwork()
+                            
+                        } else {
+                            // LastFM image found!
+                            self.track.artworkURL = artURL
+                            self.track.artworkLoaded = true
+                            self.updateAlbumArtwork()
+                        }
                         
                     } else {
-                        // LastFM image found!
-                        self.track.artworkURL = artURL
-                        self.track.artworkLoaded = true
-                        self.updateAlbumArtwork()
+                        self.resetAlbumArtwork()
                     }
-                    
                 } else {
                     self.resetAlbumArtwork()
                 }
+            
             } else {
-                self.resetAlbumArtwork()
+                // Use iTunes API. Images are 100px by 100px
+                if let artURL = json["results"][0]["artworkUrl100"].string {
+                    
+                    if DEBUG_LOG { print("iTunes artURL: \(artURL)") }
+                    
+                    self.track.artworkURL = artURL
+                    self.track.artworkLoaded = true
+                    self.updateAlbumArtwork()
+                } else {
+                    self.resetAlbumArtwork()
+                }
             }
+            
         }
     }
     
