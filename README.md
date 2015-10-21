@@ -11,7 +11,7 @@ Give it a quick watch.
 
 ##Features
 
-- LastFM API Integration to automatically download Album Art
+- LastFM API or *New* iTunes API Integration to automatically download Album Art
 - Loads and parses metadata (Track & Artist information)
 - Current Artist & Track displayed on Stations page
 - Displays Artist, Track, & Album Art on Lock Screen
@@ -25,9 +25,9 @@ Give it a quick watch.
 - Pull to Refresh Stations
 
 ##Important Notes
-
-- LastFM is working on their API signups. So, you may have trouble signing up for a LastFM key today, hopefully they fix that soon. More info in FAQ below.  
-- Volume slider works in device, not simulator. This appears to be an Xcode issue.  
+- 8.21.15 Update: Added option to use iTunes API to download album art. (See FAQ below). iTunes art is 100px x 100px. i.e. It is smaller than LastFM artwork. So, if you use this API instead, you will want to adjust the UI of your app.
+- LastFM is working on their API signups. So, you may have trouble signing up for a LastFM key, hopefully they fix that soon. More info in FAQ below.  
+- Volume slider works great in devices, not simulator. This is an Xcode simulator issue.  
 - Radio stations in demo are for demonstration purposes only. 
 - For a production product, you may want to swap out the MPMoviePlayerController for a more robust streaming library/SDK (with stream stitching, interruption handling, etc).
 - Uses Meng To's [Spring](https://github.com/MengTo/Spring) library for animation, making it easy experiment with different UI/UX animations
@@ -44,7 +44,7 @@ Give it a quick watch.
 
 ##Setup
 
-The "SwiftRadio-Settings.swift" file contains some project settings to get you started. Please enter your own LastFM Key.  
+The "SwiftRadio-Settings.swift" file contains some project settings to get you started. If you use LastFM, please enter your own LastFM Key.  
 Watch this [Getting Started Video](https://youtu.be/m7jiajCHFvc) to get up & running quickly.
 
 ##Integration
@@ -74,13 +74,13 @@ Contributions are very welcome. Please create a separate branch (e.g. features/3
 Q: Do I have to pay you anything if I make an app with this code?  
 A: Nope. This is completely open source, you can do whatever you want with it. It's usually cool to thank the project if you use the code. Go build stuff. Enjoy.
 
+Q: How do I use the iTunes API instead of LastFM?
+A: Set the "useLastFM" key to false in the "SwiftRadio-Settings.swift" file. You do not need an API key to use the iTunes API. It is free.
+
 Q: The LastFM site isn't working properly? I can't create an API key.  
 A: Official word from LastFM "the team are working to add support as soon as possible". 
 
-Q: How do I disable LastFM?  
-A: Simply comment out the method call to "queryAlbumArt()" in the NowPlayingViewController (approx. line #520).
-
-Q: Is there another API to get album/track information besides LastFM?  
+Q: Is there another API to get album/track information besides LastFM and iTunes?  
 A: Rovi has a pretty sweet [music API](http://prod-doc.rovicorp.com/mashery/index.php/Data/APIs/Rovi-Music). The [Echo Nest](http://developer.echonest.com/) has all kinds of APIs that are fun to play with. 
 
 Q: My radio station isn't playing?  
