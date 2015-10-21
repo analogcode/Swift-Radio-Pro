@@ -11,7 +11,7 @@ Give it a quick watch.
 
 ##Features
 
-- LastFM API or *New* iTunes API Integration to automatically download Album Art
+- LastFM API or **New** iTunes API Integration to automatically download Album Art
 - Loads and parses metadata (Track & Artist information)
 - Current Artist & Track displayed on Stations page
 - Displays Artist, Track, & Album Art on Lock Screen
@@ -74,7 +74,7 @@ Contributions are very welcome. Please create a separate branch (e.g. features/3
 Q: Do I have to pay you anything if I make an app with this code?  
 A: Nope. This is completely open source, you can do whatever you want with it. It's usually cool to thank the project if you use the code. Go build stuff. Enjoy.
 
-Q: How do I use the iTunes API instead of LastFM?
+Q: How do I use the iTunes API instead of LastFM?  
 A: Set the "useLastFM" key to false in the "SwiftRadio-Settings.swift" file. You do not need an API key to use the iTunes API. It is free.
 
 Q: The LastFM site isn't working properly? I can't create an API key.  
