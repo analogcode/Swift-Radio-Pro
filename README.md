@@ -25,7 +25,7 @@ Give it a quick watch.
 - Pull to Refresh Stations
 
 ##Important Notes
-- 8.21.15 Update: Added option to use iTunes API to download album art. (See FAQ below). iTunes art is 100px x 100px. i.e. It is smaller than LastFM artwork. So, if you use this API instead, you will want to adjust the UI of your app.
+- 10.21.15 Update: Added option to use iTunes API to download album art. (See FAQ below). iTunes art is 100px x 100px. i.e. It is smaller than LastFM artwork. So, if you use this API instead, you will want to adjust the UI of your app.
 - LastFM is working on their API signups. So, you may have trouble signing up for a LastFM key, hopefully they fix that soon. More info in FAQ below.  
 - Volume slider works great in devices, not simulator. This is an Xcode simulator issue.  
 - Radio stations in demo are for demonstration purposes only. 
