@@ -17,6 +17,7 @@ import MediaPlayer
 protocol NowPlayingViewControllerDelegate: class {
     func songMetaDataDidUpdate(track: Track)
     func artworkDidUpdate(track: Track)
+    func trackPlayingToggled(track: Track)
 }
 
 //*****************************************************************
@@ -66,8 +67,7 @@ class NowPlayingViewController: UIViewController {
         // Setup MPMoviePlayerController
         // If you're building an app for a client, you may want to
         // replace the MediaPlayer player with a more robust 
-        // streaming library/SDK. Preferably one that supports interruptions,
-        // buffering, stream stitching, backup streams, etc.
+        // streaming library/SDK. Preferably one that supports interruptions, etc.
         // Most of the good streaming libaries are in Obj-C, however they
         // will work nicely with this Swift code.
         setupPlayer()
@@ -137,7 +137,6 @@ class NowPlayingViewController: UIViewController {
     func setupVolumeSlider() {
         // Note: This slider implementation uses a MPVolumeView
         // The volume slider only works in devices, not the simulator.
-  
         volumeParentView.backgroundColor = UIColor.clearColor()
         let volumeView = MPVolumeView(frame: volumeParentView.bounds)
         for view in volumeView.subviews {
@@ -187,6 +186,9 @@ class NowPlayingViewController: UIViewController {
         
         // Start NowPlaying Animation
         nowPlayingImageView.startAnimating()
+        
+        // Update StationsVC
+        self.delegate?.trackPlayingToggled(self.track)
     }
     
     @IBAction func pausePressed() {
@@ -197,6 +199,9 @@ class NowPlayingViewController: UIViewController {
         radioPlayer.pause()
         updateLabels("Station Paused...")
         nowPlayingImageView.stopAnimating()
+        
+        // Update StationsVC
+        self.delegate?.trackPlayingToggled(self.track)
     }
     
     @IBAction func volumeChanged(sender:UISlider) {

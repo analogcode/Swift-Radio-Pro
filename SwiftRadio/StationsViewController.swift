@@ -299,5 +299,9 @@ extension StationsViewController: NowPlayingViewControllerDelegate {
         let title = currentStation!.stationName + ": " + currentTrack!.title + " - " + currentTrack!.artist + "..."
         stationNowPlayingButton.setTitle(title, forState: .Normal)
     }
+    
+    func trackPlayingToggled(track: Track) {
+        currentTrack?.isPlaying = track.isPlaying
+    }
 
 }
