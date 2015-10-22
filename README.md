@@ -11,7 +11,7 @@ Give it a quick watch.
 
 ##Features
 
-- LastFM API or **New** iTunes API Integration to automatically download Album Art
+- LastFM API and **New** iTunes API Integration to automatically download Album Art
 - Loads and parses metadata (Track & Artist information)
 - Current Artist & Track displayed on Stations page
 - Displays Artist, Track, & Album Art on Lock Screen
@@ -75,10 +75,10 @@ Q: Do I have to pay you anything if I make an app with this code?
 A: Nope. This is completely open source, you can do whatever you want with it. It's usually cool to thank the project if you use the code. Go build stuff. Enjoy.
 
 Q: How do I use the iTunes API instead of LastFM?  
-A: Set the "useLastFM" key to false in the "SwiftRadio-Settings.swift" file. You do not need an API key to use the iTunes API. It is free.
+A: In the SwiftRadio-Settings.swift file, set the "useLastFM" key to "false". You do not need an API key to use the iTunes API. It is free.
 
 Q: The LastFM site isn't working properly? I can't create an API key.  
-A: Official word from LastFM "the team are working to add support as soon as possible". 
+A: Official word from LastFM "the team are working to add support as soon as possible". You do not need a LastFM key if you use the iTunes (or other) API.
 
 Q: Is there another API to get album/track information besides LastFM and iTunes?  
 A: Rovi has a pretty sweet [music API](http://prod-doc.rovicorp.com/mashery/index.php/Data/APIs/Rovi-Music). The [Echo Nest](http://developer.echonest.com/) has all kinds of APIs that are fun to play with. 
@@ -88,9 +88,6 @@ A: Paste your stream URL into a browser to see if it will play there. The stream
 
 Q: The song names aren't appearing for my station?  
 A: Check with your stream provider to make sure they are sending Metadata properly. If a station sends data in a unique way, you can modify the way the app parses the metadata in the "metadataUpdated" method in the NowPlayingViewController.
-
-Q: Sometimes the station desc does not disappear when the album art loads?  
-A: We are working on that, thank you for your patience.
 
 ##RadioKit SDK Example 
 
