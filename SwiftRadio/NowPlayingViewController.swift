@@ -163,7 +163,7 @@ class NowPlayingViewController: UIViewController {
         
         // songLabel animate
         songLabel.animation = "flash"
-        songLabel.repeatCount = 2
+        songLabel.repeatCount = 3
         songLabel.animate()
         
         resetAlbumArtwork()
@@ -379,7 +379,7 @@ class NowPlayingViewController: UIViewController {
         // Query API
         DataManager.getTrackDataWithSuccess(escapedURL!) { (data) in
             
-            // Turn on network indicator in status bar
+            // Turn off network indicator in status bar
             UIApplication.sharedApplication().networkActivityIndicatorVisible = false
             
             if DEBUG_LOG {
