@@ -83,6 +83,9 @@ A: Official word from LastFM "the team are working to add support as soon as pos
 Q: Is there another API to get album/track information besides LastFM and iTunes?  
 A: Rovi has a pretty sweet [music API](http://prod-doc.rovicorp.com/mashery/index.php/Data/APIs/Rovi-Music). The [Echo Nest](http://developer.echonest.com/) has all kinds of APIs that are fun to play with. 
 
+Q: I updated the album art size in the Storyboard, and now the sizing is acting funny?  
+A: There is an albumArt constraint modified in the code. See the "optimizeForDeviceSize()" method in the NowPlayingVC.
+
 Q: My radio station isn't playing?  
 A: Paste your stream URL into a browser to see if it will play there. The stream may be offline or have a weak connection.
 
