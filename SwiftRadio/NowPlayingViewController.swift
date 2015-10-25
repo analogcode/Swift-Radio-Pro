@@ -214,7 +214,7 @@ class NowPlayingViewController: UIViewController {
     
     func optimizeForDeviceSize() {
         
-        // Adjust album size to fit iPhone 4s & iPhone 6 & 6+
+        // Adjust album size to fit iPhone 4s, 6s & 6s+
         let deviceHeight = self.view.bounds.height
         
         if deviceHeight == 480 {
@@ -313,11 +313,10 @@ class NowPlayingViewController: UIViewController {
                 self.stationDescLabel.hidden = false
             }
             
-            // Attempt to download album art from LastFM
+            // Attempt to download album art from an API
             if let url = NSURL(string: track.artworkURL) {
                 
-                self.downloadTask = self.albumImageView.loadImageWithURL(url) {
-                    (image) in
+                self.downloadTask = self.albumImageView.loadImageWithURL(url) { (image) in
                     
                     // Update track struct
                     self.track.artworkImage = image
@@ -356,7 +355,7 @@ class NowPlayingViewController: UIViewController {
             self.delegate?.artworkDidUpdate(self.track)
             
         } else {
-            // No Station or LastFM art found, use default art
+            // No Station or API art found, use default art
             self.albumImageView.image = UIImage(named: "albumArt")
             track.artworkImage = albumImageView.image
         }
@@ -365,7 +364,7 @@ class NowPlayingViewController: UIViewController {
         self.view.setNeedsDisplay()
     }
 
-    // Call LastFM API to get album art url
+    // Call LastFM or iTunes API to get album art url
     
     func queryAlbumArt() {
         
@@ -384,9 +383,6 @@ class NowPlayingViewController: UIViewController {
         // Query API
         DataManager.getTrackDataWithSuccess(escapedURL!) { (data) in
             
-            // Turn off network indicator in status bar
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-            
             if DEBUG_LOG {
                 print("API SUCCESSFUL RETURN")
                 print("url: \(escapedURL!)")
@@ -402,8 +398,6 @@ class NowPlayingViewController: UIViewController {
                     let lastImage = imageArray[arrayCount - 1]
                     
                     if let artURL = lastImage["#text"].string {
-                        
-                        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
                         
                         // Check for Default Last FM Image
                         if artURL.rangeOfString("/noimage/") != nil {
@@ -543,7 +537,7 @@ class NowPlayingViewController: UIViewController {
                     // Update Stations Screen
                     self.delegate?.songMetaDataDidUpdate(self.track)
                     
-                    // Query LastFM API for album art
+                    // Query API for album art
                     self.resetAlbumArtwork()
                     self.queryAlbumArt()
                     self.updateLockScreen()

@@ -51,7 +51,7 @@ class DataManager {
     }
     
     //*****************************************************************
-    // Get LastFM Data
+    // Get LastFM/iTunes Data
     //*****************************************************************
     
     class func getTrackDataWithSuccess(queryURL: String, success: ((metaData: NSData!) -> Void)) {
