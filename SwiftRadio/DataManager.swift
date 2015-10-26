@@ -11,7 +11,7 @@ import UIKit
 class DataManager {
     
     //*****************************************************************
-    // Helper Class to get either local or remote JSON
+    // Helper class to get either local or remote JSON
     //*****************************************************************
     
     class func getStationDataWithSuccess(success: ((metaData: NSData!) -> Void)) {
@@ -61,7 +61,7 @@ class DataManager {
             if let urlData = data {
                 success(metaData: urlData)
             } else {
-                if DEBUG_LOG { print("LAST FM TIMEOUT OR ERROR") }
+                if DEBUG_LOG { print("API TIMEOUT OR ERROR") }
             }
         }
     }

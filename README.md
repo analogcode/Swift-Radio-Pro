@@ -80,6 +80,9 @@ A: In the SwiftRadio-Settings.swift file, set the "useLastFM" key to "false". Yo
 Q: The LastFM site isn't working properly? I can't create an API key.  
 A: Official word from LastFM "the team are working to add support as soon as possible". You do not need a LastFM key if you use the iTunes (or other) API.
 
+Q: It looks like your LastFM api key and secret might have been left in the code?  
+A: Yes, people may use it for small amounts of testing. However, I ask that you change it before submitting to the app store. (Plus, it would be self-defeating for someone to submit it to the app store with the testing keys, as it would quickly throttle out and their album art downloads would stop working!)
+
 Q: Is there another API to get album/track information besides LastFM and iTunes?  
 A: Rovi has a pretty sweet [music API](http://prod-doc.rovicorp.com/mashery/index.php/Data/APIs/Rovi-Music). The [Echo Nest](http://developer.echonest.com/) has all kinds of APIs that are fun to play with. 
 
