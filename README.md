@@ -11,18 +11,17 @@ Give it a quick watch.
 
 ##Features
 
-- LastFM API and **New** iTunes API Integration to automatically download Album Art
-- Loads and parses metadata (Track & Artist information)
-- Current Artist & Track displayed on Stations page
-- Displays Artist, Track, & Album Art on Lock Screen
-- Ability to update playlist from server or locally. (Update stations anytime without resubmitting to app store!)
+- LastFM API and iTunes API Integration to automatically download Album Art
+- Parses metadata from streams (Track & Artist information)
+- Ability to update Stations from server or locally. (Update stations anytime without resubmitting to app store!)
+- Displays Artist, Track & Album Art on Lock Screen
 - Custom views optimized for iPhone 4s, 5, 6 and 6+ for backwards compatibility
 - Compiles with Xcode 7 & Swift 2.0
 - Background audio performance
 - Supports local or hosted station images
-- "About" page with ability to send email & visit website
+- "About" screen with ability to send email & visit website
 - Uses industry standard SwiftyJSON library for easy JSON manipulation
-- Pull to Refresh Stations
+- Pull to Refresh stations
 
 ##Important Notes
 - 10.21.15 Update: Added option to use iTunes API to download album art. (See FAQ below). iTunes art is 100px x 100px. i.e. It is smaller than LastFM artwork. So, if you use this API instead, you will want to adjust the UI of your app.
