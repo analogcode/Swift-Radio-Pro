@@ -13,6 +13,9 @@ class SwiftRadioUITests: XCTestCase {
     let app = XCUIApplication()
     let stations = XCUIApplication().cells
     let hamburgerMenu = XCUIApplication().navigationBars["Swift Radio"].buttons["icon hamburger"]
+    let pauseButton = XCUIApplication().buttons["btn pause"]
+    let playButton = XCUIApplication().buttons["btn play"]
+    let volume = XCUIApplication().sliders.elementBoundByIndex(0)
     
     override func setUp() {
         super.setUp()
@@ -48,7 +51,51 @@ class SwiftRadioUITests: XCTestCase {
     }
     
     func assertHamburgerContent() {
-        XCTAssertNotNil(app.staticTexts["Created by: Matthew Fecher"])
+        XCTAssertTrue(app.staticTexts["Created by: Matthew Fecher"].exists)
+    }
+    
+    func assertAboutContent() {
+        XCTAssertTrue(app.buttons["email me"].exists)
+        XCTAssertTrue(app.buttons["matthewfecher.com"].exists)
+    }
+    
+    func assertPaused() {
+        XCTAssertFalse(pauseButton.enabled)
+        XCTAssertTrue(playButton.enabled)
+        XCTAssertTrue(app.staticTexts["Station Paused..."].exists);
+    }
+    
+    func assertPlaying() {
+        XCTAssertTrue(pauseButton.enabled)
+        XCTAssertFalse(playButton.enabled)
+        XCTAssertFalse(app.staticTexts["Station Paused..."].exists);
+    }
+    
+    func assertStationOnMenu(stationName:String) {
+        let button = app.buttons["nowPlaying"];
+        if let value:String = button.label {
+            XCTAssertTrue(value.containsString(stationName))
+        } else {
+            XCTAssertTrue(false)
+        }
+    }
+    
+    func assertStationInfo() {
+        let textView = app.textViews.elementBoundByIndex(0)
+        if let value = textView.value {
+            XCTAssertGreaterThan(value.length, 10)
+        } else {
+            XCTAssertTrue(false)
+        }
+    }
+    
+    func waitForStationToLoad() {
+        self.expectationForPredicate(
+            NSPredicate(format: "exists == 0"),
+            evaluatedWithObject: app.staticTexts["Loading Station..."],
+            handler: nil)
+        self.waitForExpectationsWithTimeout(5.0, handler: nil)
+
     }
     
     func testMainStationsView() {
@@ -58,13 +105,36 @@ class SwiftRadioUITests: XCTestCase {
         assertStationsPresent()
         
         hamburgerMenu.tap()
-        app.buttons["About"].tap()
         assertHamburgerContent()
+        app.buttons["About"].tap()
+        assertAboutContent()
         app.buttons["Okay"].tap()
         app.buttons["btn close"].tap()
-        
         assertStationsPresent()
         
+        let firstStation = stations.elementBoundByIndex(0)
+        let stationName:String = firstStation.childrenMatchingType(.StaticText).elementBoundByIndex(0).label
+        assertStationOnMenu("Choose")
+        firstStation.tap()
+        waitForStationToLoad();
+        
+        pauseButton.tap()
+        assertPaused()
+        playButton.tap()
+        assertPlaying()
+        app.navigationBars["Sub Pop Radio"].buttons["Back"].tap()
+        assertStationOnMenu(stationName)
+        app.navigationBars["Swift Radio"].buttons["btn nowPlaying"].tap()
+        waitForStationToLoad()
+        volume.adjustToNormalizedSliderPosition(0.2)
+        volume.adjustToNormalizedSliderPosition(0.8)
+        volume.adjustToNormalizedSliderPosition(0.5)
+        app.buttons["More Info"].tap()
+        assertStationInfo()
+        app.buttons["Okay"].tap()
+        app.buttons["logo"].tap()
+        assertAboutContent()
+        app.buttons["Okay"].tap()
     }
     
 }
