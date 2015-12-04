@@ -683,7 +683,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="350" id="L5G-S8-88G"/>
                                 </constraints>
-                                <string key="text">FEATURES: + Displays Artist, Track and Album/Station Art on lock screen. 
+                                <string key="text">FEATURES: + Displays Artist, Track and Album/Station Art on lock screen.
 + Background Audio performance
 +Last FM API integration to automatically download album art
 + Loads and parses Icecast metadata (i.e. artist &amp; track names)
