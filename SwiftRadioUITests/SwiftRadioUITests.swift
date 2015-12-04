@@ -32,7 +32,7 @@ class SwiftRadioUITests: XCTestCase {
             NSPredicate(format: "self.count > 0"),
             evaluatedWithObject: stations,
             handler: nil)
-        self.waitForExpectationsWithTimeout(5.0, handler: nil)
+        self.waitForExpectationsWithTimeout(10.0, handler: nil)
         
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
@@ -94,7 +94,7 @@ class SwiftRadioUITests: XCTestCase {
             NSPredicate(format: "exists == 0"),
             evaluatedWithObject: app.staticTexts["Loading Station..."],
             handler: nil)
-        self.waitForExpectationsWithTimeout(5.0, handler: nil)
+        self.waitForExpectationsWithTimeout(25.0, handler: nil)
 
     }
     
