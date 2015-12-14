@@ -24,8 +24,8 @@ Give it a quick watch.
 - Pull to Refresh stations
 
 ##Important Notes
+- 12.14.15 Update: LastFM has reopened their API signups. Get one at [last.fm/api](http://www.last.fm/api).
 - 10.21.15 Update: Added option to use iTunes API to download album art. (See FAQ below). iTunes art is 100px x 100px. i.e. It is smaller than LastFM artwork. So, if you use this API instead, you will want to adjust the UI of your app.
-- LastFM is working on their API signups. So, you may have trouble signing up for a LastFM key, hopefully they fix that soon. More info in FAQ below.  
 - Volume slider works great in devices, not simulator. This is an Xcode simulator issue.  
 - Radio stations in demo are for demonstration purposes only. 
 - For a production product, you may want to swap out the MPMoviePlayerController for a more robust streaming library/SDK (with stream stitching, interruption handling, etc).
@@ -77,7 +77,7 @@ Q: How do I use the iTunes API instead of LastFM?
 A: In the SwiftRadio-Settings.swift file, set the "useLastFM" key to "false". You do not need an API key to use the iTunes API. It is free.
 
 Q: The LastFM site isn't working properly? I can't create an API key.  
-A: Official word from LastFM "the team are working to add support as soon as possible". You do not need a LastFM key if you use the iTunes (or other) API.
+A: LastFM will sometimes put API signups on hold. You can check back later or try a different API.
 
 Q: It looks like your LastFM api key and secret might have been left in the code?  
 A: Yes, people may use it for small amounts of testing. However, I ask that you change it before submitting to the app store. (Plus, it would be self-defeating for someone to submit it to the app store with the testing keys, as it would quickly throttle out and their album art downloads would stop working!)
