@@ -1,8 +1,10 @@
-#Swift Radio
+#Swift Radio - Single-Station Branch
 
-Swift Radio is an open source radio station app with robust and professional features. This is a fully realized Radio App built entirely in Swift 2.
+Swift Radio is an open source radio station app with robust and professional features. This is a fully realized Radio App built entirely in Swift 2.  
 
-![alt text](http://matthewfecher.com/wp-content/uploads/2015/09/screen-1.jpg "Swift Radio")
+NOTE: This is an experimental branch with the stationsViewController removed to demonstrate how it might work with only one station.
+
+![alt text](http://matthewfecher.com/wp-content/uploads/2015/12/Simulator-Screen-Shot-Dec-16-2015-1.55.04-PM.png "Swift Radio")
 
 ##Video
 View this [**GETTING STARTED VIDEO**](https://youtu.be/m7jiajCHFvc).
