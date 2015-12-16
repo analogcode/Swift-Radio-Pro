@@ -91,8 +91,14 @@ A: There is an albumArt constraint modified in the code. See the "optimizeForDev
 Q: My radio station isn't playing?  
 A: Paste your stream URL into a browser to see if it will play there. The stream may be offline or have a weak connection.
 
+Q: Can you help me add a feature...?  
+A: While I have a full-time job and other project obligations, I'd highly recommend you find a developer or mentor in your area to help. The code is layed out easily enough that most developers should be able to help you rather quickly.
+
 Q: The song names aren't appearing for my station?  
 A: Check with your stream provider to make sure they are sending Metadata properly. If a station sends data in a unique way, you can modify the way the app parses the metadata in the "metadataUpdated" method in the NowPlayingViewController.
+
+##Single Station Branch
+There's now a branch without the StationsViewController if you'd like to use this as a starting place for a single station. View that [Branch Here](https://github.com/swiftcodex/Swift-Radio-Pro/tree/single-station).
 
 ##RadioKit SDK Example 
 
