@@ -10,22 +10,11 @@ import UIKit
 import MediaPlayer
 
 //*****************************************************************
-// Protocol
-// Updates the StationsViewController when the track changes
-//*****************************************************************
-
-protocol NowPlayingViewControllerDelegate: class {
-    func songMetaDataDidUpdate(track: Track)
-    func artworkDidUpdate(track: Track)
-    func trackPlayingToggled(track: Track)
-}
-
-//*****************************************************************
 // NowPlayingViewController
 //*****************************************************************
 
 class NowPlayingViewController: UIViewController {
-
+    
     @IBOutlet weak var albumHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var albumImageView: SpringImageView!
     @IBOutlet weak var artistLabel: UILabel!
@@ -46,8 +35,6 @@ class NowPlayingViewController: UIViewController {
     var track: Track!
     var mpVolumeSlider = UISlider()
     
-    weak var delegate: NowPlayingViewControllerDelegate?
-    
     //*****************************************************************
     // MARK: - ViewDidLoad
     //*****************************************************************
@@ -55,9 +42,20 @@ class NowPlayingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Setup Radio Station
+        
+        // Add your radio station information here:
+        currentStation = RadioStation(
+            name: "Sub Pop Radio",
+            streamURL: "http://209.237.244.98:8004/",
+            imageURL: "station-sub.png",
+            desc: "Midsized Record Label",
+            longDesc: "Sub Pop is a record label founded in 1986 by Bruce Pavitt. In 1988, Sub Pop Records LLC was formed by Bruce Pavitt and Jonathan Poneman in Seattle, Washington. Sub Pop achieved fame in the late 1980s for first signing Nirvana, Soundgarden, Mudhoney and many other bands from the Seattle alternative rock scene."
+        )
+        
         // Set AlbumArtwork Constraints
         optimizeForDeviceSize()
-
+        
         // Set View Title
         self.title = currentStation.stationName
         
@@ -65,11 +63,6 @@ class NowPlayingViewController: UIViewController {
         createNowPlayingAnimation()
         
         // Setup MPMoviePlayerController
-        // If you're building an app for a client, you may want to
-        // replace the MediaPlayer player with a more robust 
-        // streaming library/SDK. Preferably one that supports interruptions, etc.
-        // Most of the good streaming libaries are in Obj-C, however they
-        // will work nicely with this Swift code.
         setupPlayer()
         
         // Notification for when app becomes active
@@ -133,7 +126,7 @@ class NowPlayingViewController: UIViewController {
         radioPlayer.prepareToPlay()
         radioPlayer.controlStyle = MPMovieControlStyle.None
     }
-  
+    
     func setupVolumeSlider() {
         // Note: This slider implementation uses a MPVolumeView
         // The volume slider only works in devices, not the simulator.
@@ -141,7 +134,7 @@ class NowPlayingViewController: UIViewController {
         let volumeView = MPVolumeView(frame: volumeParentView.bounds)
         for view in volumeView.subviews {
             let uiview: UIView = view as UIView
-             if (uiview.description as NSString).rangeOfString("MPVolumeSlider").location != NSNotFound {
+            if (uiview.description as NSString).rangeOfString("MPVolumeSlider").location != NSNotFound {
                 mpVolumeSlider = (uiview as! UISlider)
             }
         }
@@ -187,8 +180,6 @@ class NowPlayingViewController: UIViewController {
         // Start NowPlaying Animation
         nowPlayingImageView.startAnimating()
         
-        // Update StationsVC
-        self.delegate?.trackPlayingToggled(self.track)
     }
     
     @IBAction func pausePressed() {
@@ -200,8 +191,6 @@ class NowPlayingViewController: UIViewController {
         updateLabels("Station Paused...")
         nowPlayingImageView.stopAnimating()
         
-        // Update StationsVC
-        self.delegate?.trackPlayingToggled(self.track)
     }
     
     @IBAction func volumeChanged(sender:UISlider) {
@@ -324,18 +313,15 @@ class NowPlayingViewController: UIViewController {
                     
                     // Turn off network activity indicator
                     UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-                        
+                    
                     // Animate artwork
                     self.albumImageView.animation = "wobble"
                     self.albumImageView.duration = 2
                     self.albumImageView.animate()
                     self.stationDescLabel.hidden = true
-
+                    
                     // Update lockscreen
                     self.updateLockScreen()
-                    
-                    // Call delegate function that artwork updated
-                    self.delegate?.artworkDidUpdate(self.track)
                 }
             }
             
@@ -351,9 +337,6 @@ class NowPlayingViewController: UIViewController {
             track.artworkImage = albumImageView.image
             track.artworkLoaded = true
             
-            // Call delegate function that artwork updated
-            self.delegate?.artworkDidUpdate(self.track)
-            
         } else {
             // No Station or API art found, use default art
             self.albumImageView.image = UIImage(named: "albumArt")
@@ -363,7 +346,7 @@ class NowPlayingViewController: UIViewController {
         // Force app to update display
         self.view.setNeedsDisplay()
     }
-
+    
     // Call LastFM or iTunes API to get album art url
     
     func queryAlbumArt() {
@@ -416,7 +399,7 @@ class NowPlayingViewController: UIViewController {
                 } else {
                     self.resetAlbumArtwork()
                 }
-            
+                
             } else {
                 // Use iTunes API. Images are 100px by 100px
                 if let artURL = json["results"][0]["artworkUrl100"].string {
@@ -533,9 +516,6 @@ class NowPlayingViewController: UIViewController {
                     self.songLabel.duration = 1.5
                     self.songLabel.damping = 1
                     self.songLabel.animate()
-                    
-                    // Update Stations Screen
-                    self.delegate?.songMetaDataDidUpdate(self.track)
                     
                     // Query API for album art
                     self.resetAlbumArtwork()

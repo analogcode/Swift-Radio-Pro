@@ -8,9 +8,9 @@
 
 import Foundation
 
-//**************************************
-// GENERAL SETTINGS
-//**************************************
+//************************************************************
+// GENERAL SETTINGS - SINGLE STATION BRANCH
+//************************************************************
 
 // Display Comments
 let DEBUG_LOG = true
@@ -19,11 +19,8 @@ let DEBUG_LOG = true
 // STATION JSON
 //**************************************
 
-// If this is set to "true", it will use the JSON file in the app
-// Set it to "false" to use the JSON file at the stationDataURL
-
-let useLocalStations = true
-let stationDataURL   = "http://yoururl.com/json/stations.json"
+// NOTE: This is the Single-Station Branch. 
+// Please download the master branch to use Station JSON
 
 //**************************************
 // LASTFM API
