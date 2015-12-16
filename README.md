@@ -99,7 +99,7 @@ Q: The song names aren't appearing for my station?
 A: Check with your stream provider to make sure they are sending Metadata properly. If a station sends data in a unique way, you can modify the way the app parses the metadata in the "metadataUpdated" method in the NowPlayingViewController.
 
 ##Single Station Branch
-There's now a branch without the StationsViewController if you'd like to use this as a starting place for an app for just one radio station. View that [Branch Here](https://github.com/swiftcodex/Swift-Radio-Pro/tree/single-station).
+There's now a branch without the StationsViewController. This is so you can use this code as a starting place for an app for just one radio station. View that [Branch Here](https://github.com/swiftcodex/Swift-Radio-Pro/tree/single-station).
 
 ##RadioKit SDK Example 
 
