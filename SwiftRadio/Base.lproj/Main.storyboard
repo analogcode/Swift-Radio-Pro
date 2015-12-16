@@ -6,124 +6,6 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Stations View Controller-->
-        <scene sceneID="7ik-k3-I0U">
-            <objects>
-                <viewController id="enP-TM-Wa7" customClass="StationsViewController" customModule="SwiftRadio" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="EZB-zC-ZAt"/>
-                        <viewControllerLayoutGuide type="bottom" id="XnL-lx-4Ua"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="OvF-E7-hdu">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="dhg-xW-Q3M">
-                                <rect key="frame" x="0.0" y="64" width="320" height="460"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StationCell" rowHeight="88" id="hMr-La-1Ga" customClass="StationTableViewCell" customModule="SwiftRadio" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="88"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hMr-La-1Ga" id="NhW-Qy-GCO">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="87"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="stationImage" translatesAutoresizingMaskIntoConstraints="NO" id="GQm-Mf-6pw">
-                                                    <rect key="frame" x="8" y="9" width="110" height="70"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Station Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hQQ-6f-sYl">
-                                                    <rect key="frame" x="132" y="20" width="180" height="30"/>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
-                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Desc" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ptr-mN-34N">
-                                                    <rect key="frame" x="132" y="47" width="180" height="21"/>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
-                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <outlet property="stationDescLabel" destination="Ptr-mN-34N" id="mGP-95-uEF"/>
-                                            <outlet property="stationImageView" destination="GQm-Mf-6pw" id="kCR-0m-tHf"/>
-                                            <outlet property="stationNameLabel" destination="hQQ-6f-sYl" id="G7d-bb-Meg"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="enP-TM-Wa7" id="0bf-cD-M4h"/>
-                                    <outlet property="delegate" destination="enP-TM-Wa7" id="2BN-4Z-J58"/>
-                                </connections>
-                            </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y05-35-5xn">
-                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LhZ-Go-zL7" userLabel="Now Playing Button">
-                                        <rect key="frame" x="39" y="8" width="273" height="32"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="32" id="3VJ-3d-FUc"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
-                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Choose a station above to begin">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="nowPlayingPressed:" destination="enP-TM-Wa7" eventType="touchUpInside" id="04j-pe-FI8"/>
-                                        </connections>
-                                    </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NowPlayingBars" translatesAutoresizingMaskIntoConstraints="NO" id="ySP-43-Zqt" userLabel="Playing Animation Image View">
-                                        <rect key="frame" x="1" y="2" width="40" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="6Ps-sU-GZY"/>
-                                            <constraint firstAttribute="width" constant="40" id="V1I-VJ-0aF"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="LhZ-Go-zL7" secondAttribute="trailing" constant="8" id="EHx-A6-uMp"/>
-                                    <constraint firstAttribute="height" constant="44" id="FfH-MV-hND"/>
-                                    <constraint firstItem="ySP-43-Zqt" firstAttribute="leading" secondItem="y05-35-5xn" secondAttribute="leading" constant="1" id="HNB-uc-oaE"/>
-                                    <constraint firstAttribute="bottom" secondItem="LhZ-Go-zL7" secondAttribute="bottom" constant="4" id="Jff-gM-bVw"/>
-                                    <constraint firstItem="ySP-43-Zqt" firstAttribute="top" secondItem="y05-35-5xn" secondAttribute="top" constant="2" id="Mq7-ai-j3U"/>
-                                    <constraint firstItem="LhZ-Go-zL7" firstAttribute="top" secondItem="y05-35-5xn" secondAttribute="top" constant="8" id="UKE-UQ-H4d"/>
-                                    <constraint firstItem="LhZ-Go-zL7" firstAttribute="leading" secondItem="y05-35-5xn" secondAttribute="leading" constant="39" id="atm-sU-rGk"/>
-                                </constraints>
-                            </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="g23-m5-5pm">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="XnL-lx-4Ua" firstAttribute="top" secondItem="y05-35-5xn" secondAttribute="bottom" id="0Ab-ql-g3F"/>
-                            <constraint firstItem="dhg-xW-Q3M" firstAttribute="leading" secondItem="OvF-E7-hdu" secondAttribute="leading" id="8YJ-iI-LfY"/>
-                            <constraint firstAttribute="trailing" secondItem="y05-35-5xn" secondAttribute="trailing" id="BRI-KQ-z7n"/>
-                            <constraint firstItem="y05-35-5xn" firstAttribute="leading" secondItem="OvF-E7-hdu" secondAttribute="leading" id="NBg-B6-YnE"/>
-                            <constraint firstAttribute="bottom" secondItem="g23-m5-5pm" secondAttribute="bottom" id="Ph5-oW-gl3"/>
-                            <constraint firstAttribute="trailing" secondItem="g23-m5-5pm" secondAttribute="trailing" id="ULW-51-4ob"/>
-                            <constraint firstItem="g23-m5-5pm" firstAttribute="top" secondItem="OvF-E7-hdu" secondAttribute="top" id="Xbk-tp-GLK"/>
-                            <constraint firstItem="dhg-xW-Q3M" firstAttribute="top" secondItem="EZB-zC-ZAt" secondAttribute="bottom" id="eKO-PB-OTx"/>
-                            <constraint firstItem="g23-m5-5pm" firstAttribute="leading" secondItem="OvF-E7-hdu" secondAttribute="leading" id="omF-c0-vVe"/>
-                            <constraint firstAttribute="trailing" secondItem="dhg-xW-Q3M" secondAttribute="trailing" id="tj2-C3-q2r"/>
-                            <constraint firstItem="y05-35-5xn" firstAttribute="top" secondItem="dhg-xW-Q3M" secondAttribute="bottom" id="wF0-Xy-rSA"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="nowPlayingAnimationImageView" destination="ySP-43-Zqt" id="M7e-Co-EX1"/>
-                        <outlet property="stationNowPlayingButton" destination="LhZ-Go-zL7" id="6CD-3L-Opj"/>
-                        <outlet property="tableView" destination="dhg-xW-Q3M" id="Aug-Bc-jTR"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7Wn-sj-N6f" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-121" y="1117"/>
-        </scene>
         <!--Menu View Controller-->
         <scene sceneID="4lL-TA-52h">
             <objects>
@@ -664,12 +546,12 @@
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="350" id="L5G-S8-88G"/>
                                 </constraints>
-                                <string key="text">FEATURES: + Displays Artist, Track and Album/Station Art on lock screen. 
+                                <mutableString key="text">FEATURES: + Displays Artist, Track and Album/Station Art on lock screen. 
 + Background Audio performance
 +Last FM API integration to automatically download album art
 + Loads and parses Icecast metadata (i.e. artist &amp; track names)
-+ Ability to update stations from server without resubmitting to the app store.
-</string>
++ This is a special branch for single-stations.
+</mutableString>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -725,7 +607,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="NowPlayingBars" width="20" height="19"/>
         <image name="background" width="320" height="568"/>
         <image name="btn-close" width="23" height="23"/>
         <image name="btn-pause" width="44" height="44"/>

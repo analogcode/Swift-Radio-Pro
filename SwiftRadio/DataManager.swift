@@ -11,27 +11,6 @@ import UIKit
 class DataManager {
     
     //*****************************************************************
-    // Helper class to get either local or remote JSON
-    //*****************************************************************
-    
-    class func getStationDataWithSuccess(success: ((metaData: NSData!) -> Void)) {
-
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-            if useLocalStations {
-                getDataFromFileWithSuccess() { data in
-                    success(metaData: data)
-                }
-            } else {
-                loadDataFromURL(NSURL(string: stationDataURL)!) { data, error in
-                    if let urlData = data {
-                        success(metaData: urlData)
-                    }
-                }
-            }
-        }
-    }
-    
-    //*****************************************************************
     // Load local JSON Data
     //*****************************************************************
     
