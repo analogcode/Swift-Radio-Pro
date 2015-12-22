@@ -53,6 +53,22 @@ class NowPlayingViewController: UIViewController {
             longDesc: "Sub Pop is a record label founded in 1986 by Bruce Pavitt. In 1988, Sub Pop Records LLC was formed by Bruce Pavitt and Jonathan Poneman in Seattle, Washington. Sub Pop achieved fame in the late 1980s for first signing Nirvana, Soundgarden, Mudhoney and many other bands from the Seattle alternative rock scene."
         )
         
+        // Set AVFoundation category, required for background audio
+        var error: NSError?
+        var success: Bool
+        do {
+            try AVAudioSession.sharedInstance().setCategory(
+                AVAudioSessionCategoryPlayAndRecord,
+                withOptions: .DefaultToSpeaker)
+            success = true
+        } catch let error1 as NSError {
+            error = error1
+            success = false
+        }
+        if !success {
+            if DEBUG_LOG { print("Failed to set audio session category.  Error: \(error)") }
+        }
+        
         // Set AlbumArtwork Constraints
         optimizeForDeviceSize()
         
