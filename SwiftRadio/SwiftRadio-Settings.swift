@@ -14,8 +14,6 @@ import Foundation
 
 // Display Comments
 let DEBUG_LOG = true
-// Enable the search bar
-let searchable = true
 
 //**************************************
 // STATION JSON
@@ -26,6 +24,13 @@ let searchable = true
 
 let useLocalStations = true
 let stationDataURL   = "http://yoururl.com/json/stations.json"
+
+//**************************************
+// SEARCH BAR
+//**************************************
+
+// Set this to "true" to enable the search bar
+let searchable = true
 
 //**************************************
 // LASTFM API
