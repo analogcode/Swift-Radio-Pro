@@ -18,12 +18,14 @@ Give it a quick watch.
 - Custom views optimized for iPhone 4s, 5, 6 and 6+ for backwards compatibility
 - Compiles with Xcode 7 & Swift 2.0
 - Background audio performance
+- Search Bar that can be turned on or off to search stations
 - Supports local or hosted station images
 - "About" screen with ability to send email & visit website
 - Uses industry standard SwiftyJSON library for easy JSON manipulation
 - Pull to Refresh stations
 
 ##Important Notes
+- 12.30.15 Update: UISearchBar added, thanks [@fethica](https://github.com/fethica). Turn it on/off in the "SwiftRadio-Settings" file.  
 - 12.16.15 Update: New branch added using a single radio station.
 - 12.14.15 Update: LastFM has reopened their API signups. Get one at [last.fm/api](http://www.last.fm/api).
 - 10.21.15 Update: Added option to use iTunes API to download album art. (See FAQ below). iTunes art is 100px x 100px. i.e. It is smaller than LastFM artwork. So, if you use this API instead, you will want to adjust the UI of your app.
