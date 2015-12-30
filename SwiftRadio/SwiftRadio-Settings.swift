@@ -14,6 +14,8 @@ import Foundation
 
 // Display Comments
 let DEBUG_LOG = true
+// Enable the search bar
+let searchable = true
 
 //**************************************
 // STATION JSON
