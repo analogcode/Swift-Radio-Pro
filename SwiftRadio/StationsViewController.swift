@@ -22,6 +22,9 @@ class StationsViewController: UIViewController {
     var refreshControl: UIRefreshControl!
     var firstTime = true
     
+    var searchedStations = [RadioStation]()
+    var searchController : UISearchController!
+    
     //*****************************************************************
     // MARK: - ViewDidLoad
     //*****************************************************************
@@ -63,6 +66,32 @@ class StationsViewController: UIViewController {
         }
         if !success {
             if DEBUG_LOG { print("Failed to set audio session category.  Error: \(error)") }
+        }
+        
+        // Set the UISearchController
+        searchController = UISearchController(searchResultsController: nil)
+        
+        if searchable {
+            searchController.searchResultsUpdater = self
+            searchController.dimsBackgroundDuringPresentation = false
+            searchController.searchBar.sizeToFit()
+            
+            // Add UISearchController to the tableView
+            tableView.tableHeaderView = searchController?.searchBar
+            tableView.tableHeaderView?.backgroundColor = UIColor.clearColor()
+            definesPresentationContext = true
+            searchController.hidesNavigationBarDuringPresentation = false
+            
+            // Style the UISearchController
+            searchController.searchBar.barTintColor = UIColor.clearColor()
+            searchController.searchBar.tintColor = UIColor.whiteColor()
+            
+            // Hide the UISearchController
+            tableView.setContentOffset(CGPoint(x: 0.0, y: searchController.searchBar.frame.size.height), animated: false)
+            
+            // Set a black keyborad for UISearchController's TextField
+            let searchTextField = searchController.searchBar.valueForKey("_searchField") as! UITextField
+            searchTextField.keyboardAppearance = UIKeyboardAppearance.Dark
         }
     }
     
@@ -190,7 +219,11 @@ class StationsViewController: UIViewController {
             
             if let indexPath = (sender as? NSIndexPath) {
                 // User clicked on row, load/reset station
-                currentStation = stations[indexPath.row]
+                if searchController.active {
+                    currentStation = searchedStations[indexPath.row]
+                } else {
+                    currentStation = stations[indexPath.row]
+                }
                 nowPlayingVC.currentStation = currentStation
                 nowPlayingVC.newStation = true
             
@@ -227,10 +260,18 @@ extension StationsViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if stations.count == 0 {
-            return 1
+        
+        // The UISeachController is active
+        if searchController.active {
+            return searchedStations.count
+            
+        // The UISeachController is not active
         } else {
-            return stations.count
+            if stations.count == 0 {
+                return 1
+            } else {
+                return stations.count
+            }
         }
     }
     
@@ -255,6 +296,17 @@ extension StationsViewController: UITableViewDataSource {
             // Configure the cell...
             let station = stations[indexPath.row]
             cell.configureStationCell(station)
+            
+            // The UISeachController is active
+            if searchController.active {
+                let station = searchedStations[indexPath.row]
+                cell.configureStationCell(station)
+                
+            // The UISeachController is not active
+            } else {
+                let station = stations[indexPath.row]
+                cell.configureStationCell(station)
+            }
             
             return cell
         }
@@ -304,4 +356,30 @@ extension StationsViewController: NowPlayingViewControllerDelegate {
         currentTrack?.isPlaying = track.isPlaying
     }
 
+}
+
+//*****************************************************************
+// MARK: - UISearchControllerDelegate
+//*****************************************************************
+
+extension StationsViewController: UISearchResultsUpdating {
+
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+    
+        // Empty the searchedStations array
+        searchedStations.removeAll(keepCapacity: false)
+    
+        // Create a Predicate
+        let searchPredicate = NSPredicate(format: "SELF.stationName CONTAINS[c] %@", searchController.searchBar.text!)
+    
+        // Create an NSArray with a Predicate
+        let array = (self.stations as NSArray).filteredArrayUsingPredicate(searchPredicate)
+    
+        // Set the searchedStations with search result array
+        searchedStations = array as! [RadioStation]
+    
+        // Reload the tableView
+        self.tableView.reloadData()
+    }
+    
 }
