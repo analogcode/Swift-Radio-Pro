@@ -95,7 +95,7 @@ Q: My radio station isn't playing?
 A: Paste your stream URL into a browser to see if it will play there. The stream may be offline or have a weak connection.
 
 Q: Can you help me add a feature? Can you help me understand the code? Can you help with a problem I'm having?  
-A: While I have a full-time job and other project obligations, I'd highly recommend you find a developer or mentor in your area to help. The code is well-documented and most developers should be able to help you rather quickly. The code is 'as is'. No free support is offered.
+A: While I have a full-time job and other project obligations, I'd highly recommend you find a developer or mentor in your area to help. The code is well-documented and most developers should be able to help you rather quickly. While I am sometimes available for paid freelance work, **I am not able to provide any free support or modifications.** Thank you for understanding!
 
 Q: The song names aren't appearing for my station?  
 A: Check with your stream provider to make sure they are sending Metadata properly. If a station sends data in a unique way, you can modify the way the app parses the metadata in the "metadataUpdated" method in the NowPlayingViewController.
@@ -116,6 +116,3 @@ Here's a branch of the code that plays streaming TV Stations instead of radio st
 ![alt text](http://matthewfecher.com/wp-content/uploads/2015/11/myTV.png "Swift TV")
 
 If you create an app with the code, or interesting project inspired by the code, shoot me an email: matthew.fecher@gmail.com. Note: As per the FAQ above, I am unable to offer any free support or modifications. Thanks!
-
-
-
