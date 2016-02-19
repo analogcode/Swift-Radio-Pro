@@ -417,13 +417,13 @@
                                     <constraint firstItem="Ygz-Co-31f" firstAttribute="top" secondItem="dtX-QN-LoN" secondAttribute="top" constant="22" id="tyF-Wg-6BH"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mtv-qy-Zb5">
-                                <rect key="frame" x="262" y="72" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mtv-qy-Zb5">
+                                <rect key="frame" x="280" y="72" width="32" height="32"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Pdi-3Z-mM3"/>
-                                    <constraint firstAttribute="width" constant="46" id="aUZ-lY-r2O"/>
+                                    <constraint firstAttribute="height" constant="32" id="Pdi-3Z-mM3"/>
+                                    <constraint firstAttribute="width" constant="32" id="aUZ-lY-r2O"/>
                                 </constraints>
-                                <state key="normal" title="Share">
+                                <state key="normal" image="share-circle">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -454,7 +454,7 @@
                             <constraint firstItem="KC8-ZG-rx5" firstAttribute="leading" secondItem="v3l-q6-g0h" secondAttribute="leading" id="kPF-QT-yN6"/>
                             <constraint firstAttribute="trailing" secondItem="dtX-QN-LoN" secondAttribute="trailing" id="kQd-xy-Nl1"/>
                             <constraint firstAttribute="trailing" secondItem="obn-8m-awZ" secondAttribute="trailing" constant="70" id="mbe-x3-NBX"/>
-                            <constraint firstAttribute="trailing" secondItem="mtv-qy-Zb5" secondAttribute="trailing" constant="12" id="sxq-Cz-OT4"/>
+                            <constraint firstAttribute="trailing" secondItem="mtv-qy-Zb5" secondAttribute="trailing" constant="8" id="sxq-Cz-OT4"/>
                             <constraint firstItem="obn-8m-awZ" firstAttribute="trailing" secondItem="RA9-OX-Xr1" secondAttribute="trailing" id="uX9-xo-4bC"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="GIj-4c-kRh" secondAttribute="bottom" constant="8" id="ugE-R5-bnr"/>
                             <constraint firstItem="uXf-Wr-UiK" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="ukJ-i6-3WQ"/>
@@ -751,6 +751,7 @@
         <image name="btn-play" width="44" height="44"/>
         <image name="icon-hamburger" width="22" height="16"/>
         <image name="logo" width="180" height="71"/>
+        <image name="share-circle" width="32" height="32"/>
         <image name="stationImage" width="120" height="75"/>
         <image name="swift-radio-black" width="180" height="71"/>
         <image name="vol-max" width="17" height="14"/>
