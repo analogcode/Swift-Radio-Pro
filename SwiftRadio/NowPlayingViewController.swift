@@ -35,6 +35,7 @@ class NowPlayingViewController: UIViewController {
     @IBOutlet weak var stationDescLabel: UILabel!
     @IBOutlet weak var volumeParentView: UIView!
     @IBOutlet weak var slider = UISlider()
+    @IBOutlet weak var shareButton: UIButton!
     
     var currentStation: RadioStation!
     var downloadTask: NSURLSessionDownloadTask?
@@ -448,6 +449,12 @@ class NowPlayingViewController: UIViewController {
     
     @IBAction func infoButtonPressed(sender: UIButton) {
         performSegueWithIdentifier("InfoDetail", sender: self)
+    }
+    
+    @IBAction func shareButtonPressed(sender: UIButton) {
+        let songToShare = "I'm listening to \(track.title) on \(currentStation.stationName) via Swift Radio Pro"
+        let activityViewController = UIActivityViewController(activityItems: [songToShare, track.artworkImage!], applicationActivities: nil)
+        presentViewController(activityViewController, animated: true, completion: nil)
     }
     
     //*****************************************************************
