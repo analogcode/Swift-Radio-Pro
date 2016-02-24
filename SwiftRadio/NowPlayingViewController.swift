@@ -35,7 +35,6 @@ class NowPlayingViewController: UIViewController {
     @IBOutlet weak var stationDescLabel: UILabel!
     @IBOutlet weak var volumeParentView: UIView!
     @IBOutlet weak var slider = UISlider()
-    @IBOutlet weak var shareButton: UIButton!
     
     var currentStation: RadioStation!
     var downloadTask: NSURLSessionDownloadTask?
@@ -70,7 +69,8 @@ class NowPlayingViewController: UIViewController {
         // replace the MediaPlayer player with a more robust 
         // streaming library/SDK. Preferably one that supports interruptions, etc.
         // Most of the good streaming libaries are in Obj-C, however they
-        // will work nicely with this Swift code.
+        // will work nicely with this Swift code. There is a branch using RadioKit if 
+        // you need an example of how nicely this code integrates with libraries.
         setupPlayer()
         
         // Notification for when app becomes active
