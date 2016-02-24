@@ -30,7 +30,7 @@ let stationDataURL   = "http://yoururl.com/json/stations.json"
 //**************************************
 
 // Set this to "true" to enable the search bar
-let searchable = false
+let searchable = true
 
 //**************************************
 // LASTFM API
@@ -38,7 +38,7 @@ let searchable = false
 
 // Use LastFM or iTunes API
 // set to "false" to use iTunes
-let useLastFM = true
+let useLastFM = false
 
 // IF YOU USE LASTFM, PLEASE USE YOUR OWN KEY
 // Visit: http://www.last.fm/api
