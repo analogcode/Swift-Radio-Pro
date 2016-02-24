@@ -25,6 +25,7 @@ Give it a quick watch.
 - Pull to Refresh stations
 
 ##Important Notes
+- 2.24.16 Update: Share icon added, thanks [@SuperChloe](https://github.com/SuperChloe).  
 - 12.30.15 Update: UISearchBar added, thanks [@fethica](https://github.com/fethica). Turn it on/off in the "SwiftRadio-Settings" file.  
 - 12.16.15 Update: New branch added using a single radio station.
 - 12.14.15 Update: LastFM has reopened their API signups. Get one at [last.fm/api](http://www.last.fm/api).
