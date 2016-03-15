@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C5545BD1C1124DE00728469 /* SwiftRadioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5545BC1C1124DE00728469 /* SwiftRadioUITests.swift */; };
 		9409E11C1ABF6FEA00312E2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */; };
 		9409E1241ABF6FEA00312E2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9409E1221ABF6FEA00312E2B /* Main.storyboard */; };
 		9409E1261ABF6FEA00312E2B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9409E1251ABF6FEA00312E2B /* Images.xcassets */; };
@@ -25,40 +26,53 @@
 		94D260961B45E3FA00DE671C /* AnimationFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D260951B45E3FA00DE671C /* AnimationFrames.swift */; };
 		94D260981B45E8B800DE671C /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D260971B45E8B800DE671C /* Track.swift */; };
 		94D30EA71AD07A880024FE96 /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D30EA61AD07A880024FE96 /* StationTableViewCell.swift */; };
-		94DB0A901B98B762005ED993 /* AsyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A721B98B762005ED993 /* AsyncButton.swift */; settings = {ASSET_TAGS = (); }; };
-		94DB0A911B98B762005ED993 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A731B98B762005ED993 /* AsyncImageView.swift */; settings = {ASSET_TAGS = (); }; };
-		94DB0A921B98B762005ED993 /* AutoTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A741B98B762005ED993 /* AutoTextView.swift */; settings = {ASSET_TAGS = (); }; };
-		94DB0A931B98B762005ED993 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A751B98B762005ED993 /* BlurView.swift */; settings = {ASSET_TAGS = (); }; };
-		94DB0A941B98B762005ED993 /* DesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A761B98B762005ED993 /* DesignableButton.swift */; settings = {ASSET_TAGS = (); }; };
-		94DB0A951B98B762005ED993 /* DesignableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A771B98B762005ED993 /* DesignableImageView.swift */; settings = {ASSET_TAGS = (); }; };
-		94DB0A961B98B762005ED993 /* DesignableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A781B98B762005ED993 /* DesignableLabel.swift */; settings = {ASSET_TAGS = (); }; };
-		94DB0A971B98B762005ED993 /* DesignableTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A791B98B762005ED993 /* DesignableTabBarController.swift */; settings = {ASSET_TAGS = (); }; };
-		94DB0A981B98B762005ED993 /* DesignableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A7A1B98B762005ED993 /* DesignableTextField.swift */; settings = {ASSET_TAGS = (); }; };
-		94DB0A991B98B762005ED993 /* DesignableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A7B1B98B762005ED993 /* DesignableTextView.swift */; settings = {ASSET_TAGS = (); }; };
-		94DB0A9A1B98B762005ED993 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A7C1B98B762005ED993 /* DesignableView.swift */; settings = {ASSET_TAGS = (); }; };
-		94DB0A9B1B98B762005ED993 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A7D1B98B762005ED993 /* ImageLoader.swift */; settings = {ASSET_TAGS = (); }; };
-		94DB0A9C1B98B762005ED993 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94DB0A7E1B98B762005ED993 /* Info.plist */; settings = {ASSET_TAGS = (); }; };
-		94DB0A9D1B98B762005ED993 /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A7F1B98B762005ED993 /* KeyboardLayoutConstraint.swift */; settings = {ASSET_TAGS = (); }; };
-		94DB0A9E1B98B762005ED993 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A801B98B762005ED993 /* LoadingView.swift */; settings = {ASSET_TAGS = (); }; };
-		94DB0A9F1B98B762005ED993 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94DB0A811B98B762005ED993 /* LoadingView.xib */; settings = {ASSET_TAGS = (); }; };
-		94DB0AA01B98B762005ED993 /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A821B98B762005ED993 /* Misc.swift */; settings = {ASSET_TAGS = (); }; };
-		94DB0AA11B98B762005ED993 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A831B98B762005ED993 /* SoundPlayer.swift */; settings = {ASSET_TAGS = (); }; };
-		94DB0AA21B98B762005ED993 /* Spring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A851B98B762005ED993 /* Spring.swift */; settings = {ASSET_TAGS = (); }; };
-		94DB0AA31B98B762005ED993 /* SpringAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A861B98B762005ED993 /* SpringAnimation.swift */; settings = {ASSET_TAGS = (); }; };
-		94DB0AA41B98B762005ED993 /* SpringButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A871B98B762005ED993 /* SpringButton.swift */; settings = {ASSET_TAGS = (); }; };
-		94DB0AA51B98B762005ED993 /* SpringImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A881B98B762005ED993 /* SpringImageView.swift */; settings = {ASSET_TAGS = (); }; };
-		94DB0AA61B98B762005ED993 /* SpringLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A891B98B762005ED993 /* SpringLabel.swift */; settings = {ASSET_TAGS = (); }; };
-		94DB0AA71B98B762005ED993 /* SpringTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A8A1B98B762005ED993 /* SpringTextField.swift */; settings = {ASSET_TAGS = (); }; };
-		94DB0AA81B98B762005ED993 /* SpringTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A8B1B98B762005ED993 /* SpringTextView.swift */; settings = {ASSET_TAGS = (); }; };
-		94DB0AA91B98B762005ED993 /* SpringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A8C1B98B762005ED993 /* SpringView.swift */; settings = {ASSET_TAGS = (); }; };
-		94DB0AAA1B98B762005ED993 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A8D1B98B762005ED993 /* TransitionManager.swift */; settings = {ASSET_TAGS = (); }; };
-		94DB0AAB1B98B762005ED993 /* TransitionZoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A8E1B98B762005ED993 /* TransitionZoom.swift */; settings = {ASSET_TAGS = (); }; };
-		94DB0AAC1B98B762005ED993 /* UnwindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A8F1B98B762005ED993 /* UnwindSegue.swift */; settings = {ASSET_TAGS = (); }; };
+		94DB0A901B98B762005ED993 /* AsyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A721B98B762005ED993 /* AsyncButton.swift */; };
+		94DB0A911B98B762005ED993 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A731B98B762005ED993 /* AsyncImageView.swift */; };
+		94DB0A921B98B762005ED993 /* AutoTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A741B98B762005ED993 /* AutoTextView.swift */; };
+		94DB0A931B98B762005ED993 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A751B98B762005ED993 /* BlurView.swift */; };
+		94DB0A941B98B762005ED993 /* DesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A761B98B762005ED993 /* DesignableButton.swift */; };
+		94DB0A951B98B762005ED993 /* DesignableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A771B98B762005ED993 /* DesignableImageView.swift */; };
+		94DB0A961B98B762005ED993 /* DesignableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A781B98B762005ED993 /* DesignableLabel.swift */; };
+		94DB0A971B98B762005ED993 /* DesignableTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A791B98B762005ED993 /* DesignableTabBarController.swift */; };
+		94DB0A981B98B762005ED993 /* DesignableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A7A1B98B762005ED993 /* DesignableTextField.swift */; };
+		94DB0A991B98B762005ED993 /* DesignableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A7B1B98B762005ED993 /* DesignableTextView.swift */; };
+		94DB0A9A1B98B762005ED993 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A7C1B98B762005ED993 /* DesignableView.swift */; };
+		94DB0A9B1B98B762005ED993 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A7D1B98B762005ED993 /* ImageLoader.swift */; };
+		94DB0A9C1B98B762005ED993 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94DB0A7E1B98B762005ED993 /* Info.plist */; };
+		94DB0A9D1B98B762005ED993 /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A7F1B98B762005ED993 /* KeyboardLayoutConstraint.swift */; };
+		94DB0A9E1B98B762005ED993 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A801B98B762005ED993 /* LoadingView.swift */; };
+		94DB0A9F1B98B762005ED993 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94DB0A811B98B762005ED993 /* LoadingView.xib */; };
+		94DB0AA01B98B762005ED993 /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A821B98B762005ED993 /* Misc.swift */; };
+		94DB0AA11B98B762005ED993 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A831B98B762005ED993 /* SoundPlayer.swift */; };
+		94DB0AA21B98B762005ED993 /* Spring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A851B98B762005ED993 /* Spring.swift */; };
+		94DB0AA31B98B762005ED993 /* SpringAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A861B98B762005ED993 /* SpringAnimation.swift */; };
+		94DB0AA41B98B762005ED993 /* SpringButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A871B98B762005ED993 /* SpringButton.swift */; };
+		94DB0AA51B98B762005ED993 /* SpringImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A881B98B762005ED993 /* SpringImageView.swift */; };
+		94DB0AA61B98B762005ED993 /* SpringLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A891B98B762005ED993 /* SpringLabel.swift */; };
+		94DB0AA71B98B762005ED993 /* SpringTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A8A1B98B762005ED993 /* SpringTextField.swift */; };
+		94DB0AA81B98B762005ED993 /* SpringTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A8B1B98B762005ED993 /* SpringTextView.swift */; };
+		94DB0AA91B98B762005ED993 /* SpringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A8C1B98B762005ED993 /* SpringView.swift */; };
+		94DB0AAA1B98B762005ED993 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A8D1B98B762005ED993 /* TransitionManager.swift */; };
+		94DB0AAB1B98B762005ED993 /* TransitionZoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A8E1B98B762005ED993 /* TransitionZoom.swift */; };
+		94DB0AAC1B98B762005ED993 /* UnwindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A8F1B98B762005ED993 /* UnwindSegue.swift */; };
 		94E9761C1B1A8F3200F52B1E /* UIImage+DropShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9761B1B1A8F3200F52B1E /* UIImage+DropShadow.swift */; };
-		94ECF2671B94D80600D120A8 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94ECF2661B94D80600D120A8 /* SwiftyJSON.swift */; settings = {ASSET_TAGS = (); }; };
+		94ECF2671B94D80600D120A8 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94ECF2661B94D80600D120A8 /* SwiftyJSON.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		2C5545BF1C1124DE00728469 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9409E10E1ABF6FE900312E2B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9409E1151ABF6FEA00312E2B;
+			remoteInfo = SwiftRadio;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		2C5545BA1C1124DE00728469 /* SwiftRadioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftRadioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C5545BC1C1124DE00728469 /* SwiftRadioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftRadioUITests.swift; sourceTree = "<group>"; };
+		2C5545BE1C1124DE00728469 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9409E1161ABF6FEA00312E2B /* SwiftRadio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftRadio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9409E11A1ABF6FEA00312E2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +129,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2C5545B71C1124DE00728469 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9409E1131ABF6FEA00312E2B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -125,12 +146,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C5545BB1C1124DE00728469 /* SwiftRadioUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2C5545BC1C1124DE00728469 /* SwiftRadioUITests.swift */,
+				2C5545BE1C1124DE00728469 /* Info.plist */,
+			);
+			path = SwiftRadioUITests;
+			sourceTree = "<group>";
+		};
 		9409E10D1ABF6FE900312E2B = {
 			isa = PBXGroup;
 			children = (
 				B90086461BBE40AF00E5372C /* MediaPlayer.framework */,
 				9409E1181ABF6FEA00312E2B /* SwiftRadio */,
 				949BBB411ACCA2B6005B7C26 /* Libraries */,
+				2C5545BB1C1124DE00728469 /* SwiftRadioUITests */,
 				9409E1171ABF6FEA00312E2B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -139,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				9409E1161ABF6FEA00312E2B /* SwiftRadio.app */,
+				2C5545BA1C1124DE00728469 /* SwiftRadioUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -277,6 +309,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2C5545B91C1124DE00728469 /* SwiftRadioUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C5545C31C1124DE00728469 /* Build configuration list for PBXNativeTarget "SwiftRadioUITests" */;
+			buildPhases = (
+				2C5545B61C1124DE00728469 /* Sources */,
+				2C5545B71C1124DE00728469 /* Frameworks */,
+				2C5545B81C1124DE00728469 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2C5545C01C1124DE00728469 /* PBXTargetDependency */,
+			);
+			name = SwiftRadioUITests;
+			productName = SwiftRadioUITests;
+			productReference = 2C5545BA1C1124DE00728469 /* SwiftRadioUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		9409E1151ABF6FEA00312E2B /* SwiftRadio */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9409E1381ABF6FEA00312E2B /* Build configuration list for PBXNativeTarget "SwiftRadio" */;
@@ -301,10 +351,14 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftMigration = 0700;
-				LastSwiftUpdateCheck = 0700;
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = CodeMarket.io;
 				TargetAttributes = {
+					2C5545B91C1124DE00728469 = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = 9409E1151ABF6FEA00312E2B;
+					};
 					9409E1151ABF6FEA00312E2B = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = G24WJ3XCZ3;
@@ -330,11 +384,19 @@
 			projectRoot = "";
 			targets = (
 				9409E1151ABF6FEA00312E2B /* SwiftRadio */,
+				2C5545B91C1124DE00728469 /* SwiftRadioUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2C5545B81C1124DE00728469 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9409E1141ABF6FEA00312E2B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -351,6 +413,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2C5545B61C1124DE00728469 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C5545BD1C1124DE00728469 /* SwiftRadioUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9409E1121ABF6FEA00312E2B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -403,6 +473,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		2C5545C01C1124DE00728469 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9409E1151ABF6FEA00312E2B /* SwiftRadio */;
+			targetProxy = 2C5545BF1C1124DE00728469 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		9409E1221ABF6FEA00312E2B /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -415,6 +493,36 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2C5545C11C1124DE00728469 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = SwiftRadioUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jonah.SwiftRadioUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = SwiftRadio;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		2C5545C21C1124DE00728469 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = SwiftRadioUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jonah.SwiftRadioUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = SwiftRadio;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
 		9409E1361ABF6FEA00312E2B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -540,6 +648,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2C5545C31C1124DE00728469 /* Build configuration list for PBXNativeTarget "SwiftRadioUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C5545C11C1124DE00728469 /* Debug */,
+				2C5545C21C1124DE00728469 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		9409E1111ABF6FE900312E2B /* Build configuration list for PBXProject "SwiftRadio" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

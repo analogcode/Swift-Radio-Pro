@@ -67,6 +67,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LhZ-Go-zL7" userLabel="Now Playing Button">
                                         <rect key="frame" x="39" y="8" width="273" height="32"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="nowPlaying"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="3VJ-3d-FUc"/>
                                         </constraints>
@@ -683,7 +684,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="350" id="L5G-S8-88G"/>
                                 </constraints>
-                                <string key="text">FEATURES: + Displays Artist, Track and Album/Station Art on lock screen. 
+                                <string key="text">FEATURES: + Displays Artist, Track and Album/Station Art on lock screen.
 + Background Audio performance
 +Last FM API integration to automatically download album art
 + Loads and parses Icecast metadata (i.e. artist &amp; track names)
