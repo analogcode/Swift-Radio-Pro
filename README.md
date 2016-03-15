@@ -1,5 +1,7 @@
 #Swift Radio
 
+[![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=56579c1328898101003ae8f3&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/56579c1328898101003ae8f3/build/latest)
+
 Swift Radio is an open source radio station app with robust and professional features. This is a fully realized Radio App built entirely in Swift 2.
 
 ![alt text](http://matthewfecher.com/wp-content/uploads/2015/09/screen-1.jpg "Swift Radio")
