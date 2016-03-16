@@ -37,16 +37,16 @@ class DataManager {
     
     class func getDataFromFileWithSuccess(success: (data: NSData) -> Void) {
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-            
-            let filePath = NSBundle.mainBundle().pathForResource("stations", ofType:"json")
+        if let filePath = NSBundle.mainBundle().pathForResource("stations", ofType:"json") {
             do {
-                let data = try NSData(contentsOfFile:filePath!,
+                let data = try NSData(contentsOfFile:filePath,
                     options: NSDataReadingOptions.DataReadingUncached)
                 success(data: data)
             } catch {
                 fatalError()
             }
+        } else {
+            print("The local JSON file could not be found")
         }
     }
     
