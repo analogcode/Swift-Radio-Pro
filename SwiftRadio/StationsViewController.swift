@@ -124,7 +124,7 @@ class StationsViewController: UIViewController {
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh", attributes: [NSForegroundColorAttributeName:UIColor.whiteColor()])
         self.refreshControl.backgroundColor = UIColor.blackColor()
         self.refreshControl.tintColor = UIColor.whiteColor()
-        self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl.addTarget(self, action: #selector(StationsViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(refreshControl)
     }
     
@@ -135,7 +135,7 @@ class StationsViewController: UIViewController {
     
     func createNowPlayingBarButton() {
         if self.navigationItem.rightBarButtonItem == nil {
-            let btn = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: self, action:"nowPlayingBarButtonPressed")
+            let btn = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: self, action:#selector(StationsViewController.nowPlayingBarButtonPressed))
             btn.image = UIImage(named: "btn-nowPlaying")
             self.navigationItem.rightBarButtonItem = btn
         }
