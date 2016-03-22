@@ -32,7 +32,7 @@ class PopUpMenuViewController: UIViewController {
         view.backgroundColor = UIColor.clearColor()
         
         // Add gesture recognizer to dismiss view when touched
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("closeButtonPressed"))
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PopUpMenuViewController.closeButtonPressed))
         backgroundView.userInteractionEnabled = true
         backgroundView.addGestureRecognizer(gestureRecognizer)
     }

@@ -75,13 +75,13 @@ class NowPlayingViewController: UIViewController {
         
         // Notification for when app becomes active
         NSNotificationCenter.defaultCenter().addObserver(self,
-            selector: "didBecomeActiveNotificationReceived",
+            selector: #selector(NowPlayingViewController.didBecomeActiveNotificationReceived),
             name:"UIApplicationDidBecomeActiveNotification",
             object: nil)
         
         // Notification for MediaPlayer metadata updated
         NSNotificationCenter.defaultCenter().addObserver(self,
-            selector: Selector("metadataUpdated:"),
+            selector: #selector(NowPlayingViewController.metadataUpdated(_:)),
             name:MPMoviePlayerTimedMetadataUpdatedNotification,
             object: nil);
         
