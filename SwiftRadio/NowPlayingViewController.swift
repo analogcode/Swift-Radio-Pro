@@ -55,6 +55,9 @@ class NowPlayingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Setup handoff functionality - GH
+        setupUserActivity()
+        
         // Set AlbumArtwork Constraints
         optimizeForDeviceSize()
 
@@ -534,6 +537,7 @@ class NowPlayingViewController: UIViewController {
                     // Update Labels
                     self.artistLabel.text = self.track.artist
                     self.songLabel.text = self.track.title
+                    self.updateUserActivityState(self.userActivity!)
                     
                     // songLabel animation
                     self.songLabel.animation = "zoomIn"
@@ -552,5 +556,27 @@ class NowPlayingViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    //*****************************************************************
+    // MARK: - Handoff Functionality - GH
+    //*****************************************************************
+    
+    func setupUserActivity() {
+        let activity = NSUserActivity(activityType: NSUserActivityTypeBrowsingWeb ) //"com.graemeharrison.handoff.googlesearch" //NSUserActivityTypeBrowsingWeb
+        userActivity = activity
+        let url = "https://www.google.com/search?q=\(self.artistLabel.text!)+\(self.songLabel.text!)"
+        let urlStr = url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+        let searchURL : NSURL = NSURL(string: urlStr!)!
+        activity.webpageURL = searchURL
+        userActivity?.becomeCurrent()
+    }
+    
+    override func updateUserActivityState(activity: NSUserActivity) {
+        let url = "https://www.google.com/search?q=\(self.artistLabel.text!)+\(self.songLabel.text!)"
+        let urlStr = url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+        let searchURL : NSURL = NSURL(string: urlStr!)!
+        activity.webpageURL = searchURL
+        super.updateUserActivityState(activity)
     }
 }
