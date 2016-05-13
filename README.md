@@ -1,6 +1,6 @@
 #Swift Radio
 
-Swift Radio is an open source radio station app with robust and professional features. This is a fully realized Radio App built entirely in Swift 2. Learn to Code in Swift at [SwiftSchool.io](http://swiftschool.io). I've created a free "Intro to Coding" class there with over 40+ free videos. It's for beginners and non-programmers.
+Swift Radio is an open source radio station app with robust and professional features. This is a fully realized Radio App built entirely in Swift 2. If you're new to Swift, I made a free course at [SwiftSchool.io](http://swiftschool.io). Check it out!
 
 ![alt text](http://matthewfecher.com/wp-content/uploads/2015/09/screen-1.jpg "Swift Radio")
 
