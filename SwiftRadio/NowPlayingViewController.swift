@@ -105,6 +105,14 @@ class NowPlayingViewController: UIViewController {
         
         // Setup slider
         setupVolumeSlider()
+        
+        // Add Bluetooth support
+        do {
+            // Set audio session category AVAudioSessionCategoryPlayAndRecord options AVAudioSessionCategoryOptionAllowBluetooth
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayAndRecord, withOptions: AVAudioSessionCategoryOptions.AllowBluetooth)
+        } catch {
+            print("setCategoryError")
+        }
     }
     
     func didBecomeActiveNotificationReceived() {
