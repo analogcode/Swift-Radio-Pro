@@ -61,7 +61,7 @@ class DataManager {
             if let urlData = data {
                 success(metaData: urlData)
             } else {
-                if DEBUG_LOG { print("API TIMEOUT OR ERROR") }
+                if kDebugLog { print("API TIMEOUT OR ERROR") }
             }
         }
     }
@@ -85,16 +85,16 @@ class DataManager {
             if let responseError = error {
                 completion(data: nil, error: responseError)
                 
-                if DEBUG_LOG { print("API ERROR: \(error)") }
+                if kDebugLog { print("API ERROR: \(error)") }
                 
                 // Stop activity Indicator
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                 
             } else if let httpResponse = response as? NSHTTPURLResponse {
                 if httpResponse.statusCode != 200 {
-                    let statusError = NSError(domain:"io.codemarket", code:httpResponse.statusCode, userInfo:[NSLocalizedDescriptionKey : "HTTP status code has unexpected value."])
+                    let statusError = NSError(domain:"com.matthewfecher", code:httpResponse.statusCode, userInfo:[NSLocalizedDescriptionKey : "HTTP status code has unexpected value."])
                     
-                    if DEBUG_LOG { print("API: HTTP status code has unexpected value") }
+                    if kDebugLog { print("API: HTTP status code has unexpected value") }
                     
                     completion(data: nil, error: statusError)
                     

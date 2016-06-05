@@ -65,7 +65,7 @@ class StationsViewController: UIViewController {
             success = false
         }
         if !success {
-            if DEBUG_LOG { print("Failed to set audio session category.  Error: \(error)") }
+            if kDebugLog { print("Failed to set audio session category.  Error: \(error)") }
         }
         
         // Set the UISearchController
@@ -178,7 +178,7 @@ class StationsViewController: UIViewController {
         // Get the Radio Stations
         DataManager.getStationDataWithSuccess() { (data) in
             
-            if DEBUG_LOG { print("Stations JSON Found") }
+            if kDebugLog { print("Stations JSON Found") }
             
             let json = JSON(data: data)
             
@@ -196,7 +196,7 @@ class StationsViewController: UIViewController {
                 }
                 
             } else {
-                if DEBUG_LOG { print("JSON Station Loading Error") }
+                if kDebugLog { print("JSON Station Loading Error") }
             }
             
             // Turn off network indicator in status bar

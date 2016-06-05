@@ -395,7 +395,7 @@ class NowPlayingViewController: UIViewController {
         // Query API
         DataManager.getTrackDataWithSuccess(escapedURL!) { (data) in
             
-            if DEBUG_LOG {
+            if kDebugLog {
                 print("API SUCCESSFUL RETURN")
                 print("url: \(escapedURL!)")
             }
@@ -433,7 +433,7 @@ class NowPlayingViewController: UIViewController {
                 // Use iTunes API. Images are 100px by 100px
                 if let artURL = json["results"][0]["artworkUrl100"].string {
                     
-                    if DEBUG_LOG { print("iTunes artURL: \(artURL)") }
+                    if kDebugLog { print("iTunes artURL: \(artURL)") }
                     
                     self.track.artworkURL = artURL
                     self.track.artworkLoaded = true
@@ -538,7 +538,7 @@ class NowPlayingViewController: UIViewController {
                 
                 if currentSongName != self.track.title {
                     
-                    if DEBUG_LOG {
+                    if kDebugLog {
                         print("METADATA artist: \(self.track.artist) | title: \(self.track.title)")
                     }
                     

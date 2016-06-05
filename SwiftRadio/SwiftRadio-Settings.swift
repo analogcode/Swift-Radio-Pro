@@ -13,7 +13,7 @@ import Foundation
 //**************************************
 
 // Display Comments
-let DEBUG_LOG = true
+let kDebugLog = true
 
 //**************************************
 // STATION JSON
