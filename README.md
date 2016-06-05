@@ -25,6 +25,8 @@ Give it a quick watch.
 - Pull to Refresh stations
 
 ##Important Notes
+- 6.5.16 Update: Bluetooth streaming added, thanks [@fethica](https://github.com/fethica)
+- 3.27.16 Update: Google handoff added, thanks [@GraemeHarrison](https://github.com/GraemeHarrison)
 - 2.24.16 Update: Share icon added, thanks [@SuperChloe](https://github.com/SuperChloe).  
 - 12.30.15 Update: UISearchBar added, thanks [@fethica](https://github.com/fethica). Turn it on/off in the "SwiftRadio-Settings" file.  
 - 12.16.15 Update: New branch added using a single radio station.
