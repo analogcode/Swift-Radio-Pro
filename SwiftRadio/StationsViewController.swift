@@ -58,7 +58,9 @@ class StationsViewController: UIViewController {
         do {
             try AVAudioSession.sharedInstance().setCategory(
                 AVAudioSessionCategoryPlayAndRecord,
-                withOptions: .DefaultToSpeaker)
+                withOptions: [
+                    AVAudioSessionCategoryOptions.DefaultToSpeaker,
+                    AVAudioSessionCategoryOptions.AllowBluetooth])
             success = true
         } catch let error1 as NSError {
             error = error1
