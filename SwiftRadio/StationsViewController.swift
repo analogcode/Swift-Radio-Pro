@@ -70,31 +70,15 @@ class StationsViewController: UIViewController {
             if kDebugLog { print("Failed to set audio session category.  Error: \(error)") }
         }
         
-        // Set the UISearchController
-        searchController = UISearchController(searchResultsController: nil)
-        
-        if searchable {
-            searchController.searchResultsUpdater = self
-            searchController.dimsBackgroundDuringPresentation = false
-            searchController.searchBar.sizeToFit()
-            
-            // Add UISearchController to the tableView
-            tableView.tableHeaderView = searchController?.searchBar
-            tableView.tableHeaderView?.backgroundColor = UIColor.clearColor()
-            definesPresentationContext = true
-            searchController.hidesNavigationBarDuringPresentation = false
-            
-            // Style the UISearchController
-            searchController.searchBar.barTintColor = UIColor.clearColor()
-            searchController.searchBar.tintColor = UIColor.whiteColor()
-            
-            // Hide the UISearchController
-            tableView.setContentOffset(CGPoint(x: 0.0, y: searchController.searchBar.frame.size.height), animated: false)
-            
-            // Set a black keyborad for UISearchController's TextField
-            let searchTextField = searchController.searchBar.valueForKey("_searchField") as! UITextField
-            searchTextField.keyboardAppearance = UIKeyboardAppearance.Dark
+        // Set audioSession as active
+        do {
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch let error2 as NSError {
+            print("audioSession setActive error \(error2)")
         }
+        
+        // Setup Search Bar
+        setupSearchController()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -141,6 +125,35 @@ class StationsViewController: UIViewController {
             btn.image = UIImage(named: "btn-nowPlaying")
             self.navigationItem.rightBarButtonItem = btn
         }
+    }
+    
+    func setupSearchController() {
+        // Set the UISearchController
+        searchController = UISearchController(searchResultsController: nil)
+        
+        if searchable {
+            searchController.searchResultsUpdater = self
+            searchController.dimsBackgroundDuringPresentation = false
+            searchController.searchBar.sizeToFit()
+            
+            // Add UISearchController to the tableView
+            tableView.tableHeaderView = searchController?.searchBar
+            tableView.tableHeaderView?.backgroundColor = UIColor.clearColor()
+            definesPresentationContext = true
+            searchController.hidesNavigationBarDuringPresentation = false
+            
+            // Style the UISearchController
+            searchController.searchBar.barTintColor = UIColor.clearColor()
+            searchController.searchBar.tintColor = UIColor.whiteColor()
+            
+            // Hide the UISearchController
+            tableView.setContentOffset(CGPoint(x: 0.0, y: searchController.searchBar.frame.size.height), animated: false)
+            
+            // Set a black keyborad for UISearchController's TextField
+            let searchTextField = searchController.searchBar.valueForKey("_searchField") as! UITextField
+            searchTextField.keyboardAppearance = UIKeyboardAppearance.Dark
+        }
+
     }
     
     //*****************************************************************

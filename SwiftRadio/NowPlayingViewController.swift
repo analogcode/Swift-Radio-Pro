@@ -79,14 +79,20 @@ class NowPlayingViewController: UIViewController {
         // Notification for when app becomes active
         NSNotificationCenter.defaultCenter().addObserver(self,
             selector: #selector(NowPlayingViewController.didBecomeActiveNotificationReceived),
-            name:"UIApplicationDidBecomeActiveNotification",
+            name: "UIApplicationDidBecomeActiveNotification",
             object: nil)
         
         // Notification for MediaPlayer metadata updated
         NSNotificationCenter.defaultCenter().addObserver(self,
             selector: #selector(NowPlayingViewController.metadataUpdated(_:)),
             name:MPMoviePlayerTimedMetadataUpdatedNotification,
-            object: nil);
+            object: nil)
+        
+        // Notification for AVAudioSession Interruption (e.g. Phone call)
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: #selector(NowPlayingViewController.sessionInterrupted(_:)),
+            name: AVAudioSessionInterruptionNotification,
+            object: AVAudioSession.sharedInstance())
         
         // Check for station change
         if newStation {
@@ -123,6 +129,9 @@ class NowPlayingViewController: UIViewController {
         NSNotificationCenter.defaultCenter().removeObserver(self,
             name: MPMoviePlayerTimedMetadataUpdatedNotification,
             object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self,
+            name: AVAudioSessionInterruptionNotification,
+            object: AVAudioSession.sharedInstance())
     }
     
     //*****************************************************************
@@ -554,6 +563,23 @@ class NowPlayingViewController: UIViewController {
                     self.queryAlbumArt()
                     self.updateLockScreen()
                     
+                }
+            }
+        }
+    }
+    
+    //*****************************************************************
+    // MARK: - AVAudio Sesssion Interrupted
+    //*****************************************************************
+    
+    // Example code on handling AVAudio interruptions (e.g. Phone calls)
+    func sessionInterrupted(notification: NSNotification) {
+        if let typeValue = notification.userInfo?[AVAudioSessionInterruptionTypeKey] as? NSNumber{
+            if let type = AVAudioSessionInterruptionType(rawValue: typeValue.unsignedLongValue){
+                if type == .Began{
+                    print("interruption: began")
+                } else{
+                    print("interruption: ended")
                 }
             }
         }
