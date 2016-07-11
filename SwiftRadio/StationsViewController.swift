@@ -56,7 +56,7 @@ class StationsViewController: UIViewController {
         var error: NSError?
         var success: Bool
         do {
-            try audioSession.setCategory(AVAudioSessionCategoryPlayback)
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
             success = true
         } catch let error1 as NSError {
             error = error1
