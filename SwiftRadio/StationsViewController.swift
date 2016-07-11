@@ -70,7 +70,7 @@ class StationsViewController: UIViewController {
         do {
             try AVAudioSession.sharedInstance().setActive(true)
         } catch let error2 as NSError {
-            print("audioSession setActive error \(error2)")
+            if kDebugLog { print("audioSession setActive error \(error2)") }
         }
         
         // Setup Search Bar

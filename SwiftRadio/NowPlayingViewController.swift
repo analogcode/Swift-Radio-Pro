@@ -576,10 +576,12 @@ class NowPlayingViewController: UIViewController {
     func sessionInterrupted(notification: NSNotification) {
         if let typeValue = notification.userInfo?[AVAudioSessionInterruptionTypeKey] as? NSNumber{
             if let type = AVAudioSessionInterruptionType(rawValue: typeValue.unsignedLongValue){
-                if type == .Began{
+                if type == .Began {
                     print("interruption: began")
+                    // Add your code here
                 } else{
                     print("interruption: ended")
+                    // Add your code here
                 }
             }
         }
