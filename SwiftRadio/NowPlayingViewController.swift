@@ -45,7 +45,6 @@ class NowPlayingViewController: UIViewController {
     var radioPlayer: AVPlayer!
     var track: Track!
     var mpVolumeSlider = UISlider()
-    var isObservingMetaData:Bool = false
     
     weak var delegate: NowPlayingViewControllerDelegate?
     
@@ -100,7 +99,6 @@ class NowPlayingViewController: UIViewController {
         
         // Setup slider
         setupVolumeSlider()
-        
     }
     
     func didBecomeActiveNotificationReceived() {
@@ -121,15 +119,6 @@ class NowPlayingViewController: UIViewController {
     // MARK: - Setup
     //*****************************************************************
     
-    func startObservingMetaData() {
-        if kDebugLog {
-            print("startObservingMetaData")
-        }
-        
-        radioPlayer.currentItem?.addObserver(self, forKeyPath: "timedMetadata", options: NSKeyValueObservingOptions.New, context: nil)
-        isObservingMetaData = true
-       
-    }
     
     func setUpPlayer(){
         radioPlayer = Player.radio
@@ -145,13 +134,6 @@ class NowPlayingViewController: UIViewController {
     
     func resetPlayer(){
         if radioPlayer != nil {
-            if kDebugLog {
-                print("remove timedMetadata")
-            }
-            if isObservingMetaData  {
-                radioPlayer.currentItem?.removeObserver(self, forKeyPath: "timedMetadata")
-                isObservingMetaData = false
-            }
             NSNotificationCenter.defaultCenter().removeObserver(self, name: AVPlayerItemDidPlayToEndTimeNotification, object: self.radioPlayer.currentItem)
         }
     }
@@ -177,21 +159,23 @@ class NowPlayingViewController: UIViewController {
         
         guard let streamURL = NSURL(string: currentStation.stationStreamURL) else {
             if kDebugLog {
-                print("Stream Error")
+                print("Stream Error \(currentStation.stationStreamURL)")
             }
             return
         }
         
-        let streamItem = AVPlayerItem(URL: streamURL)
-        /*Player.radio = AVPlayer(playerItem: streamItem)
-        radioPlayer = Player.radio*/
-        radioPlayer.replaceCurrentItemWithPlayerItem(streamItem)
+        let streamItem = CustomAVPlayerItem(URL: streamURL)
+        streamItem.delegate = self
         
-        
-        radioPlayer.play()
-        startObservingMetaData()
+        dispatch_async(dispatch_get_main_queue()) {
+            // prevent the player from "stalling"
+            self.radioPlayer.replaceCurrentItemWithPlayerItem(streamItem)
+            self.radioPlayer.play()
+        }
         
         updateLabels("Loading Station...")
+        
+        print("stationDidChange \(currentStation.stationStreamURL)")
         
         // songLabel animate
         songLabel.animation = "flash"
@@ -199,10 +183,7 @@ class NowPlayingViewController: UIViewController {
         songLabel.animate()
         
         resetAlbumArtwork()
-        
         track.isPlaying = true
-
-        
     }
     
     //*****************************************************************
@@ -228,9 +209,7 @@ class NowPlayingViewController: UIViewController {
     
     @IBAction func pausePressed() {
         track.isPlaying = false
-        
         playButtonEnable()
-        
         radioPlayer.pause()
         updateLabels("Station Paused...")
         nowPlayingImageView.stopAnimating()
@@ -409,15 +388,12 @@ class NowPlayingViewController: UIViewController {
         let queryURL: String
         
         switch coverApi {
-        case .lastFm:
-            queryURL = String(format: "http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=%@&artist=%@&track=%@&format=json", lastFmApiKey, track.artist, track.title)
-            break
-        case .iTunes:
-            queryURL = String(format: "https://itunes.apple.com/search?term=%@+%@&entity=song", track.artist, track.title)
-            break
-        case .spotify:
-            queryURL = String(format: "https://api.spotify.com/v1/search?query=%@+%@&offset=0&limit=20&type=track", track.artist, track.title)
-            break
+            case .lastFm:
+                queryURL = String(format: "http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=%@&artist=%@&track=%@&format=json", lastFmApiKey, track.artist, track.title)
+                break
+            case .iTunes:
+                queryURL = String(format: "https://itunes.apple.com/search?term=%@+%@&entity=song", track.artist, track.title)
+                break
         }
         
         let escapedURL = queryURL.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
@@ -431,6 +407,7 @@ class NowPlayingViewController: UIViewController {
             }
             
             let json = JSON(data: data)
+            
             switch coverApi {
             case .lastFm:
                 // Get Largest Sized LastFM Image
@@ -472,21 +449,6 @@ class NowPlayingViewController: UIViewController {
                 } else {
                     self.resetAlbumArtwork()
                 }
-                break
-            case .spotify:
-                //print(json)
-                if let artURL = json["tracks"]["items"][0]["album"]["images"][0]["url"].string {
-                    
-                    if kDebugLog { print("spotify artURL: \(artURL)") }
-                    
-                    self.track.artworkURL = artURL
-                    self.track.artworkLoaded = true
-                    self.updateAlbumArtwork()
-                } else {
-                    //print("failure")
-                    self.resetAlbumArtwork()
-                }
-                
                 break
             }
         }
@@ -555,81 +517,6 @@ class NowPlayingViewController: UIViewController {
         }
     }
     
-    //*****************************************************************
-    // MARK: - MetaData Updated Notification
-    //*****************************************************************
-    
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
-        
-        if keyPath != "timedMetadata" { return }
-        
-        if let avpItem: AVPlayerItem = object as? AVPlayerItem {          
-            
-            if let metaDatas = avpItem.timedMetadata{
-                
-                
-                for item in metaDatas as [AVMetadataItem] {
-                    if kDebugLog {
-                        print(item.value)
-                    }
-                }
-                
-                let firstMeta: AVMetadataItem = metaDatas.first!
-                let metaData = firstMeta.value as! String
-                var stringParts = [String]()
-                if metaData.rangeOfString(" - ") != nil {
-                    stringParts = metaData.componentsSeparatedByString(" - ")
-                } else {
-                    stringParts = metaData.componentsSeparatedByString("-")
-                }
-                
-                // Set artist & songvariables
-                let currentSongName = track.title
-                track.artist = stringParts[0]
-                track.title = stringParts[0]
-                
-                if stringParts.count > 1 {
-                    track.title = stringParts[1]
-                }
-                
-                if track.artist == "" && track.title == "" {
-                    track.artist = currentStation.stationDesc
-                    track.title = currentStation.stationName
-                }
-                
-                dispatch_async(dispatch_get_main_queue()) {
-                    
-                    if currentSongName != self.track.title {
-                        
-                        if kDebugLog {
-                            print("METADATA artist: \(self.track.artist) | title: \(self.track.title)")
-                        }
-                        
-                        // Update Labels
-                        self.artistLabel.text = self.track.artist
-                        self.songLabel.text = self.track.title
-                        self.updateUserActivityState(self.userActivity!)
-                        
-                         // songLabel animation
-                         self.songLabel.animation = "zoomIn"
-                         self.songLabel.duration = 1.5
-                         self.songLabel.damping = 1
-                         self.songLabel.animate()
-                         
-                         // Update Stations Screen
-                         self.delegate?.songMetaDataDidUpdate(self.track)
-                        
-                        // Query API for album art
-                        self.resetAlbumArtwork()
-                        self.queryAlbumArt()
-                        
-                    }
-                }
-            }
-        }
-    }
-    
-  
     
     //*****************************************************************
     // MARK: - AVAudio Sesssion Interrupted
@@ -687,3 +574,74 @@ class NowPlayingViewController: UIViewController {
         }
     }
 }
+
+
+//*****************************************************************
+// MARK: - AVPlayerItem Delegate (for metadata)
+//*****************************************************************
+
+extension NowPlayingViewController: CustomAVPlayerItemDelegate {
+    func onMetaData(metaData: [AVMetadataItem]?) {
+        
+        
+        if let metaDatas = metaData{
+            
+            startNowPlayingAnimation()
+            let firstMeta: AVMetadataItem = metaDatas.first!
+            let metaData = firstMeta.value as! String
+            var stringParts = [String]()
+            if metaData.rangeOfString(" - ") != nil {
+                stringParts = metaData.componentsSeparatedByString(" - ")
+            } else {
+                stringParts = metaData.componentsSeparatedByString("-")
+            }
+            
+            // Set artist & songvariables
+            let currentSongName = track.title
+            track.artist = stringParts[0]
+            track.title = stringParts[0]
+            
+            if stringParts.count > 1 {
+                track.title = stringParts[1]
+            }
+            
+            if track.artist == "" && track.title == "" {
+                track.artist = currentStation.stationDesc
+                track.title = currentStation.stationName
+            }
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                
+                if currentSongName != self.track.title {
+                    
+                    if kDebugLog {
+                        print("METADATA artist: \(self.track.artist) | title: \(self.track.title)")
+                    }
+                    
+                    // Update Labels
+                    self.artistLabel.text = self.track.artist
+                    self.songLabel.text = self.track.title
+                    self.updateUserActivityState(self.userActivity!)
+                    
+                     // songLabel animation
+                     self.songLabel.animation = "zoomIn"
+                     self.songLabel.duration = 1.5
+                     self.songLabel.damping = 1
+                     self.songLabel.animate()
+                     
+                     // Update Stations Screen
+                     self.delegate?.songMetaDataDidUpdate(self.track)
+                    
+                    // Query API for album art
+                    self.resetAlbumArtwork()
+                    self.queryAlbumArt()
+                    
+                }
+            }
+        }
+    }
+}
+
+
+
+
