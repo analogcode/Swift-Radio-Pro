@@ -25,6 +25,7 @@ Give it a quick watch.
 - Pull to Refresh stations
 
 ##Important Notes
+- 7.26.16 Update: AVPlayer development branch added, thanks [@kusikusa](https://github.com/kusikusa). Plus, this branch includes the Spotify API for downloading artwork: [AVPlayer/Spotify Branch](https://github.com/swiftcodex/Swift-Radio-Pro/tree/avplayer)
 - 6.5.16 Update: Bluetooth streaming added, thanks [@fethica](https://github.com/fethica)
 - 3.27.16 Update: Google handoff added, thanks [@GraemeHarrison](https://github.com/GraemeHarrison)
 - 2.24.16 Update: Share icon added, thanks [@SuperChloe](https://github.com/SuperChloe).  
