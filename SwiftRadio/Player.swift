@@ -13,5 +13,5 @@ import MediaPlayer
 //*****************************************************************
 
 struct Player {
-    static let radio = MPMoviePlayerController()
+    static var radio = AVPlayer()
 }
