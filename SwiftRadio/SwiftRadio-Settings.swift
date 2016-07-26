@@ -10,6 +10,7 @@
 enum CoverApi : String {
     case iTunes = "iTunes"
     case lastFm = "LastFm"
+    case spotify = "Spotify"
 }
 
 import Foundation
@@ -42,7 +43,8 @@ let searchable = false
 // LASTFM API
 //**************************************
 
-// Use LastFM, iTunes API or spotify API
+// Use LastFM, iTunes API or Spotify API 
+// Spotify has use restrictions, please read https://developer.spotify.com/developer-terms-of-use/
 let coverApi = CoverApi.lastFm
 
 // IF YOU USE LASTFM, PLEASE USE YOUR OWN KEY

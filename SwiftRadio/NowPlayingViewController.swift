@@ -394,6 +394,9 @@ class NowPlayingViewController: UIViewController {
             case .iTunes:
                 queryURL = String(format: "https://itunes.apple.com/search?term=%@+%@&entity=song", track.artist, track.title)
                 break
+            case .spotify:
+                queryURL = String(format: "https://api.spotify.com/v1/search?query=%@+%@&offset=0&limit=20&type=track", track.artist, track.title)
+            break
         }
         
         let escapedURL = queryURL.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
@@ -450,7 +453,22 @@ class NowPlayingViewController: UIViewController {
                     self.resetAlbumArtwork()
                 }
                 break
+            case .spotify:
+                // Use Spotify API. Please read terms of use here https://developer.spotify.com/developer-terms-of-use/
+                if let artURL = json["tracks"]["items"][0]["album"]["images"][0]["url"].string {
+                    
+                    if kDebugLog { print("spotify artURL: \(artURL)") }
+                    
+                    self.track.artworkURL = artURL
+                    self.track.artworkLoaded = true
+                    self.updateAlbumArtwork()
+                } else {
+                    //print("failure")
+                    self.resetAlbumArtwork()
+                }
+                break
             }
+            
         }
     }
     
