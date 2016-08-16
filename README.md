@@ -1,6 +1,6 @@
 #Swift Radio
 
-Swift Radio is an open source radio station app with robust and professional features. This is a fully realized Radio App built entirely in Swift 2. If you're new to Swift, I made a free course at [SwiftSchool.io](http://swiftschool.io). Check it out!
+Swift Radio is an open source radio station app with robust and professional features. This is a fully realized Radio App built entirely in Swift 2.
 
 ![alt text](http://matthewfecher.com/wp-content/uploads/2015/09/screen-1.jpg "Swift Radio")
 
@@ -74,6 +74,14 @@ Includes an example "stations.json" file. You may upload the JSON file to a serv
 ##Contributions
 
 Contributions are very welcome. Please create a separate branch (e.g. features/3dtouch). Please do not commit on master.
+
+## Custom Work & Consulting
+
+Myself and the AudioKit team has extensive recent experience building and consulting for iOS / Apple Platform apps for both independent clients and high-profile clients including **Disney, McDonald's, and Zumba**! Additionally, we've built radio players for independent clients, such as this one:
+
+![RadioInformer](http://matthewfecher.com/wp-content/uploads/2016/08/SideBySide.jpg)
+
+[Get in Touch](http://matthewfecher.com/contact/) to see what we can do for you!
 
 ##FAQ
 
