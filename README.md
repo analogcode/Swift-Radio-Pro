@@ -77,7 +77,7 @@ Contributions are very welcome. Please create a separate branch (e.g. features/3
 
 ## Custom Work & Consulting
 
-The AudioKit team and I have extensive recent experience building iOS / Apple Platform apps for both independent and high-profile clients. Additionally, we've built advanced versions of this open-source radio player (such as this one):
+The AudioKit team and I have recent experience building iOS / Apple Platform apps for both independent and high-profile clients. Additionally, we've built advanced versions of this open-source radio player (such as this one):
 
 ![RadioInformer](http://matthewfecher.com/wp-content/uploads/2016/08/SideBySide.jpg)
 
