@@ -77,7 +77,7 @@ Contributions are very welcome. Please create a separate branch (e.g. features/3
 
 ## Custom Work & Consulting
 
-Myself and the AudioKit team has extensive recent experience building iOS / Apple Platform apps for both independent clients and high-profile clients including **Disney, McDonald's, and Zumba**! Additionally, we've built advanced versions of this open-source radio player like this one:
+Myself and the AudioKit team has extensive recent experience building iOS / Apple Platform apps for both independent clients and high-profile clients including **Disney, McDonald's, and Zumba**! Additionally, we've built advanced versions of this open-source radio player (such as this one):
 
 ![RadioInformer](http://matthewfecher.com/wp-content/uploads/2016/08/SideBySide.jpg)
 
