@@ -88,6 +88,8 @@ The AudioKit team and I have recent experience building iOS apps for both indepe
 Q: Do I have to pay you anything if I make an app with this code?  
 A: Nope. This is completely open source, you can do whatever you want with it. It's usually cool to thank the project if you use the code. Go build stuff. Enjoy.
 
+Summer 2016 Update: There's now dozens of apps in the app store successfully using this code! That's awesome. If you do use the code, you may want to change the graphics (reskin it) and make it your own. There's no fun in just resubmitting someone else's app to the app store "as is", add something to it! :)
+
 Q: How do I use the iTunes API instead of LastFM?  
 A: In the SwiftRadio-Settings.swift file, set the "useLastFM" key to "false". You do not need an API key to use the iTunes API. It is free.
 
