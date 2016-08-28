@@ -35,6 +35,7 @@ class NowPlayingViewController: UIViewController {
     @IBOutlet weak var stationDescLabel: UILabel!
     @IBOutlet weak var volumeParentView: UIView!
     @IBOutlet weak var slider = UISlider()
+    @IBOutlet weak var volumeSlider: UISlider!
     
     var currentStation: RadioStation!
     var downloadTask: NSURLSessionDownloadTask?
@@ -46,6 +47,7 @@ class NowPlayingViewController: UIViewController {
     var track: Track!
     var mpVolumeSlider = UISlider()
     
+    let audioSession = AVAudioSession.sharedInstance()
     weak var delegate: NowPlayingViewControllerDelegate?
     
     //*****************************************************************
@@ -111,7 +113,17 @@ class NowPlayingViewController: UIViewController {
         
         // Setup slider
         setupVolumeSlider()
-        
+        setUpVolumeKeyMonitor()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        startObservingVolumeChanges()
+        super.viewDidAppear(animated)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        stopObservingVolumeChanges()
+        super.viewWillDisappear(animated)
     }
     
     func didBecomeActiveNotificationReceived() {
@@ -607,5 +619,58 @@ class NowPlayingViewController: UIViewController {
         let searchURL : NSURL = NSURL(string: urlStr!)!
         activity.webpageURL = searchURL
         super.updateUserActivityState(activity)
+    }
+    
+    /*
+    func listenVolumeButton(){
+        let audioSession = AVAudioSession.sharedInstance()
+        try! audioSession.setActive(true)
+        audioSession.addObserver(self, forKeyPath: "outputVolume",
+                                 options: NSKeyValueObservingOptions.New, context: nil)
+
+    }
+    
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        if keyPath == "outputVolume"{
+            print("got in here")
+        }
+    }
+    */
+}
+
+extension NowPlayingViewController {
+    
+    private struct Observation {
+        static let VolumeKey = "outputVolume"
+        static let Context = UnsafeMutablePointer<Void>()
+    }
+    
+    func setUpVolumeKeyMonitor() {
+        do {
+            try audioSession.setActive(true)
+            startObservingVolumeChanges()
+        } catch {
+            print("Failed to activate audio session")
+        }
+    }
+    
+    func startObservingVolumeChanges() {
+        audioSession.addObserver(self, forKeyPath: Observation.VolumeKey, options: [.Initial, .New], context: Observation.Context)
+    }
+    
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        if context == Observation.Context {
+            if keyPath == Observation.VolumeKey, let volume = (change?[NSKeyValueChangeNewKey] as? NSNumber)?.floatValue {
+                // `volume` contains the new system output volume...
+                print("Volume: \(volume)")
+                volumeSlider.value = volume
+            }
+        } else {
+            super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
+        }
+    }
+    
+    func stopObservingVolumeChanges() {
+        audioSession.removeObserver(self, forKeyPath: Observation.VolumeKey, context: Observation.Context)
     }
 }
