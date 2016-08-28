@@ -3,7 +3,7 @@
 //  SwiftRadioUITests
 //
 //  Created by Jonah Stiennon on 12/3/15.
-//  Copyright © 2015 CodeMarket.io. All rights reserved.
+//  Copyright © 2015 matthewfecher.com. All rights reserved.
 //
 
 import XCTest
