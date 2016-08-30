@@ -35,6 +35,7 @@ class NowPlayingViewController: UIViewController {
     @IBOutlet weak var stationDescLabel: UILabel!
     @IBOutlet weak var volumeParentView: UIView!
     @IBOutlet weak var slider = UISlider()
+    @IBOutlet weak var volumeSliderUI: UISlider!
     
     var currentStation: RadioStation!
     var downloadTask: NSURLSessionDownloadTask?
@@ -111,7 +112,16 @@ class NowPlayingViewController: UIViewController {
         
         // Setup slider
         setupVolumeSlider()
-        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        startObservingVolumeChanges()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        stopObservingVolumeChanges()
+        super.viewWillDisappear(animated)
     }
     
     func didBecomeActiveNotificationReceived() {
@@ -607,5 +617,37 @@ class NowPlayingViewController: UIViewController {
         let searchURL : NSURL = NSURL(string: urlStr!)!
         activity.webpageURL = searchURL
         super.updateUserActivityState(activity)
+    }
+}
+
+//********************************************************
+// MPVolume Handling
+//********************************************************
+
+extension NowPlayingViewController {
+
+    private struct Observation {
+        static let VolumeKey = "outputVolume"
+        static let VolumeContext = UnsafeMutablePointer<Void>()
+        static let audioSession = AVAudioSession.sharedInstance()
+    }
+
+
+    func startObservingVolumeChanges() {
+        Observation.audioSession.addObserver(self, forKeyPath: Observation.VolumeKey, options: [.Initial, .New], context: Observation.VolumeContext)
+    }
+    
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        if context == Observation.VolumeContext {
+            if keyPath == Observation.VolumeKey, let volume = (change?[NSKeyValueChangeNewKey] as? NSNumber)?.floatValue {
+                volumeSliderUI.value = volume
+            }
+        } else {
+            super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
+        }
+    }
+    
+    func stopObservingVolumeChanges() {
+        Observation.audioSession.removeObserver(self, forKeyPath: Observation.VolumeKey, context: Observation.VolumeContext)
     }
 }
