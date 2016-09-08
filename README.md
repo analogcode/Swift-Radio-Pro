@@ -25,6 +25,7 @@ Give it a quick watch.
 - Pull to Refresh stations
 
 ##Important Notes
+- 9.08.16 Update: An Xcode 8 / Swift 2.3 branch as been added. It needs some fine-tuning. Feel free to dive in with PRs. It might be a few weeks until I have time to smooth it out.
 - 7.26.16 Update: AVPlayer development branch added, thanks [@kusikusa](https://github.com/kusikusa). Plus, this branch includes the Spotify API for downloading artwork: [AVPlayer/Spotify Branch](https://github.com/swiftcodex/Swift-Radio-Pro/tree/avplayer)
 - 6.5.16 Update: Bluetooth streaming added, thanks [@fethica](https://github.com/fethica)
 - 3.27.16 Update: Google handoff added, thanks [@GraemeHarrison](https://github.com/GraemeHarrison)
