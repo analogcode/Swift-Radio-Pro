@@ -1,6 +1,6 @@
 #Swift Radio
 
-Swift Radio is an open source radio station app with robust and professional features. This is a fully realized Radio App built entirely in Swift 2.
+Swift Radio is an open source radio station app with robust and professional features. This is a fully realized Radio App built entirely in Swift 2. This is the Xcode 7 branch. There is an Xcode 8 / Swift 2.3 branch [here]([https://github.com/swiftcodex/Swift-Radio-Pro/tree/xcode8](https://github.com/swiftcodex/Swift-Radio-Pro/tree/xcode8)).
 
 ![alt text](http://matthewfecher.com/wp-content/uploads/2015/09/screen-1.jpg "Swift Radio")
 
@@ -25,7 +25,7 @@ Give it a quick watch.
 - Pull to Refresh stations
 
 ##Important Notes
-- 9.08.16 Update: An Xcode 8 / Swift 2.3 branch as been added. It needs some fine-tuning. Feel free to dive in with PRs. It might be a few weeks until I have time to smooth it out.
+- 9.08.16 Update: An Xcode 8 / Swift 2.3 branch as been added. It needs some fine-tuning. Feel free to dive in with PRs. It might be a few weeks until I have time to smooth it out: [https://github.com/swiftcodex/Swift-Radio-Pro/tree/xcode8](https://github.com/swiftcodex/Swift-Radio-Pro/tree/xcode8)
 - 7.26.16 Update: AVPlayer development branch added, thanks [@kusikusa](https://github.com/kusikusa). Plus, this branch includes the Spotify API for downloading artwork: [AVPlayer/Spotify Branch](https://github.com/swiftcodex/Swift-Radio-Pro/tree/avplayer)
 - 6.5.16 Update: Bluetooth streaming added, thanks [@fethica](https://github.com/fethica)
 - 3.27.16 Update: Google handoff added, thanks [@GraemeHarrison](https://github.com/GraemeHarrison)
