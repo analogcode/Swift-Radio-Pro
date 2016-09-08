@@ -1,8 +1,6 @@
 #Swift Radio
 
-**NOTE:** This is the AVPlayer development branch started by [@kusikusa](https://github.com/kusikusa).
-
-Swift Radio is an open source radio station app with robust and professional features. This is a fully realized Radio App built entirely in Swift 2. 
+Swift Radio is an open source radio station app with robust and professional features. This is a fully realized Radio App built entirely in Swift. This is the Xcode 8 / Swift 2.3 branch.
 
 ![alt text](http://matthewfecher.com/wp-content/uploads/2015/09/screen-1.jpg "Swift Radio")
 
@@ -27,6 +25,7 @@ Give it a quick watch.
 - Pull to Refresh stations
 
 ##Important Notes
+- Update: Xcode 8 / Swift 2.3 branch as been added. It needs some fine-tuning. Feel free to dive in with PRs. It might be a few weeks until I have time to smooth this out. This branch is built on the AVPlayer branch.
 - 7.26.16 Update: AVPlayer development branch added, thanks [@kusikusa](https://github.com/kusikusa). Plus, this branch includes the Spotify API for downloading artwork: [AVPlayer/Spotify Branch](https://github.com/swiftcodex/Swift-Radio-Pro/tree/avplayer)
 - 6.5.16 Update: Bluetooth streaming added, thanks [@fethica](https://github.com/fethica)
 - 3.27.16 Update: Google handoff added, thanks [@GraemeHarrison](https://github.com/GraemeHarrison)
@@ -77,10 +76,20 @@ Includes an example "stations.json" file. You may upload the JSON file to a serv
 
 Contributions are very welcome. Please create a separate branch (e.g. features/3dtouch). Please do not commit on master.
 
+## Custom Work & Consulting
+
+We have recent experience building iOS apps for both independent and high-profile clients (brand names and apps we can't discuss here, but, you would instantly recognize!) Additionally, we've built advanced versions of this open-source radio player for amazing independent clients (such as this one):
+
+![RadioInformer](http://matthewfecher.com/wp-content/uploads/2016/08/SideBySide.jpg)
+
+[Get in Touch](http://matthewfecher.com/contact/) to see what we can do for you!
+
 ##FAQ
 
 Q: Do I have to pay you anything if I make an app with this code?  
 A: Nope. This is completely open source, you can do whatever you want with it. It's usually cool to thank the project if you use the code. Go build stuff. Enjoy.
+
+Summer 2016 Update: There's now dozens of apps in the app store successfully using this code! That's awesome. If you do use the code, you may want to change the graphics (reskin it) and make it your own. There's no fun in just resubmitting someone else's app to the app store "as is", add something to it! :)
 
 Q: How do I use the iTunes API instead of LastFM?  
 A: In the SwiftRadio-Settings.swift file, set the "useLastFM" key to "false". You do not need an API key to use the iTunes API. It is free.
