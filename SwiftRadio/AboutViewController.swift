@@ -30,10 +30,10 @@ class AboutViewController: UIViewController {
         let subject = "From Swift Radio App"
         let messageBody = ""
         
-        let configuredMailComposeViewController = configureMailComposeViewController(receipients, subject: subject, messageBody: messageBody)
+        let configuredMailComposeViewController = configureMailComposeViewController(recepients: receipients, subject: subject, messageBody: messageBody)
         
         if canSendMail() {
-            self.presentViewController(configuredMailComposeViewController, animated: true, completion: nil)
+            self.present(configuredMailComposeViewController, animated: true, completion: nil)
         } else {
             showSendMailErrorAlert()
         }
@@ -42,8 +42,8 @@ class AboutViewController: UIViewController {
     @IBAction func websiteButtonDidTouch(sender: UIButton) {
         
         // Use your own website here
-        if let url = NSURL(string: "http://matthewfecher.com") {
-            UIApplication.sharedApplication().openURL(url)
+        if let url = URL(string: "http://matthewfecher.com") {
+            UIApplication.shared.openURL(url)
         }
     }
 
@@ -55,8 +55,8 @@ class AboutViewController: UIViewController {
 
 extension AboutViewController: MFMailComposeViewControllerDelegate {
     
-    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
-        controller.dismissViewControllerAnimated(true, completion: nil)
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
     }
     
     func canSendMail() -> Bool {
