@@ -34,17 +34,17 @@ class StationsViewController: UIViewController {
         
         // Register 'Nothing Found' cell xib
         let cellNib = UINib(nibName: "NothingFoundCell", bundle: nil)
-        tableView.registerNib(cellNib, forCellReuseIdentifier: "NothingFound")
+        tableView.register(cellNib, forCellReuseIdentifier: "NothingFound")
         
-        preferredStatusBarStyle()
+        // preferredStatusBarStyle()
         
         // Load Data
         loadStationsFromJSON()
         
         // Setup TableView
-        tableView.backgroundColor = UIColor.clearColor()
+        tableView.backgroundColor = UIColor.clear
         tableView.backgroundView = nil
-        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         
         // Setup Pull to Refresh
         setupPullToRefresh()
@@ -77,7 +77,7 @@ class StationsViewController: UIViewController {
         setupSearchController()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         self.title = "Swift Radio"
         
         // If a station has been selected, create "Now Playing" button to get back to current station
@@ -88,7 +88,7 @@ class StationsViewController: UIViewController {
         // If a track is playing, display title & artist information and animation
         if currentTrack != nil && currentTrack!.isPlaying {
             let title = currentStation!.stationName + ": " + currentTrack!.title + " - " + currentTrack!.artist + "..."
-            stationNowPlayingButton.setTitle(title, forState: .Normal)
+            stationNowPlayingButton.setTitle(title, for: .normal)
             nowPlayingAnimationImageView.startAnimating()
         } else {
             nowPlayingAnimationImageView.stopAnimating()
@@ -103,10 +103,10 @@ class StationsViewController: UIViewController {
     
     func setupPullToRefresh() {
         self.refreshControl = UIRefreshControl()
-        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh", attributes: [NSForegroundColorAttributeName:UIColor.whiteColor()])
-        self.refreshControl.backgroundColor = UIColor.blackColor()
-        self.refreshControl.tintColor = UIColor.whiteColor()
-        self.refreshControl.addTarget(self, action: #selector(StationsViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh", attributes: [NSForegroundColorAttributeName:UIColor.white])
+        self.refreshControl.backgroundColor = UIColor.black
+        self.refreshControl.tintColor = UIColor.white
+        self.refreshControl.addTarget(self, action: #selector(StationsViewController.refresh), for: UIControlEvents.valueChanged)
         self.tableView.addSubview(refreshControl)
     }
     
@@ -117,7 +117,7 @@ class StationsViewController: UIViewController {
     
     func createNowPlayingBarButton() {
         if self.navigationItem.rightBarButtonItem == nil {
-            let btn = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: self, action:#selector(StationsViewController.nowPlayingBarButtonPressed))
+            let btn = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action:#selector(self.nowPlayingBarButtonPressed))
             btn.image = UIImage(named: "btn-nowPlaying")
             self.navigationItem.rightBarButtonItem = btn
         }
@@ -134,20 +134,20 @@ class StationsViewController: UIViewController {
             
             // Add UISearchController to the tableView
             tableView.tableHeaderView = searchController?.searchBar
-            tableView.tableHeaderView?.backgroundColor = UIColor.clearColor()
+            tableView.tableHeaderView?.backgroundColor = UIColor.clear
             definesPresentationContext = true
             searchController.hidesNavigationBarDuringPresentation = false
             
             // Style the UISearchController
-            searchController.searchBar.barTintColor = UIColor.clearColor()
-            searchController.searchBar.tintColor = UIColor.whiteColor()
+            searchController.searchBar.barTintColor = UIColor.clear
+            searchController.searchBar.tintColor = UIColor.white
             
             // Hide the UISearchController
             tableView.setContentOffset(CGPoint(x: 0.0, y: searchController.searchBar.frame.size.height), animated: false)
             
             // Set a black keyborad for UISearchController's TextField
-            let searchTextField = searchController.searchBar.valueForKey("_searchField") as! UITextField
-            searchTextField.keyboardAppearance = UIKeyboardAppearance.Dark
+            let searchTextField = searchController.searchBar.value(forKey: "_searchField") as! UITextField
+            searchTextField.keyboardAppearance = UIKeyboardAppearance.dark
         }
 
     }
@@ -157,21 +157,20 @@ class StationsViewController: UIViewController {
     //*****************************************************************
     
     func nowPlayingBarButtonPressed() {
-        performSegueWithIdentifier("NowPlaying", sender: self)
+        performSegue(withIdentifier: "NowPlaying", sender: self)
     }
     
-    @IBAction func nowPlayingPressed(sender: UIButton) {
-        performSegueWithIdentifier("NowPlaying", sender: self)
+    @IBAction func nowPlayingPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "NowPlaying", sender: self)
     }
     
     func refresh(sender: AnyObject) {
         // Pull to Refresh
-        stations.removeAll(keepCapacity: false)
+        stations.removeAll(keepingCapacity: false)
         loadStationsFromJSON()
         
         // Wait 2 seconds then refresh screen
-        let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(2 * Double(NSEC_PER_SEC)));
-        dispatch_after(popTime, dispatch_get_main_queue()) { () -> Void in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.refreshControl.endRefreshing()
             self.view.setNeedsDisplay()
         }
@@ -184,34 +183,34 @@ class StationsViewController: UIViewController {
     func loadStationsFromJSON() {
         
         // Turn on network indicator in status bar
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
         // Get the Radio Stations
         DataManager.getStationDataWithSuccess() { (data) in
             
             if kDebugLog { print("Stations JSON Found") }
             
-            let json = JSON(data: data)
+            let json = JSON(data: data! as Data)
             
             if let stationArray = json["station"].array {
                 
                 for stationJSON in stationArray {
-                    let station = RadioStation.parseStation(stationJSON)
+                    let station = RadioStation.parseStation(stationJSON: stationJSON)
                     self.stations.append(station)
                 }
                 
                 // stations array populated, update table on main queue
-                dispatch_async(dispatch_get_main_queue()) {
+                DispatchQueue.main.async(execute: {
                     self.tableView.reloadData()
                     self.view.setNeedsDisplay()
-                }
+                })
                 
             } else {
                 if kDebugLog { print("JSON Station Loading Error") }
             }
             
             // Turn off network indicator in status bar
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
     }
     
@@ -219,18 +218,18 @@ class StationsViewController: UIViewController {
     // MARK: - Segue
     //*****************************************************************
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "NowPlaying" {
             
             self.title = ""
             firstTime = false
             
-            let nowPlayingVC = segue.destinationViewController as! NowPlayingViewController
+            let nowPlayingVC = segue.destination as! NowPlayingViewController
             nowPlayingVC.delegate = self
             
             if let indexPath = (sender as? NSIndexPath) {
                 // User clicked on row, load/reset station
-                if searchController.active {
+                if searchController.isActive {
                     currentStation = searchedStations[indexPath.row]
                 } else {
                     currentStation = stations[indexPath.row]
@@ -262,18 +261,19 @@ class StationsViewController: UIViewController {
 extension StationsViewController: UITableViewDataSource {
     
     // MARK: - Table view data source
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 88
+    @objc(tableView:heightForRowAtIndexPath:)
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 88.0
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         // The UISeachController is active
-        if searchController.active {
+        if searchController.isActive {
             return searchedStations.count
             
         // The UISeachController is not active
@@ -286,37 +286,37 @@ extension StationsViewController: UITableViewDataSource {
         }
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if stations.isEmpty {
-            let cell = tableView.dequeueReusableCellWithIdentifier("NothingFound", forIndexPath: indexPath) 
-            cell.backgroundColor = UIColor.clearColor()
-            cell.selectionStyle = UITableViewCellSelectionStyle.None
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NothingFound", for: indexPath) 
+            cell.backgroundColor = UIColor.clear
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
             return cell
             
         } else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("StationCell", forIndexPath: indexPath) as! StationTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "StationCell", for: indexPath) as! StationTableViewCell
             
             // alternate background color
             if indexPath.row % 2 == 0 {
-                cell.backgroundColor = UIColor.clearColor()
+                cell.backgroundColor = UIColor.clear
             } else {
-                cell.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.2)
+                cell.backgroundColor = UIColor.black.withAlphaComponent(0.2)
             }
             
             // Configure the cell...
             let station = stations[indexPath.row]
-            cell.configureStationCell(station)
+            cell.configureStationCell(station: station)
             
             // The UISeachController is active
-            if searchController.active {
+            if searchController.isActive {
                 let station = searchedStations[indexPath.row]
-                cell.configureStationCell(station)
+                cell.configureStationCell(station: station)
                 
             // The UISeachController is not active
             } else {
                 let station = stations[indexPath.row]
-                cell.configureStationCell(station)
+                cell.configureStationCell(station: station)
             }
             
             return cell
@@ -330,18 +330,18 @@ extension StationsViewController: UITableViewDataSource {
 
 extension StationsViewController: UITableViewDelegate {
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
         
         if !stations.isEmpty {
             
             // Set Now Playing Buttons
             let title = stations[indexPath.row].stationName + " - Now Playing..."
-            stationNowPlayingButton.setTitle(title, forState: .Normal)
-            stationNowPlayingButton.enabled = true
+            stationNowPlayingButton.setTitle(title, for: .normal)
+            stationNowPlayingButton.isEnabled = true
             
-            performSegueWithIdentifier("NowPlaying", sender: indexPath)
+            performSegue(withIdentifier: "NowPlaying", sender: indexPath)
         }
     }
 }
@@ -360,7 +360,7 @@ extension StationsViewController: NowPlayingViewControllerDelegate {
     func songMetaDataDidUpdate(track: Track) {
         currentTrack = track
         let title = currentStation!.stationName + ": " + currentTrack!.title + " - " + currentTrack!.artist + "..."
-        stationNowPlayingButton.setTitle(title, forState: .Normal)
+        stationNowPlayingButton.setTitle(title, for: .normal)
     }
     
     func trackPlayingToggled(track: Track) {
@@ -375,16 +375,16 @@ extension StationsViewController: NowPlayingViewControllerDelegate {
 
 extension StationsViewController: UISearchResultsUpdating {
 
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
+    func updateSearchResults(for searchController: UISearchController) {
     
         // Empty the searchedStations array
-        searchedStations.removeAll(keepCapacity: false)
+        searchedStations.removeAll(keepingCapacity: false)
     
         // Create a Predicate
         let searchPredicate = NSPredicate(format: "SELF.stationName CONTAINS[c] %@", searchController.searchBar.text!)
     
         // Create an NSArray with a Predicate
-        let array = (self.stations as NSArray).filteredArrayUsingPredicate(searchPredicate)
+        let array = (self.stations as NSArray).filtered(using: searchPredicate)
     
         // Set the searchedStations with search result array
         searchedStations = array as! [RadioStation]
