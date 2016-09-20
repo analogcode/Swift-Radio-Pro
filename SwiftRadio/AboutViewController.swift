@@ -23,27 +23,27 @@ class AboutViewController: UIViewController {
     // MARK: - IBActions
     //*****************************************************************
     
-    @IBAction func emailButtonDidTouch(sender: UIButton) {
+    @IBAction func emailButtonDidTouch(_ sender: UIButton) {
         
         // Use your own email address & subject
         let receipients = ["matthew.fecher@gmail.com"]
         let subject = "From Swift Radio App"
         let messageBody = ""
         
-        let configuredMailComposeViewController = configureMailComposeViewController(receipients, subject: subject, messageBody: messageBody)
+        let configuredMailComposeViewController = configureMailComposeViewController(recepients: receipients, subject: subject, messageBody: messageBody)
         
         if canSendMail() {
-            self.presentViewController(configuredMailComposeViewController, animated: true, completion: nil)
+            self.present(configuredMailComposeViewController, animated: true, completion: nil)
         } else {
             showSendMailErrorAlert()
         }
     }
     
-    @IBAction func websiteButtonDidTouch(sender: UIButton) {
+    @IBAction func websiteButtonDidTouch(_ sender: UIButton) {
         
         // Use your own website here
-        if let url = NSURL(string: "http://matthewfecher.com") {
-            UIApplication.sharedApplication().openURL(url)
+        if let url = URL(string: "http://matthewfecher.com") {
+            UIApplication.shared.openURL(url)
         }
     }
 
@@ -55,8 +55,8 @@ class AboutViewController: UIViewController {
 
 extension AboutViewController: MFMailComposeViewControllerDelegate {
     
-    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
-        controller.dismissViewControllerAnimated(true, completion: nil)
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
     }
     
     func canSendMail() -> Bool {
