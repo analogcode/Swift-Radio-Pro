@@ -15,7 +15,7 @@ class SwiftRadioUITests: XCTestCase {
     let hamburgerMenu = XCUIApplication().navigationBars["Swift Radio"].buttons["icon hamburger"]
     let pauseButton = XCUIApplication().buttons["btn pause"]
     let playButton = XCUIApplication().buttons["btn play"]
-    let volume = XCUIApplication().sliders.elementBoundByIndex(0)
+    let volume = XCUIApplication().sliders.element(boundBy: 0)
     
     override func setUp() {
         super.setUp()
@@ -28,11 +28,11 @@ class SwiftRadioUITests: XCTestCase {
         XCUIApplication().launch()
 
         // wait for the main view to load
-        self.expectationForPredicate(
-            NSPredicate(format: "self.count > 0"),
-            evaluatedWithObject: stations,
+        self.expectation(
+            for: NSPredicate(format: "self.count > 0"),
+            evaluatedWith: stations,
             handler: nil)
-        self.waitForExpectationsWithTimeout(10.0, handler: nil)
+        self.waitForExpectations(timeout: 10.0, handler: nil)
         
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
@@ -60,41 +60,41 @@ class SwiftRadioUITests: XCTestCase {
     }
     
     func assertPaused() {
-        XCTAssertFalse(pauseButton.enabled)
-        XCTAssertTrue(playButton.enabled)
+        XCTAssertFalse(pauseButton.isEnabled)
+        XCTAssertTrue(playButton.isEnabled)
         XCTAssertTrue(app.staticTexts["Station Paused..."].exists);
     }
     
     func assertPlaying() {
-        XCTAssertTrue(pauseButton.enabled)
-        XCTAssertFalse(playButton.enabled)
+        XCTAssertTrue(pauseButton.isEnabled)
+        XCTAssertFalse(playButton.isEnabled)
         XCTAssertFalse(app.staticTexts["Station Paused..."].exists);
     }
     
-    func assertStationOnMenu(stationName:String) {
+    func assertStationOnMenu(_ stationName:String) {
         let button = app.buttons["nowPlaying"];
         if let value:String = button.label {
-            XCTAssertTrue(value.containsString(stationName))
+            XCTAssertTrue(value.contains(stationName))
         } else {
             XCTAssertTrue(false)
         }
     }
     
     func assertStationInfo() {
-        let textView = app.textViews.elementBoundByIndex(0)
+        let textView = app.textViews.element(boundBy: 0)
         if let value = textView.value {
-            XCTAssertGreaterThan(value.length, 10)
+            XCTAssertGreaterThan((value as AnyObject).length, 10)
         } else {
             XCTAssertTrue(false)
         }
     }
     
     func waitForStationToLoad() {
-        self.expectationForPredicate(
-            NSPredicate(format: "exists == 0"),
-            evaluatedWithObject: app.staticTexts["Loading Station..."],
+        self.expectation(
+            for: NSPredicate(format: "exists == 0"),
+            evaluatedWith: app.staticTexts["Loading Station..."],
             handler: nil)
-        self.waitForExpectationsWithTimeout(25.0, handler: nil)
+        self.waitForExpectations(timeout: 25.0, handler: nil)
 
     }
     
@@ -112,8 +112,8 @@ class SwiftRadioUITests: XCTestCase {
         app.buttons["btn close"].tap()
         assertStationsPresent()
         
-        let firstStation = stations.elementBoundByIndex(0)
-        let stationName:String = firstStation.childrenMatchingType(.StaticText).elementBoundByIndex(0).label
+        let firstStation = stations.element(boundBy: 0)
+        let stationName:String = firstStation.children(matching: .staticText).element(boundBy: 0).label
         assertStationOnMenu("Choose")
         firstStation.tap()
         waitForStationToLoad();
@@ -126,9 +126,9 @@ class SwiftRadioUITests: XCTestCase {
         assertStationOnMenu(stationName)
         app.navigationBars["Swift Radio"].buttons["btn nowPlaying"].tap()
         waitForStationToLoad()
-        volume.adjustToNormalizedSliderPosition(0.2)
-        volume.adjustToNormalizedSliderPosition(0.8)
-        volume.adjustToNormalizedSliderPosition(0.5)
+        volume.adjust(toNormalizedSliderPosition: 0.2)
+        volume.adjust(toNormalizedSliderPosition: 0.8)
+        volume.adjust(toNormalizedSliderPosition: 0.5)
         app.buttons["More Info"].tap()
         assertStationInfo()
         app.buttons["Okay"].tap()
