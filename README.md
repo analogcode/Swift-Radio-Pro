@@ -2,6 +2,8 @@
 
 Swift Radio is an open source radio station app with robust and professional features. This is a fully realized Radio App built entirely in Swift. **Master is now the Xcode 8.1/Swift 3 branch**. There is an Xcode 8/Swift 2.3 branch [here](https://github.com/swiftcodex/Swift-Radio-Pro/tree/xcode8).
 
+**WOW! There are over 80 different apps accepted to the app store using this code!**  
+
 ![alt text](http://matthewfecher.com/wp-content/uploads/2015/09/screen-1.jpg "Swift Radio")
 
 ##Video
@@ -26,7 +28,7 @@ Give it a quick watch.
 
 ##Important Notes
 - 9.20.16 Update: Master branch migrated to Xcode 8/Swift 3 by [@fethica](https://github.com/fethica). Big thanks to him!
-- 9.08.16 Update: An Xcode 8 / Swift 2.3 branch as been added. It needs some fine-tuning. Feel free to dive in with PRs. It might be a few weeks until I have time to smooth it out: [https://github.com/swiftcodex/Swift-Radio-Pro/tree/xcode8](https://github.com/swiftcodex/Swift-Radio-Pro/tree/xcode8)
+- 9.08.16 Update: An Xcode 8 / Swift 2.3 branch as been added. It needs some fine-tuning: [https://github.com/swiftcodex/Swift-Radio-Pro/tree/xcode8](https://github.com/swiftcodex/Swift-Radio-Pro/tree/xcode8)
 - 7.26.16 Update: AVPlayer development branch added, thanks [@kusikusa](https://github.com/kusikusa). Plus, this branch includes the Spotify API for downloading artwork: [AVPlayer/Spotify Branch](https://github.com/swiftcodex/Swift-Radio-Pro/tree/avplayer)
 - 6.5.16 Update: Bluetooth streaming added, thanks [@fethica](https://github.com/fethica)
 - 3.27.16 Update: Google handoff added, thanks [@GraemeHarrison](https://github.com/GraemeHarrison)
@@ -45,10 +47,20 @@ Give it a quick watch.
 *Created by [Matthew Fecher](http://matthewfecher.com), Twitter: [@goFecher](http://twitter.com/goFecher)*  
 *Thanks to Basel Farag, from [Denver Swift Heads](http://www.meetup.com/Denver-Swift-Heads/) for the code review.*  
 
+Contributions by others listed in Github [here](https://github.com/swiftcodex/Swift-Radio-Pro/graphs/contributors). Thanks to everyone! We couldn't do it without you!
+
 ##Requirements
 
-- iOS 8.0+ / Mac OS X 10.9+
-- Xcode 7
+- Xcode 8
+- Know a little bit of how to program in Swift with the iOS SDK
+
+Please note: I am unable to offer any free support or modifications. Thanks!
+
+##Creating an App
+
+If you create an app with the code, or interesting project inspired by the code, shoot me an email: [Contact Me](http://matthewfecher.com/contact/) . I love to hear about it!
+
+If you do use the code, you may want to change the graphics (reskin it) and make it your own. There's no fun in just resubmitting someone else's app to the app store "as is", add something to it! :)
 
 ##Setup
 
@@ -77,20 +89,19 @@ Includes an example "stations.json" file. You may upload the JSON file to a serv
 
 Contributions are very welcome. Please create a separate branch (e.g. features/3dtouch). Please do not commit on master.
 
-## Custom Work & Consulting
-
-We have recent experience building iOS apps for both independent and high-profile clients (brand names and apps we can't discuss here, but, you would instantly recognize!) Additionally, we've built advanced versions of this open-source radio player for amazing independent clients (such as this one):
-
-![RadioInformer](http://matthewfecher.com/wp-content/uploads/2016/08/SideBySide.jpg)
-
-[Get in Touch](http://matthewfecher.com/contact/) to see what we can do for you!
-
 ##FAQ
 
 Q: Do I have to pay you anything if I make an app with this code?  
 A: Nope. This is completely open source, you can do whatever you want with it. It's usually cool to thank the project if you use the code. Go build stuff. Enjoy.
 
-Summer 2016 Update: There's now dozens of apps in the app store successfully using this code! That's awesome. If you do use the code, you may want to change the graphics (reskin it) and make it your own. There's no fun in just resubmitting someone else's app to the app store "as is", add something to it! :)
+Q: How do I make my app support ipv6 networks?  
+A: For an app to be accepted by Apple to the app store as of June 1, 2016, you CAN NOT use number IP addresses. i.e. You must use something like "http://mystream.com/rock" instead of "http://44.120.33.55/" for your station stream URLs.
+
+Q: Isn't MPMoviePlayer going to be depreciated?  
+A: Yes, eventually master should be migrated to use AVPlayer instead. If you'd like to work on it, feel free! There are currently two branches that use AVPlayer instead of MPMoviePlayer. A Swift 2/Xcode 7 version [here](https://github.com/swiftcodex/Swift-Radio-Pro/tree/avplayer). and a Swift 2.3/Xcode 8 version [here](https://github.com/swiftcodex/Swift-Radio-Pro/tree/xcode8).
+
+Q: Is there an example of using this with the Spotify API?  
+A: Yes, there is a branch here that uses it [here]( https://github.com/swiftcodex/Swift-Radio-Pro/tree/avplayer).
 
 Q: How do I use the iTunes API instead of LastFM?  
 A: In the SwiftRadio-Settings.swift file, set the "useLastFM" key to "false". You do not need an API key to use the iTunes API. It is free.
@@ -101,7 +112,7 @@ A: LastFM will sometimes put API signups on hold. You can check back later or tr
 Q: It looks like your LastFM api key and secret might have been left in the code?  
 A: Yes, people may use it for small amounts of testing. However, I ask that you change it before submitting to the app store. (Plus, it would be self-defeating for someone to submit it to the app store with the testing keys, as it would quickly throttle out and their album art downloads would stop working!)
 
-Q: Is there another API to get album/track information besides LastFM and iTunes?  
+Q: Is there another API to get album/track information besides LastFM, Spotify, and iTunes?  
 A: Rovi has a pretty sweet [music API](http://prod-doc.rovicorp.com/mashery/index.php/Data/APIs/Rovi-Music). The [Echo Nest](http://developer.echonest.com/) has all kinds of APIs that are fun to play with. 
 
 Q: I updated the album art size in the Storyboard, and now the sizing is acting funny?  
@@ -111,7 +122,7 @@ Q: My radio station isn't playing?
 A: Paste your stream URL into a browser to see if it will play there. The stream may be offline or have a weak connection.
 
 Q: Can you help me add a feature? Can you help me understand the code? Can you help with a problem I'm having?  
-A: While I have a full-time job and other project obligations, I'd highly recommend you find a developer or mentor in your area to help. The code is well-documented and most developers should be able to help you rather quickly. While I am sometimes available for paid freelance work, **I am not able to provide any free support or modifications.** Thank you for understanding!
+A: While I have a full-time job and other project obligations, I'd highly recommend you find a developer or mentor in your area to help. The code is well-documented and most developers should be able to help you rather quickly. While I am sometimes available for paid freelance work, see below in the readme, **I am not able to provide any free support or modifications.** Thank you for understanding!
 
 Q: The song names aren't appearing for my station?  
 A: Check with your stream provider to make sure they are sending Metadata properly. If a station sends data in a unique way, you can modify the way the app parses the metadata in the "metadataUpdated" method in the NowPlayingViewController.
@@ -126,9 +137,17 @@ There's now a branch without the StationsViewController. This is so you can use 
 - You can use this Swift code as a front-end for a more robust streaming backend.
 - Brian Stormont, creator of RadioKit, has created a branch with the professional [RadioKit](http://stormyprods.com/products/radiokit.php) SDK already integrated. **Plus, his branch adds rewind & fast forward stream playback.** This is an excellent learning tool for those who are interested in seeing how a streaming library integrates with Swift Radio Pro. View the [branch here](https://github.com/MostTornBrain/Swift-Radio-Pro/tree/RadioKit).
 
+## Custom Work & Consulting
+
+We have recent experience building iOS apps for both independent and high-profile clients (brand names and apps we can't discuss here, but, you would instantly recognize!) Additionally, we've built advanced versions of this open-source radio player for amazing independent clients (such as this one):
+
+![RadioInformer](http://matthewfecher.com/wp-content/uploads/2016/08/back2back.jpg)
+
+[Get in Touch](http://matthewfecher.com/contact/) to see what we can do for you!
+
 ##Get Creative
 Here's a branch of the code that plays streaming TV Stations instead of radio stations. https://github.com/msahins/myTV
 
 ![alt text](http://matthewfecher.com/wp-content/uploads/2015/11/myTV.png "Swift TV")
 
-If you create an app with the code, or interesting project inspired by the code, shoot me an email: matthew.fecher@gmail.com. Note: As per the FAQ above, I am unable to offer any free support or modifications. Thanks!
+
