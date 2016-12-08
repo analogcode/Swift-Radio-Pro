@@ -58,7 +58,7 @@ Please note: I am unable to offer any free support or modifications. Thanks!
 
 ##Creating an App
 
-If you create an app with the code, or interesting project inspired by the code, shoot me an email. I love to hear about it!
+If you create an app with the code, or interesting project inspired by the code, shoot me an email. I love to hearing about your projects!
 
 If you're not a programmer, you can contact our team for a custom solution. We have built successful apps with hundreds of thousands of users and worked on iOS projects for Disney, McDonald's, and more!
 [Contact Me](http://matthewfecher.com/contact/)
