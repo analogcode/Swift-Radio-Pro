@@ -58,9 +58,12 @@ Please note: I am unable to offer any free support or modifications. Thanks!
 
 ##Creating an App
 
-If you create an app with the code, or interesting project inspired by the code, shoot me an email: [Contact Me](http://matthewfecher.com/contact/) . I love to hear about it!
+If you create an app with the code, or interesting project inspired by the code, shoot me an email. I love to hear about it!
 
-If you do use the code, you may want to change the graphics (reskin it) and make it your own. There's no fun in just resubmitting someone else's app to the app store "as is", add something to it! :)
+If you're not a programmer, you can contact our team for a custom solution. We have built apps with hundreds of thousands of users and worked on iOS projects for Disney, McDonald's, and more!
+[Contact Me](http://matthewfecher.com/contact/)
+
+Some of the things we have built into this Radio code for clients includes: Facebook login, Profiles, Saving Favorite Tracks, Playlists, Genres, Spotify integration, Enhanced Streaming, Tempo Analyzing, etc. There's almost unlimited things you can use this code as a starting place for.
 
 ##Setup
 
@@ -137,17 +140,13 @@ There's now a branch without the StationsViewController. This is so you can use 
 - You can use this Swift code as a front-end for a more robust streaming backend.
 - Brian Stormont, creator of RadioKit, has created a branch with the professional [RadioKit](http://stormyprods.com/products/radiokit.php) SDK already integrated. **Plus, his branch adds rewind & fast forward stream playback.** This is an excellent learning tool for those who are interested in seeing how a streaming library integrates with Swift Radio Pro. View the [branch here](https://github.com/MostTornBrain/Swift-Radio-Pro/tree/RadioKit).
 
-## Custom Work & Consulting
-
-We have recent experience building iOS apps for both independent and high-profile clients (brand names and apps we can't discuss here, but, you would instantly recognize!) Additionally, we've built advanced versions of this open-source radio player for amazing independent clients (such as this one):
-
-![RadioInformer](http://matthewfecher.com/wp-content/uploads/2016/08/back2back.jpg)
-
-[Get in Touch](http://matthewfecher.com/contact/) to see what we can do for you!
-
 ##Get Creative
 Here's a branch of the code that plays streaming TV Stations instead of radio stations. https://github.com/msahins/myTV
 
 ![alt text](http://matthewfecher.com/wp-content/uploads/2015/11/myTV.png "Swift TV")
 
+## Custom Work & Consulting
 
+We have recent experience building iOS apps for both independent and high-profile clients (brand names and apps we can't discuss here, but, you would instantly recognize!) Additionally, we've built advanced versions of this open-source radio player for amazing independent clients.
+
+[Get in Touch](http://matthewfecher.com/contact/) to see what we can do for you!
