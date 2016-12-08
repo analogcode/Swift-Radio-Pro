@@ -60,10 +60,10 @@ Please note: I am unable to offer any free support or modifications. Thanks!
 
 If you create an app with the code, or interesting project inspired by the code, shoot me an email. I love to hear about it!
 
-If you're not a programmer, you can contact our team for a custom solution. We have built apps with hundreds of thousands of users and worked on iOS projects for Disney, McDonald's, and more!
+If you're not a programmer, you can contact our team for a custom solution. We have built successful apps with hundreds of thousands of users and worked on iOS projects for Disney, McDonald's, and more!
 [Contact Me](http://matthewfecher.com/contact/)
 
-Some of the things we have built into this Radio code for clients includes: Facebook login, Profiles, Saving Favorite Tracks, Playlists, Genres, Spotify integration, Enhanced Streaming, Tempo Analyzing, etc. There's almost unlimited things you can use this code as a starting place for.
+Some of the things we've built into this Radio code for clients include: Facebook login, Profiles, Saving Favorite Tracks, Playlists, Genres, Spotify integration, Enhanced Streaming, Tempo Analyzing, etc. There's almost unlimited things you can use this code as a starting place for. We keep this repo lightweight. That way you can customize it easily.
 
 ##Setup
 
