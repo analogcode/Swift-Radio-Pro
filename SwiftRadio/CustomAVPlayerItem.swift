@@ -9,7 +9,7 @@ import Foundation
 
 
 protocol CustomAVPlayerItemDelegate {
-    func onMetaData(metaData:[AVMetadataItem]?)
+    func onMetaData(_ metaData:[AVMetadataItem]?)
 }
 
 //*****************************************************************
@@ -20,11 +20,11 @@ class CustomAVPlayerItem: AVPlayerItem {
     
     var delegate : CustomAVPlayerItemDelegate?
     
-    init(URL:NSURL)
+    init(url URL:URL)
     {
         if kDebugLog {print("CustomAVPlayerItem.init")}
-        super.init(asset: AVAsset(URL: URL) , automaticallyLoadedAssetKeys:[])
-        addObserver(self, forKeyPath: "timedMetadata", options: NSKeyValueObservingOptions.New, context: nil)
+        super.init(asset: AVAsset(url: URL) , automaticallyLoadedAssetKeys:[])
+        addObserver(self, forKeyPath: "timedMetadata", options: NSKeyValueObservingOptions.new, context: nil)
     }
     
     deinit{        
@@ -32,7 +32,7 @@ class CustomAVPlayerItem: AVPlayerItem {
         removeObserver(self, forKeyPath: "timedMetadata")
     }
     
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if let avpItem: AVPlayerItem = object as? AVPlayerItem {
             if keyPath == "timedMetadata" {                
                 delegate?.onMetaData(avpItem.timedMetadata)

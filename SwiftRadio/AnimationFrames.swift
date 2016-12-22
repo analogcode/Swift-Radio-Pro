@@ -20,7 +20,7 @@ class AnimationFrames {
             }
         }
         
-        for i in 2.stride(to: 0, by: -1) {
+        for i in stride(from: 2, to: 0, by: -1) {
             if let image = UIImage(named: "NowPlayingBars-\(i)") {
                 animationFrames.append(image)
             }

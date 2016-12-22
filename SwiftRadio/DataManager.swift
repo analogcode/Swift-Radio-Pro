@@ -14,17 +14,17 @@ class DataManager {
     // Helper class to get either local or remote JSON
     //*****************************************************************
     
-    class func getStationDataWithSuccess(success: ((metaData: NSData!) -> Void)) {
+    class func getStationDataWithSuccess(_ success: @escaping ((_ metaData: Data?) -> Void)) {
 
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+        DispatchQueue.global(qos: .background).async {
             if useLocalStations {
                 getDataFromFileWithSuccess() { data in
-                    success(metaData: data)
+                    success(data)
                 }
             } else {
-                loadDataFromURL(NSURL(string: stationDataURL)!) { data, error in
+                loadDataFromURL(URL(string: stationDataURL)!) { data, error in
                     if let urlData = data {
-                        success(metaData: urlData)
+                        success(urlData)
                     }
                 }
             }
@@ -35,13 +35,13 @@ class DataManager {
     // Load local JSON Data
     //*****************************************************************
     
-    class func getDataFromFileWithSuccess(success: (data: NSData) -> Void) {
+    class func getDataFromFileWithSuccess(_ success: (_ data: Data) -> Void) {
         
-        if let filePath = NSBundle.mainBundle().pathForResource("stations", ofType:"json") {
+        if let filePath = Bundle.main.path(forResource: "stations", ofType:"json") {
             do {
-                let data = try NSData(contentsOfFile:filePath,
-                    options: NSDataReadingOptions.DataReadingUncached)
-                success(data: data)
+                let data = try Data(contentsOf: URL(fileURLWithPath: filePath),
+                    options: NSData.ReadingOptions.uncached)
+                success(data)
             } catch {
                 fatalError()
             }
@@ -54,12 +54,12 @@ class DataManager {
     // Get LastFM/iTunes Data
     //*****************************************************************
     
-    class func getTrackDataWithSuccess(queryURL: String, success: ((metaData: NSData!) -> Void)) {
+    class func getTrackDataWithSuccess(_ queryURL: String, success: @escaping ((_ metaData: Data?) -> Void)) {
 
-        loadDataFromURL(NSURL(string: queryURL)!) { data, _ in
+        loadDataFromURL(URL(string: queryURL)!) { data, _ in
             // Return Data
             if let urlData = data {
-                success(metaData: urlData)
+                success(urlData)
             } else {
                 if kDebugLog { print("API TIMEOUT OR ERROR") }
             }
@@ -70,41 +70,41 @@ class DataManager {
     // REUSABLE DATA/API CALL METHOD
     //*****************************************************************
     
-    class func loadDataFromURL(url: NSURL, completion:(data: NSData?, error: NSError?) -> Void) {
+    class func loadDataFromURL(_ url: URL, completion:@escaping (_ data: Data?, _ error: NSError?) -> Void) {
         
-        let sessionConfig = NSURLSessionConfiguration.defaultSessionConfiguration()
+        let sessionConfig = URLSessionConfiguration.default
         sessionConfig.allowsCellularAccess          = true
         sessionConfig.timeoutIntervalForRequest     = 15
         sessionConfig.timeoutIntervalForResource    = 30
-        sessionConfig.HTTPMaximumConnectionsPerHost = 1
+        sessionConfig.httpMaximumConnectionsPerHost = 1
         
-        let session = NSURLSession(configuration: sessionConfig)
+        let session = URLSession(configuration: sessionConfig)
         
         // Use NSURLSession to get data from an NSURL
-        let loadDataTask = session.dataTaskWithURL(url){ data, response, error in
+        let loadDataTask = session.dataTask(with: url, completionHandler: { data, response, error in
             if let responseError = error {
-                completion(data: nil, error: responseError)
+                completion(nil, responseError as NSError?)
                 
                 if kDebugLog { print("API ERROR: \(error)") }
                 
                 // Stop activity Indicator
-                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 
-            } else if let httpResponse = response as? NSHTTPURLResponse {
+            } else if let httpResponse = response as? HTTPURLResponse {
                 if httpResponse.statusCode != 200 {
                     let statusError = NSError(domain:"com.matthewfecher", code:httpResponse.statusCode, userInfo:[NSLocalizedDescriptionKey : "HTTP status code has unexpected value."])
                     
                     if kDebugLog { print("API: HTTP status code has unexpected value") }
                     
-                    completion(data: nil, error: statusError)
+                    completion(nil, statusError)
                     
                 } else {
                     
                     // Success, return data
-                    completion(data: data, error: nil)
+                    completion(data, nil)
                 }
             }
-        }
+        })
         
         loadDataTask.resume()
     }
