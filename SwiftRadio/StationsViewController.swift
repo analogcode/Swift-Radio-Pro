@@ -25,6 +25,10 @@ class StationsViewController: UIViewController {
     var searchedStations = [RadioStation]()
     var searchController : UISearchController!
     
+    var controllersDict = [String:Any]()
+    
+    var lastIndexPath : IndexPath!
+    
     //*****************************************************************
     // MARK: - ViewDidLoad
     //*****************************************************************
@@ -155,11 +159,11 @@ class StationsViewController: UIViewController {
     //*****************************************************************
     
     func nowPlayingBarButtonPressed() {
-        performSegue(withIdentifier: "NowPlaying", sender: self)
+        tableView(self.tableView, didSelectRowAt: lastIndexPath)
     }
-    
+
     @IBAction func nowPlayingPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: "NowPlaying", sender: self)
+        tableView(self.tableView, didSelectRowAt: lastIndexPath)
     }
     
     func refresh(_ sender: AnyObject) {
@@ -210,45 +214,6 @@ class StationsViewController: UIViewController {
             
             // Turn off network indicator in status bar
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
-        }
-    }
-    
-    //*****************************************************************
-    // MARK: - Segue
-    //*****************************************************************
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "NowPlaying" {
-            
-            self.title = ""
-            firstTime = false
-            
-            let nowPlayingVC = segue.destination as! NowPlayingViewController
-            nowPlayingVC.delegate = self
-            
-            if let indexPath = (sender as? IndexPath) {
-                // User clicked on row, load/reset station
-                if searchController.isActive {
-                    currentStation = searchedStations[indexPath.row]
-                } else {
-                    currentStation = stations[indexPath.row]
-                }
-                nowPlayingVC.currentStation = currentStation
-                nowPlayingVC.newStation = true
-            
-            } else {
-                // User clicked on a now playing button
-                if let currentTrack = currentTrack {
-                    // Return to NowPlaying controller without reloading station
-                    nowPlayingVC.track = currentTrack
-                    nowPlayingVC.currentStation = currentStation
-                    nowPlayingVC.newStation = false
-                } else {
-                    // Issue with track, reload station
-                    nowPlayingVC.currentStation = currentStation
-                    nowPlayingVC.newStation = true
-                }
-            }
         }
     }
 }
@@ -332,15 +297,57 @@ extension StationsViewController: UITableViewDelegate {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if !stations.isEmpty {
+        self.title = ""
+        firstTime = false
+        
+        var nowPlayingVC = self.storyboard!.instantiateViewController(withIdentifier: "NowPlayingViewController") as! NowPlayingViewController
+        nowPlayingVC.delegate = self
+        
+        if indexPath != lastIndexPath {
+            // User clicked on row, load/reset station
+            if searchController.isActive {
+                currentStation = searchedStations[indexPath.row]
+            } else {
+                currentStation = stations[indexPath.row]
+            }
+            nowPlayingVC.currentStation = currentStation
+            nowPlayingVC.newStation = true
             
+            lastIndexPath = indexPath
+            
+            controllersDict["NowPlayingViewController"] = nowPlayingVC
+            self.navigationController!.pushViewController(nowPlayingVC, animated: true)
+            
+        } else {
+            // User clicked on a now playing button
+            if let currentTrack = currentTrack {
+                // Return to NowPlaying controller without reloading station
+                nowPlayingVC.track = currentTrack
+                nowPlayingVC.currentStation = currentStation
+                nowPlayingVC.newStation = false
+                
+                nowPlayingVC = controllersDict["NowPlayingViewController"] as! NowPlayingViewController!
+                self.navigationController!.pushViewController(nowPlayingVC, animated: true)
+
+            } else {
+                // Issue with track, reload station
+                nowPlayingVC.currentStation = currentStation
+                nowPlayingVC.newStation = true
+                
+                lastIndexPath = indexPath
+                
+                controllersDict["NowPlayingViewController"] = nowPlayingVC
+                self.navigationController!.pushViewController(nowPlayingVC, animated: true)
+            }
+        }
+
+        if !stations.isEmpty {
             // Set Now Playing Buttons
             let title = stations[indexPath.row].stationName + " - Now Playing..."
             stationNowPlayingButton.setTitle(title, for: UIControlState())
             stationNowPlayingButton.isEnabled = true
-            
-            performSegue(withIdentifier: "NowPlaying", sender: indexPath)
         }
+        
     }
 }
 

@@ -25,7 +25,7 @@ protocol NowPlayingViewControllerDelegate: class {
 //*****************************************************************
 
 class NowPlayingViewController: UIViewController {
-
+    
     @IBOutlet weak var albumHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var albumImageView: SpringImageView!
     @IBOutlet weak var artistLabel: UILabel!
@@ -60,7 +60,7 @@ class NowPlayingViewController: UIViewController {
         
         // Set AlbumArtwork Constraints
         optimizeForDeviceSize()
-
+        
         // Set View Title
         self.title = currentStation.stationName
         
@@ -72,15 +72,15 @@ class NowPlayingViewController: UIViewController {
         
         // Notification for when app becomes active
         NotificationCenter.default.addObserver(self,
-            selector: #selector(NowPlayingViewController.didBecomeActiveNotificationReceived),
-            name: NSNotification.Name(rawValue: "UIApplicationDidBecomeActiveNotification"),
-            object: nil)
+                                               selector: #selector(NowPlayingViewController.didBecomeActiveNotificationReceived),
+                                               name: NSNotification.Name(rawValue: "UIApplicationDidBecomeActiveNotification"),
+                                               object: nil)
         
         // Notification for AVAudioSession Interruption (e.g. Phone call)
         NotificationCenter.default.addObserver(self,
-            selector: #selector(NowPlayingViewController.sessionInterrupted(_:)),
-            name: NSNotification.Name.AVAudioSessionInterruption,
-            object: AVAudioSession.sharedInstance())
+                                               selector: #selector(NowPlayingViewController.sessionInterrupted(_:)),
+                                               name: NSNotification.Name.AVAudioSessionInterruption,
+                                               object: AVAudioSession.sharedInstance())
         
         // Check for station change
         if newStation {
@@ -137,7 +137,7 @@ class NowPlayingViewController: UIViewController {
             NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: self.radioPlayer.currentItem)
         }
     }
-  
+    
     func setupVolumeSlider() {
         // Note: This slider implementation uses a MPVolumeView
         // The volume slider only works in devices, not the simulator.
@@ -145,7 +145,7 @@ class NowPlayingViewController: UIViewController {
         let volumeView = MPVolumeView(frame: volumeParentView.bounds)
         for view in volumeView.subviews {
             let uiview: UIView = view as UIView
-             if (uiview.description as NSString).range(of: "MPVolumeSlider").location != NSNotFound {
+            if (uiview.description as NSString).range(of: "MPVolumeSlider").location != NSNotFound {
                 mpVolumeSlider = (uiview as! UISlider)
             }
         }
@@ -227,7 +227,6 @@ class NowPlayingViewController: UIViewController {
     //*****************************************************************
     
     func optimizeForDeviceSize() {
-        
         // Adjust album size to fit iPhone 4s, 6s & 6s+
         let deviceHeight = self.view.bounds.height
         
@@ -245,7 +244,6 @@ class NowPlayingViewController: UIViewController {
     }
     
     func updateLabels(_ statusMessage: String = "") {
-        
         if statusMessage != "" {
             // There's a an interruption or pause in the audio queue
             songLabel.text = statusMessage
@@ -338,13 +336,13 @@ class NowPlayingViewController: UIViewController {
                     
                     // Turn off network activity indicator
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                        
+                    
                     // Animate artwork
                     self.albumImageView.animation = "wobble"
                     self.albumImageView.duration = 2
                     self.albumImageView.animate()
                     self.stationDescLabel.isHidden = true
-
+                    
                     // Update lockscreen
                     self.updateLockScreen()
                     
@@ -377,25 +375,23 @@ class NowPlayingViewController: UIViewController {
         // Force app to update display
         self.view.setNeedsDisplay()
     }
-
+    
     // Call LastFM or iTunes API to get album art url
     
     func queryAlbumArt() {
-        
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        
         // Construct either LastFM or iTunes API call URL
         let queryURL: String
         
         switch coverApi {
-            case .lastFm:
-                queryURL = String(format: "http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=%@&artist=%@&track=%@&format=json", lastFmApiKey, track.artist, track.title)
-                break
-            case .iTunes:
-                queryURL = String(format: "https://itunes.apple.com/search?term=%@+%@&entity=song", track.artist, track.title)
-                break
-            case .spotify:
-                queryURL = String(format: "https://api.spotify.com/v1/search?query=%@+%@&offset=0&limit=20&type=track", track.artist, track.title)
+        case .lastFm:
+            queryURL = String(format: "http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=%@&artist=%@&track=%@&format=json", lastFmApiKey, track.artist, track.title)
+            break
+        case .iTunes:
+            queryURL = String(format: "https://itunes.apple.com/search?term=%@+%@&entity=song", track.artist, track.title)
+            break
+        case .spotify:
+            queryURL = String(format: "https://api.spotify.com/v1/search?query=%@+%@&offset=0&limit=20&type=track", track.artist, track.title)
             break
         }
         
@@ -403,7 +399,6 @@ class NowPlayingViewController: UIViewController {
         
         // Query API
         DataManager.getTrackDataWithSuccess(escapedURL!) { (data) in
-            
             if kDebugLog {
                 print("API SUCCESSFUL RETURN")
                 print("url: \(escapedURL!)")
@@ -477,7 +472,6 @@ class NowPlayingViewController: UIViewController {
     //*****************************************************************
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == "InfoDetail" {
             let infoController = segue.destination as! InfoDetailViewController
             infoController.currentStation = currentStation
@@ -499,7 +493,6 @@ class NowPlayingViewController: UIViewController {
     //*****************************************************************
     
     func updateLockScreen() {
-        
         // Update notification/lock screen
         let albumArtwork = MPMediaItemArtwork(image: track.artworkImage!)
         
@@ -535,7 +528,6 @@ class NowPlayingViewController: UIViewController {
         }
     }
     
-    
     //*****************************************************************
     // MARK: - AVAudio Sesssion Interrupted
     //*****************************************************************
@@ -546,7 +538,7 @@ class NowPlayingViewController: UIViewController {
             if let type = AVAudioSessionInterruptionType(rawValue: typeValue.uintValue){
                 if type == .began {
                     if kDebugLog {
-                    print("interruption: began")
+                        print("interruption: began")
                     }
                     // Add your code here
                 } else{
@@ -593,17 +585,13 @@ class NowPlayingViewController: UIViewController {
     }
 }
 
-
 //*****************************************************************
 // MARK: - AVPlayerItem Delegate (for metadata)
 //*****************************************************************
 
 extension NowPlayingViewController: CustomAVPlayerItemDelegate {
     func onMetaData(_ metaData: [AVMetadataItem]?) {
-        
-        
         if let metaDatas = metaData{
-            
             startNowPlayingAnimation()
             let firstMeta: AVMetadataItem = metaDatas.first!
             let metaData = firstMeta.value as! String
@@ -620,7 +608,7 @@ extension NowPlayingViewController: CustomAVPlayerItemDelegate {
             track.title = stringParts[0].decodeAllChars()
             
             if stringParts.count > 1 {
-                track.title = stringParts[1].decodeAllChars()
+                
             }
             
             if track.artist == "" && track.title == "" {
@@ -629,37 +617,33 @@ extension NowPlayingViewController: CustomAVPlayerItemDelegate {
             }
             
             DispatchQueue.main.async {
-                
                 if currentSongName != self.track.title {
-                    
                     if kDebugLog {
                         print("METADATA artist: \(self.track.artist) | title: \(self.track.title)")
                     }
-                    
                     // Update Labels
                     self.artistLabel.text = self.track.artist
                     self.songLabel.text = self.track.title
                     self.updateUserActivityState(self.userActivity!)
                     
-                     // songLabel animation
-                     self.songLabel.animation = "zoomIn"
-                     self.songLabel.duration = 1.5
-                     self.songLabel.damping = 1
-                     self.songLabel.animate()
-                     
-                     // Update Stations Screen
-                     self.delegate?.songMetaDataDidUpdate(self.track)
+                    // songLabel animation
+                    self.songLabel.animation = "zoomIn"
+                    self.songLabel.duration = 1.5
+                    self.songLabel.damping = 1
+                    self.songLabel.animate()
+                    
+                    // Update Stations Screen
+                    self.delegate?.songMetaDataDidUpdate(self.track)
                     
                     // Query API for album art
                     self.resetAlbumArtwork()
                     self.queryAlbumArt()
                     
                 }
+                self.artistLabel.text = self.track.artist
+                self.songLabel.text = self.track.title
+
             }
         }
     }
 }
-
-
-
-

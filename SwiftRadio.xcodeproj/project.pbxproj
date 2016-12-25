@@ -162,9 +162,8 @@
 		9409E10D1ABF6FE900312E2B = {
 			isa = PBXGroup;
 			children = (
-				B90086461BBE40AF00E5372C /* MediaPlayer.framework */,
-				9409E1181ABF6FEA00312E2B /* SwiftRadio */,
 				949BBB411ACCA2B6005B7C26 /* Libraries */,
+				9409E1181ABF6FEA00312E2B /* SwiftRadio */,
 				2C5545BB1C1124DE00728469 /* SwiftRadioUITests */,
 				9409E1171ABF6FEA00312E2B /* Products */,
 			);
@@ -182,17 +181,17 @@
 		9409E1181ABF6FEA00312E2B /* SwiftRadio */ = {
 			isa = PBXGroup;
 			children = (
-				94D2608E1B45D0F800DE671C /* ViewControllers */,
-				94D2608F1B45D11800DE671C /* Cells */,
-				94823F861B5576F4004EC711 /* Data */,
+				94D260941B45E0BA00DE671C /* UI Helpers */,
 				94E976191B1A8BFB00F52B1E /* Model */,
+				94823F861B5576F4004EC711 /* Data */,
 				94AC70AF1AD05C7400652982 /* Networking */,
+				94D2608F1B45D11800DE671C /* Cells */,
+				94D2608E1B45D0F800DE671C /* ViewControllers */,
 				9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */,
 				C6BB97EA1E0B515600282D80 /* Extensions.swift */,
 				9409E1221ABF6FEA00312E2B /* Main.storyboard */,
 				9409E1251ABF6FEA00312E2B /* Images.xcassets */,
 				9409E1191ABF6FEA00312E2B /* Supporting Files */,
-				94D260941B45E0BA00DE671C /* UI Helpers */,
 			);
 			path = SwiftRadio;
 			sourceTree = "<group>";
@@ -200,6 +199,7 @@
 		9409E1191ABF6FEA00312E2B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B90086461BBE40AF00E5372C /* MediaPlayer.framework */,
 				9409E11A1ABF6FEA00312E2B /* Info.plist */,
 				94D260901B45D20000DE671C /* SwiftRadio-Settings.swift */,
 			);
@@ -235,11 +235,11 @@
 		94D2608E1B45D0F800DE671C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				94452E541AD7086800BFE7A5 /* AboutViewController.swift */,
-				94D1D0A41AD6D6230022CA11 /* InfoDetailViewController.swift */,
-				9409E13F1ABF78B000312E2B /* NowPlayingViewController.swift */,
-				94452E4E1AD6F24700BFE7A5 /* PopUpMenuViewController.swift */,
 				942A3F361AE43DF80011396E /* StationsViewController.swift */,
+				94452E541AD7086800BFE7A5 /* AboutViewController.swift */,
+				9409E13F1ABF78B000312E2B /* NowPlayingViewController.swift */,
+				94D1D0A41AD6D6230022CA11 /* InfoDetailViewController.swift */,
+				94452E4E1AD6F24700BFE7A5 /* PopUpMenuViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -578,6 +578,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -616,6 +617,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
