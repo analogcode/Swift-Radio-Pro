@@ -9,25 +9,11 @@
      "longDesc": "Sub Pop is a record label founded in 1986 by Bruce Pavitt. In 1988, Sub Pop Records LLC was formed by Bruce Pavitt and Jonathan Poneman in Seattle, Washington. Sub Pop achieved fame in the late 1980s for first signing Nirvana, Soundgarden, Mudhoney and many other bands from the Seattle alternative rock scene."
      },
      {
-     "name": "Sounds of the 80s",
-     "streamURL": "http://tuneinads.moodmedia.com/streams/tunein_sounds_of_the_80s_with_ads.mp3",
-     "imageURL": "station-80s",
-     "desc": "Totally Rad",
-     "longDesc": "80s Baby! The '80s is not about nostalgia; it is about a decade of people, decisions and inventions that changed our future, told from the perspective of unknowing history makers who lived these iconic moments."
-     },
-     {
      "name": "Clasic Rock",
      "streamURL": "http://rfcmedia.streamguys1.com/classicrock.mp3",
      "imageURL": "station-classicrock",
      "desc": "Classic Rock Hits",
      "longDesc": "Classic rock is a radio format which developed from the album-oriented rock (AOR) format in the early 1980s. In the United States, the classic rock format features music ranging generally from the late 1960s to the late 1980s, primarily focusing on commercially successful hard rock popularized in the 1970s. The radio format became increasingly popular with the baby boomer demographic by the end of the 1990s."
-     },
-     {
-     "name": "Radio 1190",
-     "streamURL": "http://radio1190.colorado.edu:8000/high.mp3",
-     "imageURL": "",
-     "desc": "KVCU - Boulder, CO",
-     "longDesc": "Radio 1190 is the bomb."
      }
     ]
 }

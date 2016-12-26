@@ -22,7 +22,7 @@
 
 import UIKit
 
-public class SpringView: UIView, Springable {
+open class SpringView: UIView, Springable {
     @IBInspectable public var autostart: Bool = false
     @IBInspectable public var autohide: Bool = false
     @IBInspectable public var animation: String = ""
@@ -43,12 +43,12 @@ public class SpringView: UIView, Springable {
 
     lazy private var spring : Spring = Spring(self)
 
-    override public func awakeFromNib() {
+    override open func awakeFromNib() {
         super.awakeFromNib()
         self.spring.customAwakeFromNib()
     }
 
-    public override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         spring.customLayoutSubviews()
     }
@@ -57,15 +57,15 @@ public class SpringView: UIView, Springable {
         self.spring.animate()
     }
 
-    public func animateNext(completion: () -> ()) {
-        self.spring.animateNext(completion)
+    public func animateNext(completion: @escaping () -> ()) {
+        self.spring.animateNext(completion: completion)
     }
 
     public func animateTo() {
         self.spring.animateTo()
     }
 
-    public func animateToNext(completion: () -> ()) {
-        self.spring.animateToNext(completion)
+    public func animateToNext(completion: @escaping () -> ()) {
+        self.spring.animateToNext(completion: completion)
     }
 }

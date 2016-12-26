@@ -14,7 +14,7 @@ class StationTableViewCell: UITableViewCell {
     @IBOutlet weak var stationDescLabel: UILabel!
     @IBOutlet weak var stationImageView: UIImageView!
     
-    var downloadTask: NSURLSessionDownloadTask?
+    var downloadTask: URLSessionDownloadTask?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,7 +25,7 @@ class StationTableViewCell: UITableViewCell {
         selectedBackgroundView  = selectedView
     }
 
-    func configureStationCell(station: RadioStation) {
+    func configureStationCell(_ station: RadioStation) {
         
         // Configure the cell...
         stationNameLabel.text = station.stationName
@@ -33,9 +33,9 @@ class StationTableViewCell: UITableViewCell {
         
         let imageURL = station.stationImageURL as NSString
         
-            if imageURL.containsString("http") {
+            if imageURL.contains("http") {
             
-            if let url = NSURL(string: station.stationImageURL) {
+            if let url = URL(string: station.stationImageURL) {
                 downloadTask = stationImageView.loadImageWithURL(url) { (image) in
                     // station image loaded
                 }
