@@ -1,6 +1,6 @@
 #Swift Radio
 
-Swift Radio is an open source radio station app with robust and professional features. This is a fully realized Radio App built entirely in Swift. **Master is now the Xcode 8.1/Swift 3 branch**. There is an Xcode 8/Swift 2.3 branch [here](https://github.com/swiftcodex/Swift-Radio-Pro/tree/xcode8).
+Swift Radio is an open source radio station app with robust and professional features. This is a fully realized Radio App built entirely in Swift. **Master is now the Xcode 8.1/Swift 3 branch**. Note there is an AVPlayer branch [here](https://github.com/swiftcodex/Swift-Radio-Pro/tree/xcode8).
 
 **WOW! There are over 80 different apps accepted to the app store using this code!**  
 
@@ -27,8 +27,8 @@ Give it a quick watch.
 - Pull to Refresh stations
 
 ##Important Notes
+- 12.26.16 Update: The AVPlayer branch has been updated to Swift 3 by [@giacmarangoni](https://github.com/giacmarangoni). Branch here:  [Xcode8/AVPlayer Branch](https://github.com/swiftcodex/Swift-Radio-Pro/tree/xcode8)
 - 9.20.16 Update: Master branch migrated to Xcode 8/Swift 3 by [@fethica](https://github.com/fethica). Big thanks to him!
-- 9.08.16 Update: An Xcode 8 / Swift 2.3 branch as been added. It needs some fine-tuning: [https://github.com/swiftcodex/Swift-Radio-Pro/tree/xcode8](https://github.com/swiftcodex/Swift-Radio-Pro/tree/xcode8)
 - 7.26.16 Update: AVPlayer development branch added, thanks [@kusikusa](https://github.com/kusikusa). Plus, this branch includes the Spotify API for downloading artwork: [AVPlayer/Spotify Branch](https://github.com/swiftcodex/Swift-Radio-Pro/tree/avplayer)
 - 6.5.16 Update: Bluetooth streaming added, thanks [@fethica](https://github.com/fethica)
 - 3.27.16 Update: Google handoff added, thanks [@GraemeHarrison](https://github.com/GraemeHarrison)
