@@ -297,6 +297,13 @@ extension StationsViewController: UITableViewDelegate {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
+        if !stations.isEmpty {
+            // Set Now Playing Buttons
+            let title = stations[indexPath.row].stationName + " - Now Playing..."
+            stationNowPlayingButton.setTitle(title, for: UIControlState())
+            stationNowPlayingButton.isEnabled = true
+        }
+
         self.title = ""
         firstTime = false
         
@@ -340,14 +347,6 @@ extension StationsViewController: UITableViewDelegate {
                 self.navigationController!.pushViewController(nowPlayingVC, animated: true)
             }
         }
-
-        if !stations.isEmpty {
-            // Set Now Playing Buttons
-            let title = stations[indexPath.row].stationName + " - Now Playing..."
-            stationNowPlayingButton.setTitle(title, for: UIControlState())
-            stationNowPlayingButton.isEnabled = true
-        }
-        
     }
 }
 
