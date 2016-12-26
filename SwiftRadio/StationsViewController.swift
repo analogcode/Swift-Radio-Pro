@@ -295,7 +295,7 @@ extension StationsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        tableView.deselectRow(at: indexPath, animated: true)
+        firstTime = false
         
         if !stations.isEmpty {
             // Set Now Playing Buttons
@@ -303,9 +303,6 @@ extension StationsViewController: UITableViewDelegate {
             stationNowPlayingButton.setTitle(title, for: UIControlState())
             stationNowPlayingButton.isEnabled = true
         }
-
-        self.title = ""
-        firstTime = false
         
         var nowPlayingVC = self.storyboard!.instantiateViewController(withIdentifier: "NowPlayingViewController") as! NowPlayingViewController
         nowPlayingVC.delegate = self
@@ -327,15 +324,9 @@ extension StationsViewController: UITableViewDelegate {
             
         } else {
             // User clicked on a now playing button
-            if let currentTrack = currentTrack {
-                // Return to NowPlaying controller without reloading station
-                nowPlayingVC.track = currentTrack
-                nowPlayingVC.currentStation = currentStation
-                nowPlayingVC.newStation = false
-                
+            if currentTrack != nil {
                 nowPlayingVC = controllersDict["NowPlayingViewController"] as! NowPlayingViewController!
                 self.navigationController!.pushViewController(nowPlayingVC, animated: true)
-
             } else {
                 // Issue with track, reload station
                 nowPlayingVC.currentStation = currentStation
@@ -347,6 +338,8 @@ extension StationsViewController: UITableViewDelegate {
                 self.navigationController!.pushViewController(nowPlayingVC, animated: true)
             }
         }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

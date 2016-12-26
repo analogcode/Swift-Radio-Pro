@@ -604,11 +604,11 @@ extension NowPlayingViewController: CustomAVPlayerItemDelegate {
             
             // Set artist & songvariables
             let currentSongName = track.title
-            track.artist = stringParts[0].decodeAllChars()
-            track.title = stringParts[0].decodeAllChars()
+            track.artist = stringParts[0].decodeAll()
+            track.title = stringParts[0].decodeAll()
             
             if stringParts.count > 1 {
-                
+                track.title = stringParts[1].decodeAll()
             }
             
             if track.artist == "" && track.title == "" {
