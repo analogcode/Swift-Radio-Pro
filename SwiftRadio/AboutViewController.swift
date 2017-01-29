@@ -30,7 +30,7 @@ class AboutViewController: UIViewController {
         let subject = "From Swift Radio App"
         let messageBody = ""
         
-        let configuredMailComposeViewController = configureMailComposeViewController(receipients, subject: subject, messageBody: messageBody)
+        let configuredMailComposeViewController = configureMailComposeViewController(recepients: receipients, subject: subject, messageBody: messageBody)
         
         if canSendMail() {
             self.present(configuredMailComposeViewController, animated: true, completion: nil)
