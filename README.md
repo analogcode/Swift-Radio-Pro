@@ -47,7 +47,8 @@ Give it a quick watch.
 *Created by [Matthew Fecher](http://matthewfecher.com), Twitter: [@goFecher](http://twitter.com/goFecher)*  
 *Thanks to Basel Farag, from [Denver Swift Heads](http://www.meetup.com/Denver-Swift-Heads/) for the code review.*  
 
-Contributions by others listed in Github [here](https://github.com/swiftcodex/Swift-Radio-Pro/graphs/contributors). Thanks to everyone! We couldn't do it without you!
+**Contributions by others listed in Github [here](https://github.com/swiftcodex/Swift-Radio-Pro/graphs/contributors).**  
+Thanks to everyone! We couldn't do it without you!
 
 ## Requirements
 
@@ -87,7 +88,7 @@ Includes an example "stations.json" file. You may upload the JSON file to a serv
 
 - **longDesc**: Long description of the station to be used on the "info screen". This is optional.
 
-##Contributions
+## Contributions
 
 Contributions are very welcome. Please create a separate branch (e.g. features/3dtouch). Please do not commit on master.
 
