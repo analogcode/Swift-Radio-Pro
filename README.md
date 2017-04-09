@@ -63,7 +63,7 @@ If you create an app with the code, or interesting project inspired by the code,
 
 This is just a basic template. You may use it as a clean starting point to add other features.
 
-Some of the things we've built into this Radio code for clients include: Facebook login, Profiles, Saving Favorite Tracks, Playlists, Genres, Spotify integration, Enhanced Streaming, Tempo Analyzing, etc. There's almost unlimited things you can use this code as a starting place for. We keep this repo lightweight. That way you can customize it easily.
+Some of the things I've built into this Radio code for clients include: Facebook login, Profiles, Saving Favorite Tracks, Playlists, Genres, Spotify integration, Enhanced Streaming, Tempo Analyzing, etc. There's almost unlimited things you can use this code as a starting place for. I keep this repo lightweight. That way you can customize it easily. 
 
 ## Setup
 
@@ -147,6 +147,6 @@ Here's a branch of the code that plays streaming TV Stations instead of radio st
 
 ## Custom Work & Consulting
 
-We have recent experience building iOS apps for both independent and high-profile clients (brand names and apps we can't discuss here, but, you would instantly recognize!) Additionally, we've built advanced versions of this open-source radio player for amazing independent clients.
+I have recent experience building iOS apps for both independent and high-profile clients (brand names and apps we can't discuss here, but, you would instantly recognize!) Additionally, I've built advanced versions of this open-source radio player for amazing independent clients.
 
-[Get in Touch](http://matthewfecher.com/contact/) to see what we can do for you!
+[Get in Touch](http://matthewfecher.com/contact/) to see what I can do for you!
