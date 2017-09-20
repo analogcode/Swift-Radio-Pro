@@ -114,7 +114,7 @@ class NowPlayingViewController: UIViewController {
         
     }
     
-    func didBecomeActiveNotificationReceived() {
+    @objc func didBecomeActiveNotificationReceived() {
         // View became active
         updateLabels()
         justBecameActive = true
@@ -402,7 +402,7 @@ class NowPlayingViewController: UIViewController {
                 print("url: \(escapedURL!)")
             }
             
-            let json = JSON(data: data! as Data)
+            let json = try! JSON(data: data! as Data)
             
             if useLastFM {
                 // Get Largest Sized LastFM Image
@@ -506,7 +506,7 @@ class NowPlayingViewController: UIViewController {
     // MARK: - MetaData Updated Notification
     //*****************************************************************
     
-    func metadataUpdated(n: NSNotification)
+    @objc func metadataUpdated(n: NSNotification)
     {
         if(radioPlayer.timedMetadata != nil && radioPlayer.timedMetadata.count > 0)
         {
@@ -573,7 +573,7 @@ class NowPlayingViewController: UIViewController {
     //*****************************************************************
     
     // Example code on handling AVAudio interruptions (e.g. Phone calls)
-    func sessionInterrupted(notification: NSNotification) {
+    @objc func sessionInterrupted(notification: NSNotification) {
         if let typeValue = notification.userInfo?[AVAudioSessionInterruptionTypeKey] as? NSNumber{
             if let type = AVAudioSessionInterruptionType(rawValue: typeValue.uintValue){
                 if type == .began {
