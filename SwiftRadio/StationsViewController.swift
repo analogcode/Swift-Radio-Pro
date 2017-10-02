@@ -63,7 +63,7 @@ class StationsViewController: UIViewController {
             success = false
         }
         if !success {
-            if kDebugLog { print("Failed to set audio session category.  Error: \(error)") }
+            if kDebugLog { print("Failed to set audio session category.  Error: \(error!)") }
         }
         
         // Set audioSession as active
@@ -103,7 +103,7 @@ class StationsViewController: UIViewController {
     
     func setupPullToRefresh() {
         self.refreshControl = UIRefreshControl()
-        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh", attributes: [NSForegroundColorAttributeName:UIColor.white])
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh", attributes: [NSAttributedStringKey.foregroundColor:UIColor.white])
         self.refreshControl.backgroundColor = UIColor.black
         self.refreshControl.tintColor = UIColor.white
         self.refreshControl.addTarget(self, action: #selector(StationsViewController.refresh), for: UIControlEvents.valueChanged)
@@ -156,7 +156,7 @@ class StationsViewController: UIViewController {
     // MARK: - Actions
     //*****************************************************************
     
-    func nowPlayingBarButtonPressed() {
+    @objc func nowPlayingBarButtonPressed() {
         performSegue(withIdentifier: "NowPlaying", sender: self)
     }
     
@@ -164,7 +164,7 @@ class StationsViewController: UIViewController {
         performSegue(withIdentifier: "NowPlaying", sender: self)
     }
     
-    func refresh(sender: AnyObject) {
+    @objc func refresh(sender: AnyObject) {
         // Pull to Refresh
         stations.removeAll(keepingCapacity: false)
         loadStationsFromJSON()
@@ -190,7 +190,7 @@ class StationsViewController: UIViewController {
             
             if kDebugLog { print("Stations JSON Found") }
             
-            let json = JSON(data: data! as Data)
+            let json = try! JSON(data: data! as Data)
             
             if let stationArray = json["station"].array {
                 

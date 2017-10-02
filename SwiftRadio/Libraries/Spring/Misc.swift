@@ -31,10 +31,11 @@ public extension String {
 }
 
 public func htmlToAttributedString(text: String) -> NSAttributedString! {
-    let htmlData = text.data(using: String.Encoding.utf8, allowLossyConversion: false)
+    guard let htmlData = text.data(using: String.Encoding.utf8, allowLossyConversion: false) else {
+        return NSAttributedString() }
     let htmlString: NSAttributedString?
     do {
-        htmlString = try NSAttributedString(data: htmlData!, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
+        htmlString = try NSAttributedString(data: htmlData, options: [NSAttributedString.DocumentReadingOptionKey.documentType:NSAttributedString.DocumentType.html], documentAttributes: nil)
     } catch _ {
         htmlString = nil
     }
@@ -43,7 +44,7 @@ public func htmlToAttributedString(text: String) -> NSAttributedString! {
 }
 
 public func degreesToRadians(degrees: CGFloat) -> CGFloat {
-    return degrees * CGFloat(M_PI / 180)
+    return degrees * CGFloat(CGFloat.pi / 180)
 }
 
 public func delay(delay:Double, closure: @escaping ()->()) {
@@ -66,7 +67,7 @@ public extension UIColor {
         
         if hex.hasPrefix("#") {
             let index = hex.index(hex.startIndex, offsetBy: 1)
-            hex         = hex.substring(from: index)
+            hex = String(hex[index...])
         }
         
         let scanner = Scanner(string: hex)
@@ -202,7 +203,7 @@ public func timeAgoSinceDate(date: Date, numericDates: Bool) -> String {
             return "1w"
         }
     } else if (day >= 2) {
-        return "\(components.day)d"
+        return "\(components.day ?? 2)d"
     } else if (day >= 1){
         if (numericDates){
             return "1d"
@@ -231,4 +232,32 @@ public func timeAgoSinceDate(date: Date, numericDates: Bool) -> String {
         return "now"
     }
     
+}
+
+extension UIImageView {
+    func setImage(url: URL, contentMode mode: UIViewContentMode = .scaleAspectFit, placeholderImage: UIImage?) {
+        contentMode = mode
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard
+                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                let data = data, error == nil,
+                let image = UIImage(data: data)
+                else {
+                    self.image = placeholderImage
+                    return
+            }
+            DispatchQueue.main.async() { () -> Void in
+                self.image = image
+                
+            }
+            }.resume()
+    }
+    func setImage(urlString: String, contentMode mode: UIViewContentMode = .scaleAspectFit, placeholderImage: UIImage?) {
+        guard let url = URL(string: urlString) else {
+            image = placeholderImage
+            return
+        }
+        setImage(url: url, contentMode: mode, placeholderImage: placeholderImage)
+    }
 }
