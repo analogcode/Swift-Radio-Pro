@@ -1,6 +1,6 @@
 # Swift Radio
 
-Swift Radio is an open source radio station app with robust and professional features. This is a fully realized Radio App built entirely in Swift. **Master is now the Xcode 8.1/Swift 3 branch**. Note there is an AVPlayer branch [here](https://github.com/swiftcodex/Swift-Radio-Pro/tree/xcode8).
+Swift Radio is an open source radio station app with robust and professional features. This is a fully realized Radio App built entirely in Swift. **Master is now the Xcode 9.0/Swift 4 branch**. Note there is an AVPlayer branch [here](https://github.com/swiftcodex/Swift-Radio-Pro/tree/xcode8).
 
 There are over 80 different apps accepted to the app store using this code!
 
@@ -17,8 +17,8 @@ Give it a quick watch.
 - Parses metadata from streams (Track & Artist information)
 - Ability to update Stations from server or locally. (Update stations anytime without resubmitting to app store!)
 - Displays Artist, Track & Album Art on Lock Screen
-- Custom views optimized for iPhone 4s, 5, 6 and 6+ for backwards compatibility
-- Compiles with Xcode 8.1 & Swift 3.0
+- Custom views optimized for 5, 6 and 6+ for backwards compatibility
+- Compiles with Xcode 9.0 & Swift 4.0
 - Background audio performance
 - Search Bar that can be turned on or off to search stations
 - Supports local or hosted station images
@@ -27,6 +27,7 @@ Give it a quick watch.
 - Pull to Refresh stations
 
 ## Important Notes
+- 10.1.17 Update: Master branch migrated to Xcode 9/Swift 4 by [@fethica](https://github.com/fethica).
 - 12.26.16 Update: The AVPlayer branch has been updated to Swift 3 by [@giacmarangoni](https://github.com/giacmarangoni). Branch here:  [Xcode8/AVPlayer Branch](https://github.com/swiftcodex/Swift-Radio-Pro/tree/xcode8)
 - 9.20.16 Update: Master branch migrated to Xcode 8/Swift 3 by [@fethica](https://github.com/fethica). Big thanks to him!
 - 7.26.16 Update: AVPlayer development branch added, thanks [@kusikusa](https://github.com/kusikusa). Plus, this branch includes the Spotify API for downloading artwork: [AVPlayer/Spotify Branch](https://github.com/swiftcodex/Swift-Radio-Pro/tree/avplayer)
@@ -45,14 +46,16 @@ Give it a quick watch.
 
 ## Credits
 *Created by [Matthew Fecher](http://matthewfecher.com), Twitter: [@goFecher](http://twitter.com/goFecher)*  
+*Co-organizer [Fethi El Hassasna](https://fethica.com/en), Twitter: [@fethica](https://twitter.com/fethica)*  
 *Thanks to Basel Farag, from [Denver Swift Heads](http://www.meetup.com/Denver-Swift-Heads/) for the code review.*  
+
 
 **Contributions by others listed in Github [here](https://github.com/swiftcodex/Swift-Radio-Pro/graphs/contributors).**  
 Thanks to everyone! We couldn't do it without you!
 
 ## Requirements
 
-- Xcode 8
+- Xcode 9
 - Know a little bit of how to program in Swift with the iOS SDK
 
 Please note: I am unable to offer any free support or modifications. Thanks!
