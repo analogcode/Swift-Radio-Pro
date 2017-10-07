@@ -221,7 +221,7 @@
 				94DB0A711B98B762005ED993 /* Spring */,
 			);
 			name = Libraries;
-			path = RadioPro;
+			path = SwiftRadio/Libraries;
 			sourceTree = "<group>";
 		};
 		94AC70AF1AD05C7400652982 /* Networking */ = {
