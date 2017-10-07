@@ -36,7 +36,7 @@ public class LoadingView: UIView {
         indicatorView.layer.add(animation, forKey: "")
     }
 
-    class func designCodeLoadingView() -> UIView {
+    @objc class func designCodeLoadingView() -> UIView {
         
         return Bundle(for: self).loadNibNamed("LoadingView", owner: self, options: nil)![0] as! UIView
     }
@@ -48,7 +48,7 @@ public extension UIView {
         static let Tag = 1000
     }
 
-    public func showLoading() {
+    @objc public func showLoading() {
 
         if self.viewWithTag(LoadingViewConstants.Tag) != nil {
             // If loading view is already found in current view hierachy, do nothing
@@ -66,7 +66,7 @@ public extension UIView {
         })
     }
 
-    public func hideLoading() {
+    @objc public func hideLoading() {
 
         if let loadingXibView = self.viewWithTag(LoadingViewConstants.Tag) {
             loadingXibView.alpha = 1

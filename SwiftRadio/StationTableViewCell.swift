@@ -14,7 +14,7 @@ class StationTableViewCell: UITableViewCell {
     @IBOutlet weak var stationDescLabel: UILabel!
     @IBOutlet weak var stationImageView: UIImageView!
     
-    var downloadTask: URLSessionDownloadTask?
+    @objc var downloadTask: URLSessionDownloadTask?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,7 +25,7 @@ class StationTableViewCell: UITableViewCell {
         selectedBackgroundView  = selectedView
     }
 
-    func configureStationCell(_ station: RadioStation) {
+    @objc func configureStationCell(_ station: RadioStation) {
         
         // Configure the cell...
         stationNameLabel.text = station.stationName

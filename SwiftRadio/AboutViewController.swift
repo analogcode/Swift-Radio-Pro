@@ -59,11 +59,11 @@ extension AboutViewController: MFMailComposeViewControllerDelegate {
         controller.dismiss(animated: true, completion: nil)
     }
     
-    func canSendMail() -> Bool {
+    @objc func canSendMail() -> Bool {
         return MFMailComposeViewController.canSendMail()
     }
     
-    func configureMailComposeViewController(_ recepients: [String], subject: String, messageBody: String) -> MFMailComposeViewController {
+    @objc func configureMailComposeViewController(_ recepients: [String], subject: String, messageBody: String) -> MFMailComposeViewController {
         
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
@@ -75,7 +75,7 @@ extension AboutViewController: MFMailComposeViewControllerDelegate {
         return mailComposerVC
     }
     
-    func showSendMailErrorAlert() {
+    @objc func showSendMailErrorAlert() {
         let sendMailErrorAlert = UIAlertView(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
         sendMailErrorAlert.show()
     }

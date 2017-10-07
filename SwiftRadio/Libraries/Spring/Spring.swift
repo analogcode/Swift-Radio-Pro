@@ -58,17 +58,17 @@ public class Spring : NSObject {
     private var shouldAnimateAfterActive = false
     private var shouldAnimateInLayoutSubviews = true
     
-    init(_ view: Springable) {
+    @objc init(_ view: Springable) {
         self.view = view
         super.init()
         commonInit()
     }
     
-    func commonInit() {
+    @objc func commonInit() {
         NotificationCenter.default.addObserver(self, selector: #selector(Spring.didBecomeActiveNotification(_:)), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
     }
     
-    func didBecomeActiveNotification(_ notification: NSNotification) {
+    @objc func didBecomeActiveNotification(_ notification: NSNotification) {
         if shouldAnimateAfterActive {
             alpha = 0
             animate()
@@ -165,7 +165,7 @@ public class Spring : NSObject {
         case EaseInOutBack = "easeInOutBack"
     }
     
-    func animatePreset() {
+    @objc func animatePreset() {
         alpha = 0.99
         if let animation = AnimationPreset(rawValue: animation) {
             switch animation {
@@ -227,7 +227,7 @@ public class Spring : NSObject {
                 scaleY = 2*force
             case .Fall:
                 animateFrom = false
-                rotate = 15 * CGFloat(M_PI/180)
+                rotate = 15 * CGFloat(Double.pi/180)
                 y = 600*force
             case .Shake:
                 let animation = CAKeyframeAnimation()
@@ -262,7 +262,7 @@ public class Spring : NSObject {
                 animation.keyPath = "transform"
                 animation.fromValue = NSValue(caTransform3D: CATransform3DMakeRotation(0, 0, 0, 0))
                 animation.toValue = NSValue(caTransform3D:
-                    CATransform3DConcat(perspective, CATransform3DMakeRotation(CGFloat(M_PI), 0, 1, 0)))
+                    CATransform3DConcat(perspective, CATransform3DMakeRotation(CGFloat(Double.pi), 0, 1, 0)))
                 animation.duration = CFTimeInterval(duration)
                 animation.beginTime = CACurrentMediaTime() + CFTimeInterval(delay)
                 animation.timingFunction = getTimingFunction(curve: curve)
@@ -276,7 +276,7 @@ public class Spring : NSObject {
                 animation.fromValue = NSValue(caTransform3D:
                     CATransform3DMakeRotation(0, 0, 0, 0))
                 animation.toValue = NSValue(caTransform3D:
-                    CATransform3DConcat(perspective,CATransform3DMakeRotation(CGFloat(M_PI), 1, 0, 0)))
+                    CATransform3DConcat(perspective,CATransform3DMakeRotation(CGFloat(Double.pi), 1, 0, 0)))
                 animation.duration = CFTimeInterval(duration)
                 animation.beginTime = CACurrentMediaTime() + CFTimeInterval(delay)
                 animation.timingFunction = getTimingFunction(curve: curve)
@@ -364,7 +364,7 @@ public class Spring : NSObject {
         }
     }
     
-    func getTimingFunction(curve: String) -> CAMediaTimingFunction {
+    @objc func getTimingFunction(curve: String) -> CAMediaTimingFunction {
         if let curve = AnimationCurve(rawValue: curve) {
             switch curve {
             case .EaseIn: return CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
@@ -401,7 +401,7 @@ public class Spring : NSObject {
         return CAMediaTimingFunction(name: kCAMediaTimingFunctionDefault)
     }
     
-    func getAnimationOptions(curve: String) -> UIViewAnimationOptions {
+    @objc func getAnimationOptions(curve: String) -> UIViewAnimationOptions {
         if let curve = AnimationCurve(rawValue: curve) {
             switch curve {
             case .EaseIn: return UIViewAnimationOptions.curveEaseIn
@@ -413,13 +413,13 @@ public class Spring : NSObject {
         return UIViewAnimationOptions.curveLinear
     }
     
-    public func animate() {
+    @objc public func animate() {
         animateFrom = true
         animatePreset()
         setView {}
     }
     
-    public func animateNext(completion: @escaping () -> ()) {
+    @objc public func animateNext(completion: @escaping () -> ()) {
         animateFrom = true
         animatePreset()
         setView {
@@ -427,13 +427,13 @@ public class Spring : NSObject {
         }
     }
     
-    public func animateTo() {
+    @objc public func animateTo() {
         animateFrom = false
         animatePreset()
         setView {}
     }
     
-    public func animateToNext(completion: @escaping () -> ()) {
+    @objc public func animateToNext(completion: @escaping () -> ()) {
         animateFrom = false
         animatePreset()
         setView {
@@ -441,13 +441,13 @@ public class Spring : NSObject {
         }
     }
     
-    public func customAwakeFromNib() {
+    @objc public func customAwakeFromNib() {
         if autohide {
             alpha = 0
         }
     }
     
-    public func customLayoutSubviews() {
+    @objc public func customLayoutSubviews() {
         if shouldAnimateInLayoutSubviews {
             shouldAnimateInLayoutSubviews = false
             if autostart {
@@ -461,7 +461,7 @@ public class Spring : NSObject {
         }
     }
     
-    func setView(completion: @escaping () -> ()) {
+    @objc func setView(completion: @escaping () -> ()) {
         if animateFrom {
             let translate = CGAffineTransform(translationX: self.x, y: self.y)
             let scale = CGAffineTransform(scaleX: self.scaleX, y: self.scaleY)
@@ -505,13 +505,13 @@ public class Spring : NSObject {
         
     }
     
-    func reset() {
+    @objc func reset() {
         x = 0
         y = 0
         opacity = 1
     }
     
-    func resetAll() {
+    @objc func resetAll() {
         x = 0
         y = 0
         animation = ""
