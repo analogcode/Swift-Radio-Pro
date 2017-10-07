@@ -301,7 +301,9 @@ class NowPlayingViewController: UIViewController {
     }
     
     @objc func startNowPlayingAnimation() {
-        nowPlayingImageView.startAnimating()
+        DispatchQueue.main.async { [unowned self] in
+            self.nowPlayingImageView.startAnimating()
+        }
     }
     
     //*****************************************************************
@@ -311,8 +313,10 @@ class NowPlayingViewController: UIViewController {
     @objc func resetAlbumArtwork() {
         track.artworkLoaded = false
         track.artworkURL = currentStation.stationImageURL
-        updateAlbumArtwork()
-        stationDescLabel.isHidden = false
+        DispatchQueue.main.async { [unowned self] in
+            self.updateAlbumArtwork()
+            self.stationDescLabel.isHidden = false
+        }
     }
     
     @objc func updateAlbumArtwork() {
@@ -335,19 +339,23 @@ class NowPlayingViewController: UIViewController {
                     self.track.artworkLoaded = true
                     
                     // Turn off network activity indicator
-                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                    DispatchQueue.main.async {
+                        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                    }
                     
                     // Animate artwork
                     self.albumImageView.animation = "wobble"
                     self.albumImageView.duration = 2
-                    self.albumImageView.animate()
-                    self.stationDescLabel.isHidden = true
+                    DispatchQueue.main.async {
+                        self.albumImageView.animate()
+                        self.stationDescLabel.isHidden = true
                     
-                    // Update lockscreen
-                    self.updateLockScreen()
-                    
-                    // Call delegate function that artwork updated
-                    self.delegate?.artworkDidUpdate(self.track)
+                        // Update lockscreen
+                        self.updateLockScreen()
+
+                        // Call delegate function that artwork updated
+                        self.delegate?.artworkDidUpdate(self.track)
+                    }
                 }
             }
             
@@ -373,13 +381,17 @@ class NowPlayingViewController: UIViewController {
         }
         
         // Force app to update display
-        self.view.setNeedsDisplay()
+        DispatchQueue.main.async {
+            self.view.setNeedsDisplay()
+        }
     }
     
     // Call LastFM or iTunes API to get album art url
     
     @objc func queryAlbumArt() {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        DispatchQueue.main.async {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        }
         // Construct either LastFM or iTunes API call URL
         let queryURL: String
         
