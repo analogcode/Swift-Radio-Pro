@@ -34,7 +34,7 @@ public func htmlToAttributedString(text: String) -> NSAttributedString! {
     let htmlData = text.data(using: String.Encoding.utf8, allowLossyConversion: false)
     let htmlString: NSAttributedString?
     do {
-        htmlString = try NSAttributedString(data: htmlData!, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
+        htmlString = try NSAttributedString(data: htmlData!, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
     } catch _ {
         htmlString = nil
     }
@@ -43,7 +43,7 @@ public func htmlToAttributedString(text: String) -> NSAttributedString! {
 }
 
 public func degreesToRadians(degrees: CGFloat) -> CGFloat {
-    return degrees * CGFloat(M_PI / 180)
+    return degrees * CGFloat(Double.pi / 180)
 }
 
 public func delay(delay:Double, closure: @escaping ()->()) {
@@ -57,7 +57,7 @@ public func imageFromURL(_ Url: String) -> UIImage {
 }
 
 public extension UIColor {
-    convenience init(hex: String) {
+    @objc convenience init(hex: String) {
         var red:   CGFloat = 0.0
         var green: CGFloat = 0.0
         var blue:  CGFloat = 0.0
@@ -66,7 +66,7 @@ public extension UIColor {
         
         if hex.hasPrefix("#") {
             let index = hex.index(hex.startIndex, offsetBy: 1)
-            hex         = hex.substring(from: index)
+            hex         = String(hex.suffix(from: index))
         }
         
         let scanner = Scanner(string: hex)
@@ -148,7 +148,16 @@ public func randomStringWithLength (len : Int) -> NSString {
 
 public func timeAgoSinceDate(date: Date, numericDates: Bool) -> String {
     let calendar = Calendar.current
-    let unitFlags = Set<Calendar.Component>(arrayLiteral: Calendar.Component.minute, Calendar.Component.hour, Calendar.Component.day, Calendar.Component.weekOfYear, Calendar.Component.month, Calendar.Component.year, Calendar.Component.second)
+    let unitFlags = Set<Calendar.Component>(
+        arrayLiteral:
+            Calendar.Component.minute,
+            Calendar.Component.hour,
+            Calendar.Component.day,
+            Calendar.Component.weekOfYear,
+            Calendar.Component.month,
+            Calendar.Component.year,
+            Calendar.Component.second
+    )
     let now = Date()
     let dateComparison = now.compare(date)
     var earliest: Date
@@ -230,11 +239,10 @@ public func timeAgoSinceDate(date: Date, numericDates: Bool) -> String {
     } else {
         return "now"
     }
-    
 }
 
 extension UIImageView {
-    func setImage(url: URL, contentMode mode: UIViewContentMode = .scaleAspectFit, placeholderImage: UIImage?) {
+    @objc func setImage(url: URL, contentMode mode: UIViewContentMode = .scaleAspectFit, placeholderImage: UIImage?) {
         contentMode = mode
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard
@@ -252,7 +260,7 @@ extension UIImageView {
             }
             }.resume()
     }
-    func setImage(urlString: String, contentMode mode: UIViewContentMode = .scaleAspectFit, placeholderImage: UIImage?) {
+    @objc func setImage(urlString: String, contentMode mode: UIViewContentMode = .scaleAspectFit, placeholderImage: UIImage?) {
         guard let url = URL(string: urlString) else {
             image = placeholderImage
             return

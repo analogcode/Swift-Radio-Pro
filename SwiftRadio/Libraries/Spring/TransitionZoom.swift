@@ -24,8 +24,8 @@ import UIKit
 
 public class TransitionZoom: NSObject, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning {
     
-    var isPresenting = true
-    var duration = 0.4
+    @objc var isPresenting = true
+    @objc var duration = 0.4
     
     public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let container = transitionContext.containerView
@@ -67,7 +67,7 @@ public class TransitionZoom: NSObject, UIViewControllerTransitioningDelegate, UI
         return duration
     }
     
-    public func animationController(forPresentedController presented: UIViewController, presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    @objc public func animationController(forPresentedController presented: UIViewController, presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         isPresenting = true
         return self
     }

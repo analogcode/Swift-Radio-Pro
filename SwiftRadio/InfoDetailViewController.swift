@@ -16,8 +16,8 @@ class InfoDetailViewController: UIViewController {
     @IBOutlet weak var stationLongDescTextView: UITextView!
     @IBOutlet weak var okayButton: UIButton!
     
-    var currentStation: RadioStation!
-    var downloadTask: URLSessionDownloadTask?
+    @objc var currentStation: RadioStation!
+    @objc var downloadTask: URLSessionDownloadTask?
 
     //*****************************************************************
     // MARK: - ViewDidLoad
@@ -40,7 +40,7 @@ class InfoDetailViewController: UIViewController {
     // MARK: - UI Helpers
     //*****************************************************************
     
-    func setupStationText() {
+    @objc func setupStationText() {
         
         // Display Station Name & Short Desc
         stationNameLabel.text = currentStation.stationName
@@ -54,12 +54,12 @@ class InfoDetailViewController: UIViewController {
         }
     }
     
-    func loadDefaultText() {
+    @objc func loadDefaultText() {
         // Add your own default ext
         stationLongDescTextView.text = "You are listening to Swift Radio. This is a sweet open source project. Tell your friends, swiftly!"
     }
     
-    func setupStationLogo() {
+    @objc func setupStationLogo() {
         
         // Display Station Image/Logo
         let imageURL = currentStation.stationImageURL

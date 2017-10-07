@@ -24,8 +24,8 @@ import UIKit
 
 public class TransitionManager: NSObject, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning {
     
-    var isPresenting = true
-    var duration = 0.3
+    @objc var isPresenting = true
+    @objc var duration = 0.3
     
     public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let container = transitionContext.containerView
@@ -74,7 +74,7 @@ public class TransitionManager: NSObject, UIViewControllerTransitioningDelegate,
         return duration
     }
     
-    public func animationController(forPresentedController presented: UIViewController, presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    @objc public func animationController(forPresentedController presented: UIViewController, presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         isPresenting = true
         return self
     }

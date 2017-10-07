@@ -10,7 +10,7 @@ import UIKit
 
 extension UIImageView {
     
-    func loadImageWithURL(_ url: URL, callback:@escaping (UIImage) -> ()) -> URLSessionDownloadTask {
+    @objc func loadImageWithURL(_ url: URL, callback:@escaping (UIImage) -> ()) -> URLSessionDownloadTask {
         let session = URLSession.shared
         
         let downloadTask = session.downloadTask(with: url, completionHandler: {

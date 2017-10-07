@@ -16,18 +16,18 @@ class StationsViewController: UIViewController {
     @IBOutlet weak var stationNowPlayingButton: UIButton!
     @IBOutlet weak var nowPlayingAnimationImageView: UIImageView!
     
-    var stations = [RadioStation]()
-    var currentStation: RadioStation?
+    @objc var stations = [RadioStation]()
+    @objc var currentStation: RadioStation?
     var currentTrack: Track?
-    var refreshControl: UIRefreshControl!
-    var firstTime = true
+    @objc var refreshControl: UIRefreshControl!
+    @objc var firstTime = true
     
-    var searchedStations = [RadioStation]()
-    var searchController : UISearchController!
+    @objc var searchedStations = [RadioStation]()
+    @objc var searchController : UISearchController!
     
-    var controllersDict = [String:Any]()
+    @objc var controllersDict = [String:Any]()
     
-    var lastIndexPath : IndexPath!
+    @objc var lastIndexPath : IndexPath!
     
     //*****************************************************************
     // MARK: - ViewDidLoad
@@ -103,21 +103,21 @@ class StationsViewController: UIViewController {
     // MARK: - Setup UI Elements
     //*****************************************************************
     
-    func setupPullToRefresh() {
+    @objc func setupPullToRefresh() {
         self.refreshControl = UIRefreshControl()
-        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh", attributes: [NSForegroundColorAttributeName:UIColor.white])
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh", attributes: [NSAttributedStringKey.foregroundColor:UIColor.white])
         self.refreshControl.backgroundColor = UIColor.black
         self.refreshControl.tintColor = UIColor.white
         self.refreshControl.addTarget(self, action: #selector(StationsViewController.refresh(_:)), for: UIControlEvents.valueChanged)
         self.tableView.addSubview(refreshControl)
     }
     
-    func createNowPlayingAnimation() {
+    @objc func createNowPlayingAnimation() {
         nowPlayingAnimationImageView.animationImages = AnimationFrames.createFrames()
         nowPlayingAnimationImageView.animationDuration = 0.7
     }
     
-    func createNowPlayingBarButton() {
+    @objc func createNowPlayingBarButton() {
         if self.navigationItem.rightBarButtonItem == nil {
             let btn = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action:#selector(StationsViewController.nowPlayingBarButtonPressed))
             btn.image = UIImage(named: "btn-nowPlaying")
@@ -125,7 +125,7 @@ class StationsViewController: UIViewController {
         }
     }
     
-    func setupSearchController() {
+    @objc func setupSearchController() {
         // Set the UISearchController
         searchController = UISearchController(searchResultsController: nil)
         
@@ -158,7 +158,7 @@ class StationsViewController: UIViewController {
     // MARK: - Actions
     //*****************************************************************
     
-    func nowPlayingBarButtonPressed() {
+    @objc func nowPlayingBarButtonPressed() {
         tableView(self.tableView, didSelectRowAt: lastIndexPath)
     }
 
@@ -166,7 +166,7 @@ class StationsViewController: UIViewController {
         tableView(self.tableView, didSelectRowAt: lastIndexPath)
     }
     
-    func refresh(_ sender: AnyObject) {
+    @objc func refresh(_ sender: AnyObject) {
         // Pull to Refresh
         stations.removeAll(keepingCapacity: false)
         loadStationsFromJSON()
@@ -183,11 +183,12 @@ class StationsViewController: UIViewController {
     // MARK: - Load Station Data
     //*****************************************************************
     
-    func loadStationsFromJSON() {
+    @objc func loadStationsFromJSON() {
         
         // Turn on network indicator in status bar
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        
+        DispatchQueue.main.async {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        }
         // Get the Radio Stations
         DataManager.getStationDataWithSuccess() { (data) in
             
@@ -213,7 +214,9 @@ class StationsViewController: UIViewController {
             }
             
             // Turn off network indicator in status bar
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            DispatchQueue.main.async {
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
         }
     }
 }
