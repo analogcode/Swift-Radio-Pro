@@ -38,7 +38,6 @@ class NowPlayingViewController: UIViewController {
     
     var currentStation: RadioStation!
     var downloadTask: URLSessionDownloadTask?
-    var iPhone4 = false
     var justBecameActive = false
     var newStation = true
     var nowPlayingImageView: UIImageView!
@@ -232,7 +231,6 @@ class NowPlayingViewController: UIViewController {
         let deviceHeight = self.view.bounds.height
         
         if deviceHeight == 480 {
-            iPhone4 = true
             albumHeightConstraint.constant = 106
             view.updateConstraints()
         } else if deviceHeight == 667 {
@@ -260,7 +258,7 @@ class NowPlayingViewController: UIViewController {
         }
         
         // Hide station description when album art is displayed or on iPhone 4
-        if track.artworkLoaded || iPhone4 {
+        if track.artworkLoaded {
             stationDescLabel.isHidden = true
         } else {
             stationDescLabel.isHidden = false
