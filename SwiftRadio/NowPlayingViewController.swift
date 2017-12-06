@@ -430,6 +430,13 @@ extension NowPlayingViewController: FRadioPlayerDelegate {
     
     func radioPlayer(_ player: FRadioPlayer, metadataDidChange artistName: String?, trackName: String?) {
         
+        // TODO: refactor to separate function
+        // Reset label/artwork to it's initial state
+        resetAlbumArtwork()
+        artistLabel.text = currentStation.stationDesc
+        songLabel.text = currentStation.stationName
+        
+        // TODO: Should listen to Track didSet
         track.artist = artistName ?? currentStation.stationDesc
         track.title = trackName ?? currentStation.stationName
         
