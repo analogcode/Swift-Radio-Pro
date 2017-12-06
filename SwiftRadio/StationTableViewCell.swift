@@ -36,7 +36,7 @@ class StationTableViewCell: UITableViewCell {
             if imageURL.contains("http") {
             
             if let url = URL(string: station.stationImageURL) {
-                downloadTask = stationImageView.loadImageWithURL(url: url) { (image) in
+                stationImageView.loadImageWithURL(url: url) { (image) in
                     // station image loaded
                 }
             }

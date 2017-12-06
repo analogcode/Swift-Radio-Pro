@@ -37,7 +37,6 @@ class NowPlayingViewController: UIViewController {
     @IBOutlet weak var slider = UISlider()
     
     var currentStation: RadioStation!
-    var downloadTask: URLSessionDownloadTask?
     var justBecameActive = false
     var newStation = true
     var nowPlayingImageView: UIImageView!
@@ -294,7 +293,7 @@ class NowPlayingViewController: UIViewController {
             // Attempt to download album art from an API
             if let url = URL(string: track.artworkURL) {
                 
-                self.downloadTask = self.albumImageView.loadImageWithURL(url: url) { (image) in
+                self.albumImageView.loadImageWithURL(url: url) { (image) in
                     
                     // Update track struct
                     self.track.artworkImage = image
@@ -340,76 +339,6 @@ class NowPlayingViewController: UIViewController {
         
         // Force app to update display
         self.view.setNeedsDisplay()
-    }
-
-    // Call LastFM or iTunes API to get album art url
-    
-    func queryAlbumArt() {
-        
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        
-        // Construct either LastFM or iTunes API call URL
-        let queryURL: String
-        if useLastFM {
-            queryURL = String(format: "http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=%@&artist=%@&track=%@&format=json", apiKey, track.artist, track.title)
-        } else {
-            queryURL = String(format: "https://itunes.apple.com/search?term=%@+%@&entity=song", track.artist, track.title)
-        }
-        
-        let escapedURL = queryURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        
-        // Query API
-        DataManager.getTrackDataWithSuccess(queryURL: escapedURL!) { (data) in
-            
-            if kDebugLog {
-                print("API SUCCESSFUL RETURN")
-                print("url: \(escapedURL!)")
-            }
-            
-            let json = try! JSON(data: data! as Data)
-            
-            if useLastFM {
-                // Get Largest Sized LastFM Image
-                if let imageArray = json["track"]["album"]["image"].array {
-                    
-                    let arrayCount = imageArray.count
-                    let lastImage = imageArray[arrayCount - 1]
-                    
-                    if let artURL = lastImage["#text"].string {
-                        
-                        // Check for Default Last FM Image
-                        if artURL.range(of: "/noimage/") != nil {
-                            self.resetAlbumArtwork()
-                            
-                        } else {
-                            // LastFM image found!
-                            self.track.artworkURL = artURL
-                            self.track.artworkLoaded = true
-                            self.updateAlbumArtwork()
-                        }
-                        
-                    } else {
-                        self.resetAlbumArtwork()
-                    }
-                } else {
-                    self.resetAlbumArtwork()
-                }
-            
-            } else {
-                // Use iTunes API. Images are 100px by 100px
-                if let artURL = json["results"][0]["artworkUrl100"].string {
-                    
-                    if kDebugLog { print("iTunes artURL: \(artURL)") }
-                    
-                    self.track.artworkURL = artURL
-                    self.track.artworkLoaded = true
-                    self.updateAlbumArtwork()
-                } else {
-                    self.resetAlbumArtwork()
-                }
-            }
-            
-        }
     }
     
     //*****************************************************************
@@ -517,7 +446,6 @@ extension NowPlayingViewController: FRadioPlayerDelegate {
             
             // Query API for album art
             resetAlbumArtwork()
-            queryAlbumArt()
             updateLockScreen()
             
             delegate?.songMetaDataDidUpdate(track: self.track)
@@ -534,6 +462,14 @@ extension NowPlayingViewController: FRadioPlayerDelegate {
     
     func radioPlayer(_ player: FRadioPlayer, artworkDidChange artURL: URL?) {
         
+        guard let artURL = artURL else {
+            resetAlbumArtwork()
+            return
+        }
+        
+        track.artworkURL = artURL.absoluteString
+        track.artworkLoaded = true
+        updateAlbumArtwork()
     }
     
     

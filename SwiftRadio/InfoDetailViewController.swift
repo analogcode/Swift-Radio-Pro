@@ -67,7 +67,7 @@ class InfoDetailViewController: UIViewController {
         if imageURL.range(of: "http") != nil {
             // Get station image from the web, iOS should cache the image
             if let url = URL(string: currentStation.stationImageURL) {
-                downloadTask = stationImageView.loadImageWithURL(url: url) { _ in }
+                stationImageView.loadImageWithURL(url: url) { _ in }
             }
             
         } else if imageURL != "" {

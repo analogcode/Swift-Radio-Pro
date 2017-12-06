@@ -21,6 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Make status bar white
         UINavigationBar.appearance().barStyle = .black
         
+        // FRadioPlayer config
+        FRadioPlayer.shared.artworkSize = 600
+        
         return true
     }
 
