@@ -56,6 +56,8 @@
 		94D260981B45E8B800DE671C /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D260971B45E8B800DE671C /* Track.swift */; };
 		94D30EA71AD07A880024FE96 /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D30EA61AD07A880024FE96 /* StationTableViewCell.swift */; };
 		94E9761C1B1A8F3200F52B1E /* UIImage+DropShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9761B1B1A8F3200F52B1E /* UIImage+DropShadow.swift */; };
+		CAA7C15D1FD77F3A003CABDF /* FRadioAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA7C15B1FD77F3A003CABDF /* FRadioAPI.swift */; };
+		CAA7C15E1FD77F3A003CABDF /* FRadioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA7C15C1FD77F3A003CABDF /* FRadioPlayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +128,8 @@
 		94D30EA61AD07A880024FE96 /* StationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationTableViewCell.swift; sourceTree = "<group>"; };
 		94E9761B1B1A8F3200F52B1E /* UIImage+DropShadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+DropShadow.swift"; sourceTree = "<group>"; };
 		B90086461BBE40AF00E5372C /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		CAA7C15B1FD77F3A003CABDF /* FRadioAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRadioAPI.swift; sourceTree = "<group>"; };
+		CAA7C15C1FD77F3A003CABDF /* FRadioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRadioPlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +162,7 @@
 		5F22B9DE1F72A8D800CB5911 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				CAA7C15A1FD77F3A003CABDF /* FRadioPlayer */,
 				5F22B9DF1F72ABEF00CB5911 /* SwiftyJSON.swift */,
 				5F22BA1D1F72ACF100CB5911 /* Spring */,
 			);
@@ -303,6 +308,15 @@
 				94D260971B45E8B800DE671C /* Track.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		CAA7C15A1FD77F3A003CABDF /* FRadioPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				CAA7C15B1FD77F3A003CABDF /* FRadioAPI.swift */,
+				CAA7C15C1FD77F3A003CABDF /* FRadioPlayer.swift */,
+			);
+			path = FRadioPlayer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -452,6 +466,7 @@
 				94452E551AD7086800BFE7A5 /* AboutViewController.swift in Sources */,
 				5F22BA551F72AD5A00CB5911 /* AutoTextView.swift in Sources */,
 				94D260981B45E8B800DE671C /* Track.swift in Sources */,
+				CAA7C15E1FD77F3A003CABDF /* FRadioPlayer.swift in Sources */,
 				5F22BA3F1F72AD5A00CB5911 /* LoadingView.swift in Sources */,
 				5F22BA4F1F72AD5A00CB5911 /* TransitionManager.swift in Sources */,
 				5F22BA531F72AD5A00CB5911 /* SpringAnimation.swift in Sources */,
@@ -466,6 +481,7 @@
 				942A3F371AE43DF80011396E /* StationsViewController.swift in Sources */,
 				5F22BA501F72AD5A00CB5911 /* Spring.swift in Sources */,
 				94AC70AE1AD05C6200652982 /* RadioStation.swift in Sources */,
+				CAA7C15D1FD77F3A003CABDF /* FRadioAPI.swift in Sources */,
 				94817DFB1B547D5700D3FA23 /* Player.swift in Sources */,
 				5F22BA481F72AD5A00CB5911 /* DesignableButton.swift in Sources */,
 			);
