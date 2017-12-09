@@ -2,18 +2,25 @@
     "station":
     [
      {
-     "name": "Sub Pop Radio",
-     "streamURL": "http://djboyradio.streamguys1.com/sub-pop-records.mp3",
-     "imageURL": "station-sub.png",
-     "desc": "Midsized Record Label",
-     "longDesc": "Sub Pop is a record label founded in 1986 by Bruce Pavitt. In 1988, Sub Pop Records LLC was formed by Bruce Pavitt and Jonathan Poneman in Seattle, Washington. Sub Pop achieved fame in the late 1980s for first signing Nirvana, Soundgarden, Mudhoney and many other bands from the Seattle alternative rock scene."
+     "name": "Absolute Country Hits",
+     "streamURL": "http://strm112.1.fm/acountry_mobile_mp3",
+     "imageURL": "station-absolutecountry.png",
+     "desc": "The Music Starts Here",
+     "longDesc": "All your favorite country hits and artists, from Johnny Cash to Taylor Swift, on 1.FM's Absolute Country, playing non-stop crooners and banjos, dance-tunes and fiddles, ballads and harmonicas. Absolute Country focuses on 5th, 6th and 7th generation Country (from the 90s on) but often delves into classic, older tunes as well."
      },
      {
-     "name": "Sounds of the 80s",
-     "streamURL": "http://tuneinads.moodmedia.com/streams/tunein_sounds_of_the_80s_with_ads.mp3",
-     "imageURL": "station-80s",
-     "desc": "Totally Rad",
-     "longDesc": "80s Baby! The '80s is not about nostalgia; it is about a decade of people, decisions and inventions that changed our future, told from the perspective of unknowing history makers who lived these iconic moments."
+     "name": "Newport Folk Radio",
+     "streamURL": "http://rfcmedia.streamguys1.com/Newport.mp3",
+     "imageURL": "station-newportfolk.png",
+     "desc": "Are you ready to Folk?",
+     "longDesc": "Do you like Indie music and along with that wants a radio that will provide lots of folk music in their daily radio programs than wait not just tune in to Newport Folk Radio as this is the kind of radio that has got lots of types of Indie music in their daily radio programs along with popular Folk music."
+     },
+     {
+     "name": "The Alt Vault",
+     "streamURL": "http://jupiter.prostreaming.net/altmixxlow",
+     "imageURL": "station-altvault.png",
+     "desc": "Your Lifestyle... Your Music!",
+     "longDesc": "The Alt Vault live broadcasting from Kissimmee, FL. The Alt Vault broadcast various kind of 90s’s pop, rock, classic, talk, culture, dance, electronic etc. The Alt Vault streaming music and programs both in online. The Alt Vault is 24 hour 7 day live Online radio."
      },
      {
      "name": "Classic Rock",
