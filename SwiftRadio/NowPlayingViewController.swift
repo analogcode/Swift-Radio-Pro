@@ -467,14 +467,14 @@ extension NowPlayingViewController: FRadioPlayerDelegate {
         startNowPlayingAnimation()
     }
     
-    func radioPlayer(_ player: FRadioPlayer, artworkDidChange artURL: URL?) {
+    func radioPlayer(_ player: FRadioPlayer, artworkDidChange artworkURL: URL?) {
         
-        guard let artURL = artURL else {
+        guard let artworkURL = artworkURL else {
             resetAlbumArtwork()
             return
         }
         
-        track.artworkURL = artURL.absoluteString
+        track.artworkURL = artworkURL.absoluteString
         track.artworkLoaded = true
         updateAlbumArtwork()
     }

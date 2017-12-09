@@ -95,9 +95,9 @@ import AVFoundation
      Called when the player gets the artwork for the playing song
      
      - parameter player: FRadioPlayer
-     - parameter artURL: URL for the artwork from iTunes
+     - parameter artworkURL: URL for the artwork from iTunes
      */
-    @objc optional func radioPlayer(_ player: FRadioPlayer, artworkDidChange artURL: URL?)
+    @objc optional func radioPlayer(_ player: FRadioPlayer, artworkDidChange artworkURL: URL?)
 }
 
 // MARK: - FRadioPlayer
@@ -140,25 +140,26 @@ open class FRadioPlayer: NSObject {
         return player?.rate
     }
     
-    // MARK: - Private properties
+    /// Check if the player is playing
+    open private(set) var isPlaying: Bool = false {
+        didSet {
+            guard oldValue != isPlaying else { return }
+            delegate?.radioPlayer?(self, player: isPlaying)
+        }
+    }
     
-    /// AVPlayer
-    private var player: AVPlayer?
-    
-    /// Player state of type `FRadioPlayerState`
-    private var state = FRadioPlayerState.urlNotSet {
+    /// Player current state of type `FRadioPlayerState`
+    open private(set) var state = FRadioPlayerState.urlNotSet {
         didSet {
             guard oldValue != state else { return }
             delegate?.radioPlayer(self, playerStateDidChange: state)
         }
     }
     
-    /// Check is playing state
-    private var isPlaying: Bool = false {
-        didSet {
-            delegate?.radioPlayer?(self, player: isPlaying)
-        }
-    }
+    // MARK: - Private properties
+    
+    /// AVPlayer
+    private var player: AVPlayer?
     
     /// Last player item
     private var lastPlayerItem: AVPlayerItem?
@@ -426,7 +427,7 @@ open class FRadioPlayer: NSObject {
             case "playbackLikelyToKeepUp":
                 
                 self.state = item.isPlaybackLikelyToKeepUp ? .loadingFinished : .loading
-            
+                
             case "timedMetadata":
                 let rawValue = item.timedMetadata?.first?.value as? String
                 timedMetadataDidChange(rawValue: rawValue)
@@ -437,3 +438,4 @@ open class FRadioPlayer: NSObject {
         }
     }
 }
+
