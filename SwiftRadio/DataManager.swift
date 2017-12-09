@@ -51,22 +51,6 @@ class DataManager {
     }
     
     //*****************************************************************
-    // Get LastFM/iTunes Data
-    //*****************************************************************
-    
-    class func getTrackDataWithSuccess(queryURL: String, success: @escaping ((_ metaData: Data?) -> Void)) {
-
-        loadDataFromURL(url: URL(string: queryURL)!) { data, _ in
-            // Return Data
-            if let urlData = data {
-                success(urlData)
-            } else {
-                if kDebugLog { print("API TIMEOUT OR ERROR") }
-            }
-        }
-    }
-    
-    //*****************************************************************
     // REUSABLE DATA/API CALL METHOD
     //*****************************************************************
     
