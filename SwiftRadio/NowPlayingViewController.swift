@@ -17,7 +17,6 @@ import MediaPlayer
 protocol NowPlayingViewControllerDelegate: class {
     func songMetaDataDidUpdate(track: Track)
     func artworkDidUpdate(track: Track)
-    func trackPlayingToggled(track: Track)
 }
 
 //*****************************************************************
@@ -82,7 +81,7 @@ class NowPlayingViewController: UIViewController {
             updateLabels()
             albumImageView.image = track.artworkImage
             
-            if !track.isPlaying {
+            if !radioPlayer.isPlaying {
                 pausePressed()
             } else {
                 nowPlayingImageView.startAnimating()
@@ -144,8 +143,6 @@ class NowPlayingViewController: UIViewController {
         songLabel.animate()
         
         resetAlbumArtwork()
-        
-        track.isPlaying = true
     }
     
     //*****************************************************************
@@ -153,7 +150,6 @@ class NowPlayingViewController: UIViewController {
     //*****************************************************************
     
     @IBAction func playPressed() {
-        track.isPlaying = true
         playButtonEnable(enabled: false)
         radioPlayer.play()
         updateLabels()
@@ -165,21 +161,16 @@ class NowPlayingViewController: UIViewController {
         // Start NowPlaying Animation
         nowPlayingImageView.startAnimating()
         
-        // Update StationsVC
-        self.delegate?.trackPlayingToggled(track: self.track)
     }
     
     @IBAction func pausePressed() {
-        track.isPlaying = false
         
         playButtonEnable()
         
         radioPlayer.pause()
         updateLabels(statusMessage: "Station Paused...")
         nowPlayingImageView.stopAnimating()
-        
-        // Update StationsVC
-        self.delegate?.trackPlayingToggled(track: self.track)
+
     }
     
     @IBAction func volumeChanged(_ sender:UISlider) {
@@ -235,11 +226,9 @@ class NowPlayingViewController: UIViewController {
         if enabled {
             playButton.isEnabled = true
             pauseButton.isEnabled = false
-            track.isPlaying = false
         } else {
             playButton.isEnabled = false
             pauseButton.isEnabled = true
-            track.isPlaying = true
         }
     }
     

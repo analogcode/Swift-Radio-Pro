@@ -22,6 +22,7 @@ class StationsViewController: UIViewController {
     var refreshControl: UIRefreshControl!
     var firstTime = true
     
+    let radioPlayer = FRadioPlayer.shared
     var searchedStations = [RadioStation]()
     var searchController : UISearchController!
     
@@ -86,7 +87,7 @@ class StationsViewController: UIViewController {
         }
         
         // If a track is playing, display title & artist information and animation
-        if currentTrack != nil && currentTrack!.isPlaying {
+        if currentTrack != nil && radioPlayer.isPlaying {
             let title = currentStation!.stationName + ": " + currentTrack!.title + " - " + currentTrack!.artist + "..."
             stationNowPlayingButton.setTitle(title, for: .normal)
             nowPlayingAnimationImageView.startAnimating()
@@ -363,10 +364,6 @@ extension StationsViewController: NowPlayingViewControllerDelegate {
         stationNowPlayingButton.setTitle(title, for: .normal)
     }
     
-    func trackPlayingToggled(track: Track) {
-        currentTrack?.isPlaying = track.isPlaying
-    }
-
 }
 
 //*****************************************************************

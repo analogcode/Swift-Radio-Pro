@@ -18,5 +18,4 @@ struct Track {
 	var artworkURL: String = ""
 	var artworkImage = UIImage(named: "albumArt")
 	var artworkLoaded = false
-	var isPlaying: Bool = false
 }
