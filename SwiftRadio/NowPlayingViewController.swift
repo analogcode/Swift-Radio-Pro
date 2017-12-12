@@ -62,7 +62,7 @@ class NowPlayingViewController: UIViewController {
         optimizeForDeviceSize()
 
         // Set View Title
-        self.title = currentStation.stationName
+        self.title = currentStation.name
         
         // Create Now Playing BarItem
         createNowPlayingAnimation()
@@ -133,7 +133,7 @@ class NowPlayingViewController: UIViewController {
     
     func stationDidChange() {
         
-        radioPlayer.radioURL = URL(string: currentStation.stationStreamURL)
+        radioPlayer.radioURL = URL(string: currentStation.streamURL)
         
         updateLabels(statusMessage: "Loading Station...")
         
@@ -203,7 +203,7 @@ class NowPlayingViewController: UIViewController {
         if statusMessage != "" {
             // There's a an interruption or pause in the audio queue
             songLabel.text = statusMessage
-            artistLabel.text = currentStation.stationName
+            artistLabel.text = currentStation.name
             
         } else {
             // Radio is (hopefully) streaming properly
@@ -218,7 +218,7 @@ class NowPlayingViewController: UIViewController {
             stationDescLabel.isHidden = true
         } else {
             stationDescLabel.isHidden = false
-            stationDescLabel.text = currentStation.stationDesc
+            stationDescLabel.text = currentStation.desc
         }
     }
     
@@ -264,7 +264,7 @@ class NowPlayingViewController: UIViewController {
     
     func resetAlbumArtwork() {
         track.artworkLoaded = false
-        track.artworkURL = currentStation.stationImageURL
+        track.artworkURL = currentStation.imageURL
         updateAlbumArtwork()
         stationDescLabel.isHidden = false
     }
@@ -347,7 +347,7 @@ class NowPlayingViewController: UIViewController {
     }
     
     @IBAction func shareButtonPressed(_ sender: UIButton) {
-        let songToShare = "I'm listening to \(track.title) on \(currentStation.stationName) via Swift Radio Pro"
+        let songToShare = "I'm listening to \(track.title) on \(currentStation.name) via Swift Radio Pro"
         let activityViewController = UIActivityViewController(activityItems: [songToShare, track.artworkImage!], applicationActivities: nil)
         present(activityViewController, animated: true, completion: nil)
     }
@@ -422,14 +422,14 @@ extension NowPlayingViewController: FRadioPlayerDelegate {
         // TODO: refactor to separate function
         // Reset label/artwork to it's initial state
         resetAlbumArtwork()
-        artistLabel.text = currentStation.stationDesc
-        songLabel.text = currentStation.stationName
+        artistLabel.text = currentStation.desc
+        songLabel.text = currentStation.name
         
         // TODO: Should listen to Track didSet
-        track.artist = artistName ?? currentStation.stationDesc
-        track.title = trackName ?? currentStation.stationName
+        track.artist = artistName ?? currentStation.desc
+        track.title = trackName ?? currentStation.name
         
-        if track.title != currentStation.stationName {
+        if track.title != currentStation.name {
             artistLabel.text = self.track.artist
             songLabel.text = self.track.title
             updateUserActivityState(self.userActivity!)

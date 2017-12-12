@@ -15,41 +15,19 @@ import UIKit
 // Class inherits from NSObject so that you may easily add features
 // i.e. Saving favorite stations to CoreData, etc
 
-class RadioStation: NSObject {
+struct RadioStation: Codable {
     
-    var stationName     : String
-    var stationStreamURL: String
-    var stationImageURL : String
-    var stationDesc     : String
-    var stationLongDesc : String
+    var name: String
+    var streamURL: String
+    var imageURL: String
+    var desc: String
+    var longDesc: String
     
-    init(name: String, streamURL: String, imageURL: String, desc: String, longDesc: String) {
-        self.stationName      = name
-        self.stationStreamURL = streamURL
-        self.stationImageURL  = imageURL
-        self.stationDesc      = desc
-        self.stationLongDesc  = longDesc
+    init(name: String, streamURL: String, imageURL: String, desc: String, longDesc: String = "") {
+        self.name = name
+        self.streamURL = streamURL
+        self.imageURL = imageURL
+        self.desc = desc
+        self.longDesc = longDesc
     }
-    
-    // Convenience init without longDesc
-    convenience init(name: String, streamURL: String, imageURL: String, desc: String) {
-        self.init(name: name, streamURL: streamURL, imageURL: imageURL, desc: desc, longDesc: "")
-    }
-    
-    //*****************************************************************
-    // MARK: - JSON Parsing into object
-    //*****************************************************************
-    
-    class func parseStation(stationJSON: JSON) -> (RadioStation) {
-        
-        let name      = stationJSON["name"].string ?? ""
-        let streamURL = stationJSON["streamURL"].string ?? ""
-        let imageURL  = stationJSON["imageURL"].string ?? ""
-        let desc      = stationJSON["desc"].string ?? ""
-        let longDesc  = stationJSON["longDesc"].string ?? ""
-        
-        let station = RadioStation(name: name, streamURL: streamURL, imageURL: imageURL, desc: desc, longDesc: longDesc)
-        return station
-    }
-
 }

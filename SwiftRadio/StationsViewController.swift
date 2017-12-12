@@ -88,7 +88,7 @@ class StationsViewController: UIViewController {
         
         // If a track is playing, display title & artist information and animation
         if currentTrack != nil && radioPlayer.isPlaying {
-            let title = currentStation!.stationName + ": " + currentTrack!.title + " - " + currentTrack!.artist + "..."
+            let title = currentStation!.name + ": " + currentTrack!.title + " - " + currentTrack!.artist + "..."
             stationNowPlayingButton.setTitle(title, for: .normal)
             nowPlayingAnimationImageView.startAnimating()
         } else {
@@ -189,29 +189,24 @@ class StationsViewController: UIViewController {
         // Get the Radio Stations
         DataManager.getStationDataWithSuccess() { (data) in
             
-            if kDebugLog { print("Stations JSON Found") }
-            
-            let json = try! JSON(data: data! as Data)
-            
-            if let stationArray = json["station"].array {
-                
-                for stationJSON in stationArray {
-                    let station = RadioStation.parseStation(stationJSON: stationJSON)
-                    self.stations.append(station)
-                }
-                
-                // stations array populated, update table on main queue
-                DispatchQueue.main.async(execute: {
+            // Turn off network indicator in status bar
+            defer {
+                DispatchQueue.main.async {
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                    // TODO: Call reload in the didSet for self.stations. Also add check for the current station if it still exist
                     self.tableView.reloadData()
                     self.view.setNeedsDisplay()
-                })
-                
-            } else {
-                if kDebugLog { print("JSON Station Loading Error") }
+                }
             }
             
-            // Turn off network indicator in status bar
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            if kDebugLog { print("Stations JSON Found") }
+            
+            guard let data = data, let jsonDictionary = try? JSONDecoder().decode([String: [RadioStation]].self, from: data), let stationsArray = jsonDictionary["station"] else {
+                if kDebugLog { print("JSON Station Loading Error") }
+                return
+            }
+            
+            self.stations = stationsArray
         }
     }
     
@@ -338,7 +333,7 @@ extension StationsViewController: UITableViewDelegate {
         if !stations.isEmpty {
             
             // Set Now Playing Buttons
-            let title = stations[indexPath.row].stationName + " - Now Playing..."
+            let title = stations[indexPath.row].name + " - Now Playing..."
             stationNowPlayingButton.setTitle(title, for: .normal)
             stationNowPlayingButton.isEnabled = true
             
@@ -360,7 +355,7 @@ extension StationsViewController: NowPlayingViewControllerDelegate {
     
     func songMetaDataDidUpdate(track: Track) {
         currentTrack = track
-        let title = currentStation!.stationName + ": " + currentTrack!.title + " - " + currentTrack!.artist + "..."
+        let title = currentStation!.name + ": " + currentTrack!.title + " - " + currentTrack!.artist + "..."
         stationNowPlayingButton.setTitle(title, for: .normal)
     }
     
