@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2C5545BD1C1124DE00728469 /* SwiftRadioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5545BC1C1124DE00728469 /* SwiftRadioUITests.swift */; };
-		5F22B9E01F72ABEF00CB5911 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F22B9DF1F72ABEF00CB5911 /* SwiftyJSON.swift */; };
 		5F22BA3C1F72AD5A00CB5911 /* SpringLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F22BA1E1F72AD3700CB5911 /* SpringLabel.swift */; };
 		5F22BA3D1F72AD5A00CB5911 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F22BA1F1F72AD3900CB5911 /* BlurView.swift */; };
 		5F22BA3E1F72AD5A00CB5911 /* DesignableTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F22BA201F72AD3B00CB5911 /* DesignableTabBarController.swift */; };
@@ -73,7 +72,6 @@
 		2C5545BA1C1124DE00728469 /* SwiftRadioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftRadioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C5545BC1C1124DE00728469 /* SwiftRadioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftRadioUITests.swift; sourceTree = "<group>"; };
 		2C5545BE1C1124DE00728469 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5F22B9DF1F72ABEF00CB5911 /* SwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		5F22BA1E1F72AD3700CB5911 /* SpringLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringLabel.swift; sourceTree = "<group>"; };
 		5F22BA1F1F72AD3900CB5911 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		5F22BA201F72AD3B00CB5911 /* DesignableTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableTabBarController.swift; sourceTree = "<group>"; };
@@ -161,7 +159,6 @@
 			isa = PBXGroup;
 			children = (
 				CAA7C15A1FD77F3A003CABDF /* FRadioPlayer */,
-				5F22B9DF1F72ABEF00CB5911 /* SwiftyJSON.swift */,
 				5F22BA1D1F72ACF100CB5911 /* Spring */,
 			);
 			path = Libraries;
@@ -441,7 +438,6 @@
 				5F22BA401F72AD5A00CB5911 /* SpringImageView.swift in Sources */,
 				5F22BA511F72AD5A00CB5911 /* TransitionZoom.swift in Sources */,
 				5F22BA471F72AD5A00CB5911 /* DesignableTextField.swift in Sources */,
-				5F22B9E01F72ABEF00CB5911 /* SwiftyJSON.swift in Sources */,
 				5F22BA4C1F72AD5A00CB5911 /* ImageLoader.swift in Sources */,
 				5F22BA451F72AD5A00CB5911 /* DesignableLabel.swift in Sources */,
 				94D260911B45D20000DE671C /* SwiftRadio-Settings.swift in Sources */,
