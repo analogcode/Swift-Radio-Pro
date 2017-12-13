@@ -12,9 +12,6 @@ import UIKit
 // Radio Station
 //*****************************************************************
 
-// Class inherits from NSObject so that you may easily add features
-// i.e. Saving favorite stations to CoreData, etc
-
 struct RadioStation: Codable {
     
     var name: String
@@ -29,5 +26,12 @@ struct RadioStation: Codable {
         self.imageURL = imageURL
         self.desc = desc
         self.longDesc = longDesc
+    }
+}
+
+extension RadioStation: Equatable {
+    
+    static func ==(lhs: RadioStation, rhs: RadioStation) -> Bool {
+        return (lhs.name == rhs.name) && (lhs.streamURL == rhs.streamURL) && (lhs.imageURL == rhs.imageURL) && (lhs.desc == rhs.desc) && (lhs.longDesc == rhs.longDesc)
     }
 }
