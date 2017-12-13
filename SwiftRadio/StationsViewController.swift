@@ -24,7 +24,9 @@ class StationsViewController: UIViewController {
     
     let radioPlayer = FRadioPlayer.shared
     var searchedStations = [RadioStation]()
-    var searchController : UISearchController!
+    var searchController: UISearchController = {
+        return UISearchController(searchResultsController: nil)
+    }()
     
     //*****************************************************************
     // MARK: - ViewDidLoad
@@ -122,35 +124,6 @@ class StationsViewController: UIViewController {
             btn.image = UIImage(named: "btn-nowPlaying")
             self.navigationItem.rightBarButtonItem = btn
         }
-    }
-    
-    func setupSearchController() {
-        // Set the UISearchController
-        searchController = UISearchController(searchResultsController: nil)
-        
-        if searchable {
-            searchController.searchResultsUpdater = self
-            searchController.dimsBackgroundDuringPresentation = false
-            searchController.searchBar.sizeToFit()
-            
-            // Add UISearchController to the tableView
-            tableView.tableHeaderView = searchController?.searchBar
-            tableView.tableHeaderView?.backgroundColor = UIColor.clear
-            definesPresentationContext = true
-            searchController.hidesNavigationBarDuringPresentation = false
-            
-            // Style the UISearchController
-            searchController.searchBar.barTintColor = UIColor.clear
-            searchController.searchBar.tintColor = UIColor.white
-            
-            // Hide the UISearchController
-            tableView.setContentOffset(CGPoint(x: 0.0, y: searchController.searchBar.frame.size.height), animated: false)
-            
-            // Set a black keyborad for UISearchController's TextField
-            let searchTextField = searchController.searchBar.value(forKey: "_searchField") as! UITextField
-            searchTextField.keyboardAppearance = UIKeyboardAppearance.dark
-        }
-
     }
     
     //*****************************************************************
@@ -362,10 +335,35 @@ extension StationsViewController: NowPlayingViewControllerDelegate {
 }
 
 //*****************************************************************
-// MARK: - UISearchControllerDelegate
+// MARK: - UISearchControllerDelegate / Setup
 //*****************************************************************
 
 extension StationsViewController: UISearchResultsUpdating {
+    
+    func setupSearchController() {
+        guard searchable else { return }
+        
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.sizeToFit()
+        
+        // Add UISearchController to the tableView
+        tableView.tableHeaderView = searchController.searchBar
+        tableView.tableHeaderView?.backgroundColor = UIColor.clear
+        definesPresentationContext = true
+        searchController.hidesNavigationBarDuringPresentation = false
+        
+        // Style the UISearchController
+        searchController.searchBar.barTintColor = UIColor.clear
+        searchController.searchBar.tintColor = UIColor.white
+        
+        // Hide the UISearchController
+        tableView.setContentOffset(CGPoint(x: 0.0, y: searchController.searchBar.frame.size.height), animated: false)
+        
+        // Set a black keyborad for UISearchController's TextField
+        let searchTextField = searchController.searchBar.value(forKey: "_searchField") as! UITextField
+        searchTextField.keyboardAppearance = UIKeyboardAppearance.dark
+    }
 
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchText = searchController.searchBar.text else { return }
