@@ -368,20 +368,10 @@ extension StationsViewController: NowPlayingViewControllerDelegate {
 extension StationsViewController: UISearchResultsUpdating {
 
     func updateSearchResults(for searchController: UISearchController) {
-    
-        // Empty the searchedStations array
+        guard let searchText = searchController.searchBar.text else { return }
+        
         searchedStations.removeAll(keepingCapacity: false)
-    
-        // Create a Predicate
-        let searchPredicate = NSPredicate(format: "SELF.stationName CONTAINS[c] %@", searchController.searchBar.text!)
-    
-        // Create an NSArray with a Predicate
-        let array = (self.stations as NSArray).filtered(using: searchPredicate)
-    
-        // Set the searchedStations with search result array
-        searchedStations = array as! [RadioStation]
-    
-        // Reload the tableView
+        searchedStations = stations.filter { $0.name.range(of: searchText, options: [.caseInsensitive]) != nil }
         self.tableView.reloadData()
     }
     
