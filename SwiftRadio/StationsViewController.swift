@@ -16,7 +16,13 @@ class StationsViewController: UIViewController {
     @IBOutlet weak var stationNowPlayingButton: UIButton!
     @IBOutlet weak var nowPlayingAnimationImageView: UIImageView!
     
-    var stations = [RadioStation]()
+    var stations = [RadioStation]() {
+        didSet {
+            guard stations != oldValue else { return }
+            stationsDidUpdate()
+        }
+    }
+    
     var currentStation: RadioStation?
     var currentTrack: Track?
     var refreshControl: UIRefreshControl!
@@ -140,7 +146,6 @@ class StationsViewController: UIViewController {
     
     @objc func refresh(sender: AnyObject) {
         // Pull to Refresh
-        stations.removeAll(keepingCapacity: false)
         loadStationsFromJSON()
         
         // Wait 2 seconds then refresh screen
@@ -164,12 +169,7 @@ class StationsViewController: UIViewController {
             
             // Turn off network indicator in status bar
             defer {
-                DispatchQueue.main.async {
-                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                    // TODO: Call reload in the didSet for self.stations. Also add check for the current station if it still exist
-                    self.tableView.reloadData()
-                    self.view.setNeedsDisplay()
-                }
+                DispatchQueue.main.async { UIApplication.shared.isNetworkActivityIndicatorVisible = false }
             }
             
             if kDebugLog { print("Stations JSON Found") }
@@ -220,6 +220,28 @@ class StationsViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    //*****************************************************************
+    // MARK: - Private helpers
+    //*****************************************************************
+    
+    private func stationsDidUpdate() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+            guard let currentStation = self.currentStation else { return }
+            if self.stations.index(of: currentStation) == nil { self.resetCurrentStation() }
+        }
+    }
+    
+    private func resetCurrentStation() {
+        currentStation = nil
+        currentTrack = nil
+        radioPlayer.radioURL = nil
+        firstTime = true
+        nowPlayingAnimationImageView.stopAnimating()
+        stationNowPlayingButton.setTitle("Choose a station above to begin", for: .normal)
+        stationNowPlayingButton.isEnabled = false
     }
 }
 
