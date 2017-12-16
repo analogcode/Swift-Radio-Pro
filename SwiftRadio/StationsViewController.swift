@@ -61,20 +61,6 @@ class StationsViewController: UIViewController {
         // Create NowPlaying Animation
         createNowPlayingAnimation()
         
-        // Set AVFoundation category, required for background audio
-        var error: NSError?
-        var success: Bool
-        do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-            success = true
-        } catch let error1 as NSError {
-            error = error1
-            success = false
-        }
-        if !success {
-            if kDebugLog { print("Failed to set audio session category.  Error: \(error!)") }
-        }
-        
         // Set audioSession as active
         do {
             try AVAudioSession.sharedInstance().setActive(true)
