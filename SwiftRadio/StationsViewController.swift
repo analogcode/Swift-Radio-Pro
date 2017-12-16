@@ -242,6 +242,7 @@ class StationsViewController: UIViewController {
         nowPlayingAnimationImageView.stopAnimating()
         stationNowPlayingButton.setTitle("Choose a station above to begin", for: .normal)
         stationNowPlayingButton.isEnabled = false
+        navigationItem.rightBarButtonItem = nil
     }
 }
 
