@@ -33,18 +33,16 @@ class AboutViewController: UIViewController {
         let configuredMailComposeViewController = configureMailComposeViewController(recepients: receipients, subject: subject, messageBody: messageBody)
         
         if canSendMail() {
-            self.present(configuredMailComposeViewController, animated: true, completion: nil)
+            present(configuredMailComposeViewController, animated: true, completion: nil)
         } else {
             showSendMailErrorAlert()
         }
     }
     
     @IBAction func websiteButtonDidTouch(_ sender: UIButton) {
-        
         // Use your own website here
-        if let url = URL(string: "http://matthewfecher.com") {
-            UIApplication.shared.openURL(url)
-        }
+        guard let url = URL(string: "http://matthewfecher.com") else { return }
+        UIApplication.shared.openURL(url)
     }
 
   }
