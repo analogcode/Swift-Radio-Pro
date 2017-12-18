@@ -11,10 +11,21 @@ import MediaPlayer
 import AVFoundation
 
 class StationsViewController: UIViewController {
+    
+    // MARK: - IB UI
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var stationNowPlayingButton: UIButton!
     @IBOutlet weak var nowPlayingAnimationImageView: UIImageView!
+    
+    // MARK: - Properties
+    
+    var currentStation: RadioStation?
+    var currentTrack: Track?
+    var firstTime = true
+    let radioPlayer = FRadioPlayer.shared
+    
+    // MARK: - Lists
     
     var stations = [RadioStation]() {
         didSet {
@@ -23,15 +34,16 @@ class StationsViewController: UIViewController {
         }
     }
     
-    var currentStation: RadioStation?
-    var currentTrack: Track?
-    var refreshControl: UIRefreshControl!
-    var firstTime = true
-    
-    let radioPlayer = FRadioPlayer.shared
     var searchedStations = [RadioStation]()
+    
+    // MARK: - UI
+    
     var searchController: UISearchController = {
         return UISearchController(searchResultsController: nil)
+    }()
+    
+    var refreshControl: UIRefreshControl = {
+        return UIRefreshControl()
     }()
     
     //*****************************************************************
@@ -45,15 +57,13 @@ class StationsViewController: UIViewController {
         let cellNib = UINib(nibName: "NothingFoundCell", bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: "NothingFound")
         
-        // preferredStatusBarStyle()
-        
         // Load Data
         loadStationsFromJSON()
         
         // Setup TableView
-        tableView.backgroundColor = UIColor.clear
+        tableView.backgroundColor = .clear
         tableView.backgroundView = nil
-        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        tableView.separatorStyle = .none
         
         // Setup Pull to Refresh
         setupPullToRefresh()
@@ -64,8 +74,8 @@ class StationsViewController: UIViewController {
         // Set audioSession as active
         do {
             try AVAudioSession.sharedInstance().setActive(true)
-        } catch let error2 as NSError {
-            if kDebugLog { print("audioSession setActive error \(error2)") }
+        } catch {
+            if kDebugLog { print("audioSession could not be activated") }
         }
         
         // Setup Search Bar
@@ -76,11 +86,10 @@ class StationsViewController: UIViewController {
         self.title = "Swift Radio"
         
         // If a station has been selected, create "Now Playing" button to get back to current station
-        if !firstTime {
-            createNowPlayingBarButton()
-        }
+        if !firstTime { createNowPlayingBarButton() }
         
         // If a track is playing, display title & artist information and animation
+        // TODO: Needs to be refactored
         if currentTrack != nil && radioPlayer.isPlaying {
             let title = currentStation!.name + ": " + currentTrack!.title + " - " + currentTrack!.artist + "..."
             stationNowPlayingButton.setTitle(title, for: .normal)
@@ -97,12 +106,11 @@ class StationsViewController: UIViewController {
     //*****************************************************************
     
     func setupPullToRefresh() {
-        self.refreshControl = UIRefreshControl()
-        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh", attributes: [NSAttributedStringKey.foregroundColor:UIColor.white])
-        self.refreshControl.backgroundColor = UIColor.black
-        self.refreshControl.tintColor = UIColor.white
-        self.refreshControl.addTarget(self, action: #selector(StationsViewController.refresh), for: UIControlEvents.valueChanged)
-        self.tableView.addSubview(refreshControl)
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh", attributes: [.foregroundColor: UIColor.white])
+        refreshControl.backgroundColor = .black
+        refreshControl.tintColor = .white
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        tableView.addSubview(refreshControl)
     }
     
     func createNowPlayingAnimation() {
@@ -111,11 +119,10 @@ class StationsViewController: UIViewController {
     }
     
     func createNowPlayingBarButton() {
-        if self.navigationItem.rightBarButtonItem == nil {
-            let btn = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action:#selector(self.nowPlayingBarButtonPressed))
-            btn.image = UIImage(named: "btn-nowPlaying")
-            self.navigationItem.rightBarButtonItem = btn
-        }
+        guard navigationItem.rightBarButtonItem == nil else { return }
+        let btn = UIBarButtonItem(title: "", style: .plain, target: self, action:#selector(nowPlayingBarButtonPressed))
+        btn.image = UIImage(named: "btn-nowPlaying")
+        navigationItem.rightBarButtonItem = btn
     }
     
     //*****************************************************************
@@ -174,36 +181,34 @@ class StationsViewController: UIViewController {
     //*****************************************************************
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "NowPlaying" {
+        guard segue.identifier == "NowPlaying", let nowPlayingVC = segue.destination as? NowPlayingViewController else { return }
             
-            self.title = ""
-            firstTime = false
+        title = ""
+        firstTime = false
+        nowPlayingVC.delegate = self
+        
+        // TODO: Needs to be refactored to remove the nested `ifs`
+        if let indexPath = (sender as? NSIndexPath) {
+            // User clicked on row, load/reset station
+            if searchController.isActive {
+                currentStation = searchedStations[indexPath.row]
+            } else {
+                currentStation = stations[indexPath.row]
+            }
+            nowPlayingVC.currentStation = currentStation
+            nowPlayingVC.newStation = true
             
-            let nowPlayingVC = segue.destination as! NowPlayingViewController
-            nowPlayingVC.delegate = self
-            
-            if let indexPath = (sender as? NSIndexPath) {
-                // User clicked on row, load/reset station
-                if searchController.isActive {
-                    currentStation = searchedStations[indexPath.row]
-                } else {
-                    currentStation = stations[indexPath.row]
-                }
+        } else {
+            // User clicked on a now playing button
+            if let currentTrack = currentTrack {
+                // Return to NowPlaying controller without reloading station
+                nowPlayingVC.track = currentTrack
+                nowPlayingVC.currentStation = currentStation
+                nowPlayingVC.newStation = false
+            } else {
+                // Issue with track, reload station
                 nowPlayingVC.currentStation = currentStation
                 nowPlayingVC.newStation = true
-            
-            } else {
-                // User clicked on a now playing button
-                if let currentTrack = currentTrack {
-                    // Return to NowPlaying controller without reloading station
-                    nowPlayingVC.track = currentTrack
-                    nowPlayingVC.currentStation = currentStation
-                    nowPlayingVC.newStation = false
-                } else {
-                    // Issue with track, reload station
-                    nowPlayingVC.currentStation = currentStation
-                    nowPlayingVC.newStation = true
-                }
             }
         }
     }
@@ -250,17 +255,10 @@ extension StationsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        // The UISeachController is active
         if searchController.isActive {
             return searchedStations.count
-            
-        // The UISeachController is not active
         } else {
-            if stations.count == 0 {
-                return 1
-            } else {
-                return stations.count
-            }
+            return stations.count == 0 ? 1 : stations.count
         }
     }
     
@@ -268,34 +266,18 @@ extension StationsViewController: UITableViewDataSource {
         
         if stations.isEmpty {
             let cell = tableView.dequeueReusableCell(withIdentifier: "NothingFound", for: indexPath) 
-            cell.backgroundColor = UIColor.clear
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.backgroundColor = .clear
+            cell.selectionStyle = .none
             return cell
             
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "StationCell", for: indexPath) as! StationTableViewCell
             
             // alternate background color
-            if indexPath.row % 2 == 0 {
-                cell.backgroundColor = UIColor.clear
-            } else {
-                cell.backgroundColor = UIColor.black.withAlphaComponent(0.2)
-            }
+            cell.backgroundColor = (indexPath.row % 2 == 0) ? UIColor.clear : UIColor.black.withAlphaComponent(0.2)
             
-            // Configure the cell...
-            let station = stations[indexPath.row]
+            let station = searchController.isActive ? searchedStations[indexPath.row] : stations[indexPath.row]
             cell.configureStationCell(station: station)
-            
-            // The UISeachController is active
-            if searchController.isActive {
-                let station = searchedStations[indexPath.row]
-                cell.configureStationCell(station: station)
-                
-            // The UISeachController is not active
-            } else {
-                let station = stations[indexPath.row]
-                cell.configureStationCell(station: station)
-            }
             
             return cell
         }
@@ -315,6 +297,7 @@ extension StationsViewController: UITableViewDelegate {
         if !stations.isEmpty {
             
             // Set Now Playing Buttons
+            // TODO: Should be called when currentStation gets updated
             let title = stations[indexPath.row].name + " - Now Playing..."
             stationNowPlayingButton.setTitle(title, for: .normal)
             stationNowPlayingButton.isEnabled = true
@@ -330,6 +313,7 @@ extension StationsViewController: UITableViewDelegate {
 
 extension StationsViewController: NowPlayingViewControllerDelegate {
     
+    // TODO: Not called when NowPlayingViewController is not presented
     func artworkDidUpdate(track: Track) {
         currentTrack?.artworkURL = track.artworkURL
         currentTrack?.artworkImage = track.artworkImage
@@ -337,6 +321,7 @@ extension StationsViewController: NowPlayingViewControllerDelegate {
     
     func songMetaDataDidUpdate(track: Track) {
         currentTrack = track
+        // TODO: Remove the forced unwrap currentStation / currentTrack
         let title = currentStation!.name + ": " + currentTrack!.title + " - " + currentTrack!.artist + "..."
         stationNowPlayingButton.setTitle(title, for: .normal)
     }
