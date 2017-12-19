@@ -28,8 +28,7 @@ class NowPlayingViewController: UIViewController {
     @IBOutlet weak var albumHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var albumImageView: SpringImageView!
     @IBOutlet weak var artistLabel: UILabel!
-    @IBOutlet weak var pauseButton: UIButton!
-    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var playingButton: UIButton!
     @IBOutlet weak var songLabel: SpringLabel!
     @IBOutlet weak var stationDescLabel: UILabel!
     @IBOutlet weak var volumeParentView: UIView!
@@ -54,6 +53,7 @@ class NowPlayingViewController: UIViewController {
         
         // Setup Player
         radioPlayer.delegate = self
+        playingButton.isSelected = radioPlayer.isPlaying
         
         // Setup handoff functionality - GH
         setupUserActivity()
@@ -80,12 +80,7 @@ class NowPlayingViewController: UIViewController {
         } else {
             updateLabels()
             albumImageView.image = track.artworkImage
-            
-            if !radioPlayer.isPlaying {
-                pausePressed()
-            } else {
-                nowPlayingImageView.startAnimating()
-            }
+            radioPlayer.isPlaying ? nowPlayingImageView.startAnimating() : pause()
         }
         
         // Setup slider
@@ -149,9 +144,11 @@ class NowPlayingViewController: UIViewController {
     // MARK: - Player Controls (Play/Pause/Volume)
     //*****************************************************************
     
-    @IBAction func playPressed() {
-        playButtonEnable(enabled: false)
-        radioPlayer.play()
+    @IBAction func togglePlaying() {
+        playingButton.isSelected ? radioPlayer.pause() : radioPlayer.play()
+    }
+    
+    func play() {
         updateLabels()
         
         // songLabel Animation
@@ -160,17 +157,11 @@ class NowPlayingViewController: UIViewController {
         
         // Start NowPlaying Animation
         nowPlayingImageView.startAnimating()
-        
     }
     
-    @IBAction func pausePressed() {
-        
-        playButtonEnable()
-        
-        radioPlayer.pause()
+    func pause() {
         updateLabels(statusMessage: "Station Paused...")
         nowPlayingImageView.stopAnimating()
-
     }
     
     @IBAction func volumeChanged(_ sender:UISlider) {
@@ -219,16 +210,6 @@ class NowPlayingViewController: UIViewController {
         } else {
             stationDescLabel.isHidden = false
             stationDescLabel.text = currentStation.desc
-        }
-    }
-    
-    func playButtonEnable(enabled: Bool = true) {
-        if enabled {
-            playButton.isEnabled = true
-            pauseButton.isEnabled = false
-        } else {
-            playButton.isEnabled = false
-            pauseButton.isEnabled = true
         }
     }
     
@@ -375,9 +356,9 @@ class NowPlayingViewController: UIViewController {
             
             switch receivedEvent!.subtype {
             case .remoteControlPlay:
-                playPressed()
+                play()
             case .remoteControlPause:
-                pausePressed()
+                pause()
             default:
                 break
             }
@@ -414,7 +395,8 @@ extension NowPlayingViewController: FRadioPlayerDelegate {
     }
     
     func radioPlayer(_ player: FRadioPlayer, player isPlaying: Bool) {
-
+        playingButton.isSelected = isPlaying
+        isPlaying ? play() : pause()
     }
     
     func radioPlayer(_ player: FRadioPlayer, metadataDidChange artistName: String?, trackName: String?) {

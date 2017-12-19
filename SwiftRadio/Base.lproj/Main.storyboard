@@ -303,41 +303,26 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JCK-L1-2Sc" userLabel="PlayerControls View">
                                 <rect key="frame" x="118.66666666666669" y="322" width="138" height="70"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D3H-co-r2v" userLabel="PlayButton">
-                                        <rect key="frame" x="72.999999999999986" y="20" width="45" height="45"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="45" id="2BM-7x-5Tq"/>
-                                            <constraint firstAttribute="height" constant="45" id="z57-mJ-vRD"/>
-                                        </constraints>
-                                        <state key="normal" image="btn-play">
-                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="playPressed" destination="vXZ-lx-hvc" eventType="touchUpInside" id="0gS-uM-VCB"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k7t-tN-2wp" userLabel="PauseButton">
                                         <rect key="frame" x="19.999999999999986" y="20" width="45" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="45" id="0QP-4Y-L0R"/>
                                             <constraint firstAttribute="height" constant="45" id="9ls-Nq-FcF"/>
                                         </constraints>
-                                        <state key="normal" image="btn-pause">
+                                        <state key="normal" image="btn-play">
                                             <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <state key="selected" image="btn-pause"/>
                                         <connections>
-                                            <action selector="pausePressed" destination="vXZ-lx-hvc" eventType="touchUpInside" id="wrn-Yt-4PQ"/>
+                                            <action selector="togglePlaying" destination="vXZ-lx-hvc" eventType="touchUpInside" id="RHN-FH-Tfq"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="D3H-co-r2v" firstAttribute="top" secondItem="JCK-L1-2Sc" secondAttribute="top" constant="20" id="9W0-st-1Xl"/>
-                                    <constraint firstItem="D3H-co-r2v" firstAttribute="leading" secondItem="k7t-tN-2wp" secondAttribute="trailing" constant="8" id="CCi-Nw-GJ7"/>
                                     <constraint firstItem="k7t-tN-2wp" firstAttribute="top" secondItem="JCK-L1-2Sc" secondAttribute="top" constant="20" id="E2f-2h-Xdf"/>
                                     <constraint firstAttribute="width" constant="138" id="Iau-Ec-PKR"/>
                                     <constraint firstItem="k7t-tN-2wp" firstAttribute="leading" secondItem="JCK-L1-2Sc" secondAttribute="leading" constant="20" id="R9A-GB-GuH"/>
                                     <constraint firstAttribute="height" constant="70" id="ZpW-Ox-31t"/>
-                                    <constraint firstAttribute="trailing" secondItem="D3H-co-r2v" secondAttribute="trailing" constant="20" id="nHo-zR-D9H"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GIj-4c-kRh" userLabel="Company-Button">
@@ -482,8 +467,7 @@
                         <outlet property="albumHeightConstraint" destination="hCD-tK-vVP" id="VlU-n5-VPe"/>
                         <outlet property="albumImageView" destination="obn-8m-awZ" id="13r-WO-VAs"/>
                         <outlet property="artistLabel" destination="v3l-q6-g0h" id="s0B-6Y-MWu"/>
-                        <outlet property="pauseButton" destination="k7t-tN-2wp" id="hY6-Tz-wKV"/>
-                        <outlet property="playButton" destination="D3H-co-r2v" id="7vv-MG-kTG"/>
+                        <outlet property="playingButton" destination="k7t-tN-2wp" id="ZOi-KR-veF"/>
                         <outlet property="songLabel" destination="KC8-ZG-rx5" id="tNh-3K-qWW"/>
                         <outlet property="stationDescLabel" destination="RA9-OX-Xr1" id="uAM-NB-RRM"/>
                         <outlet property="volumeParentView" destination="zuj-rb-EKQ" id="KFg-Rk-y3Q"/>
@@ -687,12 +671,12 @@
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="350" id="L5G-S8-88G"/>
                                 </constraints>
-                                <mutableString key="text">FEATURES: + Displays Artist, Track and Album/Station Art on lock screen.
+                                <string key="text">FEATURES: + Displays Artist, Track and Album/Station Art on lock screen.
 + Background Audio performance
 +iTunes API integration to automatically download album art
 + Loads and parses Icecast metadata (i.e. artist &amp; track names)
 + Ability to update stations from server without resubmitting to the app store.
-</mutableString>
+</string>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -763,6 +747,6 @@
         <image name="vol-min" width="11" height="12"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2md-Am-VN1"/>
+        <segue reference="Z22-bU-Ytg"/>
     </inferredMetricsTieBreakers>
 </document>
