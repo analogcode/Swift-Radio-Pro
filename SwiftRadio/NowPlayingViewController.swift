@@ -322,11 +322,8 @@ class NowPlayingViewController: UIViewController {
     //*****************************************************************
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "InfoDetail" {
-            let infoController = segue.destination as! InfoDetailViewController
-            infoController.currentStation = currentStation
-        }
+        guard segue.identifier == "InfoDetail", let infoController = segue.destination as? InfoDetailViewController else { return }
+        infoController.currentStation = currentStation
     }
     
     @IBAction func infoButtonPressed(_ sender: UIButton) {
