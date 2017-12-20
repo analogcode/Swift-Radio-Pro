@@ -343,6 +343,7 @@ class NowPlayingViewController: UIViewController {
     func updateLockScreen() {
         
         // Update notification/lock screen
+        // TODO: To be updated
         let albumArtwork = MPMediaItemArtwork(image: track.artworkImage!)
         
         MPNowPlayingInfoCenter.default().nowPlayingInfo = [
@@ -350,22 +351,6 @@ class NowPlayingViewController: UIViewController {
             MPMediaItemPropertyTitle: track.title,
             MPMediaItemPropertyArtwork: albumArtwork
         ]
-    }
-    
-    override func remoteControlReceived(with receivedEvent: UIEvent?) {
-        super.remoteControlReceived(with: receivedEvent)
-        
-        if receivedEvent!.type == UIEventType.remoteControl {
-            
-            switch receivedEvent!.subtype {
-            case .remoteControlPlay:
-                play()
-            case .remoteControlPause:
-                pause()
-            default:
-                break
-            }
-        }
     }
     
     //*****************************************************************
@@ -390,6 +375,10 @@ class NowPlayingViewController: UIViewController {
         super.updateUserActivityState(activity)
     }
 }
+
+//*****************************************************************
+// MARK: - FRadioPlayerDelegate
+//*****************************************************************
 
 extension NowPlayingViewController: FRadioPlayerDelegate {
     
