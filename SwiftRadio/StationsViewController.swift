@@ -80,6 +80,9 @@ class StationsViewController: UIViewController {
         
         // Setup Search Bar
         setupSearchController()
+        
+        // Setup Remote Command Center
+        setupRemoteCommandCenter()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -235,6 +238,37 @@ class StationsViewController: UIViewController {
         stationNowPlayingButton.isEnabled = false
         navigationItem.rightBarButtonItem = nil
     }
+    
+    //*****************************************************************
+    // MARK: - Remote Command Center Controls
+    //*****************************************************************
+    
+    func setupRemoteCommandCenter() {
+        // Get the shared MPRemoteCommandCenter
+        let commandCenter = MPRemoteCommandCenter.shared()
+        
+        // Add handler for Play Command
+        commandCenter.playCommand.addTarget { [unowned self] event in
+            if self.radioPlayer.rate == 0.0 {
+                self.radioPlayer.play()
+                return .success
+            }
+            return .commandFailed
+        }
+        
+        // Add handler for Pause Command
+        commandCenter.pauseCommand.addTarget { [unowned self] event in
+            if self.radioPlayer.rate == 1.0 {
+                self.radioPlayer.pause()
+                return .success
+            }
+            return .commandFailed
+        }
+        
+        // TODO: Add previous/Next station support
+    }
+    
+    // TODO: Support Lockscreen updates
 }
 
 //*****************************************************************
