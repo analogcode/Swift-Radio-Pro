@@ -148,6 +148,12 @@ class NowPlayingViewController: UIViewController {
         playingButton.isSelected ? radioPlayer.pause() : radioPlayer.play()
     }
     
+    @IBAction func stopPressed(_ sender: Any) {
+        radioPlayer.stop()
+        updateLabels(statusMessage: "Station Stopped...")
+        nowPlayingImageView.stopAnimating()
+    }
+    
     func play() {
         updateLabels()
         

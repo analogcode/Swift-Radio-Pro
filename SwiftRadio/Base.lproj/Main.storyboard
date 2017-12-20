@@ -317,12 +317,28 @@
                                             <action selector="togglePlaying" destination="vXZ-lx-hvc" eventType="touchUpInside" id="RHN-FH-Tfq"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uXK-bZ-bdt" userLabel="PauseButton">
+                                        <rect key="frame" x="72.999999999999986" y="20" width="45" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="45" id="ebX-Zd-lOX"/>
+                                            <constraint firstAttribute="height" constant="45" id="vqL-YC-gUW"/>
+                                        </constraints>
+                                        <state key="normal" image="btn-stop">
+                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <state key="selected" image="btn-pause"/>
+                                        <connections>
+                                            <action selector="stopPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ER7-uh-Svz"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="k7t-tN-2wp" firstAttribute="top" secondItem="JCK-L1-2Sc" secondAttribute="top" constant="20" id="E2f-2h-Xdf"/>
                                     <constraint firstAttribute="width" constant="138" id="Iau-Ec-PKR"/>
+                                    <constraint firstItem="uXK-bZ-bdt" firstAttribute="top" secondItem="JCK-L1-2Sc" secondAttribute="top" constant="20" id="Pqq-WP-ygx"/>
                                     <constraint firstItem="k7t-tN-2wp" firstAttribute="leading" secondItem="JCK-L1-2Sc" secondAttribute="leading" constant="20" id="R9A-GB-GuH"/>
                                     <constraint firstAttribute="height" constant="70" id="ZpW-Ox-31t"/>
+                                    <constraint firstAttribute="trailing" secondItem="uXK-bZ-bdt" secondAttribute="trailing" constant="20" id="wJ6-vW-ikW"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GIj-4c-kRh" userLabel="Company-Button">
@@ -738,6 +754,7 @@
         <image name="btn-close" width="22" height="22"/>
         <image name="btn-pause" width="44" height="44"/>
         <image name="btn-play" width="44" height="44"/>
+        <image name="btn-stop" width="44" height="44"/>
         <image name="icon-hamburger" width="22" height="16"/>
         <image name="logo" width="60" height="23"/>
         <image name="share" width="32" height="32"/>
