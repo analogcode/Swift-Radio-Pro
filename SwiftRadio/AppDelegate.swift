@@ -58,7 +58,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.endReceivingRemoteControlEvents()
         
     }
+    
+    // MARK: - Remote Controls
 
-   
+    override func remoteControlReceived(with event: UIEvent?) {
+        super.remoteControlReceived(with: event)
+        
+        guard let event = event, event.type == UIEventType.remoteControl else { return }
+        
+        switch event.subtype {
+        case .remoteControlPlay:
+            FRadioPlayer.shared.play()
+        case .remoteControlPause:
+            FRadioPlayer.shared.pause()
+        case .remoteControlTogglePlayPause:
+            // TODO: Add toggle playing support to FRadioPlayer
+            FRadioPlayer.shared.isPlaying ? FRadioPlayer.shared.pause() : FRadioPlayer.shared.play()
+        default:
+            break
+        }
+    }
 }
 
