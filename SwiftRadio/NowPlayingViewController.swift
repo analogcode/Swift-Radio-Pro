@@ -145,7 +145,7 @@ class NowPlayingViewController: UIViewController {
     //*****************************************************************
     
     @IBAction func togglePlaying() {
-        playingButton.isSelected ? radioPlayer.pause() : radioPlayer.play()
+        radioPlayer.isPlaying ? radioPlayer.pause() : radioPlayer.play()
     }
     
     @IBAction func stopPressed(_ sender: Any) {
