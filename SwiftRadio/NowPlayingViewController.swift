@@ -283,9 +283,6 @@ class NowPlayingViewController: UIViewController {
                     self.albumImageView.duration = 2
                     self.albumImageView.animate()
                     self.stationDescLabel.isHidden = true
-
-                    // Update lockscreen
-                    self.updateLockScreen()
                     
                     // Call delegate function that artwork updated
                     self.delegate?.artworkDidUpdate(track: self.track)
@@ -334,23 +331,6 @@ class NowPlayingViewController: UIViewController {
         let songToShare = "I'm listening to \(track.title) on \(currentStation.name) via Swift Radio Pro"
         let activityViewController = UIActivityViewController(activityItems: [songToShare, track.artworkImage!], applicationActivities: nil)
         present(activityViewController, animated: true, completion: nil)
-    }
-    
-    //*****************************************************************
-    // MARK: - MPNowPlayingInfoCenter (Lock screen)
-    //*****************************************************************
-    
-    func updateLockScreen() {
-        
-        // Update notification/lock screen
-        // TODO: To be updated
-        let albumArtwork = MPMediaItemArtwork(image: track.artworkImage!)
-        
-        MPNowPlayingInfoCenter.default().nowPlayingInfo = [
-            MPMediaItemPropertyArtist: track.artist,
-            MPMediaItemPropertyTitle: track.title,
-            MPMediaItemPropertyArtwork: albumArtwork
-        ]
     }
     
     //*****************************************************************
@@ -416,7 +396,6 @@ extension NowPlayingViewController: FRadioPlayerDelegate {
             
             // Query API for album art
             resetAlbumArtwork()
-            updateLockScreen()
             
             delegate?.songMetaDataDidUpdate(track: self.track)
         }

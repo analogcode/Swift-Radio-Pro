@@ -268,7 +268,30 @@ class StationsViewController: UIViewController {
         // TODO: Add previous/Next station support
     }
     
-    // TODO: Support Lockscreen updates
+    //*****************************************************************
+    // MARK: - MPNowPlayingInfoCenter (Lock screen)
+    //*****************************************************************
+    
+    func updateLockScreen(with track: Track?) {
+        
+        // Define Now Playing Info
+        var nowPlayingInfo = [String : Any]()
+        
+        if let image = track?.artworkImage {
+            nowPlayingInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(image: image)
+        }
+        
+        if let artist = track?.artist {
+            nowPlayingInfo[MPMediaItemPropertyArtist] = artist
+        }
+        
+        if let title = track?.title {
+            nowPlayingInfo[MPMediaItemPropertyTitle] = title
+        }
+        
+        // Set the metadata
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
+    }
 }
 
 //*****************************************************************
@@ -351,6 +374,7 @@ extension StationsViewController: NowPlayingViewControllerDelegate {
     func artworkDidUpdate(track: Track) {
         currentTrack?.artworkURL = track.artworkURL
         currentTrack?.artworkImage = track.artworkImage
+        updateLockScreen(with: currentTrack)
     }
     
     func songMetaDataDidUpdate(track: Track) {
@@ -358,6 +382,7 @@ extension StationsViewController: NowPlayingViewControllerDelegate {
         // TODO: Remove the forced unwrap currentStation / currentTrack
         let title = currentStation!.name + ": " + currentTrack!.title + " - " + currentTrack!.artist + "..."
         stationNowPlayingButton.setTitle(title, for: .normal)
+        updateLockScreen(with: currentTrack)
     }
     
 }
