@@ -32,7 +32,7 @@ class NowPlayingViewController: UIViewController {
     @IBOutlet weak var songLabel: SpringLabel!
     @IBOutlet weak var stationDescLabel: UILabel!
     @IBOutlet weak var volumeParentView: UIView!
-    @IBOutlet weak var slider = UISlider()
+    @IBOutlet weak var slider: UISlider!
     
     var currentStation: RadioStation!
     var justBecameActive = false
@@ -40,7 +40,7 @@ class NowPlayingViewController: UIViewController {
     var nowPlayingImageView: UIImageView!
     let radioPlayer = FRadioPlayer.shared
     var track: Track!
-    var mpVolumeSlider = UISlider()
+    var mpVolumeSlider: UISlider?
     
     weak var delegate: NowPlayingViewControllerDelegate?
     
@@ -100,6 +100,13 @@ class NowPlayingViewController: UIViewController {
         NotificationCenter.default.removeObserver(self,
             name: Notification.Name("UIApplicationDidBecomeActiveNotification"),
             object: nil)
+        
+        do {
+            try AVAudioSession.sharedInstance().setActive(true)
+            AVAudioSession.sharedInstance().removeObserver(self, forKeyPath: "outputVolume")
+        } catch {
+            if kDebugLog { print("audioSession is not activted to remove the observer") }
+        }
     }
     
     //*****************************************************************
@@ -109,18 +116,24 @@ class NowPlayingViewController: UIViewController {
     func setupVolumeSlider() {
         // Note: This slider implementation uses a MPVolumeView
         // The volume slider only works in devices, not the simulator.
-        volumeParentView.backgroundColor = UIColor.clear
-        let volumeView = MPVolumeView(frame: volumeParentView.bounds)
-        for view in volumeView.subviews {
-            let uiview: UIView = view as UIView
-            if (uiview.description as NSString).range(of: "MPVolumeSlider").location != NSNotFound {
-                mpVolumeSlider = (uiview as! UISlider)
-            }
+        // TODO: Add MPVolumeView as an invisible subview to replace the system volume popup
+        for subview in MPVolumeView().subviews {
+            guard let volumeSlider = subview as? UISlider else { continue }
+            mpVolumeSlider = volumeSlider
         }
         
-        let thumbImageNormal = UIImage(named: "slider-ball")
-        slider?.setThumbImage(thumbImageNormal, for: .normal)
+        slider.setThumbImage(#imageLiteral(resourceName: "slider-ball"), for: .normal)
         
+        let audioSession = AVAudioSession.sharedInstance()
+        
+        do {
+            try audioSession.setActive(true)
+            audioSession.addObserver(self, forKeyPath: "outputVolume", options: NSKeyValueObservingOptions.new, context: nil)
+        } catch {
+            if kDebugLog { print("audioSession could not be activated") }
+        }
+        
+        slider.value = audioSession.outputVolume
     }
     
     func stationDidChange() {
@@ -167,8 +180,8 @@ class NowPlayingViewController: UIViewController {
         nowPlayingImageView.stopAnimating()
     }
     
-    @IBAction func volumeChanged(_ sender:UISlider) {
-        mpVolumeSlider.value = sender.value
+    @IBAction func volumeChanged(_ sender: UISlider) {
+        mpVolumeSlider?.value = sender.value
     }
     
     //*****************************************************************
@@ -350,6 +363,16 @@ class NowPlayingViewController: UIViewController {
         let searchURL : URL = URL(string: urlStr!)!
         activity.webpageURL = searchURL
         super.updateUserActivityState(activity)
+    }
+    
+    //*****************************************************************
+    // MARK: - KVO
+    //*****************************************************************
+    
+    override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "outputVolume" {
+            slider.value = AVAudioSession.sharedInstance().outputVolume
+        }
     }
 }
 
