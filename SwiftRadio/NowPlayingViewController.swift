@@ -100,9 +100,6 @@ class NowPlayingViewController: UIViewController {
         NotificationCenter.default.removeObserver(self,
             name: Notification.Name("UIApplicationDidBecomeActiveNotification"),
             object: nil)
-        NotificationCenter.default.removeObserver(self,
-            name: Notification.Name.AVAudioSessionInterruption,
-            object: AVAudioSession.sharedInstance())
     }
     
     //*****************************************************************
