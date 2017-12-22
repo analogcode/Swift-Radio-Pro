@@ -190,29 +190,17 @@ class StationsViewController: UIViewController {
         firstTime = false
         nowPlayingVC.delegate = self
         
-        // TODO: Needs to be refactored to remove the nested `ifs`
-        if let indexPath = (sender as? NSIndexPath) {
+        if let indexPath = (sender as? IndexPath) {
             // User clicked on row, load/reset station
-            if searchController.isActive {
-                currentStation = searchedStations[indexPath.row]
-            } else {
-                currentStation = stations[indexPath.row]
-            }
+            currentStation = searchController.isActive ? searchedStations[indexPath.row] : stations[indexPath.row]
             nowPlayingVC.currentStation = currentStation
             nowPlayingVC.newStation = true
             
         } else {
             // User clicked on a now playing button
-            if let currentTrack = currentTrack {
-                // Return to NowPlaying controller without reloading station
-                nowPlayingVC.track = currentTrack
-                nowPlayingVC.currentStation = currentStation
-                nowPlayingVC.newStation = false
-            } else {
-                // Issue with track, reload station
-                nowPlayingVC.currentStation = currentStation
-                nowPlayingVC.newStation = true
-            }
+            nowPlayingVC.track = currentTrack
+            nowPlayingVC.currentStation = currentStation
+            nowPlayingVC.newStation = (currentTrack == nil)
         }
     }
     
