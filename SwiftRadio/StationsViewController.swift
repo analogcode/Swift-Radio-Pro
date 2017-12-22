@@ -93,8 +93,8 @@ class StationsViewController: UIViewController {
         
         // If a track is playing, display title & artist information and animation
         // TODO: Needs to be refactored
-        if currentTrack != nil && radioPlayer.isPlaying {
-            let title = currentStation!.name + ": " + currentTrack!.title + " - " + currentTrack!.artist + "..."
+        if let currentStation = currentStation, let currentTrack = currentTrack, radioPlayer.isPlaying {
+            let title = currentStation.name + ": " + currentTrack.title + " - " + currentTrack.artist + "..."
             stationNowPlayingButton.setTitle(title, for: .normal)
             nowPlayingAnimationImageView.startAnimating()
         } else {
