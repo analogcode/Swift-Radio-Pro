@@ -101,7 +101,6 @@ class StationsViewController: UIViewController {
             nowPlayingAnimationImageView.stopAnimating()
             nowPlayingAnimationImageView.image = UIImage(named: "NowPlayingBars")
         }
-        
     }
 
     //*****************************************************************
@@ -303,7 +302,7 @@ extension StationsViewController: UITableViewDataSource {
         if searchController.isActive {
             return searchedStations.count
         } else {
-            return stations.count == 0 ? 1 : stations.count
+            return stations.isEmpty ? 1 : stations.count
         }
     }
     
