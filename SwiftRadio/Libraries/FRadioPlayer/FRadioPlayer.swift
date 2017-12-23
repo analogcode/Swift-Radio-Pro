@@ -227,14 +227,19 @@ open class FRadioPlayer: NSObject {
         isPlaying = false
     }
     
+    /**
+     Toggle isPlaying state
+     
+     */
+    open func togglePlaying() {
+        isPlaying ? pause() : play()
+    }
+    
     // MARK: - Private helpers
     
     private func radioURLDidChange(with url: URL?) {
-        guard let url = url else {
-            state = .urlNotSet
-            stop()
-            return
-        }
+        stop()
+        guard let url = url else { state = .urlNotSet; return }
         
         state = .loading
         
@@ -427,7 +432,7 @@ open class FRadioPlayer: NSObject {
             case "playbackLikelyToKeepUp":
                 
                 self.state = item.isPlaybackLikelyToKeepUp ? .loadingFinished : .loading
-                
+            
             case "timedMetadata":
                 let rawValue = item.timedMetadata?.first?.value as? String
                 timedMetadataDidChange(rawValue: rawValue)
@@ -438,4 +443,3 @@ open class FRadioPlayer: NSObject {
         }
     }
 }
-
