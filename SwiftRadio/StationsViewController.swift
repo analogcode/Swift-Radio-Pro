@@ -20,10 +20,17 @@ class StationsViewController: UIViewController {
     
     // MARK: - Properties
     
-    var currentStation: RadioStation?
-    var currentTrack: Track?
-    var firstTime = true
+    var currentTrack = Track()
     let radioPlayer = FRadioPlayer.shared
+    
+    var currentStation: RadioStation? {
+        didSet {
+            resetTrack(with: currentStation)
+        }
+    }
+    
+    // Weak reference to update the NowPlayingViewController
+    weak var nowPlayingViewController: NowPlayingViewController?
     
     // MARK: - Lists
     
@@ -57,6 +64,9 @@ class StationsViewController: UIViewController {
         let cellNib = UINib(nibName: "NothingFoundCell", bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: "NothingFound")
         
+        // Setup Player
+        radioPlayer.delegate = self
+        
         // Load Data
         loadStationsFromJSON()
         
@@ -87,20 +97,7 @@ class StationsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.title = "Swift Radio"
-        
-        // If a station has been selected, create "Now Playing" button to get back to current station
-        if !firstTime { createNowPlayingBarButton() }
-        
-        // If a track is playing, display title & artist information and animation
-        // TODO: Needs to be refactored
-        if let currentStation = currentStation, let currentTrack = currentTrack, radioPlayer.isPlaying {
-            let title = currentStation.name + ": " + currentTrack.title + " - " + currentTrack.artist + "..."
-            stationNowPlayingButton.setTitle(title, for: .normal)
-            nowPlayingAnimationImageView.startAnimating()
-        } else {
-            nowPlayingAnimationImageView.stopAnimating()
-            nowPlayingAnimationImageView.image = UIImage(named: "NowPlayingBars")
-        }
+        createNowPlayingBarButton()
     }
 
     //*****************************************************************
@@ -186,21 +183,21 @@ class StationsViewController: UIViewController {
         guard segue.identifier == "NowPlaying", let nowPlayingVC = segue.destination as? NowPlayingViewController else { return }
             
         title = ""
-        firstTime = false
-        nowPlayingVC.delegate = self
+        
+        let newStation: Bool
         
         if let indexPath = (sender as? IndexPath) {
             // User clicked on row, load/reset station
             currentStation = searchController.isActive ? searchedStations[indexPath.row] : stations[indexPath.row]
-            nowPlayingVC.currentStation = currentStation
-            nowPlayingVC.newStation = true
-            
+            newStation = true
         } else {
-            // User clicked on a now playing button
-            nowPlayingVC.track = currentTrack
-            nowPlayingVC.currentStation = currentStation
-            nowPlayingVC.newStation = (currentTrack == nil)
+            // User clicked on Now Playing button
+            newStation = false
         }
+        
+        nowPlayingViewController = nowPlayingVC
+        nowPlayingVC.load(station: currentStation, track: currentTrack, isNewStation: newStation)
+                
     }
     
     //*****************************************************************
@@ -211,19 +208,84 @@ class StationsViewController: UIViewController {
         DispatchQueue.main.async {
             self.tableView.reloadData()
             guard let currentStation = self.currentStation else { return }
+            
+            // Reset everything if the new stations list doesn't have the current station
             if self.stations.index(of: currentStation) == nil { self.resetCurrentStation() }
         }
     }
     
+    // Reset all properties to default
     private func resetCurrentStation() {
         currentStation = nil
-        currentTrack = nil
+        currentTrack = Track()
         radioPlayer.radioURL = nil
-        firstTime = true
         nowPlayingAnimationImageView.stopAnimating()
         stationNowPlayingButton.setTitle("Choose a station above to begin", for: .normal)
         stationNowPlayingButton.isEnabled = false
         navigationItem.rightBarButtonItem = nil
+    }
+    
+    // Update the now playing button title
+    private func updateNowPlayingButton(station: RadioStation?, track: Track?) {
+        guard let station = station else { resetCurrentStation(); return }
+        var playingTitle = station.name + ": "
+        
+        if track?.title == station.name {
+            playingTitle += "Now playing ..."
+        } else if let track = track {
+            playingTitle += track.title + " - " + track.artist
+        }
+        
+        stationNowPlayingButton.setTitle(playingTitle, for: .normal)
+        nowPlayingAnimationImageView.startAnimating()
+        stationNowPlayingButton.isEnabled = true
+    }
+    
+    //*****************************************************************
+    // MARK: - Track loading/updates
+    //*****************************************************************
+    
+    // Update the track with an artist name and track name
+    func updateTrackMetadata(artistName: String, trackName: String) {
+        currentTrack.artist = artistName
+        currentTrack.title = trackName
+        updateLockScreen(with: currentTrack)
+        nowPlayingViewController?.updateTrackMetadata(with: currentTrack)
+    }
+    
+    // Update the track artwork with a UIImage
+    func updateTrackArtwork(with image: UIImage, artworkLoaded: Bool = false) {
+        currentTrack.artworkImage = image
+        currentTrack.artworkLoaded = artworkLoaded
+        updateLockScreen(with: currentTrack)
+        nowPlayingViewController?.updateTrackArtwork(with: currentTrack)
+    }
+    
+    // Reset the track metadata and artwork to use the current station infos
+    func resetTrack(with station: RadioStation?) {
+        guard let station = station else { currentTrack = Track(); return }
+        updateTrackMetadata(artistName: station.desc, trackName: station.name)
+        resetArtwork(with: station)
+    }
+    
+    // Reset the track Artwork to current station image
+    func resetArtwork(with station: RadioStation?) {
+        guard let station = station else { currentTrack = Track(); return }
+        
+        currentTrack.artworkLoaded = false
+        currentTrack.artworkURL = station.imageURL
+        
+        if station.imageURL.range(of: "http") != nil {
+            // load current station image from network
+            ImageLoader.sharedLoader.imageForUrl(urlString: station.imageURL) { (image, stringURL) in
+                guard let image = image else { self.updateTrackArtwork(with: #imageLiteral(resourceName: "albumArt")); return }
+                self.updateTrackArtwork(with: image)
+            }
+        } else {
+            // load local station image
+            let image = UIImage(named: station.imageURL) ?? #imageLiteral(resourceName: "albumArt")
+            updateTrackArtwork(with: image)
+        }
     }
     
     //*****************************************************************
@@ -287,7 +349,6 @@ class StationsViewController: UIViewController {
 
 extension StationsViewController: UITableViewDataSource {
     
-    // MARK: - Table view data source
     @objc(tableView:heightForRowAtIndexPath:)
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 88.0
@@ -337,41 +398,10 @@ extension StationsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "NowPlaying", sender: indexPath)
         
-        if !stations.isEmpty {
-            
-            // Set Now Playing Buttons
-            // TODO: Should be called when currentStation gets updated
-            let title = stations[indexPath.row].name + " - Now Playing..."
-            stationNowPlayingButton.setTitle(title, for: .normal)
-            stationNowPlayingButton.isEnabled = true
-            
-            performSegue(withIdentifier: "NowPlaying", sender: indexPath)
-        }
+        updateNowPlayingButton(station: currentStation, track: currentTrack)
     }
-}
-
-//*****************************************************************
-// MARK: - NowPlayingViewControllerDelegate
-//*****************************************************************
-
-extension StationsViewController: NowPlayingViewControllerDelegate {
-    
-    // TODO: Not called when NowPlayingViewController is not presented
-    func artworkDidUpdate(track: Track) {
-        currentTrack?.artworkURL = track.artworkURL
-        currentTrack?.artworkImage = track.artworkImage
-        updateLockScreen(with: currentTrack)
-    }
-    
-    func songMetaDataDidUpdate(track: Track) {
-        currentTrack = track
-        // TODO: Remove the forced unwrap currentStation / currentTrack
-        let title = currentStation!.name + ": " + currentTrack!.title + " - " + currentTrack!.artist + "..."
-        stationNowPlayingButton.setTitle(title, for: .normal)
-        updateLockScreen(with: currentTrack)
-    }
-    
 }
 
 //*****************************************************************
@@ -412,5 +442,55 @@ extension StationsViewController: UISearchResultsUpdating {
         searchedStations = stations.filter { $0.name.range(of: searchText, options: [.caseInsensitive]) != nil }
         self.tableView.reloadData()
     }
+}
+
+
+//*****************************************************************
+// MARK: - FRadioPlayerDelegate
+//*****************************************************************
+
+extension StationsViewController: FRadioPlayerDelegate {
     
+    func radioPlayer(_ player: FRadioPlayer, playerStateDidChange state: FRadioPlayerState) {
+        // TODO: Handle loading/player state
+    }
+    
+    func radioPlayer(_ player: FRadioPlayer, player isPlaying: Bool) {
+        nowPlayingViewController?.playingButton.isSelected = isPlaying
+        if isPlaying {
+            nowPlayingViewController?.play()
+            nowPlayingAnimationImageView.startAnimating()
+        } else {
+            nowPlayingViewController?.pause()
+            nowPlayingAnimationImageView.stopAnimating()
+        }
+    }
+    
+    func radioPlayer(_ player: FRadioPlayer, metadataDidChange artistName: String?, trackName: String?) {
+        
+        guard let artistName = artistName, let trackName = trackName else {
+            resetTrack(with: currentStation)
+            return
+        }
+        
+        updateTrackMetadata(artistName: artistName, trackName: trackName)
+        updateNowPlayingButton(station: currentStation, track: currentTrack)
+    }
+    
+    func radioPlayer(_ player: FRadioPlayer, artworkDidChange artworkURL: URL?) {
+        
+        guard let artworkURL = artworkURL else {
+            resetArtwork(with: self.currentStation)
+            return
+        }
+        
+        ImageLoader.sharedLoader.imageForUrl(urlString: artworkURL.absoluteString) { (image, stringURL) in
+            guard let image = image else {
+                self.resetArtwork(with: self.currentStation)
+                return
+            }
+            
+            self.updateTrackArtwork(with: image, artworkLoaded: true)
+        }
+    }
 }

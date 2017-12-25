@@ -10,16 +10,6 @@ import UIKit
 import MediaPlayer
 
 //*****************************************************************
-// Protocol
-// Updates the StationsViewController when the track changes
-//*****************************************************************
-
-protocol NowPlayingViewControllerDelegate: class {
-    func songMetaDataDidUpdate(track: Track)
-    func artworkDidUpdate(track: Track)
-}
-
-//*****************************************************************
 // NowPlayingViewController
 //*****************************************************************
 
@@ -35,15 +25,12 @@ class NowPlayingViewController: UIViewController {
     @IBOutlet weak var slider: UISlider!
     
     var currentStation: RadioStation!
-    var justBecameActive = false
     var newStation = true
     var nowPlayingImageView: UIImageView!
     let radioPlayer = FRadioPlayer.shared
-    var track: Track!
+    var currentTrack = Track()
     var mpVolumeSlider: UISlider?
-    
-    weak var delegate: NowPlayingViewControllerDelegate?
-    
+
     //*****************************************************************
     // MARK: - ViewDidLoad
     //*****************************************************************
@@ -52,7 +39,6 @@ class NowPlayingViewController: UIViewController {
         super.viewDidLoad()
         
         // Setup Player
-        radioPlayer.delegate = self
         playingButton.isSelected = radioPlayer.isPlaying
         
         // Setup handoff functionality - GH
@@ -67,39 +53,24 @@ class NowPlayingViewController: UIViewController {
         // Create Now Playing BarItem
         createNowPlayingAnimation()
         
-        // Notification for when app becomes active
-        NotificationCenter.default.addObserver(self,
-            selector: #selector(NowPlayingViewController.didBecomeActiveNotificationReceived),
-            name: Notification.Name("UIApplicationDidBecomeActiveNotification"),
-            object: nil)
+        // Set UI
+        albumImageView.image = currentTrack.artworkImage
+        stationDescLabel.text = currentStation.desc
         
         // Check for station change
         if newStation {
-            track = Track()
             stationDidChange()
         } else {
-            updateLabels()
-            albumImageView.image = track.artworkImage
             radioPlayer.isPlaying ? nowPlayingImageView.startAnimating() : pause()
+            updateLabels()
         }
         
         // Setup slider
         setupVolumeSlider()
-        
-    }
-    
-    @objc func didBecomeActiveNotificationReceived() {
-        // View became active
-        updateLabels()
-        justBecameActive = true
-        updateAlbumArtwork()
     }
     
     deinit {
         // Be a good citizen
-        NotificationCenter.default.removeObserver(self,
-            name: Notification.Name("UIApplicationDidBecomeActiveNotification"),
-            object: nil)
         
         do {
             try AVAudioSession.sharedInstance().setActive(true)
@@ -146,8 +117,6 @@ class NowPlayingViewController: UIViewController {
         songLabel.animation = "flash"
         songLabel.repeatCount = 3
         songLabel.animate()
-        
-        resetAlbumArtwork()
     }
     
     //*****************************************************************
@@ -155,7 +124,7 @@ class NowPlayingViewController: UIViewController {
     //*****************************************************************
     
     @IBAction func togglePlaying() {
-        radioPlayer.isPlaying ? radioPlayer.pause() : radioPlayer.play()
+        radioPlayer.togglePlaying()
     }
     
     @IBAction func stopPressed(_ sender: Any) {
@@ -185,6 +154,61 @@ class NowPlayingViewController: UIViewController {
     }
     
     //*****************************************************************
+    // MARK: - Load station/track
+    //*****************************************************************
+    
+    func load(station: RadioStation?, track: Track, isNewStation: Bool) {
+        guard let station = station else { return }
+        
+        currentStation = station
+        currentTrack = track
+        newStation = isNewStation
+    }
+    
+    func updateTrackMetadata(with track: Track) {
+        
+        currentTrack.artist = track.artist
+        currentTrack.title = track.title
+        
+        artistLabel.text = currentTrack.artist
+        songLabel.text = currentTrack.title
+        
+        guard currentTrack.title != currentStation.name else { return }
+        
+        // TODO: Fix userActivity
+        updateUserActivityState(userActivity!)
+            
+        // songLabel animation
+        songLabel.animation = "zoomIn"
+        songLabel.duration = 1.5
+        songLabel.damping = 1
+        songLabel.animate()
+    }
+    
+    // Update track with new artwork
+    func updateTrackArtwork(with track: Track) {
+        
+        // Update track struct
+        currentTrack.artworkImage = track.artworkImage
+        currentTrack.artworkLoaded = track.artworkLoaded
+        
+        albumImageView.image = currentTrack.artworkImage
+        
+        if track.artworkLoaded {
+            // Animate artwork
+            albumImageView.animation = "wobble"
+            albumImageView.duration = 2
+            albumImageView.animate()
+            stationDescLabel.isHidden = true
+        } else {
+            stationDescLabel.isHidden = false
+        }
+        
+        // Force app to update display
+        view.setNeedsDisplay()
+    }
+    
+    //*****************************************************************
     // MARK: - UI Helper Methods
     //*****************************************************************
     
@@ -206,7 +230,7 @@ class NowPlayingViewController: UIViewController {
     }
     
     func updateLabels(statusMessage: String = "") {
-        
+
         if statusMessage != "" {
             // There's a an interruption or pause in the audio queue
             songLabel.text = statusMessage
@@ -214,18 +238,8 @@ class NowPlayingViewController: UIViewController {
             
         } else {
             // Radio is (hopefully) streaming properly
-            if track != nil {
-                songLabel.text = track.title
-                artistLabel.text = track.artist
-            }
-        }
-        
-        // Hide station description when album art is displayed or on iPhone 4
-        if track.artworkLoaded {
-            stationDescLabel.isHidden = true
-        } else {
-            stationDescLabel.isHidden = false
-            stationDescLabel.text = currentStation.desc
+            songLabel.text = currentTrack.title
+            artistLabel.text = currentTrack.artist
         }
     }
     
@@ -248,80 +262,10 @@ class NowPlayingViewController: UIViewController {
         
         let barItem = UIBarButtonItem(customView: barButton)
         self.navigationItem.rightBarButtonItem = barItem
-        
     }
     
     func startNowPlayingAnimation() {
         nowPlayingImageView.startAnimating()
-    }
-    
-    //*****************************************************************
-    // MARK: - Album Art
-    //*****************************************************************
-    
-    func resetAlbumArtwork() {
-        track.artworkLoaded = false
-        track.artworkURL = currentStation.imageURL
-        updateAlbumArtwork()
-        stationDescLabel.isHidden = false
-    }
-    
-    func updateAlbumArtwork() {
-        track.artworkLoaded = false
-        if track.artworkURL.range(of: "http") != nil {
-            
-            // Hide station description
-            DispatchQueue.main.async(execute: {
-                //self.albumImageView.image = nil
-                self.stationDescLabel.isHidden = false
-            })
-            
-            // Attempt to download album art from an API
-            if let url = URL(string: track.artworkURL) {
-                
-                self.albumImageView.loadImageWithURL(url: url) { (image) in
-                    
-                    // Update track struct
-                    self.track.artworkImage = image
-                    self.track.artworkLoaded = true
-                    
-                    // Turn off network activity indicator
-                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                        
-                    // Animate artwork
-                    self.albumImageView.animation = "wobble"
-                    self.albumImageView.duration = 2
-                    self.albumImageView.animate()
-                    self.stationDescLabel.isHidden = true
-                    
-                    // Call delegate function that artwork updated
-                    self.delegate?.artworkDidUpdate(track: self.track)
-                }
-            }
-            
-            // Hide the station description to make room for album art
-            if track.artworkLoaded && !self.justBecameActive {
-                self.stationDescLabel.isHidden = true
-                self.justBecameActive = false
-            }
-            
-        } else if track.artworkURL != "" {
-            // Local artwork
-            self.albumImageView.image = UIImage(named: track.artworkURL)
-            track.artworkImage = albumImageView.image
-            track.artworkLoaded = true
-            
-            // Call delegate function that artwork updated
-            self.delegate?.artworkDidUpdate(track: self.track)
-            
-        } else {
-            // No Station or API art found, use default art
-            self.albumImageView.image = UIImage(named: "albumArt")
-            track.artworkImage = albumImageView.image
-        }
-        
-        // Force app to update display
-        self.view.setNeedsDisplay()
     }
     
     //*****************************************************************
@@ -338,8 +282,8 @@ class NowPlayingViewController: UIViewController {
     }
     
     @IBAction func shareButtonPressed(_ sender: UIButton) {
-        let songToShare = "I'm listening to \(track.title) on \(currentStation.name) via Swift Radio Pro"
-        let activityViewController = UIActivityViewController(activityItems: [songToShare, track.artworkImage!], applicationActivities: nil)
+        let songToShare = "I'm listening to \(currentTrack.title) on \(currentStation.name) via Swift Radio Pro"
+        let activityViewController = UIActivityViewController(activityItems: [songToShare, currentTrack.artworkImage!], applicationActivities: nil)
         present(activityViewController, animated: true, completion: nil)
     }
     
@@ -347,9 +291,13 @@ class NowPlayingViewController: UIViewController {
     // MARK: - Handoff Functionality - GH
     //*****************************************************************
     
+    // TODO: Move this to StationsViewController
+    
     func setupUserActivity() {
-        let activity = NSUserActivity(activityType: NSUserActivityTypeBrowsingWeb ) //"com.graemeharrison.handoff.googlesearch" //NSUserActivityTypeBrowsingWeb
+        let activity = NSUserActivity(activityType: NSUserActivityTypeBrowsingWeb )
         userActivity = activity
+        
+        // TODO: Use Track model instead of UI to get data
         let url = "https://www.google.com/search?q=\(self.artistLabel.text!)+\(self.songLabel.text!)"
         let urlStr = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         let searchURL : URL = URL(string: urlStr!)!
@@ -358,6 +306,8 @@ class NowPlayingViewController: UIViewController {
     }
     
     override func updateUserActivityState(_ activity: NSUserActivity) {
+
+        // TODO: Use Track model instead of UI to get data + refactor
         let url = "https://www.google.com/search?q=\(self.artistLabel.text!)+\(self.songLabel.text!)"
         let urlStr = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         let searchURL : URL = URL(string: urlStr!)!
@@ -374,72 +324,4 @@ class NowPlayingViewController: UIViewController {
             slider.value = AVAudioSession.sharedInstance().outputVolume
         }
     }
-}
-
-//*****************************************************************
-// MARK: - FRadioPlayerDelegate
-//*****************************************************************
-
-extension NowPlayingViewController: FRadioPlayerDelegate {
-    
-    func radioPlayer(_ player: FRadioPlayer, playerStateDidChange state: FRadioPlayerState) {
-
-    }
-    
-    func radioPlayer(_ player: FRadioPlayer, player isPlaying: Bool) {
-        playingButton.isSelected = isPlaying
-        isPlaying ? play() : pause()
-    }
-    
-    func radioPlayer(_ player: FRadioPlayer, metadataDidChange artistName: String?, trackName: String?) {
-        
-        // TODO: refactor to separate function
-        // Reset label/artwork to it's initial state
-        resetAlbumArtwork()
-        artistLabel.text = currentStation.desc
-        songLabel.text = currentStation.name
-        
-        // TODO: Should listen to Track didSet
-        track.artist = artistName ?? currentStation.desc
-        track.title = trackName ?? currentStation.name
-        
-        if track.title != currentStation.name {
-            artistLabel.text = self.track.artist
-            songLabel.text = self.track.title
-            updateUserActivityState(self.userActivity!)
-            
-            // songLabel animation
-            songLabel.animation = "zoomIn"
-            songLabel.duration = 1.5
-            songLabel.damping = 1
-            songLabel.animate()
-            
-            // Query API for album art
-            resetAlbumArtwork()
-            
-            delegate?.songMetaDataDidUpdate(track: self.track)
-        }
-    }
-    
-    func radioPlayer(_ player: FRadioPlayer, itemDidChange url: URL?) {
-
-    }
-    
-    func radioPlayer(_ player: FRadioPlayer, metadataDidChange rawValue: String?) {
-        startNowPlayingAnimation()
-    }
-    
-    func radioPlayer(_ player: FRadioPlayer, artworkDidChange artworkURL: URL?) {
-        
-        guard let artworkURL = artworkURL else {
-            resetAlbumArtwork()
-            return
-        }
-        
-        track.artworkURL = artworkURL.absoluteString
-        track.artworkLoaded = true
-        updateAlbumArtwork()
-    }
-    
-    
 }

@@ -72,8 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         case .remoteControlPause:
             FRadioPlayer.shared.pause()
         case .remoteControlTogglePlayPause:
-            // TODO: Add toggle playing support to FRadioPlayer
-            FRadioPlayer.shared.isPlaying ? FRadioPlayer.shared.pause() : FRadioPlayer.shared.play()
+            FRadioPlayer.shared.togglePlaying()
         default:
             break
         }
