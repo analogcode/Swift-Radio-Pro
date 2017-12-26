@@ -56,6 +56,7 @@ class NowPlayingViewController: UIViewController {
         // Set UI
         albumImageView.image = currentTrack.artworkImage
         stationDescLabel.text = currentStation.desc
+        stationDescLabel.isHidden = currentTrack.artworkLoaded
         
         // Check for station change
         if newStation {
