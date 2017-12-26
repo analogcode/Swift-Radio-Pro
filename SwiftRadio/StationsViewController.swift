@@ -97,7 +97,6 @@ class StationsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.title = "Swift Radio"
-        createNowPlayingBarButton()
     }
 
     //*****************************************************************
@@ -228,6 +227,7 @@ class StationsViewController: UIViewController {
     // Update the now playing button title
     private func updateNowPlayingButton(station: RadioStation?, track: Track?) {
         guard let station = station else { resetCurrentStation(); return }
+        
         var playingTitle = station.name + ": "
         
         if track?.title == station.name {
@@ -239,6 +239,7 @@ class StationsViewController: UIViewController {
         stationNowPlayingButton.setTitle(playingTitle, for: .normal)
         nowPlayingAnimationImageView.startAnimating()
         stationNowPlayingButton.isEnabled = true
+        createNowPlayingBarButton()
     }
     
     //*****************************************************************
