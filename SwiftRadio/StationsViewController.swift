@@ -81,7 +81,7 @@ class StationsViewController: UIViewController {
         // Create NowPlaying Animation
         createNowPlayingAnimation()
         
-        // Set audioSession as active
+        // Activate audioSession
         do {
             try AVAudioSession.sharedInstance().setActive(true)
         } catch {
@@ -93,6 +93,9 @@ class StationsViewController: UIViewController {
         
         // Setup Remote Command Center
         setupRemoteCommandCenter()
+        
+        // Setup Handoff User Activity
+        setupHandoffUserActivity()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -222,6 +225,7 @@ class StationsViewController: UIViewController {
         stationNowPlayingButton.setTitle("Choose a station above to begin", for: .normal)
         stationNowPlayingButton.isEnabled = false
         navigationItem.rightBarButtonItem = nil
+        userActivity?.invalidate()
     }
     
     // Update the now playing button title
@@ -251,6 +255,7 @@ class StationsViewController: UIViewController {
         currentTrack.artist = artistName
         currentTrack.title = trackName
         updateLockScreen(with: currentTrack)
+        updateHandoffUserActivity(userActivity)
         nowPlayingViewController?.updateTrackMetadata(with: currentTrack)
     }
     
@@ -264,7 +269,11 @@ class StationsViewController: UIViewController {
     
     // Reset the track metadata and artwork to use the current station infos
     func resetTrack(with station: RadioStation?) {
-        guard let station = station else { currentTrack = Track(); return }
+        guard let station = station else {
+            currentTrack = Track()
+            userActivity?.invalidate()
+            return
+        }
         updateTrackMetadata(artistName: station.desc, trackName: station.name)
         resetArtwork(with: station)
     }
@@ -445,7 +454,6 @@ extension StationsViewController: UISearchResultsUpdating {
     }
 }
 
-
 //*****************************************************************
 // MARK: - FRadioPlayerDelegate
 //*****************************************************************
@@ -493,5 +501,43 @@ extension StationsViewController: FRadioPlayerDelegate {
             
             self.updateTrackArtwork(with: image, artworkLoaded: true)
         }
+    }
+}
+
+//*****************************************************************
+// MARK: - Handoff Functionality - GH
+//*****************************************************************
+
+extension StationsViewController {
+    
+    func setupHandoffUserActivity() {
+        userActivity = NSUserActivity(activityType: NSUserActivityTypeBrowsingWeb)
+        userActivity?.webpageURL = getHandoffURL(from: currentTrack)
+        userActivity?.becomeCurrent()
+    }
+    
+    func updateHandoffUserActivity(_ activity: NSUserActivity?) {
+        guard let activity = activity else { return }
+        updateUserActivityState(activity)
+    }
+    
+    override func updateUserActivityState(_ activity: NSUserActivity) {
+        activity.webpageURL = getHandoffURL(from: currentTrack)
+        super.updateUserActivityState(activity)
+    }
+    
+    private func getHandoffURL(from track: Track?) -> URL? {
+        guard
+            let track = track,
+            !track.title.isEmpty,
+            track.title != currentStation?.name else { return nil }
+        
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "google.com"
+        components.path = "/search"
+        components.queryItems = [URLQueryItem]()
+        components.queryItems?.append(URLQueryItem(name: "q", value: "\(track.artist) \(track.title)"))
+        return components.url
     }
 }

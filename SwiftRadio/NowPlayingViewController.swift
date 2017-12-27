@@ -15,6 +15,8 @@ import MediaPlayer
 
 class NowPlayingViewController: UIViewController {
 
+    // MARK: - IB UI
+    
     @IBOutlet weak var albumHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var albumImageView: SpringImageView!
     @IBOutlet weak var artistLabel: UILabel!
@@ -23,6 +25,8 @@ class NowPlayingViewController: UIViewController {
     @IBOutlet weak var stationDescLabel: UILabel!
     @IBOutlet weak var volumeParentView: UIView!
     @IBOutlet weak var slider: UISlider!
+    
+    // MARK: - Properties
     
     var currentStation: RadioStation!
     var newStation = true
@@ -40,9 +44,6 @@ class NowPlayingViewController: UIViewController {
         
         // Setup Player
         playingButton.isSelected = radioPlayer.isPlaying
-        
-        // Setup handoff functionality - GH
-        setupUserActivity()
         
         // Set AlbumArtwork Constraints
         optimizeForDeviceSize()
@@ -176,9 +177,6 @@ class NowPlayingViewController: UIViewController {
         
         guard currentTrack.title != currentStation.name else { return }
         
-        // TODO: Fix userActivity
-        updateUserActivityState(userActivity!)
-            
         // songLabel animation
         songLabel.animation = "zoomIn"
         songLabel.duration = 1.5
@@ -286,34 +284,6 @@ class NowPlayingViewController: UIViewController {
         let songToShare = "I'm listening to \(currentTrack.title) on \(currentStation.name) via Swift Radio Pro"
         let activityViewController = UIActivityViewController(activityItems: [songToShare, currentTrack.artworkImage!], applicationActivities: nil)
         present(activityViewController, animated: true, completion: nil)
-    }
-    
-    //*****************************************************************
-    // MARK: - Handoff Functionality - GH
-    //*****************************************************************
-    
-    // TODO: Move this to StationsViewController
-    
-    func setupUserActivity() {
-        let activity = NSUserActivity(activityType: NSUserActivityTypeBrowsingWeb )
-        userActivity = activity
-        
-        // TODO: Use Track model instead of UI to get data
-        let url = "https://www.google.com/search?q=\(self.artistLabel.text!)+\(self.songLabel.text!)"
-        let urlStr = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        let searchURL : URL = URL(string: urlStr!)!
-        activity.webpageURL = searchURL
-        userActivity?.becomeCurrent()
-    }
-    
-    override func updateUserActivityState(_ activity: NSUserActivity) {
-
-        // TODO: Use Track model instead of UI to get data + refactor
-        let url = "https://www.google.com/search?q=\(self.artistLabel.text!)+\(self.songLabel.text!)"
-        let urlStr = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        let searchURL : URL = URL(string: urlStr!)!
-        activity.webpageURL = searchURL
-        super.updateUserActivityState(activity)
     }
     
     //*****************************************************************
