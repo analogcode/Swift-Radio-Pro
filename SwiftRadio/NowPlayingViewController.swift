@@ -24,7 +24,6 @@ class NowPlayingViewController: UIViewController {
     @IBOutlet weak var songLabel: SpringLabel!
     @IBOutlet weak var stationDescLabel: UILabel!
     @IBOutlet weak var volumeParentView: UIView!
-    @IBOutlet weak var volumeSlider: UISlider!
     
     // MARK: - Properties
     
@@ -71,17 +70,6 @@ class NowPlayingViewController: UIViewController {
         setupVolumeSlider()
     }
     
-    deinit {
-        // Be a good citizen
-        
-        do {
-            try AVAudioSession.sharedInstance().setActive(true)
-            AVAudioSession.sharedInstance().removeObserver(self, forKeyPath: "outputVolume")
-        } catch {
-            if kDebugLog { print("audioSession is not activted to remove the observer") }
-        }
-    }
-    
     //*****************************************************************
     // MARK: - Setup
     //*****************************************************************
@@ -89,24 +77,16 @@ class NowPlayingViewController: UIViewController {
     func setupVolumeSlider() {
         // Note: This slider implementation uses a MPVolumeView
         // The volume slider only works in devices, not the simulator.
-        // TODO: Add MPVolumeView as an invisible subview to replace the system volume popup
         for subview in MPVolumeView().subviews {
             guard let volumeSlider = subview as? UISlider else { continue }
             mpVolumeSlider = volumeSlider
         }
         
-        volumeSlider.setThumbImage(#imageLiteral(resourceName: "slider-ball"), for: .normal)
-        
-        let audioSession = AVAudioSession.sharedInstance()
-        
-        do {
-            try audioSession.setActive(true)
-            audioSession.addObserver(self, forKeyPath: "outputVolume", options: NSKeyValueObservingOptions.new, context: nil)
-        } catch {
-            if kDebugLog { print("audioSession could not be activated") }
+        if let mpVolumeSlider = mpVolumeSlider {
+            volumeParentView.addSubview(mpVolumeSlider)
+            mpVolumeSlider.frame = volumeParentView.bounds
+            mpVolumeSlider.setThumbImage(#imageLiteral(resourceName: "slider-ball"), for: .normal)
         }
-        
-        volumeSlider.value = audioSession.outputVolume
     }
     
     func stationDidChange() {
@@ -149,10 +129,6 @@ class NowPlayingViewController: UIViewController {
     func pause() {
         updateLabels(statusMessage: "Station Paused...")
         nowPlayingImageView.stopAnimating()
-    }
-    
-    @IBAction func volumeChanged(_ sender: UISlider) {
-        mpVolumeSlider?.value = sender.value
     }
     
     //*****************************************************************
@@ -284,16 +260,5 @@ class NowPlayingViewController: UIViewController {
         let songToShare = "I'm listening to \(currentTrack.title) on \(currentStation.name) via Swift Radio Pro"
         let activityViewController = UIActivityViewController(activityItems: [songToShare, currentTrack.artworkImage!], applicationActivities: nil)
         present(activityViewController, animated: true, completion: nil)
-    }
-    
-    //*****************************************************************
-    // MARK: - KVO
-    //*****************************************************************
-    
-    override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == "outputVolume" {
-            // TODO: Fix when the slider is updating the volume
-            volumeSlider.value = AVAudioSession.sharedInstance().outputVolume
-        }
     }
 }
