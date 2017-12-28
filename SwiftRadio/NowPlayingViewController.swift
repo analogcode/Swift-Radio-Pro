@@ -82,11 +82,11 @@ class NowPlayingViewController: UIViewController {
             mpVolumeSlider = volumeSlider
         }
         
-        if let mpVolumeSlider = mpVolumeSlider {
-            volumeParentView.addSubview(mpVolumeSlider)
-            mpVolumeSlider.frame = volumeParentView.bounds
-            mpVolumeSlider.setThumbImage(#imageLiteral(resourceName: "slider-ball"), for: .normal)
-        }
+        guard let mpVolumeSlider = mpVolumeSlider else { return }
+        
+        volumeParentView.addSubview(mpVolumeSlider)
+        mpVolumeSlider.frame = volumeParentView.bounds
+        mpVolumeSlider.setThumbImage(#imageLiteral(resourceName: "slider-ball"), for: .normal)
     }
     
     func stationDidChange() {
