@@ -24,7 +24,7 @@ class NowPlayingViewController: UIViewController {
     @IBOutlet weak var songLabel: SpringLabel!
     @IBOutlet weak var stationDescLabel: UILabel!
     @IBOutlet weak var volumeParentView: UIView!
-    @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var volumeSlider: UISlider!
     
     // MARK: - Properties
     
@@ -67,7 +67,7 @@ class NowPlayingViewController: UIViewController {
             updateLabels()
         }
         
-        // Setup slider
+        // Setup volumeSlider
         setupVolumeSlider()
     }
     
@@ -95,7 +95,7 @@ class NowPlayingViewController: UIViewController {
             mpVolumeSlider = volumeSlider
         }
         
-        slider.setThumbImage(#imageLiteral(resourceName: "slider-ball"), for: .normal)
+        volumeSlider.setThumbImage(#imageLiteral(resourceName: "slider-ball"), for: .normal)
         
         let audioSession = AVAudioSession.sharedInstance()
         
@@ -106,7 +106,7 @@ class NowPlayingViewController: UIViewController {
             if kDebugLog { print("audioSession could not be activated") }
         }
         
-        slider.value = audioSession.outputVolume
+        volumeSlider.value = audioSession.outputVolume
     }
     
     func stationDidChange() {
@@ -292,7 +292,8 @@ class NowPlayingViewController: UIViewController {
     
     override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "outputVolume" {
-            slider.value = AVAudioSession.sharedInstance().outputVolume
+            // TODO: Fix when the slider is updating the volume
+            volumeSlider.value = AVAudioSession.sharedInstance().outputVolume
         }
     }
 }
