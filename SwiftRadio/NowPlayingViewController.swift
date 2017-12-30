@@ -230,8 +230,8 @@ class NowPlayingViewController: UIViewController {
         nowPlayingImageView.animationDuration = 0.7
         
         // Create Top BarButton
-        let barButton = UIButton(type: UIButtonType.custom)
-        barButton.frame = CGRect(x: 0,y: 0,width: 40,height: 40);
+        let barButton = UIButton(type: .custom)
+        barButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
         barButton.addSubview(nowPlayingImageView)
         nowPlayingImageView.center = barButton.center
         
