@@ -62,8 +62,8 @@ class NowPlayingViewController: UIViewController {
         if newStation {
             stationDidChange()
         } else {
-            radioPlayer.isPlaying ? nowPlayingImageView.startAnimating() : pause()
             updateLabels()
+            radioPlayer.isPlaying ? nowPlayingImageView.startAnimating() : pause()
         }
         
         // Setup volumeSlider
