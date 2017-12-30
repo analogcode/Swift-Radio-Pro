@@ -476,10 +476,13 @@ extension StationsViewController: FRadioPlayerDelegate {
     }
     
     func radioPlayer(_ player: FRadioPlayer, metadataDidChange artistName: String?, trackName: String?) {
-        
-        guard let artistName = artistName, let trackName = trackName else {
-            resetTrack(with: currentStation)
-            return
+        guard
+            let artistName = artistName,
+            !artistName.isEmpty,
+            let trackName = trackName,
+            !trackName.isEmpty else {
+                resetTrack(with: currentStation)
+                return
         }
         
         updateTrackMetadata(artistName: artistName, trackName: trackName)
