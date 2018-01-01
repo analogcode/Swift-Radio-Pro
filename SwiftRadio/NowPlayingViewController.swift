@@ -62,8 +62,8 @@ class NowPlayingViewController: UIViewController {
         if newStation {
             stationDidChange()
         } else {
-            updateLabels()
-            radioPlayer.isPlaying ? nowPlayingImageView.startAnimating() : pause()
+            playerStateDidChange(radioPlayer.state)
+            playingButton.isSelected = radioPlayer.isPlaying
         }
         
         // Setup volumeSlider
@@ -90,15 +90,7 @@ class NowPlayingViewController: UIViewController {
     }
     
     func stationDidChange() {
-        
         radioPlayer.radioURL = URL(string: currentStation.streamURL)
-        
-        updateLabels(statusMessage: "Loading Station...")
-        
-        // songLabel animate
-        songLabel.animation = "flash"
-        songLabel.repeatCount = 3
-        songLabel.animate()
     }
     
     //*****************************************************************
@@ -111,24 +103,15 @@ class NowPlayingViewController: UIViewController {
     
     @IBAction func stopPressed(_ sender: Any) {
         radioPlayer.stop()
-        updateLabels(statusMessage: "Station Stopped...")
-        nowPlayingImageView.stopAnimating()
+        updateLabels(with: "Station Stopped...")
     }
     
     func play() {
         updateLabels()
-        
-        // songLabel Animation
-        songLabel.animation = "flash"
-        songLabel.animate()
-        
-        // Start NowPlaying Animation
-        nowPlayingImageView.startAnimating()
     }
     
     func pause() {
-        updateLabels(statusMessage: "Station Paused...")
-        nowPlayingImageView.stopAnimating()
+        updateLabels(with: "Station Paused...")
     }
     
     //*****************************************************************
@@ -148,9 +131,9 @@ class NowPlayingViewController: UIViewController {
         currentTrack.artist = track.artist
         currentTrack.title = track.title
         
-        artistLabel.text = currentTrack.artist
-        songLabel.text = currentTrack.title
+        updateLabels()
         
+        // Animate if the Track has album metadata
         guard currentTrack.title != currentStation.name else { return }
         
         // songLabel animation
@@ -204,18 +187,50 @@ class NowPlayingViewController: UIViewController {
         }
     }
     
-    func updateLabels(statusMessage: String = "") {
+    // TODO: Should be refactored
+    func updateLabels(with statusMessage: String = "") {
 
         if statusMessage != "" {
             // There's a an interruption or pause in the audio queue
+            
+            // Update UI only when it's not aleary updated
+            guard songLabel.text != statusMessage else { return }
             songLabel.text = statusMessage
             artistLabel.text = currentStation.name
             
+            // songLabel animate
+            songLabel.animation = "flash"
+            songLabel.repeatCount = 3
+            songLabel.animate()
+            
         } else {
             // Radio is (hopefully) streaming properly
+            
+            // Update UI only when it's not aleary updated
+            guard songLabel.text != currentTrack.title else { return }
+            
             songLabel.text = currentTrack.title
             artistLabel.text = currentTrack.artist
         }
+    }
+    
+    func playerStateDidChange(_ state: FRadioPlayerState) {
+        
+        let message: String
+        
+        switch state {
+        case .loading:
+            message = "Loading Station ..."
+        case .urlNotSet:
+            message = "Station URL not set"
+        case .readyToPlay, .loadingFinished:
+            message = ""
+        case .error:
+            message = "Error Playing"
+        }
+        
+        updateLabels(with: message)
+        startNowPlayingAnimation(radioPlayer.isPlaying)
     }
     
     func createNowPlayingAnimation() {
@@ -239,8 +254,8 @@ class NowPlayingViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = barItem
     }
     
-    func startNowPlayingAnimation() {
-        nowPlayingImageView.startAnimating()
+    func startNowPlayingAnimation(_ animate: Bool) {
+        animate ? nowPlayingImageView.startAnimating() : nowPlayingImageView.stopAnimating()
     }
     
     //*****************************************************************

@@ -24,9 +24,7 @@ class StationsViewController: UIViewController {
     let radioPlayer = FRadioPlayer.shared
     
     var currentStation: RadioStation? {
-        didSet {
-            resetTrack(with: currentStation)
-        }
+        didSet { resetTrack(with: currentStation) }
     }
     
     // Weak reference to update the NowPlayingViewController
@@ -461,7 +459,7 @@ extension StationsViewController: UISearchResultsUpdating {
 extension StationsViewController: FRadioPlayerDelegate {
     
     func radioPlayer(_ player: FRadioPlayer, playerStateDidChange state: FRadioPlayerState) {
-        // TODO: Handle loading/player state
+        nowPlayingViewController?.playerStateDidChange(state)
     }
     
     func radioPlayer(_ player: FRadioPlayer, player isPlaying: Bool) {
