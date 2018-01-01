@@ -64,6 +64,7 @@ class NowPlayingViewController: UIViewController {
         } else {
             playerStateDidChange(radioPlayer.state)
             playingButton.isSelected = radioPlayer.isPlaying
+            startNowPlayingAnimation(radioPlayer.isPlaying)
         }
         
         // Setup volumeSlider
@@ -166,6 +167,12 @@ class NowPlayingViewController: UIViewController {
         view.setNeedsDisplay()
     }
     
+    func isPlayingDidChange(_ isPlaying: Bool) {
+        isPlaying ? play() : pause()
+        playingButton.isSelected = isPlaying
+        startNowPlayingAnimation(isPlaying)
+    }
+    
     //*****************************************************************
     // MARK: - UI Helper Methods
     //*****************************************************************
@@ -230,7 +237,6 @@ class NowPlayingViewController: UIViewController {
         }
         
         updateLabels(with: message)
-        startNowPlayingAnimation(radioPlayer.isPlaying)
     }
     
     func createNowPlayingAnimation() {

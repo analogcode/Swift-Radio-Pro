@@ -244,6 +244,10 @@ class StationsViewController: UIViewController {
         createNowPlayingBarButton()
     }
     
+    func startNowPlayingAnimation(_ animate: Bool) {
+        animate ? nowPlayingAnimationImageView.startAnimating() : nowPlayingAnimationImageView.stopAnimating()
+    }
+    
     //*****************************************************************
     // MARK: - Track loading/updates
     //*****************************************************************
@@ -463,14 +467,8 @@ extension StationsViewController: FRadioPlayerDelegate {
     }
     
     func radioPlayer(_ player: FRadioPlayer, player isPlaying: Bool) {
-        nowPlayingViewController?.playingButton.isSelected = isPlaying
-        if isPlaying {
-            nowPlayingViewController?.play()
-            nowPlayingAnimationImageView.startAnimating()
-        } else {
-            nowPlayingViewController?.pause()
-            nowPlayingAnimationImageView.stopAnimating()
-        }
+        nowPlayingViewController?.isPlayingDidChange(isPlaying)
+        startNowPlayingAnimation(isPlaying)
     }
     
     func radioPlayer(_ player: FRadioPlayer, metadataDidChange artistName: String?, trackName: String?) {
