@@ -363,7 +363,7 @@ extension StationsViewController: UITableViewDataSource {
     
     @objc(tableView:heightForRowAtIndexPath:)
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 88.0
+        return 90.0
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
