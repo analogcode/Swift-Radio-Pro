@@ -86,7 +86,12 @@ class NowPlayingViewController: UIViewController {
         guard let mpVolumeSlider = mpVolumeSlider else { return }
         
         volumeParentView.addSubview(mpVolumeSlider)
-        mpVolumeSlider.frame = volumeParentView.bounds
+        
+        mpVolumeSlider.translatesAutoresizingMaskIntoConstraints = false
+        mpVolumeSlider.leftAnchor.constraint(equalTo: volumeParentView.leftAnchor, constant: 8).isActive = true
+        mpVolumeSlider.rightAnchor.constraint(equalTo: volumeParentView.rightAnchor, constant: -8).isActive = true
+        mpVolumeSlider.centerYAnchor.constraint(equalTo: volumeParentView.centerYAnchor).isActive = true
+        
         mpVolumeSlider.setThumbImage(#imageLiteral(resourceName: "slider-ball"), for: .normal)
     }
     
