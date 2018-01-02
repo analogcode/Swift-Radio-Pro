@@ -97,7 +97,8 @@ class StationsViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.title = "Swift Radio"
+        super.viewWillAppear(animated)
+        title = "Swift Radio"
     }
 
     //*****************************************************************
@@ -181,7 +182,7 @@ class StationsViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "NowPlaying", let nowPlayingVC = segue.destination as? NowPlayingViewController else { return }
-            
+        
         title = ""
         
         let newStation: Bool
@@ -239,7 +240,6 @@ class StationsViewController: UIViewController {
         }
         
         stationNowPlayingButton.setTitle(playingTitle, for: .normal)
-        nowPlayingAnimationImageView.startAnimating()
         stationNowPlayingButton.isEnabled = true
         createNowPlayingBarButton()
     }
@@ -468,7 +468,7 @@ extension StationsViewController: FRadioPlayerDelegate {
     
     func radioPlayer(_ player: FRadioPlayer, player isPlaying: Bool) {
         nowPlayingViewController?.isPlayingDidChange(isPlaying)
-        startNowPlayingAnimation(isPlaying)
+        startNowPlayingAnimation(isPlaying) 
     }
     
     func radioPlayer(_ player: FRadioPlayer, metadataDidChange artistName: String?, trackName: String?) {
