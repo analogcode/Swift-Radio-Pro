@@ -199,36 +199,32 @@ class NowPlayingViewController: UIViewController {
         }
     }
     
-    // TODO: Should be refactored
-    func updateLabels(with statusMessage: String = "") {
+    func updateLabels(with statusMessage: String? = nil) {
 
-        if statusMessage != "" {
-            // There's a an interruption or pause in the audio queue
-            
-            // Update UI only when it's not aleary updated
-            guard songLabel.text != statusMessage else { return }
-            songLabel.text = statusMessage
-            artistLabel.text = currentStation.name
-            
-            // songLabel animate
-            songLabel.animation = "flash"
-            songLabel.repeatCount = 3
-            songLabel.animate()
-            
-        } else {
+        guard let statusMessage = statusMessage else {
             // Radio is (hopefully) streaming properly
-            
-            // Update UI only when it's not aleary updated
-            guard songLabel.text != currentTrack.title else { return }
-            
             songLabel.text = currentTrack.title
             artistLabel.text = currentTrack.artist
+            return
         }
+        
+        // There's a an interruption or pause in the audio queue
+        
+        // Update UI only when it's not aleary updated
+        guard songLabel.text != statusMessage else { return }
+        
+        songLabel.text = statusMessage
+        artistLabel.text = currentStation.name
+        
+        // songLabel animate
+        songLabel.animation = "flash"
+        songLabel.repeatCount = 3
+        songLabel.animate()
     }
     
     func playerStateDidChange(_ state: FRadioPlayerState) {
         
-        let message: String
+        let message: String?
         
         switch state {
         case .loading:
@@ -236,7 +232,7 @@ class NowPlayingViewController: UIViewController {
         case .urlNotSet:
             message = "Station URL not valide"
         case .readyToPlay, .loadingFinished:
-            message = ""
+            message = nil
         case .error:
             message = "Error Playing"
         }
