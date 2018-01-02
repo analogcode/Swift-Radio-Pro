@@ -198,7 +198,7 @@ class StationsViewController: UIViewController {
         
         nowPlayingViewController = nowPlayingVC
         nowPlayingVC.load(station: currentStation, track: currentTrack, isNewStation: newStation)
-                
+        nowPlayingVC.delegate = self
     }
     
     //*****************************************************************
@@ -248,6 +248,11 @@ class StationsViewController: UIViewController {
         animate ? nowPlayingAnimationImageView.startAnimating() : nowPlayingAnimationImageView.stopAnimating()
     }
     
+    private func getIndex(of station: RadioStation?) -> Int? {
+        guard let station = station, let index = stations.index(of: station) else { return nil }
+        return index
+    }
+    
     //*****************************************************************
     // MARK: - Track loading/updates
     //*****************************************************************
@@ -258,6 +263,7 @@ class StationsViewController: UIViewController {
         currentTrack.title = trackName
         updateLockScreen(with: currentTrack)
         updateHandoffUserActivity(userActivity)
+        updateNowPlayingButton(station: currentStation, track: currentTrack)
         nowPlayingViewController?.updateTrackMetadata(with: currentTrack)
     }
     
@@ -411,8 +417,6 @@ extension StationsViewController: UITableViewDelegate {
         
         tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: "NowPlaying", sender: indexPath)
-        
-        updateNowPlayingButton(station: currentStation, track: currentTrack)
     }
 }
 
@@ -482,7 +486,6 @@ extension StationsViewController: FRadioPlayerDelegate {
         }
         
         updateTrackMetadata(artistName: artistName, trackName: trackName)
-        updateNowPlayingButton(station: currentStation, track: currentTrack)
     }
     
     func radioPlayer(_ player: FRadioPlayer, artworkDidChange artworkURL: URL?) {
@@ -539,4 +542,25 @@ extension StationsViewController {
         components.queryItems?.append(URLQueryItem(name: "q", value: "\(track.artist) \(track.title)"))
         return components.url
     }
+}
+
+//*****************************************************************
+// MARK: - NowPlayingViewControllerDelegate
+//*****************************************************************
+
+extension StationsViewController: NowPlayingViewControllerDelegate {
+    
+    func didPressNextButton() {
+        guard let index = getIndex(of: currentStation) else { return }
+        currentStation = (index + 1 == stations.count) ? stations[0] : stations[index + 1]
+        nowPlayingViewController?.load(station: currentStation, track: currentTrack)
+    }
+    
+    func didPressPreviousButton() {
+        guard let index = getIndex(of: currentStation) else { return }
+        currentStation = (index == 0) ? stations.last : stations[index - 1]
+        nowPlayingViewController?.load(station: currentStation, track: currentTrack)
+    }
+    
+    
 }

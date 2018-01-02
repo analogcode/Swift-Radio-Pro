@@ -31,3 +31,9 @@ let stationDataURL   = "http://yoururl.com/json/stations.json"
 
 // Set this to "true" to enable the search bar
 let searchable = false
+
+//**************************************
+// NEXT / PREVIOUS BUTTONS
+//**************************************
+
+let hideNextPreviousButtons = false

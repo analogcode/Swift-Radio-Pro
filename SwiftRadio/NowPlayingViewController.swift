@@ -10,10 +10,21 @@ import UIKit
 import MediaPlayer
 
 //*****************************************************************
+// NowPlayingViewControllerDelegate
+//*****************************************************************
+
+protocol NowPlayingViewControllerDelegate: class {
+    func didPressNextButton()
+    func didPressPreviousButton()
+}
+
+//*****************************************************************
 // NowPlayingViewController
 //*****************************************************************
 
 class NowPlayingViewController: UIViewController {
+    
+    weak var delegate: NowPlayingViewControllerDelegate?
 
     // MARK: - IB UI
     
@@ -24,6 +35,8 @@ class NowPlayingViewController: UIViewController {
     @IBOutlet weak var songLabel: SpringLabel!
     @IBOutlet weak var stationDescLabel: UILabel!
     @IBOutlet weak var volumeParentView: UIView!
+    @IBOutlet weak var previousButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
     
     // MARK: - Properties
     
@@ -69,6 +82,10 @@ class NowPlayingViewController: UIViewController {
         
         // Setup volumeSlider
         setupVolumeSlider()
+        
+        // Hide / Show Next/Previous buttons
+        previousButton.isHidden = hideNextPreviousButtons
+        nextButton.isHidden = hideNextPreviousButtons
     }
     
     //*****************************************************************
@@ -120,11 +137,21 @@ class NowPlayingViewController: UIViewController {
         updateLabels(with: "Station Paused...")
     }
     
+    @IBAction func nextPressed(_ sender: Any) {
+        delegate?.didPressNextButton()
+        stationDidChange()
+    }
+    
+    @IBAction func previousPressed(_ sender: Any) {
+        delegate?.didPressPreviousButton()
+        stationDidChange()
+    }
+    
     //*****************************************************************
     // MARK: - Load station/track
     //*****************************************************************
     
-    func load(station: RadioStation?, track: Track, isNewStation: Bool) {
+    func load(station: RadioStation?, track: Track, isNewStation: Bool = true) {
         guard let station = station else { return }
         
         currentStation = station
