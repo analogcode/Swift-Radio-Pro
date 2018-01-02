@@ -229,7 +229,7 @@ class NowPlayingViewController: UIViewController {
         case .loading:
             message = "Loading Station ..."
         case .urlNotSet:
-            message = "Station URL not set"
+            message = "Station URL not valide"
         case .readyToPlay, .loadingFinished:
             message = ""
         case .error:
