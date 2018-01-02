@@ -332,7 +332,7 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="a3Z-1t-AAA" userLabel="Volume Stack View">
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="a3Z-1t-AAA" userLabel="Volume Stack View">
                                 <rect key="frame" x="12" y="368" width="351" height="60"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vol-min" translatesAutoresizingMaskIntoConstraints="NO" id="Kmj-vC-DQe">
@@ -343,10 +343,10 @@
                                         </constraints>
                                     </imageView>
                                     <view alpha="0.49999999999999961" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zuj-rb-EKQ" userLabel="Volume View">
-                                        <rect key="frame" x="18" y="0.0" width="315" height="60"/>
+                                        <rect key="frame" x="26" y="0.0" width="299" height="60"/>
                                         <subviews>
                                             <slider hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="iFC-eW-7WA">
-                                                <rect key="frame" x="6" y="15" width="303" height="31"/>
+                                                <rect key="frame" x="6" y="15" width="287" height="31"/>
                                             </slider>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
