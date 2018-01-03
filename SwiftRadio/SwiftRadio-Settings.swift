@@ -36,4 +36,5 @@ let searchable = false
 // NEXT / PREVIOUS BUTTONS
 //**************************************
 
+// Set this to "false" to show the next/previous player buttons
 let hideNextPreviousButtons = true
