@@ -36,4 +36,4 @@ let searchable = false
 // NEXT / PREVIOUS BUTTONS
 //**************************************
 
-let hideNextPreviousButtons = false
+let hideNextPreviousButtons = true
