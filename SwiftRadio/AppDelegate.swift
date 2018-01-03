@@ -12,6 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    weak var stationsViewController: StationsViewController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -23,6 +24,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // FRadioPlayer config
         FRadioPlayer.shared.artworkSize = 600
+        
+        // Get weak ref of StationsViewController
+        if let navigationController = window?.rootViewController as? UINavigationController {
+            stationsViewController = navigationController.viewControllers.first as? StationsViewController
+        }
         
         return true
     }
@@ -73,6 +79,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             FRadioPlayer.shared.pause()
         case .remoteControlTogglePlayPause:
             FRadioPlayer.shared.togglePlaying()
+        case .remoteControlNextTrack:
+            stationsViewController?.didPressNextButton()
+        case .remoteControlPreviousTrack:
+            stationsViewController?.didPressPreviousButton()
         default:
             break
         }

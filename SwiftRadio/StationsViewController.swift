@@ -332,7 +332,15 @@ class StationsViewController: UIViewController {
             return .commandFailed
         }
         
-        // TODO: Add previous/Next station support
+        // Add handler for Next Command
+        commandCenter.nextTrackCommand.addTarget { event in
+            return .success
+        }
+        
+        // Add handler for Previous Command
+        commandCenter.previousTrackCommand.addTarget { event in
+            return .success
+        }
     }
     
     //*****************************************************************
@@ -553,14 +561,23 @@ extension StationsViewController: NowPlayingViewControllerDelegate {
     func didPressNextButton() {
         guard let index = getIndex(of: currentStation) else { return }
         currentStation = (index + 1 == stations.count) ? stations[0] : stations[index + 1]
-        nowPlayingViewController?.load(station: currentStation, track: currentTrack)
+        handleRemoteStationChange()
     }
     
     func didPressPreviousButton() {
         guard let index = getIndex(of: currentStation) else { return }
         currentStation = (index == 0) ? stations.last : stations[index - 1]
-        nowPlayingViewController?.load(station: currentStation, track: currentTrack)
+        handleRemoteStationChange()
     }
     
-    
+    private func handleRemoteStationChange() {
+        if let nowPlayingVC = nowPlayingViewController {
+            // If nowPlayingVC is presented
+            nowPlayingVC.load(station: currentStation, track: currentTrack)
+            nowPlayingVC.stationDidChange()
+        } else if let station = currentStation {
+            // If nowPlayingVC is not presented (change from remote controls)
+            radioPlayer.radioURL = URL(string: station.streamURL)
+        }
+    }
 }

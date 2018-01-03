@@ -139,12 +139,10 @@ class NowPlayingViewController: UIViewController {
     
     @IBAction func nextPressed(_ sender: Any) {
         delegate?.didPressNextButton()
-        stationDidChange()
     }
     
     @IBAction func previousPressed(_ sender: Any) {
         delegate?.didPressPreviousButton()
-        stationDidChange()
     }
     
     //*****************************************************************
