@@ -327,7 +327,7 @@
                                         </state>
                                         <state key="selected" image="btn-pause"/>
                                         <connections>
-                                            <action selector="togglePlaying" destination="vXZ-lx-hvc" eventType="touchUpInside" id="RHN-FH-Tfq"/>
+                                            <action selector="playingPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="NEV-en-273"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uXK-bZ-bdt" userLabel="PauseButton">

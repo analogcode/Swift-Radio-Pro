@@ -478,9 +478,10 @@ extension StationsViewController: FRadioPlayerDelegate {
         nowPlayingViewController?.playerStateDidChange(state)
     }
     
-    func radioPlayer(_ player: FRadioPlayer, player isPlaying: Bool) {
-        nowPlayingViewController?.isPlayingDidChange(isPlaying)
-        startNowPlayingAnimation(isPlaying) 
+    func radioPlayer(_ player: FRadioPlayer, playbackStateDidChange state: FRadioPlaybackState) {
+        nowPlayingViewController?.playbackStateDidChange(state)
+        startNowPlayingAnimation(player.isPlaying)
+        
     }
     
     func radioPlayer(_ player: FRadioPlayer, metadataDidChange artistName: String?, trackName: String?) {
@@ -557,6 +558,14 @@ extension StationsViewController {
 //*****************************************************************
 
 extension StationsViewController: NowPlayingViewControllerDelegate {
+    
+    func didPressPlayingButton() {
+        radioPlayer.togglePlaying()
+    }
+    
+    func didPressStopButton() {
+        radioPlayer.stop()
+    }
     
     func didPressNextButton() {
         guard let index = getIndex(of: currentStation) else { return }

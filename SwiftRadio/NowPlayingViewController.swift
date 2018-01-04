@@ -14,6 +14,8 @@ import MediaPlayer
 //*****************************************************************
 
 protocol NowPlayingViewControllerDelegate: class {
+    func didPressPlayingButton()
+    func didPressStopButton()
     func didPressNextButton()
     func didPressPreviousButton()
 }
@@ -72,13 +74,10 @@ class NowPlayingViewController: UIViewController {
         stationDescLabel.isHidden = currentTrack.artworkLoaded
         
         // Check for station change
-        if newStation {
-            stationDidChange()
-        } else {
-            playerStateDidChange(radioPlayer.state)
-            playingButton.isSelected = radioPlayer.isPlaying
-            startNowPlayingAnimation(radioPlayer.isPlaying)
-        }
+        newStation ? stationDidChange() : playerStateDidChange(radioPlayer.state)
+        
+        // Set defaults based on the player playbackState
+        playbackStateDidChange(radioPlayer.playbackState)
         
         // Setup volumeSlider
         setupVolumeSlider()
@@ -120,21 +119,14 @@ class NowPlayingViewController: UIViewController {
     // MARK: - Player Controls (Play/Pause/Volume)
     //*****************************************************************
     
-    @IBAction func togglePlaying() {
-        radioPlayer.togglePlaying()
+    // Actions
+    
+    @IBAction func playingPressed(_ sender: Any) {
+        delegate?.didPressPlayingButton()
     }
     
     @IBAction func stopPressed(_ sender: Any) {
-        radioPlayer.stop()
-        updateLabels(with: "Station Stopped...")
-    }
-    
-    func play() {
-        updateLabels()
-    }
-    
-    func pause() {
-        updateLabels(with: "Station Paused...")
+        delegate?.didPressStopButton()
     }
     
     @IBAction func nextPressed(_ sender: Any) {
@@ -197,10 +189,20 @@ class NowPlayingViewController: UIViewController {
         view.setNeedsDisplay()
     }
     
-    func isPlayingDidChange(_ isPlaying: Bool) {
-        isPlaying ? play() : pause()
+    private func isPlayingDidChange(_ isPlaying: Bool) {
         playingButton.isSelected = isPlaying
         startNowPlayingAnimation(isPlaying)
+    }
+    
+    func playbackStateDidChange(_ playbackState: FRadioPlaybackState) {
+        switch playbackState {
+        case .paused:
+            updateLabels(with: "Station Paused...")
+        case .playing, .stopped:
+            updateLabels()
+        }
+        
+        isPlayingDidChange(radioPlayer.isPlaying)
     }
     
     //*****************************************************************

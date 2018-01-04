@@ -8,6 +8,33 @@
 
 import AVFoundation
 
+// MARK: - FRadioPlayingState
+
+/**
+ `FRadioPlayingState` is the Player playing state enum
+ */
+
+@objc public enum FRadioPlaybackState: Int {
+    
+    /// Player is playing
+    case playing
+    
+    /// Player is paused
+    case paused
+    
+    /// Player is stopped
+    case stopped
+    
+    /// Return a readable description
+    public var description: String {
+        switch self {
+        case .playing: return "URL is not set"
+        case .paused: return "Ready to play"
+        case .stopped: return "Loading"
+        }
+    }
+}
+
 // MARK: - FRadioPlayerState
 
 /**
@@ -62,9 +89,9 @@ import AVFoundation
      Called when the player changes the playing state
      
      - parameter player: FRadioPlayer
-     - parameter playing: Bool value
+     - parameter state: FRadioPlaybackState
      */
-    @objc optional func radioPlayer(_ player: FRadioPlayer, player isPlaying: Bool)
+    func radioPlayer(_ player: FRadioPlayer, playbackStateDidChange state: FRadioPlaybackState)
     
     /**
      Called when player changes the current player item
@@ -141,10 +168,12 @@ open class FRadioPlayer: NSObject {
     }
     
     /// Check if the player is playing
-    open private(set) var isPlaying: Bool = false {
-        didSet {
-            guard oldValue != isPlaying else { return }
-            delegate?.radioPlayer?(self, player: isPlaying)
+    open var isPlaying: Bool {
+        switch playbackState {
+        case .playing:
+            return true
+        case .stopped, .paused:
+            return false
         }
     }
     
@@ -153,6 +182,14 @@ open class FRadioPlayer: NSObject {
         didSet {
             guard oldValue != state else { return }
             delegate?.radioPlayer(self, playerStateDidChange: state)
+        }
+    }
+    
+    /// Playing state of type `FRadioPlaybackState`
+    open private(set) var playbackState = FRadioPlaybackState.stopped {
+        didSet {
+            guard oldValue != playbackState else { return }
+            delegate?.radioPlayer(self, playbackStateDidChange: playbackState)
         }
     }
     
@@ -203,7 +240,7 @@ open class FRadioPlayer: NSObject {
         }
         
         player.play()
-        isPlaying = true
+        playbackState = .playing
     }
     
     /**
@@ -213,7 +250,7 @@ open class FRadioPlayer: NSObject {
     open func pause() {
         guard let player = player else { return }
         player.pause()
-        isPlaying = false
+        playbackState = .paused
     }
     
     /**
@@ -224,7 +261,7 @@ open class FRadioPlayer: NSObject {
         guard let player = player else { return }
         player.replaceCurrentItem(with: nil)
         timedMetadataDidChange(rawValue: nil)
-        isPlaying = false
+        playbackState = .stopped
     }
     
     /**
@@ -363,7 +400,7 @@ open class FRadioPlayer: NSObject {
         notificationCenter.addObserver(self, selector: #selector(handleRouteChange), name: .AVAudioSessionRouteChange, object: nil)
     }
     
-    // Responding to Interruptions
+    // MARK: - Responding to Interruptions
     
     @objc private func handleInterruption(notification: Notification) {
         guard let userInfo = notification.userInfo,
@@ -382,7 +419,7 @@ open class FRadioPlayer: NSObject {
         }
     }
     
-    // Responding to Route Changes
+    // MARK: - Responding to Route Changes
     
     private func checkHeadphonesConnection(outputs: [AVAudioSessionPortDescription]) {
         for output in outputs where output.portType == AVAudioSessionPortHeadphones {
@@ -432,7 +469,7 @@ open class FRadioPlayer: NSObject {
             case "playbackLikelyToKeepUp":
                 
                 self.state = item.isPlaybackLikelyToKeepUp ? .loadingFinished : .loading
-            
+                
             case "timedMetadata":
                 let rawValue = item.timedMetadata?.first?.value as? String
                 timedMetadataDidChange(rawValue: rawValue)
@@ -443,3 +480,4 @@ open class FRadioPlayer: NSObject {
         }
     }
 }
+
