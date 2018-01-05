@@ -77,7 +77,9 @@ class NowPlayingViewController: UIViewController {
         newStation ? stationDidChange() : playerStateDidChange(radioPlayer.state)
         
         // Set defaults based on the player playbackState
-        playbackStateDidChange(radioPlayer.playbackState)
+        if radioPlayer.playbackState == .paused {
+            updateLabels(with: "Station Paused...", animate: false)
+        }
         
         // Setup volumeSlider
         setupVolumeSlider()
@@ -198,8 +200,10 @@ class NowPlayingViewController: UIViewController {
         switch playbackState {
         case .paused:
             updateLabels(with: "Station Paused...")
-        case .playing, .stopped:
+        case .playing:
             updateLabels()
+        case .stopped:
+            updateLabels(animate: false)
         }
         
         isPlayingDidChange(radioPlayer.isPlaying)
@@ -226,7 +230,7 @@ class NowPlayingViewController: UIViewController {
         }
     }
     
-    func updateLabels(with statusMessage: String? = nil) {
+    func updateLabels(with statusMessage: String? = nil, animate: Bool = true) {
 
         guard let statusMessage = statusMessage else {
             // Radio is (hopefully) streaming properly
@@ -242,11 +246,13 @@ class NowPlayingViewController: UIViewController {
         
         songLabel.text = statusMessage
         artistLabel.text = currentStation.name
+    
+        if animate {
+            songLabel.animation = "flash"
+            songLabel.repeatCount = 3
+            songLabel.animate()
+        }
         
-        // songLabel animate
-        songLabel.animation = "flash"
-        songLabel.repeatCount = 3
-        songLabel.animate()
     }
     
     func playerStateDidChange(_ state: FRadioPlayerState) {
