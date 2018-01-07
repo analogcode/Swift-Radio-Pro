@@ -56,6 +56,7 @@
 		94E9761C1B1A8F3200F52B1E /* UIImage+DropShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9761B1B1A8F3200F52B1E /* UIImage+DropShadow.swift */; };
 		CAA7C15D1FD77F3A003CABDF /* FRadioAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA7C15B1FD77F3A003CABDF /* FRadioAPI.swift */; };
 		CAA7C15E1FD77F3A003CABDF /* FRadioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA7C15C1FD77F3A003CABDF /* FRadioPlayer.swift */; };
+		CAA8FDB52000614600050F77 /* RadioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA8FDB42000614600050F77 /* RadioPlayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +127,7 @@
 		B90086461BBE40AF00E5372C /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		CAA7C15B1FD77F3A003CABDF /* FRadioAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRadioAPI.swift; sourceTree = "<group>"; };
 		CAA7C15C1FD77F3A003CABDF /* FRadioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRadioPlayer.swift; sourceTree = "<group>"; };
+		CAA8FDB42000614600050F77 /* RadioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioPlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,12 +225,14 @@
 		9409E1181ABF6FEA00312E2B /* SwiftRadio */ = {
 			isa = PBXGroup;
 			children = (
-				94D2608E1B45D0F800DE671C /* ViewControllers */,
 				94D2608F1B45D11800DE671C /* Cells */,
+				94AC70AF1AD05C7400652982 /* Networking */,
 				94823F861B5576F4004EC711 /* Data */,
 				94E976191B1A8BFB00F52B1E /* Model */,
-				94AC70AF1AD05C7400652982 /* Networking */,
+				94D2608E1B45D0F800DE671C /* ViewControllers */,
 				9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */,
+				CAA8FDB42000614600050F77 /* RadioPlayer.swift */,
+				94D260901B45D20000DE671C /* SwiftRadio-Settings.swift */,
 				9409E1221ABF6FEA00312E2B /* Main.storyboard */,
 				9409E1251ABF6FEA00312E2B /* Images.xcassets */,
 				9409E1191ABF6FEA00312E2B /* Supporting Files */,
@@ -242,7 +246,6 @@
 			isa = PBXGroup;
 			children = (
 				9409E11A1ABF6FEA00312E2B /* Info.plist */,
-				94D260901B45D20000DE671C /* SwiftRadio-Settings.swift */,
 				5FDEE0211F72FF980064333C /* LaunchScreen.storyboard */,
 			);
 			name = "Supporting Files";
@@ -269,8 +272,8 @@
 			children = (
 				94452E541AD7086800BFE7A5 /* AboutViewController.swift */,
 				94D1D0A41AD6D6230022CA11 /* InfoDetailViewController.swift */,
-				9409E13F1ABF78B000312E2B /* NowPlayingViewController.swift */,
 				94452E4E1AD6F24700BFE7A5 /* PopUpMenuViewController.swift */,
+				9409E13F1ABF78B000312E2B /* NowPlayingViewController.swift */,
 				942A3F361AE43DF80011396E /* StationsViewController.swift */,
 			);
 			name = ViewControllers;
@@ -369,7 +372,7 @@
 					};
 					9409E1151ABF6FEA00312E2B = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = G24WJ3XCZ3;
+                        DevelopmentTeam = G24WJ3XCZ3;
 						LastSwiftMigration = 0900;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -461,6 +464,7 @@
 				94D260981B45E8B800DE671C /* Track.swift in Sources */,
 				CAA7C15E1FD77F3A003CABDF /* FRadioPlayer.swift in Sources */,
 				5F22BA3F1F72AD5A00CB5911 /* LoadingView.swift in Sources */,
+				CAA8FDB52000614600050F77 /* RadioPlayer.swift in Sources */,
 				5F22BA4F1F72AD5A00CB5911 /* TransitionManager.swift in Sources */,
 				5F22BA531F72AD5A00CB5911 /* SpringAnimation.swift in Sources */,
 				94452E4F1AD6F24700BFE7A5 /* PopUpMenuViewController.swift in Sources */,

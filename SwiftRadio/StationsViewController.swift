@@ -20,12 +20,7 @@ class StationsViewController: UIViewController {
     
     // MARK: - Properties
     
-    var currentTrack = Track()
-    let radioPlayer = FRadioPlayer.shared
-    
-    var currentStation: RadioStation? {
-        didSet { resetTrack(with: currentStation) }
-    }
+    let radioPlayer = RadioPlayer()
     
     // Weak reference to update the NowPlayingViewController
     weak var nowPlayingViewController: NowPlayingViewController?
@@ -189,7 +184,7 @@ class StationsViewController: UIViewController {
         
         if let indexPath = (sender as? IndexPath) {
             // User clicked on row, load/reset station
-            currentStation = searchController.isActive ? searchedStations[indexPath.row] : stations[indexPath.row]
+            radioPlayer.station = searchController.isActive ? searchedStations[indexPath.row] : stations[indexPath.row]
             newStation = true
         } else {
             // User clicked on Now Playing button
@@ -197,7 +192,7 @@ class StationsViewController: UIViewController {
         }
         
         nowPlayingViewController = nowPlayingVC
-        nowPlayingVC.load(station: currentStation, track: currentTrack, isNewStation: newStation)
+        nowPlayingVC.load(station: radioPlayer.station, track: radioPlayer.track, isNewStation: newStation)
         nowPlayingVC.delegate = self
     }
     
@@ -208,7 +203,7 @@ class StationsViewController: UIViewController {
     private func stationsDidUpdate() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
-            guard let currentStation = self.currentStation else { return }
+            guard let currentStation = self.radioPlayer.station else { return }
             
             // Reset everything if the new stations list doesn't have the current station
             if self.stations.index(of: currentStation) == nil { self.resetCurrentStation() }
@@ -217,14 +212,11 @@ class StationsViewController: UIViewController {
     
     // Reset all properties to default
     private func resetCurrentStation() {
-        currentStation = nil
-        currentTrack = Track()
-        radioPlayer.radioURL = nil
+        radioPlayer.resetRadioPlayer()
         nowPlayingAnimationImageView.stopAnimating()
         stationNowPlayingButton.setTitle("Choose a station above to begin", for: .normal)
         stationNowPlayingButton.isEnabled = false
         navigationItem.rightBarButtonItem = nil
-        userActivity?.invalidate()
     }
     
     // Update the now playing button title
@@ -254,59 +246,6 @@ class StationsViewController: UIViewController {
     }
     
     //*****************************************************************
-    // MARK: - Track loading/updates
-    //*****************************************************************
-    
-    // Update the track with an artist name and track name
-    func updateTrackMetadata(artistName: String, trackName: String) {
-        currentTrack.artist = artistName
-        currentTrack.title = trackName
-        updateLockScreen(with: currentTrack)
-        updateHandoffUserActivity(userActivity)
-        updateNowPlayingButton(station: currentStation, track: currentTrack)
-        nowPlayingViewController?.updateTrackMetadata(with: currentTrack)
-    }
-    
-    // Update the track artwork with a UIImage
-    func updateTrackArtwork(with image: UIImage, artworkLoaded: Bool = false) {
-        currentTrack.artworkImage = image
-        currentTrack.artworkLoaded = artworkLoaded
-        updateLockScreen(with: currentTrack)
-        nowPlayingViewController?.updateTrackArtwork(with: currentTrack)
-    }
-    
-    // Reset the track metadata and artwork to use the current station infos
-    func resetTrack(with station: RadioStation?) {
-        guard let station = station else {
-            currentTrack = Track()
-            userActivity?.invalidate()
-            return
-        }
-        updateTrackMetadata(artistName: station.desc, trackName: station.name)
-        resetArtwork(with: station)
-    }
-    
-    // Reset the track Artwork to current station image
-    func resetArtwork(with station: RadioStation?) {
-        guard let station = station else { currentTrack = Track(); return }
-        
-        currentTrack.artworkLoaded = false
-        currentTrack.artworkURL = station.imageURL
-        
-        if station.imageURL.range(of: "http") != nil {
-            // load current station image from network
-            ImageLoader.sharedLoader.imageForUrl(urlString: station.imageURL) { (image, stringURL) in
-                guard let image = image else { self.updateTrackArtwork(with: #imageLiteral(resourceName: "albumArt")); return }
-                self.updateTrackArtwork(with: image)
-            }
-        } else {
-            // load local station image
-            let image = UIImage(named: station.imageURL) ?? #imageLiteral(resourceName: "albumArt")
-            updateTrackArtwork(with: image)
-        }
-    }
-    
-    //*****************************************************************
     // MARK: - Remote Command Center Controls
     //*****************************************************************
     
@@ -315,21 +254,13 @@ class StationsViewController: UIViewController {
         let commandCenter = MPRemoteCommandCenter.shared()
         
         // Add handler for Play Command
-        commandCenter.playCommand.addTarget { [unowned self] event in
-            if self.radioPlayer.rate == 0.0 {
-                self.radioPlayer.play()
-                return .success
-            }
-            return .commandFailed
+        commandCenter.playCommand.addTarget { event in
+            return .success
         }
         
         // Add handler for Pause Command
-        commandCenter.pauseCommand.addTarget { [unowned self] event in
-            if self.radioPlayer.rate == 1.0 {
-                self.radioPlayer.pause()
-                return .success
-            }
-            return .commandFailed
+        commandCenter.pauseCommand.addTarget { event in
+            return .success
         }
         
         // Add handler for Next Command
@@ -469,49 +400,30 @@ extension StationsViewController: UISearchResultsUpdating {
 }
 
 //*****************************************************************
-// MARK: - FRadioPlayerDelegate
+// MARK: - RadioPlayerDelegate
 //*****************************************************************
 
-extension StationsViewController: FRadioPlayerDelegate {
+extension StationsViewController: RadioPlayerDelegate {
     
-    func radioPlayer(_ player: FRadioPlayer, playerStateDidChange state: FRadioPlayerState) {
-        nowPlayingViewController?.playerStateDidChange(state)
+    func playerStateDidChange(_ playerState: FRadioPlayerState) {
+        nowPlayingViewController?.playerStateDidChange(playerState)
     }
     
-    func radioPlayer(_ player: FRadioPlayer, playbackStateDidChange state: FRadioPlaybackState) {
-        nowPlayingViewController?.playbackStateDidChange(state)
-        startNowPlayingAnimation(player.isPlaying)
-        
+    func playbackStateDidChange(_ plabackState: FRadioPlaybackState) {
+        nowPlayingViewController?.playbackStateDidChange(plabackState)
+        startNowPlayingAnimation(radioPlayer.player.isPlaying)
     }
     
-    func radioPlayer(_ player: FRadioPlayer, metadataDidChange artistName: String?, trackName: String?) {
-        guard
-            let artistName = artistName,
-            !artistName.isEmpty,
-            let trackName = trackName,
-            !trackName.isEmpty else {
-                resetTrack(with: currentStation)
-                return
-        }
-        
-        updateTrackMetadata(artistName: artistName, trackName: trackName)
+    func trackDidUpdate(_ track: Track?) {
+        updateLockScreen(with: track)
+        updateNowPlayingButton(station: radioPlayer.station, track: track)
+        updateHandoffUserActivity(userActivity, station: radioPlayer.station, track: track)
+        nowPlayingViewController?.updateTrackMetadata(with: track)
     }
     
-    func radioPlayer(_ player: FRadioPlayer, artworkDidChange artworkURL: URL?) {
-        
-        guard let artworkURL = artworkURL else {
-            resetArtwork(with: self.currentStation)
-            return
-        }
-        
-        ImageLoader.sharedLoader.imageForUrl(urlString: artworkURL.absoluteString) { (image, stringURL) in
-            guard let image = image else {
-                self.resetArtwork(with: self.currentStation)
-                return
-            }
-            
-            self.updateTrackArtwork(with: image, artworkLoaded: true)
-        }
+    func trackArtworkDidUpdate(_ track: Track?) {
+        updateLockScreen(with: track)
+        nowPlayingViewController?.updateTrackArtwork(with: track)
     }
 }
 
@@ -523,25 +435,21 @@ extension StationsViewController {
     
     func setupHandoffUserActivity() {
         userActivity = NSUserActivity(activityType: NSUserActivityTypeBrowsingWeb)
-        userActivity?.webpageURL = getHandoffURL(from: currentTrack)
         userActivity?.becomeCurrent()
     }
     
-    func updateHandoffUserActivity(_ activity: NSUserActivity?) {
+    func updateHandoffUserActivity(_ activity: NSUserActivity?, station: RadioStation?, track: Track?) {
         guard let activity = activity else { return }
+        activity.webpageURL = (track?.title == station?.name) ? nil : getHandoffURL(from: track)
         updateUserActivityState(activity)
     }
     
     override func updateUserActivityState(_ activity: NSUserActivity) {
-        activity.webpageURL = getHandoffURL(from: currentTrack)
         super.updateUserActivityState(activity)
     }
     
     private func getHandoffURL(from track: Track?) -> URL? {
-        guard
-            let track = track,
-            !track.title.isEmpty,
-            track.title != currentStation?.name else { return nil }
+        guard let track = track else { return nil }
         
         var components = URLComponents()
         components.scheme = "https"
@@ -560,33 +468,33 @@ extension StationsViewController {
 extension StationsViewController: NowPlayingViewControllerDelegate {
     
     func didPressPlayingButton() {
-        radioPlayer.togglePlaying()
+        radioPlayer.player.togglePlaying()
     }
     
     func didPressStopButton() {
-        radioPlayer.stop()
+        radioPlayer.player.stop()
     }
     
     func didPressNextButton() {
-        guard let index = getIndex(of: currentStation) else { return }
-        currentStation = (index + 1 == stations.count) ? stations[0] : stations[index + 1]
+        guard let index = getIndex(of: radioPlayer.station) else { return }
+        radioPlayer.station = (index + 1 == stations.count) ? stations[0] : stations[index + 1]
         handleRemoteStationChange()
     }
     
     func didPressPreviousButton() {
-        guard let index = getIndex(of: currentStation) else { return }
-        currentStation = (index == 0) ? stations.last : stations[index - 1]
+        guard let index = getIndex(of: radioPlayer.station) else { return }
+        radioPlayer.station = (index == 0) ? stations.last : stations[index - 1]
         handleRemoteStationChange()
     }
     
     private func handleRemoteStationChange() {
         if let nowPlayingVC = nowPlayingViewController {
             // If nowPlayingVC is presented
-            nowPlayingVC.load(station: currentStation, track: currentTrack)
+            nowPlayingVC.load(station: radioPlayer.station, track: radioPlayer.track)
             nowPlayingVC.stationDidChange()
-        } else if let station = currentStation {
+        } else if let station = radioPlayer.station {
             // If nowPlayingVC is not presented (change from remote controls)
-            radioPlayer.radioURL = URL(string: station.streamURL)
+            radioPlayer.player.radioURL = URL(string: station.streamURL)
         }
     }
 }

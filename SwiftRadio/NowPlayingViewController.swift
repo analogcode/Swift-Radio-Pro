@@ -43,10 +43,12 @@ class NowPlayingViewController: UIViewController {
     // MARK: - Properties
     
     var currentStation: RadioStation!
+    var currentTrack: Track!
+    
     var newStation = true
     var nowPlayingImageView: UIImageView!
     let radioPlayer = FRadioPlayer.shared
-    var currentTrack = Track()
+    
     var mpVolumeSlider: UISlider?
 
     //*****************************************************************
@@ -56,17 +58,17 @@ class NowPlayingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Setup Player
-        playingButton.isSelected = radioPlayer.isPlaying
+        // Create Now Playing BarItem
+        createNowPlayingAnimation()
+        
+        // Default isPlaying state
+        isPlayingDidChange(radioPlayer.isPlaying)
         
         // Set AlbumArtwork Constraints
         optimizeForDeviceSize()
 
         // Set View Title
         self.title = currentStation.name
-        
-        // Create Now Playing BarItem
-        createNowPlayingAnimation()
         
         // Set UI
         albumImageView.image = currentTrack.artworkImage
@@ -75,11 +77,6 @@ class NowPlayingViewController: UIViewController {
         
         // Check for station change
         newStation ? stationDidChange() : playerStateDidChange(radioPlayer.state)
-        
-        // Set defaults based on the player playbackState
-        if radioPlayer.playbackState == .paused {
-            updateLabels(with: "Station Paused...", animate: false)
-        }
         
         // Setup volumeSlider
         setupVolumeSlider()
@@ -143,7 +140,7 @@ class NowPlayingViewController: UIViewController {
     // MARK: - Load station/track
     //*****************************************************************
     
-    func load(station: RadioStation?, track: Track, isNewStation: Bool = true) {
+    func load(station: RadioStation?, track: Track?, isNewStation: Bool = true) {
         guard let station = station else { return }
         
         currentStation = station
@@ -151,7 +148,8 @@ class NowPlayingViewController: UIViewController {
         newStation = isNewStation
     }
     
-    func updateTrackMetadata(with track: Track) {
+    func updateTrackMetadata(with track: Track?) {
+        guard let track = track else { return }
         
         currentTrack.artist = track.artist
         currentTrack.title = track.title
@@ -169,7 +167,8 @@ class NowPlayingViewController: UIViewController {
     }
     
     // Update track with new artwork
-    func updateTrackArtwork(with track: Track) {
+    func updateTrackArtwork(with track: Track?) {
+        guard let track = track else { return }
         
         // Update track struct
         currentTrack.artworkImage = track.artworkImage
