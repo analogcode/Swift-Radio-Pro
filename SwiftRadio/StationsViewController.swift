@@ -406,11 +406,11 @@ extension StationsViewController: UISearchResultsUpdating {
 extension StationsViewController: RadioPlayerDelegate {
     
     func playerStateDidChange(_ playerState: FRadioPlayerState) {
-        nowPlayingViewController?.playerStateDidChange(playerState)
+        nowPlayingViewController?.playerStateDidChange(playerState, animate: true)
     }
     
-    func playbackStateDidChange(_ plabackState: FRadioPlaybackState) {
-        nowPlayingViewController?.playbackStateDidChange(plabackState)
+    func playbackStateDidChange(_ playbackState: FRadioPlaybackState) {
+        nowPlayingViewController?.playbackStateDidChange(playbackState, animate: true)
         startNowPlayingAnimation(radioPlayer.player.isPlaying)
     }
     

@@ -61,9 +61,6 @@ class NowPlayingViewController: UIViewController {
         // Create Now Playing BarItem
         createNowPlayingAnimation()
         
-        // Default isPlaying state
-        isPlayingDidChange(radioPlayer.isPlaying)
-        
         // Set AlbumArtwork Constraints
         optimizeForDeviceSize()
 
@@ -76,7 +73,7 @@ class NowPlayingViewController: UIViewController {
         stationDescLabel.isHidden = currentTrack.artworkLoaded
         
         // Check for station change
-        newStation ? stationDidChange() : playerStateDidChange(radioPlayer.state)
+        newStation ? stationDidChange() : playerStateDidChange(radioPlayer.state, animate: false)
         
         // Setup volumeSlider
         setupVolumeSlider()
@@ -155,15 +152,6 @@ class NowPlayingViewController: UIViewController {
         currentTrack.title = track.title
         
         updateLabels()
-        
-        // Animate if the Track has album metadata
-        guard currentTrack.title != currentStation.name else { return }
-        
-        // songLabel animation
-        songLabel.animation = "zoomIn"
-        songLabel.duration = 1.5
-        songLabel.damping = 1
-        songLabel.animate()
     }
     
     // Update track with new artwork
@@ -195,17 +183,40 @@ class NowPlayingViewController: UIViewController {
         startNowPlayingAnimation(isPlaying)
     }
     
-    func playbackStateDidChange(_ playbackState: FRadioPlaybackState) {
+    func playbackStateDidChange(_ playbackState: FRadioPlaybackState, animate: Bool) {
+        
+        let message: String?
+        
         switch playbackState {
         case .paused:
-            updateLabels(with: "Station Paused...")
+            message = "Station Paused..."
         case .playing:
-            updateLabels()
+            message = nil
         case .stopped:
-            updateLabels(animate: false)
+            message = "Station Stopped..."
         }
         
+        updateLabels(with: message, animate: animate)
         isPlayingDidChange(radioPlayer.isPlaying)
+    }
+    
+    func playerStateDidChange(_ state: FRadioPlayerState, animate: Bool) {
+        
+        let message: String?
+        
+        switch state {
+        case .loading:
+            message = "Loading Station ..."
+        case .urlNotSet:
+            message = "Station URL not valide"
+        case .readyToPlay, .loadingFinished:
+            playbackStateDidChange(radioPlayer.playbackState, animate: animate)
+            return
+        case .error:
+            message = "Error Playing"
+        }
+        
+        updateLabels(with: message, animate: animate)
     }
     
     //*****************************************************************
@@ -235,6 +246,7 @@ class NowPlayingViewController: UIViewController {
             // Radio is (hopefully) streaming properly
             songLabel.text = currentTrack.title
             artistLabel.text = currentTrack.artist
+            shouldAnimateSongLabel(animate)
             return
         }
         
@@ -251,25 +263,19 @@ class NowPlayingViewController: UIViewController {
             songLabel.repeatCount = 3
             songLabel.animate()
         }
-        
     }
     
-    func playerStateDidChange(_ state: FRadioPlayerState) {
+    // Animations
+    
+    func shouldAnimateSongLabel(_ animate: Bool) {
+        // Animate if the Track has album metadata
+        guard animate, currentTrack.title != currentStation.name else { return }
         
-        let message: String?
-        
-        switch state {
-        case .loading:
-            message = "Loading Station ..."
-        case .urlNotSet:
-            message = "Station URL not valide"
-        case .readyToPlay, .loadingFinished:
-            message = nil
-        case .error:
-            message = "Error Playing"
-        }
-        
-        updateLabels(with: message)
+        // songLabel animation
+        songLabel.animation = "zoomIn"
+        songLabel.duration = 1.5
+        songLabel.damping = 1
+        songLabel.animate()
     }
     
     func createNowPlayingAnimation() {

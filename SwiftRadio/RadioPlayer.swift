@@ -14,7 +14,7 @@ import UIKit
 
 protocol RadioPlayerDelegate: class {
     func playerStateDidChange(_ playerState: FRadioPlayerState)
-    func playbackStateDidChange(_ plabackState: FRadioPlaybackState)
+    func playbackStateDidChange(_ playbackState: FRadioPlaybackState)
     func trackDidUpdate(_ track: Track?)
     func trackArtworkDidUpdate(_ track: Track?)
 }
