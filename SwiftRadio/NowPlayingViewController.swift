@@ -109,6 +109,7 @@ class NowPlayingViewController: UIViewController {
     
     func stationDidChange() {
         radioPlayer.radioURL = URL(string: currentStation.streamURL)
+        title = currentStation.name
     }
     
     //*****************************************************************
