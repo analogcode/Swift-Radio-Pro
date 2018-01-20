@@ -4,7 +4,11 @@ Swift Radio is an open source radio station app with robust and professional fea
 
 There are over 80 different apps accepted to the app store using this code!
 
-![alt text](http://matthewfecher.com/wp-content/uploads/2015/09/screen-1.jpg "Swift Radio")
+<p align="center">
+    <img alt="Swift Radio" src="https://fethica.com/img/web/swift-radio.jpg">
+</p>
+
+![alt text]( "")
 
 ## Video
 View this [**GETTING STARTED VIDEO**](https://youtu.be/m7jiajCHFvc).
