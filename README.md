@@ -8,8 +8,6 @@ There are over 80 different apps accepted to the app store using this code!
     <img alt="Swift Radio" src="https://fethica.com/img/web/swift-radio.jpg">
 </p>
 
-![alt text]( "")
-
 ## Video
 View this [**GETTING STARTED VIDEO**](https://youtu.be/m7jiajCHFvc).
 It's short & sweet to give you a quick overview.  
