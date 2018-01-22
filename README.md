@@ -1,10 +1,12 @@
 # Swift Radio
 
-Swift Radio is an open source radio station app with robust and professional features. This is a fully realized Radio App built entirely in Swift. **Master is now the Xcode 9.0/Swift 4 branch**. Note there is an AVPlayer branch [here](https://github.com/swiftcodex/Swift-Radio-Pro/tree/xcode8).
+Swift Radio is an open source radio station app with robust and professional features. This is a fully realized Radio App built entirely in Swift. **Master is now the Xcode 9 / Swift 4 branch**.
 
 There are over 80 different apps accepted to the app store using this code!
 
-![alt text](http://matthewfecher.com/wp-content/uploads/2015/09/screen-1.jpg "Swift Radio")
+<p align="center">
+    <img alt="Swift Radio" src="https://fethica.com/img/web/swift-radio.jpg">
+</p>
 
 ## Video
 View this [**GETTING STARTED VIDEO**](https://youtu.be/m7jiajCHFvc).
@@ -13,18 +15,22 @@ Give it a quick watch.
 
 ## Features
 
-- LastFM API and iTunes API Integration to automatically download Album Art
-- Parses metadata from streams (Track & Artist information)
 - Ability to update Stations from server or locally. (Update stations anytime without resubmitting to app store!)
 - Displays Artist, Track & Album Art on Lock Screen
 - Custom views optimized for 5, 6 and 6+ for backwards compatibility
-- Compiles with Xcode 9.0 & Swift 4.0
+- Compiles with Xcode 9 & Swift 4
+- Parses JSON using Swift 4 Codable protocol
 - Background audio performance
 - Search Bar that can be turned on or off to search stations
 - Supports local or hosted station images
 - "About" screen with ability to send email & visit website
-- Uses industry standard SwiftyJSON library for easy JSON manipulation
 - Pull to Refresh stations
+- Uses the AVPlayer wrapper library [FRadioPlayer](https://github.com/fethica/FRadioPlayer): 
+  * Automatically download Album Art from iTunes API
+  * Parses metadata from streams (Track & Artist information)
+- Uses [Spring](https://github.com/MengTo/Spring) library:
+  * Animate UI components
+  * Download and cache images using ImageLoader class
 
 ## Important Notes
 - 10.6.17 Update: The AVPlayer branch migrated to Xcode 9/Swift 4 by [@joemcmahon](https://github.com/joemcmahon). 
@@ -72,7 +78,7 @@ Some of the things I've built into this Radio code for clients include: Facebook
 
 ## Setup
 
-The "SwiftRadio-Settings.swift" file contains some project settings to get you started. If you use LastFM, please enter your own LastFM Key.  
+The "SwiftRadio-Settings.swift" file contains some project settings to get you started.
 Watch this [Getting Started Video](https://youtu.be/m7jiajCHFvc) to get up & running quickly.
 
 ## Integration
@@ -95,7 +101,7 @@ Includes an example "stations.json" file. You may upload the JSON file to a serv
 
 ## Contributions
 
-Contributions are very welcome. Please create a separate branch (e.g. features/3dtouch). Please do not commit on master.
+Contributions are very welcome. Please check out the [dev branch](https://github.com/analogcode/Swift-Radio-Pro/tree/dev), create a separate branch (e.g. features/3dtouch). Please do not commit on master.
 
 ## FAQ
 
@@ -105,20 +111,8 @@ A: Nope. This is completely open source, you can do whatever you want with it. I
 Q: How do I make my app support ipv6 networks?  
 A: For an app to be accepted by Apple to the app store as of June 1, 2016, you CAN NOT use number IP addresses. i.e. You must use something like "http://mystream.com/rock" instead of "http://44.120.33.55/" for your station stream URLs.
 
-Q: Isn't MPMoviePlayer going to be depreciated?  
-A: Yes, eventually master should be migrated to use AVPlayer instead. If you'd like to work on it, feel free! There are currently two branches that use AVPlayer instead of MPMoviePlayer. A Swift 2/Xcode 7 version [here](https://github.com/swiftcodex/Swift-Radio-Pro/tree/avplayer). and a Swift 2.3/Xcode 8 version [here](https://github.com/swiftcodex/Swift-Radio-Pro/tree/xcode8).
-
 Q: Is there an example of using this with the Spotify API?  
-A: Yes, there is a branch here that uses it [here]( https://github.com/swiftcodex/Swift-Radio-Pro/tree/avplayer).
-
-Q: How do I use the iTunes API instead of LastFM?  
-A: In the SwiftRadio-Settings.swift file, set the "useLastFM" key to "false". You do not need an API key to use the iTunes API. It is free.
-
-Q: The LastFM site isn't working properly? I can't create an API key.  
-A: LastFM will sometimes put API signups on hold. You can check back later or try a different API.
-
-Q: It looks like your LastFM api key and secret might have been left in the code?  
-A: Yes, people may use it for small amounts of testing. However, I ask that you change it before submitting to the app store. (Plus, it would be self-defeating for someone to submit it to the app store with the testing keys, as it would quickly throttle out and their album art downloads would stop working!)
+A: Yes, there is a branch here that uses it [here]( https://github.com/swiftcodex/Swift-Radio-Pro/tree/avplayer) (⚠️ **deprecated**).
 
 Q: Is there another API to get album/track information besides LastFM, Spotify, and iTunes?  
 A: Rovi has a pretty sweet [music API](http://prod-doc.rovicorp.com/mashery/index.php/Data/APIs/Rovi-Music). The [Echo Nest](http://developer.echonest.com/) has all kinds of APIs that are fun to play with. 
@@ -133,10 +127,10 @@ Q: Can you help me add a feature? Can you help me understand the code? Can you h
 A: While I have a full-time job and other project obligations, I'd highly recommend you find a developer or mentor in your area to help. The code is well-documented and most developers should be able to help you rather quickly. While I am sometimes available for paid freelance work, see below in the readme, **I am not able to provide any free support or modifications.** Thank you for understanding!
 
 Q: The song names aren't appearing for my station?  
-A: Check with your stream provider to make sure they are sending Metadata properly. If a station sends data in a unique way, you can modify the way the app parses the metadata in the "metadataUpdated" method in the NowPlayingViewController.
+A: Check with your stream provider to make sure they are sending Metadata properly. If a station sends data in a unique way, you can modify the way the app parses the metadata, in the `RadioPlayer` class implement `FRadioPlayerDelegate` method: `radioPlayer(_ player: FRadioPlayer, metadataDidChange rawValue: String?)`.
 
 ## Single Station Branch
-There's now a branch without the StationsViewController. This is so you can use this code as a starting place for an app for just one radio station. View that [Branch Here](https://github.com/swiftcodex/Swift-Radio-Pro/tree/single-station).
+There's now a branch without the StationsViewController. This is so you can use this code as a starting place for an app for just one radio station. View that [Branch Here](https://github.com/swiftcodex/Swift-Radio-Pro/tree/single-station) (⚠️ **deprecated**). 
 
 ## RadioKit SDK Example 
 

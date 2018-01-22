@@ -33,16 +33,8 @@ let stationDataURL   = "http://yoururl.com/json/stations.json"
 let searchable = false
 
 //**************************************
-// LASTFM API
+// NEXT / PREVIOUS BUTTONS
 //**************************************
 
-// Use LastFM or iTunes API
-// set to "false" to use iTunes
-let useLastFM = true
-
-// IF YOU USE LASTFM, PLEASE USE YOUR OWN KEY
-// Visit: http://www.last.fm/api
-
-let apiKey    = "9a267c245324cfa4f887366d497d3dd3"
-let apiSecret = "f1191864d7ae71e580b89238129768b8"
-
+// Set this to "false" to show the next/previous player buttons
+let hideNextPreviousButtons = true

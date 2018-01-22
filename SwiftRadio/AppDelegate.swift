@@ -12,6 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    weak var stationsViewController: StationsViewController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -20,6 +21,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Make status bar white
         UINavigationBar.appearance().barStyle = .black
+        
+        // FRadioPlayer config
+        FRadioPlayer.shared.artworkSize = 600
+        
+        // Get weak ref of StationsViewController
+        if let navigationController = window?.rootViewController as? UINavigationController {
+            stationsViewController = navigationController.viewControllers.first as? StationsViewController
+        }
         
         return true
     }
@@ -55,7 +64,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.endReceivingRemoteControlEvents()
         
     }
+    
+    // MARK: - Remote Controls
 
-   
+    override func remoteControlReceived(with event: UIEvent?) {
+        super.remoteControlReceived(with: event)
+        
+        guard let event = event, event.type == UIEventType.remoteControl else { return }
+        
+        switch event.subtype {
+        case .remoteControlPlay:
+            FRadioPlayer.shared.play()
+        case .remoteControlPause:
+            FRadioPlayer.shared.pause()
+        case .remoteControlTogglePlayPause:
+            FRadioPlayer.shared.togglePlaying()
+        case .remoteControlNextTrack:
+            stationsViewController?.didPressNextButton()
+        case .remoteControlPreviousTrack:
+            stationsViewController?.didPressPreviousButton()
+        default:
+            break
+        }
+    }
 }
 

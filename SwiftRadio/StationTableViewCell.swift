@@ -28,15 +28,15 @@ class StationTableViewCell: UITableViewCell {
     func configureStationCell(station: RadioStation) {
         
         // Configure the cell...
-        stationNameLabel.text = station.stationName
-        stationDescLabel.text = station.stationDesc
+        stationNameLabel.text = station.name
+        stationDescLabel.text = station.desc
         
-        let imageURL = station.stationImageURL as NSString
+        let imageURL = station.imageURL as NSString
         
             if imageURL.contains("http") {
             
-            if let url = URL(string: station.stationImageURL) {
-                downloadTask = stationImageView.loadImageWithURL(url: url) { (image) in
+            if let url = URL(string: station.imageURL) {
+                stationImageView.loadImageWithURL(url: url) { (image) in
                     // station image loaded
                 }
             }

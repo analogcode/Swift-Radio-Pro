@@ -43,14 +43,14 @@ class InfoDetailViewController: UIViewController {
     func setupStationText() {
         
         // Display Station Name & Short Desc
-        stationNameLabel.text = currentStation.stationName
-        stationDescLabel.text = currentStation.stationDesc
+        stationNameLabel.text = currentStation.name
+        stationDescLabel.text = currentStation.desc
         
         // Display Station Long Desc
-        if currentStation.stationLongDesc == "" {
+        if currentStation.longDesc == "" {
             loadDefaultText()
         } else {
-            stationLongDescTextView.text = currentStation.stationLongDesc
+            stationLongDescTextView.text = currentStation.longDesc
         }
     }
     
@@ -62,12 +62,12 @@ class InfoDetailViewController: UIViewController {
     func setupStationLogo() {
         
         // Display Station Image/Logo
-        let imageURL = currentStation.stationImageURL
+        let imageURL = currentStation.imageURL
         
         if imageURL.range(of: "http") != nil {
             // Get station image from the web, iOS should cache the image
-            if let url = URL(string: currentStation.stationImageURL) {
-                downloadTask = stationImageView.loadImageWithURL(url: url) { _ in }
+            if let url = URL(string: currentStation.imageURL) {
+                stationImageView.loadImageWithURL(url: url) { _ in }
             }
             
         } else if imageURL != "" {
