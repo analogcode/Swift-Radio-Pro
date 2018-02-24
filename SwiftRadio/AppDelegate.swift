@@ -23,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barStyle = .black
         
         // FRadioPlayer config
+        FRadioPlayer.shared.isAutoPlay = true
+        FRadioPlayer.shared.enableArtwork = true
         FRadioPlayer.shared.artworkSize = 600
         
         // Get weak ref of StationsViewController
