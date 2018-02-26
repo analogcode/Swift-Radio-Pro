@@ -1,9 +1,9 @@
 //
 //  FRadioPlayer.swift
-//  FRadioPlayerDemo
+//  FRadioPlayer
 //
 //  Created by Fethi El Hassasna on 2017-11-11.
-//  Copyright © 2017 Fethi El Hassasna. All rights reserved.
+//  Copyright © 2017 Fethi El Hassasna (@fethica). All rights reserved.
 //
 
 import AVFoundation
@@ -211,6 +211,12 @@ open class FRadioPlayer: NSObject {
         }
     }
     
+    /// Reachability for network interruption handling
+    private let reachability = Reachability()!
+    
+    /// Current network connectivity
+    private var isConnected = false
+    
     // MARK: - Initialization
     
     private override init() {
@@ -225,6 +231,11 @@ open class FRadioPlayer: NSObject {
         
         // Check for headphones
         checkHeadphonesConnection(outputs: AVAudioSession.sharedInstance().currentRoute.outputs)
+        
+        // Reachability config
+        try? reachability.startNotifier()
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
+        isConnected = reachability.connection != .none
     }
     
     // MARK: - Control Methods
@@ -380,6 +391,11 @@ open class FRadioPlayer: NSObject {
         })
     }
     
+    private func reloadItem() {
+        player?.replaceCurrentItem(with: nil)
+        player?.replaceCurrentItem(with: playerItem)
+    }
+    
     private func resetPlayer() {
         stop()
         playerItem = nil
@@ -416,6 +432,34 @@ open class FRadioPlayer: NSObject {
             guard let optionsValue = userInfo[AVAudioSessionInterruptionOptionKey] as? UInt else { break }
             let options = AVAudioSessionInterruptionOptions(rawValue: optionsValue)
             DispatchQueue.main.async { options.contains(.shouldResume) ? self.play() : self.pause() }
+        }
+    }
+    
+    @objc func reachabilityChanged(note: Notification) {
+        
+        guard let reachability = note.object as? Reachability else { return }
+        
+        // Check if the internet connection was lost
+        if reachability.connection != .none, !isConnected {
+            checkNetworkInterruption()
+        }
+        
+        isConnected = reachability.connection != .none
+    }
+    
+    // Check if the playback could keep up after a network interruption
+    private func checkNetworkInterruption() {
+        guard
+            let item = playerItem,
+            !item.isPlaybackLikelyToKeepUp,
+            reachability.connection != .none else { return }
+        
+        player?.pause()
+        
+        // Wait 1 sec to recheck and make sure the reload is needed
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+            if !item.isPlaybackLikelyToKeepUp { self.reloadItem() }
+            self.isPlaying ? self.player?.play() : self.player?.pause()
         }
     }
     
@@ -464,7 +508,10 @@ open class FRadioPlayer: NSObject {
                 
             case "playbackBufferEmpty":
                 
-                if item.isPlaybackBufferEmpty { self.state = .loading }
+                if item.isPlaybackBufferEmpty {
+                    self.state = .loading
+                    self.checkNetworkInterruption()
+                }
                 
             case "playbackLikelyToKeepUp":
                 
@@ -480,4 +527,3 @@ open class FRadioPlayer: NSObject {
         }
     }
 }
-
