@@ -54,6 +54,7 @@
 		94D260981B45E8B800DE671C /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D260971B45E8B800DE671C /* Track.swift */; };
 		94D30EA71AD07A880024FE96 /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D30EA61AD07A880024FE96 /* StationTableViewCell.swift */; };
 		94E9761C1B1A8F3200F52B1E /* UIImage+DropShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9761B1B1A8F3200F52B1E /* UIImage+DropShadow.swift */; };
+		CA512B5B2043AB4B00D425A4 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA512B5A2043AB4B00D425A4 /* Reachability.swift */; };
 		CAA7C15D1FD77F3A003CABDF /* FRadioAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA7C15B1FD77F3A003CABDF /* FRadioAPI.swift */; };
 		CAA7C15E1FD77F3A003CABDF /* FRadioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA7C15C1FD77F3A003CABDF /* FRadioPlayer.swift */; };
 		CAA8FDB52000614600050F77 /* RadioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA8FDB42000614600050F77 /* RadioPlayer.swift */; };
@@ -125,6 +126,7 @@
 		94D30EA61AD07A880024FE96 /* StationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationTableViewCell.swift; sourceTree = "<group>"; };
 		94E9761B1B1A8F3200F52B1E /* UIImage+DropShadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+DropShadow.swift"; sourceTree = "<group>"; };
 		B90086461BBE40AF00E5372C /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		CA512B5A2043AB4B00D425A4 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		CAA7C15B1FD77F3A003CABDF /* FRadioAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRadioAPI.swift; sourceTree = "<group>"; };
 		CAA7C15C1FD77F3A003CABDF /* FRadioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRadioPlayer.swift; sourceTree = "<group>"; };
 		CAA8FDB42000614600050F77 /* RadioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioPlayer.swift; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 			children = (
 				CAA7C15B1FD77F3A003CABDF /* FRadioAPI.swift */,
 				CAA7C15C1FD77F3A003CABDF /* FRadioPlayer.swift */,
+				CA512B5A2043AB4B00D425A4 /* Reachability.swift */,
 			);
 			path = FRadioPlayer;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 				5F22BA561F72AD5A00CB5911 /* DesignableView.swift in Sources */,
 				5F22BA521F72AD5A00CB5911 /* UnwindSegue.swift in Sources */,
 				94E9761C1B1A8F3200F52B1E /* UIImage+DropShadow.swift in Sources */,
+				CA512B5B2043AB4B00D425A4 /* Reachability.swift in Sources */,
 				94452E551AD7086800BFE7A5 /* AboutViewController.swift in Sources */,
 				5F22BA551F72AD5A00CB5911 /* AutoTextView.swift in Sources */,
 				94D260981B45E8B800DE671C /* Track.swift in Sources */,
