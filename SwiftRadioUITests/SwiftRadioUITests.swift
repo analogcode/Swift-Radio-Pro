@@ -43,7 +43,7 @@ class SwiftRadioUITests: XCTestCase {
     }
     
     func assertStationsPresent() {
-        let numStations:UInt = 4
+        let numStations:UInt = 5
         XCTAssertEqual(stations.count, Int(numStations))
         
         let texts = stations.staticTexts.count
@@ -73,8 +73,8 @@ class SwiftRadioUITests: XCTestCase {
     
     func assertStationOnMenu(_ stationName:String) {
         let button = app.buttons["nowPlaying"];
-        if let value:String = button.label {
-            XCTAssertTrue(value.contains(stationName))
+        if button.label.contains(stationName) {
+            XCTAssertTrue(true)
         } else {
             XCTAssertTrue(false)
         }
