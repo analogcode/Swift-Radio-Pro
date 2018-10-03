@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kdl-ej-Zz5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kdl-ej-Zz5">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="AvenirNext.ttc">
-            <string>AvenirNext-Regular</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Swift Radio-->
         <scene sceneID="7ik-k3-I0U">
@@ -46,7 +40,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="g0b-Y4-SBe" userLabel="Labels Stack View">
-                                                    <rect key="frame" x="136" y="23" width="216" height="46.5"/>
+                                                    <rect key="frame" x="136" y="22.5" width="216" height="46.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Station Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hQQ-6f-sYl">
                                                             <rect key="frame" x="0.0" y="0.0" width="216" height="20.5"/>
@@ -154,7 +148,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Wn-sj-N6f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="281" y="429"/>
+            <point key="canvasLocation" x="449.60000000000002" y="385.90704647676165"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="4lL-TA-52h">
@@ -280,7 +274,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zrd-1T-mPM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="281" y="1438"/>
+            <point key="canvasLocation" x="449.60000000000002" y="1293.5532233883059"/>
         </scene>
         <!--Now Playing View-->
         <scene sceneID="ufC-wZ-h7g">
@@ -516,7 +510,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="727.5" y="428.5"/>
+            <point key="canvasLocation" x="1164" y="385.45727136431788"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cxZ-Cy-z6Q">
@@ -542,7 +536,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wQK-JQ-AqM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-155" y="429"/>
+            <point key="canvasLocation" x="-248" y="385.90704647676165"/>
         </scene>
         <!--Info View Controller-->
         <scene sceneID="abW-KU-RWK">
@@ -639,7 +633,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eop-Yu-mRh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1185" y="429"/>
+            <point key="canvasLocation" x="1896" y="385.90704647676165"/>
         </scene>
         <!--About View Controller-->
         <scene sceneID="kq6-OO-kxI">
@@ -771,27 +765,27 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fcr-sT-s4N" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="p1c-PP-VS5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="728" y="1438"/>
+            <point key="canvasLocation" x="1164.8" y="1293.5532233883059"/>
         </scene>
     </scenes>
     <resources>
-        <image name="NowPlayingBars" width="19" height="19"/>
+        <image name="NowPlayingBars" width="19.5" height="19"/>
         <image name="background" width="320" height="568"/>
-        <image name="btn-close" width="22" height="22"/>
+        <image name="btn-close" width="22.5" height="22.5"/>
         <image name="btn-next" width="44" height="44"/>
         <image name="btn-pause" width="44" height="44"/>
         <image name="btn-play" width="44" height="44"/>
         <image name="btn-previous" width="44" height="44"/>
         <image name="btn-stop" width="44" height="44"/>
         <image name="icon-hamburger" width="22" height="16"/>
-        <image name="logo" width="90" height="35"/>
+        <image name="logo" width="180" height="71"/>
         <image name="share" width="32" height="32"/>
         <image name="stationImage" width="120" height="75"/>
         <image name="swift-radio-black" width="180" height="70"/>
-        <image name="vol-max" width="16" height="14"/>
-        <image name="vol-min" width="11" height="12"/>
+        <image name="vol-max" width="16.5" height="14"/>
+        <image name="vol-min" width="11" height="12.5"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2md-Am-VN1"/>
+        <segue reference="Z22-bU-Ytg"/>
     </inferredMetricsTieBreakers>
 </document>

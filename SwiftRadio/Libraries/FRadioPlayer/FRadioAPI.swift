@@ -19,7 +19,7 @@ internal struct FRadioAPI {
             completionHandler(nil)
             return
         }
-        
+                
         URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
             guard error == nil, let data = data else {
                 completionHandler(nil)
