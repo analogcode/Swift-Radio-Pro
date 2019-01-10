@@ -109,6 +109,9 @@ class NowPlayingViewController: UIViewController {
     
     func stationDidChange() {
         radioPlayer.radioURL = URL(string: currentStation.streamURL)
+        albumImageView.image = currentTrack.artworkImage
+        stationDescLabel.text = currentStation.desc
+        stationDescLabel.isHidden = currentTrack.artworkLoaded
         title = currentStation.name
     }
     
@@ -284,7 +287,7 @@ class NowPlayingViewController: UIViewController {
         // Setup ImageView
         nowPlayingImageView = UIImageView(image: UIImage(named: "NowPlayingBars-3"))
         nowPlayingImageView.autoresizingMask = []
-        nowPlayingImageView.contentMode = UIViewContentMode.center
+        nowPlayingImageView.contentMode = UIView.ContentMode.center
         
         // Create Animation
         nowPlayingImageView.animationImages = AnimationFrames.createFrames()
@@ -320,7 +323,7 @@ class NowPlayingViewController: UIViewController {
     @IBAction func shareButtonPressed(_ sender: UIButton) {
         let songToShare = "I'm listening to \(currentTrack.title) on \(currentStation.name) via Swift Radio Pro"
         let activityViewController = UIActivityViewController(activityItems: [songToShare, currentTrack.artworkImage!], applicationActivities: nil)
-        activityViewController.completionWithItemsHandler = {(activityType: UIActivityType?, completed:Bool, returnedItems:[Any]?, error: Error?) in
+        activityViewController.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed:Bool, returnedItems:[Any]?, error: Error?) in
             if completed {
                 // do something on completion if you want
             }

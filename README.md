@@ -1,6 +1,6 @@
 # Swift Radio
 
-Swift Radio is an open source radio station app with robust and professional features. This is a fully realized Radio App built entirely in Swift. **Master is now the Xcode 9 / Swift 4 branch**.
+Swift Radio is an open source radio station app with robust and professional features. This is a fully realized Radio App built entirely in Swift. **master is now the Xcode 10 / Swift 4.2 branch**.
 
 There are over 80 different apps accepted to the app store using this code!
 
@@ -18,7 +18,7 @@ Give it a quick watch.
 - Ability to update Stations from server or locally. (Update stations anytime without resubmitting to app store!)
 - Displays Artist, Track & Album Art on Lock Screen
 - Custom views optimized for 5, 6 and 6+ for backwards compatibility
-- Compiles with Xcode 9 & Swift 4
+- Compiles with Xcode 10 & Swift 4.2
 - Parses JSON using Swift 4 Codable protocol
 - Background audio performance
 - Search Bar that can be turned on or off to search stations
@@ -33,6 +33,7 @@ Give it a quick watch.
   * Download and cache images using ImageLoader class
 
 ## Important Notes
+- 1.9.19: master branch migrated to Xcode 10/Swift 4.2 by [@fethica](https://github.com/fethica). 
 - 1.21.18 Update: Swift Radio App gets a major update with **Version 2** by [@fethica](https://github.com/fethica) -- [Release Note](https://github.com/analogcode/Swift-Radio-Pro/releases/tag/2.0.0). 
 - 10.6.17 Update: The AVPlayer branch migrated to Xcode 9/Swift 4 by [@joemcmahon](https://github.com/joemcmahon). 
 Branch here: [AVPlayer Branch](https://github.com/swiftcodex/Swift-Radio-Pro/tree/xcode8)
@@ -63,7 +64,7 @@ Thanks to everyone! We couldn't do it without you!
 
 ## Requirements
 
-- Xcode 9
+- Xcode 10
 - Know a little bit of how to program in Swift with the iOS SDK
 
 Please note: I am unable to offer any free support or modifications. Thanks!
@@ -130,7 +131,8 @@ Q: The song names aren't appearing for my station?
 A: Check with your stream provider to make sure they are sending Metadata properly. If a station sends data in a unique way, you can modify the way the app parses the metadata, in the `RadioPlayer` class implement `FRadioPlayerDelegate` method: `radioPlayer(_ player: FRadioPlayer, metadataDidChange rawValue: String?)`.
 
 ## Single Station Code
-We can create a single station version of this code for you for a small fee. Send a friendly email to [Matthew](mailto:matthew@audiokitpro.com) or [Fethi](https://fethica.com/en).  
+We can create a single station version of this code for you for a small fee. Send a friendly email to [Matthew](mailto:matthew@audiokitpro.com) or [Fethi](https://fethica.com/en).
+
 
 ## RadioKit SDK Example 
 

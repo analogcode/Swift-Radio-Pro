@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     weak var stationsViewController: StationsViewController?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         // MPNowPlayingInfoCenter
         UIApplication.shared.beginReceivingRemoteControlEvents()
@@ -72,7 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     override func remoteControlReceived(with event: UIEvent?) {
         super.remoteControlReceived(with: event)
         
-        guard let event = event, event.type == UIEventType.remoteControl else { return }
+        guard let event = event, event.type == .remoteControl else { return }
         
         switch event.subtype {
         case .remoteControlPlay:

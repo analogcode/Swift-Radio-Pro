@@ -138,7 +138,7 @@ open class FRadioPlayer: NSObject {
     // MARK: - Properties
     
     /// Returns the singleton `FRadioPlayer` instance.
-    open static let shared = FRadioPlayer()
+    public static let shared = FRadioPlayer()
     
     /**
      The delegate object for the `FRadioPlayer`.
@@ -224,7 +224,7 @@ open class FRadioPlayer: NSObject {
         
         // Enable bluetooth playback
         let audioSession = AVAudioSession.sharedInstance()
-        try? audioSession.setCategory(AVAudioSessionCategoryPlayback, with: [.defaultToSpeaker, .allowBluetooth])
+        try? audioSession.setCategory(AVAudioSession.Category.playback, mode: AVAudioSession.Mode.default, options: [.defaultToSpeaker, .allowBluetooth])
         
         // Notifications
         setupNotifications()
@@ -390,7 +390,7 @@ open class FRadioPlayer: NSObject {
             }
         })
     }
-    
+
     private func reloadItem() {
         player?.replaceCurrentItem(with: nil)
         player?.replaceCurrentItem(with: playerItem)
@@ -412,8 +412,8 @@ open class FRadioPlayer: NSObject {
     
     private func setupNotifications() {
         let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(handleInterruption), name: .AVAudioSessionInterruption, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(handleRouteChange), name: .AVAudioSessionRouteChange, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(handleInterruption), name: AVAudioSession.interruptionNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(handleRouteChange), name: AVAudioSession.routeChangeNotification, object: nil)
     }
     
     // MARK: - Responding to Interruptions
@@ -421,7 +421,7 @@ open class FRadioPlayer: NSObject {
     @objc private func handleInterruption(notification: Notification) {
         guard let userInfo = notification.userInfo,
             let typeValue = userInfo[AVAudioSessionInterruptionTypeKey] as? UInt,
-            let type = AVAudioSessionInterruptionType(rawValue: typeValue) else {
+            let type = AVAudioSession.InterruptionType(rawValue: typeValue) else {
                 return
         }
         
@@ -430,7 +430,7 @@ open class FRadioPlayer: NSObject {
             DispatchQueue.main.async { self.pause() }
         case .ended:
             guard let optionsValue = userInfo[AVAudioSessionInterruptionOptionKey] as? UInt else { break }
-            let options = AVAudioSessionInterruptionOptions(rawValue: optionsValue)
+            let options = AVAudioSession.InterruptionOptions(rawValue: optionsValue)
             DispatchQueue.main.async { options.contains(.shouldResume) ? self.play() : self.pause() }
         }
     }
@@ -466,7 +466,7 @@ open class FRadioPlayer: NSObject {
     // MARK: - Responding to Route Changes
     
     private func checkHeadphonesConnection(outputs: [AVAudioSessionPortDescription]) {
-        for output in outputs where output.portType == AVAudioSessionPortHeadphones {
+        for output in outputs where output.portType == .headphones {
             headphonesConnected = true
             break
         }
@@ -476,7 +476,7 @@ open class FRadioPlayer: NSObject {
     @objc private func handleRouteChange(notification: Notification) {
         guard let userInfo = notification.userInfo,
             let reasonValue = userInfo[AVAudioSessionRouteChangeReasonKey] as? UInt,
-            let reason = AVAudioSessionRouteChangeReason(rawValue:reasonValue) else { return }
+            let reason = AVAudioSession.RouteChangeReason(rawValue:reasonValue) else { return }
         
         switch reason {
         case .newDeviceAvailable:
@@ -500,9 +500,9 @@ open class FRadioPlayer: NSObject {
                 
             case "status":
                 
-                if player?.status == AVPlayerStatus.readyToPlay {
+                if player?.status == AVPlayer.Status.readyToPlay {
                     self.state = .readyToPlay
-                } else if player?.status == AVPlayerStatus.failed {
+                } else if player?.status == AVPlayer.Status.failed {
                     self.state = .error
                 }
                 
@@ -516,7 +516,7 @@ open class FRadioPlayer: NSObject {
             case "playbackLikelyToKeepUp":
                 
                 self.state = item.isPlaybackLikelyToKeepUp ? .loadingFinished : .loading
-                
+            
             case "timedMetadata":
                 let rawValue = item.timedMetadata?.first?.value as? String
                 timedMetadataDidChange(rawValue: rawValue)
