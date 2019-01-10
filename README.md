@@ -1,6 +1,6 @@
 # Swift Radio
 
-Swift Radio is an open source radio station app with robust and professional features. This is a fully realized Radio App built entirely in Swift. **Dev is now the Xcode 10 / Swift 4.2 branch**.
+Swift Radio is an open source radio station app with robust and professional features. This is a fully realized Radio App built entirely in Swift. **master is now the Xcode 10 / Swift 4.2 branch**.
 
 There are over 80 different apps accepted to the app store using this code!
 
@@ -33,7 +33,7 @@ Give it a quick watch.
   * Download and cache images using ImageLoader class
 
 ## Important Notes
-- 10.3.18 WIP: dev branch migrated to Xcode 10/Swift 4.2 by [@fethica](https://github.com/fethica). 
+- 1.9.19: master branch migrated to Xcode 10/Swift 4.2 by [@fethica](https://github.com/fethica). 
 - 1.21.18 Update: Swift Radio App gets a major update with **Version 2** by [@fethica](https://github.com/fethica) -- [Release Note](https://github.com/analogcode/Swift-Radio-Pro/releases/tag/2.0.0). 
 - 10.6.17 Update: The AVPlayer branch migrated to Xcode 9/Swift 4 by [@joemcmahon](https://github.com/joemcmahon). 
 Branch here: [AVPlayer Branch](https://github.com/swiftcodex/Swift-Radio-Pro/tree/xcode8)
@@ -45,7 +45,6 @@ Branch here: [AVPlayer Branch](https://github.com/swiftcodex/Swift-Radio-Pro/tre
 - 3.27.16 Update: Google handoff added, thanks [@GraemeHarrison](https://github.com/GraemeHarrison)
 - 2.24.16 Update: Share icon added, thanks [@SuperChloe](https://github.com/SuperChloe).  
 - 12.30.15 Update: UISearchBar added, thanks [@fethica](https://github.com/fethica). Turn it on/off in the "SwiftRadio-Settings" file.  
-- 12.16.15 Update: New branch added using a single radio station.
 - 12.14.15 Update: LastFM has reopened their API signups. Get one at [last.fm/api](http://www.last.fm/api).
 - 10.21.15 Update: Added option to use iTunes API to download album art. (See FAQ below). iTunes art is 100px x 100px. i.e. It is smaller than LastFM artwork. So, if you use this API instead, you will want to adjust the UI of your app.
 - Volume slider works great in devices, not simulator. This is an Xcode simulator issue.  
@@ -131,8 +130,8 @@ A: While I have a full-time job and other project obligations, I'd highly recomm
 Q: The song names aren't appearing for my station?  
 A: Check with your stream provider to make sure they are sending Metadata properly. If a station sends data in a unique way, you can modify the way the app parses the metadata, in the `RadioPlayer` class implement `FRadioPlayerDelegate` method: `radioPlayer(_ player: FRadioPlayer, metadataDidChange rawValue: String?)`.
 
-## Single Station Branch
-There's now a branch without the StationsViewController. This is so you can use this code as a starting place for an app for just one radio station. View that [Branch Here](https://github.com/swiftcodex/Swift-Radio-Pro/tree/single-station) (⚠️ **deprecated**). 
+## Single Station Code
+We can create a single station version of this code for you for a small fee. Send a friendly email to [Matthew](mailto:matthew@audiokitpro.com) or [Fethi](https://fethica.com/en).
 
 ## RadioKit SDK Example 
 
@@ -141,13 +140,8 @@ There's now a branch without the StationsViewController. This is so you can use 
 - You can use this Swift code as a front-end for a more robust streaming backend.
 - Brian Stormont, creator of RadioKit, has created a branch with the professional [RadioKit](http://stormyprods.com/products/radiokit.php) SDK already integrated. **Plus, his branch adds rewind & fast forward stream playback.** This is an excellent learning tool for those who are interested in seeing how a streaming library integrates with Swift Radio Pro. View the [branch here](https://github.com/MostTornBrain/Swift-Radio-Pro/tree/RadioKit).
 
-## Get Creative
-Here's a branch of the code that plays streaming TV Stations instead of radio stations. https://github.com/msahins/myTV
-
-![alt text](http://matthewfecher.com/wp-content/uploads/2015/11/myTV.png "Swift TV")
-
 ## Custom Work & Consulting
 
-I have recent experience building iOS apps for both independent and high-profile clients (brand names and apps we can't discuss here, but, you would instantly recognize!) Additionally, I've built advanced versions of this open-source radio player for amazing independent clients.
+We have recent experience building iOS apps for both independent and high-profile clients (brand names and apps we can't discuss here, but, you would instantly recognize!) Additionally, we've built advanced versions of this radio code for amazing independent clients.
 
 [Get in Touch](http://matthewfecher.com/contact/) to see what I can do for you!
