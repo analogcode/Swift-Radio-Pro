@@ -323,6 +323,10 @@ class NowPlayingViewController: UIViewController {
     @IBAction func shareButtonPressed(_ sender: UIButton) {
         let songToShare = "I'm listening to \(currentTrack.title) on \(currentStation.name) via Swift Radio Pro"
         let activityViewController = UIActivityViewController(activityItems: [songToShare, currentTrack.artworkImage!], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceRect = CGRect(x: view.center.x, y: view.center.y, width: 0, height: 0)
+        activityViewController.popoverPresentationController?.sourceView = view
+        activityViewController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
+        
         activityViewController.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed:Bool, returnedItems:[Any]?, error: Error?) in
             if completed {
                 // do something on completion if you want
