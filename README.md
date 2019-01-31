@@ -33,6 +33,7 @@ Give it a quick watch.
   * Download and cache images using ImageLoader class
 
 ## Important Notes
+- 1.30.19: Add iPad support by [@misteral](https://github.com/misteral). 
 - 1.9.19: master branch migrated to Xcode 10/Swift 4.2 by [@fethica](https://github.com/fethica). 
 - 1.21.18 Update: Swift Radio App gets a major update with **Version 2** by [@fethica](https://github.com/fethica) -- [Release Note](https://github.com/analogcode/Swift-Radio-Pro/releases/tag/2.0.0). 
 - 10.6.17 Update: The AVPlayer branch migrated to Xcode 9/Swift 4 by [@joemcmahon](https://github.com/joemcmahon). 
