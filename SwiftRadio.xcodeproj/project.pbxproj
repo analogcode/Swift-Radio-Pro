@@ -57,6 +57,8 @@
 		94D30EA71AD07A880024FE96 /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D30EA61AD07A880024FE96 /* StationTableViewCell.swift */; };
 		94E9761C1B1A8F3200F52B1E /* UIImage+DropShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9761B1B1A8F3200F52B1E /* UIImage+DropShadow.swift */; };
 		CAA8FDB52000614600050F77 /* RadioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA8FDB42000614600050F77 /* RadioPlayer.swift */; };
+		CE108E7322060C3F003CDF06 /* AppDelegate+CarPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE108E7222060C3F003CDF06 /* AppDelegate+CarPlay.swift */; };
+		CE108E7622060E4B003CDF06 /* CarPlayPlaylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE108E7522060E4B003CDF06 /* CarPlayPlaylist.swift */; };
 		CF72ACE721F7155200461EED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF72ACE621F714D000461EED /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -128,6 +130,9 @@
 		94D30EA61AD07A880024FE96 /* StationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationTableViewCell.swift; sourceTree = "<group>"; };
 		94E9761B1B1A8F3200F52B1E /* UIImage+DropShadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+DropShadow.swift"; sourceTree = "<group>"; };
 		CAA8FDB42000614600050F77 /* RadioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioPlayer.swift; sourceTree = "<group>"; };
+		CE108E6E22060BCE003CDF06 /* SwiftRadio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftRadio.entitlements; sourceTree = "<group>"; };
+		CE108E7222060C3F003CDF06 /* AppDelegate+CarPlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+CarPlay.swift"; sourceTree = "<group>"; };
+		CE108E7522060E4B003CDF06 /* CarPlayPlaylist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarPlayPlaylist.swift; sourceTree = "<group>"; };
 		CF72ACE621F714D000461EED /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -210,6 +215,7 @@
 				9409E1181ABF6FEA00312E2B /* SwiftRadio */,
 				2C5545BB1C1124DE00728469 /* SwiftRadioUITests */,
 				9409E1171ABF6FEA00312E2B /* Products */,
+				CE108E6F22060BCE003CDF06 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -225,11 +231,13 @@
 		9409E1181ABF6FEA00312E2B /* SwiftRadio */ = {
 			isa = PBXGroup;
 			children = (
+				CE108E6E22060BCE003CDF06 /* SwiftRadio.entitlements */,
 				94D2608F1B45D11800DE671C /* Cells */,
 				94AC70AF1AD05C7400652982 /* Networking */,
 				94823F861B5576F4004EC711 /* Data */,
 				94E976191B1A8BFB00F52B1E /* Model */,
 				94D2608E1B45D0F800DE671C /* ViewControllers */,
+				CE108E7422060DCB003CDF06 /* CarPlay */,
 				9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */,
 				CAA8FDB42000614600050F77 /* RadioPlayer.swift */,
 				94D260901B45D20000DE671C /* SwiftRadio-Settings.swift */,
@@ -317,6 +325,22 @@
 			path = FRadioPlayer;
 			sourceTree = "<group>";
 		};
+		CE108E6F22060BCE003CDF06 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CE108E7422060DCB003CDF06 /* CarPlay */ = {
+			isa = PBXGroup;
+			children = (
+				CE108E7222060C3F003CDF06 /* AppDelegate+CarPlay.swift */,
+				CE108E7522060E4B003CDF06 /* CarPlayPlaylist.swift */,
+			);
+			name = CarPlay;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -378,6 +402,9 @@
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 0;
 							};
 						};
 					};
@@ -450,6 +477,7 @@
 				5F22BA3D1F72AD5A00CB5911 /* BlurView.swift in Sources */,
 				5F22BA411F72AD5A00CB5911 /* SpringTextField.swift in Sources */,
 				9409E1401ABF78B000312E2B /* NowPlayingViewController.swift in Sources */,
+				CE108E7322060C3F003CDF06 /* AppDelegate+CarPlay.swift in Sources */,
 				94D1D0A51AD6D6230022CA11 /* InfoDetailViewController.swift in Sources */,
 				5F22BA4B1F72AD5A00CB5911 /* KeyboardLayoutConstraint.swift in Sources */,
 				5F22BA421F72AD5A00CB5911 /* SoundPlayer.swift in Sources */,
@@ -474,6 +502,7 @@
 				5F22BA4D1F72AD5A00CB5911 /* DesignableImageView.swift in Sources */,
 				5F22BA491F72AD5A00CB5911 /* AsyncImageView.swift in Sources */,
 				5F22BA541F72AD5A00CB5911 /* SpringView.swift in Sources */,
+				CE108E7622060E4B003CDF06 /* CarPlayPlaylist.swift in Sources */,
 				94D260961B45E3FA00DE671C /* AnimationFrames.swift in Sources */,
 				5F22BA461F72AD5A00CB5911 /* AsyncButton.swift in Sources */,
 				942A3F371AE43DF80011396E /* StationsViewController.swift in Sources */,
@@ -635,6 +664,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SwiftRadio/SwiftRadio.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
@@ -659,6 +689,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SwiftRadio/SwiftRadio.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
