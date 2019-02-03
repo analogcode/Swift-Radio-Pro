@@ -489,7 +489,7 @@ extension StationsViewController: NowPlayingViewControllerDelegate {
         handleRemoteStationChange()
     }
     
-    private func handleRemoteStationChange() {
+    func handleRemoteStationChange() {
         if let nowPlayingVC = nowPlayingViewController {
             // If nowPlayingVC is presented
             nowPlayingVC.load(station: radioPlayer.station, track: radioPlayer.track)
