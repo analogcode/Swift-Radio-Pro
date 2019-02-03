@@ -59,6 +59,7 @@
 		CAA8FDB52000614600050F77 /* RadioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA8FDB42000614600050F77 /* RadioPlayer.swift */; };
 		CE108E7322060C3F003CDF06 /* AppDelegate+CarPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE108E7222060C3F003CDF06 /* AppDelegate+CarPlay.swift */; };
 		CE108E7622060E4B003CDF06 /* CarPlayPlaylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE108E7522060E4B003CDF06 /* CarPlayPlaylist.swift */; };
+		CE108E7A22064B24003CDF06 /* StationsViewController+CarPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE108E7922064B24003CDF06 /* StationsViewController+CarPlay.swift */; };
 		CF72ACE721F7155200461EED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF72ACE621F714D000461EED /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -133,6 +134,7 @@
 		CE108E6E22060BCE003CDF06 /* SwiftRadio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftRadio.entitlements; sourceTree = "<group>"; };
 		CE108E7222060C3F003CDF06 /* AppDelegate+CarPlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+CarPlay.swift"; sourceTree = "<group>"; };
 		CE108E7522060E4B003CDF06 /* CarPlayPlaylist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarPlayPlaylist.swift; sourceTree = "<group>"; };
+		CE108E7922064B24003CDF06 /* StationsViewController+CarPlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StationsViewController+CarPlay.swift"; sourceTree = "<group>"; };
 		CF72ACE621F714D000461EED /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -337,6 +339,7 @@
 			children = (
 				CE108E7222060C3F003CDF06 /* AppDelegate+CarPlay.swift */,
 				CE108E7522060E4B003CDF06 /* CarPlayPlaylist.swift */,
+				CE108E7922064B24003CDF06 /* StationsViewController+CarPlay.swift */,
 			);
 			name = CarPlay;
 			sourceTree = "<group>";
@@ -490,6 +493,7 @@
 				94E9761C1B1A8F3200F52B1E /* UIImage+DropShadow.swift in Sources */,
 				81AD229D21646DEA002ADFDD /* Reachability.swift in Sources */,
 				94452E551AD7086800BFE7A5 /* AboutViewController.swift in Sources */,
+				CE108E7A22064B24003CDF06 /* StationsViewController+CarPlay.swift in Sources */,
 				5F22BA551F72AD5A00CB5911 /* AutoTextView.swift in Sources */,
 				94D260981B45E8B800DE671C /* Track.swift in Sources */,
 				5F22BA3F1F72AD5A00CB5911 /* LoadingView.swift in Sources */,

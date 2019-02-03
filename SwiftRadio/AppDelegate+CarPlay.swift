@@ -30,8 +30,8 @@ extension AppDelegate: MPPlayableContentDelegate {
             UIApplication.shared.beginReceivingRemoteControlEvents()
             
             if indexPath.count == 2 {
-                self.stationsViewController?.radioPlayer.station = self.carplayPlaylist.stations[indexPath[1]]
-                self.stationsViewController?.handleRemoteStationChange()
+                let station = self.carplayPlaylist.stations[indexPath[1]]
+                self.stationsViewController?.selectFromCarPlay(station)
             }
             completionHandler(nil)
             
