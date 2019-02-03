@@ -20,7 +20,7 @@
      "streamURL": "http://tunein-icecast.mediaworks.nz/rock_128kbps",
      "imageURL": "station-therockfm.png",
      "desc": "Rock Music",
-     "longDesc": "NZ's number one Rock music station"
+     "longDesc": "NZ's number one Rock music station."
      },
      {
      "name": "Classic Rock",
