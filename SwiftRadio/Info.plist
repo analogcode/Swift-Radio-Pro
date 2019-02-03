@@ -53,5 +53,7 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+    <key>UIBrowsableContentSupportsSectionedBrowsing</key>
+    <true/>
 </dict>
 </plist>
