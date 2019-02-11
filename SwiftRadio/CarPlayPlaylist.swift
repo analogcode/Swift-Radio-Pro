@@ -10,12 +10,8 @@ import Foundation
 
 class CarPlayPlaylist {
     
-    static let shared = CarPlayPlaylist()
-    
     var stations = [RadioStation]()
-    
-    private init() {}
-    
+        
     func load(_ completion: @escaping (Error?) -> Void) {
         
         DataManager.getStationDataWithSuccess() { (data) in

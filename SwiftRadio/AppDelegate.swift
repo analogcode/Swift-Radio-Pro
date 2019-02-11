@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // CarPlay
     var playableContentManager: MPPlayableContentManager?
-    let carplayPlaylist = CarPlayPlaylist.shared
+    let carplayPlaylist = CarPlayPlaylist()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
