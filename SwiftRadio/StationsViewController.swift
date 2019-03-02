@@ -498,5 +498,7 @@ extension StationsViewController: NowPlayingViewControllerDelegate {
             // If nowPlayingVC is not presented (change from remote controls)
             radioPlayer.player.radioURL = URL(string: station.streamURL)
         }
+        
+        
     }
 }

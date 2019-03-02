@@ -26,19 +26,19 @@ extension AppDelegate: MPPlayableContentDelegate {
     
     func playableContentManager(_ contentManager: MPPlayableContentManager, initiatePlaybackOfContentItemAt indexPath: IndexPath, completionHandler: @escaping (Error?) -> Void) {
         
-        DispatchQueue.main.async {
-            UIApplication.shared.beginReceivingRemoteControlEvents()
-            
+        DispatchQueue.main.async {            
             if indexPath.count == 2 {
                 let station = self.carplayPlaylist.stations[indexPath[1]]
                 self.stationsViewController?.selectFromCarPlay(station)
             }
             completionHandler(nil)
             
-            // Workaround to make the Now Playing working on the simulator:
-            // Source: https://stackoverflow.com/questions/52818170/handling-playback-events-in-carplay-with-mpnowplayinginfocenter
-            UIApplication.shared.endReceivingRemoteControlEvents()
-            UIApplication.shared.beginReceivingRemoteControlEvents()
+            #if targetEnvironment(simulator)
+                // Workaround to make the Now Playing working on the simulator:
+                // Source: https://stackoverflow.com/questions/52818170/handling-playback-events-in-carplay-with-mpnowplayinginfocenter
+                UIApplication.shared.endReceivingRemoteControlEvents()
+                UIApplication.shared.beginReceivingRemoteControlEvents()
+            #endif
         }
     }
     
