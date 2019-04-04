@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 //**************************************
 // GENERAL SETTINGS
@@ -14,6 +15,9 @@ import Foundation
 
 // Display Comments
 let kDebugLog = true
+
+// AirPlayButton Color
+let globalTintColor = UIColor(red: 0, green: 189/255, blue: 233/255, alpha: 1);
 
 //**************************************
 // STATION JSON
