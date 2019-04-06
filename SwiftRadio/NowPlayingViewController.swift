@@ -89,8 +89,7 @@ class NowPlayingViewController: UIViewController {
             AirPlayUIView.backgroundColor = UIColor.clear
             AirPlayUIView.addSubview(AirPlayButton)
         }else{
-            
-            let AirPlayButton =  MPVolumeView(frame: AirPlayUIView.bounds)
+            let AirPlayButton = MPVolumeView(frame: AirPlayUIView.bounds)
             AirPlayButton.showsVolumeSlider = false
             AirPlayUIView.backgroundColor = UIColor.clear
             AirPlayUIView.addSubview(AirPlayButton)
