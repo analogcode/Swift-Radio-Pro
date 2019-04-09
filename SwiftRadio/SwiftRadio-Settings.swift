@@ -42,3 +42,10 @@ let searchable = false
 
 // Set this to "false" to show the next/previous player buttons
 let hideNextPreviousButtons = true
+
+//**************************************
+// AirPlay BUTTON
+//**************************************
+
+// Set this to "true" to hide the AirPlay button
+let hideAirPlayButton = false
