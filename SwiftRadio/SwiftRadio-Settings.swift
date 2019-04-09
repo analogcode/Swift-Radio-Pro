@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 //**************************************
 // GENERAL SETTINGS
@@ -14,6 +15,9 @@ import Foundation
 
 // Display Comments
 let kDebugLog = true
+
+// AirPlayButton Color
+let globalTintColor = UIColor(red: 0, green: 189/255, blue: 233/255, alpha: 1);
 
 //**************************************
 // STATION JSON
@@ -38,3 +42,10 @@ let searchable = false
 
 // Set this to "false" to show the next/previous player buttons
 let hideNextPreviousButtons = true
+
+//**************************************
+// AirPlay BUTTON
+//**************************************
+
+// Set this to "true" to hide the AirPlay button
+let hideAirPlayButton = false

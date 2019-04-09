@@ -8,6 +8,8 @@
 
 import UIKit
 import MediaPlayer
+import AVKit
+
 
 //*****************************************************************
 // NowPlayingViewControllerDelegate
@@ -39,6 +41,7 @@ class NowPlayingViewController: UIViewController {
     @IBOutlet weak var volumeParentView: UIView!
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var airPlayView: UIView!
     
     // MARK: - Properties
     
@@ -78,6 +81,9 @@ class NowPlayingViewController: UIViewController {
         // Setup volumeSlider
         setupVolumeSlider()
         
+        // Setup AirPlayButton
+        setupAirPlayButton()
+        
         // Hide / Show Next/Previous buttons
         previousButton.isHidden = hideNextPreviousButtons
         nextButton.isHidden = hideNextPreviousButtons
@@ -105,6 +111,26 @@ class NowPlayingViewController: UIViewController {
         mpVolumeSlider.centerYAnchor.constraint(equalTo: volumeParentView.centerYAnchor).isActive = true
         
         mpVolumeSlider.setThumbImage(#imageLiteral(resourceName: "slider-ball"), for: .normal)
+    }
+    
+    func setupAirPlayButton() {
+        guard !hideAirPlayButton else {
+            airPlayView.isHidden = true
+            return
+        }
+
+        if #available(iOS 11.0, *) {
+            let airPlayButton = AVRoutePickerView(frame: airPlayView.bounds)
+            airPlayButton.activeTintColor = globalTintColor
+            airPlayButton.tintColor = .gray
+            airPlayView.backgroundColor = .clear
+            airPlayView.addSubview(airPlayButton)
+        } else {
+            let airPlayButton = MPVolumeView(frame: airPlayView.bounds)
+            airPlayButton.showsVolumeSlider = false
+            airPlayView.backgroundColor = .clear
+            airPlayView.addSubview(airPlayButton)
+        }
     }
     
     func stationDidChange() {
