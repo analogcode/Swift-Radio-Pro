@@ -16,11 +16,11 @@
      "longDesc": "Do you like Indie music and along with that wants a radio that will provide lots of folk music in their daily radio programs than wait not just tune in to Newport Folk Radio as this is the kind of radio that has got lots of types of Indie music in their daily radio programs along with popular Folk music."
      },
      {
-     "name": "The Alt Vault",
-     "streamURL": "http://ais-sa2.cdnstream1.com/1980_128.mp3",
-     "imageURL": "station-altvault.png",
-     "desc": "Your Lifestyle... Your Music!",
-     "longDesc": "The Alt Vault live broadcasting from Kissimmee, FL. The Alt Vault broadcast various kind of 90s’s pop, rock, classic, talk, culture, dance, electronic etc. The Alt Vault streaming music and programs both in online. The Alt Vault is 24 hour 7 day live Online radio."
+     "name": "The Rock FM",
+     "streamURL": "http://tunein-icecast.mediaworks.nz/rock_128kbps",
+     "imageURL": "station-therockfm.png",
+     "desc": "Rock Music",
+     "longDesc": "NZ's number one Rock music station."
      },
      {
      "name": "Classic Rock",

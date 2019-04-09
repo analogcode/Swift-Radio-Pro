@@ -5,7 +5,7 @@ Swift Radio is an open source radio station app with robust and professional fea
 There are over 80 different apps accepted to the app store using this code!
 
 <p align="center">
-    <img alt="Swift Radio" src="https://fethica.com/img/web/swift-radio.jpg">
+    <img alt="Swift Radio" src="https://fethica.com/assets/img/web/swift-radio.jpg">
 </p>
 
 ## Video
@@ -33,6 +33,7 @@ Give it a quick watch.
   * Download and cache images using ImageLoader class
 
 ## Important Notes
+- 2.10.19: Add CarPlay support by [@fethica](https://github.com/fethica) -- [Announcement](https://github.com/analogcode/Swift-Radio-Pro/issues/110). Branch here: [carplay branch](https://github.com/analogcode/Swift-Radio-Pro/tree/carplay).
 - 1.30.19: Add iPad support by [@misteral](https://github.com/misteral). 
 - 1.9.19: master branch migrated to Xcode 10/Swift 4.2 by [@fethica](https://github.com/fethica). 
 - 1.21.18 Update: Swift Radio App gets a major update with **Version 2** by [@fethica](https://github.com/fethica) -- [Release Note](https://github.com/analogcode/Swift-Radio-Pro/releases/tag/2.0.0). 
@@ -56,7 +57,7 @@ Branch here: [AVPlayer Branch](https://github.com/swiftcodex/Swift-Radio-Pro/tre
 
 ## Credits
 *Created by [Matthew Fecher](http://matthewfecher.com), Twitter: [@goFecher](http://twitter.com/goFecher)*  
-*Co-organizer [Fethi El Hassasna](https://fethica.com/en), Twitter: [@fethica](https://twitter.com/fethica)*  
+*Co-organizer [Fethi El Hassasna](https://fethica.com), Twitter: [@fethica](https://twitter.com/fethica)*  
 *Thanks to Basel Farag, from [Denver Swift Heads](http://www.meetup.com/Denver-Swift-Heads/) for the code review.*  
 
 
