@@ -134,7 +134,7 @@ Q: The song names aren't appearing for my station?
 A: Check with your stream provider to make sure they are sending Metadata properly. If a station sends data in a unique way, you can modify the way the app parses the metadata, in the `RadioPlayer` class implement `FRadioPlayerDelegate` method: `radioPlayer(_ player: FRadioPlayer, metadataDidChange rawValue: String?)`.
 
 ## Single Station Code
-We can create a single station version of this code for you for a small fee. Send a friendly email to [Matthew](mailto:matthew@audiokitpro.com) or [Fethi](https://fethica.com/en).
+We can create a single station version of this code for you for a small fee. Send a friendly email to [Matthew](mailto:matthew@audiokitpro.com) or [Fethi](mailto:contact@fethica.com).
 
 
 ## RadioKit SDK Example 
