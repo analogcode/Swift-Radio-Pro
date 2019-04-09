@@ -8,6 +8,8 @@
 
 import UIKit
 import MediaPlayer
+import AVKit
+
 
 //*****************************************************************
 // NowPlayingViewControllerDelegate
@@ -39,6 +41,7 @@ class NowPlayingViewController: UIViewController {
     @IBOutlet weak var volumeParentView: UIView!
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var AirPlayUIView: UIView!
     
     // MARK: - Properties
     
@@ -77,6 +80,20 @@ class NowPlayingViewController: UIViewController {
         
         // Setup volumeSlider
         setupVolumeSlider()
+        
+        // Setup AirPlay View if on ios 11.0
+        if #available(iOS 11.0, *) {
+            let AirPlayButton = AVRoutePickerView(frame: AirPlayUIView.bounds)
+            AirPlayButton.activeTintColor = globalTintColor
+            AirPlayButton.tintColor = .gray
+            AirPlayUIView.backgroundColor = UIColor.clear
+            AirPlayUIView.addSubview(AirPlayButton)
+        }else{
+            let AirPlayButton = MPVolumeView(frame: AirPlayUIView.bounds)
+            AirPlayButton.showsVolumeSlider = false
+            AirPlayUIView.backgroundColor = UIColor.clear
+            AirPlayUIView.addSubview(AirPlayButton)
+        }
         
         // Hide / Show Next/Previous buttons
         previousButton.isHidden = hideNextPreviousButtons
