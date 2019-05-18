@@ -206,7 +206,7 @@ class StationsViewController: UIViewController {
             guard let currentStation = self.radioPlayer.station else { return }
             
             // Reset everything if the new stations list doesn't have the current station
-            if self.stations.index(of: currentStation) == nil { self.resetCurrentStation() }
+            if self.stations.firstIndex(of: currentStation) == nil { self.resetCurrentStation() }
         }
     }
     
@@ -241,7 +241,7 @@ class StationsViewController: UIViewController {
     }
     
     private func getIndex(of station: RadioStation?) -> Int? {
-        guard let station = station, let index = stations.index(of: station) else { return nil }
+        guard let station = station, let index = stations.firstIndex(of: station) else { return nil }
         return index
     }
     

@@ -1,6 +1,6 @@
 # Swift Radio
 
-Swift Radio is an open source radio station app with robust and professional features. This is a fully realized Radio App built entirely in Swift. **master is now the Xcode 10 / Swift 4.2 branch**.
+Swift Radio is an open source radio station app with robust and professional features. This is a fully realized Radio App built entirely in Swift. **master is now the Xcode 10.2 / Swift 5 branch**.
 
 There are over 80 different apps accepted to the app store using this code!
 
@@ -17,9 +17,9 @@ Give it a quick watch.
 
 - Ability to update Stations from server or locally. (Update stations anytime without resubmitting to app store!)
 - Displays Artist, Track & Album Art on Lock Screen
-- Custom views optimized for 5, 6 and 6+ for backwards compatibility
-- Compiles with Xcode 10 & Swift 4.2
-- Parses JSON using Swift 4 Codable protocol
+- Custom views optimized for SE, 6 and 6+ for backwards compatibility
+- Compiles with Xcode 10.2 & Swift 5
+- Parses JSON using Swift Codable protocol
 - Background audio performance
 - Search Bar that can be turned on or off to search stations
 - Supports local or hosted station images
@@ -33,6 +33,7 @@ Give it a quick watch.
   * Download and cache images using ImageLoader class
 
 ## Important Notes
+- 5.18.19: master branch migrated to Xcode 10.2/Swift 5 by [@fethica](https://github.com/fethica). 
 - 9.4.19: Add AirPlay support by [@geraldnolan](https://github.com/geraldnolan).
 - 2.10.19: Add CarPlay support by [@fethica](https://github.com/fethica) -- [Announcement](https://github.com/analogcode/Swift-Radio-Pro/issues/110). Branch here: [carplay branch](https://github.com/analogcode/Swift-Radio-Pro/tree/carplay).
 - 1.30.19: Add iPad support by [@misteral](https://github.com/misteral). 
@@ -67,7 +68,7 @@ Thanks to everyone! We couldn't do it without you!
 
 ## Requirements
 
-- Xcode 10
+- Xcode 10.2
 - Know a little bit of how to program in Swift with the iOS SDK
 
 Please note: I am unable to offer any free support or modifications. Thanks!
