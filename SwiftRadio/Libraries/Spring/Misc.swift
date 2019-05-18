@@ -23,9 +23,9 @@
 import UIKit
 
 public extension String {
-    public var length: Int { return self.count }
+    var length: Int { return self.count }
     
-    public func toURL() -> NSURL? {
+    func toURL() -> NSURL? {
         return NSURL(string: self)
     }
 }
