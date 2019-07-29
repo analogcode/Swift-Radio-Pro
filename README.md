@@ -1,6 +1,6 @@
 # Swift Radio
 
-Swift Radio is an open source radio station app with robust and professional features. This is a fully realized Radio App built entirely in Swift. **master is now the Xcode 10 / Swift 4.2 branch**.
+Swift Radio is an open source radio station app with robust and professional features. This is a fully realized Radio App built entirely in Swift. **master is now the Xcode 10.2 / Swift 5 branch**.
 
 There are over 80 different apps accepted to the app store using this code!
 
@@ -17,9 +17,9 @@ Give it a quick watch.
 
 - Ability to update Stations from server or locally. (Update stations anytime without resubmitting to app store!)
 - Displays Artist, Track & Album Art on Lock Screen
-- Custom views optimized for 5, 6 and 6+ for backwards compatibility
-- Compiles with Xcode 10 & Swift 4.2
-- Parses JSON using Swift 4 Codable protocol
+- Custom views optimized for SE, 6 and 6+ for backwards compatibility
+- Compiles with Xcode 10.2 & Swift 5
+- Parses JSON using Swift Codable protocol
 - Background audio performance
 - Search Bar that can be turned on or off to search stations
 - Supports local or hosted station images
@@ -33,6 +33,7 @@ Give it a quick watch.
   * Download and cache images using ImageLoader class
 
 ## Important Notes
+- 5.18.19: master branch migrated to Xcode 10.2/Swift 5 by [@fethica](https://github.com/fethica). 
 - 9.4.19: Add AirPlay support by [@geraldnolan](https://github.com/geraldnolan).
 - 2.10.19: Add CarPlay support by [@fethica](https://github.com/fethica) -- [Announcement](https://github.com/analogcode/Swift-Radio-Pro/issues/110). Branch here: [carplay branch](https://github.com/analogcode/Swift-Radio-Pro/tree/carplay).
 - 1.30.19: Add iPad support by [@misteral](https://github.com/misteral). 
@@ -67,7 +68,7 @@ Thanks to everyone! We couldn't do it without you!
 
 ## Requirements
 
-- Xcode 10
+- Xcode 10.2
 - Know a little bit of how to program in Swift with the iOS SDK
 
 Please note: I am unable to offer any free support or modifications. Thanks!
@@ -133,13 +134,18 @@ A: While I have a full-time job and other project obligations, I'd highly recomm
 Q: The song names aren't appearing for my station?  
 A: Check with your stream provider to make sure they are sending Metadata properly. If a station sends data in a unique way, you can modify the way the app parses the metadata, in the `RadioPlayer` class implement `FRadioPlayerDelegate` method: `radioPlayer(_ player: FRadioPlayer, metadataDidChange rawValue: String?)`.
 
-## Single Station Code
-We can create a single station version of this code for you for a small fee. Send a friendly email to [Matthew](mailto:matthew@audiokitpro.com) or [Fethi](mailto:contact@fethica.com).
+## Get Single Station Code
+If you'd like to support this project, co-orgainizer Fethi has created a well-architected single station version of this code. It's a super great bargain: The developers behind this project typically charge up to $200/hr for freelance work, but this fully working code is only $50. No extra fees. 
+
+You can PayPal: [fethica@me.com](mailto:fethica@me.com) or use this link: [Paypal Me](https://www.paypal.me/fethicaEH)
+We will send you the code after 24 hours with setup instructions. All funds go to support the project.
+
+**Need something more advanced?** We have recent experience building iOS apps for high-profile brands. Send a friendly email to [Matthew](mailto:matthew@audiokitpro.com) or [Fethi](mailto:contact@fethica.com).
 
 
 ## RadioKit SDK Example 
 
-![alt text](http://matthewfecher.com/wp-content/uploads/2015/11/radiokit.jpg "RadioKit Example")
+[alt text](http://matthewfecher.com/wp-content/uploads/2015/11/radiokit.jpg "RadioKit Example")
 
 - You can use this Swift code as a front-end for a more robust streaming backend.
 - Brian Stormont, creator of RadioKit, has created a branch with the professional [RadioKit](http://stormyprods.com/products/radiokit.php) SDK already integrated. **Plus, his branch adds rewind & fast forward stream playback.** This is an excellent learning tool for those who are interested in seeing how a streaming library integrates with Swift Radio Pro. View the [branch here](https://github.com/MostTornBrain/Swift-Radio-Pro/tree/RadioKit).
