@@ -33,6 +33,7 @@ Give it a quick watch.
   * Download and cache images using ImageLoader class
 
 ## Important Notes
+- 8.20.19: Add watermarked image for share activity by [@CamMcLeod](https://github.com/CamMcLeod).
 - 5.18.19: master branch migrated to Xcode 10.2/Swift 5 by [@fethica](https://github.com/fethica). 
 - 9.4.19: Add AirPlay support by [@geraldnolan](https://github.com/geraldnolan).
 - 2.10.19: Add CarPlay support by [@fethica](https://github.com/fethica) -- [Announcement](https://github.com/analogcode/Swift-Radio-Pro/issues/110). Branch here: [carplay branch](https://github.com/analogcode/Swift-Radio-Pro/tree/carplay).

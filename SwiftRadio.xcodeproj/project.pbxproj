@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2C5545BD1C1124DE00728469 /* SwiftRadioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5545BC1C1124DE00728469 /* SwiftRadioUITests.swift */; };
+		53113F39230C720900462C0E /* ShareImageGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53113F38230C720900462C0E /* ShareImageGenerator.swift */; };
 		5F22BA3C1F72AD5A00CB5911 /* SpringLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F22BA1E1F72AD3700CB5911 /* SpringLabel.swift */; };
 		5F22BA3D1F72AD5A00CB5911 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F22BA1F1F72AD3900CB5911 /* BlurView.swift */; };
 		5F22BA3E1F72AD5A00CB5911 /* DesignableTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F22BA201F72AD3B00CB5911 /* DesignableTabBarController.swift */; };
@@ -36,6 +37,8 @@
 		5F22BA551F72AD5A00CB5911 /* AutoTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F22BA3A1F72AD5800CB5911 /* AutoTextView.swift */; };
 		5F22BA561F72AD5A00CB5911 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F22BA3B1F72AD5900CB5911 /* DesignableView.swift */; };
 		5FDEE0221F72FF980064333C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FDEE0211F72FF980064333C /* LaunchScreen.storyboard */; };
+		6258DCD822D93A3500166C65 /* LogoShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258DCD722D93A3500166C65 /* LogoShareView.swift */; };
+		6258DCDA22D93A5400166C65 /* LogoShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6258DCD922D93A5400166C65 /* LogoShareView.xib */; };
 		81AD229B21646DEA002ADFDD /* FRadioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AD229821646DEA002ADFDD /* FRadioPlayer.swift */; };
 		81AD229C21646DEA002ADFDD /* FRadioAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AD229921646DEA002ADFDD /* FRadioAPI.swift */; };
 		81AD229D21646DEA002ADFDD /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AD229A21646DEA002ADFDD /* Reachability.swift */; };
@@ -74,6 +77,7 @@
 		2C5545BA1C1124DE00728469 /* SwiftRadioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftRadioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C5545BC1C1124DE00728469 /* SwiftRadioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftRadioUITests.swift; sourceTree = "<group>"; };
 		2C5545BE1C1124DE00728469 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		53113F38230C720900462C0E /* ShareImageGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareImageGenerator.swift; sourceTree = "<group>"; };
 		5F22BA1E1F72AD3700CB5911 /* SpringLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringLabel.swift; sourceTree = "<group>"; };
 		5F22BA1F1F72AD3900CB5911 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		5F22BA201F72AD3B00CB5911 /* DesignableTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableTabBarController.swift; sourceTree = "<group>"; };
@@ -105,6 +109,8 @@
 		5F22BA3A1F72AD5800CB5911 /* AutoTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoTextView.swift; sourceTree = "<group>"; };
 		5F22BA3B1F72AD5900CB5911 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		5FDEE0211F72FF980064333C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6258DCD722D93A3500166C65 /* LogoShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoShareView.swift; sourceTree = "<group>"; };
+		6258DCD922D93A5400166C65 /* LogoShareView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoShareView.xib; sourceTree = "<group>"; };
 		81AD229821646DEA002ADFDD /* FRadioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRadioPlayer.swift; sourceTree = "<group>"; };
 		81AD229921646DEA002ADFDD /* FRadioAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRadioAPI.swift; sourceTree = "<group>"; };
 		81AD229A21646DEA002ADFDD /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
@@ -294,6 +300,9 @@
 				94D260951B45E3FA00DE671C /* AnimationFrames.swift */,
 				949E5EAF1ACB340200AB6280 /* UIImageView+Download.swift */,
 				94E9761B1B1A8F3200F52B1E /* UIImage+DropShadow.swift */,
+				53113F38230C720900462C0E /* ShareImageGenerator.swift */,
+				6258DCD722D93A3500166C65 /* LogoShareView.swift */,
+				6258DCD922D93A5400166C65 /* LogoShareView.xib */,
 			);
 			name = "UI Helpers";
 			sourceTree = "<group>";
@@ -373,7 +382,7 @@
 					};
 					9409E1151ABF6FEA00312E2B = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = G24WJ3XCZ3;
+						DevelopmentTeam = 6G96AERJ7Q;
 						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -417,6 +426,7 @@
 			files = (
 				945DB3C21AD58E3A00495EBB /* stations.json in Resources */,
 				945DB3C51AD5A6E200495EBB /* NothingFoundCell.xib in Resources */,
+				6258DCDA22D93A5400166C65 /* LogoShareView.xib in Resources */,
 				CF72ACE721F7155200461EED /* Main.storyboard in Resources */,
 				5FDEE0221F72FF980064333C /* LaunchScreen.storyboard in Resources */,
 				9409E1261ABF6FEA00312E2B /* Images.xcassets in Resources */,
@@ -449,11 +459,13 @@
 				94D30EA71AD07A880024FE96 /* StationTableViewCell.swift in Sources */,
 				5F22BA3C1F72AD5A00CB5911 /* SpringLabel.swift in Sources */,
 				5F22BA3D1F72AD5A00CB5911 /* BlurView.swift in Sources */,
+				53113F39230C720900462C0E /* ShareImageGenerator.swift in Sources */,
 				5F22BA411F72AD5A00CB5911 /* SpringTextField.swift in Sources */,
 				9409E1401ABF78B000312E2B /* NowPlayingViewController.swift in Sources */,
 				94D1D0A51AD6D6230022CA11 /* InfoDetailViewController.swift in Sources */,
 				5F22BA4B1F72AD5A00CB5911 /* KeyboardLayoutConstraint.swift in Sources */,
 				5F22BA421F72AD5A00CB5911 /* SoundPlayer.swift in Sources */,
+				6258DCD822D93A3500166C65 /* LogoShareView.swift in Sources */,
 				5F22BA4A1F72AD5A00CB5911 /* DesignableTextView.swift in Sources */,
 				949BBB401ACC9DEE005B7C26 /* DataManager.swift in Sources */,
 				5F22BA4E1F72AD5A00CB5911 /* Misc.swift in Sources */,
@@ -639,6 +651,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 6G96AERJ7Q;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SwiftRadio",
@@ -662,6 +675,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 6G96AERJ7Q;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SwiftRadio",
