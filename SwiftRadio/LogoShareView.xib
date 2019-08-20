@@ -68,7 +68,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
-                <outlet property="albumArt" destination="zmo-M8-m9o" id="E3I-ds-amX"/>
+                <outlet property="albumArtImageView" destination="zmo-M8-m9o" id="UAh-AN-ANo"/>
                 <outlet property="logoImageView" destination="Wb0-C0-hGr" id="P1S-1A-jy7"/>
                 <outlet property="radioShoutoutLabel" destination="LsP-Sq-acL" id="o6j-gY-1Wg"/>
                 <outlet property="trackArtistLabel" destination="UhH-FP-Yas" id="NR4-tS-aF6"/>
