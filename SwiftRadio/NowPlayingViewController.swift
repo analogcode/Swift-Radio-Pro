@@ -347,17 +347,31 @@ class NowPlayingViewController: UIViewController {
     }
     
     @IBAction func shareButtonPressed(_ sender: UIButton) {
-        let songToShare = "I'm listening to \(currentTrack.title) on \(currentStation.name) via Swift Radio Pro"
-        let activityViewController = UIActivityViewController(activityItems: [songToShare, currentTrack.artworkImage!], applicationActivities: nil)
-        activityViewController.popoverPresentationController?.sourceRect = CGRect(x: view.center.x, y: view.center.y, width: 0, height: 0)
-        activityViewController.popoverPresentationController?.sourceView = view
-        activityViewController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
         
-        activityViewController.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed:Bool, returnedItems:[Any]?, error: Error?) in
-            if completed {
-                // do something on completion if you want
+        let songToShare = "I'm listening to \(currentStation.name) via Swift Radio Pro"
+        let shareImage : UIImage?
+        if let objects = Bundle.main.loadNibNamed("LogoShareView", owner: nil, options: [:]), let getView = objects.first {
+            
+            if let logoShare = getView as? LogoShareView {
+                logoShare.shareSetup(albumArt: currentTrack.artworkImage!, radioShoutout: songToShare, trackTitle: currentTrack.title, trackArtist: currentTrack.artist)
+                UIGraphicsBeginImageContextWithOptions(CGSize(width: logoShare.frame.width, height: logoShare.frame.height), true, 0)
+                logoShare.drawHierarchy(in: logoShare.frame, afterScreenUpdates: true)
+                shareImage = UIGraphicsGetImageFromCurrentImageContext()
+                UIGraphicsEndImageContext();
+
+                
+                let activityViewController = UIActivityViewController(activityItems: [shareImage!], applicationActivities: nil)
+                activityViewController.popoverPresentationController?.sourceRect = CGRect(x: view.center.x, y: view.center.y, width: 0, height: 0)
+                activityViewController.popoverPresentationController?.sourceView = view
+                activityViewController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
+                
+                activityViewController.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed:Bool, returnedItems:[Any]?, error: Error?) in
+                    if completed {
+                        // do something on completion if you want
+                    }
+                }
+                present(activityViewController, animated: true, completion: nil)
             }
         }
-        present(activityViewController, animated: true, completion: nil)
     }
 }
