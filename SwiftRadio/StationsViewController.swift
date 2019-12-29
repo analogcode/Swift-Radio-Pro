@@ -386,10 +386,17 @@ extension StationsViewController: UISearchResultsUpdating {
         
         // Hide the UISearchController
         tableView.setContentOffset(CGPoint(x: 0.0, y: searchController.searchBar.frame.size.height), animated: false)
-        
-        // Set a black keyborad for UISearchController's TextField
-        let searchTextField = searchController.searchBar.value(forKey: "_searchField") as! UITextField
-        searchTextField.keyboardAppearance = UIKeyboardAppearance.dark
+        // iOS 13 or greater
+        if  ProcessInfo().isOperatingSystemAtLeast(OperatingSystemVersion(majorVersion: 13, minorVersion: 0, patchVersion: 0)) {
+            // Make text readable in black searchbar
+            searchController.searchBar.barStyle = .black
+            // Set a black keyborad for UISearchController's TextField
+            let searchTextField = searchController.searchBar.searchTextField
+            searchTextField.keyboardAppearance = UIKeyboardAppearance.dark
+        } else {
+            let searchTextField = searchController.searchBar.value(forKey: "_searchField") as! UITextField
+            searchTextField.keyboardAppearance = UIKeyboardAppearance.dark
+        }
     }
 
     func updateSearchResults(for searchController: UISearchController) {
