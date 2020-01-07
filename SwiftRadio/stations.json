@@ -2,13 +2,6 @@
     "station":
     [
      {
-     "name": "Absolute Country Hits",
-     "streamURL": "http://strm112.1.fm/acountry_mobile_mp3",
-     "imageURL": "station-absolutecountry.png",
-     "desc": "The Music Starts Here",
-     "longDesc": "All your favorite country hits and artists, from Johnny Cash to Taylor Swift, on 1.FM's Absolute Country, playing non-stop crooners and banjos, dance-tunes and fiddles, ballads and harmonicas. Absolute Country focuses on 5th, 6th and 7th generation Country (from the 90s on) but often delves into classic, older tunes as well."
-     },
-     {
      "name": "Newport Folk Radio",
      "streamURL": "http://rfcmedia.streamguys1.com/Newport.mp3",
      "imageURL": "station-newportfolk.png",
@@ -35,6 +28,37 @@
      "imageURL": "",
      "desc": "KVCU - Boulder, CO",
      "longDesc": "Radio 1190 is the bomb."
+     },
+     {
+     "name": "WAMU 88.5FM",
+     "streamURL": "http://wamu.org/streams/live/1/live.m3u",
+     "imageURL": "",
+     "desc": "WAMU - American University",
+     "longDesc": "Washington's NPR station, featuring local news on education, transportation, politics, and more"
+     },
+     {
+     "name": "WKCR 89.9FM",
+     "streamURL": "http://wkcr.streamguys1.com/live.m3u",
+     "imageURL": "https://publicfiles.fcc.gov/api/manager/download/entity/logo/68270/fm",
+     "desc": "WKCR - Columbia University",
+     "longDesc": "Student-led, educational, and noncommercial radio station based at Columbia University"
+     }
+    ],
+    "list":
+    [
+     {
+     "name": "WAMU 88.5FM",
+     "streamURL": "http://wamu.org/streams/live/1/live.m3u",
+     "imageURL": "",
+     "desc": "WAMU - American University",
+     "longDesc": "Washington's NPR station, featuring local news on education, transportation, politics, and more"
+     },
+     {
+     "name": "WKCR 89.9FM",
+     "streamURL": "http://wkcr.streamguys1.com/live.m3u",
+     "imageURL": "https://publicfiles.fcc.gov/api/manager/download/entity/logo/68270/fm",
+     "desc": "WKCR - Columbia University",
+     "longDesc": "Student-led, educational, and noncommercial radio station based at Columbia University"
      }
     ]
 }

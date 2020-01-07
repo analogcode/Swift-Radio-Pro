@@ -23,6 +23,9 @@ extension AppDelegate {
 }
 
 extension AppDelegate: MPPlayableContentDelegate {
+    func playableContentManager(_ contentManager: MPPlayableContentManager, didUpdate context: MPPlayableContentManagerContext) {
+        print("did update context")
+    }
     
     func playableContentManager(_ contentManager: MPPlayableContentManager, initiatePlaybackOfContentItemAt indexPath: IndexPath, completionHandler: @escaping (Error?) -> Void) {
         
@@ -43,8 +46,17 @@ extension AppDelegate: MPPlayableContentDelegate {
     }
     
     func beginLoadingChildItems(at indexPath: IndexPath, completionHandler: @escaping (Error?) -> Void) {
-        carplayPlaylist.load { error in
-            completionHandler(error)
+        
+        // Indicate user selection by index
+        if indexPath.count > 0, indexPath[0] == 1 {
+            carplayPlaylist.load(type: .list) { error in
+                completionHandler(error)
+            }
+        }else{
+            // load default stations
+            carplayPlaylist.load(type: .station) { error in
+                completionHandler(error)
+            }
         }
     }
 }
@@ -52,26 +64,37 @@ extension AppDelegate: MPPlayableContentDelegate {
 extension AppDelegate: MPPlayableContentDataSource {
     
     func numberOfChildItems(at indexPath: IndexPath) -> Int {
+        // Returns multiple tab sections
         if indexPath.indices.count == 0 {
-            return 1
+            return 2
         }
         
+        // Returns actual number of stations
         return carplayPlaylist.stations.count
     }
     
     func contentItem(at indexPath: IndexPath) -> MPContentItem? {
-        
-        if indexPath.count == 1 {
-            // Tab section
-            let item = MPContentItem(identifier: "Stations")
-            item.title = "Stations"
+        if indexPath == [1] {
+            // Tab section 1
+            let item = MPContentItem(identifier: "Favorites")
+            item.title = "Favorites"
             item.isContainer = true
             item.isPlayable = false
-            item.artwork = MPMediaItemArtwork(boundsSize: #imageLiteral(resourceName: "carPlayTab").size, requestHandler: { _ -> UIImage in
-                return #imageLiteral(resourceName: "carPlayTab")
+            item.artwork = MPMediaItemArtwork(boundsSize: #imageLiteral(resourceName: "favorites").size, requestHandler: { _ -> UIImage in
+                return #imageLiteral(resourceName: "favorites")
             })
             return item
-        } else if indexPath.count == 2, indexPath.item < carplayPlaylist.stations.count {
+        } else if indexPath == [0] {
+            // Tab section 2
+            let item = MPContentItem(identifier: "Sample Stations")
+            item.title = "Sample Stations"
+            item.isContainer = true
+            item.isPlayable = false
+            item.artwork = MPMediaItemArtwork(boundsSize: #imageLiteral(resourceName: "playlists").size, requestHandler: { _ -> UIImage in
+                return #imageLiteral(resourceName: "playlists")
+            })
+            return item
+        }else if indexPath.count > 1, indexPath.item < carplayPlaylist.stations.count {
             
             // Stations section
             let station = carplayPlaylist.stations[indexPath.item]

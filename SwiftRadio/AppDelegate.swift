@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     weak var stationsViewController: StationsViewController?
+    let defaults = UserDefaults.standard
     
     // CarPlay
     var playableContentManager: MPPlayableContentManager?

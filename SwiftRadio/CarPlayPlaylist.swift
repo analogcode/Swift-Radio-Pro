@@ -8,11 +8,14 @@
 
 import Foundation
 
+public enum listType{
+    case station, list
+}
 class CarPlayPlaylist {
     
     var stations = [RadioStation]()
         
-    func load(_ completion: @escaping (Error?) -> Void) {
+    func load(type: listType, completion: @escaping (Error?) -> Void) {
         
         DataManager.getStationDataWithSuccess() { (data) in
             
@@ -23,8 +26,15 @@ class CarPlayPlaylist {
             
             do {
                 let jsonDictionary = try JSONDecoder().decode([String: [RadioStation]].self, from: data)
-                if let stationsArray = jsonDictionary["station"] {
-                    self.stations = stationsArray
+                switch type{
+                case .station:
+                    if let stationsArray = jsonDictionary["station"] {
+                        self.stations = stationsArray
+                    }
+                case .list:
+                    if let stationsArray = jsonDictionary["list"] {
+                        self.stations = stationsArray
+                    }
                 }
             } catch (let error) {
                 completion(error)
