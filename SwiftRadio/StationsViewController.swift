@@ -394,8 +394,10 @@ extension StationsViewController: UISearchResultsUpdating {
             // Make text readable in black searchbar
             searchController.searchBar.barStyle = .black
             // Set a black keyborad for UISearchController's TextField
-            let searchTextField = searchController.searchBar.searchTextField
-            searchTextField.keyboardAppearance = UIKeyboardAppearance.dark
+            if #available(iOS 13.0, *) {
+                let searchTextField = searchController.searchBar.searchTextField
+                searchTextField.keyboardAppearance = UIKeyboardAppearance.dark
+            }
         } else {
             let searchTextField = searchController.searchBar.value(forKey: "_searchField") as! UITextField
             searchTextField.keyboardAppearance = UIKeyboardAppearance.dark
