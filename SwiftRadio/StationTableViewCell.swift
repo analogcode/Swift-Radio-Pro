@@ -41,12 +41,10 @@ class StationTableViewCell: UITableViewCell {
             }
         } else if imageURL != "" {
             stationImageView.image = UIImage(named: imageURL as String)
-       
         } else {
             stationImageView.image = UIImage(named: "stationImage")
         }
     }
-    
     
     override func prepareForReuse() {
         super.prepareForReuse()
