@@ -19,6 +19,9 @@ class StationTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        // set ImageView shadow
+        stationImageView.applyShadow()
+        
         // set table selection color
         let selectedView = UIView(frame: CGRect.zero)
         selectedView.backgroundColor = UIColor(red: 78/255, green: 82/255, blue: 93/255, alpha: 0.6)
@@ -32,25 +35,16 @@ class StationTableViewCell: UITableViewCell {
         stationDescLabel.text = station.desc
         
         let imageURL = station.imageURL as NSString
-        
-            if imageURL.contains("http") {
-            
-            if let url = URL(string: station.imageURL) {
-                stationImageView.loadImageWithURL(url: url) { (image) in
-                    // station image loaded
-                }
+        if imageURL.contains("http"), let url = URL(string: station.imageURL) {
+            stationImageView.loadImageWithURL(url: url) { (image) in
+                // station image loaded
             }
-                
-            } else if imageURL != "" {
-                stationImageView.image = UIImage(named: imageURL as String)
-           
-            } else {
-                stationImageView.image = UIImage(named: "stationImage")
-            }
-        
-        stationImageView.applyShadow()
+        } else if imageURL != "" {
+            stationImageView.image = UIImage(named: imageURL as String)
+        } else {
+            stationImageView.image = UIImage(named: "stationImage")
+        }
     }
-    
     
     override func prepareForReuse() {
         super.prepareForReuse()

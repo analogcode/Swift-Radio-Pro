@@ -31,7 +31,7 @@ struct RadioStation: Codable {
 
 extension RadioStation: Equatable {
     
-    static func ==(lhs: RadioStation, rhs: RadioStation) -> Bool {
+    static func == (lhs: RadioStation, rhs: RadioStation) -> Bool {
         return (lhs.name == rhs.name) && (lhs.streamURL == rhs.streamURL) && (lhs.imageURL == rhs.imageURL) && (lhs.desc == rhs.desc) && (lhs.longDesc == rhs.longDesc)
     }
 }
