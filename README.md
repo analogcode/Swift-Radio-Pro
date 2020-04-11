@@ -1,6 +1,6 @@
 # Swift Radio
 
-Swift Radio is an open source radio station app with robust and professional features. This is a fully realized Radio App built entirely in Swift. **master is now the Xcode 10.2 / Swift 5 branch**.
+Swift Radio is an open source radio station app with robust and professional features. This is a fully realized Radio App built entirely in Swift. **master is now the Xcode 11.4 / Swift 5 branch**.
 
 There are over 80 different apps accepted to the app store using this code!
 
@@ -33,6 +33,7 @@ Give it a quick watch.
   * Download and cache images using ImageLoader class
 
 ## Important Notes
+- 4.10.19: master/carplay/dev branches migrated to Xcode 11.4/Swift 5 by [@fethica](https://github.com/fethica).
 - 8.20.19: Add watermarked image for share activity by [@CamMcLeod](https://github.com/CamMcLeod).
 - 5.18.19: master branch migrated to Xcode 10.2/Swift 5 by [@fethica](https://github.com/fethica). 
 - 9.4.19: Add AirPlay support by [@geraldnolan](https://github.com/geraldnolan).
