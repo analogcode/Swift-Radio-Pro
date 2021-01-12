@@ -6,7 +6,7 @@
 //  Copyright © 2017 Fethi El Hassasna (@fethica). All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 // MARK: - iTunes API
 internal struct FRadioAPI {
@@ -21,27 +21,21 @@ internal struct FRadioAPI {
         }
                 
         URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
-            guard error == nil, let data = data else {
+            guard error == nil,
+                let data = data,
+                let parsedResult = try? JSONDecoder().decode(SongInfo.self, from: data).results.first
+                else {
                 completionHandler(nil)
                 return
             }
             
-            let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments)
-            
-            guard let parsedResult = json as? [String: Any],
-                let results = parsedResult[Keys.results] as? Array<[String: Any]>,
-                let result = results.first,
-                var artwork = result[Keys.artwork] as? String else {
-                    completionHandler(nil)
-                    return
-            }
-            
+            var artwork = parsedResult.artworkUrl100
             if size != 100, size > 0 {
-                artwork = artwork.replacingOccurrences(of: "100x100", with: "\(size)x\(size)")
+                artwork = parsedResult.artworkUrl100.replacingOccurrences(of: "100x100", with: "\(size)x\(size)")
             }
-            
             let artworkURL = URL(string: artwork)
             completionHandler(artworkURL)
+            
         }).resume()
     }
     

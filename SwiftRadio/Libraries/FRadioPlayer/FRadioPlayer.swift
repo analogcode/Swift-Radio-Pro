@@ -520,10 +520,6 @@ open class FRadioPlayer: NSObject {
             case "playbackLikelyToKeepUp":
                 
                 self.state = item.isPlaybackLikelyToKeepUp ? .loadingFinished : .loading
-            
-            case "timedMetadata":
-                let rawValue = item.timedMetadata?.first?.value as? String
-                timedMetadataDidChange(rawValue: rawValue)
                 
             default:
                 break

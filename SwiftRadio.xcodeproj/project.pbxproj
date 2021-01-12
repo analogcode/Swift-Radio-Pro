@@ -61,6 +61,7 @@
 		94E9761C1B1A8F3200F52B1E /* UIImage+DropShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9761B1B1A8F3200F52B1E /* UIImage+DropShadow.swift */; };
 		CAA8FDB52000614600050F77 /* RadioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA8FDB42000614600050F77 /* RadioPlayer.swift */; };
 		CF72ACE721F7155200461EED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF72ACE621F714D000461EED /* Main.storyboard */; };
+		E39A89F825ADA822009295FF /* SongInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39A89F725ADA822009295FF /* SongInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +136,7 @@
 		94E9761B1B1A8F3200F52B1E /* UIImage+DropShadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+DropShadow.swift"; sourceTree = "<group>"; };
 		CAA8FDB42000614600050F77 /* RadioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioPlayer.swift; sourceTree = "<group>"; };
 		CF72ACE621F714D000461EED /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		E39A89F725ADA822009295FF /* SongInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -312,6 +314,7 @@
 			children = (
 				94AC70AD1AD05C6200652982 /* RadioStation.swift */,
 				94D260971B45E8B800DE671C /* Track.swift */,
+				E39A89F725ADA822009295FF /* SongInfo.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 				5F22BA3C1F72AD5A00CB5911 /* SpringLabel.swift in Sources */,
 				5F22BA3D1F72AD5A00CB5911 /* BlurView.swift in Sources */,
 				53113F39230C720900462C0E /* ShareImageGenerator.swift in Sources */,
+				E39A89F825ADA822009295FF /* SongInfo.swift in Sources */,
 				5F22BA411F72AD5A00CB5911 /* SpringTextField.swift in Sources */,
 				9409E1401ABF78B000312E2B /* NowPlayingViewController.swift in Sources */,
 				94D1D0A51AD6D6230022CA11 /* InfoDetailViewController.swift in Sources */,
