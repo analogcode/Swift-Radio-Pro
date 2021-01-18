@@ -146,6 +146,11 @@ open class FRadioPlayer: NSObject {
      */
     open weak var delegate: FRadioPlayerDelegate?
     
+    /**
+     A Varable for setting up Metadata Output
+     */
+    var metadataOutput: AVPlayerItemMetadataOutput?
+    
     /// The player current radio URL
     open var radioURL: URL? {
         didSet {
@@ -236,6 +241,10 @@ open class FRadioPlayer: NSObject {
         try? reachability.startNotifier()
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
         isConnected = reachability.connection != .none
+        
+        // Setup Metadata Output Delegate
+        metadataOutput = AVPlayerItemMetadataOutput(identifiers: nil)
+        metadataOutput?.setDelegate(self, queue: DispatchQueue.main)
     }
     
     // MARK: - Control Methods
@@ -325,7 +334,7 @@ open class FRadioPlayer: NSObject {
             item.removeObserver(self, forKeyPath: "status")
             item.removeObserver(self, forKeyPath: "playbackBufferEmpty")
             item.removeObserver(self, forKeyPath: "playbackLikelyToKeepUp")
-            item.removeObserver(self, forKeyPath: "timedMetadata")
+            if metadataOutput != nil { item.remove(metadataOutput!) }
         }
         
         lastPlayerItem = playerItem
@@ -336,7 +345,7 @@ open class FRadioPlayer: NSObject {
             item.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions.new, context: nil)
             item.addObserver(self, forKeyPath: "playbackBufferEmpty", options: NSKeyValueObservingOptions.new, context: nil)
             item.addObserver(self, forKeyPath: "playbackLikelyToKeepUp", options: NSKeyValueObservingOptions.new, context: nil)
-            item.addObserver(self, forKeyPath: "timedMetadata", options: NSKeyValueObservingOptions.new, context: nil)
+            if metadataOutput != nil { item.add(metadataOutput!) }
             
             player?.replaceCurrentItem(with: item)
             if isAutoPlay { play() }
@@ -520,14 +529,23 @@ open class FRadioPlayer: NSObject {
             case "playbackLikelyToKeepUp":
                 
                 self.state = item.isPlaybackLikelyToKeepUp ? .loadingFinished : .loading
-            
-            case "timedMetadata":
-                let rawValue = item.timedMetadata?.first?.value as? String
-                timedMetadataDidChange(rawValue: rawValue)
                 
             default:
                 break
             }
         }
     }
+}
+
+//MARK: - Metadata Output Delegate
+
+extension FRadioPlayer: AVPlayerItemMetadataOutputPushDelegate {
+    
+    public func metadataOutput(_ output: AVPlayerItemMetadataOutput, didOutputTimedMetadataGroups groups: [AVTimedMetadataGroup], from track: AVPlayerItemTrack?) {
+        if let item = groups.first?.items.first,
+           let songInfo = item.value(forKeyPath: "value") as? String {
+            timedMetadataDidChange(rawValue: songInfo)
+        }
+    }
+    
 }
