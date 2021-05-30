@@ -137,7 +137,7 @@ Q: The song names aren't appearing for my station?
 A: Check with your stream provider to make sure they are sending Metadata properly. If a station sends data in a unique way, you can modify the way the app parses the metadata, in the `RadioPlayer` class implement `FRadioPlayerDelegate` method: `radioPlayer(_ player: FRadioPlayer, metadataDidChange rawValue: String?)`.
 
 ## Get Single Station Code
-If you'd like to support this project, co-orgainizer Fethi has created a well-architected single station version of this code. It's a super great bargain: The developers behind this project typically charge up to $200/hr for freelance work, but this fully working code is only $50. No extra fees. 
+If you'd like to support this project, co-organizer Fethi has created a well-architected single station version of this code. It's a super great bargain: The developers behind this project typically charge up to $200/hr for freelance work, but this fully working code is only $50. No extra fees. 
 
 You can PayPal: [fethica@me.com](mailto:fethica@me.com) or use this link: [Paypal Me](https://www.paypal.me/fethicaEH)
 We will send you the code after 24 hours with setup instructions. All funds go to support the project.
