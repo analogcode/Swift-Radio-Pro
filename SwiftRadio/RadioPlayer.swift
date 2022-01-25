@@ -12,7 +12,7 @@ import UIKit
 // RadioPlayerDelegate: Sends FRadioPlayer and Station/Track events
 //*****************************************************************
 
-protocol RadioPlayerDelegate: class {
+protocol RadioPlayerDelegate: AnyObject {
     func playerStateDidChange(_ playerState: FRadioPlayerState)
     func playbackStateDidChange(_ playbackState: FRadioPlaybackState)
     func trackDidUpdate(_ track: Track?)
