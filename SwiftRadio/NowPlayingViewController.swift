@@ -15,7 +15,7 @@ import AVKit
 // NowPlayingViewControllerDelegate
 //*****************************************************************
 
-protocol NowPlayingViewControllerDelegate: class {
+protocol NowPlayingViewControllerDelegate: AnyObject {
     func didPressPlayingButton()
     func didPressStopButton()
     func didPressNextButton()
