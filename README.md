@@ -60,12 +60,9 @@ Branch here: [AVPlayer Branch](https://github.com/swiftcodex/Swift-Radio-Pro/tre
 - SwiftyJSON & Spring are included in the repo to get you up & running quickly. It's on the roadmap to utilize CocoaPods in the future. 
 
 ## Credits
-*Created by [Matthew Fecher](http://matthewfecher.com), Twitter: [@goFecher](http://twitter.com/goFecher)*  
-*Co-organizer [Fethi El Hassasna](https://fethica.com), Twitter: [@fethica](https://twitter.com/fethica)*  
-*Thanks to Basel Farag, from [Denver Swift Heads](http://www.meetup.com/Denver-Swift-Heads/) for the code review.*  
-
-
-**Contributions by others listed in Github [here](https://github.com/swiftcodex/Swift-Radio-Pro/graphs/contributors).**  
+- **Co-organizer & current-lead developer [Fethi El Hassasna](https://fethica.com), Twitter: [@fethica](https://twitter.com/fethica)** 
+- **Created by [Matthew Fecher](http://matthewfecher.com) from [AudioKit Pro](https://audiokitpro.com), Twitter: [@analogMatthew](http://twitter.com/analogMatthew)**  
+- *Contributions by others listed in Github [here](https://github.com/swiftcodex/Swift-Radio-Pro/graphs/contributors).*  
 Thanks to everyone! We couldn't do it without you!
 
 ## Requirements
@@ -147,13 +144,5 @@ We will send you the code after 24 hours with setup instructions. All funds go t
 
 ## RadioKit SDK Example 
 
-[alt text](http://matthewfecher.com/wp-content/uploads/2015/11/radiokit.jpg "RadioKit Example")
-
 - You can use this Swift code as a front-end for a more robust streaming backend.
 - Brian Stormont, creator of RadioKit, has created a branch with the professional [RadioKit](http://stormyprods.com/products/radiokit.php) SDK already integrated. **Plus, his branch adds rewind & fast forward stream playback.** This is an excellent learning tool for those who are interested in seeing how a streaming library integrates with Swift Radio Pro. View the [branch here](https://github.com/MostTornBrain/Swift-Radio-Pro/tree/RadioKit).
-
-## Custom Work & Consulting
-
-We have recent experience building iOS apps for both independent and high-profile clients (brand names and apps we can't discuss here, but, you would instantly recognize!) Additionally, we've built advanced versions of this radio code for amazing independent clients.
-
-[Get in Touch](http://matthewfecher.com/contact/) to see what I can do for you!
