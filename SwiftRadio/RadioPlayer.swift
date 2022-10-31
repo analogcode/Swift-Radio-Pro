@@ -8,14 +8,15 @@
 
 import UIKit
 import Spring
+import FRadioPlayer
 
 //*****************************************************************
 // RadioPlayerDelegate: Sends FRadioPlayer and Station/Track events
 //*****************************************************************
 
 protocol RadioPlayerDelegate: AnyObject {
-    func playerStateDidChange(_ playerState: FRadioPlayerState)
-    func playbackStateDidChange(_ playbackState: FRadioPlaybackState)
+    func playerStateDidChange(_ playerState: FRadioPlayer.State)
+    func playbackStateDidChange(_ playbackState: FRadioPlayer.PlaybackState)
     func trackDidUpdate(_ track: Track?)
     func trackArtworkDidUpdate(_ track: Track?)
 }
@@ -37,7 +38,7 @@ class RadioPlayer {
     private(set) var track: Track?
     
     init() {
-        player.delegate = self
+        player.addObserver(self)
     }
     
     func resetRadioPlayer() {
@@ -103,20 +104,25 @@ class RadioPlayer {
     }
 }
 
-extension RadioPlayer: FRadioPlayerDelegate {
+extension RadioPlayer: FRadioPlayerObserver {
     
-    func radioPlayer(_ player: FRadioPlayer, playerStateDidChange state: FRadioPlayerState) {
+    func radioPlayer(_ player: FRadioPlayer, playerStateDidChange state: FRadioPlayer.State) {
         delegate?.playerStateDidChange(state)
     }
     
-    func radioPlayer(_ player: FRadioPlayer, playbackStateDidChange state: FRadioPlaybackState) {
+    func radioPlayer(_ player: FRadioPlayer, playbackStateDidChange state: FRadioPlayer.PlaybackState) {
         delegate?.playbackStateDidChange(state)
     }
     
-    func radioPlayer(_ player: FRadioPlayer, metadataDidChange artistName: String?, trackName: String?) {
+    func radioPlayer(_ player: FRadioPlayer, itemDidChange url: URL?) {
+        // Not implemented
+    }
+    
+    func radioPlayer(_ player: FRadioPlayer, metadataDidChange metadata: FRadioPlayer.Metadata?) {
+        
         guard
-            let artistName = artistName, !artistName.isEmpty,
-            let trackName = trackName, !trackName.isEmpty else {
+            let artistName = metadata?.artistName, !artistName.isEmpty,
+            let trackName = metadata?.trackName, !trackName.isEmpty else {
                 resetTrack(with: station)
                 return
         }

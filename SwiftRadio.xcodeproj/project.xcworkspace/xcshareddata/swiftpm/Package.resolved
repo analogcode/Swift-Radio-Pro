@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "fradioplayer",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/fethica/FRadioPlayer.git",
+      "state" : {
+        "branch" : "v0.2.0",
+        "revision" : "9baa841a07aca9eacdb31ff84d9f281bc38ca985"
+      }
+    },
+    {
       "identity" : "spring",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/fethica/Spring.git",
