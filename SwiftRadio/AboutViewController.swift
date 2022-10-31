@@ -11,17 +11,13 @@ import MessageUI
 
 class AboutViewController: UIViewController {
     
-    //*****************************************************************
     // MARK: - ViewDidLoad
-    //*****************************************************************
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
    
-    //*****************************************************************
     // MARK: - IBActions
-    //*****************************************************************
     
     @IBAction func emailButtonDidTouch(_ sender: UIButton) {
         
@@ -47,9 +43,7 @@ class AboutViewController: UIViewController {
 
   }
 
-//*****************************************************************
 // MARK: - MFMailComposeViewController Delegate
-//*****************************************************************
 
 extension AboutViewController: MFMailComposeViewControllerDelegate {
     

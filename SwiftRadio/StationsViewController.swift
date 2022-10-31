@@ -49,9 +49,7 @@ class StationsViewController: UIViewController {
         return UIRefreshControl()
     }()
     
-    //*****************************************************************
     // MARK: - ViewDidLoad
-    //*****************************************************************
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,9 +97,7 @@ class StationsViewController: UIViewController {
         title = "Swift Radio"
     }
 
-    //*****************************************************************
     // MARK: - Setup UI Elements
-    //*****************************************************************
     
     func setupPullToRefresh() {
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh", attributes: [.foregroundColor: UIColor.white])
@@ -123,9 +119,7 @@ class StationsViewController: UIViewController {
         navigationItem.rightBarButtonItem = btn
     }
     
-    //*****************************************************************
     // MARK: - Actions
-    //*****************************************************************
     
     @objc func nowPlayingBarButtonPressed() {
         performSegue(withIdentifier: "NowPlaying", sender: self)
@@ -146,9 +140,7 @@ class StationsViewController: UIViewController {
         }
     }
     
-    //*****************************************************************
     // MARK: - Load Station Data
-    //*****************************************************************
     
     func loadStationsFromJSON() {
         
@@ -174,9 +166,7 @@ class StationsViewController: UIViewController {
         }
     }
     
-    //*****************************************************************
     // MARK: - Segue
-    //*****************************************************************
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "NowPlaying", let nowPlayingVC = segue.destination as? NowPlayingViewController else { return }
@@ -200,9 +190,7 @@ class StationsViewController: UIViewController {
         nowPlayingVC.delegate = self
     }
     
-    //*****************************************************************
     // MARK: - Private helpers
-    //*****************************************************************
     
     private func stationsDidUpdate() {
         DispatchQueue.main.async {
@@ -249,9 +237,7 @@ class StationsViewController: UIViewController {
         return index
     }
     
-    //*****************************************************************
     // MARK: - Remote Command Center Controls
-    //*****************************************************************
     
     func setupRemoteCommandCenter() {
         // Get the shared MPRemoteCommandCenter
@@ -278,9 +264,7 @@ class StationsViewController: UIViewController {
         }
     }
     
-    //*****************************************************************
     // MARK: - MPNowPlayingInfoCenter (Lock screen)
-    //*****************************************************************
     
     func updateLockScreen(with track: Track?) {
         
@@ -306,13 +290,10 @@ class StationsViewController: UIViewController {
     }
 }
 
-//*****************************************************************
 // MARK: - TableViewDataSource
-//*****************************************************************
 
 extension StationsViewController: UITableViewDataSource {
     
-    @objc(tableView:heightForRowAtIndexPath:)
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90.0
     }
@@ -352,9 +333,7 @@ extension StationsViewController: UITableViewDataSource {
     }
 }
 
-//*****************************************************************
 // MARK: - TableViewDelegate
-//*****************************************************************
 
 extension StationsViewController: UITableViewDelegate {
     
@@ -365,9 +344,7 @@ extension StationsViewController: UITableViewDelegate {
     }
 }
 
-//*****************************************************************
 // MARK: - UISearchControllerDelegate / Setup
-//*****************************************************************
 
 extension StationsViewController: UISearchResultsUpdating {
     
@@ -411,9 +388,7 @@ extension StationsViewController: UISearchResultsUpdating {
     }
 }
 
-//*****************************************************************
 // MARK: - RadioPlayerDelegate
-//*****************************************************************
 
 extension StationsViewController: RadioPlayerDelegate {
     
@@ -439,9 +414,7 @@ extension StationsViewController: RadioPlayerDelegate {
     }
 }
 
-//*****************************************************************
 // MARK: - Handoff Functionality - GH
-//*****************************************************************
 
 extension StationsViewController {
     
@@ -473,9 +446,7 @@ extension StationsViewController {
     }
 }
 
-//*****************************************************************
 // MARK: - NowPlayingViewControllerDelegate
-//*****************************************************************
 
 extension StationsViewController: NowPlayingViewControllerDelegate {
     

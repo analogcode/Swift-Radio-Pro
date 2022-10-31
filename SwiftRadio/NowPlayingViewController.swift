@@ -13,9 +13,7 @@ import Spring
 import FRadioPlayer
 
 
-//*****************************************************************
-// NowPlayingViewControllerDelegate
-//*****************************************************************
+// MARK: - NowPlayingViewControllerDelegate
 
 protocol NowPlayingViewControllerDelegate: AnyObject {
     func didPressPlayingButton()
@@ -24,9 +22,7 @@ protocol NowPlayingViewControllerDelegate: AnyObject {
     func didPressPreviousButton()
 }
 
-//*****************************************************************
-// NowPlayingViewController
-//*****************************************************************
+// MARK: - NowPlayingViewController
 
 class NowPlayingViewController: UIViewController {
     
@@ -56,9 +52,7 @@ class NowPlayingViewController: UIViewController {
     
     var mpVolumeSlider: UISlider?
 
-    //*****************************************************************
     // MARK: - ViewDidLoad
-    //*****************************************************************
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,9 +85,7 @@ class NowPlayingViewController: UIViewController {
         nextButton.isHidden = hideNextPreviousButtons
     }
     
-    //*****************************************************************
     // MARK: - Setup
-    //*****************************************************************
     
     func setupVolumeSlider() {
         // Note: This slider implementation uses a MPVolumeView
@@ -121,18 +113,11 @@ class NowPlayingViewController: UIViewController {
             return
         }
 
-        if #available(iOS 11.0, *) {
-            let airPlayButton = AVRoutePickerView(frame: airPlayView.bounds)
-            airPlayButton.activeTintColor = globalTintColor
-            airPlayButton.tintColor = .gray
-            airPlayView.backgroundColor = .clear
-            airPlayView.addSubview(airPlayButton)
-        } else {
-            let airPlayButton = MPVolumeView(frame: airPlayView.bounds)
-            airPlayButton.showsVolumeSlider = false
-            airPlayView.backgroundColor = .clear
-            airPlayView.addSubview(airPlayButton)
-        }
+        let airPlayButton = AVRoutePickerView(frame: airPlayView.bounds)
+        airPlayButton.activeTintColor = globalTintColor
+        airPlayButton.tintColor = .gray
+        airPlayView.backgroundColor = .clear
+        airPlayView.addSubview(airPlayButton)
     }
     
     func stationDidChange() {
@@ -143,12 +128,8 @@ class NowPlayingViewController: UIViewController {
         title = currentStation.name
     }
     
-    //*****************************************************************
     // MARK: - Player Controls (Play/Pause/Volume)
-    //*****************************************************************
-    
-    // Actions
-    
+        
     @IBAction func playingPressed(_ sender: Any) {
         delegate?.didPressPlayingButton()
     }
@@ -165,9 +146,7 @@ class NowPlayingViewController: UIViewController {
         delegate?.didPressPreviousButton()
     }
     
-    //*****************************************************************
     // MARK: - Load station/track
-    //*****************************************************************
     
     func load(station: RadioStation?, track: Track?, isNewStation: Bool = true) {
         guard let station = station else { return }
@@ -251,9 +230,7 @@ class NowPlayingViewController: UIViewController {
         updateLabels(with: message, animate: animate)
     }
     
-    //*****************************************************************
     // MARK: - UI Helper Methods
-    //*****************************************************************
     
     func optimizeForDeviceSize() {
         
@@ -335,9 +312,7 @@ class NowPlayingViewController: UIViewController {
         animate ? nowPlayingImageView.startAnimating() : nowPlayingImageView.stopAnimating()
     }
     
-    //*****************************************************************
     // MARK: - Segue
-    //*****************************************************************
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "InfoDetail", let infoController = segue.destination as? InfoDetailViewController else { return }
