@@ -114,7 +114,7 @@ class NowPlayingViewController: UIViewController {
         }
 
         let airPlayButton = AVRoutePickerView(frame: airPlayView.bounds)
-        airPlayButton.activeTintColor = globalTintColor
+        airPlayButton.activeTintColor = .white
         airPlayButton.tintColor = .gray
         airPlayView.backgroundColor = .clear
         airPlayView.addSubview(airPlayButton)
