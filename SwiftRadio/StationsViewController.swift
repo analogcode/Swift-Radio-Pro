@@ -338,7 +338,6 @@ extension StationsViewController: UITableViewDataSource {
 extension StationsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: "NowPlaying", sender: indexPath)
     }
