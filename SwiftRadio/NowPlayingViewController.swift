@@ -10,6 +10,7 @@ import UIKit
 import MediaPlayer
 import AVKit
 import Spring
+import FRadioPlayer
 
 
 //*****************************************************************
@@ -214,7 +215,7 @@ class NowPlayingViewController: UIViewController {
         startNowPlayingAnimation(isPlaying)
     }
     
-    func playbackStateDidChange(_ playbackState: FRadioPlaybackState, animate: Bool) {
+    func playbackStateDidChange(_ playbackState: FRadioPlayer.PlaybackState, animate: Bool) {
         
         let message: String?
         
@@ -231,7 +232,7 @@ class NowPlayingViewController: UIViewController {
         isPlayingDidChange(radioPlayer.isPlaying)
     }
     
-    func playerStateDidChange(_ state: FRadioPlayerState, animate: Bool) {
+    func playerStateDidChange(_ state: FRadioPlayer.State, animate: Bool) {
         
         let message: String?
         

@@ -9,6 +9,7 @@
 import UIKit
 import MediaPlayer
 import AVFoundation
+import FRadioPlayer
 
 class StationsViewController: UIViewController {
     
@@ -416,11 +417,11 @@ extension StationsViewController: UISearchResultsUpdating {
 
 extension StationsViewController: RadioPlayerDelegate {
     
-    func playerStateDidChange(_ playerState: FRadioPlayerState) {
+    func playerStateDidChange(_ playerState: FRadioPlayer.State) {
         nowPlayingViewController?.playerStateDidChange(playerState, animate: true)
     }
     
-    func playbackStateDidChange(_ playbackState: FRadioPlaybackState) {
+    func playbackStateDidChange(_ playbackState: FRadioPlayer.PlaybackState) {
         nowPlayingViewController?.playbackStateDidChange(playbackState, animate: true)
         startNowPlayingAnimation(radioPlayer.player.isPlaying)
     }

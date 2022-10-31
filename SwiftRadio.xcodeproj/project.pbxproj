@@ -12,9 +12,6 @@
 		5FDEE0221F72FF980064333C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FDEE0211F72FF980064333C /* LaunchScreen.storyboard */; };
 		6258DCD822D93A3500166C65 /* LogoShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258DCD722D93A3500166C65 /* LogoShareView.swift */; };
 		6258DCDA22D93A5400166C65 /* LogoShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6258DCD922D93A5400166C65 /* LogoShareView.xib */; };
-		81AD229B21646DEA002ADFDD /* FRadioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AD229821646DEA002ADFDD /* FRadioPlayer.swift */; };
-		81AD229C21646DEA002ADFDD /* FRadioAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AD229921646DEA002ADFDD /* FRadioAPI.swift */; };
-		81AD229D21646DEA002ADFDD /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AD229A21646DEA002ADFDD /* Reachability.swift */; };
 		9409E11C1ABF6FEA00312E2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */; };
 		9409E1261ABF6FEA00312E2B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9409E1251ABF6FEA00312E2B /* Images.xcassets */; };
 		9409E1401ABF78B000312E2B /* NowPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9409E13F1ABF78B000312E2B /* NowPlayingViewController.swift */; };
@@ -34,6 +31,7 @@
 		94E9761C1B1A8F3200F52B1E /* UIImage+DropShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9761B1B1A8F3200F52B1E /* UIImage+DropShadow.swift */; };
 		CAA8FDB52000614600050F77 /* RadioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA8FDB42000614600050F77 /* RadioPlayer.swift */; };
 		CE37D7B4290F47E000B0933B /* Spring in Frameworks */ = {isa = PBXBuildFile; productRef = CE37D7B3290F47E000B0933B /* Spring */; };
+		CE37D7B7290F4A9700B0933B /* FRadioPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = CE37D7B6290F4A9700B0933B /* FRadioPlayer */; };
 		CF72ACE721F7155200461EED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF72ACE621F714D000461EED /* Main.storyboard */; };
 		E39A89F825ADA822009295FF /* SongInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39A89F725ADA822009295FF /* SongInfo.swift */; };
 /* End PBXBuildFile section */
@@ -56,9 +54,6 @@
 		5FDEE0211F72FF980064333C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6258DCD722D93A3500166C65 /* LogoShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoShareView.swift; sourceTree = "<group>"; };
 		6258DCD922D93A5400166C65 /* LogoShareView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoShareView.xib; sourceTree = "<group>"; };
-		81AD229821646DEA002ADFDD /* FRadioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRadioPlayer.swift; sourceTree = "<group>"; };
-		81AD229921646DEA002ADFDD /* FRadioAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRadioAPI.swift; sourceTree = "<group>"; };
-		81AD229A21646DEA002ADFDD /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		9409E1161ABF6FEA00312E2B /* SwiftRadio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftRadio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9409E11A1ABF6FEA00312E2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE37D7B7290F4A9700B0933B /* FRadioPlayer in Frameworks */,
 				CE37D7B4290F47E000B0933B /* Spring in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -109,14 +105,6 @@
 				2C5545BE1C1124DE00728469 /* Info.plist */,
 			);
 			path = SwiftRadioUITests;
-			sourceTree = "<group>";
-		};
-		5F22B9DE1F72A8D800CB5911 /* Libraries */ = {
-			isa = PBXGroup;
-			children = (
-				CAA7C15A1FD77F3A003CABDF /* FRadioPlayer */,
-			);
-			path = Libraries;
 			sourceTree = "<group>";
 		};
 		9409E10D1ABF6FE900312E2B = {
@@ -152,7 +140,6 @@
 				9409E1251ABF6FEA00312E2B /* Images.xcassets */,
 				9409E1191ABF6FEA00312E2B /* Supporting Files */,
 				94D260941B45E0BA00DE671C /* UI Helpers */,
-				5F22B9DE1F72A8D800CB5911 /* Libraries */,
 			);
 			path = SwiftRadio;
 			sourceTree = "<group>";
@@ -226,16 +213,6 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		CAA7C15A1FD77F3A003CABDF /* FRadioPlayer */ = {
-			isa = PBXGroup;
-			children = (
-				81AD229921646DEA002ADFDD /* FRadioAPI.swift */,
-				81AD229821646DEA002ADFDD /* FRadioPlayer.swift */,
-				81AD229A21646DEA002ADFDD /* Reachability.swift */,
-			);
-			path = FRadioPlayer;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -272,6 +249,7 @@
 			name = SwiftRadio;
 			packageProductDependencies = (
 				CE37D7B3290F47E000B0933B /* Spring */,
+				CE37D7B6290F4A9700B0933B /* FRadioPlayer */,
 			);
 			productName = RadioPro;
 			productReference = 9409E1161ABF6FEA00312E2B /* SwiftRadio.app */;
@@ -316,6 +294,7 @@
 			mainGroup = 9409E10D1ABF6FE900312E2B;
 			packageReferences = (
 				CE37D7B2290F47E000B0933B /* XCRemoteSwiftPackageReference "Spring" */,
+				CE37D7B5290F4A9700B0933B /* XCRemoteSwiftPackageReference "FRadioPlayer" */,
 			);
 			productRefGroup = 9409E1171ABF6FEA00312E2B /* Products */;
 			projectDirPath = "";
@@ -373,7 +352,6 @@
 				6258DCD822D93A3500166C65 /* LogoShareView.swift in Sources */,
 				949BBB401ACC9DEE005B7C26 /* DataManager.swift in Sources */,
 				94E9761C1B1A8F3200F52B1E /* UIImage+DropShadow.swift in Sources */,
-				81AD229D21646DEA002ADFDD /* Reachability.swift in Sources */,
 				94452E551AD7086800BFE7A5 /* AboutViewController.swift in Sources */,
 				94D260981B45E8B800DE671C /* Track.swift in Sources */,
 				CAA8FDB52000614600050F77 /* RadioPlayer.swift in Sources */,
@@ -381,8 +359,6 @@
 				9409E11C1ABF6FEA00312E2B /* AppDelegate.swift in Sources */,
 				94D260961B45E3FA00DE671C /* AnimationFrames.swift in Sources */,
 				942A3F371AE43DF80011396E /* StationsViewController.swift in Sources */,
-				81AD229B21646DEA002ADFDD /* FRadioPlayer.swift in Sources */,
-				81AD229C21646DEA002ADFDD /* FRadioAPI.swift in Sources */,
 				94AC70AE1AD05C6200652982 /* RadioStation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -643,6 +619,14 @@
 				kind = branch;
 			};
 		};
+		CE37D7B5290F4A9700B0933B /* XCRemoteSwiftPackageReference "FRadioPlayer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/fethica/FRadioPlayer.git";
+			requirement = {
+				branch = v0.2.0;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -650,6 +634,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CE37D7B2290F47E000B0933B /* XCRemoteSwiftPackageReference "Spring" */;
 			productName = Spring;
+		};
+		CE37D7B6290F4A9700B0933B /* FRadioPlayer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE37D7B5290F4A9700B0933B /* XCRemoteSwiftPackageReference "FRadioPlayer" */;
+			productName = FRadioPlayer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FRadioPlayer
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // FRadioPlayer config
         FRadioPlayer.shared.isAutoPlay = true
         FRadioPlayer.shared.enableArtwork = true
-        FRadioPlayer.shared.artworkSize = 600
+        FRadioPlayer.shared.artworkAPI = iTunesAPI(artworkSize: 600)
         
         // Get weak ref of StationsViewController
         if let navigationController = window?.rootViewController as? UINavigationController {
