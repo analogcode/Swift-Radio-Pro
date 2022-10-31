@@ -14,9 +14,6 @@ import UIKit
 // Display Comments
 let kDebugLog = true
 
-// AirPlayButton Color
-let globalTintColor = UIColor(red: 0, green: 189/255, blue: 233/255, alpha: 1);
-
 // MARK: - STATION JSON
 
 // If this is set to "true", it will use the JSON file in the app
