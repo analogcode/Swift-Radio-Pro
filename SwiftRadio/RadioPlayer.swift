@@ -28,7 +28,10 @@ class RadioPlayer {
     let player = FRadioPlayer.shared
     
     var station: RadioStation? {
-        didSet { resetTrack(with: station) }
+        didSet {
+            guard oldValue != station else { return }
+            resetTrack(with: station)
+        }
     }
     
     private(set) var track: Track?
