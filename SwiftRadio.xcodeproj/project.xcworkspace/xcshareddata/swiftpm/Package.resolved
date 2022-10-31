@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "spring",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/fethica/Spring.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "63d6b2b4339606181617caddea3a988aa65bcadd"
+      }
+    }
+  ],
+  "version" : 2
+}
