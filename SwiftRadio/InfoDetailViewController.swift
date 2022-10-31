@@ -19,9 +19,7 @@ class InfoDetailViewController: UIViewController {
     var currentStation: RadioStation!
     var downloadTask: URLSessionDownloadTask?
 
-    //*****************************************************************
     // MARK: - ViewDidLoad
-    //*****************************************************************
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,9 +34,7 @@ class InfoDetailViewController: UIViewController {
         downloadTask = nil
     }
     
-    //*****************************************************************
     // MARK: - UI Helpers
-    //*****************************************************************
     
     func setupStationText() {
         
@@ -83,9 +79,7 @@ class InfoDetailViewController: UIViewController {
         stationImageView.applyShadow()
     }
     
-    //*****************************************************************
     // MARK: - IBActions
-    //*****************************************************************
     
     @IBAction func okayButtonPressed(_ sender: UIButton) {
         _ = navigationController?.popViewController(animated: true)

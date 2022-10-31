@@ -10,9 +10,7 @@ import UIKit
 import Spring
 import FRadioPlayer
 
-//*****************************************************************
 // RadioPlayerDelegate: Sends FRadioPlayer and Station/Track events
-//*****************************************************************
 
 protocol RadioPlayerDelegate: AnyObject {
     func playerStateDidChange(_ playerState: FRadioPlayer.State)
@@ -21,9 +19,7 @@ protocol RadioPlayerDelegate: AnyObject {
     func trackArtworkDidUpdate(_ track: Track?)
 }
 
-//*****************************************************************
 // RadioPlayer: App Radio Player
-//*****************************************************************
 
 class RadioPlayer {
     
@@ -47,9 +43,7 @@ class RadioPlayer {
         player.radioURL = nil
     }
     
-    //*****************************************************************
     // MARK: - Track loading/updates
-    //*****************************************************************
     
     // Update the track with an artist name and track name
     func updateTrackMetadata(artistName: String, trackName: String) {
@@ -85,9 +79,7 @@ class RadioPlayer {
         }
     }
     
-    //*****************************************************************
     // MARK: - Private helpers
-    //*****************************************************************
     
     private func getStationImage(from station: RadioStation, completionHandler: @escaping (_ image: UIImage) -> ()) {
         

@@ -18,9 +18,7 @@ class PopUpMenuViewController: UIViewController {
         modalPresentationStyle = .custom
     }
     
-    //*****************************************************************
     // MARK: - ViewDidLoad
-    //*****************************************************************
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,9 +35,7 @@ class PopUpMenuViewController: UIViewController {
         backgroundView.addGestureRecognizer(gestureRecognizer)
     }
     
-    //*****************************************************************
     // MARK: - IBActions
-    //*****************************************************************
 
     @IBAction func closeButtonPressed() {
         dismiss(animated: true, completion: nil)
