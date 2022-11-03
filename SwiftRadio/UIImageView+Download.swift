@@ -20,13 +20,13 @@ extension UIImageView {
                 if let data = NSData(contentsOf: url!) {
                     if let image = UIImage(data: data as Data) {
                         
-                        DispatchQueue.main.async(execute: {
+                        DispatchQueue.main.async {
                             
                             if let strongSelf = self {
                                 strongSelf.image = image
                                 callback(image)
                             }
-                        })
+                        }
                     }
                 }
             }

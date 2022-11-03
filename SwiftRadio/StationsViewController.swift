@@ -10,6 +10,7 @@ import UIKit
 import MediaPlayer
 import AVFoundation
 import FRadioPlayer
+import Spring
 
 class StationsViewController: UIViewController {
     
@@ -20,32 +21,17 @@ class StationsViewController: UIViewController {
     @IBOutlet weak var nowPlayingAnimationImageView: UIImageView!
     
     // MARK: - Properties
-    
-    let radioPlayer = RadioPlayer()
-    
-    // Weak reference to update the NowPlayingViewController
-    weak var nowPlayingViewController: NowPlayingViewController?
-    
-    // MARK: - Lists
-    
-    var stations = [RadioStation]() {
-        didSet {
-            guard stations != oldValue else { return }
-            stationsDidUpdate()
-        }
-    }
-    
-    var searchedStations = [RadioStation]()
-    
-    var previousStation: RadioStation?
+        
+    private let player = FRadioPlayer.shared
+    private let manager = StationsManager.shared
     
     // MARK: - UI
     
-    var searchController: UISearchController = {
+    private let searchController: UISearchController = {
         return UISearchController(searchResultsController: nil)
     }()
     
-    var refreshControl: UIRefreshControl = {
+    private let refreshControl: UIRefreshControl = {
         return UIRefreshControl()
     }()
     
@@ -59,10 +45,11 @@ class StationsViewController: UIViewController {
         tableView.register(cellNib, forCellReuseIdentifier: "NothingFound")
         
         // Setup Player
-        radioPlayer.delegate = self
+        player.addObserver(self)
+        manager.addObserver(self)
         
         // Load Data
-        loadStationsFromJSON()
+        manager.fetch()
         
         // Setup TableView
         tableView.backgroundColor = .clear
@@ -78,8 +65,10 @@ class StationsViewController: UIViewController {
         // Activate audioSession
         do {
             try AVAudioSession.sharedInstance().setActive(true)
-        } catch {
-            if kDebugLog { print("audioSession could not be activated") }
+        } catch let error {
+            if kDebugLog {
+                print("audioSession could not be activated: \(error.localizedDescription)")
+            }
         }
         
         // Setup Search Bar
@@ -99,7 +88,7 @@ class StationsViewController: UIViewController {
 
     // MARK: - Setup UI Elements
     
-    func setupPullToRefresh() {
+    private func setupPullToRefresh() {
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh", attributes: [.foregroundColor: UIColor.white])
         refreshControl.backgroundColor = .black
         refreshControl.tintColor = .white
@@ -107,12 +96,12 @@ class StationsViewController: UIViewController {
         tableView.addSubview(refreshControl)
     }
     
-    func createNowPlayingAnimation() {
+    private func createNowPlayingAnimation() {
         nowPlayingAnimationImageView.animationImages = AnimationFrames.createFrames()
         nowPlayingAnimationImageView.animationDuration = 0.7
     }
     
-    func createNowPlayingBarButton() {
+    private func createNowPlayingBarButton() {
         guard navigationItem.rightBarButtonItem == nil else { return }
         let btn = UIBarButtonItem(title: "", style: .plain, target: self, action:#selector(nowPlayingBarButtonPressed))
         btn.image = UIImage(named: "btn-nowPlaying")
@@ -131,38 +120,12 @@ class StationsViewController: UIViewController {
     
     @objc func refresh(sender: AnyObject) {
         // Pull to Refresh
-        loadStationsFromJSON()
+        manager.fetch()
         
         // Wait 2 seconds then refresh screen
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.refreshControl.endRefreshing()
-            self.view.setNeedsDisplay()
-        }
-    }
-    
-    // MARK: - Load Station Data
-    
-    func loadStationsFromJSON() {
-        
-        // Turn on network indicator in status bar
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        
-        // Get the Radio Stations
-        DataManager.getStationDataWithSuccess() { (data) in
-            
-            // Turn off network indicator in status bar
-            defer {
-                DispatchQueue.main.async { UIApplication.shared.isNetworkActivityIndicatorVisible = false }
-            }
-            
-            if kDebugLog { print("Stations JSON Found") }
-            
-            guard let data = data, let jsonDictionary = try? JSONDecoder().decode([String: [RadioStation]].self, from: data), let stationsArray = jsonDictionary["station"] else {
-                if kDebugLog { print("JSON Station Loading Error") }
-                return
-            }
-            
-            self.stations = stationsArray
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+            self?.refreshControl.endRefreshing()
+            self?.view.setNeedsDisplay()
         }
     }
     
@@ -177,34 +140,21 @@ class StationsViewController: UIViewController {
         
         if let indexPath = (sender as? IndexPath) {
             // User clicked on row, load/reset station
-            radioPlayer.station = searchController.isActive ? searchedStations[indexPath.row] : stations[indexPath.row]
-            newStation = radioPlayer.station != previousStation
-            previousStation = radioPlayer.station
+            let station = searchController.isActive ? manager.searchedStations[indexPath.row] : manager.stations[indexPath.row]
+            newStation = station != manager.currentStation
+            if newStation {
+                manager.set(station: station)
+            }
         } else {
             // User clicked on Now Playing button
             newStation = false
         }
         
-        nowPlayingViewController = nowPlayingVC
-        nowPlayingVC.load(station: radioPlayer.station, track: radioPlayer.track, isNewStation: newStation)
-        nowPlayingVC.delegate = self
-    }
-    
-    // MARK: - Private helpers
-    
-    private func stationsDidUpdate() {
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-            guard let currentStation = self.radioPlayer.station else { return }
-            
-            // Reset everything if the new stations list doesn't have the current station
-            if self.stations.firstIndex(of: currentStation) == nil { self.resetCurrentStation() }
-        }
+        nowPlayingVC.isNewStation = newStation
     }
     
     // Reset all properties to default
     private func resetCurrentStation() {
-        radioPlayer.resetRadioPlayer()
         nowPlayingAnimationImageView.stopAnimating()
         stationNowPlayingButton.setTitle("Choose a station above to begin", for: .normal)
         stationNowPlayingButton.isEnabled = false
@@ -212,15 +162,18 @@ class StationsViewController: UIViewController {
     }
     
     // Update the now playing button title
-    private func updateNowPlayingButton(station: RadioStation?, track: Track?) {
-        guard let station = station else { resetCurrentStation(); return }
+    private func updateNowPlayingButton(station: RadioStation?) {
+        
+        guard let station = station else {
+            return
+        }
         
         var playingTitle = station.name + ": "
         
-        if track?.title == station.name {
+        if player.currentMetadata == nil {
             playingTitle += "Now playing ..."
-        } else if let track = track {
-            playingTitle += track.title + " - " + track.artist
+        } else {
+            playingTitle += station.trackName + " - " + station.artistName
         }
         
         stationNowPlayingButton.setTitle(playingTitle, for: .normal)
@@ -232,9 +185,16 @@ class StationsViewController: UIViewController {
         animate ? nowPlayingAnimationImageView.startAnimating() : nowPlayingAnimationImageView.stopAnimating()
     }
     
-    private func getIndex(of station: RadioStation?) -> Int? {
-        guard let station = station, let index = stations.firstIndex(of: station) else { return nil }
-        return index
+    private func resetArtwork(with station: RadioStation?) {
+        
+        guard let station = station else {
+            updateLockScreen(with: nil)
+            return
+        }
+        
+        station.getImage { [weak self] image in
+            self?.updateLockScreen(with: image)
+        }
     }
     
     // MARK: - Remote Command Center Controls
@@ -266,23 +226,23 @@ class StationsViewController: UIViewController {
     
     // MARK: - MPNowPlayingInfoCenter (Lock screen)
     
-    func updateLockScreen(with track: Track?) {
+    func updateLockScreen(with artworkImage: UIImage?) {
         
         // Define Now Playing Info
         var nowPlayingInfo = [String : Any]()
         
-        if let image = track?.artworkImage {
+        if let image = artworkImage {
             nowPlayingInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(boundsSize: image.size, requestHandler: { size -> UIImage in
                 return image
             })
         }
         
-        if let artist = track?.artist {
-            nowPlayingInfo[MPMediaItemPropertyArtist] = artist
+        if let artistName = manager.currentStation?.artistName {
+            nowPlayingInfo[MPMediaItemPropertyArtist] = artistName
         }
         
-        if let title = track?.title {
-            nowPlayingInfo[MPMediaItemPropertyTitle] = title
+        if let trackName = manager.currentStation?.trackName {
+            nowPlayingInfo[MPMediaItemPropertyTitle] = trackName
         }
         
         // Set the metadata
@@ -305,15 +265,15 @@ extension StationsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if searchController.isActive {
-            return searchedStations.count
+            return manager.searchedStations.count
         } else {
-            return stations.isEmpty ? 1 : stations.count
+            return manager.stations.isEmpty ? 1 : manager.stations.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if stations.isEmpty {
+        if manager.stations.isEmpty {
             let cell = tableView.dequeueReusableCell(withIdentifier: "NothingFound", for: indexPath) 
             cell.backgroundColor = .clear
             cell.selectionStyle = .none
@@ -325,7 +285,7 @@ extension StationsViewController: UITableViewDataSource {
             // alternate background color
             cell.backgroundColor = (indexPath.row % 2 == 0) ? UIColor.clear : UIColor.black.withAlphaComponent(0.2)
             
-            let station = searchController.isActive ? searchedStations[indexPath.row] : stations[indexPath.row]
+            let station = searchController.isActive ? manager.searchedStations[indexPath.row] : manager.stations[indexPath.row]
             cell.configureStationCell(station: station)
             
             return cell
@@ -379,37 +339,9 @@ extension StationsViewController: UISearchResultsUpdating {
     }
 
     func updateSearchResults(for searchController: UISearchController) {
-        guard let searchText = searchController.searchBar.text else { return }
-        
-        searchedStations.removeAll(keepingCapacity: false)
-        searchedStations = stations.filter { $0.name.range(of: searchText, options: [.caseInsensitive]) != nil }
+        guard let filter = searchController.searchBar.text else { return }
+        manager.updateSearch(with: filter)
         self.tableView.reloadData()
-    }
-}
-
-// MARK: - RadioPlayerDelegate
-
-extension StationsViewController: RadioPlayerDelegate {
-    
-    func playerStateDidChange(_ playerState: FRadioPlayer.State) {
-        nowPlayingViewController?.playerStateDidChange(playerState, animate: true)
-    }
-    
-    func playbackStateDidChange(_ playbackState: FRadioPlayer.PlaybackState) {
-        nowPlayingViewController?.playbackStateDidChange(playbackState, animate: true)
-        startNowPlayingAnimation(radioPlayer.player.isPlaying)
-    }
-    
-    func trackDidUpdate(_ track: Track?) {
-        updateLockScreen(with: track)
-        updateNowPlayingButton(station: radioPlayer.station, track: track)
-        updateHandoffUserActivity(userActivity, station: radioPlayer.station, track: track)
-        nowPlayingViewController?.updateTrackMetadata(with: track)
-    }
-    
-    func trackArtworkDidUpdate(_ track: Track?) {
-        updateLockScreen(with: track)
-        nowPlayingViewController?.updateTrackArtwork(with: track)
     }
 }
 
@@ -422,9 +354,9 @@ extension StationsViewController {
         userActivity?.becomeCurrent()
     }
     
-    func updateHandoffUserActivity(_ activity: NSUserActivity?, station: RadioStation?, track: Track?) {
+    func updateHandoffUserActivity(_ activity: NSUserActivity?, station: RadioStation?) {
         guard let activity = activity else { return }
-        activity.webpageURL = (track?.title == station?.name) ? nil : getHandoffURL(from: track)
+        activity.webpageURL = player.currentMetadata == nil ? nil : getHandoffURL()
         updateUserActivityState(activity)
     }
     
@@ -432,51 +364,62 @@ extension StationsViewController {
         super.updateUserActivityState(activity)
     }
     
-    private func getHandoffURL(from track: Track?) -> URL? {
-        guard let track = track else { return nil }
+    private func getHandoffURL() -> URL? {
+        guard let station = manager.currentStation else { return nil }
         
         var components = URLComponents()
         components.scheme = "https"
         components.host = "google.com"
         components.path = "/search"
         components.queryItems = [URLQueryItem]()
-        components.queryItems?.append(URLQueryItem(name: "q", value: "\(track.artist) \(track.title)"))
+        components.queryItems?.append(URLQueryItem(name: "q", value: "\(station.artistName) \(station.trackName)"))
         return components.url
     }
 }
 
-// MARK: - NowPlayingViewControllerDelegate
-
-extension StationsViewController: NowPlayingViewControllerDelegate {
+extension StationsViewController: FRadioPlayerObserver {
     
-    func didPressPlayingButton() {
-        radioPlayer.player.togglePlaying()
+    func radioPlayer(_ player: FRadioPlayer, playbackStateDidChange state: FRadioPlayer.PlaybackState) {
+        startNowPlayingAnimation(player.isPlaying)
     }
     
-    func didPressStopButton() {
-        radioPlayer.player.stop()
+    func radioPlayer(_ player: FRadioPlayer, metadataDidChange metadata: FRadioPlayer.Metadata?) {
+        resetArtwork(with: manager.currentStation)
+        updateNowPlayingButton(station: manager.currentStation)
+        updateHandoffUserActivity(userActivity, station: manager.currentStation)
     }
     
-    func didPressNextButton() {
-        guard let index = getIndex(of: radioPlayer.station) else { return }
-        radioPlayer.station = (index + 1 == stations.count) ? stations[0] : stations[index + 1]
-        handleRemoteStationChange()
-    }
-    
-    func didPressPreviousButton() {
-        guard let index = getIndex(of: radioPlayer.station) else { return }
-        radioPlayer.station = (index == 0) ? stations.last : stations[index - 1]
-        handleRemoteStationChange()
-    }
-    
-    func handleRemoteStationChange() {
-        if let nowPlayingVC = nowPlayingViewController {
-            // If nowPlayingVC is presented
-            nowPlayingVC.load(station: radioPlayer.station, track: radioPlayer.track)
-            nowPlayingVC.stationDidChange()
-        } else if let station = radioPlayer.station {
-            // If nowPlayingVC is not presented (change from remote controls)
-            radioPlayer.player.radioURL = URL(string: station.streamURL)
+    func radioPlayer(_ player: FRadioPlayer, artworkDidChange artworkURL: URL?) {
+        
+        guard let artworkURL = artworkURL else {
+            resetArtwork(with: manager.currentStation)
+            return
         }
+        
+        UIImage.image(from: artworkURL) { [weak self] image in
+            guard let image = image else {
+                self?.resetArtwork(with: self?.manager.currentStation)
+                return
+            }
+            
+            self?.updateLockScreen(with: image)
+        }
+    }
+}
+
+extension StationsViewController: StationsManagerObserver {
+    
+    func stationsManager(_ manager: StationsManager, stationsDidUpdate stations: [RadioStation]) {
+        self.tableView.reloadData()
+    }
+    
+    func stationsManager(_ manager: StationsManager, stationDidChange station: RadioStation?) {
+        guard let station = station else {
+            resetCurrentStation()
+            return
+        }
+        
+        updateNowPlayingButton(station: station)
+        resetArtwork(with: station)
     }
 }

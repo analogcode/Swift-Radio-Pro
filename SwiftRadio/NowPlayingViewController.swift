@@ -13,21 +13,10 @@ import Spring
 import FRadioPlayer
 
 
-// MARK: - NowPlayingViewControllerDelegate
-
-protocol NowPlayingViewControllerDelegate: AnyObject {
-    func didPressPlayingButton()
-    func didPressStopButton()
-    func didPressNextButton()
-    func didPressPreviousButton()
-}
-
 // MARK: - NowPlayingViewController
 
 class NowPlayingViewController: UIViewController {
     
-    weak var delegate: NowPlayingViewControllerDelegate?
-
     // MARK: - IB UI
     
     @IBOutlet weak var albumHeightConstraint: NSLayoutConstraint!
@@ -43,12 +32,11 @@ class NowPlayingViewController: UIViewController {
     
     // MARK: - Properties
     
-    var currentStation: RadioStation!
-    var currentTrack: Track!
+    private let player = FRadioPlayer.shared
+    private let manager = StationsManager.shared
     
-    var newStation = true
+    var isNewStation = true
     var nowPlayingImageView: UIImageView!
-    let radioPlayer = FRadioPlayer.shared
     
     var mpVolumeSlider: UISlider?
 
@@ -57,6 +45,9 @@ class NowPlayingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        player.addObserver(self)
+        manager.addObserver(self)
+        
         // Create Now Playing BarItem
         createNowPlayingAnimation()
         
@@ -64,15 +55,20 @@ class NowPlayingViewController: UIViewController {
         optimizeForDeviceSize()
 
         // Set View Title
-        self.title = currentStation.name
+        self.title = manager.currentStation?.name
         
         // Set UI
-        albumImageView.image = currentTrack.artworkImage
-        stationDescLabel.text = currentStation.desc
-        stationDescLabel.isHidden = currentTrack.artworkLoaded
+        
+        stationDescLabel.text = manager.currentStation?.desc
+        stationDescLabel.isHidden = player.currentMetadata != nil
         
         // Check for station change
-        newStation ? stationDidChange() : playerStateDidChange(radioPlayer.state, animate: false)
+        if isNewStation {
+            stationDidChange()
+        } else {
+            updateTrackArtwork()
+            playerStateDidChange(player.state, animate: false)
+        }
         
         // Setup volumeSlider
         setupVolumeSlider()
@@ -83,6 +79,8 @@ class NowPlayingViewController: UIViewController {
         // Hide / Show Next/Previous buttons
         previousButton.isHidden = hideNextPreviousButtons
         nextButton.isHidden = hideNextPreviousButtons
+        
+        isPlayingDidChange(player.isPlaying)
     }
     
     // MARK: - Setup
@@ -121,72 +119,52 @@ class NowPlayingViewController: UIViewController {
     }
     
     func stationDidChange() {
-        radioPlayer.radioURL = URL(string: currentStation.streamURL)
-        albumImageView.image = currentTrack.artworkImage
-        stationDescLabel.text = currentStation.desc
-        stationDescLabel.isHidden = currentTrack.artworkLoaded
-        title = currentStation.name
+        albumImageView.image = nil
+        manager.currentStation?.getImage { [weak self] image in
+            self?.albumImageView.image = image
+        }
+        stationDescLabel.text = manager.currentStation?.desc
+        stationDescLabel.isHidden = player.currentArtworkURL != nil
+        title = manager.currentStation?.name
+        updateLabels()
     }
     
     // MARK: - Player Controls (Play/Pause/Volume)
         
     @IBAction func playingPressed(_ sender: Any) {
-        delegate?.didPressPlayingButton()
+        player.togglePlaying()
     }
     
     @IBAction func stopPressed(_ sender: Any) {
-        delegate?.didPressStopButton()
+        player.stop()
     }
     
     @IBAction func nextPressed(_ sender: Any) {
-        delegate?.didPressNextButton()
+        manager.setNext()
     }
     
     @IBAction func previousPressed(_ sender: Any) {
-        delegate?.didPressPreviousButton()
-    }
-    
-    // MARK: - Load station/track
-    
-    func load(station: RadioStation?, track: Track?, isNewStation: Bool = true) {
-        guard let station = station else { return }
-        
-        currentStation = station
-        currentTrack = track
-        newStation = isNewStation
-    }
-    
-    func updateTrackMetadata(with track: Track?) {
-        guard let track = track else { return }
-        
-        currentTrack.artist = track.artist
-        currentTrack.title = track.title
-        
-        updateLabels()
+        manager.setPrevious()
     }
     
     // Update track with new artwork
-    func updateTrackArtwork(with track: Track?) {
-        guard let track = track else { return }
-        
-        // Update track struct
-        currentTrack.artworkImage = track.artworkImage
-        currentTrack.artworkLoaded = track.artworkLoaded
-        
-        albumImageView.image = currentTrack.artworkImage
-        
-        if track.artworkLoaded {
-            // Animate artwork
-            albumImageView.animation = "wobble"
-            albumImageView.duration = 2
-            albumImageView.animate()
-            stationDescLabel.isHidden = true
-        } else {
-            stationDescLabel.isHidden = false
+    func updateTrackArtwork() {
+        guard let artworkURL = player.currentArtworkURL else {
+            manager.currentStation?.getImage { [weak self] image in
+                self?.albumImageView.image = image
+            }
+            return
         }
         
-        // Force app to update display
-        view.setNeedsDisplay()
+        albumImageView.load(url: artworkURL) { [weak self] in
+            self?.albumImageView.animation = "wobble"
+            self?.albumImageView.duration = 2
+            self?.albumImageView.animate()
+            self?.stationDescLabel.isHidden = true
+            
+            // Force app to update display
+            self?.view.setNeedsDisplay()
+        }
     }
     
     private func isPlayingDidChange(_ isPlaying: Bool) {
@@ -208,7 +186,7 @@ class NowPlayingViewController: UIViewController {
         }
         
         updateLabels(with: message, animate: animate)
-        isPlayingDidChange(radioPlayer.isPlaying)
+        isPlayingDidChange(player.isPlaying)
     }
     
     func playerStateDidChange(_ state: FRadioPlayer.State, animate: Bool) {
@@ -221,7 +199,7 @@ class NowPlayingViewController: UIViewController {
         case .urlNotSet:
             message = "Station URL not valide"
         case .readyToPlay, .loadingFinished:
-            playbackStateDidChange(radioPlayer.playbackState, animate: animate)
+            playbackStateDidChange(player.playbackState, animate: animate)
             return
         case .error:
             message = "Error Playing"
@@ -253,8 +231,8 @@ class NowPlayingViewController: UIViewController {
 
         guard let statusMessage = statusMessage else {
             // Radio is (hopefully) streaming properly
-            songLabel.text = currentTrack.title
-            artistLabel.text = currentTrack.artist
+            songLabel.text = manager.currentStation?.trackName
+            artistLabel.text = manager.currentStation?.artistName
             shouldAnimateSongLabel(animate)
             return
         }
@@ -265,11 +243,11 @@ class NowPlayingViewController: UIViewController {
         guard songLabel.text != statusMessage else { return }
         
         songLabel.text = statusMessage
-        artistLabel.text = currentStation.name
+        artistLabel.text = manager.currentStation?.name
     
         if animate {
             songLabel.animation = "flash"
-            songLabel.repeatCount = 3
+            songLabel.repeatCount = 2
             songLabel.animate()
         }
     }
@@ -278,7 +256,7 @@ class NowPlayingViewController: UIViewController {
     
     func shouldAnimateSongLabel(_ animate: Bool) {
         // Animate if the Track has album metadata
-        guard animate, currentTrack.title != currentStation.name else { return }
+        guard animate, player.currentMetadata != nil else { return }
         
         // songLabel animation
         songLabel.animation = "zoomIn"
@@ -288,7 +266,6 @@ class NowPlayingViewController: UIViewController {
     }
     
     func createNowPlayingAnimation() {
-        
         // Setup ImageView
         nowPlayingImageView = UIImageView(image: UIImage(named: "NowPlayingBars-3"))
         nowPlayingImageView.autoresizingMask = []
@@ -316,7 +293,7 @@ class NowPlayingViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "InfoDetail", let infoController = segue.destination as? InfoDetailViewController else { return }
-        infoController.currentStation = currentStation
+        infoController.currentStation = manager.currentStation
     }
     
     @IBAction func infoButtonPressed(_ sender: UIButton) {
@@ -324,20 +301,51 @@ class NowPlayingViewController: UIViewController {
     }
     
     @IBAction func shareButtonPressed(_ sender: UIButton) {
-        
-        let radioShoutout = "I'm listening to \(currentStation.name) via Swift Radio Pro"
-        let shareImage = ShareImageGenerator(radioShoutout: radioShoutout, track: currentTrack).generate()
-        
-        let activityViewController = UIActivityViewController(activityItems: [radioShoutout, shareImage], applicationActivities: nil)
-        activityViewController.popoverPresentationController?.sourceRect = CGRect(x: view.center.x, y: view.center.y, width: 0, height: 0)
-        activityViewController.popoverPresentationController?.sourceView = view
-        activityViewController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
-        
-        activityViewController.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed:Bool, returnedItems:[Any]?, error: Error?) in
-            if completed {
-                // do something on completion if you want
+        UIImage.image(from: player.currentArtworkURL) { [weak self] image in
+            guard let self = self, let station = self.manager.currentStation else { return }
+            
+            let radioShoutout = "I'm listening to \(station.name) via Swift Radio Pro"
+            
+            let shareImage = ShareImageGenerator(station: station, radioShoutout: radioShoutout).generate(with: image)
+            
+            
+            let activityViewController = UIActivityViewController(activityItems: [radioShoutout, shareImage], applicationActivities: nil)
+            activityViewController.popoverPresentationController?.sourceRect = CGRect(x: self.view.center.x, y: self.view.center.y, width: 0, height: 0)
+            activityViewController.popoverPresentationController?.sourceView = self.view
+            activityViewController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
+            
+            activityViewController.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed:Bool, returnedItems:[Any]?, error: Error?) in
+                if completed {
+                    // do something on completion if you want
+                }
             }
+            self.present(activityViewController, animated: true, completion: nil)
         }
-        present(activityViewController, animated: true, completion: nil)
+    }
+}
+
+extension NowPlayingViewController: FRadioPlayerObserver {
+    
+    func radioPlayer(_ player: FRadioPlayer, playerStateDidChange state: FRadioPlayer.State) {
+        playerStateDidChange(state, animate: true)
+    }
+    
+    func radioPlayer(_ player: FRadioPlayer, playbackStateDidChange state: FRadioPlayer.PlaybackState) {
+        playbackStateDidChange(state, animate: true)
+    }
+    
+    func radioPlayer(_ player: FRadioPlayer, metadataDidChange metadata: FRadioPlayer.Metadata?) {
+        updateLabels()
+    }
+    
+    func radioPlayer(_ player: FRadioPlayer, artworkDidChange artworkURL: URL?) {
+        updateTrackArtwork()
+    }
+}
+
+extension NowPlayingViewController: StationsManagerObserver {
+    
+    func stationsManager(_ manager: StationsManager, stationDidChange station: RadioStation?) {
+        stationDidChange()
     }
 }
