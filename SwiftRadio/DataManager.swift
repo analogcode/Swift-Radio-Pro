@@ -10,70 +10,82 @@ import UIKit
 
 struct DataManager {
     
-    //*****************************************************************
     // Helper struct to get either local or remote JSON
-    //*****************************************************************
     
-    static func getStationDataWithSuccess(success: @escaping ((_ metaData: Data?) -> Void)) {
+    static func getStation(completion: @escaping (_ stations: [RadioStation]) -> Void) {
 
         DispatchQueue.global(qos: .userInitiated).async {
+            
             if useLocalStations {
-                getDataFromFileWithSuccess() { data in
-                    success(data)
+                loadData() { data in
+                    let stations = decode(data)
+                    DispatchQueue.main.async {
+                        completion(stations)
+                    }
                 }
             } else {
                 guard let stationDataURL = URL(string: stationDataURL) else {
                     if kDebugLog { print("stationDataURL not a valid URL") }
-                    success(nil)
+                    DispatchQueue.main.async {
+                        completion([])
+                    }
                     return
                 }
                 
-                loadDataFromURL(url: stationDataURL) { data, error in
-                    success(data)
+                loadData(from: stationDataURL) { data, error in
+                    let stations = decode(data)
+                    DispatchQueue.main.async {
+                        completion(stations)
+                    }
                 }
             }
         }
     }
     
-    //*****************************************************************
-    // Load local JSON Data
-    //*****************************************************************
+    static func decode(_ data: Data?) -> [RadioStation] {
+        if kDebugLog { print("Stations JSON Found") }
+        
+        guard
+            let data = data,
+            let jsonDictionary = try? JSONDecoder().decode([String: [RadioStation]].self, from: data),
+            let stations = jsonDictionary["station"]
+        else {
+            if kDebugLog { print("JSON Station Loading Error") }
+            return []
+        }
+        
+        return stations
+    }
     
-    static func getDataFromFileWithSuccess(success: (_ data: Data?) -> Void) {
+    // Load local JSON Data
+    
+    static func loadData(completion: (_ data: Data?) -> Void) {
         guard let filePathURL = Bundle.main.url(forResource: "stations", withExtension: "json") else {
             if kDebugLog { print("The local JSON file could not be found") }
-            success(nil)
+            completion(nil)
             return
         }
         
         do {
             let data = try Data(contentsOf: filePathURL, options: .uncached)
-            success(data)
+            completion(data)
         } catch {
             fatalError()
         }
     }
     
-    //*****************************************************************
     // REUSABLE DATA/API CALL METHOD
-    //*****************************************************************
-    
-    static func loadDataFromURL(url: URL, completion: @escaping (_ data: Data?, _ error: Error?) -> Void) {
+    // TODO: Replace this with `Result`
+    static func loadData(from url: URL, completion: @escaping (_ data: Data?, _ error: Error?) -> Void) {
         
-        let sessionConfig = URLSessionConfiguration.default
-        sessionConfig.allowsCellularAccess = true
-        sessionConfig.timeoutIntervalForRequest = 15
-        sessionConfig.timeoutIntervalForResource = 30
-        sessionConfig.httpMaximumConnectionsPerHost = 1
-        
-        let session = URLSession(configuration: sessionConfig)
+        let session = URLSession.shared
         
         // Use URLSession to get data from an NSURL
         let loadDataTask = session.dataTask(with: url) { data, response, error in
             
-            guard error == nil else {
-                completion(nil, error!)
-                if kDebugLog { print("API ERROR: \(error!)") }
+            if let error = error {
+                completion(nil, error)
+                if kDebugLog { print("API ERROR: \(error.localizedDescription)") }
                 return
             }
             

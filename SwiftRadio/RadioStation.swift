@@ -7,10 +7,9 @@
 //
 
 import UIKit
+import FRadioPlayer
 
-//*****************************************************************
 // Radio Station
-//*****************************************************************
 
 struct RadioStation: Codable {
     
@@ -33,5 +32,32 @@ extension RadioStation: Equatable {
     
     static func == (lhs: RadioStation, rhs: RadioStation) -> Bool {
         return (lhs.name == rhs.name) && (lhs.streamURL == rhs.streamURL) && (lhs.imageURL == rhs.imageURL) && (lhs.desc == rhs.desc) && (lhs.longDesc == rhs.longDesc)
+    }
+}
+
+extension RadioStation {
+    func getImage(completion: @escaping (_ image: UIImage) -> Void) {
+        
+        if imageURL.range(of: "http") != nil, let url = URL(string: imageURL) {
+            // load current station image from network
+            UIImage.image(from: url) { image in
+                completion(image ?? #imageLiteral(resourceName: "albumArt"))
+            }
+        } else {
+            // load local station image
+            let image = UIImage(named: imageURL) ?? #imageLiteral(resourceName: "albumArt")
+            completion(image)
+        }
+    }
+}
+
+extension RadioStation {
+    
+    var trackName: String {
+        FRadioPlayer.shared.currentMetadata?.trackName ?? name
+    }
+    
+    var artistName: String {
+        FRadioPlayer.shared.currentMetadata?.artistName ?? desc
     }
 }
