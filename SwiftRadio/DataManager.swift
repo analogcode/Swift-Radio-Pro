@@ -78,7 +78,10 @@ struct DataManager {
     // TODO: Replace this with `Result`
     static func loadData(from url: URL, completion: @escaping (_ data: Data?, _ error: Error?) -> Void) {
         
-        let session = URLSession.shared
+        let config = URLSessionConfiguration.default
+        config.requestCachePolicy = .reloadIgnoringLocalCacheData
+        
+        let session = URLSession(configuration: config)
         
         // Use URLSession to get data from an NSURL
         let loadDataTask = session.dataTask(with: url) { data, response, error in

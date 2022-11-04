@@ -20,7 +20,7 @@ let kDebugLog = true
 // Set it to "false" to use the JSON file at the stationDataURL
 
 let useLocalStations = true
-let stationDataURL   = "http://yoururl.com/json/stations.json"
+let stationDataURL   = "https://fethica.com/assets/swift-radio/stations.json"
 
 // MARK: - SEARCH BAR
 

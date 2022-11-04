@@ -13,9 +13,7 @@ class StationTableViewCell: UITableViewCell {
     @IBOutlet weak var stationNameLabel: UILabel!
     @IBOutlet weak var stationDescLabel: UILabel!
     @IBOutlet weak var stationImageView: UIImageView!
-    
-    var downloadTask: URLSessionDownloadTask?
-    
+        
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -34,23 +32,13 @@ class StationTableViewCell: UITableViewCell {
         stationNameLabel.text = station.name
         stationDescLabel.text = station.desc
         
-        let imageURL = station.imageURL as NSString
-        if imageURL.contains("http"), let url = URL(string: station.imageURL) {
-            stationImageView.loadImageWithURL(url: url) { (image) in
-                // station image loaded
-            }
-        } else if imageURL != "" {
-            stationImageView.image = UIImage(named: imageURL as String)
-        } else {
-            stationImageView.image = UIImage(named: "stationImage")
+        station.getImage { [weak self] image in
+            self?.stationImageView.image = image
         }
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        
-        downloadTask?.cancel()
-        downloadTask = nil
         stationNameLabel.text  = nil
         stationDescLabel.text  = nil
         stationImageView.image = nil
