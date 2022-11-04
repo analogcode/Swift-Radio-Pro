@@ -21,7 +21,6 @@
 		945DB3C21AD58E3A00495EBB /* stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 945DB3C11AD58E3A00495EBB /* stations.json */; };
 		945DB3C51AD5A6E200495EBB /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 945DB3C41AD5A6E200495EBB /* NothingFoundCell.xib */; };
 		949BBB401ACC9DEE005B7C26 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949BBB3F1ACC9DEE005B7C26 /* DataManager.swift */; };
-		949E5EB01ACB340200AB6280 /* UIImageView+Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949E5EAF1ACB340200AB6280 /* UIImageView+Download.swift */; };
 		94AC70AE1AD05C6200652982 /* RadioStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AC70AD1AD05C6200652982 /* RadioStation.swift */; };
 		94D1D0A51AD6D6230022CA11 /* InfoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D1D0A41AD6D6230022CA11 /* InfoDetailViewController.swift */; };
 		94D260911B45D20000DE671C /* SwiftRadio-Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D260901B45D20000DE671C /* SwiftRadio-Settings.swift */; };
@@ -65,7 +64,6 @@
 		945DB3C11AD58E3A00495EBB /* stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stations.json; sourceTree = "<group>"; };
 		945DB3C41AD5A6E200495EBB /* NothingFoundCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
 		949BBB3F1ACC9DEE005B7C26 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
-		949E5EAF1ACB340200AB6280 /* UIImageView+Download.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Download.swift"; sourceTree = "<group>"; };
 		94AC70AD1AD05C6200652982 /* RadioStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioStation.swift; sourceTree = "<group>"; };
 		94D1D0A41AD6D6230022CA11 /* InfoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoDetailViewController.swift; sourceTree = "<group>"; };
 		94D260901B45D20000DE671C /* SwiftRadio-Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwiftRadio-Settings.swift"; sourceTree = "<group>"; };
@@ -195,7 +193,6 @@
 				CEDABBEA291217AF00C0367F /* UIImageView+Cache.swift */,
 				CEDABBEC29121BBA00C0367F /* UIImage+Cache.swift */,
 				94D260951B45E3FA00DE671C /* AnimationFrames.swift */,
-				949E5EAF1ACB340200AB6280 /* UIImageView+Download.swift */,
 				94E9761B1B1A8F3200F52B1E /* UIImage+DropShadow.swift */,
 				53113F38230C720900462C0E /* ShareImageGenerator.swift */,
 				6258DCD722D93A3500166C65 /* LogoShareView.swift */,
@@ -341,7 +338,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				949E5EB01ACB340200AB6280 /* UIImageView+Download.swift in Sources */,
 				94D260911B45D20000DE671C /* SwiftRadio-Settings.swift in Sources */,
 				94D30EA71AD07A880024FE96 /* StationTableViewCell.swift in Sources */,
 				53113F39230C720900462C0E /* ShareImageGenerator.swift in Sources */,

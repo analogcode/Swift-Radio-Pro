@@ -9,16 +9,16 @@
      "longDesc": "All your favorite country hits and artists, from Johnny Cash to Taylor Swift, on 1.FM's Absolute Country, playing non-stop crooners and banjos, dance-tunes and fiddles, ballads and harmonicas. Absolute Country focuses on 5th, 6th and 7th generation Country (from the 90s on) but often delves into classic, older tunes as well."
      },
      {
-     "name": "Newport Folk Radio",
-     "streamURL": "http://rfcmedia.streamguys1.com/Newport.mp3",
-     "imageURL": "station-newportfolk.png",
-     "desc": "Are you ready to Folk?",
-     "longDesc": "Do you like Indie music and along with that wants a radio that will provide lots of folk music in their daily radio programs than wait not just tune in to Newport Folk Radio as this is the kind of radio that has got lots of types of Indie music in their daily radio programs along with popular Folk music."
+     "name": "AZ Rock Radio",
+     "streamURL": "http://cassini.shoutca.st:9300/stream",
+     "imageURL": "az-rock-radio",
+     "desc": "We Know Music from A to Z",
+     "longDesc": "Web Radio Station from Puerto Rico. Download our App (Apple & Android) or go to: www.azrockradio.com"
      },
      {
      "name": "The Rock FM",
      "streamURL": "http://tunein-icecast.mediaworks.nz/rock_128kbps",
-     "imageURL": "station-therockfm.png",
+     "imageURL": "https://fethica.com/assets/swift-radio/station-therockfm@3x.png",
      "desc": "Rock Music",
      "longDesc": "NZ's number one Rock music station."
      },
@@ -31,7 +31,7 @@
      },
      {
      "name": "Radio 1190",
-     "streamURL": "http://radio1190.colorado.edu:8000/high.mp3",
+     "streamURL": "http://104.250.149.122:8082/stream",
      "imageURL": "",
      "desc": "KVCU - Boulder, CO",
      "longDesc": "Radio 1190 is the bomb."
