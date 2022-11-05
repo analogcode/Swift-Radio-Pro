@@ -45,17 +45,25 @@ class StationsManager {
     
     private init() {}
     
-    func fetch() {
+    func fetch(_ completion: (() -> Void)? = nil) {
         DataManager.getStation { [weak self] stations in
-            guard let strongSelf = self, strongSelf.stations != stations else { return }
+            guard let strongSelf = self, strongSelf.stations != stations else {
+                completion?()
+                return
+            }
+            
             strongSelf.stations = stations
             
-            guard let currentStation = self?.currentStation else { return }
+            guard let currentStation = self?.currentStation else {
+                completion?()
+                return
+            }
             
             // Reset everything if the new stations list doesn't have the current station
             if self?.stations.firstIndex(of: currentStation) == nil {
                 self?.reset()
             }
+            completion?()
         }
     }
     

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MediaPlayer
 import FRadioPlayer
 
 @UIApplicationMain
@@ -16,16 +17,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        // MPNowPlayingInfoCenter
-        UIApplication.shared.beginReceivingRemoteControlEvents()
-        
-        // Make status bar white
-        UINavigationBar.appearance().barStyle = .black
-        
         // FRadioPlayer config
         FRadioPlayer.shared.isAutoPlay = true
         FRadioPlayer.shared.enableArtwork = true
         FRadioPlayer.shared.artworkAPI = iTunesAPI(artworkSize: 600)
+        
+        // AudioSession & RemotePlay
+        activateAudioSession()
+        setupRemoteCommandCenter()
+        UIApplication.shared.beginReceivingRemoteControlEvents()
+                
+        // Make status bar white
+        UINavigationBar.appearance().barStyle = .black
         
         return true
     }
@@ -63,25 +66,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // MARK: - Remote Controls
-
-    override func remoteControlReceived(with event: UIEvent?) {
-        super.remoteControlReceived(with: event)
+    
+    private func setupRemoteCommandCenter() {
+        // Get the shared MPRemoteCommandCenter
+        let commandCenter = MPRemoteCommandCenter.shared()
         
-        guard let event = event, event.type == .remoteControl else { return }
-        
-        switch event.subtype {
-        case .remoteControlPlay:
+        // Add handler for Play Command
+        commandCenter.playCommand.addTarget { event in
             FRadioPlayer.shared.play()
-        case .remoteControlPause:
+            return .success
+        }
+        
+        // Add handler for Pause Command
+        commandCenter.pauseCommand.addTarget { event in
             FRadioPlayer.shared.pause()
-        case .remoteControlTogglePlayPause:
+            return .success
+        }
+        
+        // Add handler for Toggle Command
+        commandCenter.togglePlayPauseCommand.addTarget { event in
             FRadioPlayer.shared.togglePlaying()
-        case .remoteControlNextTrack:
+            return .success
+        }
+        
+        // Add handler for Next Command
+        commandCenter.nextTrackCommand.addTarget { event in
             StationsManager.shared.setNext()
-        case .remoteControlPreviousTrack:
+            return .success
+        }
+        
+        // Add handler for Previous Command
+        commandCenter.previousTrackCommand.addTarget { event in
             StationsManager.shared.setPrevious()
-        default:
-            break
+            return .success
+        }
+    }
+    
+    // MARK: - Activate Audio Session
+    
+    private func activateAudioSession() {
+        do {
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch let error {
+            if kDebugLog {
+                print("audioSession could not be activated: \(error.localizedDescription)")
+            }
         }
     }
 }
