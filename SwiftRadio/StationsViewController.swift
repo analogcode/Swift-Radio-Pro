@@ -62,20 +62,8 @@ class StationsViewController: UIViewController {
         // Create NowPlaying Animation
         createNowPlayingAnimation()
         
-        // Activate audioSession
-        do {
-            try AVAudioSession.sharedInstance().setActive(true)
-        } catch let error {
-            if kDebugLog {
-                print("audioSession could not be activated: \(error.localizedDescription)")
-            }
-        }
-        
         // Setup Search Bar
         setupSearchController()
-        
-        // Setup Remote Command Center
-        setupRemoteCommandCenter()
         
         // Setup Handoff User Activity
         setupHandoffUserActivity()
@@ -194,33 +182,6 @@ class StationsViewController: UIViewController {
         
         station.getImage { [weak self] image in
             self?.updateLockScreen(with: image)
-        }
-    }
-    
-    // MARK: - Remote Command Center Controls
-    
-    func setupRemoteCommandCenter() {
-        // Get the shared MPRemoteCommandCenter
-        let commandCenter = MPRemoteCommandCenter.shared()
-        
-        // Add handler for Play Command
-        commandCenter.playCommand.addTarget { event in
-            return .success
-        }
-        
-        // Add handler for Pause Command
-        commandCenter.pauseCommand.addTarget { event in
-            return .success
-        }
-        
-        // Add handler for Next Command
-        commandCenter.nextTrackCommand.addTarget { event in
-            return .success
-        }
-        
-        // Add handler for Previous Command
-        commandCenter.previousTrackCommand.addTarget { event in
-            return .success
         }
     }
     
