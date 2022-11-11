@@ -126,47 +126,57 @@
 		9409E1181ABF6FEA00312E2B /* SwiftRadio */ = {
 			isa = PBXGroup;
 			children = (
-				94D2608F1B45D11800DE671C /* Cells */,
-				94AC70AF1AD05C7400652982 /* Networking */,
-				94823F861B5576F4004EC711 /* Data */,
-				94E976191B1A8BFB00F52B1E /* Model */,
-				94D2608E1B45D0F800DE671C /* ViewControllers */,
+				CE8062F7291EF5D9008BD097 /* UI Helpers */,
+				CE8062F6291EF5B3008BD097 /* ViewControllers */,
+				CE8062F5291EF598008BD097 /* Model */,
+				CE8062F4291EF57D008BD097 /* Data */,
+				CE8062F3291EF566008BD097 /* Networking */,
+				CE8062F2291EF545008BD097 /* Cells */,
 				9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */,
 				94D260901B45D20000DE671C /* SwiftRadio-Settings.swift */,
 				CF72ACE621F714D000461EED /* Main.storyboard */,
 				9409E1251ABF6FEA00312E2B /* Images.xcassets */,
-				9409E1191ABF6FEA00312E2B /* Supporting Files */,
-				94D260941B45E0BA00DE671C /* UI Helpers */,
+				9409E11A1ABF6FEA00312E2B /* Info.plist */,
+				5FDEE0211F72FF980064333C /* LaunchScreen.storyboard */,
 			);
 			path = SwiftRadio;
 			sourceTree = "<group>";
 		};
-		9409E1191ABF6FEA00312E2B /* Supporting Files */ = {
+		CE8062F2291EF545008BD097 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				9409E11A1ABF6FEA00312E2B /* Info.plist */,
-				5FDEE0211F72FF980064333C /* LaunchScreen.storyboard */,
+				945DB3C41AD5A6E200495EBB /* NothingFoundCell.xib */,
+				94D30EA61AD07A880024FE96 /* StationTableViewCell.swift */,
 			);
-			name = "Supporting Files";
+			path = Cells;
 			sourceTree = "<group>";
 		};
-		94823F861B5576F4004EC711 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				945DB3C11AD58E3A00495EBB /* stations.json */,
-			);
-			name = Data;
-			sourceTree = "<group>";
-		};
-		94AC70AF1AD05C7400652982 /* Networking */ = {
+		CE8062F3291EF566008BD097 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
 				949BBB3F1ACC9DEE005B7C26 /* DataManager.swift */,
 			);
-			name = Networking;
+			path = Networking;
 			sourceTree = "<group>";
 		};
-		94D2608E1B45D0F800DE671C /* ViewControllers */ = {
+		CE8062F4291EF57D008BD097 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				945DB3C11AD58E3A00495EBB /* stations.json */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		CE8062F5291EF598008BD097 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				94AC70AD1AD05C6200652982 /* RadioStation.swift */,
+				CE963ECB29135A6F004F299E /* StationsManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CE8062F6291EF5B3008BD097 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				94452E541AD7086800BFE7A5 /* AboutViewController.swift */,
@@ -175,19 +185,10 @@
 				9409E13F1ABF78B000312E2B /* NowPlayingViewController.swift */,
 				942A3F361AE43DF80011396E /* StationsViewController.swift */,
 			);
-			name = ViewControllers;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		94D2608F1B45D11800DE671C /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				945DB3C41AD5A6E200495EBB /* NothingFoundCell.xib */,
-				94D30EA61AD07A880024FE96 /* StationTableViewCell.swift */,
-			);
-			name = Cells;
-			sourceTree = "<group>";
-		};
-		94D260941B45E0BA00DE671C /* UI Helpers */ = {
+		CE8062F7291EF5D9008BD097 /* UI Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				CEDABBEA291217AF00C0367F /* UIImageView+Cache.swift */,
@@ -198,16 +199,7 @@
 				6258DCD722D93A3500166C65 /* LogoShareView.swift */,
 				6258DCD922D93A5400166C65 /* LogoShareView.xib */,
 			);
-			name = "UI Helpers";
-			sourceTree = "<group>";
-		};
-		94E976191B1A8BFB00F52B1E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				94AC70AD1AD05C6200652982 /* RadioStation.swift */,
-				CE963ECB29135A6F004F299E /* StationsManager.swift */,
-			);
-			name = Model;
+			path = "UI Helpers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
