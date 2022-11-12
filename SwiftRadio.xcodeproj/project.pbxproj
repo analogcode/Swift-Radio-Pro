@@ -100,7 +100,7 @@
 		CE0A4994291F3A220071C0CC /* SwiftRadio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftRadio.entitlements; sourceTree = "<group>"; };
 		CE0A4995291F3AD40071C0CC /* AppDelegate+CarPlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+CarPlay.swift"; sourceTree = "<group>"; };
 		CE6A3E4F291F376D0058C82A /* SwiftRadio-CarPlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftRadio-CarPlay.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE6A3E50291F376E0058C82A /* Info-CarPlay.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-CarPlay.plist"; path = "/Users/fethica/Desktop/Swift-Radio-Pro-temp/Info-CarPlay.plist"; sourceTree = "<absolute>"; };
+		CE6A3E50291F376E0058C82A /* Info-CarPlay.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-CarPlay.plist"; path = "/Users/fethica/Desktop/Swift-Radio-Pro-temp/SwiftRadio/Info-CarPlay.plist"; sourceTree = "<absolute>"; };
 		CE963ECB29135A6F004F299E /* StationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsManager.swift; sourceTree = "<group>"; };
 		CEDABBEA291217AF00C0367F /* UIImageView+Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Cache.swift"; sourceTree = "<group>"; };
 		CEDABBEC29121BBA00C0367F /* UIImage+Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Cache.swift"; sourceTree = "<group>"; };
@@ -696,7 +696,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/SwiftRadio",
 				);
-				INFOPLIST_FILE = "Info-CarPlay.plist";
+				INFOPLIST_FILE = "SwiftRadio/Info-CarPlay.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -731,7 +731,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/SwiftRadio",
 				);
-				INFOPLIST_FILE = "Info-CarPlay.plist";
+				INFOPLIST_FILE = "SwiftRadio/Info-CarPlay.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
