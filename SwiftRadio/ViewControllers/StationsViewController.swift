@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MediaPlayer
 import AVFoundation
 import FRadioPlayer
 import Spring
@@ -172,43 +171,6 @@ class StationsViewController: UIViewController {
     func startNowPlayingAnimation(_ animate: Bool) {
         animate ? nowPlayingAnimationImageView.startAnimating() : nowPlayingAnimationImageView.stopAnimating()
     }
-    
-    private func resetArtwork(with station: RadioStation?) {
-        
-        guard let station = station else {
-            updateLockScreen(with: nil)
-            return
-        }
-        
-        station.getImage { [weak self] image in
-            self?.updateLockScreen(with: image)
-        }
-    }
-    
-    // MARK: - MPNowPlayingInfoCenter (Lock screen)
-    
-    func updateLockScreen(with artworkImage: UIImage?) {
-        
-        // Define Now Playing Info
-        var nowPlayingInfo = [String : Any]()
-        
-        if let image = artworkImage {
-            nowPlayingInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(boundsSize: image.size, requestHandler: { size -> UIImage in
-                return image
-            })
-        }
-        
-        if let artistName = manager.currentStation?.artistName {
-            nowPlayingInfo[MPMediaItemPropertyArtist] = artistName
-        }
-        
-        if let trackName = manager.currentStation?.trackName {
-            nowPlayingInfo[MPMediaItemPropertyTitle] = trackName
-        }
-        
-        // Set the metadata
-        MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
-    }
 }
 
 // MARK: - TableViewDataSource
@@ -338,6 +300,8 @@ extension StationsViewController {
     }
 }
 
+// MARK: - FRadioPlayerObserver
+
 extension StationsViewController: FRadioPlayerObserver {
     
     func radioPlayer(_ player: FRadioPlayer, playbackStateDidChange state: FRadioPlayer.PlaybackState) {
@@ -345,26 +309,8 @@ extension StationsViewController: FRadioPlayerObserver {
     }
     
     func radioPlayer(_ player: FRadioPlayer, metadataDidChange metadata: FRadioPlayer.Metadata?) {
-        resetArtwork(with: manager.currentStation)
         updateNowPlayingButton(station: manager.currentStation)
         updateHandoffUserActivity(userActivity, station: manager.currentStation)
-    }
-    
-    func radioPlayer(_ player: FRadioPlayer, artworkDidChange artworkURL: URL?) {
-        
-        guard let artworkURL = artworkURL else {
-            resetArtwork(with: manager.currentStation)
-            return
-        }
-        
-        UIImage.image(from: artworkURL) { [weak self] image in
-            guard let image = image else {
-                self?.resetArtwork(with: self?.manager.currentStation)
-                return
-            }
-            
-            self?.updateLockScreen(with: image)
-        }
     }
 }
 
@@ -381,6 +327,5 @@ extension StationsViewController: StationsManagerObserver {
         }
         
         updateNowPlayingButton(station: station)
-        resetArtwork(with: station)
     }
 }
