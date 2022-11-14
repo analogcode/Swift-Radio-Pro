@@ -1,8 +1,8 @@
-name: iOS workflow
+name: iOS build
 
 on:
   push:
-    branches: [ "master", "dev" ]
+    branches: [ "master"]
   pull_request:
     branches: [ "master", "dev" ]
 
