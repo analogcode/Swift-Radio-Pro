@@ -8,6 +8,7 @@
 
 import UIKit
 import FRadioPlayer
+import MediaPlayer
 
 protocol StationsManagerObserver: AnyObject {
     func stationsManager(_ manager: StationsManager, stationsDidUpdate stations: [RadioStation])
@@ -35,6 +36,8 @@ class StationsManager {
             notifiyObservers { observer in
                 observer.stationsManager(self, stationDidChange: currentStation)
             }
+            
+            resetArtwork(with: currentStation)
         }
     }
     
@@ -43,7 +46,9 @@ class StationsManager {
     private var observations = [ObjectIdentifier : Observation]()
     private let player = FRadioPlayer.shared
     
-    private init() {}
+    private init() {
+        self.player.addObserver(self)
+    }
     
     func fetch(_ completion: (() -> Void)? = nil) {
         DataManager.getStation { [weak self] stations in
@@ -132,6 +137,72 @@ extension StationsManager {
             }
             
             action(observer)
+        }
+    }
+}
+
+// MARK: - MPNowPlayingInfoCenter (Lock screen)
+
+extension StationsManager {
+    
+    private func resetArtwork(with station: RadioStation?) {
+        
+        guard let station = station else {
+            updateLockScreen(with: nil)
+            return
+        }
+        
+        station.getImage { [weak self] image in
+            self?.updateLockScreen(with: image)
+        }
+    }
+    
+    private func updateLockScreen(with artworkImage: UIImage?) {
+        
+        // Define Now Playing Info
+        var nowPlayingInfo = [String : Any]()
+        
+        if let image = artworkImage {
+            nowPlayingInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(boundsSize: image.size, requestHandler: { size -> UIImage in
+                return image
+            })
+        }
+        
+        if let artistName = currentStation?.artistName {
+            nowPlayingInfo[MPMediaItemPropertyArtist] = artistName
+        }
+        
+        if let trackName = currentStation?.trackName {
+            nowPlayingInfo[MPMediaItemPropertyTitle] = trackName
+        }
+        
+        // Set the metadata
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
+    }
+}
+
+// MARK: - FRadioPlayerObserver
+
+extension StationsManager: FRadioPlayerObserver {
+    
+    func radioPlayer(_ player: FRadioPlayer, metadataDidChange metadata: FRadioPlayer.Metadata?) {
+        resetArtwork(with: currentStation)
+    }
+    
+    func radioPlayer(_ player: FRadioPlayer, artworkDidChange artworkURL: URL?) {
+        
+        guard let artworkURL = artworkURL else {
+            resetArtwork(with: currentStation)
+            return
+        }
+        
+        UIImage.image(from: artworkURL) { [weak self] image in
+            guard let image = image else {
+                self?.resetArtwork(with: self?.currentStation)
+                return
+            }
+            
+            self?.updateLockScreen(with: image)
         }
     }
 }

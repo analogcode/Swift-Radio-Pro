@@ -152,6 +152,7 @@ class NowPlayingViewController: UIViewController {
         guard let artworkURL = player.currentArtworkURL else {
             manager.currentStation?.getImage { [weak self] image in
                 self?.albumImageView.image = image
+                self?.stationDescLabel.isHidden = false
             }
             return
         }
