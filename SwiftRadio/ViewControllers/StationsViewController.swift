@@ -98,11 +98,11 @@ class StationsViewController: UIViewController {
     // MARK: - Actions
     
     @objc func nowPlayingBarButtonPressed() {
-        performSegue(withIdentifier: "NowPlaying", sender: self)
+        pushNowPlayingController()
     }
     
     @IBAction func nowPlayingPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: "NowPlaying", sender: self)
+        pushNowPlayingController()
     }
     
     @objc func refresh(sender: AnyObject) {
@@ -118,16 +118,18 @@ class StationsViewController: UIViewController {
     
     // MARK: - Segue
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "NowPlaying", let nowPlayingVC = segue.destination as? NowPlayingViewController else { return }
+    func pushNowPlayingController(with station: RadioStation? = nil) {
+       
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+        guard let nowPlayingController = storyboard.instantiateViewController(withIdentifier: "NowPlayingViewController") as? NowPlayingViewController else { return }
         
         title = ""
         
         let newStation: Bool
         
-        if let indexPath = (sender as? IndexPath) {
+        if let station = station {
             // User clicked on row, load/reset station
-            let station = searchController.isActive ? manager.searchedStations[indexPath.row] : manager.stations[indexPath.row]
             newStation = station != manager.currentStation
             if newStation {
                 manager.set(station: station)
@@ -137,7 +139,9 @@ class StationsViewController: UIViewController {
             newStation = false
         }
         
-        nowPlayingVC.isNewStation = newStation
+        nowPlayingController.isNewStation = newStation
+        
+        navigationController?.pushViewController(nowPlayingController, animated: true)
     }
     
     // Reset all properties to default
@@ -222,7 +226,10 @@ extension StationsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        performSegue(withIdentifier: "NowPlaying", sender: indexPath)
+        
+        let station = searchController.isActive ? manager.searchedStations[indexPath.item] : manager.stations[indexPath.item]
+        
+        pushNowPlayingController(with: station)
     }
 }
 
