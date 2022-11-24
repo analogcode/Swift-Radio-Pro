@@ -11,7 +11,15 @@ import AVFoundation
 import FRadioPlayer
 import Spring
 
+protocol StationsViewControllerDelegate: AnyObject {
+    func pushNowPlayingController(_ stationsViewController: StationsViewController, newStation: Bool)
+    func presentPopUpMenuController(_ stationsViewController: StationsViewController)
+}
+
 class StationsViewController: UIViewController {
+    
+    // MARK: - Delegate
+    weak var delegate: StationsViewControllerDelegate?
     
     // MARK: - IB UI
 
@@ -36,12 +44,19 @@ class StationsViewController: UIViewController {
     
     // MARK: - ViewDidLoad
     
+    @objc func handleMenuTap() {
+        delegate?.presentPopUpMenuController(self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Register 'Nothing Found' cell xib
         let cellNib = UINib(nibName: "NothingFoundCell", bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: "NothingFound")
+        
+        // NavigationBar items
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-hamburger"), style: .plain, target: self, action: #selector(handleMenuTap))
         
         // Setup Player
         player.addObserver(self)
@@ -90,9 +105,7 @@ class StationsViewController: UIViewController {
     
     private func createNowPlayingBarButton() {
         guard navigationItem.rightBarButtonItem == nil else { return }
-        let btn = UIBarButtonItem(title: "", style: .plain, target: self, action:#selector(nowPlayingBarButtonPressed))
-        btn.image = UIImage(named: "btn-nowPlaying")
-        navigationItem.rightBarButtonItem = btn
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "btn-nowPlaying"), style: .plain, target: self, action: #selector(nowPlayingBarButtonPressed))
     }
     
     // MARK: - Actions
@@ -119,11 +132,6 @@ class StationsViewController: UIViewController {
     // MARK: - Segue
     
     func pushNowPlayingController(with station: RadioStation? = nil) {
-       
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-
-        guard let nowPlayingController = storyboard.instantiateViewController(withIdentifier: "NowPlayingViewController") as? NowPlayingViewController else { return }
-        
         title = ""
         
         let newStation: Bool
@@ -139,9 +147,7 @@ class StationsViewController: UIViewController {
             newStation = false
         }
         
-        nowPlayingController.isNewStation = newStation
-        
-        navigationController?.pushViewController(nowPlayingController, animated: true)
+        delegate?.pushNowPlayingController(self, newStation: newStation)
     }
     
     // Reset all properties to default

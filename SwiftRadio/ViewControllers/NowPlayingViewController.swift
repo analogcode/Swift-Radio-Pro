@@ -12,10 +12,14 @@ import AVKit
 import Spring
 import FRadioPlayer
 
-
-// MARK: - NowPlayingViewController
+protocol NowPlayingViewControllerDelegate: AnyObject {
+    func didTapCompanyButton(_ nowPlayingViewController: NowPlayingViewController)
+    func didTapInfoButton(_ nowPlayingViewController: NowPlayingViewController, station: RadioStation)
+}
 
 class NowPlayingViewController: UIViewController {
+    
+    weak var delegate: NowPlayingViewControllerDelegate?
     
     // MARK: - IB UI
     
@@ -44,6 +48,8 @@ class NowPlayingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.largeTitleDisplayMode = .never
         
         player.addObserver(self)
         manager.addObserver(self)
@@ -290,25 +296,20 @@ class NowPlayingViewController: UIViewController {
         animate ? nowPlayingImageView.startAnimating() : nowPlayingImageView.stopAnimating()
     }
     
-    // MARK: - Segue
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "InfoDetail", let infoController = segue.destination as? InfoDetailViewController else { return }
-        infoController.currentStation = manager.currentStation
-    }
-    
     @IBAction func infoButtonPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: "InfoDetail", sender: self)
+        guard let station = manager.currentStation else { return }
+        delegate?.didTapInfoButton(self, station: station)
     }
     
     @IBAction func shareButtonPressed(_ sender: UIButton) {
-        UIImage.image(from: player.currentArtworkURL) { [weak self] image in
-            guard let self = self, let station = self.manager.currentStation else { return }
+        guard let station = manager.currentStation else { return }
+        
+        station.getImage { [weak self] image in
+            guard let self = self else { return }
             
             let radioShoutout = "I'm listening to \(station.name) via Swift Radio Pro"
             
             let shareImage = ShareImageGenerator(station: station, radioShoutout: radioShoutout).generate(with: image)
-            
             
             let activityViewController = UIActivityViewController(activityItems: [radioShoutout, shareImage], applicationActivities: nil)
             activityViewController.popoverPresentationController?.sourceRect = CGRect(x: self.view.center.x, y: self.view.center.y, width: 0, height: 0)
@@ -322,6 +323,10 @@ class NowPlayingViewController: UIViewController {
             }
             self.present(activityViewController, animated: true, completion: nil)
         }
+    }
+    
+    @IBAction func handleCompanyButton(_ sender: Any) {
+        delegate?.didTapCompanyButton(self)
     }
 }
 
