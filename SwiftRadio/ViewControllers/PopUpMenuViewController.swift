@@ -8,7 +8,14 @@
 
 import UIKit
 
+protocol PopUpMenuViewControllerDelegate: AnyObject {
+    func didTapWebsiteButton(_ popUpMenuViewController: PopUpMenuViewController)
+    func didTapAboutButton(_ popUpMenuViewController: PopUpMenuViewController)
+}
+
 class PopUpMenuViewController: UIViewController {
+    
+    weak var delegate: PopUpMenuViewControllerDelegate?
 
     @IBOutlet weak var popupView: UIView!
     @IBOutlet weak var backgroundView: UIImageView!
@@ -42,9 +49,10 @@ class PopUpMenuViewController: UIViewController {
     }
    
     @IBAction func websiteButtonPressed(_ sender: UIButton) {
-        // Use your own website URL here
-        guard let url = URL(string: "https://github.com/analogcode/") else { return }
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        delegate?.didTapWebsiteButton(self)
     }
     
+    @IBAction func aboutButtonPressed(_ sender: Any) {
+        delegate?.didTapAboutButton(self)
+    }
 }

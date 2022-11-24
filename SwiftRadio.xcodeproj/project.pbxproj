@@ -56,6 +56,14 @@
 		CE6A3E49291F376D0058C82A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF72ACE621F714D000461EED /* Main.storyboard */; };
 		CE6A3E4A291F376D0058C82A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FDEE0211F72FF980064333C /* LaunchScreen.storyboard */; };
 		CE6A3E4B291F376D0058C82A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9409E1251ABF6FEA00312E2B /* Images.xcassets */; };
+		CE6ECCFA292F13DF008B3C16 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6ECCF9292F13DF008B3C16 /* Coordinator.swift */; };
+		CE6ECCFB292F13E6008B3C16 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6ECCF9292F13DF008B3C16 /* Coordinator.swift */; };
+		CE6ECCFD292F1445008B3C16 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6ECCFC292F1445008B3C16 /* MainCoordinator.swift */; };
+		CE6ECCFE292F1448008B3C16 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6ECCFC292F1445008B3C16 /* MainCoordinator.swift */; };
+		CE6ECD00292F215F008B3C16 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6ECCFF292F215F008B3C16 /* Storyboard.swift */; };
+		CE6ECD01292F215F008B3C16 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6ECCFF292F215F008B3C16 /* Storyboard.swift */; };
+		CE6ECD03292F358C008B3C16 /* UIViewController+Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6ECD02292F358C008B3C16 /* UIViewController+Email.swift */; };
+		CE6ECD04292F358C008B3C16 /* UIViewController+Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6ECD02292F358C008B3C16 /* UIViewController+Email.swift */; };
 		CE963ECC29135A6F004F299E /* StationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE963ECB29135A6F004F299E /* StationsManager.swift */; };
 		CEA82F4A2921F260009E9FA0 /* Info-CarPlay.plist in Resources */ = {isa = PBXBuildFile; fileRef = CEA82F492921F260009E9FA0 /* Info-CarPlay.plist */; };
 		CEDABBEB291217AF00C0367F /* UIImageView+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDABBEA291217AF00C0367F /* UIImageView+Cache.swift */; };
@@ -101,6 +109,10 @@
 		CE0A4994291F3A220071C0CC /* SwiftRadio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftRadio.entitlements; sourceTree = "<group>"; };
 		CE0A4995291F3AD40071C0CC /* AppDelegate+CarPlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+CarPlay.swift"; sourceTree = "<group>"; };
 		CE6A3E4F291F376D0058C82A /* SwiftRadio-CarPlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftRadio-CarPlay.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE6ECCF9292F13DF008B3C16 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		CE6ECCFC292F1445008B3C16 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		CE6ECCFF292F215F008B3C16 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
+		CE6ECD02292F358C008B3C16 /* UIViewController+Email.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Email.swift"; sourceTree = "<group>"; };
 		CE963ECB29135A6F004F299E /* StationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsManager.swift; sourceTree = "<group>"; };
 		CEA82F492921F260009E9FA0 /* Info-CarPlay.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-CarPlay.plist"; sourceTree = "<group>"; };
 		CEDABBEA291217AF00C0367F /* UIImageView+Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Cache.swift"; sourceTree = "<group>"; };
@@ -171,6 +183,7 @@
 				CE0A4994291F3A220071C0CC /* SwiftRadio.entitlements */,
 				CE0A4993291F39660071C0CC /* CarPlay */,
 				CE8062F7291EF5D9008BD097 /* UI Helpers */,
+				CE6ECCF8292F139D008B3C16 /* Coordinators */,
 				CE8062F6291EF5B3008BD097 /* ViewControllers */,
 				CE8062F5291EF598008BD097 /* Model */,
 				CE8062F4291EF57D008BD097 /* Data */,
@@ -193,6 +206,15 @@
 				CE0A4995291F3AD40071C0CC /* AppDelegate+CarPlay.swift */,
 			);
 			path = CarPlay;
+			sourceTree = "<group>";
+		};
+		CE6ECCF8292F139D008B3C16 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				CE6ECCF9292F13DF008B3C16 /* Coordinator.swift */,
+				CE6ECCFC292F1445008B3C16 /* MainCoordinator.swift */,
+			);
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 		CE8062F2291EF545008BD097 /* Cells */ = {
@@ -244,8 +266,10 @@
 		CE8062F7291EF5D9008BD097 /* UI Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				CE6ECCFF292F215F008B3C16 /* Storyboard.swift */,
 				CEDABBEA291217AF00C0367F /* UIImageView+Cache.swift */,
 				CEDABBEC29121BBA00C0367F /* UIImage+Cache.swift */,
+				CE6ECD02292F358C008B3C16 /* UIViewController+Email.swift */,
 				94D260951B45E3FA00DE671C /* AnimationFrames.swift */,
 				94E9761B1B1A8F3200F52B1E /* UIImage+DropShadow.swift */,
 				53113F38230C720900462C0E /* ShareImageGenerator.swift */,
@@ -425,14 +449,18 @@
 				9409E1401ABF78B000312E2B /* NowPlayingViewController.swift in Sources */,
 				CE963ECC29135A6F004F299E /* StationsManager.swift in Sources */,
 				CE0A4997291F3B080071C0CC /* AppDelegate+CarPlay.swift in Sources */,
+				CE6ECCFA292F13DF008B3C16 /* Coordinator.swift in Sources */,
 				94D1D0A51AD6D6230022CA11 /* InfoDetailViewController.swift in Sources */,
 				6258DCD822D93A3500166C65 /* LogoShareView.swift in Sources */,
 				949BBB401ACC9DEE005B7C26 /* DataManager.swift in Sources */,
+				CE6ECD00292F215F008B3C16 /* Storyboard.swift in Sources */,
 				94E9761C1B1A8F3200F52B1E /* UIImage+DropShadow.swift in Sources */,
 				94452E551AD7086800BFE7A5 /* AboutViewController.swift in Sources */,
 				94452E4F1AD6F24700BFE7A5 /* PopUpMenuViewController.swift in Sources */,
+				CE6ECCFD292F1445008B3C16 /* MainCoordinator.swift in Sources */,
 				9409E11C1ABF6FEA00312E2B /* AppDelegate.swift in Sources */,
 				94D260961B45E3FA00DE671C /* AnimationFrames.swift in Sources */,
+				CE6ECD03292F358C008B3C16 /* UIViewController+Email.swift in Sources */,
 				CEDABBED29121BBA00C0367F /* UIImage+Cache.swift in Sources */,
 				942A3F371AE43DF80011396E /* StationsViewController.swift in Sources */,
 				94AC70AE1AD05C6200652982 /* RadioStation.swift in Sources */,
@@ -450,14 +478,18 @@
 				CE6A3E34291F376D0058C82A /* NowPlayingViewController.swift in Sources */,
 				CE6A3E35291F376D0058C82A /* StationsManager.swift in Sources */,
 				CE0A4996291F3AD40071C0CC /* AppDelegate+CarPlay.swift in Sources */,
+				CE6ECCFB292F13E6008B3C16 /* Coordinator.swift in Sources */,
 				CE6A3E36291F376D0058C82A /* InfoDetailViewController.swift in Sources */,
 				CE6A3E37291F376D0058C82A /* LogoShareView.swift in Sources */,
 				CE6A3E38291F376D0058C82A /* DataManager.swift in Sources */,
+				CE6ECD01292F215F008B3C16 /* Storyboard.swift in Sources */,
 				CE6A3E39291F376D0058C82A /* UIImage+DropShadow.swift in Sources */,
 				CE6A3E3A291F376D0058C82A /* AboutViewController.swift in Sources */,
 				CE6A3E3B291F376D0058C82A /* PopUpMenuViewController.swift in Sources */,
+				CE6ECCFE292F1448008B3C16 /* MainCoordinator.swift in Sources */,
 				CE6A3E3C291F376D0058C82A /* AppDelegate.swift in Sources */,
 				CE6A3E3D291F376D0058C82A /* AnimationFrames.swift in Sources */,
+				CE6ECD04292F358C008B3C16 /* UIViewController+Email.swift in Sources */,
 				CE6A3E3E291F376D0058C82A /* UIImage+Cache.swift in Sources */,
 				CE6A3E3F291F376D0058C82A /* StationsViewController.swift in Sources */,
 				CE6A3E40291F376D0058C82A /* RadioStation.swift in Sources */,

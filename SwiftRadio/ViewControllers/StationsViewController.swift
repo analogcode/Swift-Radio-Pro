@@ -11,7 +11,15 @@ import AVFoundation
 import FRadioPlayer
 import Spring
 
+protocol StationsViewControllerDelegate: AnyObject {
+    func pushNowPlayingController(_ stationsViewController: StationsViewController, newStation: Bool)
+    func presentPopUpMenuController(_ stationsViewController: StationsViewController)
+}
+
 class StationsViewController: UIViewController {
+    
+    // MARK: - Delegate
+    weak var delegate: StationsViewControllerDelegate?
     
     // MARK: - IB UI
 
@@ -36,12 +44,19 @@ class StationsViewController: UIViewController {
     
     // MARK: - ViewDidLoad
     
+    @objc func handleMenuTap() {
+        delegate?.presentPopUpMenuController(self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Register 'Nothing Found' cell xib
         let cellNib = UINib(nibName: "NothingFoundCell", bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: "NothingFound")
+        
+        // NavigationBar items
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-hamburger"), style: .plain, target: self, action: #selector(handleMenuTap))
         
         // Setup Player
         player.addObserver(self)
@@ -90,19 +105,17 @@ class StationsViewController: UIViewController {
     
     private func createNowPlayingBarButton() {
         guard navigationItem.rightBarButtonItem == nil else { return }
-        let btn = UIBarButtonItem(title: "", style: .plain, target: self, action:#selector(nowPlayingBarButtonPressed))
-        btn.image = UIImage(named: "btn-nowPlaying")
-        navigationItem.rightBarButtonItem = btn
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "btn-nowPlaying"), style: .plain, target: self, action: #selector(nowPlayingBarButtonPressed))
     }
     
     // MARK: - Actions
     
     @objc func nowPlayingBarButtonPressed() {
-        performSegue(withIdentifier: "NowPlaying", sender: self)
+        pushNowPlayingController()
     }
     
     @IBAction func nowPlayingPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: "NowPlaying", sender: self)
+        pushNowPlayingController()
     }
     
     @objc func refresh(sender: AnyObject) {
@@ -118,16 +131,13 @@ class StationsViewController: UIViewController {
     
     // MARK: - Segue
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "NowPlaying", let nowPlayingVC = segue.destination as? NowPlayingViewController else { return }
-        
+    func pushNowPlayingController(with station: RadioStation? = nil) {
         title = ""
         
         let newStation: Bool
         
-        if let indexPath = (sender as? IndexPath) {
+        if let station = station {
             // User clicked on row, load/reset station
-            let station = searchController.isActive ? manager.searchedStations[indexPath.row] : manager.stations[indexPath.row]
             newStation = station != manager.currentStation
             if newStation {
                 manager.set(station: station)
@@ -137,7 +147,7 @@ class StationsViewController: UIViewController {
             newStation = false
         }
         
-        nowPlayingVC.isNewStation = newStation
+        delegate?.pushNowPlayingController(self, newStation: newStation)
     }
     
     // Reset all properties to default
@@ -222,7 +232,10 @@ extension StationsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        performSegue(withIdentifier: "NowPlaying", sender: indexPath)
+        
+        let station = searchController.isActive ? manager.searchedStations[indexPath.item] : manager.stations[indexPath.item]
+        
+        pushNowPlayingController(with: station)
     }
 }
 

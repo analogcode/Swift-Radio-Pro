@@ -14,6 +14,7 @@ import FRadioPlayer
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    var coordinator: MainCoordinator?
     
     // CarPlay
     var playableContentManager: MPPlayableContentManager?
@@ -32,12 +33,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Make status bar white
         UINavigationBar.appearance().barStyle = .black
+        UINavigationBar.appearance().tintColor = .white
+        UINavigationBar.appearance().prefersLargeTitles = true
         
         // `CarPlay` is defined only in SwiftRadio-CarPlay target:
         // Build Settings > Swift Compiler - Custom Flags
         #if CarPlay
         setupCarPlay()
         #endif
+        
+        // Start the coordinator
+        coordinator = MainCoordinator(navigationController: UINavigationController())
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = coordinator?.navigationController
+        window?.makeKeyAndVisible()
+        
+        coordinator?.start()
         
         return true
     }

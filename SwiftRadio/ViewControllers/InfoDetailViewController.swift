@@ -17,7 +17,6 @@ class InfoDetailViewController: UIViewController {
     @IBOutlet weak var okayButton: UIButton!
     
     var currentStation: RadioStation!
-    var downloadTask: URLSessionDownloadTask?
 
     // MARK: - ViewDidLoad
     
@@ -26,12 +25,6 @@ class InfoDetailViewController: UIViewController {
         
         setupStationText()
         setupStationLogo()
-    }
-
-    deinit {
-        // Be a good citizen.
-        downloadTask?.cancel()
-        downloadTask = nil
     }
     
     // MARK: - UI Helpers
@@ -58,21 +51,8 @@ class InfoDetailViewController: UIViewController {
     func setupStationLogo() {
         
         // Display Station Image/Logo
-        let imageURL = currentStation.imageURL
-        
-        if imageURL.range(of: "http") != nil {
-            // Get station image from the web, iOS should cache the image
-            if let url = URL(string: currentStation.imageURL) {
-                stationImageView.load(url: url)
-            }
-            
-        } else if imageURL != "" {
-            // Get local station image
-            stationImageView.image = UIImage(named: imageURL)
-            
-        } else {
-            // Use default image if station image not found
-            stationImageView.image = UIImage(named: "stationImage")
+        currentStation.getImage { [weak self] image in
+            self?.stationImageView.image = image
         }
         
         // Apply shadow to Station Image
