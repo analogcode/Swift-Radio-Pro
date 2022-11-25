@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2C5545BD1C1124DE00728469 /* SwiftRadioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5545BC1C1124DE00728469 /* SwiftRadioUITests.swift */; };
-		53113F39230C720900462C0E /* ShareImageGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53113F38230C720900462C0E /* ShareImageGenerator.swift */; };
+		53113F39230C720900462C0E /* ShareActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53113F38230C720900462C0E /* ShareActivity.swift */; };
 		5FDEE0221F72FF980064333C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FDEE0211F72FF980064333C /* LaunchScreen.storyboard */; };
 		6258DCD822D93A3500166C65 /* LogoShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258DCD722D93A3500166C65 /* LogoShareView.swift */; };
 		6258DCDA22D93A5400166C65 /* LogoShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6258DCD922D93A5400166C65 /* LogoShareView.xib */; };
@@ -33,7 +33,7 @@
 		CE37D7B7290F4A9700B0933B /* FRadioPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = CE37D7B6290F4A9700B0933B /* FRadioPlayer */; };
 		CE6A3E31291F376D0058C82A /* SwiftRadio-Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D260901B45D20000DE671C /* SwiftRadio-Settings.swift */; };
 		CE6A3E32291F376D0058C82A /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D30EA61AD07A880024FE96 /* StationTableViewCell.swift */; };
-		CE6A3E33291F376D0058C82A /* ShareImageGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53113F38230C720900462C0E /* ShareImageGenerator.swift */; };
+		CE6A3E33291F376D0058C82A /* ShareActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53113F38230C720900462C0E /* ShareActivity.swift */; };
 		CE6A3E34291F376D0058C82A /* NowPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9409E13F1ABF78B000312E2B /* NowPlayingViewController.swift */; };
 		CE6A3E35291F376D0058C82A /* StationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE963ECB29135A6F004F299E /* StationsManager.swift */; };
 		CE6A3E36291F376D0058C82A /* InfoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D1D0A41AD6D6230022CA11 /* InfoDetailViewController.swift */; };
@@ -85,7 +85,7 @@
 		2C5545BA1C1124DE00728469 /* SwiftRadioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftRadioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C5545BC1C1124DE00728469 /* SwiftRadioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftRadioUITests.swift; sourceTree = "<group>"; };
 		2C5545BE1C1124DE00728469 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		53113F38230C720900462C0E /* ShareImageGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareImageGenerator.swift; sourceTree = "<group>"; };
+		53113F38230C720900462C0E /* ShareActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareActivity.swift; sourceTree = "<group>"; };
 		5FDEE0211F72FF980064333C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6258DCD722D93A3500166C65 /* LogoShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoShareView.swift; sourceTree = "<group>"; };
 		6258DCD922D93A5400166C65 /* LogoShareView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoShareView.xib; sourceTree = "<group>"; };
@@ -272,7 +272,7 @@
 				CE6ECD02292F358C008B3C16 /* UIViewController+Email.swift */,
 				94D260951B45E3FA00DE671C /* AnimationFrames.swift */,
 				94E9761B1B1A8F3200F52B1E /* UIImage+DropShadow.swift */,
-				53113F38230C720900462C0E /* ShareImageGenerator.swift */,
+				53113F38230C720900462C0E /* ShareActivity.swift */,
 				6258DCD722D93A3500166C65 /* LogoShareView.swift */,
 				6258DCD922D93A5400166C65 /* LogoShareView.xib */,
 			);
@@ -445,7 +445,7 @@
 			files = (
 				94D260911B45D20000DE671C /* SwiftRadio-Settings.swift in Sources */,
 				94D30EA71AD07A880024FE96 /* StationTableViewCell.swift in Sources */,
-				53113F39230C720900462C0E /* ShareImageGenerator.swift in Sources */,
+				53113F39230C720900462C0E /* ShareActivity.swift in Sources */,
 				9409E1401ABF78B000312E2B /* NowPlayingViewController.swift in Sources */,
 				CE963ECC29135A6F004F299E /* StationsManager.swift in Sources */,
 				CE0A4997291F3B080071C0CC /* AppDelegate+CarPlay.swift in Sources */,
@@ -474,7 +474,7 @@
 			files = (
 				CE6A3E31291F376D0058C82A /* SwiftRadio-Settings.swift in Sources */,
 				CE6A3E32291F376D0058C82A /* StationTableViewCell.swift in Sources */,
-				CE6A3E33291F376D0058C82A /* ShareImageGenerator.swift in Sources */,
+				CE6A3E33291F376D0058C82A /* ShareActivity.swift in Sources */,
 				CE6A3E34291F376D0058C82A /* NowPlayingViewController.swift in Sources */,
 				CE6A3E35291F376D0058C82A /* StationsManager.swift in Sources */,
 				CE0A4996291F3AD40071C0CC /* AppDelegate+CarPlay.swift in Sources */,
