@@ -28,6 +28,12 @@ struct RadioStation: Codable {
     }
 }
 
+extension RadioStation {
+    var shoutout: String {
+        "I'm listening to \(name) via Swift Radio Pro"
+    }
+}
+
 extension RadioStation: Equatable {
     
     static func == (lhs: RadioStation, rhs: RadioStation) -> Bool {

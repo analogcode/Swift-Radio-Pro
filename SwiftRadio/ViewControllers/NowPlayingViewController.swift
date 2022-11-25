@@ -306,12 +306,10 @@ class NowPlayingViewController: UIViewController {
         
         station.getImage { [weak self] image in
             guard let self = self else { return }
+                        
+            let shareImage = ShareImageGenerator(station: station).generate(with: image)
             
-            let radioShoutout = "I'm listening to \(station.name) via Swift Radio Pro"
-            
-            let shareImage = ShareImageGenerator(station: station, radioShoutout: radioShoutout).generate(with: image)
-            
-            let activityViewController = UIActivityViewController(activityItems: [radioShoutout, shareImage], applicationActivities: nil)
+            let activityViewController = UIActivityViewController(activityItems: [station.shoutout, shareImage], applicationActivities: nil)
             activityViewController.popoverPresentationController?.sourceRect = CGRect(x: self.view.center.x, y: self.view.center.y, width: 0, height: 0)
             activityViewController.popoverPresentationController?.sourceView = self.view
             activityViewController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)

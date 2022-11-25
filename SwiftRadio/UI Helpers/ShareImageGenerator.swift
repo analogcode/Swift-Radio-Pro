@@ -11,17 +11,15 @@ import UIKit
 class ShareImageGenerator {
     
     private let station: RadioStation
-    private let radioShoutout: String
     
-    init(station: RadioStation, radioShoutout: String) {
+    init(station: RadioStation) {
         self.station = station
-        self.radioShoutout = radioShoutout
     }
     
     func generate(with artworkImage: UIImage?) -> UIImage {
         let logoShareView = LogoShareView.instanceFromNib()
         
-        logoShareView.shareSetup(albumArt: artworkImage ?? #imageLiteral(resourceName: "albumArt"), radioShoutout: radioShoutout, trackTitle: station.trackName, trackArtist: station.artistName)
+        logoShareView.shareSetup(albumArt: artworkImage ?? #imageLiteral(resourceName: "albumArt"), radioShoutout: station.shoutout, trackTitle: station.trackName, trackArtist: station.artistName)
         
         UIGraphicsBeginImageContextWithOptions(CGSize(width: logoShareView.frame.width, height: logoShareView.frame.height), true, 0)
         logoShareView.drawHierarchy(in: logoShareView.frame, afterScreenUpdates: true)
