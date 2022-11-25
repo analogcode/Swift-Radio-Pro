@@ -76,6 +76,7 @@ extension MainCoordinator: StationsViewControllerDelegate {
 // MARK: - NowPlayingViewControllerDelegate
 
 extension MainCoordinator: NowPlayingViewControllerDelegate {
+    
     func didTapInfoButton(_ nowPlayingViewController: NowPlayingViewController, station: RadioStation) {
         let infoController = Storyboard.viewController as InfoDetailViewController
         infoController.currentStation = station
@@ -84,6 +85,12 @@ extension MainCoordinator: NowPlayingViewControllerDelegate {
     
     func didTapCompanyButton(_ nowPlayingViewController: NowPlayingViewController) {
         openAbout(in: nowPlayingViewController)
+    }
+    
+    func didTapShareButton(_ nowPlayingViewController: NowPlayingViewController, station: RadioStation, artworkURL: URL?) {
+        ShareActivity.activityController(station: station, artworkURL: artworkURL, sourceView: nowPlayingViewController.view) { [weak nowPlayingViewController] controller in
+            nowPlayingViewController?.present(controller, animated: true, completion: nil)
+        }
     }
 }
 

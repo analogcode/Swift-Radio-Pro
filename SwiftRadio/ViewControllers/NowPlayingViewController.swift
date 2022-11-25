@@ -15,6 +15,7 @@ import FRadioPlayer
 protocol NowPlayingViewControllerDelegate: AnyObject {
     func didTapCompanyButton(_ nowPlayingViewController: NowPlayingViewController)
     func didTapInfoButton(_ nowPlayingViewController: NowPlayingViewController, station: RadioStation)
+    func didTapShareButton(_ nowPlayingViewController: NowPlayingViewController, station: RadioStation, artworkURL: URL?)
 }
 
 class NowPlayingViewController: UIViewController {
@@ -303,26 +304,7 @@ class NowPlayingViewController: UIViewController {
     
     @IBAction func shareButtonPressed(_ sender: UIButton) {
         guard let station = manager.currentStation else { return }
-        
-        station.getImage { [weak self] image in
-            guard let self = self else { return }
-            
-            let radioShoutout = "I'm listening to \(station.name) via Swift Radio Pro"
-            
-            let shareImage = ShareImageGenerator(station: station, radioShoutout: radioShoutout).generate(with: image)
-            
-            let activityViewController = UIActivityViewController(activityItems: [radioShoutout, shareImage], applicationActivities: nil)
-            activityViewController.popoverPresentationController?.sourceRect = CGRect(x: self.view.center.x, y: self.view.center.y, width: 0, height: 0)
-            activityViewController.popoverPresentationController?.sourceView = self.view
-            activityViewController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
-            
-            activityViewController.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed:Bool, returnedItems:[Any]?, error: Error?) in
-                if completed {
-                    // do something on completion if you want
-                }
-            }
-            self.present(activityViewController, animated: true, completion: nil)
-        }
+        delegate?.didTapShareButton(self, station: station, artworkURL: player.currentArtworkURL)
     }
     
     @IBAction func handleCompanyButton(_ sender: Any) {
