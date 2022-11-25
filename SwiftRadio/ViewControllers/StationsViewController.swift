@@ -16,7 +16,7 @@ protocol StationsViewControllerDelegate: AnyObject {
     func presentPopUpMenuController(_ stationsViewController: StationsViewController)
 }
 
-class StationsViewController: UIViewController {
+class StationsViewController: UIViewController, Handoffable {
     
     // MARK: - Delegate
     weak var delegate: StationsViewControllerDelegate?
@@ -278,38 +278,6 @@ extension StationsViewController: UISearchResultsUpdating {
         guard let filter = searchController.searchBar.text else { return }
         manager.updateSearch(with: filter)
         self.tableView.reloadData()
-    }
-}
-
-// MARK: - Handoff Functionality - GH
-
-extension StationsViewController {
-    
-    func setupHandoffUserActivity() {
-        userActivity = NSUserActivity(activityType: NSUserActivityTypeBrowsingWeb)
-        userActivity?.becomeCurrent()
-    }
-    
-    func updateHandoffUserActivity(_ activity: NSUserActivity?, station: RadioStation?) {
-        guard let activity = activity else { return }
-        activity.webpageURL = player.currentMetadata == nil ? nil : getHandoffURL()
-        updateUserActivityState(activity)
-    }
-    
-    override func updateUserActivityState(_ activity: NSUserActivity) {
-        super.updateUserActivityState(activity)
-    }
-    
-    private func getHandoffURL() -> URL? {
-        guard let station = manager.currentStation else { return nil }
-        
-        var components = URLComponents()
-        components.scheme = "https"
-        components.host = "google.com"
-        components.path = "/search"
-        components.queryItems = [URLQueryItem]()
-        components.queryItems?.append(URLQueryItem(name: "q", value: "\(station.artistName) \(station.trackName)"))
-        return components.url
     }
 }
 
