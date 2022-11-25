@@ -66,6 +66,8 @@
 		CE6ECD04292F358C008B3C16 /* UIViewController+Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6ECD02292F358C008B3C16 /* UIViewController+Email.swift */; };
 		CE963ECC29135A6F004F299E /* StationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE963ECB29135A6F004F299E /* StationsManager.swift */; };
 		CEA82F4A2921F260009E9FA0 /* Info-CarPlay.plist in Resources */ = {isa = PBXBuildFile; fileRef = CEA82F492921F260009E9FA0 /* Info-CarPlay.plist */; };
+		CED6353B293081ED002B216F /* Handoffable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6353A293081ED002B216F /* Handoffable.swift */; };
+		CED6353C293081ED002B216F /* Handoffable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6353A293081ED002B216F /* Handoffable.swift */; };
 		CEDABBEB291217AF00C0367F /* UIImageView+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDABBEA291217AF00C0367F /* UIImageView+Cache.swift */; };
 		CEDABBED29121BBA00C0367F /* UIImage+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDABBEC29121BBA00C0367F /* UIImage+Cache.swift */; };
 		CF72ACE721F7155200461EED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF72ACE621F714D000461EED /* Main.storyboard */; };
@@ -115,6 +117,7 @@
 		CE6ECD02292F358C008B3C16 /* UIViewController+Email.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Email.swift"; sourceTree = "<group>"; };
 		CE963ECB29135A6F004F299E /* StationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsManager.swift; sourceTree = "<group>"; };
 		CEA82F492921F260009E9FA0 /* Info-CarPlay.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-CarPlay.plist"; sourceTree = "<group>"; };
+		CED6353A293081ED002B216F /* Handoffable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handoffable.swift; sourceTree = "<group>"; };
 		CEDABBEA291217AF00C0367F /* UIImageView+Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Cache.swift"; sourceTree = "<group>"; };
 		CEDABBEC29121BBA00C0367F /* UIImage+Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Cache.swift"; sourceTree = "<group>"; };
 		CF72ACE621F714D000461EED /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -182,7 +185,7 @@
 			children = (
 				CE0A4994291F3A220071C0CC /* SwiftRadio.entitlements */,
 				CE0A4993291F39660071C0CC /* CarPlay */,
-				CE8062F7291EF5D9008BD097 /* UI Helpers */,
+				CE8062F7291EF5D9008BD097 /* Helpers */,
 				CE6ECCF8292F139D008B3C16 /* Coordinators */,
 				CE8062F6291EF5B3008BD097 /* ViewControllers */,
 				CE8062F5291EF598008BD097 /* Model */,
@@ -263,7 +266,7 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		CE8062F7291EF5D9008BD097 /* UI Helpers */ = {
+		CE8062F7291EF5D9008BD097 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				CE6ECCFF292F215F008B3C16 /* Storyboard.swift */,
@@ -273,10 +276,11 @@
 				94D260951B45E3FA00DE671C /* AnimationFrames.swift */,
 				94E9761B1B1A8F3200F52B1E /* UIImage+DropShadow.swift */,
 				53113F38230C720900462C0E /* ShareActivity.swift */,
+				CED6353A293081ED002B216F /* Handoffable.swift */,
 				6258DCD722D93A3500166C65 /* LogoShareView.swift */,
 				6258DCD922D93A5400166C65 /* LogoShareView.xib */,
 			);
-			path = "UI Helpers";
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -456,6 +460,7 @@
 				CE6ECD00292F215F008B3C16 /* Storyboard.swift in Sources */,
 				94E9761C1B1A8F3200F52B1E /* UIImage+DropShadow.swift in Sources */,
 				94452E551AD7086800BFE7A5 /* AboutViewController.swift in Sources */,
+				CED6353B293081ED002B216F /* Handoffable.swift in Sources */,
 				94452E4F1AD6F24700BFE7A5 /* PopUpMenuViewController.swift in Sources */,
 				CE6ECCFD292F1445008B3C16 /* MainCoordinator.swift in Sources */,
 				9409E11C1ABF6FEA00312E2B /* AppDelegate.swift in Sources */,
@@ -485,6 +490,7 @@
 				CE6ECD01292F215F008B3C16 /* Storyboard.swift in Sources */,
 				CE6A3E39291F376D0058C82A /* UIImage+DropShadow.swift in Sources */,
 				CE6A3E3A291F376D0058C82A /* AboutViewController.swift in Sources */,
+				CED6353C293081ED002B216F /* Handoffable.swift in Sources */,
 				CE6A3E3B291F376D0058C82A /* PopUpMenuViewController.swift in Sources */,
 				CE6ECCFE292F1448008B3C16 /* MainCoordinator.swift in Sources */,
 				CE6A3E3C291F376D0058C82A /* AppDelegate.swift in Sources */,
