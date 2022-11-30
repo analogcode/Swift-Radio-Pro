@@ -113,11 +113,6 @@ class NowPlayingViewController: UIViewController {
     }
     
     func setupAirPlayButton() {
-        guard !hideAirPlayButton else {
-            airPlayView.isHidden = true
-            return
-        }
-
         let airPlayButton = AVRoutePickerView(frame: airPlayView.bounds)
         airPlayButton.activeTintColor = .white
         airPlayButton.tintColor = .gray
