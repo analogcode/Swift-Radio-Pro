@@ -30,8 +30,7 @@ struct RadioStation: Codable {
 
 extension RadioStation {
     var shoutout: String {
-        // TODO: Add app name to config
-        "I'm listening to \(name) via Swift Radio"
+        "I'm listening to \(name) via \(Bundle.main.appName) app"
     }
 }
 

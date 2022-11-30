@@ -16,7 +16,7 @@ struct DataManager {
 
         DispatchQueue.global(qos: .userInitiated).async {
             
-            if useLocalStations {
+            if Config.useLocalStations {
                 loadData() { data in
                     let stations = decode(data)
                     DispatchQueue.main.async {
@@ -24,15 +24,15 @@ struct DataManager {
                     }
                 }
             } else {
-                guard let stationDataURL = URL(string: stationDataURL) else {
-                    if kDebugLog { print("stationDataURL not a valid URL") }
+                guard let stationsURL = URL(string: Config.stationsURL) else {
+                    if Config.debugLog { print("stationDataURL not a valid URL") }
                     DispatchQueue.main.async {
                         completion([])
                     }
                     return
                 }
                 
-                loadData(from: stationDataURL) { data, error in
+                loadData(from: stationsURL) { data, error in
                     let stations = decode(data)
                     DispatchQueue.main.async {
                         completion(stations)
@@ -43,14 +43,14 @@ struct DataManager {
     }
     
     static func decode(_ data: Data?) -> [RadioStation] {
-        if kDebugLog { print("Stations JSON Found") }
+        if Config.debugLog { print("Stations JSON Found") }
         
         guard
             let data = data,
             let jsonDictionary = try? JSONDecoder().decode([String: [RadioStation]].self, from: data),
             let stations = jsonDictionary["station"]
         else {
-            if kDebugLog { print("JSON Station Loading Error") }
+            if Config.debugLog { print("JSON Station Loading Error") }
             return []
         }
         
@@ -61,7 +61,7 @@ struct DataManager {
     
     static func loadData(completion: (_ data: Data?) -> Void) {
         guard let filePathURL = Bundle.main.url(forResource: "stations", withExtension: "json") else {
-            if kDebugLog { print("The local JSON file could not be found") }
+            if Config.debugLog { print("The local JSON file could not be found") }
             completion(nil)
             return
         }
@@ -88,19 +88,19 @@ struct DataManager {
             
             if let error = error {
                 completion(nil, error)
-                if kDebugLog { print("API ERROR: \(error.localizedDescription)") }
+                if Config.debugLog { print("API ERROR: \(error.localizedDescription)") }
                 return
             }
             
             guard let httpResponse = response as? HTTPURLResponse, 200...299 ~= httpResponse.statusCode else {
                 completion(nil, nil)
-                if kDebugLog { print("API: HTTP status code has unexpected value") }
+                if Config.debugLog { print("API: HTTP status code has unexpected value") }
                 return
             }
             
             guard let data = data else {
                 completion(nil, nil)
-                if kDebugLog { print("API: No data received") }
+                if Config.debugLog { print("API: No data received") }
                 return
             }
             

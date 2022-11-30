@@ -26,17 +26,13 @@ class MainCoordinator: NavigationCoordinator {
     // MARK: - Shared
     
     func openWebsite() {
-        // TODO: Move URL to config
-        // Use your own website URL here
-        guard let url = URL(string: "https://github.com/analogcode/") else { return }
+        guard let url = URL(string: Config.website) else { return }
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     func openEmail(in viewController: UIViewController & MFMailComposeViewControllerDelegate) {
-        // TODO: Move infos to config
-        // Use your own email address & subject
-        let receipients = ["matthew.fecher@gmail.com"]
-        let subject = "From Swift Radio App"
+        let receipients = [Config.email]
+        let subject = Config.emailSubject
         let messageBody = ""
         
         let configuredMailComposeViewController = viewController.configureMailComposeViewController(recepients: receipients, subject: subject, messageBody: messageBody)
