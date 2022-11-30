@@ -129,7 +129,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         do {
             try AVAudioSession.sharedInstance().setActive(true)
         } catch let error {
-            if kDebugLog {
+            if Config.debugLog {
                 print("audioSession could not be activated: \(error.localizedDescription)")
             }
         }

@@ -244,7 +244,7 @@ extension StationsViewController: UITableViewDelegate {
 extension StationsViewController: UISearchResultsUpdating {
     
     func setupSearchController() {
-        guard searchable else { return }
+        guard Config.searchable else { return }
         
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false

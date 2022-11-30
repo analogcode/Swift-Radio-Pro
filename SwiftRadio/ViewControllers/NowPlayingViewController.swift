@@ -84,8 +84,8 @@ class NowPlayingViewController: UIViewController {
         setupAirPlayButton()
         
         // Hide / Show Next/Previous buttons
-        previousButton.isHidden = hideNextPreviousButtons
-        nextButton.isHidden = hideNextPreviousButtons
+        previousButton.isHidden = Config.hideNextPreviousButtons
+        nextButton.isHidden = Config.hideNextPreviousButtons
         
         isPlayingDidChange(player.isPlaying)
     }
