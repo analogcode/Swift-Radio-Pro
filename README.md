@@ -55,7 +55,7 @@ Some of the things I've built into this Radio code for clients include: Facebook
 
 ## Setup
 
-The "SwiftRadio-Settings.swift" file contains some project settings to get you started.
+The "Config.swift" file contains some project configs to get you started.
 Watch this [Getting Started Video](https://youtu.be/m7jiajCHFvc) to get up & running quickly.
 
 ## Integration
