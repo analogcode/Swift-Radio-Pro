@@ -50,25 +50,21 @@ class StationsManager {
         self.player.addObserver(self)
     }
     
-    func fetch(_ completion: (() -> Void)? = nil) {
-        DataManager.getStation { [weak self] stations in
-            guard let strongSelf = self, strongSelf.stations != stations else {
-                completion?()
+    func fetch(_ completion: StationsCompletion? = nil) {
+        DataManager.getStation { [weak self] result in
+            guard case .success(let stations) = result, self?.stations != stations else {
+                completion?(result)
                 return
             }
             
-            strongSelf.stations = stations
-            
-            guard let currentStation = self?.currentStation else {
-                completion?()
-                return
-            }
+            self?.stations = stations
             
             // Reset everything if the new stations list doesn't have the current station
-            if self?.stations.firstIndex(of: currentStation) == nil {
+            if let currentStation = self?.currentStation, self?.stations.firstIndex(of: currentStation) == nil {
                 self?.reset()
             }
-            completion?()
+            
+            completion?(result)
         }
     }
     
@@ -123,7 +119,7 @@ extension StationsManager {
         let id = ObjectIdentifier(observer)
         observations[id] = Observation(observer: observer)
     }
-
+    
     func removeObserver(_ observer: StationsManagerObserver) {
         let id = ObjectIdentifier(observer)
         observations.removeValue(forKey: id)
