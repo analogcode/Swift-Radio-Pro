@@ -40,8 +40,13 @@ extension AppDelegate: MPPlayableContentDelegate {
     }
     
     func beginLoadingChildItems(at indexPath: IndexPath, completionHandler: @escaping (Error?) -> Void) {
-        StationsManager.shared.fetch {
-            completionHandler(nil)
+        StationsManager.shared.fetch { result in
+            guard case .failure(let error) = result else {
+                completionHandler(nil)
+                return
+            }
+            
+            completionHandler(error)
         }
     }
 }
