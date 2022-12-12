@@ -62,9 +62,6 @@ class StationsViewController: UIViewController, Handoffable {
         player.addObserver(self)
         manager.addObserver(self)
         
-        // Load Data
-        manager.fetch()
-        
         // Setup TableView
         tableView.backgroundColor = .clear
         tableView.backgroundView = nil
