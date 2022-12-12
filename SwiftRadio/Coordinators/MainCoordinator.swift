@@ -14,9 +14,9 @@ class MainCoordinator: NavigationCoordinator {
     let navigationController: UINavigationController
     
     func start() {
-        let stationsVC = Storyboard.viewController as StationsViewController
-        stationsVC.delegate = self
-        navigationController.setViewControllers([stationsVC], animated: false)
+        let loaderVC = LoaderController()
+        loaderVC.delegate = self
+        navigationController.setViewControllers([loaderVC], animated: false)
     }
     
     init(navigationController: UINavigationController) {
@@ -48,6 +48,16 @@ class MainCoordinator: NavigationCoordinator {
         let aboutController = Storyboard.viewController as AboutViewController
         aboutController.delegate = self
         viewController.present(aboutController, animated: true)
+    }
+}
+
+// MARK: - LoaderControllerDelegate
+
+extension MainCoordinator: LoaderControllerDelegate {
+    func didFinishLoading(_ controller: LoaderController, stations: [RadioStation]) {
+        let stationsVC = Storyboard.viewController as StationsViewController
+        stationsVC.delegate = self
+        navigationController.setViewControllers([stationsVC], animated: false)
     }
 }
 
