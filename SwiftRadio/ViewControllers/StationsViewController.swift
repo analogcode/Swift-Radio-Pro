@@ -35,7 +35,10 @@ class StationsViewController: UIViewController, Handoffable {
     // MARK: - UI
     
     private let searchController: UISearchController = {
-        return UISearchController(searchResultsController: nil)
+        let controller = UISearchController(searchResultsController: nil)
+        controller.obscuresBackgroundDuringPresentation = false
+        controller.hidesNavigationBarDuringPresentation = true
+        return controller
     }()
     
     private let refreshControl: UIRefreshControl = {
@@ -244,37 +247,14 @@ extension StationsViewController: UISearchResultsUpdating {
         guard Config.searchable else { return }
         
         searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.sizeToFit()
-        
-        // Add UISearchController to the tableView
-        tableView.tableHeaderView = searchController.searchBar
-        tableView.tableHeaderView?.backgroundColor = UIColor.clear
-        definesPresentationContext = true
-        searchController.hidesNavigationBarDuringPresentation = false
-        
-        // Style the UISearchController
-        searchController.searchBar.barTintColor = UIColor.clear
-        searchController.searchBar.tintColor = UIColor.white
-        
-        // Hide the UISearchController
-        tableView.setContentOffset(CGPoint(x: 0.0, y: searchController.searchBar.frame.size.height), animated: false)
-        // iOS 13 or greater
-        if  #available(iOS 13.0, *) {
-            // Make text readable in black searchbar
-            searchController.searchBar.barStyle = .black
-            // Set a black keyborad for UISearchController's TextField
-            searchController.searchBar.searchTextField.keyboardAppearance = .dark
-        } else {
-            let searchTextField = searchController.searchBar.value(forKey: "_searchField") as? UITextField
-            searchTextField?.keyboardAppearance = .dark
-        }
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = true
     }
 
     func updateSearchResults(for searchController: UISearchController) {
         guard let filter = searchController.searchBar.text else { return }
         manager.updateSearch(with: filter)
-        self.tableView.reloadData()
+        tableView.reloadData()
     }
 }
 
