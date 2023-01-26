@@ -26,8 +26,8 @@ struct Config {
     static let hideNextPreviousButtons = true
     
     // Contact infos
-    static let website = "https://github.com/analogcode/Swift-Radio-Pro"
-    static let email = "contact@fethica.com"
+    static let website = "https://radio.dogcow.us"
+    static let email = "zak@dogcow.us"
     static let emailSubject = "From \(Bundle.main.appName) App"
 }
 

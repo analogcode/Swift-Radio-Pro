@@ -85,7 +85,7 @@ class StationsViewController: UIViewController, Handoffable {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = "Swift Radio"
+        title = "Dogcow Radio"
     }
 
     // MARK: - Setup UI Elements
