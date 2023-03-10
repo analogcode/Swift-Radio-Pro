@@ -12,7 +12,7 @@ import MediaPlayer
 // MARK: - CarPlay Setup
 
 extension AppDelegate {
-
+    
     private lazy var playableContentManager: MPPlayableContentManager = {
         let manager = MPPlayableContentManager.shared()
         manager.delegate = self
@@ -20,37 +20,59 @@ extension AppDelegate {
         StationsManager.shared.addObserver(self)
         return manager
     }()
-
-    func setupCarPlay() {
-        _ = playableContentManager
-    }
+    
+    private var contentCache: [IndexPath: MPContentItem] = [:]
 }
 
 // MARK: - MPPlayableContentDelegate
 
 extension AppDelegate: MPPlayableContentDelegate {
-
+    
     func playableContentManager(_ contentManager: MPPlayableContentManager, initiatePlaybackOfContentItemAt indexPath: IndexPath, completionHandler: @escaping (Error?) -> Void) {
-
+        
         DispatchQueue.main.async {
-            guard indexPath.count == 2 else {
-                completionHandler(nil)
-                return
+            if indexPath.count == 2 {
+                let station = StationsManager.shared.stations[indexPath[1]]
+                StationsManager.shared.set(station: station)
+                MPPlayableContentManager.shared().nowPlayingIdentifiers = [station.name]
             }
-            let station = StationsManager.shared.stations[indexPath[1]]
-            StationsManager.shared.set(station: station)
-            MPPlayableContentManager.shared().nowPlayingIdentifiers = [station.name]
             completionHandler(nil)
         }
     }
-
+    
     func beginLoadingChildItems(at indexPath: IndexPath, completionHandler: @escaping (Error?) -> Void) {
-        StationsManager.shared.fetch { result in
-            guard case .failure(let error) = result else {
+        if let cachedItem = contentCache[indexPath] {
+            // Return cached item if it exists
+            if let stationItem = cachedItem as? StationItem, let station = stationItem.station {
+                // If the cached item is a StationItem, make sure the station image is up to date
+                station.getImage { [weak self] image in
+                    guard let self = self else { return }
+                    stationItem.artwork = MPMediaItemArtwork(boundsSize: image.size) { _ -> UIImage in
+                        return image
+                    }
+                    self.contentCache[indexPath] = stationItem
+                    completionHandler(nil)
+                }
+            } else {
                 completionHandler(nil)
-                return
             }
-            completionHandler(error)
+        } else {
+            StationsManager.shared.fetch { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success(let stations):
+                    let items = stations.map { station -> StationItem in
+                        let item = StationItem(station: station)
+                        self.contentCache[IndexPath(item: items.count, section: 1)] = item
+                        return item
+                    }
+                    let container = ContainerItem(title: "Stations", children: items)
+                    self.contentCache[indexPath] = container
+                    completionHandler(nil)
+                case .failure(let error):
+                    completionHandler(error)
+                }
+            }
         }
     }
 }
@@ -58,27 +80,28 @@ extension AppDelegate: MPPlayableContentDelegate {
 // MARK: - MPPlayableContentDataSource
 
 extension AppDelegate: MPPlayableContentDataSource {
-
+    
     func numberOfChildItems(at indexPath: IndexPath) -> Int {
-        guard indexPath.indices.count > 0 else {
+        if indexPath.indices.count == 0 {
             return 1
         }
+        
         return StationsManager.shared.stations.count
     }
-
+    
     func contentItem(at indexPath: IndexPath) -> MPContentItem? {
-
+        
+        if let cachedItem = contentCache[indexPath] {
+            return cachedItem
+        }
+        
         if indexPath.count == 1 {
             // Tab section
-            let item = MPContentItem(identifier: "Stations")
-            item.title = "Stations"
-            item.isContainer = true
-            item.isPlayable = false
+            let item = ContainerItem(title: "Stations", children: [])
             item.artwork = MPMediaItemArtwork(boundsSize: #imageLiteral(resourceName: "carPlayTab").size, requestHandler: { _ -> UIImage in
                 return #imageLiteral(resourceName: "carPlayTab")
             })
-            return item
-        } else if indexPath.count == 2, indexPath.item < StationsManager.shared.stations.count {
+            contentCache[indexPath] = item
 
             // Stations section
             let station = StationsManager.shared.stations[indexPath.item]
