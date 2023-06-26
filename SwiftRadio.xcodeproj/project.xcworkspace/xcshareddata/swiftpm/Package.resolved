@@ -10,6 +10,15 @@
       }
     },
     {
+      "identity" : "nvactivityindicatorview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ninjaprox/NVActivityIndicatorView.git",
+      "state" : {
+        "revision" : "bcb52371f2259254bac6690f92bb474a61768c47",
+        "version" : "5.1.1"
+      }
+    },
+    {
       "identity" : "spring",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/fethica/Spring.git",

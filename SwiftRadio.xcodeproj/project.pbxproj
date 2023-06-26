@@ -15,7 +15,6 @@
 		9409E11C1ABF6FEA00312E2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */; };
 		9409E1261ABF6FEA00312E2B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9409E1251ABF6FEA00312E2B /* Images.xcassets */; };
 		9409E1401ABF78B000312E2B /* NowPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9409E13F1ABF78B000312E2B /* NowPlayingViewController.swift */; };
-		942A3F371AE43DF80011396E /* StationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942A3F361AE43DF80011396E /* StationsViewController.swift */; };
 		94452E4F1AD6F24700BFE7A5 /* PopUpMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94452E4E1AD6F24700BFE7A5 /* PopUpMenuViewController.swift */; };
 		94452E551AD7086800BFE7A5 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94452E541AD7086800BFE7A5 /* AboutViewController.swift */; };
 		945DB3C21AD58E3A00495EBB /* stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 945DB3C11AD58E3A00495EBB /* stations.json */; };
@@ -25,7 +24,6 @@
 		94D1D0A51AD6D6230022CA11 /* InfoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D1D0A41AD6D6230022CA11 /* InfoDetailViewController.swift */; };
 		94D260911B45D20000DE671C /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D260901B45D20000DE671C /* Config.swift */; };
 		94D260961B45E3FA00DE671C /* AnimationFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D260951B45E3FA00DE671C /* AnimationFrames.swift */; };
-		94D30EA71AD07A880024FE96 /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D30EA61AD07A880024FE96 /* StationTableViewCell.swift */; };
 		94E9761C1B1A8F3200F52B1E /* UIImage+DropShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9761B1B1A8F3200F52B1E /* UIImage+DropShadow.swift */; };
 		CE0A4996291F3AD40071C0CC /* AppDelegate+CarPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0A4995291F3AD40071C0CC /* AppDelegate+CarPlay.swift */; };
 		CE0A4997291F3B080071C0CC /* AppDelegate+CarPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0A4995291F3AD40071C0CC /* AppDelegate+CarPlay.swift */; };
@@ -33,8 +31,19 @@
 		CE321FF429371140001572BD /* Bundle+appName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE321FF229371140001572BD /* Bundle+appName.swift */; };
 		CE37D7B4290F47E000B0933B /* Spring in Frameworks */ = {isa = PBXBuildFile; productRef = CE37D7B3290F47E000B0933B /* Spring */; };
 		CE37D7B7290F4A9700B0933B /* FRadioPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = CE37D7B6290F4A9700B0933B /* FRadioPlayer */; };
+		CE6036132A47A87A00E15E15 /* StationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6036122A47A87A00E15E15 /* StationsViewController.swift */; };
+		CE6036142A47A87A00E15E15 /* StationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6036122A47A87A00E15E15 /* StationsViewController.swift */; };
+		CE6036162A47B88600E15E15 /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6036152A47B88600E15E15 /* StationTableViewCell.swift */; };
+		CE6036172A47B88600E15E15 /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6036152A47B88600E15E15 /* StationTableViewCell.swift */; };
+		CE6036192A48BA2500E15E15 /* UITableViewCell+reuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6036182A48BA2500E15E15 /* UITableViewCell+reuseIdentifier.swift */; };
+		CE60361A2A48BA2500E15E15 /* UITableViewCell+reuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6036182A48BA2500E15E15 /* UITableViewCell+reuseIdentifier.swift */; };
+		CE6036212A48C51A00E15E15 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = CE6036202A48C51A00E15E15 /* NVActivityIndicatorView */; };
+		CE6036232A48C51A00E15E15 /* NVActivityIndicatorViewExtended in Frameworks */ = {isa = PBXBuildFile; productRef = CE6036222A48C51A00E15E15 /* NVActivityIndicatorViewExtended */; };
+		CE6036242A48F68D00E15E15 /* NowPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE60361C2A48C4A400E15E15 /* NowPlayingView.swift */; };
+		CE6036252A48F68D00E15E15 /* NowPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE60361C2A48C4A400E15E15 /* NowPlayingView.swift */; };
+		CE6036282A48F70A00E15E15 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = CE6036272A48F70A00E15E15 /* NVActivityIndicatorView */; };
+		CE60362A2A48F70A00E15E15 /* NVActivityIndicatorViewExtended in Frameworks */ = {isa = PBXBuildFile; productRef = CE6036292A48F70A00E15E15 /* NVActivityIndicatorViewExtended */; };
 		CE6A3E31291F376D0058C82A /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D260901B45D20000DE671C /* Config.swift */; };
-		CE6A3E32291F376D0058C82A /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D30EA61AD07A880024FE96 /* StationTableViewCell.swift */; };
 		CE6A3E33291F376D0058C82A /* ShareActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53113F38230C720900462C0E /* ShareActivity.swift */; };
 		CE6A3E34291F376D0058C82A /* NowPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9409E13F1ABF78B000312E2B /* NowPlayingViewController.swift */; };
 		CE6A3E35291F376D0058C82A /* StationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE963ECB29135A6F004F299E /* StationsManager.swift */; };
@@ -47,7 +56,6 @@
 		CE6A3E3C291F376D0058C82A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */; };
 		CE6A3E3D291F376D0058C82A /* AnimationFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D260951B45E3FA00DE671C /* AnimationFrames.swift */; };
 		CE6A3E3E291F376D0058C82A /* UIImage+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDABBEC29121BBA00C0367F /* UIImage+Cache.swift */; };
-		CE6A3E3F291F376D0058C82A /* StationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942A3F361AE43DF80011396E /* StationsViewController.swift */; };
 		CE6A3E40291F376D0058C82A /* RadioStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AC70AD1AD05C6200652982 /* RadioStation.swift */; };
 		CE6A3E41291F376D0058C82A /* UIImageView+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDABBEA291217AF00C0367F /* UIImageView+Cache.swift */; };
 		CE6A3E43291F376D0058C82A /* FRadioPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = CE6A3E2E291F376D0058C82A /* FRadioPlayer */; };
@@ -102,7 +110,6 @@
 		9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9409E1251ABF6FEA00312E2B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9409E13F1ABF78B000312E2B /* NowPlayingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlayingViewController.swift; sourceTree = "<group>"; };
-		942A3F361AE43DF80011396E /* StationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationsViewController.swift; sourceTree = "<group>"; };
 		94452E4E1AD6F24700BFE7A5 /* PopUpMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpMenuViewController.swift; sourceTree = "<group>"; };
 		94452E541AD7086800BFE7A5 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		945DB3C11AD58E3A00495EBB /* stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stations.json; sourceTree = "<group>"; };
@@ -112,11 +119,14 @@
 		94D1D0A41AD6D6230022CA11 /* InfoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoDetailViewController.swift; sourceTree = "<group>"; };
 		94D260901B45D20000DE671C /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		94D260951B45E3FA00DE671C /* AnimationFrames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationFrames.swift; sourceTree = "<group>"; };
-		94D30EA61AD07A880024FE96 /* StationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationTableViewCell.swift; sourceTree = "<group>"; };
 		94E9761B1B1A8F3200F52B1E /* UIImage+DropShadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+DropShadow.swift"; sourceTree = "<group>"; };
 		CE0A4994291F3A220071C0CC /* SwiftRadio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftRadio.entitlements; sourceTree = "<group>"; };
 		CE0A4995291F3AD40071C0CC /* AppDelegate+CarPlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+CarPlay.swift"; sourceTree = "<group>"; };
 		CE321FF229371140001572BD /* Bundle+appName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+appName.swift"; sourceTree = "<group>"; };
+		CE6036122A47A87A00E15E15 /* StationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsViewController.swift; sourceTree = "<group>"; };
+		CE6036152A47B88600E15E15 /* StationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationTableViewCell.swift; sourceTree = "<group>"; };
+		CE6036182A48BA2500E15E15 /* UITableViewCell+reuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+reuseIdentifier.swift"; sourceTree = "<group>"; };
+		CE60361C2A48C4A400E15E15 /* NowPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingView.swift; sourceTree = "<group>"; };
 		CE6A3E4F291F376D0058C82A /* SwiftRadio-CarPlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftRadio-CarPlay.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE6ECCF9292F13DF008B3C16 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		CE6ECCFC292F1445008B3C16 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
@@ -145,7 +155,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE37D7B7290F4A9700B0933B /* FRadioPlayer in Frameworks */,
+				CE6036232A48C51A00E15E15 /* NVActivityIndicatorViewExtended in Frameworks */,
 				CE37D7B4290F47E000B0933B /* Spring in Frameworks */,
+				CE6036212A48C51A00E15E15 /* NVActivityIndicatorView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,7 +166,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE6A3E43291F376D0058C82A /* FRadioPlayer in Frameworks */,
+				CE60362A2A48F70A00E15E15 /* NVActivityIndicatorViewExtended in Frameworks */,
 				CE6A3E44291F376D0058C82A /* Spring in Frameworks */,
+				CE6036282A48F70A00E15E15 /* NVActivityIndicatorView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +190,7 @@
 				9409E1181ABF6FEA00312E2B /* SwiftRadio */,
 				2C5545BB1C1124DE00728469 /* SwiftRadioUITests */,
 				9409E1171ABF6FEA00312E2B /* Products */,
+				CE6036262A48F70A00E15E15 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -196,13 +211,14 @@
 				CE0A4993291F39660071C0CC /* CarPlay */,
 				CE8062F7291EF5D9008BD097 /* Helpers */,
 				CE6ECCF8292F139D008B3C16 /* Coordinators */,
+				CE60361B2A48C43D00E15E15 /* Views */,
 				CE8062F6291EF5B3008BD097 /* ViewControllers */,
 				CE8062F5291EF598008BD097 /* Model */,
 				CE8062F4291EF57D008BD097 /* Data */,
 				CE8062F3291EF566008BD097 /* Networking */,
 				CE8062F2291EF545008BD097 /* Cells */,
-				9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */,
 				94D260901B45D20000DE671C /* Config.swift */,
+				9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */,
 				CF72ACE621F714D000461EED /* Main.storyboard */,
 				9409E1251ABF6FEA00312E2B /* Images.xcassets */,
 				9409E11A1ABF6FEA00312E2B /* Info.plist */,
@@ -220,6 +236,23 @@
 			path = CarPlay;
 			sourceTree = "<group>";
 		};
+		CE60361B2A48C43D00E15E15 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6258DCD722D93A3500166C65 /* LogoShareView.swift */,
+				6258DCD922D93A5400166C65 /* LogoShareView.xib */,
+				CE60361C2A48C4A400E15E15 /* NowPlayingView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CE6036262A48F70A00E15E15 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CE6ECCF8292F139D008B3C16 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,7 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				945DB3C41AD5A6E200495EBB /* NothingFoundCell.xib */,
-				94D30EA61AD07A880024FE96 /* StationTableViewCell.swift */,
+				CE6036152A47B88600E15E15 /* StationTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -272,7 +305,7 @@
 				94D1D0A41AD6D6230022CA11 /* InfoDetailViewController.swift */,
 				94452E4E1AD6F24700BFE7A5 /* PopUpMenuViewController.swift */,
 				9409E13F1ABF78B000312E2B /* NowPlayingViewController.swift */,
-				942A3F361AE43DF80011396E /* StationsViewController.swift */,
+				CE6036122A47A87A00E15E15 /* StationsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -289,8 +322,7 @@
 				53113F38230C720900462C0E /* ShareActivity.swift */,
 				CED6353A293081ED002B216F /* Handoffable.swift */,
 				CE321FF229371140001572BD /* Bundle+appName.swift */,
-				6258DCD722D93A3500166C65 /* LogoShareView.swift */,
-				6258DCD922D93A5400166C65 /* LogoShareView.xib */,
+				CE6036182A48BA2500E15E15 /* UITableViewCell+reuseIdentifier.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -332,6 +364,8 @@
 			packageProductDependencies = (
 				CE37D7B3290F47E000B0933B /* Spring */,
 				CE37D7B6290F4A9700B0933B /* FRadioPlayer */,
+				CE6036202A48C51A00E15E15 /* NVActivityIndicatorView */,
+				CE6036222A48C51A00E15E15 /* NVActivityIndicatorViewExtended */,
 			);
 			productName = RadioPro;
 			productReference = 9409E1161ABF6FEA00312E2B /* SwiftRadio.app */;
@@ -353,6 +387,8 @@
 			packageProductDependencies = (
 				CE6A3E2C291F376D0058C82A /* Spring */,
 				CE6A3E2E291F376D0058C82A /* FRadioPlayer */,
+				CE6036272A48F70A00E15E15 /* NVActivityIndicatorView */,
+				CE6036292A48F70A00E15E15 /* NVActivityIndicatorViewExtended */,
 			);
 			productName = RadioPro;
 			productReference = CE6A3E4F291F376D0058C82A /* SwiftRadio-CarPlay.app */;
@@ -397,6 +433,7 @@
 			packageReferences = (
 				CE37D7B2290F47E000B0933B /* XCRemoteSwiftPackageReference "Spring" */,
 				CE37D7B5290F4A9700B0933B /* XCRemoteSwiftPackageReference "FRadioPlayer" */,
+				CE60361F2A48C51A00E15E15 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
 			);
 			productRefGroup = 9409E1171ABF6FEA00312E2B /* Products */;
 			projectDirPath = "";
@@ -460,7 +497,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				94D260911B45D20000DE671C /* Config.swift in Sources */,
-				94D30EA71AD07A880024FE96 /* StationTableViewCell.swift in Sources */,
+				CE6036192A48BA2500E15E15 /* UITableViewCell+reuseIdentifier.swift in Sources */,
+				CE6036162A47B88600E15E15 /* StationTableViewCell.swift in Sources */,
 				CE9EE8DE293BB41300F62041 /* BaseController.swift in Sources */,
 				53113F39230C720900462C0E /* ShareActivity.swift in Sources */,
 				9409E1401ABF78B000312E2B /* NowPlayingViewController.swift in Sources */,
@@ -481,10 +519,11 @@
 				94D260961B45E3FA00DE671C /* AnimationFrames.swift in Sources */,
 				CE6ECD03292F358C008B3C16 /* UIViewController+Email.swift in Sources */,
 				CEDABBED29121BBA00C0367F /* UIImage+Cache.swift in Sources */,
-				942A3F371AE43DF80011396E /* StationsViewController.swift in Sources */,
+				CE6036252A48F68D00E15E15 /* NowPlayingView.swift in Sources */,
 				94AC70AE1AD05C6200652982 /* RadioStation.swift in Sources */,
 				CE9EE8E1293C048A00F62041 /* LoaderController.swift in Sources */,
 				CEDABBEB291217AF00C0367F /* UIImageView+Cache.swift in Sources */,
+				CE6036132A47A87A00E15E15 /* StationsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,7 +532,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE6A3E31291F376D0058C82A /* Config.swift in Sources */,
-				CE6A3E32291F376D0058C82A /* StationTableViewCell.swift in Sources */,
+				CE60361A2A48BA2500E15E15 /* UITableViewCell+reuseIdentifier.swift in Sources */,
+				CE6036172A47B88600E15E15 /* StationTableViewCell.swift in Sources */,
 				CE9EE8DF293BB41300F62041 /* BaseController.swift in Sources */,
 				CE6A3E33291F376D0058C82A /* ShareActivity.swift in Sources */,
 				CE6A3E34291F376D0058C82A /* NowPlayingViewController.swift in Sources */,
@@ -514,10 +554,11 @@
 				CE6A3E3D291F376D0058C82A /* AnimationFrames.swift in Sources */,
 				CE6ECD04292F358C008B3C16 /* UIViewController+Email.swift in Sources */,
 				CE6A3E3E291F376D0058C82A /* UIImage+Cache.swift in Sources */,
-				CE6A3E3F291F376D0058C82A /* StationsViewController.swift in Sources */,
+				CE6036242A48F68D00E15E15 /* NowPlayingView.swift in Sources */,
 				CE6A3E40291F376D0058C82A /* RadioStation.swift in Sources */,
 				CE9EE8E2293C048A00F62041 /* LoaderController.swift in Sources */,
 				CE6A3E41291F376D0058C82A /* UIImageView+Cache.swift in Sources */,
+				CE6036142A47A87A00E15E15 /* StationsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,7 +579,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = SwiftRadioUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -558,7 +599,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = SwiftRadioUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -620,7 +661,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -669,7 +710,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -692,7 +733,7 @@
 					"$(PROJECT_DIR)/SwiftRadio",
 				);
 				INFOPLIST_FILE = SwiftRadio/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -722,7 +763,7 @@
 					"$(PROJECT_DIR)/SwiftRadio",
 				);
 				INFOPLIST_FILE = SwiftRadio/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -755,7 +796,7 @@
 					"$(PROJECT_DIR)/SwiftRadio",
 				);
 				INFOPLIST_FILE = "SwiftRadio/Info-CarPlay.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -790,7 +831,7 @@
 					"$(PROJECT_DIR)/SwiftRadio",
 				);
 				INFOPLIST_FILE = "SwiftRadio/Info-CarPlay.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -866,6 +907,14 @@
 				kind = branch;
 			};
 		};
+		CE60361F2A48C51A00E15E15 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		CE6A3E2D291F376D0058C82A /* XCRemoteSwiftPackageReference "Spring" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/fethica/Spring.git";
@@ -894,6 +943,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CE37D7B5290F4A9700B0933B /* XCRemoteSwiftPackageReference "FRadioPlayer" */;
 			productName = FRadioPlayer;
+		};
+		CE6036202A48C51A00E15E15 /* NVActivityIndicatorView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE60361F2A48C51A00E15E15 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
+			productName = NVActivityIndicatorView;
+		};
+		CE6036222A48C51A00E15E15 /* NVActivityIndicatorViewExtended */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE60361F2A48C51A00E15E15 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
+			productName = NVActivityIndicatorViewExtended;
+		};
+		CE6036272A48F70A00E15E15 /* NVActivityIndicatorView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE60361F2A48C51A00E15E15 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
+			productName = NVActivityIndicatorView;
+		};
+		CE6036292A48F70A00E15E15 /* NVActivityIndicatorViewExtended */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE60361F2A48C51A00E15E15 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
+			productName = NVActivityIndicatorViewExtended;
 		};
 		CE6A3E2C291F376D0058C82A /* Spring */ = {
 			isa = XCSwiftPackageProductDependency;

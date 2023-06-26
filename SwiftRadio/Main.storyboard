@@ -1,148 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Stations View Controller-->
-        <scene sceneID="7ik-k3-I0U">
-            <objects>
-                <viewController storyboardIdentifier="StationsViewController" id="enP-TM-Wa7" customClass="StationsViewController" customModule="SwiftRadio" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="OvF-E7-hdu">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="g23-m5-5pm">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                            </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="dhg-xW-Q3M">
-                                <rect key="frame" x="0.0" y="48" width="414" height="770"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StationCell" rowHeight="90" id="hMr-La-1Ga" customClass="StationTableViewCell" customModule="SwiftRadio" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="414" height="90"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hMr-La-1Ga" id="NhW-Qy-GCO">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stationImage" translatesAutoresizingMaskIntoConstraints="NO" id="GQm-Mf-6pw">
-                                                    <rect key="frame" x="8" y="8" width="120" height="75"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="75" id="E99-bk-882"/>
-                                                        <constraint firstAttribute="width" constant="120" id="fBs-E7-sgW"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="g0b-Y4-SBe" userLabel="Labels Stack View">
-                                                    <rect key="frame" x="136" y="22.5" width="250" height="46.5"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Station Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hQQ-6f-sYl">
-                                                            <rect key="frame" x="0.0" y="0.0" width="250" height="20.5"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Desc" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ptr-mN-34N">
-                                                            <rect key="frame" x="0.0" y="28.5" width="250" height="18"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="g0b-Y4-SBe" firstAttribute="centerY" secondItem="GQm-Mf-6pw" secondAttribute="centerY" id="3Ih-SH-eym"/>
-                                                <constraint firstItem="g0b-Y4-SBe" firstAttribute="leading" secondItem="GQm-Mf-6pw" secondAttribute="trailing" constant="8" id="5Xu-C2-ewM"/>
-                                                <constraint firstItem="GQm-Mf-6pw" firstAttribute="leading" secondItem="NhW-Qy-GCO" secondAttribute="leading" constant="8" id="AXN-0L-TaU"/>
-                                                <constraint firstItem="GQm-Mf-6pw" firstAttribute="top" secondItem="NhW-Qy-GCO" secondAttribute="top" constant="8" id="lij-Br-hcJ"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="g0b-Y4-SBe" secondAttribute="trailing" constant="8" id="vJb-IA-meb"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.1175440177321434" green="0.11671449244022369" blue="0.14129963517189026" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <outlet property="stationDescLabel" destination="Ptr-mN-34N" id="mGP-95-uEF"/>
-                                            <outlet property="stationImageView" destination="GQm-Mf-6pw" id="kCR-0m-tHf"/>
-                                            <outlet property="stationNameLabel" destination="hQQ-6f-sYl" id="G7d-bb-Meg"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="enP-TM-Wa7" id="0bf-cD-M4h"/>
-                                    <outlet property="delegate" destination="enP-TM-Wa7" id="2BN-4Z-J58"/>
-                                </connections>
-                            </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y05-35-5xn">
-                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pwh-sA-uBF" userLabel="NowPlaying Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NowPlayingBars" translatesAutoresizingMaskIntoConstraints="NO" id="ySP-43-Zqt" userLabel="Playing Animation Image View">
-                                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="6Ps-sU-GZY"/>
-                                                    <constraint firstAttribute="width" constant="40" id="V1I-VJ-0aF"/>
-                                                </constraints>
-                                            </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LhZ-Go-zL7" userLabel="Now Playing Button">
-                                                <rect key="frame" x="40" y="3.5" width="374" height="33"/>
-                                                <accessibility key="accessibilityConfiguration" identifier="nowPlaying"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="Choose a station above to begin">
-                                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="nowPlayingPressed:" destination="enP-TM-Wa7" eventType="touchUpInside" id="Wv3-ek-2vn"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="iXi-Xj-9fR"/>
-                                        </constraints>
-                                    </stackView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.1175440177321434" green="0.11671449244022369" blue="0.14129963517189026" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="FfH-MV-hND"/>
-                                    <constraint firstItem="pwh-sA-uBF" firstAttribute="leading" secondItem="y05-35-5xn" secondAttribute="leading" id="QMQ-Sf-Znw"/>
-                                    <constraint firstAttribute="trailing" secondItem="pwh-sA-uBF" secondAttribute="trailing" id="hqg-yY-XwN"/>
-                                    <constraint firstItem="pwh-sA-uBF" firstAttribute="top" secondItem="y05-35-5xn" secondAttribute="top" id="wxO-Ao-CC1"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="Rf9-Sj-GRF"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="Rf9-Sj-GRF" firstAttribute="bottom" secondItem="dhg-xW-Q3M" secondAttribute="bottom" constant="44" id="0Ab-ql-g3F"/>
-                            <constraint firstItem="dhg-xW-Q3M" firstAttribute="leading" secondItem="Rf9-Sj-GRF" secondAttribute="leading" id="8YJ-iI-LfY"/>
-                            <constraint firstItem="Rf9-Sj-GRF" firstAttribute="trailing" secondItem="y05-35-5xn" secondAttribute="trailing" id="BRI-KQ-z7n"/>
-                            <constraint firstItem="y05-35-5xn" firstAttribute="leading" secondItem="Rf9-Sj-GRF" secondAttribute="leading" id="NBg-B6-YnE"/>
-                            <constraint firstAttribute="bottom" secondItem="g23-m5-5pm" secondAttribute="bottom" id="Ph5-oW-gl3"/>
-                            <constraint firstItem="Rf9-Sj-GRF" firstAttribute="trailing" secondItem="g23-m5-5pm" secondAttribute="trailing" id="ULW-51-4ob"/>
-                            <constraint firstItem="g23-m5-5pm" firstAttribute="top" secondItem="OvF-E7-hdu" secondAttribute="top" id="Xbk-tp-GLK"/>
-                            <constraint firstItem="dhg-xW-Q3M" firstAttribute="top" secondItem="Rf9-Sj-GRF" secondAttribute="top" id="eKO-PB-OTx"/>
-                            <constraint firstItem="g23-m5-5pm" firstAttribute="leading" secondItem="Rf9-Sj-GRF" secondAttribute="leading" id="omF-c0-vVe"/>
-                            <constraint firstItem="Rf9-Sj-GRF" firstAttribute="trailing" secondItem="dhg-xW-Q3M" secondAttribute="trailing" id="tj2-C3-q2r"/>
-                            <constraint firstItem="y05-35-5xn" firstAttribute="top" secondItem="dhg-xW-Q3M" secondAttribute="bottom" id="wF0-Xy-rSA"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="nowPlayingAnimationImageView" destination="ySP-43-Zqt" id="M7e-Co-EX1"/>
-                        <outlet property="stationNowPlayingButton" destination="LhZ-Go-zL7" id="6CD-3L-Opj"/>
-                        <outlet property="tableView" destination="dhg-xW-Q3M" id="Aug-Bc-jTR"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7Wn-sj-N6f" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="449.27536231884062" y="385.71428571428572"/>
-        </scene>
         <!--Menu View Controller-->
         <scene sceneID="4lL-TA-52h">
             <objects>
@@ -529,7 +395,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1163.768115942029" y="384.78260869565219"/>
+            <point key="canvasLocation" x="448" y="423"/>
         </scene>
         <!--Info View Controller-->
         <scene sceneID="abW-KU-RWK">
@@ -626,7 +492,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eop-Yu-mRh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1896" y="385.90704647676165"/>
+            <point key="canvasLocation" x="1164" y="423"/>
         </scene>
         <!--About View Controller-->
         <scene sceneID="kq6-OO-kxI">
@@ -762,7 +628,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="NowPlayingBars" width="19.5" height="19"/>
         <image name="background" width="320" height="568"/>
         <image name="btn-close" width="22.5" height="22.5"/>
         <image name="btn-next" width="44" height="44"/>

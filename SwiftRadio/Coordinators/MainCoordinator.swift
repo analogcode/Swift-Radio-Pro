@@ -55,7 +55,7 @@ class MainCoordinator: NavigationCoordinator {
 
 extension MainCoordinator: LoaderControllerDelegate {
     func didFinishLoading(_ controller: LoaderController, stations: [RadioStation]) {
-        let stationsVC = Storyboard.viewController as StationsViewController
+        let stationsVC = StationsViewController()
         stationsVC.delegate = self
         navigationController.setViewControllers([stationsVC], animated: false)
     }
