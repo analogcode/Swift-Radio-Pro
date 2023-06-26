@@ -8,8 +8,6 @@
 
 import UIKit
 
-import UIKit
-
 struct Config {
     
     static let debugLog = true
