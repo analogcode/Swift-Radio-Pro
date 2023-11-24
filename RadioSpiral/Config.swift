@@ -14,8 +14,8 @@ struct Config {
 
     // If this is set to "true", it will use the JSON file in the app
     // Set it to "false" to use the JSON file at the stationDataURL
-    static let useLocalStations = true
-    static let stationsURL = "https://fethica.com/assets/swift-radio/stations.json"
+    static let useLocalStations = false
+    static let stationsURL = "https://raw.githubusercontent.com/joemcmahon/radiospiral-config/master/stations.json"
 
     // Set this to "true" to enable the search bar
     static let searchable = false
@@ -24,8 +24,8 @@ struct Config {
     static let hideNextPreviousButtons = true
     
     // Contact infos
-    static let website = "https://github.com/analogcode/Swift-Radio-Pro"
-    static let email = "contact@fethica.com"
-    static let emailSubject = "From \(Bundle.main.appName) App"
+    static let website = "https://github.com/joemcmahon/RadioSpiral"
+    static let email = "radio@pemungkah.com"
+    static let emailSubject = "\(Bundle.main.appName) App Q"
 }
 
