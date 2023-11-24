@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9409E1151ABF6FEA00312E2B"
-               BuildableName = "SwiftRadio.app"
-               BlueprintName = "SwiftRadio"
-               ReferencedContainer = "container:SwiftRadio.xcodeproj">
+               BuildableName = "RadioSpiral.app"
+               BlueprintName = "RadioSpiral"
+               ReferencedContainer = "container:RadioSpiral.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -31,9 +31,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9409E1151ABF6FEA00312E2B"
-            BuildableName = "SwiftRadio.app"
-            BlueprintName = "SwiftRadio"
-            ReferencedContainer = "container:SwiftRadio.xcodeproj">
+            BuildableName = "RadioSpiral.app"
+            BlueprintName = "RadioSpiral"
+            ReferencedContainer = "container:RadioSpiral.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <Testables>
@@ -42,9 +42,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2C5545B91C1124DE00728469"
-               BuildableName = "SwiftRadioUITests.xctest"
-               BlueprintName = "SwiftRadioUITests"
-               ReferencedContainer = "container:SwiftRadio.xcodeproj">
+               BuildableName = "RadioSpiralUITests.xctest"
+               BlueprintName = "RadioSpiralUITests"
+               ReferencedContainer = "container:RadioSpiral.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -64,9 +64,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9409E1151ABF6FEA00312E2B"
-            BuildableName = "SwiftRadio.app"
-            BlueprintName = "SwiftRadio"
-            ReferencedContainer = "container:SwiftRadio.xcodeproj">
+            BuildableName = "RadioSpiral.app"
+            BlueprintName = "RadioSpiral"
+            ReferencedContainer = "container:RadioSpiral.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -81,9 +81,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9409E1151ABF6FEA00312E2B"
-            BuildableName = "SwiftRadio.app"
-            BlueprintName = "SwiftRadio"
-            ReferencedContainer = "container:SwiftRadio.xcodeproj">
+            BuildableName = "RadioSpiral.app"
+            BlueprintName = "RadioSpiral"
+            ReferencedContainer = "container:RadioSpiral.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

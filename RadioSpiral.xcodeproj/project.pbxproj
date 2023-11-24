@@ -98,14 +98,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2C5545BA1C1124DE00728469 /* SwiftRadioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftRadioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C5545BA1C1124DE00728469 /* RadioSpiralUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RadioSpiralUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C5545BC1C1124DE00728469 /* SwiftRadioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftRadioUITests.swift; sourceTree = "<group>"; };
 		2C5545BE1C1124DE00728469 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		53113F38230C720900462C0E /* ShareActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareActivity.swift; sourceTree = "<group>"; };
 		5FDEE0211F72FF980064333C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6258DCD722D93A3500166C65 /* LogoShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoShareView.swift; sourceTree = "<group>"; };
 		6258DCD922D93A5400166C65 /* LogoShareView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoShareView.xib; sourceTree = "<group>"; };
-		9409E1161ABF6FEA00312E2B /* SwiftRadio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftRadio.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9409E1161ABF6FEA00312E2B /* RadioSpiral.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioSpiral.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9409E11A1ABF6FEA00312E2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9409E1251ABF6FEA00312E2B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -127,7 +127,7 @@
 		CE6036152A47B88600E15E15 /* StationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationTableViewCell.swift; sourceTree = "<group>"; };
 		CE6036182A48BA2500E15E15 /* UITableViewCell+reuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+reuseIdentifier.swift"; sourceTree = "<group>"; };
 		CE60361C2A48C4A400E15E15 /* NowPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingView.swift; sourceTree = "<group>"; };
-		CE6A3E4F291F376D0058C82A /* SwiftRadio-CarPlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftRadio-CarPlay.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE6A3E4F291F376D0058C82A /* RadioSpiral-CarPlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RadioSpiral-CarPlay.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE6ECCF9292F13DF008B3C16 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		CE6ECCFC292F1445008B3C16 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		CE6ECCFF292F215F008B3C16 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
@@ -175,20 +175,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2C5545BB1C1124DE00728469 /* SwiftRadioUITests */ = {
+		2C5545BB1C1124DE00728469 /* RadioSpiralUITests */ = {
 			isa = PBXGroup;
 			children = (
 				2C5545BC1C1124DE00728469 /* SwiftRadioUITests.swift */,
 				2C5545BE1C1124DE00728469 /* Info.plist */,
 			);
-			path = SwiftRadioUITests;
+			path = RadioSpiralUITests;
 			sourceTree = "<group>";
 		};
 		9409E10D1ABF6FE900312E2B = {
 			isa = PBXGroup;
 			children = (
-				9409E1181ABF6FEA00312E2B /* SwiftRadio */,
-				2C5545BB1C1124DE00728469 /* SwiftRadioUITests */,
+				9409E1181ABF6FEA00312E2B /* RadioSpiral */,
+				2C5545BB1C1124DE00728469 /* RadioSpiralUITests */,
 				9409E1171ABF6FEA00312E2B /* Products */,
 				CE6036262A48F70A00E15E15 /* Frameworks */,
 			);
@@ -197,14 +197,14 @@
 		9409E1171ABF6FEA00312E2B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9409E1161ABF6FEA00312E2B /* SwiftRadio.app */,
-				2C5545BA1C1124DE00728469 /* SwiftRadioUITests.xctest */,
-				CE6A3E4F291F376D0058C82A /* SwiftRadio-CarPlay.app */,
+				9409E1161ABF6FEA00312E2B /* RadioSpiral.app */,
+				2C5545BA1C1124DE00728469 /* RadioSpiralUITests.xctest */,
+				CE6A3E4F291F376D0058C82A /* RadioSpiral-CarPlay.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9409E1181ABF6FEA00312E2B /* SwiftRadio */ = {
+		9409E1181ABF6FEA00312E2B /* RadioSpiral */ = {
 			isa = PBXGroup;
 			children = (
 				CE0A4994291F3A220071C0CC /* SwiftRadio.entitlements */,
@@ -225,7 +225,7 @@
 				CEA82F492921F260009E9FA0 /* Info-CarPlay.plist */,
 				5FDEE0211F72FF980064333C /* LaunchScreen.storyboard */,
 			);
-			path = SwiftRadio;
+			path = RadioSpiral;
 			sourceTree = "<group>";
 		};
 		CE0A4993291F39660071C0CC /* CarPlay */ = {
@@ -330,9 +330,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2C5545B91C1124DE00728469 /* SwiftRadioUITests */ = {
+		2C5545B91C1124DE00728469 /* RadioSpiralUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2C5545C31C1124DE00728469 /* Build configuration list for PBXNativeTarget "SwiftRadioUITests" */;
+			buildConfigurationList = 2C5545C31C1124DE00728469 /* Build configuration list for PBXNativeTarget "RadioSpiralUITests" */;
 			buildPhases = (
 				2C5545B61C1124DE00728469 /* Sources */,
 				2C5545B71C1124DE00728469 /* Frameworks */,
@@ -343,14 +343,14 @@
 			dependencies = (
 				2C5545C01C1124DE00728469 /* PBXTargetDependency */,
 			);
-			name = SwiftRadioUITests;
+			name = RadioSpiralUITests;
 			productName = SwiftRadioUITests;
-			productReference = 2C5545BA1C1124DE00728469 /* SwiftRadioUITests.xctest */;
+			productReference = 2C5545BA1C1124DE00728469 /* RadioSpiralUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		9409E1151ABF6FEA00312E2B /* SwiftRadio */ = {
+		9409E1151ABF6FEA00312E2B /* RadioSpiral */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9409E1381ABF6FEA00312E2B /* Build configuration list for PBXNativeTarget "SwiftRadio" */;
+			buildConfigurationList = 9409E1381ABF6FEA00312E2B /* Build configuration list for PBXNativeTarget "RadioSpiral" */;
 			buildPhases = (
 				9409E1121ABF6FEA00312E2B /* Sources */,
 				9409E1131ABF6FEA00312E2B /* Frameworks */,
@@ -360,7 +360,7 @@
 			);
 			dependencies = (
 			);
-			name = SwiftRadio;
+			name = RadioSpiral;
 			packageProductDependencies = (
 				CE37D7B3290F47E000B0933B /* Spring */,
 				CE37D7B6290F4A9700B0933B /* FRadioPlayer */,
@@ -368,12 +368,12 @@
 				CE6036222A48C51A00E15E15 /* NVActivityIndicatorViewExtended */,
 			);
 			productName = RadioPro;
-			productReference = 9409E1161ABF6FEA00312E2B /* SwiftRadio.app */;
+			productReference = 9409E1161ABF6FEA00312E2B /* RadioSpiral.app */;
 			productType = "com.apple.product-type.application";
 		};
-		CE6A3E2B291F376D0058C82A /* SwiftRadio-CarPlay */ = {
+		CE6A3E2B291F376D0058C82A /* RadioSpiral-CarPlay */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CE6A3E4C291F376D0058C82A /* Build configuration list for PBXNativeTarget "SwiftRadio-CarPlay" */;
+			buildConfigurationList = CE6A3E4C291F376D0058C82A /* Build configuration list for PBXNativeTarget "RadioSpiral-CarPlay" */;
 			buildPhases = (
 				CE6A3E30291F376D0058C82A /* Sources */,
 				CE6A3E42291F376D0058C82A /* Frameworks */,
@@ -383,7 +383,7 @@
 			);
 			dependencies = (
 			);
-			name = "SwiftRadio-CarPlay";
+			name = "RadioSpiral-CarPlay";
 			packageProductDependencies = (
 				CE6A3E2C291F376D0058C82A /* Spring */,
 				CE6A3E2E291F376D0058C82A /* FRadioPlayer */,
@@ -391,7 +391,7 @@
 				CE6036292A48F70A00E15E15 /* NVActivityIndicatorViewExtended */,
 			);
 			productName = RadioPro;
-			productReference = CE6A3E4F291F376D0058C82A /* SwiftRadio-CarPlay.app */;
+			productReference = CE6A3E4F291F376D0058C82A /* RadioSpiral-CarPlay.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -422,7 +422,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9409E1111ABF6FE900312E2B /* Build configuration list for PBXProject "SwiftRadio" */;
+			buildConfigurationList = 9409E1111ABF6FE900312E2B /* Build configuration list for PBXProject "RadioSpiral" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -440,9 +440,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9409E1151ABF6FEA00312E2B /* SwiftRadio */,
-				CE6A3E2B291F376D0058C82A /* SwiftRadio-CarPlay */,
-				2C5545B91C1124DE00728469 /* SwiftRadioUITests */,
+				9409E1151ABF6FEA00312E2B /* RadioSpiral */,
+				CE6A3E2B291F376D0058C82A /* RadioSpiral-CarPlay */,
+				2C5545B91C1124DE00728469 /* RadioSpiralUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -568,7 +568,7 @@
 /* Begin PBXTargetDependency section */
 		2C5545C01C1124DE00728469 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9409E1151ABF6FEA00312E2B /* SwiftRadio */;
+			target = 9409E1151ABF6FEA00312E2B /* RadioSpiral */;
 			targetProxy = 2C5545BF1C1124DE00728469 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -586,7 +586,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = jonah.SwiftRadioUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pemungkah.SwiftRadioUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = SwiftRadio;
@@ -606,7 +606,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = jonah.SwiftRadioUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pemungkah.SwiftRadioUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = SwiftRadio;
@@ -730,23 +730,24 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 6;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 6G96AERJ7Q;
+				DEVELOPMENT_TEAM = 6PLL9M5SE2;
 				ENABLE_MODULE_VERIFIER = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/SwiftRadio",
+					"$(PROJECT_DIR)/RadioSpiral",
 				);
-				INFOPLIST_FILE = SwiftRadio/Info.plist;
+				INFOPLIST_FILE = RadioSpiral/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = RadioSpiral;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.8;
+				MARKETING_VERSION = 2.0.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu99 gnu++11";
-				PRODUCT_BUNDLE_IDENTIFIER = com.matthewfecher.SwiftRadio;
-				PRODUCT_NAME = SwiftRadio;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pemungkah.RadioSpiral;
+				PRODUCT_NAME = RadioSpiral;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
@@ -763,23 +764,24 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 6;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 6G96AERJ7Q;
+				DEVELOPMENT_TEAM = 6PLL9M5SE2;
 				ENABLE_MODULE_VERIFIER = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/SwiftRadio",
+					"$(PROJECT_DIR)/RadioSpiral",
 				);
-				INFOPLIST_FILE = SwiftRadio/Info.plist;
+				INFOPLIST_FILE = RadioSpiral/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = RadioSpiral;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.8;
+				MARKETING_VERSION = 2.0.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu99 gnu++11";
-				PRODUCT_BUNDLE_IDENTIFIER = com.matthewfecher.SwiftRadio;
-				PRODUCT_NAME = SwiftRadio;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pemungkah.RadioSpiral;
+				PRODUCT_NAME = RadioSpiral;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
@@ -799,13 +801,14 @@
 				CURRENT_PROJECT_VERSION = 6;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6G96AERJ7Q;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6PLL9M5SE2;
 				ENABLE_MODULE_VERIFIER = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/SwiftRadio",
+					"$(PROJECT_DIR)/RadioSpiral",
 				);
-				INFOPLIST_FILE = "SwiftRadio/Info-CarPlay.plist";
+				INFOPLIST_FILE = "RadioSpiral/Info-CarPlay.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "RadioSpiral-CarPlay";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -815,7 +818,7 @@
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu99 gnu++11";
 				OTHER_SWIFT_FLAGS = "-D CarPlay";
-				PRODUCT_BUNDLE_IDENTIFIER = com.fethica.SwiftRadio;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pemungkah.RadioSpiral;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -837,13 +840,14 @@
 				CURRENT_PROJECT_VERSION = 6;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6G96AERJ7Q;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6PLL9M5SE2;
 				ENABLE_MODULE_VERIFIER = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/SwiftRadio",
+					"$(PROJECT_DIR)/RadioSpiral",
 				);
-				INFOPLIST_FILE = "SwiftRadio/Info-CarPlay.plist";
+				INFOPLIST_FILE = "RadioSpiral/Info-CarPlay.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "RadioSpiral-CarPlay";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -853,7 +857,7 @@
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu99 gnu++11";
 				OTHER_SWIFT_FLAGS = "-D CarPlay";
-				PRODUCT_BUNDLE_IDENTIFIER = com.fethica.SwiftRadio;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pemungkah.RadioSpiral;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -867,7 +871,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2C5545C31C1124DE00728469 /* Build configuration list for PBXNativeTarget "SwiftRadioUITests" */ = {
+		2C5545C31C1124DE00728469 /* Build configuration list for PBXNativeTarget "RadioSpiralUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2C5545C11C1124DE00728469 /* Debug */,
@@ -876,7 +880,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9409E1111ABF6FE900312E2B /* Build configuration list for PBXProject "SwiftRadio" */ = {
+		9409E1111ABF6FE900312E2B /* Build configuration list for PBXProject "RadioSpiral" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9409E1361ABF6FEA00312E2B /* Debug */,
@@ -885,7 +889,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9409E1381ABF6FEA00312E2B /* Build configuration list for PBXNativeTarget "SwiftRadio" */ = {
+		9409E1381ABF6FEA00312E2B /* Build configuration list for PBXNativeTarget "RadioSpiral" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9409E1391ABF6FEA00312E2B /* Debug */,
@@ -894,7 +898,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CE6A3E4C291F376D0058C82A /* Build configuration list for PBXNativeTarget "SwiftRadio-CarPlay" */ = {
+		CE6A3E4C291F376D0058C82A /* Build configuration list for PBXNativeTarget "RadioSpiral-CarPlay" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CE6A3E4D291F376D0058C82A /* Debug */,
