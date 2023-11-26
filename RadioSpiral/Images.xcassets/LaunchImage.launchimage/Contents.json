@@ -2,42 +2,42 @@
   "images" : [
     {
       "extent" : "full-screen",
+      "filename" : "splash-retinaHD5.5.png",
       "idiom" : "iphone",
-      "subtype" : "736h",
-      "filename" : "6plus.png",
       "minimum-system-version" : "8.0",
       "orientation" : "portrait",
-      "scale" : "3x"
+      "scale" : "3x",
+      "subtype" : "736h"
     },
     {
       "extent" : "full-screen",
+      "filename" : "splash-retinaHD4.7.png",
       "idiom" : "iphone",
-      "subtype" : "667h",
-      "filename" : "Portrait6.png",
       "minimum-system-version" : "8.0",
       "orientation" : "portrait",
-      "scale" : "2x"
-    },
-    {
-      "orientation" : "portrait",
-      "idiom" : "iphone",
-      "filename" : "4s.png",
-      "extent" : "full-screen",
-      "minimum-system-version" : "7.0",
-      "scale" : "2x"
+      "scale" : "2x",
+      "subtype" : "667h"
     },
     {
       "extent" : "full-screen",
+      "filename" : "splash-2x.png",
       "idiom" : "iphone",
-      "subtype" : "retina4",
-      "filename" : "5C.png",
       "minimum-system-version" : "7.0",
       "orientation" : "portrait",
       "scale" : "2x"
+    },
+    {
+      "extent" : "full-screen",
+      "filename" : "splash-retina4.png",
+      "idiom" : "iphone",
+      "minimum-system-version" : "7.0",
+      "orientation" : "portrait",
+      "scale" : "2x",
+      "subtype" : "retina4"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }
