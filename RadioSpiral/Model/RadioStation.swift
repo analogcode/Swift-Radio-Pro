@@ -30,7 +30,7 @@ struct RadioStation: Codable {
 
 extension RadioStation {
     var shoutout: String {
-        "I'm listening to \(name) via \(Bundle.main.appName) app"
+        "I'm listening to \"\(trackName)\" by \(artistName) on \(Bundle.main.appName)"
     }
 }
 
