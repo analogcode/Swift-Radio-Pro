@@ -82,7 +82,7 @@ class LoaderController: BaseController {
         super.setupViews()
         
         // Logo Image
-        let logoImage = UIImage(named: "logo")
+        let logoImage = UIImage(named: "radiospiral")
         let logoImageView = UIImageView(image: logoImage)
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
         
