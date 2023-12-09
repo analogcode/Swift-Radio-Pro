@@ -2,3 +2,5 @@
 *.xccheckout
 *.xcscmblueprint
 xcuserdata
+fastlane/report.xml
+screenshots/*

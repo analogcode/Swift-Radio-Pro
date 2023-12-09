@@ -86,7 +86,7 @@ class StationsViewController: BaseController, Handoffable {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = "Swift Radio"
+        title = "RadioSpiral streams"
     }
     
     @objc func refresh(sender: AnyObject) {
