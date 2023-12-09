@@ -67,8 +67,8 @@ extension AppDelegate: MPPlayableContentDataSource {
         
         if indexPath.count == 1 {
             // Tab section
-            let item = MPContentItem(identifier: "Stations")
-            item.title = "Stations"
+            let item = MPContentItem(identifier: "Streams")
+            item.title = "Streams"
             item.isContainer = true
             item.isPlayable = false
             item.artwork = MPMediaItemArtwork(boundsSize: #imageLiteral(resourceName: "carPlayTab").size, requestHandler: { _ -> UIImage in
