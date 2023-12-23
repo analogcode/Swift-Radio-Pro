@@ -34,6 +34,8 @@ class NowPlayingViewController: UIViewController {
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var airPlayView: UIView!
+    @IBOutlet weak var djName: UILabel!
+    @IBOutlet weak var playingLive: UILabel!
     
     // MARK: - Properties
     
@@ -68,6 +70,8 @@ class NowPlayingViewController: UIViewController {
         
         stationDescLabel.text = manager.currentStation?.desc
         stationDescLabel.isHidden = player.currentMetadata != nil
+        playingLive.text = ""
+        djName.text = ""
         
         // Check for station change
         if isNewStation {
@@ -200,14 +204,13 @@ class NowPlayingViewController: UIViewController {
         case .loading:
             message = "Loading Station ..."
         case .urlNotSet:
-            message = "Station URL not valide"
+            message = "Station URL not valid"
         case .readyToPlay, .loadingFinished:
             playbackStateDidChange(player.playbackState, animate: animate)
             return
         case .error:
             message = "Error Playing"
         }
-        
         updateLabels(with: message, animate: animate)
     }
     
@@ -236,6 +239,11 @@ class NowPlayingViewController: UIViewController {
             // Radio is (hopefully) streaming properly
             songLabel.text = manager.currentStation?.trackName
             artistLabel.text = manager.currentStation?.artistName
+            if ((songLabel.text!.hasSuffix("[LIVE]"))) {
+                playingLive.text = "PLAYING LIVE"
+            } else {
+                playingLive.text = ""
+            }
             shouldAnimateSongLabel(animate)
             return
         }
