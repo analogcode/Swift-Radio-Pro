@@ -244,6 +244,16 @@ class NowPlayingViewController: UIViewController {
             } else {
                 playingLive.text = ""
             }
+            RadioAPI.getCurrentDJ { result in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let currentDJ):
+                        self.djName.text = currentDJ
+                    case .failure(_):
+                        self.djName.text = "Spud the Ambient Robot"
+                    }
+                }
+            }
             shouldAnimateSongLabel(animate)
             return
         }

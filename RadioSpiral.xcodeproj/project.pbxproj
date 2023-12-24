@@ -12,6 +12,7 @@
 		5FDEE0221F72FF980064333C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FDEE0211F72FF980064333C /* LaunchScreen.storyboard */; };
 		6258DCD822D93A3500166C65 /* LogoShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258DCD722D93A3500166C65 /* LogoShareView.swift */; };
 		6258DCDA22D93A5400166C65 /* LogoShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6258DCD922D93A5400166C65 /* LogoShareView.xib */; };
+		710189282B366D3300E8A04C /* RadioAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710189272B366D3300E8A04C /* RadioAPI.swift */; };
 		715C87A62B23E141003FC57A /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C87A52B23E141003FC57A /* SnapshotHelper.swift */; };
 		7165121C2B35519B00473770 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF72ACE621F714D000461EED /* Main.storyboard */; };
 		9409E11C1ABF6FEA00312E2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */; };
@@ -106,6 +107,7 @@
 		5FDEE0211F72FF980064333C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6258DCD722D93A3500166C65 /* LogoShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoShareView.swift; sourceTree = "<group>"; };
 		6258DCD922D93A5400166C65 /* LogoShareView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoShareView.xib; sourceTree = "<group>"; };
+		710189272B366D3300E8A04C /* RadioAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioAPI.swift; sourceTree = "<group>"; };
 		715C87A52B23E141003FC57A /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		9409E1161ABF6FEA00312E2B /* RadioSpiral.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioSpiral.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9409E11A1ABF6FEA00312E2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 			children = (
 				94AC70AD1AD05C6200652982 /* RadioStation.swift */,
 				CE963ECB29135A6F004F299E /* StationsManager.swift */,
+				710189272B366D3300E8A04C /* RadioAPI.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -398,7 +401,7 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1510;
 				ORGANIZATIONNAME = matthewfecher.com;
 				TargetAttributes = {
 					2C5545B91C1124DE00728469 = {
@@ -497,6 +500,7 @@
 				CE6036192A48BA2500E15E15 /* UITableViewCell+reuseIdentifier.swift in Sources */,
 				CE6036162A47B88600E15E15 /* StationTableViewCell.swift in Sources */,
 				CE9EE8DE293BB41300F62041 /* BaseController.swift in Sources */,
+				710189282B366D3300E8A04C /* RadioAPI.swift in Sources */,
 				53113F39230C720900462C0E /* ShareActivity.swift in Sources */,
 				9409E1401ABF78B000312E2B /* NowPlayingViewController.swift in Sources */,
 				CE963ECC29135A6F004F299E /* StationsManager.swift in Sources */,
