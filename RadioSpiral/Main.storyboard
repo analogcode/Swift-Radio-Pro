@@ -161,7 +161,7 @@
                                 <rect key="frame" x="70" y="85" width="274" height="274"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="obn-8m-awZ" secondAttribute="height" multiplier="1:1" id="0o9-ZN-zY3"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="180" id="hCD-tK-vVP"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="300" id="hCD-tK-vVP"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="WmY-ug-Nhz" userLabel="Controls Stack View">
