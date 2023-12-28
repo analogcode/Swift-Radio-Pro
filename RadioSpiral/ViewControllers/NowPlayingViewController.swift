@@ -29,7 +29,6 @@ class NowPlayingViewController: UIViewController {
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var playingButton: UIButton!
     @IBOutlet weak var songLabel: SpringLabel!
-    @IBOutlet weak var stationDescLabel: UILabel!
     @IBOutlet weak var volumeParentView: UIView!
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
@@ -67,9 +66,6 @@ class NowPlayingViewController: UIViewController {
         self.title = manager.currentStation?.name
         
         // Set UI
-        
-        stationDescLabel.text = manager.currentStation?.desc
-        stationDescLabel.isHidden = player.currentMetadata != nil
         playingLive.text = ""
         djName.text = ""
         
@@ -129,8 +125,6 @@ class NowPlayingViewController: UIViewController {
         manager.currentStation?.getImage { [weak self] image in
             self?.albumImageView.image = image
         }
-        stationDescLabel.text = manager.currentStation?.desc
-        stationDescLabel.isHidden = player.currentArtworkURL != nil
         title = manager.currentStation?.name
         updateLabels()
     }
@@ -158,7 +152,6 @@ class NowPlayingViewController: UIViewController {
         guard let artworkURL = player.currentArtworkURL else {
             manager.currentStation?.getImage { [weak self] image in
                 self?.albumImageView.image = image
-                self?.stationDescLabel.isHidden = false
             }
             return
         }
@@ -167,7 +160,6 @@ class NowPlayingViewController: UIViewController {
             self?.albumImageView.animation = "wobble"
             self?.albumImageView.duration = 2
             self?.albumImageView.animate()
-            self?.stationDescLabel.isHidden = true
             
             // Force app to update display
             self?.view.setNeedsDisplay()

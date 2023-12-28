@@ -12,7 +12,6 @@ class InfoDetailViewController: UIViewController {
     
     @IBOutlet weak var stationImageView: UIImageView!
     @IBOutlet weak var stationNameLabel: UILabel!
-    @IBOutlet weak var stationDescLabel: UILabel!
     @IBOutlet weak var stationLongDescTextView: UITextView!
     @IBOutlet weak var okayButton: UIButton!
     
@@ -33,7 +32,6 @@ class InfoDetailViewController: UIViewController {
         
         // Display Station Name & Short Desc
         stationNameLabel.text = currentStation.name
-        stationDescLabel.text = currentStation.desc
         
         // Display Station Long Desc
         if currentStation.longDesc == "" {

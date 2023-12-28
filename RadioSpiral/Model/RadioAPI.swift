@@ -8,47 +8,41 @@
 
 import Foundation
 
-struct Show: Codable {
-    let id: Int
-    let title: String
-    let name: String
-    let slug: String
-    let url: String
-    let genres: [String]
-    let languages: [String]
-    let hosts: [Host]
-    let producers: [String] // You can replace this with the actual type if needed
-    let avatar_url: String
-    let avatar_id: String
-    let image_url: String
-    let image_id: String
-}
-
 struct Host: Codable {
     let name: String
     let url: String
 }
 
-struct ShowDetails: Codable {
-    let override: Int
-    let id: String
+struct Show: Codable {
+    let id: Int
     let name: String
     let slug: String
-    let date: String
-    let day: String
-    let start: String
-    let end: String
     let url: String
-    let split: Bool
-    let show: Show
+    let latest: String
+    let website: String
+    let hosts: [Host]
+    let producers: [String]
+    let genres: [String]
+    let languages: [String]
+    let avatar_url: String
+    let avatar_id: String
+    let image_url: String
+    let image_id: String
+    let route: String
+    let feed: String
 }
 
-struct Broadcast: Codable {
-    let current_show: ShowDetails
-    let next_show: ShowDetails
-    let current_playlist: Bool
-    let now_playing: NowPlaying
-    let instance: Int
+struct BroadcastShow: Codable {
+    let ID: Int
+    let id: String
+    let day: String
+    let date: String
+    let start: String
+    let end: String
+    let encore: Bool
+    let split: Bool
+    let override: Bool
+    let show: Show
 }
 
 struct NowPlaying: Codable {
@@ -57,35 +51,26 @@ struct NowPlaying: Codable {
     let artist: String
 }
 
-struct Endpoints: Codable {
-    let station: String
-    let broadcast: String
-    let schedule: String
-    let shows: String
-    let genres: String
-    let languages: String
-    let episodes: String
-    let hosts: String
-    let producers: String
+struct Broadcast: Codable {
+    let current_show: BroadcastShow
+    let next_show: BroadcastShow
+    let current_playlist: Bool
+    let now_playing: NowPlaying
+    let instance: Int
 }
 
-struct Root: Codable {
+struct Endpoints: Codable {
+    let station, broadcast, schedule, shows, genres, languages, episodes, hosts, producers: String
+}
+
+struct RadioData: Codable {
     let broadcast: Broadcast
-    let timezone: String
-    let stream_url: String
-    let stream_format: String
-    let fallback_url: String
-    let fallback_format: String
-    let station_url: String
-    let schedule_url: String
-    let language: String
-    let timestamp: String
-    let date_time: String
-    let updated: String
+    let timezone, stream_url, stream_format, fallback_url: String
+    let fallback_format, station_url, schedule_url, language, timestamp: String
+    let date_time, updated: String
     let success: Bool
     let endpoints: Endpoints
 }
-
 
 struct RadioAPI {
     
@@ -128,11 +113,12 @@ struct RadioAPI {
             do {
                 // Decode the JSON response
                 let decoder = JSONDecoder()
-                let broadcastResponse = try decoder.decode(BroadcastResponse.self, from: data)
-
+                let broadcastResponse = try decoder.decode(RadioData.self, from: data)
                 // Extract and pass the current show value to the completion handler
-                completion(.success(broadcastResponse.current_show))
+                completion(.success("Live DJ: \(broadcastResponse.broadcast.current_show.show.hosts[0].name)"))
             } catch {
+                print("failed")
+                print(error)
                 // Handle decoding errors within the closure
                 completion(.failure(error))
             }
