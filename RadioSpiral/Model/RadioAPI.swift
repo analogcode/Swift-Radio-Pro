@@ -18,8 +18,6 @@ struct Show: Codable {
     let name: String
     let slug: String
     let url: String
-    let latest: String
-    let website: String
     let hosts: [Host]
     let producers: [String]
     let genres: [String]
@@ -28,20 +26,15 @@ struct Show: Codable {
     let avatar_id: String
     let image_url: String
     let image_id: String
-    let route: String
-    let feed: String
 }
 
 struct BroadcastShow: Codable {
-    let ID: Int
     let id: String
     let day: String
     let date: String
     let start: String
     let end: String
-    let encore: Bool
     let split: Bool
-    let override: Bool
     let show: Show
 }
 
@@ -110,6 +103,7 @@ struct RadioAPI {
             }
 
             result = String(decoding: data, as: UTF8.self)
+            print(result)
             do {
                 // Decode the JSON response
                 let decoder = JSONDecoder()
