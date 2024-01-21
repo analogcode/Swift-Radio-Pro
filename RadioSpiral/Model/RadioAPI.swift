@@ -109,7 +109,7 @@ struct RadioAPI {
                 let decoder = JSONDecoder()
                 let broadcastResponse = try decoder.decode(RadioData.self, from: data)
                 // Extract and pass the current show value to the completion handler
-                completion(.success("Live DJ: \(broadcastResponse.broadcast.current_show.show.hosts[0].name)"))
+                completion(.success(broadcastResponse.broadcast.current_show.show.hosts[0].name))
             } catch {
                 print("failed")
                 print(error)

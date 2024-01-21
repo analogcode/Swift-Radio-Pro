@@ -153,10 +153,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="uXf-Wr-UiK" userLabel="Background Image View">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="tintColor" systemColor="labelColor"/>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="obn-8m-awZ" userLabel="AlbumArt" customClass="SpringImageView" customModule="Spring">
                                 <rect key="frame" x="70" y="85" width="274" height="274"/>
                                 <constraints>
@@ -263,7 +259,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8xJ-4F-WCE" userLabel="Labels Stack View">
-                                <rect key="frame" x="12" y="518" width="390" height="122.5"/>
+                                <rect key="frame" x="12" y="518" width="390" height="137.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="KC8-ZG-rx5" userLabel="Song Label" customClass="SpringLabel" customModule="Spring">
                                         <rect key="frame" x="124.5" y="0.0" width="141" height="33.5"/>
@@ -277,18 +273,44 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DJ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfL-H2-Ntj">
-                                        <rect key="frame" x="184.5" y="73.5" width="21" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLAYING LIVE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FfM-GM-gNj">
-                                        <rect key="frame" x="141.5" y="102" width="107.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" systemColor="systemGreenColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Crw-vf-mrA">
+                                        <rect key="frame" x="168.5" y="73.5" width="53.5" height="22"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I0s-yb-8QN">
+                                                <rect key="frame" x="0.0" y="0.0" width="20.5" height="22"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="music.mic" catalog="system"/>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfL-H2-Ntj">
+                                                <rect key="frame" x="32.5" y="0.0" width="21" height="22"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="DJ">
+                                                        <attributes>
+                                                            <font key="NSFont" metaFont="system" size="17"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YXL-as-kpd">
+                                        <rect key="frame" x="150.5" y="103.5" width="89" height="34"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oEe-Rp-ThT">
+                                                <rect key="frame" x="0.0" y="0.0" width="54.5" height="34"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="pianokeys" catalog="system"/>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LIVE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FfM-GM-gNj">
+                                                <rect key="frame" x="54.5" y="0.0" width="34.5" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" systemColor="systemGreenColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ub6-am-LP5">
@@ -362,16 +384,12 @@
                             <constraint firstItem="djB-ds-tW4" firstAttribute="centerX" secondItem="8xJ-4F-WCE" secondAttribute="centerX" id="YUB-SR-Omd"/>
                             <constraint firstItem="aXI-gd-81R" firstAttribute="trailing" secondItem="8xJ-4F-WCE" secondAttribute="trailing" constant="12" id="a0R-gd-CTo"/>
                             <constraint firstItem="a3Z-1t-AAA" firstAttribute="top" secondItem="WmY-ug-Nhz" secondAttribute="bottom" constant="12" id="epF-5G-BUS"/>
-                            <constraint firstItem="uXf-Wr-UiK" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="hPm-1B-yKf"/>
                             <constraint firstItem="aXI-gd-81R" firstAttribute="trailing" secondItem="Ub6-am-LP5" secondAttribute="trailing" constant="12" id="i7g-jR-lvv"/>
                             <constraint firstItem="8xJ-4F-WCE" firstAttribute="leading" secondItem="aXI-gd-81R" secondAttribute="leading" constant="12" id="iJJ-RH-r0a"/>
                             <constraint firstItem="aXI-gd-81R" firstAttribute="trailing" secondItem="obn-8m-awZ" secondAttribute="trailing" constant="70" id="mbe-x3-NBX"/>
                             <constraint firstItem="aXI-gd-81R" firstAttribute="trailing" secondItem="a3Z-1t-AAA" secondAttribute="trailing" constant="12" id="p9p-mf-M9S"/>
                             <constraint firstItem="a3Z-1t-AAA" firstAttribute="leading" secondItem="aXI-gd-81R" secondAttribute="leading" constant="12" id="sHe-lq-M9M"/>
                             <constraint firstItem="aXI-gd-81R" firstAttribute="bottom" secondItem="GIj-4c-kRh" secondAttribute="bottom" constant="8" id="ugE-R5-bnr"/>
-                            <constraint firstItem="uXf-Wr-UiK" firstAttribute="leading" secondItem="aXI-gd-81R" secondAttribute="leading" id="ukJ-i6-3WQ"/>
-                            <constraint firstAttribute="bottom" secondItem="uXf-Wr-UiK" secondAttribute="bottom" id="vqi-Me-nfe"/>
-                            <constraint firstItem="aXI-gd-81R" firstAttribute="trailing" secondItem="uXf-Wr-UiK" secondAttribute="trailing" id="wlz-dV-IhI"/>
                             <constraint firstItem="WmY-ug-Nhz" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="xjT-ZW-MWx"/>
                         </constraints>
                     </view>
@@ -383,9 +401,11 @@
                         <outlet property="albumImageView" destination="obn-8m-awZ" id="13r-WO-VAs"/>
                         <outlet property="artistLabel" destination="v3l-q6-g0h" id="s0B-6Y-MWu"/>
                         <outlet property="djName" destination="hfL-H2-Ntj" id="DUM-BO-dBv"/>
+                        <outlet property="liveDJIndicator" destination="I0s-yb-8QN" id="Ljd-2O-lWW"/>
                         <outlet property="nextButton" destination="rdn-tm-QKv" id="VHQ-xc-bpl"/>
                         <outlet property="playingButton" destination="k7t-tN-2wp" id="ZOi-KR-veF"/>
                         <outlet property="playingLive" destination="FfM-GM-gNj" id="dEQ-Xw-khI"/>
+                        <outlet property="playingLiveIcon" destination="oEe-Rp-ThT" id="wb9-Vw-r1z"/>
                         <outlet property="previousButton" destination="W6n-gy-z3a" id="bKE-rg-HPb"/>
                         <outlet property="songLabel" destination="KC8-ZG-rx5" id="tNh-3K-qWW"/>
                         <outlet property="volumeParentView" destination="zuj-rb-EKQ" id="KFg-Rk-y3Q"/>
@@ -672,6 +692,8 @@ Downtime DJ and attitude:
         <image name="btn-previous" width="44" height="44"/>
         <image name="btn-stop" width="44" height="44"/>
         <image name="logo" width="180" height="71"/>
+        <image name="music.mic" catalog="system" width="128" height="119"/>
+        <image name="pianokeys" catalog="system" width="128" height="93"/>
         <image name="questionmark" catalog="system" width="94" height="128"/>
         <image name="radiospiral" width="179" height="108"/>
         <image name="share" width="32" height="32"/>
@@ -685,7 +707,7 @@ Downtime DJ and attitude:
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

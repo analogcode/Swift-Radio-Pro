@@ -189,6 +189,16 @@
 			path = RadioSpiralUITests;
 			sourceTree = "<group>";
 		};
+		7181C9DC2B5C93600071EE97 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				5FDEE0211F72FF980064333C /* LaunchScreen.storyboard */,
+				CF72ACE621F714D000461EED /* Main.storyboard */,
+				6258DCD922D93A5400166C65 /* LogoShareView.xib */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		9409E10D1ABF6FE900312E2B = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +221,7 @@
 		9409E1181ABF6FEA00312E2B /* RadioSpiral */ = {
 			isa = PBXGroup;
 			children = (
+				7181C9DC2B5C93600071EE97 /* Storyboards */,
 				CE0A4994291F3A220071C0CC /* SwiftRadio.entitlements */,
 				CE0A4993291F39660071C0CC /* CarPlay */,
 				CE8062F7291EF5D9008BD097 /* Helpers */,
@@ -223,11 +234,9 @@
 				CE8062F2291EF545008BD097 /* Cells */,
 				94D260901B45D20000DE671C /* Config.swift */,
 				9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */,
-				CF72ACE621F714D000461EED /* Main.storyboard */,
 				9409E1251ABF6FEA00312E2B /* Images.xcassets */,
 				9409E11A1ABF6FEA00312E2B /* Info.plist */,
 				CEA82F492921F260009E9FA0 /* Info-CarPlay.plist */,
-				5FDEE0211F72FF980064333C /* LaunchScreen.storyboard */,
 			);
 			path = RadioSpiral;
 			sourceTree = "<group>";
@@ -244,7 +253,6 @@
 			isa = PBXGroup;
 			children = (
 				6258DCD722D93A3500166C65 /* LogoShareView.swift */,
-				6258DCD922D93A5400166C65 /* LogoShareView.xib */,
 				CE60361C2A48C4A400E15E15 /* NowPlayingView.swift */,
 			);
 			path = Views;

@@ -34,7 +34,9 @@ class NowPlayingViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var airPlayView: UIView!
     @IBOutlet weak var djName: UILabel!
+    @IBOutlet weak var liveDJIndicator: UIButton!
     @IBOutlet weak var playingLive: UILabel!
+    @IBOutlet weak var playingLiveIcon: UIButton!
     
     // MARK: - Properties
     
@@ -68,6 +70,9 @@ class NowPlayingViewController: UIViewController {
         // Set UI
         playingLive.text = ""
         djName.text = ""
+        liveDJIndicator.isHidden = true
+        playingLive.isHidden = true
+        playingLiveIcon.isHidden = true
         
         // Check for station change
         if isNewStation {
@@ -232,17 +237,21 @@ class NowPlayingViewController: UIViewController {
             songLabel.text = manager.currentStation?.trackName
             artistLabel.text = manager.currentStation?.artistName
             if ((songLabel.text!.hasSuffix("[LIVE]"))) {
-                playingLive.text = "PLAYING LIVE"
+                playingLive.text = "LIVE"
+                playingLiveIcon.isHidden = false
             } else {
                 playingLive.text = ""
+                playingLiveIcon.isHidden = true
             }
             RadioAPI.getCurrentDJ { result in
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let currentDJ):
                         self.djName.text = currentDJ
+                        self.liveDJIndicator.isHidden = false
                     case .failure(_):
                         self.djName.text = "Spud the Ambient Robot"
+                        self.liveDJIndicator.isHidden = true
                     }
                 }
             }
