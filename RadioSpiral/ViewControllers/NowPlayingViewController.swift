@@ -236,19 +236,24 @@ class NowPlayingViewController: UIViewController {
             // Radio is (hopefully) streaming properly
             songLabel.text = manager.currentStation?.trackName
             artistLabel.text = manager.currentStation?.artistName
-            if ((songLabel.text!.hasSuffix("[LIVE]"))) {
-                playingLive.text = "LIVE"
-                playingLiveIcon.isHidden = false
-            } else {
-                playingLive.text = ""
-                playingLiveIcon.isHidden = true
-            }
             RadioAPI.getCurrentDJ { result in
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let currentDJ):
                         self.djName.text = currentDJ
                         self.liveDJIndicator.isHidden = false
+                        if (self.songLabel.text!.contains("[live]") ||
+                            self.songLabel.text!.lowercased().contains("{live}") ||
+                            self.songLabel.text!.lowercased().contains("(live)") ||
+                            self.songLabel.text!.lowercased().contains("«live»") ||
+                            self.songLabel.text!.lowercased().contains("<live>")
+                        ) {
+                            self.playingLive.text = "LIVE"
+                            self.playingLiveIcon.isHidden = false
+                        } else {
+                            self.playingLive.text = ""
+                            self.playingLiveIcon.isHidden = true
+                        }
                     case .failure(_):
                         self.djName.text = "Spud the Ambient Robot"
                         self.liveDJIndicator.isHidden = true
