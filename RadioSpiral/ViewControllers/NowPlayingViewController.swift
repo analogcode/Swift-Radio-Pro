@@ -244,7 +244,6 @@ class NowPlayingViewController: UIViewController {
                         self.liveDJIndicator.isHidden = false
                         if (self.songLabel.text!.contains("[live]") ||
                             self.songLabel.text!.lowercased().contains("{live}") ||
-                            self.songLabel.text!.lowercased().contains("(live)") ||
                             self.songLabel.text!.lowercased().contains("«live»") ||
                             self.songLabel.text!.lowercased().contains("<live>")
                         ) {
