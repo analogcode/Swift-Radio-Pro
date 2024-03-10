@@ -54,6 +54,7 @@ class NowPlayingViewController: UIViewController {
         super.viewDidLoad()
         
         navigationItem.largeTitleDisplayMode = .never
+        navigationItem.hidesBackButton = true
         
         player.addObserver(self)
         manager.addObserver(self)
@@ -132,6 +133,7 @@ class NowPlayingViewController: UIViewController {
         }
         title = manager.currentStation?.name
         updateLabels()
+        player.stop()
     }
     
     // MARK: - Player Controls (Play/Pause/Volume)

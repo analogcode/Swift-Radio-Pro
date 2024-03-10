@@ -43,7 +43,7 @@ class InfoDetailViewController: UIViewController {
     
     func loadDefaultText() {
         // Add your own default ext
-        stationLongDescTextView.text = "You are listening to Swift Radio. This is a sweet open source project. Tell your friends, swiftly!"
+        stationLongDescTextView.text = "RadioSpiral's 24/7 captivating electronica: some of the best in the genres of electronic and ambient music, featuring live DJs and live performances."
     }
     
     func setupStationLogo() {
@@ -63,4 +63,7 @@ class InfoDetailViewController: UIViewController {
         _ = navigationController?.popViewController(animated: true)
     }
     
+    override func setValue(_ value: Any?, forUndefinedKey key: String
+    ) {
+    }
 }
