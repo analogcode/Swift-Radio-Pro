@@ -30,7 +30,11 @@ struct RadioStation: Codable {
 
 extension RadioStation {
     var shoutout: String {
-        "I'm listening to \"\(trackName)\" by \(artistName) on \(Bundle.main.appName)"
+        if releaseName.isEmpty {
+            "I'm listening to \"\(trackName)\" by \(artistName) on \(Bundle.main.appName)"
+        } else {
+            "I'm listening to \"\(trackName)\" by \(artistName) from \"\(releaseName)\" on \(Bundle.main.appName)"
+        }
     }
 }
 
@@ -65,5 +69,14 @@ extension RadioStation {
     
     var artistName: String {
         FRadioPlayer.shared.currentMetadata?.artistName ?? desc
+    }
+    
+    var releaseName: String {
+        let raw = FRadioPlayer.shared.currentMetadata?.rawValue
+        let parts = raw?.components(separatedBy: " - ")
+        if parts?.count == 3 {
+            return (parts?[1])!
+        }
+        return ""
     }
 }

@@ -27,6 +27,7 @@ class NowPlayingViewController: UIViewController {
     @IBOutlet weak var albumHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var albumImageView: SpringImageView!
     @IBOutlet weak var artistLabel: UILabel!
+    @IBOutlet weak var releaseLabel: SpringLabel!
     @IBOutlet weak var playingButton: UIButton!
     @IBOutlet weak var songLabel: SpringLabel!
     @IBOutlet weak var volumeParentView: UIView!
@@ -234,6 +235,7 @@ class NowPlayingViewController: UIViewController {
             self.liveDJIndicator.isHidden = false
             songLabel.text = manager.currentStation?.trackName
             artistLabel.text = manager.currentStation?.artistName
+            releaseLabel.text = manager.currentStation?.releaseName
             RadioStationPROAPI.getCurrentDJ { result in
                 DispatchQueue.main.async {
                     let idleImage = UIImage(systemName: "music.quarternote.3")

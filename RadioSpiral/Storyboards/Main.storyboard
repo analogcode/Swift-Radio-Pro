@@ -153,6 +153,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Vgo-YG-Yt7" userLabel="Background Image View">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="obn-8m-awZ" userLabel="AlbumArt" customClass="SpringImageView" customModule="Spring">
                                 <rect key="frame" x="70" y="85" width="274" height="274"/>
                                 <constraints>
@@ -259,7 +263,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8xJ-4F-WCE" userLabel="Labels Stack View">
-                                <rect key="frame" x="12" y="518" width="390" height="95.5"/>
+                                <rect key="frame" x="12" y="518" width="390" height="121.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="KC8-ZG-rx5" userLabel="Song Label" customClass="SpringLabel" customModule="Spring">
                                         <rect key="frame" x="124.5" y="0.0" width="141" height="33.5"/>
@@ -273,8 +277,14 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="43A-7o-9jl" userLabel="Releae Label" customClass="SpringLabel" customModule="Spring">
+                                        <rect key="frame" x="146" y="73.5" width="98" height="18"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Crw-vf-mrA">
-                                        <rect key="frame" x="167" y="73.5" width="56.5" height="22"/>
+                                        <rect key="frame" x="167" y="99.5" width="56.5" height="22"/>
                                         <subviews>
                                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I0s-yb-8QN" userLabel="State Indicator">
                                                 <rect key="frame" x="0.0" y="0.0" width="23.5" height="22"/>
@@ -389,6 +399,7 @@
                         <outlet property="nextButton" destination="rdn-tm-QKv" id="VHQ-xc-bpl"/>
                         <outlet property="playingButton" destination="k7t-tN-2wp" id="ZOi-KR-veF"/>
                         <outlet property="previousButton" destination="W6n-gy-z3a" id="bKE-rg-HPb"/>
+                        <outlet property="releaseLabel" destination="43A-7o-9jl" id="6Gr-nr-cjU"/>
                         <outlet property="songLabel" destination="KC8-ZG-rx5" id="tNh-3K-qWW"/>
                         <outlet property="volumeParentView" destination="zuj-rb-EKQ" id="KFg-Rk-y3Q"/>
                     </connections>
