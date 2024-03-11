@@ -103,7 +103,6 @@ struct RadioAPI {
             }
 
             result = String(decoding: data, as: UTF8.self)
-            print(result)
             do {
                 // Decode the JSON response
                 let decoder = JSONDecoder()
@@ -111,8 +110,6 @@ struct RadioAPI {
                 // Extract and pass the current show value to the completion handler
                 completion(.success(broadcastResponse.broadcast.current_show.show.hosts[0].name))
             } catch {
-                print("failed")
-                print(error)
                 // Handle decoding errors within the closure
                 completion(.failure(error))
             }

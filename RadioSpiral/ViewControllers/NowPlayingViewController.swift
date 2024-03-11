@@ -35,8 +35,6 @@ class NowPlayingViewController: UIViewController {
     @IBOutlet weak var airPlayView: UIView!
     @IBOutlet weak var djName: UILabel!
     @IBOutlet weak var liveDJIndicator: UIButton!
-    @IBOutlet weak var playingLive: UILabel!
-    @IBOutlet weak var playingLiveIcon: UIButton!
     
     // MARK: - Properties
     
@@ -69,11 +67,8 @@ class NowPlayingViewController: UIViewController {
         self.title = manager.currentStation?.name
         
         // Set UI
-        playingLive.text = ""
         djName.text = ""
         liveDJIndicator.isHidden = true
-        playingLive.isHidden = true
-        playingLiveIcon.isHidden = true
         
         // Check for station change
         if isNewStation {
@@ -236,28 +231,32 @@ class NowPlayingViewController: UIViewController {
 
         guard let statusMessage = statusMessage else {
             // Radio is (hopefully) streaming properly
+            self.liveDJIndicator.isHidden = false
             songLabel.text = manager.currentStation?.trackName
             artistLabel.text = manager.currentStation?.artistName
             RadioAPI.getCurrentDJ { result in
                 DispatchQueue.main.async {
+                    let idleImage = UIImage(systemName: "music.quarternote.3")
+                    let djImage = UIImage(systemName: "music.mic.circle.fill")
+                    let liveImage = UIImage(systemName: "pianokeys.inverse")
                     switch result {
                     case .success(let currentDJ):
+                        self.liveDJIndicator.setImage(liveImage, for: .normal)
                         self.djName.text = currentDJ
-                        self.liveDJIndicator.isHidden = false
                         if (self.songLabel.text!.contains("[live]") ||
                             self.songLabel.text!.lowercased().contains("{live}") ||
                             self.songLabel.text!.lowercased().contains("«live»") ||
-                            self.songLabel.text!.lowercased().contains("<live>")
+                            self.songLabel.text!.lowercased().contains("<live>") ||
+                            self.songLabel.text!.contains("LIVE on RadioSpiral")
                         ) {
-                            self.playingLive.text = "LIVE"
-                            self.playingLiveIcon.isHidden = false
+                            self.liveDJIndicator.setImage(liveImage, for: .normal)
                         } else {
-                            self.playingLive.text = ""
-                            self.playingLiveIcon.isHidden = true
+                            self.liveDJIndicator.setImage(djImage, for: .normal)
                         }
+
                     case .failure(_):
                         self.djName.text = "Spud the Ambient Robot"
-                        self.liveDJIndicator.isHidden = true
+                        self.liveDJIndicator.setImage(idleImage, for: .normal)
                     }
                 }
             }
