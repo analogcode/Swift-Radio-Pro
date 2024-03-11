@@ -1,6 +1,12 @@
 name: iOS build
 
 on:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: Logging level
+        type: string
+        required: true
   push:
     branches: [ "master"]
   pull_request:
