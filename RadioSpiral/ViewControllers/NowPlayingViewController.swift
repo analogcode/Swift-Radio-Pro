@@ -234,7 +234,7 @@ class NowPlayingViewController: UIViewController {
             self.liveDJIndicator.isHidden = false
             songLabel.text = manager.currentStation?.trackName
             artistLabel.text = manager.currentStation?.artistName
-            RadioAPI.getCurrentDJ { result in
+            RadioStationPROAPI.getCurrentDJ { result in
                 DispatchQueue.main.async {
                     let idleImage = UIImage(systemName: "music.quarternote.3")
                     let djImage = UIImage(systemName: "music.mic.circle.fill")

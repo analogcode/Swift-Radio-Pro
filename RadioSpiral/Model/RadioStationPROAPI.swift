@@ -1,5 +1,5 @@
 //
-//  RadioAPI.swift
+//  RadioStationPROAPI.swift
 //  RadioSpiral
 //
 //  Created by Joe McMahon on 12/22/23.
@@ -65,7 +65,7 @@ struct RadioData: Codable {
     let endpoints: Endpoints
 }
 
-struct RadioAPI {
+struct RadioStationPROAPI {
     
     // Define the URL for the broadcast endpoint
     private static let endpointURL = URL(string: "https://radiospiral.net/wp-json/radio/broadcast/")!
