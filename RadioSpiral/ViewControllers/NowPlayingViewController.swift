@@ -239,7 +239,7 @@ class NowPlayingViewController: UIViewController {
             RadioStationPROAPI.getCurrentDJ { result in
                 DispatchQueue.main.async {
                     let idleImage = UIImage(systemName: "music.quarternote.3")
-                    let djImage = UIImage(systemName: "music.mic.circle.fill")
+                    let djImage = UIImage(systemName: "music.mic")
                     let liveImage = UIImage(systemName: "pianokeys.inverse")
                     switch result {
                     case .success(let currentDJ):
