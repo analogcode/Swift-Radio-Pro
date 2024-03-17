@@ -33,14 +33,30 @@ class MainCoordinator: NavigationCoordinator {
     func openEmail(in viewController: UIViewController & MFMailComposeViewControllerDelegate) {
         let receipients = [Config.email]
         let subject = Config.emailSubject
-        let messageBody = ""
+        
+        var version = "unavailable"
+        var build = "unavailable"
+        if let v = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+            version = v
+        }
+        if let b = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
+            build = b
+        }
+        let messageBody = "App version \(version), build \(build)\n"
         
         let configuredMailComposeViewController = viewController.configureMailComposeViewController(recepients: receipients, subject: subject, messageBody: messageBody)
         
         if viewController.canSendMail {
             viewController.present(configuredMailComposeViewController, animated: true, completion: nil)
         } else {
-            viewController.showSendMailErrorAlert()
+            bruteForceSendMail(recepients: receipients, subject: subject, messageBody: messageBody)
+        }
+    }
+    
+    func bruteForceSendMail(recepients: [String], subject: String, messageBody: String) {
+        var email = "mailto:\(recepients[0])?subject=\(subject)&body=\(messageBody)"
+        email = email.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) ?? ""
+        UIApplication.shared.open(URL(string: email)!, options: [:]) { success in
         }
     }
     
