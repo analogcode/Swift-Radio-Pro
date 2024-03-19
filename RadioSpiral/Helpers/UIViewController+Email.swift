@@ -27,7 +27,7 @@ extension MFMailComposeViewControllerDelegate where Self: UIViewController {
     }
     
     func showSendMailErrorAlert() {
-        let sendMailErrorAlert = UIAlertController(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", preferredStyle: .alert)
+        let sendMailErrorAlert = UIAlertController(title: "Unable to send mail", message: "We were unable to open the default mail application. Please check your mail configuration and try again.", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
 
         sendMailErrorAlert.addAction(cancelAction)

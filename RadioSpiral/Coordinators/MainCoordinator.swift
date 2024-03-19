@@ -49,15 +49,22 @@ class MainCoordinator: NavigationCoordinator {
         if viewController.canSendMail {
             viewController.present(configuredMailComposeViewController, animated: true, completion: nil)
         } else {
-            bruteForceSendMail(recepients: receipients, subject: subject, messageBody: messageBody)
+            if !bruteForceSendMail(recepients: receipients, subject: subject, messageBody: messageBody) {
+                // force presentation of the failure dialog
+                viewController.showSendMailErrorAlert()
+            }
         }
     }
     
-    func bruteForceSendMail(recepients: [String], subject: String, messageBody: String) {
+    func bruteForceSendMail(recepients: [String], subject: String, messageBody: String) -> Bool {
         var email = "mailto:\(recepients[0])?subject=\(subject)&body=\(messageBody)"
         email = email.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) ?? ""
+        var worked = false
+        print("Brute force email: \(subject)")
         UIApplication.shared.open(URL(string: email)!, options: [:]) { success in
+            worked = success
         }
+        return worked
     }
     
     func openAbout(in viewController: UIViewController) {
