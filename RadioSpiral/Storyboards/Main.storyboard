@@ -3,7 +3,7 @@
     <device id="retina6_0" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -154,11 +154,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="7tF-UX-xJ8" userLabel="Background Image View">
-                                <rect key="frame" x="0.0" y="0.0" width="983" height="2538"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="2538" id="dHx-db-ucc"/>
-                                    <constraint firstAttribute="width" constant="983" id="oQA-Yu-Nwi"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="obn-8m-awZ" userLabel="AlbumArt" customClass="SpringImageView" customModule="Spring">
                                 <rect key="frame" x="70" y="47" width="250" height="250"/>
@@ -383,17 +379,19 @@
                         <viewLayoutGuide key="safeArea" id="aXI-gd-81R"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="7tF-UX-xJ8" firstAttribute="leading" secondItem="aXI-gd-81R" secondAttribute="leading" id="0zT-nF-vtL"/>
+                            <constraint firstItem="aXI-gd-81R" firstAttribute="trailing" secondItem="7tF-UX-xJ8" secondAttribute="trailing" id="3Fb-Ii-qlz"/>
                             <constraint firstItem="WmY-ug-Nhz" firstAttribute="top" secondItem="obn-8m-awZ" secondAttribute="bottom" constant="30" id="77z-hi-QGE"/>
                             <constraint firstItem="uRO-Wl-Fhm" firstAttribute="leading" secondItem="aXI-gd-81R" secondAttribute="leading" constant="20" id="9DT-Wf-FIW"/>
                             <constraint firstItem="obn-8m-awZ" firstAttribute="top" secondItem="aXI-gd-81R" secondAttribute="top" id="9m0-ca-E91"/>
                             <constraint firstItem="obn-8m-awZ" firstAttribute="leading" secondItem="aXI-gd-81R" secondAttribute="leading" constant="70" id="Ad0-X2-0Fe"/>
-                            <constraint firstItem="7tF-UX-xJ8" firstAttribute="leading" secondItem="aXI-gd-81R" secondAttribute="leading" id="NCr-au-JeT"/>
-                            <constraint firstItem="7tF-UX-xJ8" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="-47" id="OdP-jL-DF3"/>
+                            <constraint firstItem="7tF-UX-xJ8" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="F8h-Bh-99U"/>
                             <constraint firstItem="8xJ-4F-WCE" firstAttribute="top" secondItem="a3Z-1t-AAA" secondAttribute="bottom" constant="12" id="Rgp-Rr-5X1"/>
                             <constraint firstItem="uRO-Wl-Fhm" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="Y7K-G5-WfY"/>
                             <constraint firstItem="aXI-gd-81R" firstAttribute="trailing" secondItem="8xJ-4F-WCE" secondAttribute="trailing" constant="12" id="a0R-gd-CTo"/>
                             <constraint firstItem="a3Z-1t-AAA" firstAttribute="top" secondItem="WmY-ug-Nhz" secondAttribute="bottom" constant="12" id="epF-5G-BUS"/>
                             <constraint firstItem="8xJ-4F-WCE" firstAttribute="leading" secondItem="aXI-gd-81R" secondAttribute="leading" constant="12" id="iJJ-RH-r0a"/>
+                            <constraint firstAttribute="bottom" secondItem="7tF-UX-xJ8" secondAttribute="bottom" id="kHD-X0-fxW"/>
                             <constraint firstItem="aXI-gd-81R" firstAttribute="trailing" secondItem="obn-8m-awZ" secondAttribute="trailing" constant="70" id="mbe-x3-NBX"/>
                             <constraint firstItem="aXI-gd-81R" firstAttribute="bottom" secondItem="uRO-Wl-Fhm" secondAttribute="bottom" id="nRO-Y7-Xuk"/>
                             <constraint firstItem="aXI-gd-81R" firstAttribute="trailing" secondItem="a3Z-1t-AAA" secondAttribute="trailing" constant="12" id="p9p-mf-M9S"/>
@@ -437,7 +435,7 @@
                                 <rect key="frame" x="16" y="67" width="358" height="78.333333333333314"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stationImage" translatesAutoresizingMaskIntoConstraints="NO" id="AHg-sm-9St">
-                                        <rect key="frame" x="0.0" y="4.3333333333333286" width="110" height="70.000000000000014"/>
+                                        <rect key="frame" x="0.0" y="4.3333333333333286" width="110" height="70"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="BMD-rb-4Wt"/>
                                             <constraint firstAttribute="width" constant="110" id="QL8-t8-yAt"/>
