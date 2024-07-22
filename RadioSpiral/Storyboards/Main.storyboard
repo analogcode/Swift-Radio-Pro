@@ -156,15 +156,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="7tF-UX-xJ8" userLabel="Background Image View">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="obn-8m-awZ" userLabel="AlbumArt" customClass="SpringImageView" customModule="Spring">
-                                <rect key="frame" x="70" y="47" width="250" height="250"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="obn-8m-awZ" secondAttribute="height" multiplier="1:1" id="0o9-ZN-zY3"/>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="250" id="hCD-tK-vVP"/>
-                                </constraints>
-                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="WmY-ug-Nhz" userLabel="Controls Stack View">
-                                <rect key="frame" x="87" y="327" width="216" height="45"/>
+                                <rect key="frame" x="87" y="467" width="216" height="45"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W6n-gy-z3a" userLabel="PreviousButton">
                                         <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
@@ -225,7 +218,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="a3Z-1t-AAA" userLabel="Volume Stack View">
-                                <rect key="frame" x="12" y="384" width="366" height="60"/>
+                                <rect key="frame" x="12" y="524" width="366" height="60"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vol-min" translatesAutoresizingMaskIntoConstraints="NO" id="Kmj-vC-DQe">
                                         <rect key="frame" x="0.0" y="22" width="18" height="16"/>
@@ -262,7 +255,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8xJ-4F-WCE" userLabel="Labels Stack View">
-                                <rect key="frame" x="12" y="456.00000000000006" width="366" height="121.66666666666669"/>
+                                <rect key="frame" x="12" y="596" width="366" height="121.66666666666663"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="KC8-ZG-rx5" userLabel="Song Label" customClass="SpringLabel" customModule="Spring">
                                         <rect key="frame" x="112.66666666666669" y="0.0" width="141" height="33.666666666666664"/>
@@ -271,7 +264,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="v3l-q6-g0h" userLabel="Artist Label">
-                                        <rect key="frame" x="131.33333333333334" y="41.666666666666686" width="103.66666666666666" height="24"/>
+                                        <rect key="frame" x="131.33333333333334" y="41.666666666666629" width="103.66666666666666" height="24"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -375,16 +368,23 @@
                                     <constraint firstItem="djB-ds-tW4" firstAttribute="centerY" secondItem="uRO-Wl-Fhm" secondAttribute="centerY" id="zCg-cb-pqB"/>
                                 </constraints>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="obn-8m-awZ" userLabel="AlbumArt" customClass="SpringImageView" customModule="Spring">
+                                <rect key="frame" x="0.0" y="47" width="390" height="390"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="obn-8m-awZ" secondAttribute="height" multiplier="1:1" id="0o9-ZN-zY3"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="250" id="hCD-tK-vVP"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="aXI-gd-81R"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="7tF-UX-xJ8" firstAttribute="leading" secondItem="aXI-gd-81R" secondAttribute="leading" id="0zT-nF-vtL"/>
+                            <constraint firstItem="obn-8m-awZ" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="2Bi-6G-hDF"/>
                             <constraint firstItem="aXI-gd-81R" firstAttribute="trailing" secondItem="7tF-UX-xJ8" secondAttribute="trailing" id="3Fb-Ii-qlz"/>
                             <constraint firstItem="WmY-ug-Nhz" firstAttribute="top" secondItem="obn-8m-awZ" secondAttribute="bottom" constant="30" id="77z-hi-QGE"/>
                             <constraint firstItem="uRO-Wl-Fhm" firstAttribute="leading" secondItem="aXI-gd-81R" secondAttribute="leading" constant="20" id="9DT-Wf-FIW"/>
                             <constraint firstItem="obn-8m-awZ" firstAttribute="top" secondItem="aXI-gd-81R" secondAttribute="top" id="9m0-ca-E91"/>
-                            <constraint firstItem="obn-8m-awZ" firstAttribute="leading" secondItem="aXI-gd-81R" secondAttribute="leading" constant="70" id="Ad0-X2-0Fe"/>
                             <constraint firstItem="7tF-UX-xJ8" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="F8h-Bh-99U"/>
                             <constraint firstItem="8xJ-4F-WCE" firstAttribute="top" secondItem="a3Z-1t-AAA" secondAttribute="bottom" constant="12" id="Rgp-Rr-5X1"/>
                             <constraint firstItem="uRO-Wl-Fhm" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="Y7K-G5-WfY"/>
@@ -392,8 +392,8 @@
                             <constraint firstItem="a3Z-1t-AAA" firstAttribute="top" secondItem="WmY-ug-Nhz" secondAttribute="bottom" constant="12" id="epF-5G-BUS"/>
                             <constraint firstItem="8xJ-4F-WCE" firstAttribute="leading" secondItem="aXI-gd-81R" secondAttribute="leading" constant="12" id="iJJ-RH-r0a"/>
                             <constraint firstAttribute="bottom" secondItem="7tF-UX-xJ8" secondAttribute="bottom" id="kHD-X0-fxW"/>
-                            <constraint firstItem="aXI-gd-81R" firstAttribute="trailing" secondItem="obn-8m-awZ" secondAttribute="trailing" constant="70" id="mbe-x3-NBX"/>
                             <constraint firstItem="aXI-gd-81R" firstAttribute="bottom" secondItem="uRO-Wl-Fhm" secondAttribute="bottom" id="nRO-Y7-Xuk"/>
+                            <constraint firstItem="aXI-gd-81R" firstAttribute="trailing" secondItem="obn-8m-awZ" secondAttribute="trailing" priority="100" id="nc4-oD-L1P"/>
                             <constraint firstItem="aXI-gd-81R" firstAttribute="trailing" secondItem="a3Z-1t-AAA" secondAttribute="trailing" constant="12" id="p9p-mf-M9S"/>
                             <constraint firstItem="a3Z-1t-AAA" firstAttribute="leading" secondItem="aXI-gd-81R" secondAttribute="leading" constant="12" id="sHe-lq-M9M"/>
                             <constraint firstItem="WmY-ug-Nhz" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="xjT-ZW-MWx"/>
