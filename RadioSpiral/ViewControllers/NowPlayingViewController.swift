@@ -212,20 +212,10 @@ class NowPlayingViewController: UIViewController {
     // MARK: - UI Helper Methods
     
     func optimizeForDeviceSize() {
-        
         // Adjust album size to fit iPhone 4s, 6s & 6s+
-        let deviceHeight = self.view.bounds.height
-        
-        if deviceHeight == 480 {
-            albumHeightConstraint.constant = 106
-            view.updateConstraints()
-        } else if deviceHeight == 667 {
-            albumHeightConstraint.constant = 230
-            view.updateConstraints()
-        } else if deviceHeight > 667 {
-            albumHeightConstraint.constant = 260
-            view.updateConstraints()
-        }
+        let deviceHeight = self.view.bounds.height * 0.30
+        albumHeightConstraint.constant = deviceHeight
+        view.updateConstraints()
     }
     
     func updateLabels(with statusMessage: String? = nil, animate: Bool = true) {

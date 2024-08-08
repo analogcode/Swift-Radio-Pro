@@ -58,6 +58,7 @@ class NowPlayingView: UIView {
     
     private func setupViews() {
         backgroundColor = .black.withAlphaComponent(0.1)
+        
         NSLayoutConstraint.activate([
             heightAnchor.constraint(greaterThanOrEqualToConstant: 50)
         ])
