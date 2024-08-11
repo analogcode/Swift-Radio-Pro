@@ -154,7 +154,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="7tF-UX-xJ8" userLabel="Background Image View">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                                <rect key="frame" x="0.0" y="47" width="390" height="763"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="WmY-ug-Nhz" userLabel="Controls Stack View">
                                 <rect key="frame" x="87" y="467" width="216" height="45"/>
@@ -379,22 +379,22 @@
                         <viewLayoutGuide key="safeArea" id="aXI-gd-81R"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="7tF-UX-xJ8" firstAttribute="leading" secondItem="aXI-gd-81R" secondAttribute="leading" id="0zT-nF-vtL"/>
                             <constraint firstItem="obn-8m-awZ" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="2Bi-6G-hDF"/>
-                            <constraint firstItem="aXI-gd-81R" firstAttribute="trailing" secondItem="7tF-UX-xJ8" secondAttribute="trailing" id="3Fb-Ii-qlz"/>
                             <constraint firstItem="WmY-ug-Nhz" firstAttribute="top" secondItem="obn-8m-awZ" secondAttribute="bottom" constant="30" id="77z-hi-QGE"/>
                             <constraint firstItem="uRO-Wl-Fhm" firstAttribute="leading" secondItem="aXI-gd-81R" secondAttribute="leading" constant="20" id="9DT-Wf-FIW"/>
                             <constraint firstItem="obn-8m-awZ" firstAttribute="top" secondItem="aXI-gd-81R" secondAttribute="top" id="9m0-ca-E91"/>
-                            <constraint firstItem="7tF-UX-xJ8" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="F8h-Bh-99U"/>
+                            <constraint firstItem="aXI-gd-81R" firstAttribute="trailing" secondItem="7tF-UX-xJ8" secondAttribute="trailing" id="AbT-xF-Xi8"/>
                             <constraint firstItem="8xJ-4F-WCE" firstAttribute="top" secondItem="a3Z-1t-AAA" secondAttribute="bottom" constant="12" id="Rgp-Rr-5X1"/>
+                            <constraint firstItem="aXI-gd-81R" firstAttribute="leading" secondItem="7tF-UX-xJ8" secondAttribute="leading" id="T6f-jC-ASq"/>
                             <constraint firstItem="uRO-Wl-Fhm" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="Y7K-G5-WfY"/>
                             <constraint firstItem="aXI-gd-81R" firstAttribute="trailing" secondItem="8xJ-4F-WCE" secondAttribute="trailing" constant="12" id="a0R-gd-CTo"/>
                             <constraint firstItem="a3Z-1t-AAA" firstAttribute="top" secondItem="WmY-ug-Nhz" secondAttribute="bottom" constant="12" id="epF-5G-BUS"/>
+                            <constraint firstItem="aXI-gd-81R" firstAttribute="top" secondItem="7tF-UX-xJ8" secondAttribute="top" id="hea-L4-vze"/>
                             <constraint firstItem="8xJ-4F-WCE" firstAttribute="leading" secondItem="aXI-gd-81R" secondAttribute="leading" constant="12" id="iJJ-RH-r0a"/>
-                            <constraint firstAttribute="bottom" secondItem="7tF-UX-xJ8" secondAttribute="bottom" id="kHD-X0-fxW"/>
                             <constraint firstItem="aXI-gd-81R" firstAttribute="bottom" secondItem="uRO-Wl-Fhm" secondAttribute="bottom" id="nRO-Y7-Xuk"/>
                             <constraint firstItem="aXI-gd-81R" firstAttribute="trailing" secondItem="a3Z-1t-AAA" secondAttribute="trailing" constant="12" id="p9p-mf-M9S"/>
                             <constraint firstItem="a3Z-1t-AAA" firstAttribute="leading" secondItem="aXI-gd-81R" secondAttribute="leading" constant="12" id="sHe-lq-M9M"/>
+                            <constraint firstItem="aXI-gd-81R" firstAttribute="bottom" secondItem="7tF-UX-xJ8" secondAttribute="bottom" id="vpq-wx-WbN"/>
                             <constraint firstItem="WmY-ug-Nhz" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="xjT-ZW-MWx"/>
                         </constraints>
                     </view>
