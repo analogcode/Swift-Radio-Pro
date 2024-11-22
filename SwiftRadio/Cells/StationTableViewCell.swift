@@ -13,6 +13,7 @@ class StationTableViewCell: UITableViewCell {
     
     let stationImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.accessibilityIdentifier = "stationImageView"
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         NSLayoutConstraint.activate([
@@ -24,6 +25,7 @@ class StationTableViewCell: UITableViewCell {
     
     let titleLabel: UILabel = {
         let label = UILabel()
+        label.accessibilityIdentifier = "stationTitleLabel"
         label.font = .preferredFont(forTextStyle: .title3)
         label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -32,6 +34,7 @@ class StationTableViewCell: UITableViewCell {
     
     let subtitleLabel: UILabel = {
         let label = UILabel()
+        label.accessibilityIdentifier = "stationSubtitleLabel"
         label.font = .preferredFont(forTextStyle: .footnote)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

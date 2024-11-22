@@ -26,6 +26,7 @@ class LoaderController: BaseController {
     
     private let errorTitleLabel: UILabel = {
         let label = UILabel()
+        label.accessibilityIdentifier = "errorTitleLabel"
         label.textAlignment = .center
         label.font = UIFont.preferredFont(forTextStyle: .headline)
         label.numberOfLines = 0
@@ -35,6 +36,7 @@ class LoaderController: BaseController {
     
     private let errorMessageLabel: UILabel = {
         let label = UILabel()
+        label.accessibilityIdentifier = "errorMessageLabel"
         label.textAlignment = .center
         label.numberOfLines = 0
         label.font = UIFont.preferredFont(forTextStyle: .footnote)

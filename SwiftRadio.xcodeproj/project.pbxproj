@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,8 @@
 		5FDEE0221F72FF980064333C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FDEE0211F72FF980064333C /* LaunchScreen.storyboard */; };
 		6258DCD822D93A3500166C65 /* LogoShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258DCD722D93A3500166C65 /* LogoShareView.swift */; };
 		6258DCDA22D93A5400166C65 /* LogoShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6258DCD922D93A5400166C65 /* LogoShareView.xib */; };
+		8ED2B1682CE3C814009F33D7 /* AccessIDs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED2B1672CE3C800009F33D7 /* AccessIDs.swift */; };
+		8ED2B16A2CE51496009F33D7 /* AccessIDs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED2B1672CE3C800009F33D7 /* AccessIDs.swift */; };
 		9409E11C1ABF6FEA00312E2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */; };
 		9409E1261ABF6FEA00312E2B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9409E1251ABF6FEA00312E2B /* Images.xcassets */; };
 		9409E1401ABF78B000312E2B /* NowPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9409E13F1ABF78B000312E2B /* NowPlayingViewController.swift */; };
@@ -105,6 +107,7 @@
 		5FDEE0211F72FF980064333C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6258DCD722D93A3500166C65 /* LogoShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoShareView.swift; sourceTree = "<group>"; };
 		6258DCD922D93A5400166C65 /* LogoShareView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoShareView.xib; sourceTree = "<group>"; };
+		8ED2B1672CE3C800009F33D7 /* AccessIDs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessIDs.swift; sourceTree = "<group>"; };
 		9409E1161ABF6FEA00312E2B /* SwiftRadio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftRadio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9409E11A1ABF6FEA00312E2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -142,6 +145,10 @@
 		CF72ACE621F714D000461EED /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		8ED2B16B2CE71834009F33D7 /* Actions */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Actions; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		2C5545B71C1124DE00728469 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -178,6 +185,7 @@
 		2C5545BB1C1124DE00728469 /* SwiftRadioUITests */ = {
 			isa = PBXGroup;
 			children = (
+				8ED2B16B2CE71834009F33D7 /* Actions */,
 				2C5545BC1C1124DE00728469 /* SwiftRadioUITests.swift */,
 				2C5545BE1C1124DE00728469 /* Info.plist */,
 			);
@@ -207,6 +215,7 @@
 		9409E1181ABF6FEA00312E2B /* SwiftRadio */ = {
 			isa = PBXGroup;
 			children = (
+				8ED2B1672CE3C800009F33D7 /* AccessIDs.swift */,
 				CE0A4994291F3A220071C0CC /* SwiftRadio.entitlements */,
 				CE0A4993291F39660071C0CC /* CarPlay */,
 				CE8062F7291EF5D9008BD097 /* Helpers */,
@@ -342,6 +351,9 @@
 			);
 			dependencies = (
 				2C5545C01C1124DE00728469 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				8ED2B16B2CE71834009F33D7 /* Actions */,
 			);
 			name = SwiftRadioUITests;
 			productName = SwiftRadioUITests;
@@ -488,6 +500,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8ED2B16A2CE51496009F33D7 /* AccessIDs.swift in Sources */,
 				2C5545BD1C1124DE00728469 /* SwiftRadioUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -500,6 +513,7 @@
 				CE6036192A48BA2500E15E15 /* UITableViewCell+reuseIdentifier.swift in Sources */,
 				CE6036162A47B88600E15E15 /* StationTableViewCell.swift in Sources */,
 				CE9EE8DE293BB41300F62041 /* BaseController.swift in Sources */,
+				8ED2B1682CE3C814009F33D7 /* AccessIDs.swift in Sources */,
 				53113F39230C720900462C0E /* ShareActivity.swift in Sources */,
 				9409E1401ABF78B000312E2B /* NowPlayingViewController.swift in Sources */,
 				CE963ECC29135A6F004F299E /* StationsManager.swift in Sources */,

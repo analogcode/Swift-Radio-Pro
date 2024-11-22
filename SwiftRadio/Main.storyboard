@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -25,6 +25,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4YL-N4-xkC" userLabel="Close Button">
                                         <rect key="frame" x="8" y="8" width="16" height="16"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="popupCloseButton"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="Fwj-Pc-cZx"/>
                                             <constraint firstAttribute="width" constant="16" id="zOq-pb-kph"/>
@@ -40,6 +41,7 @@
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="swift-radio-black" translatesAutoresizingMaskIntoConstraints="NO" id="6p5-La-eLs" customClass="SpringImageView" customModule="SwiftRadio" customModuleProvider="target">
                                                 <rect key="frame" x="8" y="0.0" width="180" height="70"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="popupCompanyLogo"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="autostart" value="YES"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="animation" value="zoomIn"/>
@@ -54,6 +56,7 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Be5-hL-qtx" customClass="SpringButton" customModule="Spring">
                                                         <rect key="frame" x="0.0" y="0.0" width="86" height="32"/>
                                                         <color key="backgroundColor" red="0.24706900119781494" green="0.56329798698425293" blue="0.81052231788635254" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="popupAboutButton"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="32" id="otZ-mF-Bce"/>
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="86" id="qbR-b5-GDF"/>
@@ -80,6 +83,7 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NDa-S4-n0n" customClass="SpringButton" customModule="Spring">
                                                         <rect key="frame" x="86" y="0.0" width="86" height="32"/>
                                                         <color key="backgroundColor" red="0.20579981803894043" green="0.49201503396034241" blue="0.70883911848068237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="popupWebsiteButton"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="32" id="TH4-oX-IOh"/>
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="86" id="lC5-vy-gFK"/>
@@ -107,11 +111,13 @@
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open Source Project" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HWZ-je-blg">
                                                 <rect key="frame" x="31" y="122" width="134" height="17"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="popupProjectLabel"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Matt Fecher &amp; Fethi El Hassasna" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hYi-2l-6dj" userLabel="Matthew Fecher &amp; Fethi El Hassasna">
                                                 <rect key="frame" x="0.0" y="149" width="196" height="16"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="popupAuthorLabel"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -163,6 +169,7 @@
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="obn-8m-awZ" userLabel="AlbumArt" customClass="SpringImageView" customModule="Spring">
                                 <rect key="frame" x="70" y="85" width="274" height="274"/>
+                                <accessibility key="accessibilityConfiguration" identifier="playbackSongImageView"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="obn-8m-awZ" secondAttribute="height" multiplier="1:1" id="0o9-ZN-zY3"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="180" id="hCD-tK-vVP"/>
@@ -173,6 +180,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W6n-gy-z3a" userLabel="PreviousButton">
                                         <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="playbackPreviousButton"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="45" id="f7r-qa-s7e"/>
                                             <constraint firstAttribute="height" constant="45" id="qIK-DO-Pi2"/>
@@ -187,6 +195,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k7t-tN-2wp" userLabel="PauseButton">
                                         <rect key="frame" x="57" y="0.0" width="45" height="45"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="playbackPlayButton"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="45" id="0QP-4Y-L0R"/>
                                             <constraint firstAttribute="height" constant="45" id="9ls-Nq-FcF"/>
@@ -201,6 +210,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uXK-bZ-bdt" userLabel="PauseButton">
                                         <rect key="frame" x="114" y="0.0" width="45" height="45"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="playbackStopButton"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="45" id="ebX-Zd-lOX"/>
                                             <constraint firstAttribute="height" constant="45" id="vqL-YC-gUW"/>
@@ -215,6 +225,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rdn-tm-QKv" userLabel="NextButton">
                                         <rect key="frame" x="171" y="0.0" width="45" height="45"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="playbackNextButton"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="ClR-id-HJ9"/>
                                             <constraint firstAttribute="width" constant="45" id="vPQ-1T-f9U"/>
@@ -234,6 +245,7 @@
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vol-min" translatesAutoresizingMaskIntoConstraints="NO" id="Kmj-vC-DQe">
                                         <rect key="frame" x="0.0" y="22" width="18" height="16"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="playbackVolMinImage"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="3WZ-S6-HvY"/>
                                             <constraint firstAttribute="width" constant="18" id="RKf-B6-PfD"/>
@@ -244,6 +256,7 @@
                                         <subviews>
                                             <slider hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="iFC-eW-7WA">
                                                 <rect key="frame" x="6" y="15" width="326" height="31"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="playbackVolumeSlider"/>
                                             </slider>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -256,6 +269,7 @@
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vol-max" translatesAutoresizingMaskIntoConstraints="NO" id="Ygz-Co-31f">
                                         <rect key="frame" x="372" y="22" width="18" height="16"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="playbackVolMaxImage"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="B40-zU-UTb"/>
                                             <constraint firstAttribute="width" constant="18" id="SJ7-bf-Pl2"/>
@@ -271,12 +285,14 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="KC8-ZG-rx5" userLabel="Song Label" customClass="SpringLabel" customModule="Spring">
                                         <rect key="frame" x="124.5" y="0.0" width="141" height="33.5"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="playbackSongNameLabel"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="v3l-q6-g0h" userLabel="Artist Label">
                                         <rect key="frame" x="143" y="41.5" width="104" height="24"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="playbackArtistLabel"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -285,6 +301,7 @@
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GIj-4c-kRh" userLabel="Company-Button">
                                 <rect key="frame" x="12" y="818" width="90" height="36"/>
+                                <accessibility key="accessibilityConfiguration" identifier="playbackCompanyButton"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="90" id="Qr8-LJ-AFv"/>
                                     <constraint firstAttribute="height" constant="36" id="m1i-gc-0rZ"/>
@@ -298,6 +315,7 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RA9-OX-Xr1" userLabel="Station Desc Label">
                                 <rect key="frame" x="70" y="327" width="274" height="21"/>
+                                <accessibility key="accessibilityConfiguration" identifier="playbackDescription"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="wJP-em-2hX"/>
                                 </constraints>
@@ -310,6 +328,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3BY-Uw-fd7" userLabel="Share Button">
                                         <rect key="frame" x="0.0" y="0.0" width="26" height="26"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="playbackShareButton"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="26" id="OdL-jY-2i8"/>
                                             <constraint firstAttribute="height" constant="26" id="WCg-3H-2ht"/>
@@ -325,6 +344,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yfv-H0-2Po" userLabel="InformationButton">
                                         <rect key="frame" x="36" y="4" width="22" height="22"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="playbackInfoButton"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="IbM-ag-eBx"/>
                                             <constraint firstAttribute="width" constant="22" id="LtX-vH-4q5"/>
@@ -343,6 +363,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="djB-ds-tW4" userLabel="AirPlay View" customClass="AirPlayUIView">
                                 <rect key="frame" x="186" y="814" width="42" height="45"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <accessibility key="accessibilityConfiguration" identifier="playbackAirPlayButton"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="fg4-Nd-K1s"/>
                                     <constraint firstAttribute="width" constant="42" id="yR1-Zk-l1q"/>
@@ -413,6 +434,7 @@
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stationImage" translatesAutoresizingMaskIntoConstraints="NO" id="AHg-sm-9St">
                                         <rect key="frame" x="0.0" y="0.0" width="110" height="70"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="infoStationImage"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="BMD-rb-4Wt"/>
                                             <constraint firstAttribute="width" constant="110" id="QL8-t8-yAt"/>
@@ -423,12 +445,14 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sub Pop Records" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IEm-3W-Db6">
                                                 <rect key="frame" x="0.0" y="0.0" width="264" height="20.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="infoStationTitle"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mid-sized Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vLU-OR-FSU">
                                                 <rect key="frame" x="0.0" y="28.5" width="264" height="18"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="infoStationSubtitleLabel"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -439,6 +463,7 @@
                             </stackView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJI-ka-9k5">
                                 <rect key="frame" x="20" y="154" width="374" height="192"/>
+                                <accessibility key="accessibilityConfiguration" identifier="infoDescriptionLabel"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="340" id="ulU-kP-hZB"/>
                                 </constraints>
@@ -450,6 +475,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Btu-bZ-7Pz">
                                 <rect key="frame" x="20" y="806" width="374" height="36"/>
                                 <color key="backgroundColor" red="0.15054957568645477" green="0.15034264326095581" blue="0.15674735605716705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="infoOkayButton"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="Gpj-99-oS5"/>
                                 </constraints>
@@ -510,6 +536,7 @@
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Paf-Ad-5GK">
                                         <rect key="frame" x="0.0" y="0.0" width="120" height="80"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="aboutLogoImage"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="4gy-h5-Ai4"/>
                                             <constraint firstAttribute="width" constant="120" id="WyE-Hg-XAf"/>
@@ -520,6 +547,7 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Xcode / Swift" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vTb-3H-cug">
                                                 <rect key="frame" x="0.0" y="0.0" width="254" height="25"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="aboutVersionLabel"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="Jjn-aw-6Ea"/>
                                                 </constraints>
@@ -529,6 +557,7 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Radio App" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gcd-mM-ZPe">
                                                 <rect key="frame" x="0.0" y="33" width="254" height="18"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="aboutAppNameLabel"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -539,6 +568,7 @@
                             </stackView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7AK-QT-5Xg">
                                 <rect key="frame" x="20" y="108" width="374" height="258"/>
+                                <accessibility key="accessibilityConfiguration" identifier="aboutDescription"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="350" id="L5G-S8-88G"/>
                                 </constraints>
@@ -561,6 +591,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBf-Hj-mZ8">
                                                 <rect key="frame" x="158.5" y="0.0" width="65" height="33"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="aboutWebsiteButton"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Website">
@@ -572,6 +603,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1G4-to-fqL">
                                                 <rect key="frame" x="160" y="37" width="62" height="30"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="aboutEmailButton"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="email me">
@@ -586,6 +618,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qFQ-Uk-iUq">
                                         <rect key="frame" x="0.0" y="75" width="382" height="36"/>
                                         <color key="backgroundColor" red="0.20187027752399445" green="0.2016473114490509" blue="0.20853230357170105" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="aboutOkayButton"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="36" id="EYd-7e-NvX"/>
                                         </constraints>
