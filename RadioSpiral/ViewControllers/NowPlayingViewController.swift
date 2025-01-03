@@ -108,7 +108,6 @@ class NowPlayingViewController: UIViewController {
         djName.text = client.status.dj
         
         let processor = DownsamplingImageProcessor(size: albumImageView.bounds.size)
-                     |> RoundCornerImageProcessor(cornerRadius: 20)
         albumImageView.kf.indicatorType = .activity
         albumImageView.kf.setImage(with: client.status.artwork,
                                    options: [.processor(processor),
