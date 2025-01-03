@@ -1,5 +1,5 @@
 {
-  "originHash" : "c03022914e54a7652fd2a88118474c6bd04be8d7b4eb153d776df85ac35986a7",
+  "originHash" : "d7746270620e53e123e5e179f8e01dd0326b9e5638c6d3383db787fb441201f4",
   "pins" : [
     {
       "identity" : "fradioplayer",
@@ -8,6 +8,15 @@
       "state" : {
         "branch" : "v0.2.0",
         "revision" : "c3f472ed8cb59b442312362bca363863962c88b3"
+      }
+    },
+    {
+      "identity" : "kingfisher",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/onevcat/Kingfisher.git",
+      "state" : {
+        "revision" : "e6749919f9761d573d37a7d7e78b1b854c191d7f",
+        "version" : "8.1.3"
       }
     },
     {

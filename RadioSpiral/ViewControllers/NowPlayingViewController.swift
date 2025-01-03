@@ -11,6 +11,7 @@ import MediaPlayer
 import AVKit
 import Spring
 import FRadioPlayer
+import Kingfisher
 
 protocol NowPlayingViewControllerDelegate: AnyObject {
     func didTapCompanyButton(_ nowPlayingViewController: NowPlayingViewController)
@@ -21,6 +22,7 @@ protocol NowPlayingViewControllerDelegate: AnyObject {
 class NowPlayingViewController: UIViewController {
     
     weak var delegate: NowPlayingViewControllerDelegate?
+    let client = ACWebSocketClient.shared
     
     // MARK: - IB UI
     
@@ -89,9 +91,33 @@ class NowPlayingViewController: UIViewController {
         previousButton.isHidden = Config.hideNextPreviousButtons
         nextButton.isHidden = Config.hideNextPreviousButtons
         
+        // Connect websocket client
+        client.configurationDidChange(serverName: "Spiral.radio", shortCode: "radiospiral")
+        client.setDefaultDJ(name: "Spud the Ambient Robot")
+        client.addSubscriber(callback: updatedUI)
+        client.connect()
+        
         isPlayingDidChange(player.isPlaying)
     }
     
+    func updatedUI(status: ACStreamStatus) {
+        if !client.status.changed { return }
+        artistLabel.text = client.status.artist
+        songLabel.text = client.status.track
+        releaseLabel.text = client.status.album
+        djName.text = client.status.dj
+        
+        let processor = DownsamplingImageProcessor(size: albumImageView.bounds.size)
+                     |> RoundCornerImageProcessor(cornerRadius: 20)
+        albumImageView.kf.indicatorType = .activity
+        albumImageView.kf.setImage(with: client.status.artwork,
+                                   options: [.processor(processor),
+                                             .scaleFactor(UIScreen.main.scale),
+                                             .transition(.fade(1))
+                                            ])
+        
+    }
+              
     // MARK: - Setup
     
     func setupVolumeSlider() {
@@ -236,32 +262,6 @@ class NowPlayingViewController: UIViewController {
             songLabel.text = manager.currentStation?.trackName
             artistLabel.text = manager.currentStation?.artistName
             releaseLabel.text = manager.currentStation?.releaseName
-            RadioStationPROAPI.getCurrentDJ { result in
-                DispatchQueue.main.async {
-                    let idleImage = UIImage(systemName: "music.quarternote.3")
-                    let djImage = UIImage(systemName: "music.mic")
-                    let liveImage = UIImage(systemName: "pianokeys.inverse")
-                    switch result {
-                    case .success(let currentDJ):
-                        self.liveDJIndicator.setImage(liveImage, for: .normal)
-                        self.djName.text = currentDJ
-                        if (self.songLabel.text!.contains("[live]") ||
-                            self.songLabel.text!.lowercased().contains("{live}") ||
-                            self.songLabel.text!.lowercased().contains("«live»") ||
-                            self.songLabel.text!.lowercased().contains("<live>") ||
-                            self.songLabel.text!.contains("LIVE on RadioSpiral")
-                        ) {
-                            self.liveDJIndicator.setImage(liveImage, for: .normal)
-                        } else {
-                            self.liveDJIndicator.setImage(djImage, for: .normal)
-                        }
-
-                    case .failure(_):
-                        self.djName.text = "Spud the Ambient Robot"
-                        self.liveDJIndicator.setImage(idleImage, for: .normal)
-                    }
-                }
-            }
             shouldAnimateSongLabel(animate)
             return
         }

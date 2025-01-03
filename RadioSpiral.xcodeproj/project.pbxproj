@@ -12,9 +12,23 @@
 		5FDEE0221F72FF980064333C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FDEE0211F72FF980064333C /* LaunchScreen.storyboard */; };
 		6258DCD822D93A3500166C65 /* LogoShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258DCD722D93A3500166C65 /* LogoShareView.swift */; };
 		6258DCDA22D93A5400166C65 /* LogoShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6258DCD922D93A5400166C65 /* LogoShareView.xib */; };
-		710189282B366D3300E8A04C /* RadioStationPROAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710189272B366D3300E8A04C /* RadioStationPROAPI.swift */; };
 		715C87A62B23E141003FC57A /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C87A52B23E141003FC57A /* SnapshotHelper.swift */; };
 		7165121C2B35519B00473770 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF72ACE621F714D000461EED /* Main.storyboard */; };
+		719678592D27A72000DCD7CE /* ACStreamStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719678552D27A72000DCD7CE /* ACStreamStatus.swift */; };
+		7196785A2D27A72000DCD7CE /* ParseWebSocketData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719678582D27A72000DCD7CE /* ParseWebSocketData.swift */; };
+		7196785B2D27A72000DCD7CE /* ACConnectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719678542D27A72000DCD7CE /* ACConnectionState.swift */; };
+		7196785C2D27A72000DCD7CE /* ACWebSocketClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719678572D27A72000DCD7CE /* ACWebSocketClient.swift */; };
+		7196785D2D27A72000DCD7CE /* ACStreamStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719678552D27A72000DCD7CE /* ACStreamStatus.swift */; };
+		7196785E2D27A72000DCD7CE /* ParseWebSocketData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719678582D27A72000DCD7CE /* ParseWebSocketData.swift */; };
+		7196785F2D27A72000DCD7CE /* ACConnectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719678542D27A72000DCD7CE /* ACConnectionState.swift */; };
+		719678602D27A72000DCD7CE /* ACWebSocketClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719678572D27A72000DCD7CE /* ACWebSocketClient.swift */; };
+		719678612D27A72000DCD7CE /* ACStreamStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719678552D27A72000DCD7CE /* ACStreamStatus.swift */; };
+		719678622D27A72000DCD7CE /* ParseWebSocketData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719678582D27A72000DCD7CE /* ParseWebSocketData.swift */; };
+		719678632D27A72000DCD7CE /* ACConnectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719678542D27A72000DCD7CE /* ACConnectionState.swift */; };
+		719678642D27A72000DCD7CE /* ACWebSocketClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719678572D27A72000DCD7CE /* ACWebSocketClient.swift */; };
+		719678672D27AA6D00DCD7CE /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 719678662D27AA6D00DCD7CE /* Kingfisher */; };
+		719678692D27AA8E00DCD7CE /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 719678682D27AA8E00DCD7CE /* Kingfisher */; };
+		7196786B2D27AAA500DCD7CE /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 7196786A2D27AAA500DCD7CE /* Kingfisher */; };
 		9409E11C1ABF6FEA00312E2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */; };
 		9409E1261ABF6FEA00312E2B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9409E1251ABF6FEA00312E2B /* Images.xcassets */; };
 		9409E1401ABF78B000312E2B /* NowPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9409E13F1ABF78B000312E2B /* NowPlayingViewController.swift */; };
@@ -107,8 +121,12 @@
 		5FDEE0211F72FF980064333C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6258DCD722D93A3500166C65 /* LogoShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoShareView.swift; sourceTree = "<group>"; };
 		6258DCD922D93A5400166C65 /* LogoShareView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoShareView.xib; sourceTree = "<group>"; };
-		710189272B366D3300E8A04C /* RadioStationPROAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioStationPROAPI.swift; sourceTree = "<group>"; };
 		715C87A52B23E141003FC57A /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
+		719678542D27A72000DCD7CE /* ACConnectionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACConnectionState.swift; sourceTree = "<group>"; };
+		719678552D27A72000DCD7CE /* ACStreamStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACStreamStatus.swift; sourceTree = "<group>"; };
+		719678562D27A72000DCD7CE /* ACWebSocketClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACWebSocketClient.h; sourceTree = "<group>"; };
+		719678572D27A72000DCD7CE /* ACWebSocketClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACWebSocketClient.swift; sourceTree = "<group>"; };
+		719678582D27A72000DCD7CE /* ParseWebSocketData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseWebSocketData.swift; sourceTree = "<group>"; };
 		9409E1161ABF6FEA00312E2B /* RadioSpiral.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioSpiral.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9409E11A1ABF6FEA00312E2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -151,6 +169,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7196786B2D27AAA500DCD7CE /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,6 +181,7 @@
 				CE6036232A48C51A00E15E15 /* NVActivityIndicatorViewExtended in Frameworks */,
 				CE37D7B4290F47E000B0933B /* Spring in Frameworks */,
 				CE6036212A48C51A00E15E15 /* NVActivityIndicatorView in Frameworks */,
+				719678672D27AA6D00DCD7CE /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,6 +193,7 @@
 				CE60362A2A48F70A00E15E15 /* NVActivityIndicatorViewExtended in Frameworks */,
 				CE6A3E44291F376D0058C82A /* Spring in Frameworks */,
 				CE6036282A48F70A00E15E15 /* NVActivityIndicatorView in Frameworks */,
+				719678692D27AA8E00DCD7CE /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,6 +220,18 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
+		719678532D27A6E100DCD7CE /* ACWebSocketClient */ = {
+			isa = PBXGroup;
+			children = (
+				719678542D27A72000DCD7CE /* ACConnectionState.swift */,
+				719678552D27A72000DCD7CE /* ACStreamStatus.swift */,
+				719678562D27A72000DCD7CE /* ACWebSocketClient.h */,
+				719678572D27A72000DCD7CE /* ACWebSocketClient.swift */,
+				719678582D27A72000DCD7CE /* ParseWebSocketData.swift */,
+			);
+			path = ACWebSocketClient;
+			sourceTree = "<group>";
+		};
 		9409E10D1ABF6FE900312E2B = {
 			isa = PBXGroup;
 			children = (
@@ -221,6 +254,7 @@
 		9409E1181ABF6FEA00312E2B /* RadioSpiral */ = {
 			isa = PBXGroup;
 			children = (
+				719678532D27A6E100DCD7CE /* ACWebSocketClient */,
 				7181C9DC2B5C93600071EE97 /* Storyboards */,
 				CE0A4994291F3A220071C0CC /* SwiftRadio.entitlements */,
 				CE0A4993291F39660071C0CC /* CarPlay */,
@@ -297,7 +331,6 @@
 			children = (
 				94AC70AD1AD05C6200652982 /* RadioStation.swift */,
 				CE963ECB29135A6F004F299E /* StationsManager.swift */,
-				710189272B366D3300E8A04C /* RadioStationPROAPI.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -372,6 +405,7 @@
 				CE37D7B6290F4A9700B0933B /* FRadioPlayer */,
 				CE6036202A48C51A00E15E15 /* NVActivityIndicatorView */,
 				CE6036222A48C51A00E15E15 /* NVActivityIndicatorViewExtended */,
+				719678662D27AA6D00DCD7CE /* Kingfisher */,
 			);
 			productName = RadioPro;
 			productReference = 9409E1161ABF6FEA00312E2B /* RadioSpiral.app */;
@@ -395,6 +429,7 @@
 				CE6A3E2E291F376D0058C82A /* FRadioPlayer */,
 				CE6036272A48F70A00E15E15 /* NVActivityIndicatorView */,
 				CE6036292A48F70A00E15E15 /* NVActivityIndicatorViewExtended */,
+				719678682D27AA8E00DCD7CE /* Kingfisher */,
 			);
 			productName = RadioPro;
 			productReference = CE6A3E4F291F376D0058C82A /* RadioSpiral-CarPlay.app */;
@@ -409,7 +444,7 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 1530;
+				LastUpgradeCheck = 1620;
 				ORGANIZATIONNAME = matthewfecher.com;
 				TargetAttributes = {
 					2C5545B91C1124DE00728469 = {
@@ -441,6 +476,7 @@
 				CE37D7B2290F47E000B0933B /* XCRemoteSwiftPackageReference "Spring" */,
 				CE37D7B5290F4A9700B0933B /* XCRemoteSwiftPackageReference "FRadioPlayer" */,
 				CE60361F2A48C51A00E15E15 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
+				719678652D27AA4800DCD7CE /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 9409E1171ABF6FEA00312E2B /* Products */;
 			projectDirPath = "";
@@ -495,6 +531,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				719678592D27A72000DCD7CE /* ACStreamStatus.swift in Sources */,
+				7196785A2D27A72000DCD7CE /* ParseWebSocketData.swift in Sources */,
+				7196785B2D27A72000DCD7CE /* ACConnectionState.swift in Sources */,
+				7196785C2D27A72000DCD7CE /* ACWebSocketClient.swift in Sources */,
 				2C5545BD1C1124DE00728469 /* SwiftRadioUITests.swift in Sources */,
 				715C87A62B23E141003FC57A /* SnapshotHelper.swift in Sources */,
 			);
@@ -508,7 +548,6 @@
 				CE6036192A48BA2500E15E15 /* UITableViewCell+reuseIdentifier.swift in Sources */,
 				CE6036162A47B88600E15E15 /* StationTableViewCell.swift in Sources */,
 				CE9EE8DE293BB41300F62041 /* BaseController.swift in Sources */,
-				710189282B366D3300E8A04C /* RadioStationPROAPI.swift in Sources */,
 				53113F39230C720900462C0E /* ShareActivity.swift in Sources */,
 				9409E1401ABF78B000312E2B /* NowPlayingViewController.swift in Sources */,
 				CE963ECC29135A6F004F299E /* StationsManager.swift in Sources */,
@@ -533,6 +572,10 @@
 				CE9EE8E1293C048A00F62041 /* LoaderController.swift in Sources */,
 				CEDABBEB291217AF00C0367F /* UIImageView+Cache.swift in Sources */,
 				CE6036132A47A87A00E15E15 /* StationsViewController.swift in Sources */,
+				719678612D27A72000DCD7CE /* ACStreamStatus.swift in Sources */,
+				719678622D27A72000DCD7CE /* ParseWebSocketData.swift in Sources */,
+				719678632D27A72000DCD7CE /* ACConnectionState.swift in Sources */,
+				719678642D27A72000DCD7CE /* ACWebSocketClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,6 +611,10 @@
 				CE9EE8E2293C048A00F62041 /* LoaderController.swift in Sources */,
 				CE6A3E41291F376D0058C82A /* UIImageView+Cache.swift in Sources */,
 				CE6036142A47A87A00E15E15 /* StationsViewController.swift in Sources */,
+				7196785D2D27A72000DCD7CE /* ACStreamStatus.swift in Sources */,
+				7196785E2D27A72000DCD7CE /* ParseWebSocketData.swift in Sources */,
+				7196785F2D27A72000DCD7CE /* ACConnectionState.swift in Sources */,
+				719678602D27A72000DCD7CE /* ACWebSocketClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,7 +635,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = RadioSpiralUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -609,7 +656,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = RadioSpiralUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -628,6 +675,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -674,7 +722,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				"INFOPLIST_FILE[sdk=*]" = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -686,6 +734,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -724,7 +773,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -750,7 +799,7 @@
 				);
 				INFOPLIST_FILE = RadioSpiral/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = RadioSpiral;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -785,7 +834,7 @@
 				);
 				INFOPLIST_FILE = RadioSpiral/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = RadioSpiral;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -822,7 +871,7 @@
 				);
 				INFOPLIST_FILE = "RadioSpiral/Info-CarPlay.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "RadioSpiral-CarPlay";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -861,7 +910,7 @@
 				);
 				INFOPLIST_FILE = "RadioSpiral/Info-CarPlay.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "RadioSpiral-CarPlay";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -923,6 +972,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		719678652D27AA4800DCD7CE /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.1.3;
+			};
+		};
 		CE37D7B2290F47E000B0933B /* XCRemoteSwiftPackageReference "Spring" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/fethica/Spring.git";
@@ -966,6 +1023,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		719678662D27AA6D00DCD7CE /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 719678652D27AA4800DCD7CE /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		719678682D27AA8E00DCD7CE /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 719678652D27AA4800DCD7CE /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		7196786A2D27AAA500DCD7CE /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 719678652D27AA4800DCD7CE /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		CE37D7B3290F47E000B0933B /* Spring */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CE37D7B2290F47E000B0933B /* XCRemoteSwiftPackageReference "Spring" */;
