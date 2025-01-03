@@ -29,11 +29,13 @@ struct RadioStation: Codable {
 }
 
 extension RadioStation {
+    var client: ACWebSocketClient { ACWebSocketClient.shared }
+
     var shoutout: String {
-        if releaseName.isEmpty {
-            "I'm listening to \"\(trackName)\" by \(artistName) on \(Bundle.main.appName)"
+        if client.status.album.isEmpty {
+            "I'm listening to \"\(client.status.track)\" by \(client.status.artist) on \(Bundle.main.appName)"
         } else {
-            "I'm listening to \"\(trackName)\" by \(artistName) from \"\(releaseName)\" on \(Bundle.main.appName)"
+            "I'm listening to \"\(client.status.track)\" by \(client.status.artist) from \"\(client.status.album)\" on \(Bundle.main.appName)"
         }
     }
 }
