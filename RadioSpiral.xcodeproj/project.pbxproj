@@ -29,6 +29,8 @@
 		719678672D27AA6D00DCD7CE /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 719678662D27AA6D00DCD7CE /* Kingfisher */; };
 		719678692D27AA8E00DCD7CE /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 719678682D27AA8E00DCD7CE /* Kingfisher */; };
 		7196786B2D27AAA500DCD7CE /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 7196786A2D27AAA500DCD7CE /* Kingfisher */; };
+		71E9B4E22D2DE23A002D6496 /* ResizeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E9B4E12D2DE23A002D6496 /* ResizeImage.swift */; };
+		71E9B4E32D2DE23A002D6496 /* ResizeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E9B4E12D2DE23A002D6496 /* ResizeImage.swift */; };
 		9409E11C1ABF6FEA00312E2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */; };
 		9409E1261ABF6FEA00312E2B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9409E1251ABF6FEA00312E2B /* Images.xcassets */; };
 		9409E1401ABF78B000312E2B /* NowPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9409E13F1ABF78B000312E2B /* NowPlayingViewController.swift */; };
@@ -127,6 +129,7 @@
 		719678562D27A72000DCD7CE /* ACWebSocketClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACWebSocketClient.h; sourceTree = "<group>"; };
 		719678572D27A72000DCD7CE /* ACWebSocketClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACWebSocketClient.swift; sourceTree = "<group>"; };
 		719678582D27A72000DCD7CE /* ParseWebSocketData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseWebSocketData.swift; sourceTree = "<group>"; };
+		71E9B4E12D2DE23A002D6496 /* ResizeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizeImage.swift; sourceTree = "<group>"; };
 		9409E1161ABF6FEA00312E2B /* RadioSpiral.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioSpiral.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9409E11A1ABF6FEA00312E2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -331,6 +334,7 @@
 			children = (
 				94AC70AD1AD05C6200652982 /* RadioStation.swift */,
 				CE963ECB29135A6F004F299E /* StationsManager.swift */,
+				71E9B4E12D2DE23A002D6496 /* ResizeImage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -558,6 +562,7 @@
 				6258DCD822D93A3500166C65 /* LogoShareView.swift in Sources */,
 				949BBB401ACC9DEE005B7C26 /* DataManager.swift in Sources */,
 				CE6ECD00292F215F008B3C16 /* Storyboard.swift in Sources */,
+				71E9B4E22D2DE23A002D6496 /* ResizeImage.swift in Sources */,
 				94E9761C1B1A8F3200F52B1E /* UIImage+DropShadow.swift in Sources */,
 				94452E551AD7086800BFE7A5 /* AboutViewController.swift in Sources */,
 				CED6353B293081ED002B216F /* Handoffable.swift in Sources */,
@@ -597,6 +602,7 @@
 				CE6A3E37291F376D0058C82A /* LogoShareView.swift in Sources */,
 				CE6A3E38291F376D0058C82A /* DataManager.swift in Sources */,
 				CE6ECD01292F215F008B3C16 /* Storyboard.swift in Sources */,
+				71E9B4E32D2DE23A002D6496 /* ResizeImage.swift in Sources */,
 				CE6A3E39291F376D0058C82A /* UIImage+DropShadow.swift in Sources */,
 				CE6A3E3A291F376D0058C82A /* AboutViewController.swift in Sources */,
 				CED6353C293081ED002B216F /* Handoffable.swift in Sources */,
@@ -789,7 +795,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 40;
+				CURRENT_PROJECT_VERSION = 45;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 6PLL9M5SE2;
 				ENABLE_MODULE_VERIFIER = YES;
@@ -824,7 +830,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 40;
+				CURRENT_PROJECT_VERSION = 45;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 6PLL9M5SE2;
 				ENABLE_MODULE_VERIFIER = YES;

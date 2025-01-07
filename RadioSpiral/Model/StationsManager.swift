@@ -144,11 +144,13 @@ extension StationsManager {
     private func resetArtwork(with station: RadioStation?) {
         
         guard let station = station else {
+            print("no station")
             updateLockScreen(with: nil)
             return
         }
         
         station.getImage { [weak self] image in
+            print("station set")
             self?.updateLockScreen(with: image)
         }
     }
@@ -159,26 +161,33 @@ extension StationsManager {
         var nowPlayingInfo = [String : Any]()
         
         if let url = ACWebSocketClient.shared.status.artwork {
+            print("artwork is available")
             let v = UIImageView()
             Task {
                 var image: UIImage?
+                print("loading cover")
                 await v.kf.setImage(with: url)
                 await image = v.image
+                print("cover loaded")
                 return image
             }
         } else if let image = artworkImage {
+            print("using station artwork")
             nowPlayingInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(boundsSize: image.size, requestHandler: { size -> UIImage in
                 return image
             })
         }
         
         if ACWebSocketClient.shared.status.artist != "" {
+            print("should be setting artist")
             nowPlayingInfo[MPMediaItemPropertyArtist] = ACWebSocketClient.shared.status.artist
         }
         
         if ACWebSocketClient.shared.status.track != "" {
+            print("should eb setting track")
             nowPlayingInfo[MPMediaItemPropertyArtist] = ACWebSocketClient.shared.status.track
         }
+        print(nowPlayingInfo)
         
         // Set the metadata
         MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
@@ -190,12 +199,17 @@ extension StationsManager {
 extension StationsManager: FRadioPlayerObserver {
     
     func radioPlayer(_ player: FRadioPlayer, metadataDidChange metadata: FRadioPlayer.Metadata?) {
+        let status = ACWebSocketClient.shared.status
+        print("new metadata from player: \(metadata?.artistName ?? "[missing]") \(metadata?.trackName ?? "[missing]") \(metadata?.rawValue ?? "[missing]")")
+        if !status.artist.isEmpty {
+            print("webclient has data")
+        }
         resetArtwork(with: currentStation)
     }
     
     func radioPlayer(_ player: FRadioPlayer, artworkDidChange artworkURL: URL?) {
         
-        guard let artworkURL = artworkURL else {
+         guard let artworkURL = artworkURL else {
             resetArtwork(with: currentStation)
             return
         }

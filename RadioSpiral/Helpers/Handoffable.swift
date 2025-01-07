@@ -23,12 +23,23 @@ extension Handoffable {
         
         defer { updateUserActivityState(activity) }
         
-        guard let metadata = FRadioPlayer.shared.currentMetadata, let artistName = metadata.artistName, let trackName = metadata.trackName else {
-            activity.webpageURL = nil
-            return
+        let status = ACWebSocketClient.shared.status
+        var track: String
+        var artist: String
+        
+        if status.track != "" {
+            track = status.track
+            artist = status.artist
+        } else {
+            guard let metadata = FRadioPlayer.shared.currentMetadata, let artistName = metadata.artistName, let trackName = metadata.trackName else {
+                activity.webpageURL = nil
+                return
+            }
+            track = trackName
+            artist = artistName
         }
         
-        activity.webpageURL = getHandoffURL(artistName: artistName, trackName: trackName)
+        activity.webpageURL = getHandoffURL(artistName: artist, trackName: track)
     }
     
     private func getHandoffURL(artistName: String, trackName: String) -> URL? {

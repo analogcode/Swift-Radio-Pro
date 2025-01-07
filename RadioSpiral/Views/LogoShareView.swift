@@ -21,10 +21,13 @@ class LogoShareView: UIView {
     }
     
     func shareSetup(albumArt : UIImage, radioShoutout: String, trackTitle: String, trackArtist: String) {
-        self.albumArtImageView.image = albumArt
+        let client = ACWebSocketClient.shared
+        Task {
+            self.albumArtImageView.kf.setImage(with: client.status.artwork)
+        }
         self.radioShoutoutLabel.text = radioShoutout
-        self.trackTitleLabel.text = trackTitle
-        self.trackArtistLabel.text = trackArtist
+        self.trackTitleLabel.text = client.status.track
+        self.trackArtistLabel.text = client.status.artist
         self.logoImageView.image = UIImage(named: "logo")
     }
 }

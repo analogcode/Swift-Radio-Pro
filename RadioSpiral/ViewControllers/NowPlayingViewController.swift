@@ -107,14 +107,24 @@ class NowPlayingViewController: UIViewController {
         releaseLabel.text = client.status.album
         djName.text = client.status.dj
         
-        let processor = DownsamplingImageProcessor(size: albumImageView.bounds.size)
-        albumImageView.kf.indicatorType = .activity
-        albumImageView.kf.setImage(with: client.status.artwork,
-                                   options: [.processor(processor),
-                                             .scaleFactor(UIScreen.main.scale),
-                                             .transition(.fade(1))
-                                            ])
-        
+        Task {
+            let processor = DownsamplingImageProcessor(size: albumImageView.bounds.size)
+            albumImageView.kf.indicatorType = .activity
+            albumImageView.kf.setImage(with: client.status.artwork,
+                                       options: [.processor(processor),
+                                                 .scaleFactor(UIScreen.main.scale),
+                                                 .transition(.fade(1))
+                                       ])
+        }
+        //albumImageView.load(url: client.status.artwork!) { [weak self] in
+        //    self?.albumImageView.animation = "wobble"
+        //    self?.albumImageView.duration = 2
+        //    self?.albumImageView.animate()
+        //
+        //    // Force app to update display
+        //    self?.view.setNeedsDisplay()
+        //}
+
     }
               
     // MARK: - Setup
@@ -160,6 +170,7 @@ class NowPlayingViewController: UIViewController {
     // MARK: - Player Controls (Play/Pause/Volume)
         
     @IBAction func playingPressed(_ sender: Any) {
+        print(player.state)
         player.togglePlaying()
     }
     
@@ -177,20 +188,44 @@ class NowPlayingViewController: UIViewController {
     
     // Update track with new artwork
     func updateTrackArtwork() {
-        guard let artworkURL = player.currentArtworkURL else {
+        let status = ACWebSocketClient.shared.status
+        if let artworkURL = status.artwork {
+            print("loading client artwork")
+            let processor = DownsamplingImageProcessor(size: albumImageView.bounds.size)
+            Task {
+                albumImageView.kf.indicatorType = .activity
+                albumImageView.kf.setImage(with: artworkURL,
+                                           options: [.processor(processor),
+                                                     .scaleFactor(UIScreen.main.scale),
+                                                     .transition(.fade(1))
+                                           ])
+                // Force app to update display
+                self.view.setNeedsDisplay()
+            }
+            
+            return
+        }
+        
+        guard let artworkURL = status.artwork else {
+            print("loading station artwork")
             manager.currentStation?.getImage { [weak self] image in
                 self?.albumImageView.image = image
             }
             return
         }
-        
-        albumImageView.load(url: artworkURL) { [weak self] in
-            self?.albumImageView.animation = "wobble"
-            self?.albumImageView.duration = 2
-            self?.albumImageView.animate()
+
+        print("loading player artwork")
+        let processor = DownsamplingImageProcessor(size: albumImageView.bounds.size)
+        Task {
+            albumImageView.kf.indicatorType = .activity
+            albumImageView.kf.setImage(with: artworkURL,
+                                       options: [.processor(processor),
+                                                 .scaleFactor(UIScreen.main.scale),
+                                                 .transition(.fade(1))
+                                       ])
             
             // Force app to update display
-            self?.view.setNeedsDisplay()
+            self.view.setNeedsDisplay()
         }
     }
     
@@ -241,38 +276,39 @@ class NowPlayingViewController: UIViewController {
         // Adjust album size to fit iPhone 4s, 6s & 6s+
         let deviceHeight = self.view.bounds.height
         
-        if deviceHeight == 480 {
-            albumHeightConstraint.constant = 106
-            view.updateConstraints()
-        } else if deviceHeight == 667 {
-            albumHeightConstraint.constant = 230
-            view.updateConstraints()
-        } else if deviceHeight > 667 {
-            albumHeightConstraint.constant = 260
-            view.updateConstraints()
-        }
+        albumHeightConstraint.constant = CGFloat(Double(deviceHeight) * 0.37)
     }
     
     func updateLabels(with statusMessage: String? = nil, animate: Bool = true) {
-
+        
         guard let statusMessage = statusMessage else {
             // Radio is (hopefully) streaming properly
             self.liveDJIndicator.isHidden = false
-            songLabel.text = manager.currentStation?.trackName
-            artistLabel.text = manager.currentStation?.artistName
-            releaseLabel.text = manager.currentStation?.releaseName
+            let status = ACWebSocketClient.shared.status
+            if status.changed {
+                print("updating from client")
+                self.liveDJIndicator.isHidden = !status.isLiveDJ
+                songLabel.text = status.track
+                artistLabel.text = status.artist
+                releaseLabel.text = status.album
+            } else {
+                print("updating from manager")
+                songLabel.text = manager.currentStation?.trackName
+                artistLabel.text = manager.currentStation?.artistName
+                releaseLabel.text = manager.currentStation?.releaseName
+            }
             shouldAnimateSongLabel(animate)
             return
         }
-        
         // There's a an interruption or pause in the audio queue
-        
-        // Update UI only when it's not aleary updated
+        print("Explicit status message \(String(describing: statusMessage))")
+
+        // Update UI only when it's not already updated
         guard songLabel.text != statusMessage else { return }
-        
+            
         songLabel.text = statusMessage
         artistLabel.text = manager.currentStation?.name
-    
+            
         if animate {
             songLabel.animation = "flash"
             songLabel.repeatCount = 2
@@ -352,7 +388,6 @@ extension NowPlayingViewController: FRadioPlayerObserver {
 }
 
 extension NowPlayingViewController: StationsManagerObserver {
-    
     func stationsManager(_ manager: StationsManager, stationDidChange station: RadioStation?) {
         stationDidChange()
     }
