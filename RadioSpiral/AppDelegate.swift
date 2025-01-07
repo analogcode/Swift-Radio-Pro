@@ -52,6 +52,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         coordinator?.start()
         
+        client.debug(to: 0)
+        
         return true
     }
     

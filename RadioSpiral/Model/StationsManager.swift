@@ -158,18 +158,26 @@ extension StationsManager {
         // Define Now Playing Info
         var nowPlayingInfo = [String : Any]()
         
-        if let image = artworkImage {
+        if let url = ACWebSocketClient.shared.status.artwork {
+            let v = UIImageView()
+            Task {
+                var image: UIImage?
+                await v.kf.setImage(with: url)
+                await image = v.image
+                return image
+            }
+        } else if let image = artworkImage {
             nowPlayingInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(boundsSize: image.size, requestHandler: { size -> UIImage in
                 return image
             })
         }
         
-        if let artistName = currentStation?.artistName {
-            nowPlayingInfo[MPMediaItemPropertyArtist] = artistName
+        if ACWebSocketClient.shared.status.artist != "" {
+            nowPlayingInfo[MPMediaItemPropertyArtist] = ACWebSocketClient.shared.status.artist
         }
         
-        if let trackName = currentStation?.trackName {
-            nowPlayingInfo[MPMediaItemPropertyTitle] = trackName
+        if ACWebSocketClient.shared.status.track != "" {
+            nowPlayingInfo[MPMediaItemPropertyArtist] = ACWebSocketClient.shared.status.track
         }
         
         // Set the metadata

@@ -111,14 +111,20 @@ class StationsViewController: BaseController, Handoffable {
     // Update the now playing button title
     private func updateNowPlayingButton(station: RadioStation?) {
         
+        let client = ACWebSocketClient.shared
         guard let station = station else {
+            print("no station, resetting")
             nowPlayingView.reset()
             return
         }
         
         var playingTitle: String?
         
-        if player.currentMetadata != nil {
+        if !client.status.artist.isEmpty && !client.status.track.isEmpty {
+            print("now playing in client")
+            playingTitle = "\(client.status.track) + \(client.status.artist)"
+        } else if player.currentMetadata != nil {
+            print("now playing in station")
             playingTitle = station.trackName + " - " + station.artistName
         }
         
