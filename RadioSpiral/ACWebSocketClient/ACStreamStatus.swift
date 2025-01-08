@@ -36,6 +36,9 @@ public class ACStreamStatus: Equatable, ObservableObject {
         self.artist = ""
         self.album = ""
         self.dj = ""
+        self.duration = TimeInterval(0.0)
+        self.recordType = .notSet
+        self.pingInterval = TimeInterval(0.0)
     }
     
     ///  `init` with all fields speciified
@@ -54,6 +57,8 @@ public class ACStreamStatus: Equatable, ObservableObject {
         self.album = album
         self.dj = dj
         self.artwork = artwork
+        self.recordType = .notSet
+        self.pingInterval = TimeInterval(0.0)
     }
     
     public var connection: ACConnectionState
@@ -64,4 +69,7 @@ public class ACStreamStatus: Equatable, ObservableObject {
     public var album: String
     public var dj: String
     public var artwork: URL?
+    public var artworkImage: UIImage?
+    public var recordType: ACRecordType
+    public var pingInterval: TimeInterval?
 }

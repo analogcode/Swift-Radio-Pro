@@ -18,3 +18,10 @@ public enum ACConnectionState {
     case stationNotFound
     case failedSubscribe
 }
+
+public enum ACRecordType {
+    case notSet
+    case connect
+    case channel
+    case empty
+}

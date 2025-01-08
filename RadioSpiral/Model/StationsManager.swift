@@ -192,6 +192,16 @@ extension StationsManager {
         // Set the metadata
         MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
     }
+    
+    func updateLockscreenStatus(status: ACStreamStatus) {
+        var nowPlayingInfo = [String : Any]()
+        nowPlayingInfo[MPMediaItemPropertyArtist] = status.artist
+        nowPlayingInfo[MPMediaItemPropertyTitle] = status.track
+        nowPlayingInfo[MPMediaItemPropertyAlbumTitle] = status.album
+        nowPlayingInfo[MPMediaItemPropertyPlaybackDuration] = status.duration
+        nowPlayingInfo[MPMediaItemPropertyArtwork] = UIImage(named: "AppIcon")
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
+    }
 }
 
 // MARK: - FRadioPlayerObserver
@@ -200,27 +210,12 @@ extension StationsManager: FRadioPlayerObserver {
     
     func radioPlayer(_ player: FRadioPlayer, metadataDidChange metadata: FRadioPlayer.Metadata?) {
         let status = ACWebSocketClient.shared.status
-        print("new metadata from player: \(metadata?.artistName ?? "[missing]") \(metadata?.trackName ?? "[missing]") \(metadata?.rawValue ?? "[missing]")")
         if !status.artist.isEmpty {
-            print("webclient has data")
+            self.updateLockscreenStatus(status: status)
         }
-        resetArtwork(with: currentStation)
     }
     
     func radioPlayer(_ player: FRadioPlayer, artworkDidChange artworkURL: URL?) {
-        
-         guard let artworkURL = artworkURL else {
-            resetArtwork(with: currentStation)
-            return
-        }
-        
-        UIImage.image(from: artworkURL) { [weak self] image in
-            guard let image = image else {
-                self?.resetArtwork(with: self?.currentStation)
-                return
-            }
-            
-            self?.updateLockScreen(with: image)
-        }
+        self.updateLockscreenStatus(status: ACWebSocketClient.shared.status)
     }
 }

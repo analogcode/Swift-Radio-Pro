@@ -7,6 +7,11 @@
 import Foundation
 import Combine
 
+public let ACExtractedData = 1
+public let ACRawSubsections = 2
+public let ACFullDump = 4
+
+
 /// Type describing a callback to send the current status to a subscriber.
 public typealias MetadataCallback<T> = (T) -> Void
 
@@ -27,6 +32,8 @@ public class ACWebSocketClient: ObservableObject {
     private var webSocketTask: URLSessionWebSocketTask?
     private var urlSession = URLSession(configuration: .default)
     private var webSocketURL: URL?
+    
+    private var stillAliveTimer: Timer?
 
     
     /// `serverName` is the name of the Azuracast server we're connecting to for the metadata stream
@@ -126,14 +133,20 @@ public class ACWebSocketClient: ObservableObject {
     /// Connects to the websocket API and sends the subscription message. Can be used to connect a
     /// currently-disconnected `ACWebSocketClient` or to reconnect an already-connected one.
     /// Marks the global status as `connected`.
+    ///
+    ///  This function is called if the liveness check timer goes off; this happens only if we haven't received
+    ///  another message from the websocket by the time the timer goes off. The timer takes the API's
+    ///  delivery guarantee, doubles it, and waits for that long before deciding we've lost the connection.
     public func connect() {
+        // turn off the liveness check; the first parse of the connect data will
+        // turn it back on.
+        self.stillAliveTimer?.invalidate()
         if status.connection == ACConnectionState.connected { disconnect() }
         webSocketTask = urlSession.webSocketTask(with: self.webSocketURL!)
         webSocketTask?.resume()
         DispatchQueue.main.async {
             self.status.connection = ACConnectionState.connected
         }
-        
         sendSubscriptionMessage()
         listenForMessages()
     }
@@ -144,6 +157,12 @@ public class ACWebSocketClient: ObservableObject {
         DispatchQueue.main.async {
             self.status.connection = ACConnectionState.disconnected
         }
+    }
+    
+    // Called if the liveness timer goes off.
+    @objc func fellOver() {
+        print("metadata server failed to respond within \(String(describing: status.pingInterval)) seconds")
+        connect()
     }
     
     // Sends the subscription message for the specified station.
@@ -231,7 +250,7 @@ public class ACWebSocketClient: ObservableObject {
             // at all. The shortCode is needed because one key contains it.
             let result = try parser.parse(shortCode: shortCode!)
             DispatchQueue.main.async {
-                if result != self.lastResult {
+                if result != self.lastResult && result.changed {
                     // Status changed from old values. (Note that the initial
                     // connect message and one or more subsequent channel
                     // messages may contain the same data; if they do, we'll
@@ -240,6 +259,19 @@ public class ACWebSocketClient: ObservableObject {
                     self.status = result
                     self.notifySubscribers(with: self.status)
                 }
+            }
+            // If this is a connect, we have a valid push interval. Use it to
+            // set up the forced reconnect.
+            if result.recordType == .connect {
+                stillAliveTimer?.invalidate()
+                let interval = TimeInterval(Double(2 * (result.pingInterval ?? 25))),
+                stillAliveTimer = Timer.scheduledTimer(
+                    timeInterval: interval,
+                    target: self,
+                    selector: #selector(fellOver),
+                    userInfo: nil,
+                    repeats: false)
+                print("liveness timer set to \(interval)")
             }
         } catch {
             print("Failed to parse JSON: \(error)")

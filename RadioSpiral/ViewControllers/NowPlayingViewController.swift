@@ -257,14 +257,18 @@ class NowPlayingViewController: UIViewController {
         
         switch state {
         case .loading:
-            message = "Loading Station ..."
+            if songLabel.text != ""{
+                message = songLabel.text
+            } else {
+                message = "Station loading..."
+            }
         case .urlNotSet:
             message = "Station URL not valid"
         case .readyToPlay, .loadingFinished:
             playbackStateDidChange(player.playbackState, animate: animate)
             return
         case .error:
-            message = "Error Playing"
+            message = "Error playing stream"
         }
         updateLabels(with: message, animate: animate)
     }
@@ -286,13 +290,11 @@ class NowPlayingViewController: UIViewController {
             self.liveDJIndicator.isHidden = false
             let status = ACWebSocketClient.shared.status
             if status.changed {
-                print("updating from client")
                 self.liveDJIndicator.isHidden = !status.isLiveDJ
                 songLabel.text = status.track
                 artistLabel.text = status.artist
                 releaseLabel.text = status.album
             } else {
-                print("updating from manager")
                 songLabel.text = manager.currentStation?.trackName
                 artistLabel.text = manager.currentStation?.artistName
                 releaseLabel.text = manager.currentStation?.releaseName

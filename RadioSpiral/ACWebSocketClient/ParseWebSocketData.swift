@@ -16,9 +16,9 @@ public class ParseWebSocketData {
     ///  `init(data: status: defaultDJ:)
     ///  Sets up to parse the data passed as the `data:` argument.
     /// - Parameters:
-    ///   - data: <#data description#>
-    ///   - status: <#status description#>
-    ///   - defaultDJ: <#defaultDJ description#>
+    ///   - data: The data to be parsed
+    ///   - status:  The ACStreamStatus object to receive the data
+    ///   - defaultDJ:  The name of the default DJ if none is found in the data
     public init(data: Data, defaultDJ: String?) {
         self.data = data
         self.defaultDJ = defaultDJ
@@ -56,14 +56,16 @@ public class ParseWebSocketData {
         // If I do find a way to fix that, I will absolutely switch to Codable.
         let json = try JSONSerialization.jsonObject(with: data, options: [])
         if let nowPlayingData = json as? [String: Any] {
-            if debugLevel & 4 != 0 { print("nowPlayingData: \(nowPlayingData)") }
+            if debugLevel & ACFullDump != 0 { print("nowPlayingData: \(nowPlayingData)") }
             self.status = ACStreamStatus()
             
             // 'connect' message
             if nowPlayingData["connect"] != nil {
+                status.recordType = .connect
                 
                 // chain down to the now-playing data
                 let connect = nowPlayingData["connect"] as? Dictionary<String, Any>
+                status.pingInterval = TimeInterval(Double(connect?["ping"] as! Int))
                 let subs = connect?["subs"] as? Dictionary<String, Any>
                 let sub = subs?["station:\(shortCode)"] as? Dictionary<String, Any>
                 let publications = sub?["publications"] as? [Any]
@@ -82,7 +84,7 @@ public class ParseWebSocketData {
                 // Live segment. Contains info about the streamer.
                 let live = np?["live"] as? Dictionary<String, Any>
                 self.status = setDJ(live: live, status: self.status, defaultDJ: defaultDJ)
-                if debugLevel & 2 != 0 { print("live: \(String(describing: live))") }
+                if debugLevel & ACRawSubsections != 0 { print("live: \(String(describing: live))") }
 
                 /*
                  // Next song data is available, but StreamStatus doesn't support it yet
@@ -99,7 +101,10 @@ public class ParseWebSocketData {
                 // Chain down to current song segment.
                 let current = np?["now_playing"] as? Dictionary<String, Any>
                 let current_song = current?["song"] as? Dictionary<String, Any>
-                if debugLevel & 2 != 0 { print("current song: \(String(describing: current_song))") }
+                let duration = current?["duration"] as! Int
+                status.duration = TimeInterval(Double(duration))
+
+                if debugLevel & ACRawSubsections != 0 { print("current song: \(String(describing: current_song))") }
                 
                 // Extract track info from song segment.
                 // TODO: Generalize this for next song and songs in song history.
@@ -111,16 +116,10 @@ public class ParseWebSocketData {
                 let artURLString = current_song?["art"] as! String
                 status.artwork = URL(string: artURLString)
                 
-                if debugLevel & 1 != 0 {
-                    print("album: \(status.album)")
-                    print("track: \(status.track)")
-                    print("artist: \(status.artist)")
-                    print("art: \(artURLString)")
-                }
-
                 // We parsed the data, so this struct has changed.
                 status.changed = true
             } else if nowPlayingData["channel"] != nil {
+                status.recordType = .channel
                 
                 // channel data. chain down to now-playing data.
                 let pub = nowPlayingData["pub"] as! Dictionary<String, Any>
@@ -133,10 +132,12 @@ public class ParseWebSocketData {
 
                 // now_playing block. Extract track info.
                 let nowPlaying = np["now_playing"] as! Dictionary<String, Any>
+                let duration = nowPlaying["duration"] as! Int
                 let song = nowPlaying["song"] as! Dictionary<String, Any>
                 status.album = song["album"] as! String
                 status.artist = song["artist"] as! String
                 status.track = song["title"] as! String
+                status.duration = TimeInterval(Double(duration))
                 
                 // Extract artwork URL string, and make it a real URL.
                 let artURLString = song["art"] as! String
@@ -146,8 +147,18 @@ public class ParseWebSocketData {
                 status.changed = true
             }
             else {
+                status.recordType = .empty
                 // Message type we can't parse. Mark statuss
                 status.changed = false
+            }
+            if debugLevel & ACExtractedData != 0 && status.changed {
+                print("album: \(status.album)")
+                print("track: \(status.track)")
+                print("artist: \(status.artist)")
+                print("duration: \(status.duration)")
+                print("art: \(String(describing: status.artwork))")
+                print("type: \(status.recordType)")
+                print("ping interval: \(String(describing: status.pingInterval))")
             }
         }
         // Return the status of the parse. Anyone monitoring it via `@publishef
@@ -164,11 +175,11 @@ public class ParseWebSocketData {
         if status.dj == "" {
             status.isLiveDJ = false
             guard let dj = defaultDJ else {
-                if debugLevel & 1 != 0 { print("DJ: \(String(describing: defaultDJ))") }
+                if debugLevel & ACExtractedData != 0 { print("DJ: \(String(describing: defaultDJ))") }
                 return status
             }
                 status.dj = dj
-                if debugLevel & 1 != 0 { print("DJ: \(dj)") }
+                if debugLevel & ACExtractedData != 0 { print("DJ: \(dj)") }
         }
         return status
     }
