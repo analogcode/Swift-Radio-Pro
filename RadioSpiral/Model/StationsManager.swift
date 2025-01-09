@@ -158,48 +158,30 @@ extension StationsManager {
     private func updateLockScreen(with artworkImage: UIImage?) {
         
         // Define Now Playing Info
-        var nowPlayingInfo = [String : Any]()
+        let nowPLayingInfoCenter = MPNowPlayingInfoCenter.default()
+        var nowPlayingInfo = nowPLayingInfoCenter.nowPlayingInfo ?? [String : Any]()
         
-        if let url = ACWebSocketClient.shared.status.artwork {
-            print("artwork is available")
-            let v = UIImageView()
-            Task {
-                var image: UIImage?
-                print("loading cover")
-                await v.kf.setImage(with: url)
-                await image = v.image
-                print("cover loaded")
-                return image
-            }
-        } else if let image = artworkImage {
-            print("using station artwork")
+        if let image = artworkImage {
             nowPlayingInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(boundsSize: image.size, requestHandler: { size -> UIImage in
                 return image
             })
         }
-        
-        if ACWebSocketClient.shared.status.artist != "" {
-            print("should be setting artist")
-            nowPlayingInfo[MPMediaItemPropertyArtist] = ACWebSocketClient.shared.status.artist
-        }
-        
-        if ACWebSocketClient.shared.status.track != "" {
-            print("should eb setting track")
-            nowPlayingInfo[MPMediaItemPropertyArtist] = ACWebSocketClient.shared.status.track
-        }
-        print(nowPlayingInfo)
+        nowPlayingInfo[MPMediaItemPropertyArtist] = ACWebSocketClient.shared.status.artist
+        nowPlayingInfo[MPMediaItemPropertyArtist] = ACWebSocketClient.shared.status.track
+        nowPlayingInfo[MPMediaItemPropertyTitle] = ACWebSocketClient.shared.status.album
+        nowPlayingInfo[MPMediaItemPropertyPlaybackDuration] = ACWebSocketClient.shared.status.duration
         
         // Set the metadata
         MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
     }
     
     func updateLockscreenStatus(status: ACStreamStatus) {
-        var nowPlayingInfo = [String : Any]()
+        let nowPLayingInfoCenter = MPNowPlayingInfoCenter.default()
+        var nowPlayingInfo = nowPLayingInfoCenter.nowPlayingInfo ?? [String : Any]()
         nowPlayingInfo[MPMediaItemPropertyArtist] = status.artist
         nowPlayingInfo[MPMediaItemPropertyTitle] = status.track
         nowPlayingInfo[MPMediaItemPropertyAlbumTitle] = status.album
         nowPlayingInfo[MPMediaItemPropertyPlaybackDuration] = status.duration
-        nowPlayingInfo[MPMediaItemPropertyArtwork] = UIImage(named: "AppIcon")
         MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
     }
 }

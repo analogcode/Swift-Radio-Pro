@@ -115,6 +115,7 @@ class NowPlayingViewController: UIViewController {
                                                  .scaleFactor(UIScreen.main.scale),
                                                  .transition(.fade(1))
                                        ])
+            StationsManager.shared.updateLockscreenStatus(status: client.status)
         }
         //albumImageView.load(url: client.status.artwork!) { [weak self] in
         //    self?.albumImageView.animation = "wobble"

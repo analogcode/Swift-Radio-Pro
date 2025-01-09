@@ -5,6 +5,7 @@
 //
 
 import Foundation
+import UIKit
 
 /// Encapsulates the current metadata for the subscribed-to station.
 public class ACStreamStatus: Equatable, ObservableObject {
@@ -35,8 +36,8 @@ public class ACStreamStatus: Equatable, ObservableObject {
         self.track = ""
         self.artist = ""
         self.album = ""
-        self.dj = ""
         self.duration = TimeInterval(0.0)
+        self.dj = ""
         self.recordType = .notSet
         self.pingInterval = TimeInterval(0.0)
     }
@@ -48,13 +49,14 @@ public class ACStreamStatus: Equatable, ObservableObject {
     ///  - `connection` statte is one of the valid states (see `ACConectionState`)
     ///  - `changed` is `true` (since this is a newly-created status)
     ///  - `isLiveDJ`, `track`, `artist`, `album`, `dj`, and `artwork` are all set to the supplied values
-    public init(connection: ACConnectionState, isLiveDJ: Bool, track: String, artist: String, album: String, dj: String, artwork: URL?) {
+    public init(connection: ACConnectionState, isLiveDJ: Bool, track: String, artist: String, album: String, duration: TimeInterval, dj: String, artwork: URL?) {
         self.connection = connection
         self.changed = true
         self.isLiveDJ = isLiveDJ
         self.track = track
         self.artist = artist
         self.album = album
+        self.duration = duration
         self.dj = dj
         self.artwork = artwork
         self.recordType = .notSet
@@ -67,9 +69,9 @@ public class ACStreamStatus: Equatable, ObservableObject {
     public var track: String
     public var artist: String
     public var album: String
+    public var duration: TimeInterval
     public var dj: String
     public var artwork: URL?
-    public var artworkImage: UIImage?
     public var recordType: ACRecordType
     public var pingInterval: TimeInterval?
 }
