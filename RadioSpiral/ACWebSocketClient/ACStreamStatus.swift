@@ -40,6 +40,7 @@ public class ACStreamStatus: Equatable, ObservableObject {
         self.dj = ""
         self.recordType = .notSet
         self.pingInterval = TimeInterval(0.0)
+        self.networkUp = true
     }
     
     ///  `init` with all fields speciified
@@ -61,6 +62,7 @@ public class ACStreamStatus: Equatable, ObservableObject {
         self.artwork = artwork
         self.recordType = .notSet
         self.pingInterval = TimeInterval(0.0)
+        self.networkUp = true
     }
     
     public var connection: ACConnectionState
@@ -74,4 +76,5 @@ public class ACStreamStatus: Equatable, ObservableObject {
     public var artwork: URL?
     public var recordType: ACRecordType
     public var pingInterval: TimeInterval?
+    public var networkUp: Bool
 }

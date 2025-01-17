@@ -1,5 +1,5 @@
 {
-  "originHash" : "d7746270620e53e123e5e179f8e01dd0326b9e5638c6d3383db787fb441201f4",
+  "originHash" : "7a9a38df4ab75b79caace7604292f35d0e6066fbd8c8f6e19dc2a5c32d87ae89",
   "pins" : [
     {
       "identity" : "fradioplayer",
@@ -26,6 +26,15 @@
       "state" : {
         "revision" : "bcb52371f2259254bac6690f92bb474a61768c47",
         "version" : "5.1.1"
+      }
+    },
+    {
+      "identity" : "reachability.swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ashleymills/Reachability.swift",
+      "state" : {
+        "branch" : "master",
+        "revision" : "21d1dc412cfecbe6e34f1f4c4eb88d3f912654a6"
       }
     },
     {

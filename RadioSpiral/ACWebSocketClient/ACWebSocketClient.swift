@@ -6,10 +6,12 @@
 
 import Foundation
 import Combine
+import Reachability
 
 public let ACExtractedData = 1
 public let ACRawSubsections = 2
 public let ACFullDump = 4
+public let ACConnectivityChecks = 8
 
 
 /// Type describing a callback to send the current status to a subscriber.
@@ -21,7 +23,7 @@ public class ACWebSocketClient: ObservableObject {
     
     /// Singleton instance; used  (particularly in SwiftUI) to ensure that everyone is using the same ciient.
     public static let shared = ACWebSocketClient()
-    
+        
     // Anyone subscribed to the metadata stream
     private var subscribers: [MetadataCallback<ACStreamStatus>] = []
     
@@ -33,8 +35,19 @@ public class ACWebSocketClient: ObservableObject {
     private var urlSession = URLSession(configuration: .default)
     private var webSocketURL: URL?
     
+    // Used to monitor connection to the metadata API. When we receive a connect
+    // message, we clear out any old timer, then set a new one for a little after
+    // the runtime of the track that's playing now. If all goes well, we'll get
+    // another message before the time goes off, cancel it, and set a new one.
+    // If we don't get a message before then, the timer pops, we disconnect the API,
+    // reconnect, and set a new timer when the connect message is received.
+    //
+    // We set up a reacability monitor during init, which fires a connect() if
+    // we've come online and we have the necessary info to connect, and which
+    // kills any live timers and disconnects if we go offline.
+    
     private var stillAliveTimer: Timer?
-
+    public var reachabilityMonitor: Reachability
     
     /// `serverName` is the name of the Azuracast server we're connecting to for the metadata stream
     var serverName: String?
@@ -57,7 +70,40 @@ public class ACWebSocketClient: ObservableObject {
 
     /// Constructs an empty `ACWebSoscketClient`, which must be initialized with
     /// `configurationDidChange` and `setDefaultDJ`.
-    public init() {}
+    public init() {
+        reachabilityMonitor = try! Reachability()
+        do {
+            try reachabilityMonitor.startNotifier()
+            reachabilityMonitor.whenReachable = { _ in
+                self.status.networkUp = true
+                if self.status.connection == .disconnected {
+                    if self.debugLevel & ACConnectivityChecks != 0 { print("Network up detected") }
+                    // If we are disconnected, we can try to connect
+                    // if we have all the necessary values. Else we do
+                    // nothing.
+                    if let _ = self.serverName, let _ = self.shortCode {
+                        if self.debugLevel & ACConnectivityChecks != 0 { print("Can reconnect, trying...") }
+                        self.connect()
+                    }
+                }
+            }
+            reachabilityMonitor.whenUnreachable = { _ in
+                self.status.networkUp = false
+                // We have disconnected. Set the state to disconnected, kill any
+                // timers, and wait for reconnection.
+                if self.debugLevel & ACConnectivityChecks != 0 {
+                    print("Network drop detected")
+                }
+                self.status.connection = .disconnected
+                self.stillAliveTimer?.invalidate()
+                self.disconnect()
+                if self.debugLevel & ACConnectivityChecks != 0 { print("Disconnected") }
+            }
+        } catch {
+            print("unable to start notifier")
+        }
+
+    }
     
     ///  Initializes an `ACWebSocketClient` instance with a preset server and station.
     /// - Parameters:
@@ -65,6 +111,31 @@ public class ACWebSocketClient: ObservableObject {
     ///   - `shortCode`: The Azuracast-defined shortcode from the station's profile page
     ///   - `defaultDJ`: The DJ name to supply if no streamer is active. Useful if the station is configured to play music when no streamer is active. Defaults to `""` if no value is specified.
     public init (serverName: String?, shortCode: String?, defaultDJ: String? = "") {
+        reachabilityMonitor = try! Reachability()
+        do {
+            try reachabilityMonitor.startNotifier()
+            reachabilityMonitor.whenReachable = { _ in
+                self.status.networkUp = true
+                if self.status.connection == .disconnected {
+                    // If we are disconnected, we can try to connect
+                    // if we have all the necessary values. Else we do
+                    // nothing.
+                    if let _ = serverName, let _ = shortCode {
+                        self.connect()
+                    }
+                }
+            }
+            reachabilityMonitor.whenUnreachable = { _ in
+                self.status.networkUp = false
+                // We have disconnected. Set the state to disconnected, kill any
+                // timers, and wait for reconnection.
+                self.status.connection = .disconnected
+                self.stillAliveTimer?.invalidate()
+            }
+        } catch {
+            print("unable to start notifier")
+        }
+
         if let defaultDJ {
             self.defaultDJ = defaultDJ
         }
@@ -161,7 +232,9 @@ public class ACWebSocketClient: ObservableObject {
     
     // Called if the liveness timer goes off.
     @objc func fellOver() {
-        print("metadata server failed to respond within \(String(describing: status.pingInterval)) seconds")
+        if debugLevel & ACConnectivityChecks != 0 {
+            print("metadata server failed to respond within \(String(describing: status.pingInterval)) seconds")
+        }
         connect()
     }
     
@@ -263,15 +336,16 @@ public class ACWebSocketClient: ObservableObject {
             // If this is a connect, we have a valid push interval. Use it to
             // set up the forced reconnect.
             if result.recordType == .connect {
-                stillAliveTimer?.invalidate()
-                let interval = TimeInterval(Double(2 * (result.pingInterval ?? 25))),
-                stillAliveTimer = Timer.scheduledTimer(
+                if debugLevel & ACConnectivityChecks != 0 { print("Invalidate previous timer") }
+                self.stillAliveTimer?.invalidate()
+                let interval = TimeInterval(Double(result.pingInterval ?? 25))
+                    self.stillAliveTimer = Timer.scheduledTimer(
                     timeInterval: interval,
                     target: self,
                     selector: #selector(fellOver),
                     userInfo: nil,
                     repeats: false)
-                print("liveness timer set to \(interval)")
+                if debugLevel & ACConnectivityChecks != 0 { print("liveness timer set to \(interval)") }
             }
         } catch {
             print("Failed to parse JSON: \(error)")

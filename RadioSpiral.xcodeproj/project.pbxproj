@@ -12,6 +12,8 @@
 		5FDEE0221F72FF980064333C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FDEE0211F72FF980064333C /* LaunchScreen.storyboard */; };
 		6258DCD822D93A3500166C65 /* LogoShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258DCD722D93A3500166C65 /* LogoShareView.swift */; };
 		6258DCDA22D93A5400166C65 /* LogoShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6258DCD922D93A5400166C65 /* LogoShareView.xib */; };
+		710A17712D39FFE100D951C6 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 710A17702D39FFE100D951C6 /* Reachability */; };
+		710A17732D39FFEE00D951C6 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 710A17722D39FFEE00D951C6 /* Reachability */; };
 		715C87A62B23E141003FC57A /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C87A52B23E141003FC57A /* SnapshotHelper.swift */; };
 		7165121C2B35519B00473770 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF72ACE621F714D000461EED /* Main.storyboard */; };
 		719678592D27A72000DCD7CE /* ACStreamStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719678552D27A72000DCD7CE /* ACStreamStatus.swift */; };
@@ -181,6 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE37D7B7290F4A9700B0933B /* FRadioPlayer in Frameworks */,
+				710A17712D39FFE100D951C6 /* Reachability in Frameworks */,
 				CE6036232A48C51A00E15E15 /* NVActivityIndicatorViewExtended in Frameworks */,
 				CE37D7B4290F47E000B0933B /* Spring in Frameworks */,
 				CE6036212A48C51A00E15E15 /* NVActivityIndicatorView in Frameworks */,
@@ -193,6 +196,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE6A3E43291F376D0058C82A /* FRadioPlayer in Frameworks */,
+				710A17732D39FFEE00D951C6 /* Reachability in Frameworks */,
 				CE60362A2A48F70A00E15E15 /* NVActivityIndicatorViewExtended in Frameworks */,
 				CE6A3E44291F376D0058C82A /* Spring in Frameworks */,
 				CE6036282A48F70A00E15E15 /* NVActivityIndicatorView in Frameworks */,
@@ -410,6 +414,7 @@
 				CE6036202A48C51A00E15E15 /* NVActivityIndicatorView */,
 				CE6036222A48C51A00E15E15 /* NVActivityIndicatorViewExtended */,
 				719678662D27AA6D00DCD7CE /* Kingfisher */,
+				710A17702D39FFE100D951C6 /* Reachability */,
 			);
 			productName = RadioPro;
 			productReference = 9409E1161ABF6FEA00312E2B /* RadioSpiral.app */;
@@ -434,6 +439,7 @@
 				CE6036272A48F70A00E15E15 /* NVActivityIndicatorView */,
 				CE6036292A48F70A00E15E15 /* NVActivityIndicatorViewExtended */,
 				719678682D27AA8E00DCD7CE /* Kingfisher */,
+				710A17722D39FFEE00D951C6 /* Reachability */,
 			);
 			productName = RadioPro;
 			productReference = CE6A3E4F291F376D0058C82A /* RadioSpiral-CarPlay.app */;
@@ -481,6 +487,7 @@
 				CE37D7B5290F4A9700B0933B /* XCRemoteSwiftPackageReference "FRadioPlayer" */,
 				CE60361F2A48C51A00E15E15 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
 				719678652D27AA4800DCD7CE /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				710A176F2D39FFE100D951C6 /* XCRemoteSwiftPackageReference "Reachability" */,
 			);
 			productRefGroup = 9409E1171ABF6FEA00312E2B /* Products */;
 			projectDirPath = "";
@@ -795,7 +802,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 50;
+				CURRENT_PROJECT_VERSION = 51;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 6PLL9M5SE2;
 				ENABLE_MODULE_VERIFIER = YES;
@@ -830,7 +837,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 50;
+				CURRENT_PROJECT_VERSION = 51;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 6PLL9M5SE2;
 				ENABLE_MODULE_VERIFIER = YES;
@@ -978,6 +985,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		710A176F2D39FFE100D951C6 /* XCRemoteSwiftPackageReference "Reachability" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ashleymills/Reachability.swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		719678652D27AA4800DCD7CE /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -1029,6 +1044,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		710A17702D39FFE100D951C6 /* Reachability */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 710A176F2D39FFE100D951C6 /* XCRemoteSwiftPackageReference "Reachability" */;
+			productName = Reachability;
+		};
+		710A17722D39FFEE00D951C6 /* Reachability */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 710A176F2D39FFE100D951C6 /* XCRemoteSwiftPackageReference "Reachability" */;
+			productName = Reachability;
+		};
 		719678662D27AA6D00DCD7CE /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 719678652D27AA4800DCD7CE /* XCRemoteSwiftPackageReference "Kingfisher" */;
