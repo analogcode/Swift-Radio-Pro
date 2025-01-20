@@ -213,14 +213,16 @@ public class ACWebSocketClient: ObservableObject {
         // turn it back on.
         self.stillAliveTimer?.invalidate()
         if status.connection == ACConnectionState.connected { disconnect() }
-        webSocketTask = urlSession.webSocketTask(with: self.webSocketURL!)
-        webSocketTask?.resume()
-        DispatchQueue.main.async {
-            self.status.connection = ACConnectionState.connected
+        if let _ = self.webSocketURL {
+            webSocketTask = urlSession.webSocketTask(with: self.webSocketURL!)
+            webSocketTask?.resume()
+            DispatchQueue.main.async {
+                self.status.connection = ACConnectionState.connected
+            }
+            sendSubscriptionMessage()
+            listenForMessages()
         }
-        sendSubscriptionMessage()
-        listenForMessages()
-    }
+     }
     
     /// Disconnects from the WebSocket API.  Sets the global status to `disconnected`.
     public func disconnect() {
