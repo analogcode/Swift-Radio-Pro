@@ -52,9 +52,7 @@ class StationsViewController: BaseController, Handoffable {
         return tableView
     }()
     
-    private let nowPlayingView: NowPlayingView = {
-        return NowPlayingView()
-    }()
+    private let nowPlayingView = NowPlayingView()
     
     override func loadView() {
         super.loadView()

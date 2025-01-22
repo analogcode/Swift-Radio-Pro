@@ -21,7 +21,7 @@ struct Config {
     static let searchable = false
 
     // Set this to "false" to show the next/previous player buttons
-    static let hideNextPreviousButtons = true
+    static let hideNextPreviousButtons = false
     
     // Contact infos
     static let website = "https://github.com/analogcode/Swift-Radio-Pro"

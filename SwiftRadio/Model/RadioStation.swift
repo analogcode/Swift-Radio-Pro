@@ -14,12 +14,13 @@ import FRadioPlayer
 struct RadioStation: Codable {
     
     var name: String
+    var website: String?
     var streamURL: String
     var imageURL: String
     var desc: String
     var longDesc: String
     
-    init(name: String, streamURL: String, imageURL: String, desc: String, longDesc: String = "") {
+    init(name: String, website: String? = nil, streamURL: String, imageURL: String, desc: String, longDesc: String = "") {
         self.name = name
         self.streamURL = streamURL
         self.imageURL = imageURL
@@ -29,6 +30,16 @@ struct RadioStation: Codable {
 }
 
 extension RadioStation {
+    var hasValidWebsite: Bool {
+        guard let websiteString = website,
+              !websiteString.isEmpty,
+              let url = URL(string: websiteString),
+              url.scheme?.hasPrefix("http") == true else {
+            return false
+        }
+        return true
+    }
+    
     var shoutout: String {
         "I'm listening to \(name) via \(Bundle.main.appName) app"
     }
@@ -65,5 +76,12 @@ extension RadioStation {
     
     var artistName: String {
         FRadioPlayer.shared.currentMetadata?.artistName ?? desc
+    }
+    
+    var musicSearchURL: URL? {
+        guard let encodedSongName = FRadioPlayer.shared.currentMetadata?.trackName?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+              let encodedArtistName = FRadioPlayer.shared.currentMetadata?.artistName?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return nil }
+        let musicSearchURLString = "https://music.apple.com/search?term=\(encodedSongName)+\(encodedArtistName)".replacingOccurrences(of: "%2B", with: "%20")
+        return URL(string: musicSearchURLString)
     }
 }

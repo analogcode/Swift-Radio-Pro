@@ -10,7 +10,7 @@ import UIKit
 import MediaPlayer
 import FRadioPlayer
 
-@UIApplicationMain
+@main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
@@ -86,6 +86,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
+    // MARK: UISceneSession Lifecycle
+    
+    func application(_ application: UIApplication,
+                    configurationForConnecting connectingSceneSession: UISceneSession,
+                    options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+    }
+    
+    func application(_ application: UIApplication,
+                    didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
+    }
+    
     // MARK: - Remote Controls
     
     private func setupRemoteCommandCenter() {
@@ -135,4 +147,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 }
-

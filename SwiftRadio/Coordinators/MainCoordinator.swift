@@ -66,7 +66,7 @@ extension MainCoordinator: LoaderControllerDelegate {
 extension MainCoordinator: StationsViewControllerDelegate {
     
     func pushNowPlayingController(_ stationsViewController: StationsViewController, newStation: Bool) {
-        let nowPlayingController = Storyboard.viewController as NowPlayingViewController
+        let nowPlayingController = NowPlayingViewController()
         nowPlayingController.delegate = self
         nowPlayingController.isNewStation = newStation
         navigationController.pushViewController(nowPlayingController, animated: true)
@@ -83,20 +83,13 @@ extension MainCoordinator: StationsViewControllerDelegate {
 
 extension MainCoordinator: NowPlayingViewControllerDelegate {
     
-    func didTapInfoButton(_ nowPlayingViewController: NowPlayingViewController, station: RadioStation) {
-        let infoController = Storyboard.viewController as InfoDetailViewController
-        infoController.currentStation = station
-        navigationController.pushViewController(infoController, animated: true)
+    func didSelectBottomSheetOption(_ option: BottomSheetViewController.Option, from controller: NowPlayingViewController) {
+        guard let station = StationsManager.shared.currentStation else { return }
+        BottomSheetHandler.handle(option, station: station, from: controller)
     }
     
     func didTapCompanyButton(_ nowPlayingViewController: NowPlayingViewController) {
         openAbout(in: nowPlayingViewController)
-    }
-    
-    func didTapShareButton(_ nowPlayingViewController: NowPlayingViewController, station: RadioStation, artworkURL: URL?) {
-        ShareActivity.activityController(station: station, artworkURL: artworkURL, sourceView: nowPlayingViewController.view) { [weak nowPlayingViewController] controller in
-            nowPlayingViewController?.present(controller, animated: true, completion: nil)
-        }
     }
 }
 
