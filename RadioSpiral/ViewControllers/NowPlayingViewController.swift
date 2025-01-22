@@ -171,19 +171,15 @@ class NowPlayingViewController: UIViewController {
     // MARK: - Player Controls (Play/Pause/Volume)
         
     @IBAction func playingPressed(_ sender: Any) {
-        player.togglePlaying()
         if player.isPlaying {
-            ACWebSocketClient.shared.connect()
-        } else {
             ACWebSocketClient.shared.disconnect()
+            player.stop()
+        } else {
+            ACWebSocketClient.shared.connect()
+            player.play()
         }
     }
-    
-    @IBAction func stopPressed(_ sender: Any) {
-        player.stop()
-        ACWebSocketClient.shared.disconnect()
-    }
-    
+        
     @IBAction func nextPressed(_ sender: Any) {
         manager.setNext()
     }

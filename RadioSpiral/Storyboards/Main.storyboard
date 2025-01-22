@@ -157,7 +157,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="WmY-ug-Nhz" userLabel="Controls Stack View">
-                                <rect key="frame" x="87" y="327" width="216" height="45"/>
+                                <rect key="frame" x="115.66666666666669" y="327" width="159" height="45"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W6n-gy-z3a" userLabel="PreviousButton">
                                         <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
@@ -174,7 +174,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k7t-tN-2wp" userLabel="PauseButton">
-                                        <rect key="frame" x="57" y="0.0" width="45" height="45"/>
+                                        <rect key="frame" x="56.999999999999986" y="0.0" width="45" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="45" id="0QP-4Y-L0R"/>
                                             <constraint firstAttribute="height" constant="45" id="9ls-Nq-FcF"/>
@@ -187,22 +187,8 @@
                                             <action selector="playingPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="NEV-en-273"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uXK-bZ-bdt" userLabel="PauseButton">
-                                        <rect key="frame" x="114" y="0.0" width="45" height="45"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="45" id="ebX-Zd-lOX"/>
-                                            <constraint firstAttribute="height" constant="45" id="vqL-YC-gUW"/>
-                                        </constraints>
-                                        <state key="normal" image="btn-stop">
-                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <state key="selected" image="btn-pause"/>
-                                        <connections>
-                                            <action selector="stopPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ER7-uh-Svz"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rdn-tm-QKv" userLabel="NextButton">
-                                        <rect key="frame" x="171" y="0.0" width="45" height="45"/>
+                                        <rect key="frame" x="114" y="0.0" width="45" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="ClR-id-HJ9"/>
                                             <constraint firstAttribute="width" constant="45" id="vPQ-1T-f9U"/>
@@ -709,7 +695,6 @@ General nuisance &amp; Linux:
         <image name="btn-pause" width="44" height="44"/>
         <image name="btn-play" width="44" height="44"/>
         <image name="btn-previous" width="44" height="44"/>
-        <image name="btn-stop" width="44" height="44"/>
         <image name="music.quarternote.3" catalog="system" width="128" height="102"/>
         <image name="questionmark" catalog="system" width="94" height="128"/>
         <image name="radiospiral" width="179" height="108"/>
