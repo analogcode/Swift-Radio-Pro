@@ -8,25 +8,44 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     var coordinator: MainCoordinator?
     
+    private let player = FRadioPlayer.shared
+    private let manager = StationsManager.shared
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         // FRadioPlayer config
-        FRadioPlayer.shared.isAutoPlay = true
-        FRadioPlayer.shared.enableArtwork = true
-        FRadioPlayer.shared.artworkAPI = iTunesAPI(artworkSize: 600)
+        setupFRadioPlayer()
         
         // AudioSession & RemotePlay
+        setupAudioSessionAndRemoteControls()
+        
+        // UI Setup
+        setupUIAppearance()
+        
+        // Start the coordinator
+        setupCoordinator(windowScene: windowScene)
+    }
+    
+    private func setupFRadioPlayer() {
+        player.isAutoPlay = true
+        player.enableArtwork = true
+        player.artworkAPI = iTunesAPI(artworkSize: 600)
+    }
+    
+    private func setupAudioSessionAndRemoteControls() {
         activateAudioSession()
         setupRemoteCommandCenter()
         UIApplication.shared.beginReceivingRemoteControlEvents()
-        
-        // Make status bar white
+    }
+    
+    private func setupUIAppearance() {
         UINavigationBar.appearance().barStyle = .black
         UINavigationBar.appearance().tintColor = .white
         UINavigationBar.appearance().prefersLargeTitles = true
-        
-        // Start the coordinator
+    }
+    
+    private func setupCoordinator(windowScene: UIWindowScene) {
         coordinator = MainCoordinator(navigationController: UINavigationController())
         
         window = UIWindow(windowScene: windowScene)
@@ -58,32 +77,32 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let commandCenter = MPRemoteCommandCenter.shared()
         
         // Add handler for Play Command
-        commandCenter.playCommand.addTarget { event in
-            FRadioPlayer.shared.play()
+        commandCenter.playCommand.addTarget { [weak self] _ in
+            self?.player.play()
             return .success
         }
         
         // Add handler for Pause Command
-        commandCenter.pauseCommand.addTarget { event in
-            FRadioPlayer.shared.pause()
+        commandCenter.pauseCommand.addTarget { [weak self] _ in
+            self?.player.pause()
             return .success
         }
         
         // Add handler for Toggle Command
-        commandCenter.togglePlayPauseCommand.addTarget { event in
-            FRadioPlayer.shared.togglePlaying()
+        commandCenter.togglePlayPauseCommand.addTarget { [weak self] _ in
+            self?.player.togglePlaying()
             return .success
         }
         
         // Add handler for Next Command
-        commandCenter.nextTrackCommand.addTarget { event in
-            StationsManager.shared.setNext()
+        commandCenter.nextTrackCommand.addTarget { [weak self] _ in
+            self?.manager.setNext()
             return .success
         }
         
         // Add handler for Previous Command
-        commandCenter.previousTrackCommand.addTarget { event in
-            StationsManager.shared.setPrevious()
+        commandCenter.previousTrackCommand.addTarget { [weak self] _ in
+            self?.manager.setPrevious()
             return .success
         }
     }
