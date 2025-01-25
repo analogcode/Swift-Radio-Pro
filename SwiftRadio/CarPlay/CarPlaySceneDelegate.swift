@@ -1,6 +1,10 @@
 //
 //  CarPlaySceneDelegate.swift
-//  SwiftRadio
+//  Swift Radio
+//
+//  Created by Fethi El Hassasna on 1/25/25.
+//  Copyright (c) 2015 MatthewFecher.com. All rights reserved.
+//
 //
 
 import CarPlay
@@ -9,10 +13,10 @@ import FRadioPlayer
 class CarPlaySceneDelegate: UIResponder, CPTemplateApplicationSceneDelegate {
     
     private var interfaceController: CPInterfaceController?
+    private let audioService = AudioSetupService.shared
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let templateApplicationScene = scene as? CPTemplateApplicationScene else { return }
-        
         // Set up the CarPlay window
         templateApplicationScene.delegate = self
     }
@@ -26,11 +30,16 @@ class CarPlaySceneDelegate: UIResponder, CPTemplateApplicationSceneDelegate {
         let listTemplate = CPListTemplate(title: "Radio Stations", sections: [])
         
         // Set as root template immediately
-        interfaceController.setRootTemplate(listTemplate, animated: false)
+        interfaceController
+            .setRootTemplate(listTemplate, animated: false, completion: nil)
         
         // Then fetch and update stations
-        StationsManager.shared.fetch { [weak self] _ in
-            self?.updateStationsList(listTemplate)
+        if StationsManager.shared.stations.isEmpty {
+            StationsManager.shared.fetch { [weak self] _ in
+                self?.updateStationsList(listTemplate)
+            }
+        } else {
+            updateStationsList(listTemplate)
         }
         
         // Subscribe to updates
