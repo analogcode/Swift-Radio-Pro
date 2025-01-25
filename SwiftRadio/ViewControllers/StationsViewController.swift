@@ -80,6 +80,11 @@ class StationsViewController: BaseController, Handoffable {
         nowPlayingView.tapHandler = { [weak self] in
             self?.nowPlayingBarButtonPressed()
         }
+        
+        // Set defaults station if the app started from CarPlay
+        updateNowPlayingButton(station: manager.currentStation)
+        updateHandoffUserActivity(userActivity, station: manager.currentStation)
+        startNowPlayingAnimation(player.isPlaying)
     }
     
     override func viewWillAppear(_ animated: Bool) {
