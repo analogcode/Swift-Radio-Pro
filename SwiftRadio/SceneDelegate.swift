@@ -34,7 +34,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func setupAudioSessionAndRemoteControls() {
-        activateAudioSession()
         setupRemoteCommandCenter()
         UIApplication.shared.beginReceivingRemoteControlEvents()
     }
@@ -59,15 +58,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func sceneDidBecomeActive(_ scene: UIScene) {
+        activateAudioSession()
     }
     
     func sceneWillResignActive(_ scene: UIScene) {
     }
     
     func sceneWillEnterForeground(_ scene: UIScene) {
+        activateAudioSession()
     }
     
     func sceneDidEnterBackground(_ scene: UIScene) {
+        activateAudioSession()
     }
     
     // MARK: - Remote Controls
@@ -106,8 +108,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return .success
         }
     }
-    
-    // MARK: - Activate Audio Session
     
     private func activateAudioSession() {
         do {

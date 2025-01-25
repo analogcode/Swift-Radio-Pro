@@ -15,24 +15,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         return true
     }
-
+    
     // MARK: UISceneSession Lifecycle
     
     func application(_ application: UIApplication,
-                    configurationForConnecting connectingSceneSession: UISceneSession,
-                    options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        #if CarPlay
+                     configurationForConnecting connectingSceneSession: UISceneSession,
+                     options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+#if CarPlay
         if connectingSceneSession.role == .carTemplateApplication {
             let config = UISceneConfiguration(name: "CarPlay Configuration", sessionRole: connectingSceneSession.role)
             config.delegateClass = CarPlaySceneDelegate.self
             return config
         }
-        #endif
+#endif
         
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
-
+    
     func application(_ application: UIApplication,
-                    didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
+                     didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
     }
 }
