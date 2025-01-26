@@ -11,8 +11,15 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
+    private let audioService = AudioSetupService.shared
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        // Setup all audio-related configurations at app launch
+        audioService.setupFRadioPlayer()
+        audioService.setupAudioSession()
+        audioService.setupRemoteCommandCenter()
+        
         return true
     }
     
