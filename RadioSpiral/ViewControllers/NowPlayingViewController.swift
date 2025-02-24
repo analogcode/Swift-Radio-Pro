@@ -60,12 +60,12 @@ class NowPlayingViewController: UIViewController {
         player.addObserver(self)
         manager.addObserver(self)
         
+        let viewSize = CGSize(width:  self.view.bounds.width, height:  self.view.bounds.height)
+        optimizeForDeviceSize(size: viewSize)
+        
         // Create Now Playing BarItem
         createNowPlayingAnimation()
         
-        // Set AlbumArtwork Constraints
-        optimizeForDeviceSize()
-
         // Set View Title
         self.title = manager.currentStation?.name
         
@@ -98,6 +98,15 @@ class NowPlayingViewController: UIViewController {
         client.connect()
         
         isPlayingDidChange(player.isPlaying)
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        coordinator.animate(alongsideTransition: { _ in
+            print("rotating")
+            self.optimizeForDeviceSize(size: size)
+        })
     }
     
     func updatedUI(status: ACStreamStatus) {
@@ -277,12 +286,24 @@ class NowPlayingViewController: UIViewController {
     
     // MARK: - UI Helper Methods
     
-    func optimizeForDeviceSize() {
-        
+    func optimizeForDeviceSize(size: CGSize) {
         // Adjust album size to fit iPhone 4s, 6s & 6s+
-        let deviceHeight = self.view.bounds.height
+        print("height", size.height, "width", size.width)
         
-        albumHeightConstraint.constant = CGFloat(Double(deviceHeight) * 0.37)
+        if size.width > size.height {
+            print("horizontal")
+            let imageHeight = self.view.bounds.height * 0.12
+            albumHeightConstraint.constant = imageHeight
+            print(imageHeight)
+        } else {
+            print("vertical")
+            let imageHeight = self.view.bounds.height * 0.40
+            albumHeightConstraint.constant = imageHeight
+            print(imageHeight)
+        }
+        print(albumHeightConstraint.constant)
+        view.updateConstraints()
+        view.layoutIfNeeded()
     }
     
     func updateLabels(with statusMessage: String? = nil, animate: Bool = true) {

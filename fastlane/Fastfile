@@ -20,4 +20,9 @@ platform :ios do
   lane :screenshots do
     capture_screenshots(scheme: "RadioSpiralUITests")
   end
+
+  desc "Upload screenshots to App Store Connect"
+  lane :upload_screenshots do
+    upload_to_app_store(skip_metadata: true, skip_binary_upload: true)
+  end
 end

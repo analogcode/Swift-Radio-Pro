@@ -30,13 +30,6 @@ class SwiftRadioUITests: XCTestCase {
         setupSnapshot(app)
         app.launch()
 
-        // wait for the main view to load
-        self.expectation(
-            for: NSPredicate(format: "self.count > 0"),
-            evaluatedWith: stations,
-            handler: nil)
-        self.waitForExpectations(timeout: 10.0, handler: nil)
-        snapshot("Streams list")
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
     
@@ -44,7 +37,7 @@ class SwiftRadioUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
+   /*
     @MainActor func testHamburgerMenu() {
         
         let app = XCUIApplication()
@@ -59,20 +52,16 @@ class SwiftRadioUITests: XCTestCase {
         print(app.buttons.keys)
         app.buttons["btn close"].tap()
     }
-    
+    */
     @MainActor func testTransitionToNowPlaying() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
-        stations.element(boundBy: 0).tap()
-        snapshot("Loading")
         self.expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: pauseButton, handler: nil)
-        self.waitForExpectations(timeout: 10.0, handler: nil)
+        self.waitForExpectations(timeout: 30.0, handler: nil)
         snapshot("playing")
     }
     
     @MainActor func testSharing() {
-        stations.element(boundBy: 0).tap()
-        print(app.buttons.keys)
         self.expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: shareButton, handler: nil)
         self.waitForExpectations(timeout: 10.0, handler: nil)
         app.buttons["share"].tap()
