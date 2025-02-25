@@ -292,7 +292,17 @@ class NowPlayingViewController: UIViewController {
         
         if size.width > size.height {
             print("horizontal")
-            let imageHeight = self.view.bounds.height * 0.12
+            var imageHeight: CGFloat
+            //if size.height < 750 {
+            if  UIDevice.current.userInterfaceIdiom != .pad {
+                imageHeight = self.view.bounds.height * 0.12
+                if imageHeight < 100 {
+                    imageHeight = 0.00
+                }
+            } else {
+                imageHeight = self.view.bounds.height * 0.40
+            }
+            
             albumHeightConstraint.constant = imageHeight
             print(imageHeight)
         } else {

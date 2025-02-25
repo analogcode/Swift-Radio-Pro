@@ -12,6 +12,7 @@
 		5FDEE0221F72FF980064333C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FDEE0211F72FF980064333C /* LaunchScreen.storyboard */; };
 		6258DCD822D93A3500166C65 /* LogoShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258DCD722D93A3500166C65 /* LogoShareView.swift */; };
 		6258DCDA22D93A5400166C65 /* LogoShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6258DCD922D93A5400166C65 /* LogoShareView.xib */; };
+		710310052D6C1E8E00828968 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 710310042D6C1E8E00828968 /* Reachability */; };
 		710A17712D39FFE100D951C6 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 710A17702D39FFE100D951C6 /* Reachability */; };
 		710A17732D39FFEE00D951C6 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 710A17722D39FFEE00D951C6 /* Reachability */; };
 		715C87A62B23E141003FC57A /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C87A52B23E141003FC57A /* SnapshotHelper.swift */; };
@@ -175,6 +176,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7196786B2D27AAA500DCD7CE /* Kingfisher in Frameworks */,
+				710310052D6C1E8E00828968 /* Reachability in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -802,7 +804,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 52;
+				CURRENT_PROJECT_VERSION = 56;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 6PLL9M5SE2;
 				ENABLE_MODULE_VERIFIER = YES;
@@ -837,7 +839,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 52;
+				CURRENT_PROJECT_VERSION = 56;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 6PLL9M5SE2;
 				ENABLE_MODULE_VERIFIER = YES;
@@ -1044,6 +1046,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		710310042D6C1E8E00828968 /* Reachability */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 710A176F2D39FFE100D951C6 /* XCRemoteSwiftPackageReference "Reachability" */;
+			productName = Reachability;
+		};
 		710A17702D39FFE100D951C6 /* Reachability */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 710A176F2D39FFE100D951C6 /* XCRemoteSwiftPackageReference "Reachability" */;

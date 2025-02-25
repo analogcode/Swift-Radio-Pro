@@ -8,6 +8,7 @@
 
 import XCTest
 
+
 class SwiftRadioUITests: XCTestCase {
     
     let app = XCUIApplication()
@@ -29,7 +30,7 @@ class SwiftRadioUITests: XCTestCase {
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
         setupSnapshot(app)
         app.launch()
-
+        
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
     
@@ -37,22 +38,7 @@ class SwiftRadioUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-   /*
-    @MainActor func testHamburgerMenu() {
-        
-        let app = XCUIApplication()
-        app.navigationBars["RadioSpiral streams"].buttons["icon hamburger"].tap()
-        app.buttons["About"].tap()
-        snapshot("About")
-        let safari = XCUIApplication(bundleIdentifier: "com.apple.mobilesafari")
-        app/*@START_MENU_TOKEN@*/.staticTexts["Visit our website"]/*[[".buttons[\"Visit our website\"].staticTexts[\"Visit our website\"]",".staticTexts[\"Visit our website\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        _ = safari.wait(for: .runningForeground, timeout: 30)
-        app.activate()
-        app.buttons["OK"].tap()
-        print(app.buttons.keys)
-        app.buttons["btn close"].tap()
-    }
-    */
+    
     @MainActor func testTransitionToNowPlaying() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
@@ -68,7 +54,37 @@ class SwiftRadioUITests: XCTestCase {
         self.expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: shareButton, handler: nil)
         self.waitForExpectations(timeout: 10.0, handler: nil)
         snapshot("share")
-       
+        
     }
+        
+    @MainActor func testSplitView() {
+        if isIPad() {
+            return
+        }
+        
+        // Use recording to get started writing UI tests.
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        self.expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: pauseButton, handler: nil)
+        self.waitForExpectations(timeout: 30.0, handler: nil)
+ 
+        // Simulate a tap at the **top center** of the screen
+            let topCenter = app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.02)) // Slightly below the top edge
+            topCenter.tap()
+
+        let menuStart = app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.02)) // Open menu
+        let splitViewButton = menuStart.withOffset(CGVector(dx: 0, dy: 52)) // Adjust height as needed
+        print("Tapping at: \(splitViewButton.screenPoint)") // Log coordinates
+        splitViewButton.tap()
+        let calendarApp = XCUIApplication(bundleIdentifier: "com.apple.mobilecal")
+        calendarApp.launch()
+        // Adjust the split ratio to give each app some space
+        let middle = app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5))
+        middle.tap()  // Optionally tap the middle to adjust the app positions
+        snapshot("splitscreen")
+    }
+    
+    private func isIPad() -> Bool {
+           return UIDevice.current.userInterfaceIdiom == .pad
+       }
 }
 
