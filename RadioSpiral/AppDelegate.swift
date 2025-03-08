@@ -100,13 +100,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Add handler for Pause Command
         commandCenter.pauseCommand.addTarget { event in
-            FRadioPlayer.shared.pause()
+            FRadioPlayer.shared.stop()
             return .success
         }
         
         // Add handler for Toggle Command
         commandCenter.togglePlayPauseCommand.addTarget { event in
-            FRadioPlayer.shared.togglePlaying()
+            if FRadioPlayer.shared.isPlaying {
+                ACWebSocketClient.shared.disconnect()
+                FRadioPlayer.shared.stop()
+            } else {
+                ACWebSocketClient.shared.connect()
+                FRadioPlayer.shared.play()
+            }
             return .success
         }
         
