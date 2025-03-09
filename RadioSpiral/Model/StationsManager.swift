@@ -91,6 +91,15 @@ class StationsManager {
         player.radioURL = URL(string: station.streamURL)
     }
     
+    // Exists because with Azuracast, resuminh from stop/pause is not working
+    // consistently, but "previous" or "next" DOES properly restart play.
+    // Will add this into the play() function and see if it helps.
+    func reloadCurrent() {
+        guard let index = getIndex(of: currentStation) else { return }
+        currentStation = stations[index]
+        player.radioURL = URL(string: currentStation!.streamURL)
+    }
+    
     func updateSearch(with filter: String) {
         searchedStations.removeAll(keepingCapacity: false)
         searchedStations = stations.filter { $0.name.range(of: filter, options: [.caseInsensitive]) != nil }

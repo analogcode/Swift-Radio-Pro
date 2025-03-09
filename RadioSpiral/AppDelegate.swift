@@ -94,6 +94,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Add handler for Play Command
         commandCenter.playCommand.addTarget { event in
+            StationsManager.shared.reloadCurrent()
             FRadioPlayer.shared.play()
             return .success
         }

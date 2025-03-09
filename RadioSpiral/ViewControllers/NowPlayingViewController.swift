@@ -185,6 +185,7 @@ class NowPlayingViewController: UIViewController {
             player.stop()
         } else {
             ACWebSocketClient.shared.connect()
+            _ = StationsManager.reloadCurrent(StationsManager.shared)
             player.play()
         }
     }
