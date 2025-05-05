@@ -2,39 +2,25 @@
     "station":
     [
      {
-     "name": "Absolute Country Hits",
-     "streamURL": "http://strm112.1.fm/acountry_mobile_mp3",
-     "imageURL": "station-absolutecountry.png",
-     "desc": "The Music Starts Here",
-     "longDesc": "All your favorite country hits and artists, from Johnny Cash to Taylor Swift, on 1.FM's Absolute Country, playing non-stop crooners and banjos, dance-tunes and fiddles, ballads and harmonicas. Absolute Country focuses on 5th, 6th and 7th generation Country (from the 90s on) but often delves into classic, older tunes as well."
+     "name": "RadioSpiral: ONE",
+     "streamURL": "http://radiospiral.radio:8000/stream.mp3",
+     "imageURL": "https://raw.githubusercontent.com/joemcmahon/radiospiral-config/master/logo.png",
+     "desc": "captivating electronica",
+     "longDesc": "Our primary stream, featuring a selected set of our library of captivating electronica, 24/7.\nFeaturing live DJs and live performances, every day of the week."
      },
      {
-     "name": "AZ Rock Radio",
-     "streamURL": "http://cassini.shoutca.st:9300/stream",
-     "imageURL": "az-rock-radio",
-     "desc": "We Know Music from A to Z",
-     "longDesc": "Web Radio Station from Puerto Rico. Download our App (Apple & Android) or go to: www.azrockradio.com"
+       "name": "RadioSpiral: Inner Sanctum",
+       "streamURL": "http://radiospiral.radio:8050/test.mp3",
+       "imageURL": "https://raw.githubusercontent.com/joemcmahon/radiospiral-config/master/logo.png",
+       "desc": "deep, undistracted listening",
+       "longDesc": "Our stream for listeners looking for longform, meditative music."
      },
      {
-     "name": "The Rock FM",
-     "streamURL": "http://tunein-icecast.mediaworks.nz/rock_128kbps",
-     "imageURL": "https://fethica.com/assets/swift-radio/station-therockfm@3x.png",
-     "desc": "Rock Music",
-     "longDesc": "NZ's number one Rock music station."
+       "name": "RadioSpiral: Outer Limits",
+       "streamURL": "http://radiospiral.radio:8050/test.mp3",
+       "imageURL": "https://raw.githubusercontent.com/joemcmahon/radiospiral-config/master/logo.png",
+       "desc": "provocative and challenging listening",
+       "longDesc": "Our stream for listeners looking for more experimental, noisy, and quirky music."
      },
-     {
-     "name": "Classic Rock",
-     "streamURL": "http://rfcmedia.streamguys1.com/classicrock.mp3",
-     "imageURL": "station-classicrock",
-     "desc": "Classic Rock Hits",
-     "longDesc": "Classic rock is a radio format which developed from the album-oriented rock (AOR) format in the early 1980s. In the United States, the classic rock format features music ranging generally from the late 1960s to the late 1980s, primarily focusing on commercially successful hard rock popularized in the 1970s. The radio format became increasingly popular with the baby boomer demographic by the end of the 1990s."
-     },
-     {
-     "name": "Radio 1190",
-     "streamURL": "http://104.250.149.122:8082/stream",
-     "imageURL": "",
-     "desc": "KVCU - Boulder, CO",
-     "longDesc": "Radio 1190 is the bomb."
-     }
     ]
 }

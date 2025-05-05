@@ -55,8 +55,9 @@ class NowPlayingViewController: UIViewController {
         super.viewDidLoad()
         
         navigationItem.largeTitleDisplayMode = .never
-        navigationItem.hidesBackButton = true
-        
+        if manager.stations.count < 2 {
+            navigationItem.hidesBackButton = true
+        }
         player.addObserver(self)
         manager.addObserver(self)
         

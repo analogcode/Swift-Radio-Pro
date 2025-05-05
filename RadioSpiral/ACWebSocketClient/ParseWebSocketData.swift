@@ -111,6 +111,7 @@ public class ParseWebSocketData {
                 status.album = current_song?["album"] as! String
                 status.artist = current_song?["artist"] as! String
                 status.track = current_song?["title"] as! String
+                status = descramble(status: status)
                 
                 // Extract artwork URL as string, and convert to URL.
                 let artURLString = current_song?["art"] as! String
@@ -138,6 +139,7 @@ public class ParseWebSocketData {
                 status.artist = song["artist"] as! String
                 status.track = song["title"] as! String
                 status.duration = TimeInterval(Double(duration))
+                status = descramble(status: status)
                 
                 // Extract artwork URL string, and make it a real URL.
                 let artURLString = song["art"] as! String
@@ -162,6 +164,35 @@ public class ParseWebSocketData {
             }
         }
         // Return the status of the parse. Anyone monitoring it via `@publishef
+        return status
+    }
+    
+    // XXX: workaround for Azuracast bugs and streamer peculiarities.
+    //
+    // Takes the fetched song metadata and repairs it so that the now-playing
+    // data looks right in the app.
+    private func descramble(status: ACStreamStatus) -> ACStreamStatus {
+        if status.dj == "Cypress Rosewood" {
+            // Tony's metadata has the track name in artist and the artist
+            // name in track. Album is currently unset, but we'll revisit this
+            // if he adds it.
+            let save = status.track
+            status.track = status.artist
+            status.artist = save
+        } else if status.dj != "" && status.album == "" {
+            // Working around the bug in Azuracast that misparses the stream
+            // metadata: trackname and album are in track, album is empty.
+            let splittable = status.track
+            let delimiter: String = " - "
+            var parts: [String] = splittable.components(separatedBy: delimiter)
+            if parts.count == 2 {
+                status.track = parts[0]
+                status.album = parts[1]
+            } else if parts.count > 2 {
+                status.album = parts.removeLast()
+                status.track = parts.joined(separator:" - ")
+            }
+        }
         return status
     }
     

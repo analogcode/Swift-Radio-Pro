@@ -88,7 +88,9 @@ class StationsViewController: BaseController, Handoffable {
         super.viewWillAppear(false)
         title = "RadioSpiral streams"
         let station = manager.stations[0]
-        pushNowPlayingController(with: station)
+        if manager.stations.count < 2 {
+            pushNowPlayingController(with: station)
+        }
     }
     
     @objc func refresh(sender: AnyObject) {

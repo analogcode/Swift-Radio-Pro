@@ -91,7 +91,7 @@ class StationsManager {
         player.radioURL = URL(string: station.streamURL)
     }
     
-    // Exists because with Azuracast, resuminh from stop/pause is not working
+    // Exists because with Azuracast, resuming from stop/pause is not working
     // consistently, but "previous" or "next" DOES properly restart play.
     // Will add this into the play() function and see if it helps.
     func reloadCurrent() {

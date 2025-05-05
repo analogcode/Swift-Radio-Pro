@@ -14,7 +14,7 @@ struct Config {
 
     // If this is set to "true", it will use the JSON file in the app
     // Set it to "false" to use the JSON file at the stationDataURL
-    static let useLocalStations = false
+    static let useLocalStations = true
     static let stationsURL = "https://raw.githubusercontent.com/joemcmahon/radiospiral-config/master/stations.json"
 
     // Set this to "true" to enable the search bar
