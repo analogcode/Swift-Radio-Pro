@@ -5,9 +5,10 @@
        "name": "RadioSpiral: ONE",
        "streamURL": "http://radiospiral.radio:8000/stream.mp3",
        "imageURL": "https://raw.githubusercontent.com/joemcmahon/radiospiral-config/master/logo.png",
-       "websocketURL": "",
        "desc": "captivating electronica",
-       "longDesc": "Our primary stream, featuring a selected set of our library of captivating electronica, 24/7.\nFeaturing live DJs and live performances, every day of the week."
+       "longDesc": "Our primary stream, featuring a selected set of our library of captivating electronica, 24/7.\nFeaturing live DJs and live performances, every day of the week.",
+       "serverName": "spiral.radio",
+       "shortCode": "radiospiral",
      },
      {
        "name": "RadioSpiral: Inner Sanctum",
@@ -15,7 +16,9 @@
        "imageURL": "https://raw.githubusercontent.com/joemcmahon/radiospiral-config/master/logo.png",
        "websocketURL": "",
        "desc": "deep, undistracted listening",
-       "longDesc": "Our stream for listeners looking for longform, meditative music."
+       "longDesc": "Our stream for listeners looking for longform, meditative music.",
+       "serverName": "spiral.radio",
+       "shortCode": "rstest"
      },
      {
        "name": "RadioSpiral: Outer Limits",
@@ -23,7 +26,9 @@
        "imageURL": "https://raw.githubusercontent.com/joemcmahon/radiospiral-config/master/logo.png",
        "websocketURL": "",
        "desc": "provocative and challenging listening",
-       "longDesc": "Our stream for listeners looking for more experimental, noisy, and quirky music."
+       "longDesc": "Our stream for listeners looking for more experimental, noisy, and quirky music.",
+       "serverName": "spiral.radio",
+       "shortCode": "rstest"
      },
     ]
 }

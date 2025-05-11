@@ -22,7 +22,7 @@ protocol NowPlayingViewControllerDelegate: AnyObject {
 class NowPlayingViewController: UIViewController {
     
     weak var delegate: NowPlayingViewControllerDelegate?
-    let client = ACWebSocketClient.shared
+    var client = ACWebSocketClient.shared
     
     // MARK: - IB UI
     
@@ -93,7 +93,7 @@ class NowPlayingViewController: UIViewController {
         nextButton.isHidden = Config.hideNextPreviousButtons
         
         // Connect websocket client
-        client.configurationDidChange(serverName: "Spiral.radio", shortCode: "radiospiral")
+        client.configurationDidChange(serverName: manager.currentStation?.serverName ?? "spiral.radio", shortCode: manager.currentStation?.shortCode ?? "radiospiral")
         client.setDefaultDJ(name: "Spud the Ambient Robot")
         client.addSubscriber(callback: updatedUI)
         client.connect()
@@ -174,6 +174,12 @@ class NowPlayingViewController: UIViewController {
             self?.albumImageView.image = image
         }
         title = manager.currentStation?.name
+        if let serverName = manager.currentStation?.serverName,
+                let shortCode = manager.currentStation?.shortCode {
+                    client = ACWebSocketClient(serverName: serverName, shortCode: shortCode)
+                } else {
+                    client.disconnect()
+                }        
         updateLabels()
         player.stop()
     }
