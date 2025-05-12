@@ -38,6 +38,7 @@ class StationsManager {
             }
             
             resetArtwork(with: currentStation)
+            ACWebSocketClient.shared.disconnect()
         }
     }
     
@@ -98,7 +99,6 @@ class StationsManager {
         guard let index = getIndex(of: currentStation) else { return }
         currentStation = stations[index]
         player.radioURL = URL(string: currentStation!.streamURL)
-        
     }
     
     func updateSearch(with filter: String) {

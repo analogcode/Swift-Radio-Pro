@@ -328,10 +328,8 @@ class NowPlayingViewController: UIViewController {
     }
     
     func updateLabels(with statusMessage: String? = nil, animate: Bool = true) {
-        
         guard let statusMessage = statusMessage else {
             // Radio is (hopefully) streaming properly
-            self.liveDJIndicator.isHidden = false
             let status = ACWebSocketClient.shared.status
             if status.changed {
                 self.liveDJIndicator.isHidden = !status.isLiveDJ
@@ -345,11 +343,12 @@ class NowPlayingViewController: UIViewController {
             shouldAnimateSongLabel(animate)
             return
         }
+        
         // There's a an interruption or pause in the audio queue
         print("Explicit status message \(String(describing: statusMessage))")
 
         // Update UI only when it's not already updated
-        guard songLabel.text != statusMessage else { return }
+        guard songLabel.text != "" else { return }
             
         songLabel.text = statusMessage
         artistLabel.text = manager.currentStation?.name

@@ -226,7 +226,7 @@ public class ACWebSocketClient: ObservableObject {
     
     /// Disconnects from the WebSocket API.  Sets the global status to `disconnected`.
     public func disconnect() {
-        webSocketTask?.cancel(with: .normalClosure, reason: nil)
+        webSocketTask?.cancel(with: .goingAway, reason: nil)
         DispatchQueue.main.async {
             self.status.connection = ACConnectionState.disconnected
         }
