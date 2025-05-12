@@ -20,8 +20,9 @@ struct RadioStation: Codable {
     var longDesc: String
     var serverName: String
     var shortCode: String
+    var defaultDJ: String
     
-    init(name: String, streamURL: String, imageURL: String, desc: String, longDesc: String = "", serverName: String, shortCode: String) {
+    init(name: String, streamURL: String, imageURL: String, desc: String, longDesc: String = "", serverName: String, shortCode: String, defaultDJ: String) {
         self.name = name
         self.streamURL = streamURL
         self.imageURL = imageURL
@@ -29,6 +30,7 @@ struct RadioStation: Codable {
         self.longDesc = longDesc
         self.serverName = serverName
         self.shortCode = shortCode
+        self.defaultDJ = defaultDJ
     }
 }
 

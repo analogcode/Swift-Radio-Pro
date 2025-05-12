@@ -94,7 +94,7 @@ class NowPlayingViewController: UIViewController {
         
         // Connect websocket client
         client.configurationDidChange(serverName: manager.currentStation?.serverName ?? "spiral.radio", shortCode: manager.currentStation?.shortCode ?? "radiospiral")
-        client.setDefaultDJ(name: "Spud the Ambient Robot")
+        client.setDefaultDJ(name: manager.currentStation?.defaultDJ ?? "Spud the Ambient Robot")
         client.addSubscriber(callback: updatedUI)
         client.connect()
         

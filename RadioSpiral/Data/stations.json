@@ -9,6 +9,7 @@
        "longDesc": "Our primary stream, featuring a selected set of our library of captivating electronica, 24/7.\nFeaturing live DJs and live performances, every day of the week.",
        "serverName": "spiral.radio",
        "shortCode": "radiospiral",
+       "defaultDJ": "Spud the Ambient Robot",
      },
      {
          "name": "RadioSpiral: Inner Sanctum",
@@ -19,16 +20,18 @@
          "longDesc": "Our stream for listeners looking for longform, meditative music.",
          "serverName": "spiral.radio",
          "shortCode": "rs_inner_sanctum",
+         "defaultDJ": "The Deep Listener",
      },
      {
        "name": "RadioSpiral: Outer Limits",
-       "streamURL": "http://radiospiral.radio:8030/radio.mp3",
+       "streamURL": "http://radiospiral.radio:8020/radio.mp3",
        "imageURL": "https://raw.githubusercontent.com/joemcmahon/radiospiral-config/master/logo.png",
        "websocketURL": "",
        "desc": "provocative and challenging listening",
        "longDesc": "Our stream for listeners looking for more experimental, noisy, and quirky music.",
        "serverName": "spiral.radio",
-       "shortCode": "rs_outer_limits"
+       "shortCode": "rs_outer_limits",
+       "defaultDJ": "The Mad Scientist",
      },
     ]
 }
