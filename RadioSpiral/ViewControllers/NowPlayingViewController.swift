@@ -194,15 +194,18 @@ class NowPlayingViewController: UIViewController {
             ACWebSocketClient.shared.connect()
             _ = StationsManager.reloadCurrent(StationsManager.shared)
             player.play()
+            updateLabels()
         }
     }
         
     @IBAction func nextPressed(_ sender: Any) {
         manager.setNext()
+        updateLabels()
     }
     
     @IBAction func previousPressed(_ sender: Any) {
         manager.setPrevious()
+        updateLabels()
     }
     
     // Update track with new artwork
@@ -332,14 +335,13 @@ class NowPlayingViewController: UIViewController {
             let status = ACWebSocketClient.shared.status
             if status.changed {
                 self.liveDJIndicator.isHidden = !status.isLiveDJ
-                songLabel.text = status.track
-                artistLabel.text = status.artist
-                releaseLabel.text = status.album
-            } else {
-                songLabel.text = manager.currentStation?.trackName
-                artistLabel.text = manager.currentStation?.artistName
-                releaseLabel.text = manager.currentStation?.releaseName
+                if status.track != "" {
+                    songLabel.text = status.track
+                    artistLabel.text = status.artist
+                    releaseLabel.text = status.album
+                }
             }
+            
             shouldAnimateSongLabel(animate)
             return
         }
