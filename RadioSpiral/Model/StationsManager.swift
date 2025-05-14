@@ -41,7 +41,7 @@ class StationsManager {
             ACWebSocketClient.shared.disconnect()
         }
     }
-    
+        
     var searchedStations: [RadioStation] = []
     
     private var observations = [ObjectIdentifier : Observation]()

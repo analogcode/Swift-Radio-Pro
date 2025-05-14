@@ -12,6 +12,7 @@ public let ACExtractedData = 1
 public let ACRawSubsections = 2
 public let ACFullDump = 4
 public let ACConnectivityChecks = 8
+public let ACActivityTrace = 16
 
 
 /// Type describing a callback to send the current status to a subscriber.
@@ -71,6 +72,7 @@ public class ACWebSocketClient: ObservableObject {
     /// Constructs an empty `ACWebSoscketClient`, which must be initialized with
     /// `configurationDidChange` and `setDefaultDJ`.
     public init() {
+        if self.debugLevel & ACActivityTrace != 0 { print("Creating empty client") }
         reachabilityMonitor = try! Reachability()
         do {
             try reachabilityMonitor.startNotifier()
@@ -102,7 +104,6 @@ public class ACWebSocketClient: ObservableObject {
         } catch {
             print("unable to start notifier")
         }
-
     }
     
     ///  Initializes an `ACWebSocketClient` instance with a preset server and station.
@@ -111,6 +112,7 @@ public class ACWebSocketClient: ObservableObject {
     ///   - `shortCode`: The Azuracast-defined shortcode from the station's profile page
     ///   - `defaultDJ`: The DJ name to supply if no streamer is active. Useful if the station is configured to play music when no streamer is active. Defaults to `""` if no value is specified.
     public init (serverName: String?, shortCode: String?, defaultDJ: String? = "") {
+        if self.debugLevel & ACActivityTrace != 0 { print("Creating configured client") }
         reachabilityMonitor = try! Reachability()
         do {
             try reachabilityMonitor.startNotifier()
@@ -161,7 +163,8 @@ public class ACWebSocketClient: ObservableObject {
     /// The callback has the form `callbackFunction(status: StreamStatus)`; the `callback`
     /// parameter should be given only `callbackFunction`.
     public func addSubscriber(callback: @escaping MetadataCallback<ACStreamStatus>) {
-            subscribers.append(callback)
+        if self.debugLevel & ACActivityTrace != 0 { print("adding subscriber") }
+        subscribers.append(callback)
     }
     
     /// Sets the default value to be returned as the DJ name when no streamer is connected.
@@ -183,6 +186,7 @@ public class ACWebSocketClient: ObservableObject {
     
     // Notify all suscribers when an update occurs
     private func notifySubscribers(with data: ACStreamStatus) {
+        if self.debugLevel & ACActivityTrace != 0 { print("sending notifications") }
         for callback in subscribers {
             callback(data)
         }
@@ -193,6 +197,8 @@ public class ACWebSocketClient: ObservableObject {
     /// Diisconnects the client if  it's connected, changes the parameters, and reconnects with the new
     /// server and station, and clears the  last recorded stream status.
     public func configurationDidChange(serverName: String, shortCode: String) {
+        if self.debugLevel & ACActivityTrace != 0 { print("Reconfiguring") }
+
         self.serverName = serverName
         self.shortCode = shortCode
         self.disconnect()
@@ -211,9 +217,11 @@ public class ACWebSocketClient: ObservableObject {
     public func connect() {
         // turn off the liveness check; the first parse of the connect data will
         // turn it back on.
+        if self.debugLevel & ACActivityTrace != 0 { print("connecting") }
         self.stillAliveTimer?.invalidate()
         if status.connection == ACConnectionState.connected { disconnect() }
         if let _ = self.webSocketURL {
+            if self.debugLevel & ACActivityTrace != 0 { print("restarting websocket task") }
             webSocketTask = urlSession.webSocketTask(with: self.webSocketURL!)
             webSocketTask?.resume()
             DispatchQueue.main.async {
@@ -226,6 +234,7 @@ public class ACWebSocketClient: ObservableObject {
     
     /// Disconnects from the WebSocket API.  Sets the global status to `disconnected`.
     public func disconnect() {
+        if self.debugLevel & ACActivityTrace != 0 { print("disconnecting") }
         webSocketTask?.cancel(with: .goingAway, reason: nil)
         DispatchQueue.main.async {
             self.status.connection = ACConnectionState.disconnected
@@ -234,7 +243,7 @@ public class ACWebSocketClient: ObservableObject {
     
     // Called if the liveness timer goes off.
     @objc func fellOver() {
-        if debugLevel & ACConnectivityChecks != 0 {
+        if debugLevel & (ACConnectivityChecks | ACActivityTrace) != 0 {
             print("metadata server failed to respond within \(String(describing: status.pingInterval)) seconds")
         }
         connect()
@@ -247,10 +256,12 @@ public class ACWebSocketClient: ObservableObject {
     // Otherwise generates the expected subscription message and sends it.
     private func sendSubscriptionMessage() {
         guard let webSocketTask = webSocketTask else { return }
+        if self.debugLevel & ACActivityTrace != 0 { print("Subscribing") }
         guard let _ = self.serverName,
               let _ = self.shortCode else {
             status.connection = ACConnectionState.failedSubscribe
             status.changed = true
+            if self.debugLevel & ACActivityTrace != 0 { print("Subscription failed!") }
             return
         }
         
@@ -269,14 +280,17 @@ public class ACWebSocketClient: ObservableObject {
             status.connection = ACConnectionState.failedSubscribe
             status.changed = true
         }
+        if self.debugLevel & ACActivityTrace != 0 { print("Subscription complete") }
     }
     
     // Listens for incoming messages from the WebSocket server.
     // All incoming messages should be text.
     private func listenForMessages() {
+        if self.debugLevel & ACActivityTrace != 0 { print("Start listening for messages") }
         webSocketTask?.receive { [weak self] result in
             guard let self = self else { return }
             
+            if self.debugLevel & ACActivityTrace != 0 { print("message received") }
             switch result {
             case .success(let message):
                 switch message {
@@ -302,7 +316,7 @@ public class ACWebSocketClient: ObservableObject {
     
     // Handles incoming messages and updates the status.
     private func handleMessage(_ message: String) {
-        
+        if self.debugLevel & ACActivityTrace != 0 { print("Handling message") }
         // Decode into data for parseWebSocketData.
         guard let data = message.data(using: .utf8) else {
             print("Failed to decode message to data")

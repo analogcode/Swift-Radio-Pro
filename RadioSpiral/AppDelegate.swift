@@ -52,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         coordinator?.start()
         
-        client.debug(to: 0)
+        client.debug(to: 16)
         
         return true
     }

@@ -22,6 +22,7 @@ struct RadioStation: Codable {
     var shortCode: String
     var defaultDJ: String
     var metadataClient: ACWebSocketClient?
+    var defaultArtwork: UIImage?
     
     enum CodingKeys: String, CodingKey {
         case name, streamURL, imageURL, desc, longDesc, serverName, shortCode, defaultDJ
@@ -59,18 +60,25 @@ extension RadioStation: Equatable {
     }
 }
 
+var imageCache: [String: UIImage] = [:]
+
 extension RadioStation {
     func getImage(completion: @escaping (_ image: UIImage) -> Void) {
-        
+        if let cachedImage = imageCache[imageURL] {
+            completion(cachedImage)
+            return
+        }
+
         if imageURL.range(of: "http") != nil, let url = URL(string: imageURL) {
-            // load current station image from network
             UIImage.image(from: url) { image in
-                completion(image ?? #imageLiteral(resourceName: "stationImage"))
+                let finalImage = image ?? #imageLiteral(resourceName: "albumArt")   // TODO: pick a better default image?
+                imageCache[imageURL] = finalImage
+                completion(finalImage)
             }
         } else {
-            // load local station image
-            let image = UIImage(named: imageURL) ?? #imageLiteral(resourceName: "stationImage")
-            completion(image)
+            let finalImage = UIImage(named: imageURL) ?? #imageLiteral(resourceName: "stationImage")
+            imageCache[imageURL] = finalImage
+            completion(finalImage)
         }
     }
 }

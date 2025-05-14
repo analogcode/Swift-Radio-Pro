@@ -224,30 +224,15 @@ class NowPlayingViewController: UIViewController {
                 // Force app to update display
                 self.view.setNeedsDisplay()
             }
-            
-            return
-        }
-        
-        guard let artworkURL = status.artwork else {
-            print("loading station artwork")
-            manager.currentStation?.getImage { [weak self] image in
-                self?.albumImageView.image = image
+        } else {
+            if manager.currentStation == nil { return }
+            if manager.currentStation?.defaultArtwork != nil {
+                self.albumImageView.image = manager.currentStation?.defaultArtwork
+            } else {
+                manager.currentStation?.getImage { [weak self] image in
+                    self?.albumImageView.image = image
+                }
             }
-            return
-        }
-
-        print("loading player artwork")
-        let processor = DownsamplingImageProcessor(size: albumImageView.bounds.size)
-        Task {
-            albumImageView.kf.indicatorType = .activity
-            albumImageView.kf.setImage(with: artworkURL,
-                                       options: [.processor(processor),
-                                                 .scaleFactor(UIScreen.main.scale),
-                                                 .transition(.fade(1))
-                                       ])
-            
-            // Force app to update display
-            self.view.setNeedsDisplay()
         }
     }
     
