@@ -21,6 +21,12 @@ struct RadioStation: Codable {
     var serverName: String
     var shortCode: String
     var defaultDJ: String
+    var metadataClient: ACWebSocketClient?
+    
+    enum CodingKeys: String, CodingKey {
+        case name, streamURL, imageURL, desc, longDesc, serverName, shortCode, defaultDJ
+    }
+    
     
     init(name: String, streamURL: String, imageURL: String, desc: String, longDesc: String = "", serverName: String, shortCode: String, defaultDJ: String) {
         self.name = name
