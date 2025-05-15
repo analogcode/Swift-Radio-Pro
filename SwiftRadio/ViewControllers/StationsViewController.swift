@@ -49,6 +49,7 @@ class StationsViewController: BaseController, Handoffable {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.accessibilityIdentifier = SharedAccessibility.StationsViewController.stationsTableView
         return tableView
     }()
     
@@ -218,6 +219,7 @@ extension StationsViewController: UITableViewDataSource {
             
             let station = searchController.isActive ? manager.searchedStations[indexPath.row] : manager.stations[indexPath.row]
             cell.configureStationCell(station: station)
+            cell.accessibilityIdentifier = SharedAccessibility.StationsViewController.stationCell(at: indexPath.row)
             return cell
         }
     }

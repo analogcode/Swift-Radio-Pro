@@ -29,6 +29,7 @@ class NowPlayingView: UIView {
         button.isEnabled = false
         button.contentHorizontalAlignment = .left
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.accessibilityIdentifier = SharedAccessibility.StationsViewController.nowPlayingBottomButton
         return button
     }()
     
@@ -37,6 +38,7 @@ class NowPlayingView: UIView {
         label.text = NowPlayingView.resetTitle
         label.font = .preferredFont(forTextStyle: .callout)
         label.textColor = .lightText
+        label.accessibilityIdentifier = SharedAccessibility.StationsViewController.nowPlayingTitleLabel
         return label
     }()
     
@@ -44,6 +46,7 @@ class NowPlayingView: UIView {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .caption2)
         label.textColor = .lightText
+        label.accessibilityIdentifier = SharedAccessibility.StationsViewController.nowPlayingSubtitleLabel
         return label
     }()
     

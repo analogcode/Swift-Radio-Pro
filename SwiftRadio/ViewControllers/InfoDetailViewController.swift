@@ -25,6 +25,11 @@ class InfoDetailViewController: UIViewController {
         
         setupStationText()
         setupStationLogo()
+        stationImageView.accessibilityIdentifier = SharedAccessibility.InfoDetailViewController.stationImageView
+        stationNameLabel.accessibilityIdentifier = SharedAccessibility.InfoDetailViewController.stationNameLabel
+        stationDescLabel.accessibilityIdentifier = SharedAccessibility.InfoDetailViewController.stationDescriptionLabel
+        okayButton.accessibilityIdentifier = SharedAccessibility.InfoDetailViewController.okayButton
+//        stationLongDescTextView.accessibilityIdentifier = SharedAccessibility.InfoDetailViewController.stationLongDescriptionLabel
     }
     
     // MARK: - UI Helpers

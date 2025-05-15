@@ -88,6 +88,19 @@ class NowPlayingViewController: UIViewController {
         nextButton.isHidden = Config.hideNextPreviousButtons
         
         isPlayingDidChange(player.isPlaying)
+        
+        albumImageView.accessibilityIdentifier = SharedAccessibility.NowPlayingViewController.albumImageView
+        artistLabel.accessibilityIdentifier = SharedAccessibility.NowPlayingViewController.artistLabel
+        playingButton.accessibilityIdentifier = SharedAccessibility.NowPlayingViewController.playingButton
+        songLabel.accessibilityIdentifier = SharedAccessibility.NowPlayingViewController.songLabel
+        stationDescLabel.accessibilityIdentifier = SharedAccessibility.NowPlayingViewController.stationDescriptionLabel
+        volumeParentView.accessibilityIdentifier = SharedAccessibility.NowPlayingViewController.volumeParentView
+        previousButton.accessibilityIdentifier = SharedAccessibility.NowPlayingViewController.previousButton
+        nextButton.accessibilityIdentifier = SharedAccessibility.NowPlayingViewController.nextButton
+        airPlayView.accessibilityIdentifier = SharedAccessibility.NowPlayingViewController.airPlayButton
+        nowPlayingImageView.accessibilityIdentifier = SharedAccessibility.NowPlayingViewController.nowPlayingImageView
+        mpVolumeSlider?.accessibilityIdentifier = SharedAccessibility.NowPlayingViewController.mpVolumeSlider
+        
     }
     
     // MARK: - Setup
