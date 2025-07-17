@@ -1,0 +1,286 @@
+//
+//  StationMetadataManager.swift
+//  RadioSpiral
+//
+//  Created by Joe McMahon on 2025-01-27.
+//  Copyright © 2025 RadioSpiral. All rights reserved.
+//
+
+import Foundation
+import FRadioPlayer
+import Combine
+
+/// Unified metadata structure that combines FRadioPlayer and Azuracast metadata
+public struct UnifiedMetadata: Equatable {
+    let trackName: String
+    let artistName: String
+    let albumName: String?
+    let artworkURL: URL?
+    let duration: TimeInterval?
+    let djName: String?
+    let isLiveDJ: Bool
+    let source: MetadataSource
+    
+    public init(trackName: String, artistName: String, albumName: String? = nil, artworkURL: URL? = nil, duration: TimeInterval? = nil, djName: String? = nil, isLiveDJ: Bool = false, source: MetadataSource) {
+        self.trackName = trackName
+        self.artistName = artistName
+        self.albumName = albumName
+        self.artworkURL = artworkURL
+        self.duration = duration
+        self.djName = djName
+        self.isLiveDJ = isLiveDJ
+        self.source = source
+    }
+    
+    public static func == (lhs: UnifiedMetadata, rhs: UnifiedMetadata) -> Bool {
+        let lhsTrack = lhs.trackName.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        let rhsTrack = rhs.trackName.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        let lhsAlbum = (lhs.albumName ?? "").trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        let rhsAlbum = (rhs.albumName ?? "").trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        let result = lhsTrack == rhsTrack && lhsAlbum == rhsAlbum
+        return result
+    }
+}
+
+public extension UnifiedMetadata {
+    var isValid: Bool {
+        !trackName.isEmpty && !artistName.isEmpty
+    }
+}
+
+/// Indicates the source of the metadata
+public enum MetadataSource {
+    case fradioPlayer
+    case azuracast
+    case fallback
+}
+
+/// Indicates the current connection state of the metadata system
+public enum MetadataConnectionState {
+    case disconnected
+    case connecting
+    case connected
+    case failed
+    case reconnecting
+}
+
+/// Protocol for metadata change callbacks
+public typealias MetadataChangeCallback = (UnifiedMetadata?) -> Void
+
+/// Manages unified metadata from multiple sources (FRadioPlayer and Azuracast)
+public class StationMetadataManager: ObservableObject {
+    
+    // MARK: - Singleton
+    public static let shared = StationMetadataManager()
+    
+    // MARK: - Published Properties
+    @Published public private(set) var currentMetadata: UnifiedMetadata?
+    @Published public private(set) var connectionState: MetadataConnectionState = .disconnected
+    
+    // MARK: - Private Properties
+    private let player = FRadioPlayer.shared
+    private let azuracastClient = ACWebSocketClient.shared
+    private var subscribers: [MetadataChangeCallback] = []
+    private var currentStation: RadioStation?
+    private var cancellables = Set<AnyCancellable>()
+    private static var activeSubscribers = 0
+    
+    // MARK: - Initialization
+    private init() {
+        // Reduce debug output for ACWebSocketClient to only essential
+        azuracastClient.debugLevel = 0 /* ACExtractedData | ACActivityTrace */
+        setupPlayerObserver()
+        setupAzuracastObserver()
+    }
+    
+    // MARK: - Public Methods
+    
+    /// Connect to a station's metadata sources
+    public func connectToStation(_ station: RadioStation) {
+        print("[StationMetadataManager] connectToStation called with station: \(station.name)")
+        disconnectCurrentStation()
+        
+        currentStation = station
+        
+        // Configure Azuracast client
+        azuracastClient.switchToStation(station)
+        
+        // Update connection state
+        connectionState = .connecting
+        
+        // Start monitoring metadata
+        updateMetadata()
+    }
+    
+    /// Disconnect from current station's metadata sources
+    public func disconnectCurrentStation() {
+        // Disconnect Azuracast client
+        azuracastClient.disconnect()
+        
+        // Clear current metadata
+        currentMetadata = nil
+        currentStation = nil
+        connectionState = .disconnected
+        
+        // Notify subscribers
+        notifySubscribers(with: nil)
+    }
+    
+    /// Subscribe to metadata changes
+    public func subscribeToMetadataChanges(_ callback: @escaping MetadataChangeCallback) {
+        print("[Subscriber] Adding: \(Unmanaged.passUnretained(callback as AnyObject).toOpaque())")
+        subscribers.append(callback)
+        StationMetadataManager.activeSubscribers += 1
+        print("[Subscriber] Active count: \(StationMetadataManager.activeSubscribers)")
+        // Immediately call with current metadata
+        callback(currentMetadata)
+    }
+    
+    /// Unsubscribe from metadata changes
+    public func unsubscribeFromMetadataChanges(_ callback: @escaping MetadataChangeCallback) {
+        print("[Subscriber] Removing: \(Unmanaged.passUnretained(callback as AnyObject).toOpaque())")
+        let before = subscribers.count
+        subscribers.removeAll { $0 as AnyObject === callback as AnyObject }
+        let after = subscribers.count
+        let removed = before - after
+        StationMetadataManager.activeSubscribers -= removed
+        print("[Subscriber] Active count: \(StationMetadataManager.activeSubscribers)")
+    }
+    
+    /// Get current unified metadata
+    public func getCurrentMetadata() -> UnifiedMetadata? {
+        return currentMetadata
+    }
+    
+    /// Trigger metadata update (called when FRadioPlayer metadata changes)
+    public func triggerMetadataUpdate() {
+        updateMetadata()
+    }
+    
+    public func removeAllSubscribers() {
+        subscribers.removeAll()
+        StationMetadataManager.activeSubscribers = 0
+        print("[Subscriber] All subscribers removed. Active count: 0")
+    }
+    
+    // MARK: - Private Methods
+    
+    private func setupPlayerObserver() {
+        // FRadioPlayer uses a delegate pattern, so we'll handle metadata updates
+        // through the StationsManager which observes FRadioPlayer
+    }
+    
+    private func setupAzuracastObserver() {
+        // Subscribe to Azuracast metadata changes
+        azuracastClient.addSubscriber { [weak self] status in
+            print("[StationMetadataManager] ACWebSocketClient subscriber closure called with status: \(status)")
+            DispatchQueue.main.async {
+                self?.handleAzuracastMetadataUpdate(status)
+            }
+        }
+    }
+    
+    private func handleAzuracastMetadataUpdate(_ status: ACStreamStatus) {
+        print("[StationMetadataManager] handleAzuracastMetadataUpdate called with status: \(status)")
+        // Update connection state based on Azuracast status
+        switch status.connection {
+        case .connected:
+            connectionState = .connected
+        case .disconnected:
+            connectionState = .disconnected
+        case .failedSubscribe:
+            connectionState = .failed
+        case .stationNotFound:
+            connectionState = .failed
+        }
+        // Update metadata
+        updateMetadata()
+    }
+    
+    private func updateMetadata() {
+        let newMetadata = getUnifiedMetadata()
+        
+        // Only update if metadata has actually changed
+        if newMetadata != currentMetadata {
+            currentMetadata = newMetadata
+            notifySubscribers(with: newMetadata)
+        }
+    }
+    
+    private func getUnifiedMetadata() -> UnifiedMetadata? {
+        // Priority 1: Azuracast metadata (if available and valid)
+        if let azuracastMetadata = getAzuracastMetadata(), azuracastMetadata.isValid {
+            return azuracastMetadata
+        }
+        
+        // Priority 2: FRadioPlayer metadata
+        if let fradioMetadata = getFRadioPlayerMetadata() {
+            return fradioMetadata
+        }
+        
+        // Priority 3: Fallback to station info
+        return getFallbackMetadata()
+    }
+    
+    private func getAzuracastMetadata() -> UnifiedMetadata? {
+        let status = azuracastClient.status
+        guard status.isValid else {
+            return nil
+        }
+        return UnifiedMetadata(
+            trackName: status.track,
+            artistName: status.artist,
+            albumName: status.album.isEmpty ? nil : status.album,
+            artworkURL: status.artwork,
+            duration: status.duration > 0 ? status.duration : nil,
+            djName: status.dj.isEmpty ? nil : status.dj,
+            isLiveDJ: status.isLiveDJ,
+            source: .azuracast
+        )
+    }
+    
+    private func getFRadioPlayerMetadata() -> UnifiedMetadata? {
+        guard let metadata = player.currentMetadata else { return nil }
+        
+        return UnifiedMetadata(
+            trackName: metadata.trackName ?? "",
+            artistName: metadata.artistName ?? "",
+            albumName: nil, // FRadioPlayer doesn't provide album info
+            artworkURL: player.currentArtworkURL,
+            duration: nil, // FRadioPlayer doesn't provide duration
+            djName: nil,
+            isLiveDJ: false,
+            source: .fradioPlayer
+        )
+    }
+    
+    private func getFallbackMetadata() -> UnifiedMetadata? {
+        guard let station = currentStation else { return nil }
+        
+        return UnifiedMetadata(
+            trackName: station.name,
+            artistName: station.desc,
+            albumName: nil,
+            artworkURL: nil,
+            duration: nil,
+            djName: station.defaultDJ,
+            isLiveDJ: false,
+            source: .fallback
+        )
+    }
+    
+    private func notifySubscribers(with metadata: UnifiedMetadata?) {
+        for callback in subscribers {
+            callback(metadata)
+        }
+    }
+}
+
+// MARK: - Extensions
+
+extension ACStreamStatus {
+    /// Check if the Azuracast metadata is valid and usable
+    var isValid: Bool {
+        return !track.isEmpty && !artist.isEmpty && changed
+    }
+} 

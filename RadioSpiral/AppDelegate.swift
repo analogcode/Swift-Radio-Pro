@@ -18,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // CarPlay
     var playableContentManager: MPPlayableContentManager?
-    let client = ACWebSocketClient.shared
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -51,8 +50,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         coordinator?.start()
-        
-        client.debug(to: 16)
         
         return true
     }
@@ -108,10 +105,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Add handler for Toggle Command
         commandCenter.togglePlayPauseCommand.addTarget { event in
             if FRadioPlayer.shared.isPlaying {
-                ACWebSocketClient.shared.disconnect()
                 FRadioPlayer.shared.stop()
             } else {
-                ACWebSocketClient.shared.connect()
                 FRadioPlayer.shared.play()
             }
             return .success

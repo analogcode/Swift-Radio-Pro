@@ -47,7 +47,19 @@ public class ACWebSocketClient: ObservableObject {
     // we've come online and we have the necessary info to connect, and which
     // kills any live timers and disconnects if we go offline.
     
-    private var stillAliveTimer: Timer?
+    private var stillAliveTimer: Timer? {
+        willSet {
+            if let timer = stillAliveTimer {
+                print("[Timer] Invalidating timer: \(Unmanaged.passUnretained(timer).toOpaque())")
+                timer.invalidate()
+            }
+        }
+        didSet {
+            if let timer = stillAliveTimer {
+                print("[Timer] Created timer: \(Unmanaged.passUnretained(timer).toOpaque())")
+            }
+        }
+    }
     public var reachabilityMonitor: Reachability
     
     /// `serverName` is the name of the Azuracast server we're connecting to for the metadata stream
@@ -65,7 +77,7 @@ public class ACWebSocketClient: ObservableObject {
     /// - 1: print the minimum data (track, artist, album, DJ)
     /// - 2: print the raw subsections the data is extracted from
     /// - 4: print the full set of JSON received from the stream before parsing`
-    var debugLevel: Int = 0
+    public var debugLevel: Int = 0
     
     private var lastResult: ACStreamStatus?
 
@@ -192,6 +204,19 @@ public class ACWebSocketClient: ObservableObject {
         }
     }
     
+    /// switchToStation lets us pass a RadioStation in to set all the relevant URLs, etc. and (re)connect
+    /// the websocket.
+    func switchToStation(_ station: RadioStation) {
+        if debugLevel & ACActivityTrace != 0 { print("Switching to station: \(station.shortCode)") }
+
+        self.serverName = station.serverName
+        self.shortCode = station.shortCode
+        self.defaultDJ = station.defaultDJ
+        self.disconnect()
+        self.constructWebSocketURL(serverName: station.serverName)
+        self.connect()
+        self.lastResult = ACStreamStatus()
+    }
     
     /// Call this method to update the configuration of the `ACWebSocketClient` and reconnect it.
     /// Diisconnects the client if  it's connected, changes the parameters, and reconnects with the new
@@ -236,6 +261,7 @@ public class ACWebSocketClient: ObservableObject {
     public func disconnect() {
         if self.debugLevel & ACActivityTrace != 0 { print("disconnecting") }
         webSocketTask?.cancel(with: .goingAway, reason: nil)
+        webSocketTask = nil
         DispatchQueue.main.async {
             self.status.connection = ACConnectionState.disconnected
         }
@@ -355,7 +381,7 @@ public class ACWebSocketClient: ObservableObject {
                 if debugLevel & ACConnectivityChecks != 0 { print("Invalidate previous timer") }
                 self.stillAliveTimer?.invalidate()
                 let interval = TimeInterval(Double(result.pingInterval ?? 25))
-                    self.stillAliveTimer = Timer.scheduledTimer(
+                self.stillAliveTimer = Timer.scheduledTimer(
                     timeInterval: interval,
                     target: self,
                     selector: #selector(fellOver),

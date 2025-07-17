@@ -9,6 +9,7 @@
 import UIKit
 import FRadioPlayer
 import MediaPlayer
+import Combine
 
 protocol StationsManagerObserver: AnyObject {
     func stationsManager(_ manager: StationsManager, stationsDidUpdate stations: [RadioStation])
@@ -38,7 +39,13 @@ class StationsManager {
             }
             
             resetArtwork(with: currentStation)
-            ACWebSocketClient.shared.disconnect()
+            
+            // Connect to new station's metadata
+            if let station = currentStation {
+                metadataManager.connectToStation(station)
+            } else {
+                metadataManager.disconnectCurrentStation()
+            }
         }
     }
         
@@ -46,9 +53,12 @@ class StationsManager {
     
     private var observations = [ObjectIdentifier : Observation]()
     private let player = FRadioPlayer.shared
+    private let metadataManager = StationMetadataManager.shared
+    private var cancellables = Set<AnyCancellable>()
     
     private init() {
         self.player.addObserver(self)
+        setupMetadataObserver()
     }
     
     func fetch(_ completion: StationsCompletion? = nil) {
@@ -115,6 +125,19 @@ class StationsManager {
         guard let station = station, let index = stations.firstIndex(of: station) else { return nil }
         return index
     }
+    
+    private func setupMetadataObserver() {
+        // Subscribe to metadata changes from the unified metadata manager
+        metadataManager.subscribeToMetadataChanges { [weak self] metadata in
+            DispatchQueue.main.async {
+                self?.handleMetadataUpdate(metadata)
+            }
+        }
+    }
+    
+    private func handleMetadataUpdate(_ metadata: UnifiedMetadata?) {
+        updateLockScreen(with: metadata)
+    }
 }
 
 // MARK: - StationsManager Observation
@@ -154,37 +177,61 @@ extension StationsManager {
     private func resetArtwork(with station: RadioStation?) {
         
         guard let station = station else {
-            print("no station")
             updateLockScreen(with: nil)
             return
         }
         
         station.getImage { [weak self] image in
-            print("station set")
-            self?.updateLockScreen(with: image)
+            self?.updateLockScreen(with: nil)
         }
     }
     
-    private func updateLockScreen(with artworkImage: UIImage?) {
-        
-        // Define Now Playing Info
+    private func updateLockScreen(with metadata: UnifiedMetadata?) {
         let nowPLayingInfoCenter = MPNowPlayingInfoCenter.default()
         var nowPlayingInfo = nowPLayingInfoCenter.nowPlayingInfo ?? [String : Any]()
-        
-        if let image = artworkImage {
-            nowPlayingInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(boundsSize: image.size, requestHandler: { size -> UIImage in
-                return image
-            })
+        if let metadata = metadata {
+            nowPlayingInfo[MPMediaItemPropertyArtist] = metadata.artistName
+            nowPlayingInfo[MPMediaItemPropertyTitle] = metadata.trackName
+            if let albumName = metadata.albumName {
+                nowPlayingInfo[MPMediaItemPropertyAlbumTitle] = albumName
+            }
+            if let duration = metadata.duration {
+                nowPlayingInfo[MPMediaItemPropertyPlaybackDuration] = duration
+            }
+            if let artworkURL = metadata.artworkURL {
+                URLSession.shared.dataTask(with: artworkURL) { [weak self] data, response, error in
+                    if let error = error {
+                        print("[LockScreen] Error downloading artwork: \(error)")
+                    }
+                    if let data = data, let image = UIImage(data: data) {
+                        DispatchQueue.main.async {
+                            nowPlayingInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(boundsSize: image.size, requestHandler: { _ in
+                                return image
+                            })
+                            MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
+                        }
+                    } else {
+                        print("[LockScreen] Failed to decode artwork, falling back to station icon")
+                        if let station = self?.currentStation {
+                            station.getImage { fallbackImage in
+                                DispatchQueue.main.async {
+                                    nowPlayingInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(boundsSize: fallbackImage.size, requestHandler: { _ in
+                                        return fallbackImage
+                                    })
+                                    MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
+                                }
+                            }
+                        }
+                    }
+                }.resume()
+                return // Only set nowPlayingInfo after artwork is ready
+            }
         }
-        nowPlayingInfo[MPMediaItemPropertyArtist] = ACWebSocketClient.shared.status.artist
-        nowPlayingInfo[MPMediaItemPropertyArtist] = ACWebSocketClient.shared.status.track
-        nowPlayingInfo[MPMediaItemPropertyTitle] = ACWebSocketClient.shared.status.album
-        nowPlayingInfo[MPMediaItemPropertyPlaybackDuration] = ACWebSocketClient.shared.status.duration
-        
-        // Set the metadata
+        // If no artworkURL, set nowPlayingInfo immediately
         MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
     }
     
+    // Legacy method for backward compatibility
     func updateLockscreenStatus(status: ACStreamStatus) {
         let nowPLayingInfoCenter = MPNowPlayingInfoCenter.default()
         var nowPlayingInfo = nowPLayingInfoCenter.nowPlayingInfo ?? [String : Any]()
@@ -201,13 +248,12 @@ extension StationsManager {
 extension StationsManager: FRadioPlayerObserver {
     
     func radioPlayer(_ player: FRadioPlayer, metadataDidChange metadata: FRadioPlayer.Metadata?) {
-        let status = ACWebSocketClient.shared.status
-        if !status.artist.isEmpty {
-            self.updateLockscreenStatus(status: status)
-        }
+        // Trigger metadata update in the unified metadata manager
+        metadataManager.triggerMetadataUpdate()
     }
     
     func radioPlayer(_ player: FRadioPlayer, artworkDidChange artworkURL: URL?) {
-        self.updateLockscreenStatus(status: ACWebSocketClient.shared.status)
+        // Trigger metadata update in the unified metadata manager
+        metadataManager.triggerMetadataUpdate()
     }
 }

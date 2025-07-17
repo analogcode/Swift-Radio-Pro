@@ -32,6 +32,9 @@
 		719678672D27AA6D00DCD7CE /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 719678662D27AA6D00DCD7CE /* Kingfisher */; };
 		719678692D27AA8E00DCD7CE /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 719678682D27AA8E00DCD7CE /* Kingfisher */; };
 		7196786B2D27AAA500DCD7CE /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 7196786A2D27AAA500DCD7CE /* Kingfisher */; };
+		71B3D01F2E2989C5001E8F5A /* StationMetadataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3D01E2E2989C5001E8F5A /* StationMetadataManager.swift */; };
+		71B3D0202E2989C5001E8F5A /* StationMetadataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3D01E2E2989C5001E8F5A /* StationMetadataManager.swift */; };
+		71B3D0212E2989C5001E8F5A /* StationMetadataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3D01E2E2989C5001E8F5A /* StationMetadataManager.swift */; };
 		71E9B4E22D2DE23A002D6496 /* ResizeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E9B4E12D2DE23A002D6496 /* ResizeImage.swift */; };
 		71E9B4E32D2DE23A002D6496 /* ResizeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E9B4E12D2DE23A002D6496 /* ResizeImage.swift */; };
 		9409E11C1ABF6FEA00312E2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */; };
@@ -132,6 +135,7 @@
 		719678562D27A72000DCD7CE /* ACWebSocketClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACWebSocketClient.h; sourceTree = "<group>"; };
 		719678572D27A72000DCD7CE /* ACWebSocketClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACWebSocketClient.swift; sourceTree = "<group>"; };
 		719678582D27A72000DCD7CE /* ParseWebSocketData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseWebSocketData.swift; sourceTree = "<group>"; };
+		71B3D01E2E2989C5001E8F5A /* StationMetadataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationMetadataManager.swift; sourceTree = "<group>"; };
 		71E9B4E12D2DE23A002D6496 /* ResizeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizeImage.swift; sourceTree = "<group>"; };
 		9409E1161ABF6FEA00312E2B /* RadioSpiral.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioSpiral.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9409E11A1ABF6FEA00312E2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -338,6 +342,7 @@
 		CE8062F5291EF598008BD097 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				71B3D01E2E2989C5001E8F5A /* StationMetadataManager.swift */,
 				94AC70AD1AD05C6200652982 /* RadioStation.swift */,
 				CE963ECB29135A6F004F299E /* StationsManager.swift */,
 				71E9B4E12D2DE23A002D6496 /* ResizeImage.swift */,
@@ -548,6 +553,7 @@
 				7196785A2D27A72000DCD7CE /* ParseWebSocketData.swift in Sources */,
 				7196785B2D27A72000DCD7CE /* ACConnectionState.swift in Sources */,
 				7196785C2D27A72000DCD7CE /* ACWebSocketClient.swift in Sources */,
+				71B3D0212E2989C5001E8F5A /* StationMetadataManager.swift in Sources */,
 				2C5545BD1C1124DE00728469 /* SwiftRadioUITests.swift in Sources */,
 				715C87A62B23E141003FC57A /* SnapshotHelper.swift in Sources */,
 			);
@@ -562,6 +568,7 @@
 				CE6036162A47B88600E15E15 /* StationTableViewCell.swift in Sources */,
 				CE9EE8DE293BB41300F62041 /* BaseController.swift in Sources */,
 				53113F39230C720900462C0E /* ShareActivity.swift in Sources */,
+				71B3D01F2E2989C5001E8F5A /* StationMetadataManager.swift in Sources */,
 				9409E1401ABF78B000312E2B /* NowPlayingViewController.swift in Sources */,
 				CE963ECC29135A6F004F299E /* StationsManager.swift in Sources */,
 				CE0A4997291F3B080071C0CC /* AppDelegate+CarPlay.swift in Sources */,
@@ -602,6 +609,7 @@
 				CE6036172A47B88600E15E15 /* StationTableViewCell.swift in Sources */,
 				CE9EE8DF293BB41300F62041 /* BaseController.swift in Sources */,
 				CE6A3E33291F376D0058C82A /* ShareActivity.swift in Sources */,
+				71B3D0202E2989C5001E8F5A /* StationMetadataManager.swift in Sources */,
 				CE6A3E34291F376D0058C82A /* NowPlayingViewController.swift in Sources */,
 				CE6A3E35291F376D0058C82A /* StationsManager.swift in Sources */,
 				CE0A4996291F3AD40071C0CC /* AppDelegate+CarPlay.swift in Sources */,

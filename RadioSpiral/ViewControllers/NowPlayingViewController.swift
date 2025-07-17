@@ -22,7 +22,7 @@ protocol NowPlayingViewControllerDelegate: AnyObject {
 class NowPlayingViewController: UIViewController {
     
     weak var delegate: NowPlayingViewControllerDelegate?
-    var client = ACWebSocketClient.shared
+    private let metadataManager = StationMetadataManager.shared
     
     // MARK: - IB UI
     
@@ -48,7 +48,9 @@ class NowPlayingViewController: UIViewController {
     var nowPlayingImageView: UIImageView!
     
     var mpVolumeSlider: UISlider?
-
+    private var metadataCallback: MetadataChangeCallback?
+    private var lastStatusMessage: String?
+    
     // MARK: - ViewDidLoad
     
     override func viewDidLoad() {
@@ -92,11 +94,11 @@ class NowPlayingViewController: UIViewController {
         previousButton.isHidden = Config.hideNextPreviousButtons
         nextButton.isHidden = Config.hideNextPreviousButtons
         
-        // Connect websocket client
-        client.configurationDidChange(serverName: manager.currentStation?.serverName ?? "spiral.radio", shortCode: manager.currentStation?.shortCode ?? "radiospiral")
-        client.setDefaultDJ(name: manager.currentStation?.defaultDJ ?? "Spud the Ambient Robot")
-        client.addSubscriber(callback: updatedUI)
-        client.connect()
+        // Subscribe to unified metadata changes
+        metadataCallback = { [weak self] metadata in
+            self?.handleMetadataUpdate(metadata)
+        }
+        metadataManager.subscribeToMetadataChanges(metadataCallback!)
         
         isPlayingDidChange(player.isPlaying)
     }
@@ -110,32 +112,37 @@ class NowPlayingViewController: UIViewController {
         })
     }
     
-    func updatedUI(status: ACStreamStatus) {
-        if !client.status.changed { return }
-        artistLabel.text = client.status.artist
-        songLabel.text = client.status.track
-        releaseLabel.text = client.status.album
-        djName.text = client.status.dj
+    func handleMetadataUpdate(_ metadata: UnifiedMetadata?) {
+        guard let metadata = metadata else { return }
         
-        Task {
-            let processor = DownsamplingImageProcessor(size: albumImageView.bounds.size)
-            albumImageView.kf.indicatorType = .activity
-            albumImageView.kf.setImage(with: client.status.artwork,
-                                       options: [.processor(processor),
-                                                 .scaleFactor(UIScreen.main.scale),
-                                                 .transition(.fade(1))
-                                       ])
-            StationsManager.shared.updateLockscreenStatus(status: client.status)
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            
+            // Update UI with unified metadata
+            self.artistLabel.text = metadata.artistName
+            self.songLabel.text = metadata.trackName
+            self.releaseLabel.text = metadata.albumName ?? ""
+            self.djName.text = metadata.djName ?? ""
+            
+            // Update live DJ indicator
+            self.liveDJIndicator.isHidden = !metadata.isLiveDJ
+            
+            // Update artwork
+            if let artworkURL = metadata.artworkURL {
+                let processor = DownsamplingImageProcessor(size: self.albumImageView.bounds.size)
+                self.albumImageView.kf.indicatorType = .activity
+                self.albumImageView.kf.setImage(with: artworkURL,
+                                               options: [.processor(processor),
+                                                         .scaleFactor(UIScreen.main.scale),
+                                                         .transition(.fade(1))
+                                               ])
+            } else {
+                // Fallback to station artwork
+                self.manager.currentStation?.getImage { [weak self] image in
+                    self?.albumImageView.image = image
+                }
+            }
         }
-        //albumImageView.load(url: client.status.artwork!) { [weak self] in
-        //    self?.albumImageView.animation = "wobble"
-        //    self?.albumImageView.duration = 2
-        //    self?.albumImageView.animate()
-        //
-        //    // Force app to update display
-        //    self?.view.setNeedsDisplay()
-        //}
-
     }
               
     // MARK: - Setup
@@ -174,24 +181,24 @@ class NowPlayingViewController: UIViewController {
             self?.albumImageView.image = image
         }
         title = manager.currentStation?.name
-        if let serverName = manager.currentStation?.serverName,
-                let shortCode = manager.currentStation?.shortCode {
-                    client = ACWebSocketClient(serverName: serverName, shortCode: shortCode)
-                } else {
-                    client.disconnect()
-                }        
         updateLabels()
         player.stop()
+        // Remove only the previous UI metadata subscriber, not all subscribers
+        if let callback = metadataCallback {
+            metadataManager.unsubscribeFromMetadataChanges(callback)
+        }
+        metadataCallback = { [weak self] metadata in
+            self?.handleMetadataUpdate(metadata)
+        }
+        metadataManager.subscribeToMetadataChanges(metadataCallback!)
     }
     
     // MARK: - Player Controls (Play/Pause/Volume)
         
     @IBAction func playingPressed(_ sender: Any) {
         if player.isPlaying {
-            ACWebSocketClient.shared.disconnect()
             player.stop()
         } else {
-            ACWebSocketClient.shared.connect()
             _ = StationsManager.reloadCurrent(StationsManager.shared)
             player.play()
             updateLabels()
@@ -210,9 +217,9 @@ class NowPlayingViewController: UIViewController {
     
     // Update track with new artwork
     func updateTrackArtwork() {
-        let status = ACWebSocketClient.shared.status
-        if let artworkURL = status.artwork {
-            print("loading client artwork")
+        // Artwork updates are now handled by the unified metadata system
+        // This method is kept for backward compatibility but delegates to metadata manager
+        if let metadata = metadataManager.getCurrentMetadata(), let artworkURL = metadata.artworkURL {
             let processor = DownsamplingImageProcessor(size: albumImageView.bounds.size)
             Task {
                 albumImageView.kf.indicatorType = .activity
@@ -221,8 +228,6 @@ class NowPlayingViewController: UIViewController {
                                                      .scaleFactor(UIScreen.main.scale),
                                                      .transition(.fade(1))
                                            ])
-                // Force app to update display
-                self.view.setNeedsDisplay()
             }
         } else {
             if manager.currentStation == nil { return }
@@ -314,14 +319,13 @@ class NowPlayingViewController: UIViewController {
     
     func updateLabels(with statusMessage: String? = nil, animate: Bool = true) {
         guard let statusMessage = statusMessage else {
-            // Radio is (hopefully) streaming properly
-            let status = ACWebSocketClient.shared.status
-            if status.changed {
-                self.liveDJIndicator.isHidden = !status.isLiveDJ
-                if status.track != "" {
-                    songLabel.text = status.track
-                    artistLabel.text = status.artist
-                    releaseLabel.text = status.album
+            // Radio is (hopefully) streaming properly - use unified metadata
+            if let metadata = metadataManager.getCurrentMetadata() {
+                self.liveDJIndicator.isHidden = !metadata.isLiveDJ
+                if !metadata.trackName.isEmpty {
+                    songLabel.text = metadata.trackName
+                    artistLabel.text = metadata.artistName
+                    releaseLabel.text = metadata.albumName ?? ""
                 }
             }
             
@@ -329,9 +333,13 @@ class NowPlayingViewController: UIViewController {
             return
         }
         
-        // There's a an interruption or pause in the audio queue
-        print("Explicit status message \(String(describing: statusMessage))")
-
+        // Debounce: Only update if the message is different
+        if statusMessage == lastStatusMessage {
+            // Optionally, print debug info here
+            return
+        }
+        lastStatusMessage = statusMessage
+        
         // Update UI only when it's not already updated
         guard songLabel.text != "" else { return }
             
@@ -348,8 +356,8 @@ class NowPlayingViewController: UIViewController {
     // Animations
     
     func shouldAnimateSongLabel(_ animate: Bool) {
-        // Animate if the Track has album metadata
-        guard animate, player.currentMetadata != nil else { return }
+        // Animate if the Track has metadata
+        guard animate, metadataManager.getCurrentMetadata() != nil else { return }
         
         // songLabel animation
         songLabel.animation = "zoomIn"
@@ -389,7 +397,8 @@ class NowPlayingViewController: UIViewController {
     
     @IBAction func shareButtonPressed(_ sender: UIButton) {
         guard let station = manager.currentStation else { return }
-        delegate?.didTapShareButton(self, station: station, artworkURL: player.currentArtworkURL)
+        let artworkURL = metadataManager.getCurrentMetadata()?.artworkURL ?? player.currentArtworkURL
+        delegate?.didTapShareButton(self, station: station, artworkURL: artworkURL)
     }
     
     @IBAction func handleCompanyButton(_ sender: Any) {

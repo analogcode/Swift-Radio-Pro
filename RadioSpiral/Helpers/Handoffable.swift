@@ -23,13 +23,13 @@ extension Handoffable {
         
         defer { updateUserActivityState(activity) }
         
-        let status = ACWebSocketClient.shared.status
+        let metadataManager = StationMetadataManager.shared
         var track: String
         var artist: String
         
-        if status.track != "" {
-            track = status.track
-            artist = status.artist
+        if let metadata = metadataManager.getCurrentMetadata(), !metadata.trackName.isEmpty && !metadata.artistName.isEmpty {
+            track = metadata.trackName
+            artist = metadata.artistName
         } else {
             guard let metadata = FRadioPlayer.shared.currentMetadata, let artistName = metadata.artistName, let trackName = metadata.trackName else {
                 activity.webpageURL = nil

@@ -11,7 +11,7 @@ import FRadioPlayer
 
 // Radio Station
 
-struct RadioStation: Codable {
+public struct RadioStation: Codable {
     
     var name: String
     var streamURL: String
@@ -43,19 +43,30 @@ struct RadioStation: Codable {
 
 extension RadioStation {
     var client: ACWebSocketClient { ACWebSocketClient.shared }
+    
+    var metadataManager: StationMetadataManager { StationMetadataManager.shared }
 
     var shoutout: String {
-        if client.status.album.isEmpty {
-            "I'm listening to \"\(client.status.track)\" by \(client.status.artist) on \(Bundle.main.appName)"
+        if let metadata = metadataManager.getCurrentMetadata() {
+            if let albumName = metadata.albumName, !albumName.isEmpty {
+                return "I'm listening to \"\(metadata.trackName)\" by \(metadata.artistName) from \"\(albumName)\" on \(Bundle.main.appName)"
+            } else {
+                return "I'm listening to \"\(metadata.trackName)\" by \(metadata.artistName) on \(Bundle.main.appName)"
+            }
         } else {
-            "I'm listening to \"\(client.status.track)\" by \(client.status.artist) from \"\(client.status.album)\" on \(Bundle.main.appName)"
+            // Fallback to client status
+            if client.status.album.isEmpty {
+                return "I'm listening to \"\(client.status.track)\" by \(client.status.artist) on \(Bundle.main.appName)"
+            } else {
+                return "I'm listening to \"\(client.status.track)\" by \(client.status.artist) from \"\(client.status.album)\" on \(Bundle.main.appName)"
+            }
         }
     }
 }
 
 extension RadioStation: Equatable {
     
-    static func == (lhs: RadioStation, rhs: RadioStation) -> Bool {
+    public static func == (lhs: RadioStation, rhs: RadioStation) -> Bool {
         return (lhs.name == rhs.name) && (lhs.streamURL == rhs.streamURL) && (lhs.imageURL == rhs.imageURL) && (lhs.desc == rhs.desc) && (lhs.longDesc == rhs.longDesc)
     }
 }

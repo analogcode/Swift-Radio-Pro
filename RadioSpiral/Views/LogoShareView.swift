@@ -21,13 +21,22 @@ class LogoShareView: UIView {
     }
     
     func shareSetup(albumArt : UIImage, radioShoutout: String, trackTitle: String, trackArtist: String) {
-        let client = ACWebSocketClient.shared
-        Task {
-            self.albumArtImageView.kf.setImage(with: client.status.artwork)
+        let metadataManager = StationMetadataManager.shared
+        if let metadata = metadataManager.getCurrentMetadata() {
+            Task {
+                if let artworkURL = metadata.artworkURL {
+                    self.albumArtImageView.kf.setImage(with: artworkURL)
+                }
+            }
+            self.radioShoutoutLabel.text = radioShoutout
+            self.trackTitleLabel.text = metadata.trackName
+            self.trackArtistLabel.text = metadata.artistName
+        } else {
+            // Fallback to passed parameters
+            self.radioShoutoutLabel.text = radioShoutout
+            self.trackTitleLabel.text = trackTitle
+            self.trackArtistLabel.text = trackArtist
         }
-        self.radioShoutoutLabel.text = radioShoutout
-        self.trackTitleLabel.text = client.status.track
-        self.trackArtistLabel.text = client.status.artist
         self.logoImageView.image = UIImage(named: "logo")
     }
 }
