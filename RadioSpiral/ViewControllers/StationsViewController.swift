@@ -49,6 +49,8 @@ class StationsViewController: BaseController, Handoffable {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        // Set fixed row height
+        tableView.rowHeight = 140.0
         return tableView
     }()
     
@@ -197,10 +199,6 @@ class StationsViewController: BaseController, Handoffable {
 
 extension StationsViewController: UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        90.0
-    }
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         1
     }
@@ -211,6 +209,10 @@ extension StationsViewController: UITableViewDataSource {
         } else {
             return manager.stations.isEmpty ? 1 : manager.stations.count
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        140.0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

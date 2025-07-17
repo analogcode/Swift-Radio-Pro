@@ -15,17 +15,19 @@ class StationTableViewCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        NSLayoutConstraint.activate([
-            imageView.heightAnchor.constraint(equalToConstant: 75),
-            imageView.widthAnchor.constraint(equalToConstant: 110)
-        ])
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        // Let stack view manage size
+        imageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        imageView.setContentCompressionResistancePriority(.required, for: .horizontal)
+        imageView.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        imageView.setContentCompressionResistancePriority(.required, for: .vertical)
         return imageView
     }()
     
     let titleLabel: UILabel = {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .title3)
-        label.numberOfLines = 2
+        label.numberOfLines = 0 // Allow multi-line titles if needed
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -33,6 +35,7 @@ class StationTableViewCell: UITableViewCell {
     let subtitleLabel: UILabel = {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .footnote)
+        label.numberOfLines = 0 // Allow multi-line descriptions
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -63,19 +66,24 @@ class StationTableViewCell: UITableViewCell {
         vStackView.translatesAutoresizingMaskIntoConstraints = false
         
         let hStackView = UIStackView(arrangedSubviews: [stationImageView, vStackView])
-        hStackView.spacing = 8
+        hStackView.spacing = 12 // Add padding between image and labels
         hStackView.axis = .horizontal
         hStackView.alignment = .center
+        hStackView.isLayoutMarginsRelativeArrangement = true
+        hStackView.layoutMargins = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         hStackView.translatesAutoresizingMaskIntoConstraints = false
         
         contentView.addSubview(hStackView)
         
         NSLayoutConstraint.activate([
-            hStackView.topAnchor.constraint(equalTo: contentView.layoutMarginsGuide.topAnchor),
-            hStackView.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
-            hStackView.bottomAnchor.constraint(equalTo: contentView.layoutMarginsGuide.bottomAnchor),
-            hStackView.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor)
+            hStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            hStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            hStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            hStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor)
         ])
+        // Optionally, constrain image view to a max size
+        stationImageView.heightAnchor.constraint(lessThanOrEqualToConstant: 75).isActive = true
+        stationImageView.widthAnchor.constraint(lessThanOrEqualToConstant: 110).isActive = true
     }
 }
 
