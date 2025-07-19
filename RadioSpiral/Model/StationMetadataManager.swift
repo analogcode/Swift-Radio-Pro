@@ -97,7 +97,6 @@ public class StationMetadataManager: ObservableObject {
     
     /// Connect to a station's metadata sources
     public func connectToStation(_ station: RadioStation) {
-        print("[StationMetadataManager] connectToStation called with station: \(station.name)")
         disconnectCurrentStation()
         
         currentStation = station
@@ -128,23 +127,19 @@ public class StationMetadataManager: ObservableObject {
     
     /// Subscribe to metadata changes
     public func subscribeToMetadataChanges(_ callback: @escaping MetadataChangeCallback) {
-        print("[Subscriber] Adding: \(Unmanaged.passUnretained(callback as AnyObject).toOpaque())")
         subscribers.append(callback)
         StationMetadataManager.activeSubscribers += 1
-        print("[Subscriber] Active count: \(StationMetadataManager.activeSubscribers)")
         // Immediately call with current metadata
         callback(currentMetadata)
     }
     
     /// Unsubscribe from metadata changes
     public func unsubscribeFromMetadataChanges(_ callback: @escaping MetadataChangeCallback) {
-        print("[Subscriber] Removing: \(Unmanaged.passUnretained(callback as AnyObject).toOpaque())")
         let before = subscribers.count
         subscribers.removeAll { $0 as AnyObject === callback as AnyObject }
         let after = subscribers.count
         let removed = before - after
         StationMetadataManager.activeSubscribers -= removed
-        print("[Subscriber] Active count: \(StationMetadataManager.activeSubscribers)")
     }
     
     /// Get current unified metadata
@@ -160,7 +155,6 @@ public class StationMetadataManager: ObservableObject {
     public func removeAllSubscribers() {
         subscribers.removeAll()
         StationMetadataManager.activeSubscribers = 0
-        print("[Subscriber] All subscribers removed. Active count: 0")
     }
     
     // MARK: - Private Methods
@@ -173,7 +167,6 @@ public class StationMetadataManager: ObservableObject {
     private func setupAzuracastObserver() {
         // Subscribe to Azuracast metadata changes
         azuracastClient.addSubscriber { [weak self] status in
-            print("[StationMetadataManager] ACWebSocketClient subscriber closure called with status: \(status)")
             DispatchQueue.main.async {
                 self?.handleAzuracastMetadataUpdate(status)
             }
@@ -181,7 +174,6 @@ public class StationMetadataManager: ObservableObject {
     }
     
     private func handleAzuracastMetadataUpdate(_ status: ACStreamStatus) {
-        print("[StationMetadataManager] handleAzuracastMetadataUpdate called with status: \(status)")
         // Update connection state based on Azuracast status
         switch status.connection {
         case .connected:

@@ -125,10 +125,8 @@ class StationsViewController: BaseController, Handoffable {
         var playingTitle: String?
         
         if let metadata = metadataManager.getCurrentMetadata(), !metadata.trackName.isEmpty && !metadata.artistName.isEmpty {
-            print("now playing in unified metadata")
             playingTitle = "\(metadata.trackName) + \(metadata.artistName)"
         } else if player.currentMetadata != nil {
-            print("now playing in station")
             playingTitle = station.trackName + " - " + station.artistName
         }
         

@@ -50,13 +50,11 @@ public class ACWebSocketClient: ObservableObject {
     private var stillAliveTimer: Timer? {
         willSet {
             if let timer = stillAliveTimer {
-                print("[Timer] Invalidating timer: \(Unmanaged.passUnretained(timer).toOpaque())")
                 timer.invalidate()
             }
         }
         didSet {
             if let timer = stillAliveTimer {
-                print("[Timer] Created timer: \(Unmanaged.passUnretained(timer).toOpaque())")
             }
         }
     }
@@ -343,6 +341,7 @@ public class ACWebSocketClient: ObservableObject {
     // Handles incoming messages and updates the status.
     private func handleMessage(_ message: String) {
         if self.debugLevel & ACActivityTrace != 0 { print("Handling message") }
+        // Print the raw JSON message for debugging
         // Decode into data for parseWebSocketData.
         guard let data = message.data(using: .utf8) else {
             print("Failed to decode message to data")
