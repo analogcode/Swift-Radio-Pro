@@ -81,6 +81,11 @@ public class ParseWebSocketData {
                 let data = pub?["data"] as? Dictionary<String, Any>
                 let np = data?["np"] as? Dictionary<String, Any>
 
+                // Set connection state based on is_online
+                if let isOnline = np?["is_online"] as? Bool {
+                    status.connection = isOnline ? .connected : .disconnected
+                }
+
                 // Live segment. Contains info about the streamer.
                 let live = np?["live"] as? Dictionary<String, Any>
                 self.status = setDJ(live: live, status: self.status, defaultDJ: defaultDJ)
@@ -126,6 +131,11 @@ public class ParseWebSocketData {
                 let pub = nowPlayingData["pub"] as! Dictionary<String, Any>
                 let npData = pub["data"] as! Dictionary<String, Any>
                 let np = npData["np"] as! Dictionary<String, Any>
+
+                // Set connection state based on is_online
+                if let isOnline = np["is_online"] as? Bool {
+                    status.connection = isOnline ? .connected : .disconnected
+                }
 
                 // live block. Extract DJ info.
                 let live = np["live"] as? Dictionary<String, Any>
