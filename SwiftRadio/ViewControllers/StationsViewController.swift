@@ -54,11 +54,6 @@ class StationsViewController: BaseController, Handoffable {
     
     private let nowPlayingView = NowPlayingView()
     
-    override func loadView() {
-        super.loadView()
-        setupViews()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
