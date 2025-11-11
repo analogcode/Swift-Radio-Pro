@@ -71,9 +71,14 @@ Added `UISceneConfigurations` to `Info.plist` for CarPlay:
 ```
 CarPlaySceneDelegate (CPTemplateApplicationSceneDelegate)
 ├── templateApplicationScene(_:didConnect:to:)
-│   └── Creates root stations list
+│   └── Creates root tab bar template
 ├── templateApplicationScene(_:didDisconnect:to:)
 │   └── Cleans up observations
+├── createTabBarTemplate()
+│   ├── Returns CPTabBarTemplate with two tabs:
+│   │   ├── Tab 1: Stations list (CPListTemplate)
+│   │   └── Tab 2: Now playing (CPNowPlayingTemplate)
+│   └── Initializes both templates
 ├── createStationsListTemplate()
 │   └── Returns CPListTemplate with all stations
 ├── createStationListItem(for:)
@@ -87,6 +92,15 @@ CarPlaySceneDelegate (CPTemplateApplicationSceneDelegate)
 └── subscribeToMetadataUpdates()
     └── Listens for real-time metadata changes
 ```
+
+### Tab Bar Navigation
+
+The new tab bar architecture provides modern CarPlay navigation:
+
+1. **Stations Tab** - Browse and select from available radio stations
+2. **Now Playing Tab** - View current station info, artwork, and playback controls
+
+Users can easily switch between tabs using the tab bar at the bottom of the CarPlay screen, eliminating the need for a back button.
 
 ### Key Integration Points
 

@@ -14,12 +14,15 @@ import MediaPlayer
 ///
 /// This implementation replaces the deprecated MPPlayableContentManager with
 /// the modern CarPlay framework (iOS 14+), providing better UX and future compatibility.
+/// Uses a tab bar for modern navigation between stations and now playing.
 class CarPlaySceneDelegate: NSObject, CPTemplateApplicationSceneDelegate {
 
     // MARK: - Properties
 
     var interfaceController: CPInterfaceController?
     private var stationsObservationToken: NSObjectProtocol?
+    private var stationsListTemplate: CPListTemplate?
+    private var nowPlayingTemplate: CPNowPlayingTemplate?
 
     // MARK: - CPTemplateApplicationSceneDelegate
 
@@ -29,9 +32,9 @@ class CarPlaySceneDelegate: NSObject, CPTemplateApplicationSceneDelegate {
     ) {
         self.interfaceController = interfaceController
 
-        // Set up the root template when CarPlay connects
-        let rootTemplate = createStationsListTemplate()
-        interfaceController.setRootTemplate(rootTemplate, animated: false)
+        // Set up the root tab bar template when CarPlay connects
+        let tabBarTemplate = createTabBarTemplate()
+        interfaceController.setRootTemplate(tabBarTemplate, animated: false)
     }
 
     func templateApplicationScene(
@@ -39,6 +42,8 @@ class CarPlaySceneDelegate: NSObject, CPTemplateApplicationSceneDelegate {
         didDisconnect interfaceController: CPInterfaceController
     ) {
         self.interfaceController = nil
+        self.stationsListTemplate = nil
+        self.nowPlayingTemplate = nil
 
         // Stop observing station updates
         if let token = stationsObservationToken {
@@ -47,9 +52,26 @@ class CarPlaySceneDelegate: NSObject, CPTemplateApplicationSceneDelegate {
         }
     }
 
+    // MARK: - Tab Bar Template Creation
+
+    /// Creates a tab bar template with stations and now playing tabs
+    private func createTabBarTemplate() -> CPTabBarTemplate {
+        let stationsTab = createStationsListTemplate()
+        let nowPlayingTab = CPNowPlayingTemplate.shared
+
+        self.stationsListTemplate = stationsTab
+        self.nowPlayingTemplate = nowPlayingTab
+
+        // Update now playing template immediately
+        updateNowPlayingTemplate()
+
+        let tabBar = CPTabBarTemplate(templates: [stationsTab, nowPlayingTab])
+        return tabBar
+    }
+
     // MARK: - Template Creation
 
-    /// Creates the root list template showing all stations
+    /// Creates the stations list template
     private func createStationsListTemplate() -> CPListTemplate {
         let title = "Stations"
         var listItems: [CPListItem] = []
@@ -103,9 +125,10 @@ class CarPlaySceneDelegate: NSObject, CPTemplateApplicationSceneDelegate {
         // Dismiss the selection handler
         completionHandler()
 
-        // Push the now playing template
-        let nowPlayingTemplate = CPNowPlayingTemplate.shared
-        interfaceController?.pushTemplate(nowPlayingTemplate, animated: true)
+        // Switch to now playing tab
+        if let nowPlayingTemplate = CPNowPlayingTemplate.shared as? CPTabBarTemplate {
+            // Tab bar automatically switches
+        }
     }
 
     /// Updates the now playing template with current station info
