@@ -1,0 +1,23 @@
+{
+  "/Users/joemcmahon/Code/current-Radiospiral/RadioSpiral/AppDelegate.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral-CarPlay.build/Objects-normal/arm64/AppDelegate.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral-CarPlay.build/Objects-normal/arm64/AppDelegate.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral-CarPlay.build/Objects-normal/arm64/AppDelegate.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral-CarPlay.build/Objects-normal/arm64/AppDelegate.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral-CarPlay.build/Objects-normal/arm64/AppDelegate.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/RadioSpiral/Coordinators/MainCoordinator.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral-CarPlay.build/Objects-normal/arm64/MainCoordinator.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral-CarPlay.build/Objects-normal/arm64/MainCoordinator.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral-CarPlay.build/Objects-normal/arm64/MainCoordinator.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral-CarPlay.build/Objects-normal/arm64/MainCoordinator.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral-CarPlay.build/Objects-normal/arm64/MainCoordinator.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/RadioSpiral/Helpers/AnimationFrames.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral-CarPlay.build/Objects-normal/arm64/AnimationFrames.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral-CarPlay.build/Objects-normal/arm64/AnimationFrames.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral-CarPlay.build/Objects-normal/arm64/AnimationFrames.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral-CarPlay.build/Objects-normal/arm64/AnimationFrames.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral-CarPlay.build/Objects-normal/arm64/AnimationFrames.swiftdeps"
+  }
+}

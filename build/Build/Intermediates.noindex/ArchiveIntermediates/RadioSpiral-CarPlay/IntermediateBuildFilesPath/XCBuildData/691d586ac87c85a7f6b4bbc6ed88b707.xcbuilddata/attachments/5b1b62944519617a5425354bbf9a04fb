@@ -1,0 +1,4 @@
+module Spring {
+header "Spring-Swift.h"
+export *
+}

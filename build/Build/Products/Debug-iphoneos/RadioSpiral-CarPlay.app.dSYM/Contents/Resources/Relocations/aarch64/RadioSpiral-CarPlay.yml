@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/joemcmahon/Code/current-Radiospiral/build/Build/Products/Debug-iphoneos/RadioSpiral-CarPlay.app/RadioSpiral-CarPlay'
+relocations:     []
+...

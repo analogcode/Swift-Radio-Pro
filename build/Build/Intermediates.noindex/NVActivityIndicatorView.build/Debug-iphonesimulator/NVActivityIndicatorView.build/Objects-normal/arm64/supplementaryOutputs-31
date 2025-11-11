@@ -1,0 +1,30 @@
+{
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/NVActivityIndicatorView/Sources/Base/Animations/NVActivityIndicatorAnimationLineScale.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationLineScale.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationLineScale.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationLineScale.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationLineScale.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationLineScale.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/NVActivityIndicatorView/Sources/Base/Animations/NVActivityIndicatorAnimationLineScaleParty.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationLineScaleParty.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationLineScaleParty.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationLineScaleParty.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationLineScaleParty.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationLineScaleParty.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/NVActivityIndicatorView/Sources/Base/Animations/NVActivityIndicatorAnimationLineScalePulseOut.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationLineScalePulseOut.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationLineScalePulseOut.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationLineScalePulseOut.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationLineScalePulseOut.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationLineScalePulseOut.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/NVActivityIndicatorView/Sources/Base/Animations/NVActivityIndicatorAnimationLineScalePulseOutRapid.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationLineScalePulseOutRapid.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationLineScalePulseOutRapid.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationLineScalePulseOutRapid.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationLineScalePulseOutRapid.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationLineScalePulseOutRapid.swiftdeps"
+  }
+}

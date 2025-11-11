@@ -1,0 +1,23 @@
+{
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/Spring/Sources/Spring/KeyboardLayoutConstraint.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/KeyboardLayoutConstraint.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/KeyboardLayoutConstraint.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/KeyboardLayoutConstraint.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/KeyboardLayoutConstraint.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/KeyboardLayoutConstraint.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/Spring/Sources/Spring/LoadingView.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/LoadingView.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/LoadingView.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/LoadingView.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/LoadingView.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/LoadingView.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/Spring/Sources/Spring/Misc.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/Misc.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/Misc.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/Misc.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/Misc.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/Misc.swiftdeps"
+  }
+}

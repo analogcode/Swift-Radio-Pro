@@ -1,0 +1,4 @@
+module NVActivityIndicatorViewExtended {
+header "NVActivityIndicatorViewExtended-Swift.h"
+export *
+}

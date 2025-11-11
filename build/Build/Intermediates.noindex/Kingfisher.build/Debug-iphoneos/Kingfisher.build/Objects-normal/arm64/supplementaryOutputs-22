@@ -1,0 +1,51 @@
+{
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/Kingfisher/Sources/Image/GIFAnimatedImage.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/GIFAnimatedImage.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/GIFAnimatedImage.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/GIFAnimatedImage.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/GIFAnimatedImage.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/GIFAnimatedImage.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/Kingfisher/Sources/Image/GraphicsContext.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/GraphicsContext.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/GraphicsContext.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/GraphicsContext.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/GraphicsContext.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/GraphicsContext.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/Kingfisher/Sources/Image/Image.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/Image.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/Image.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/Image.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/Image.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/Image.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/Kingfisher/Sources/Image/ImageDrawing.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/ImageDrawing.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/ImageDrawing.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/ImageDrawing.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/ImageDrawing.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/ImageDrawing.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/Kingfisher/Sources/Image/ImageFormat.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/ImageFormat.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/ImageFormat.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/ImageFormat.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/ImageFormat.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/ImageFormat.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/Kingfisher/Sources/Image/ImageProcessor.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/ImageProcessor.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/ImageProcessor.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/ImageProcessor.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/ImageProcessor.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/ImageProcessor.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/Kingfisher/Sources/Image/ImageProgressive.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/ImageProgressive.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/ImageProgressive.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/ImageProgressive.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/ImageProgressive.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/ImageProgressive.swiftdeps"
+  }
+}

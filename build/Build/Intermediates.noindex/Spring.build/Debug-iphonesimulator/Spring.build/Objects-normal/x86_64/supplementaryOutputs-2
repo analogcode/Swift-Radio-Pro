@@ -1,0 +1,23 @@
+{
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/Spring/Sources/Spring/BlurView.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/x86_64/BlurView.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/x86_64/BlurView.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/x86_64/BlurView.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/x86_64/BlurView.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/x86_64/BlurView.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/Spring/Sources/Spring/DesignableButton.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/x86_64/DesignableButton.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/x86_64/DesignableButton.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/x86_64/DesignableButton.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/x86_64/DesignableButton.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/x86_64/DesignableButton.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/Spring/Sources/Spring/DesignableImageView.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/x86_64/DesignableImageView.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/x86_64/DesignableImageView.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/x86_64/DesignableImageView.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/x86_64/DesignableImageView.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/x86_64/DesignableImageView.swiftdeps"
+  }
+}

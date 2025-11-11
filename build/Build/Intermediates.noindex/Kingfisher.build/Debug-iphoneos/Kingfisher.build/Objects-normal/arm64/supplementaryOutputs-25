@@ -1,0 +1,44 @@
+{
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/Kingfisher/Sources/SwiftUI/ImageBinder.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/ImageBinder.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/ImageBinder.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/ImageBinder.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/ImageBinder.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/ImageBinder.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/Kingfisher/Sources/SwiftUI/ImageContext.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/ImageContext.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/ImageContext.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/ImageContext.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/ImageContext.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/ImageContext.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/Kingfisher/Sources/SwiftUI/KFAnimatedImage.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/KFAnimatedImage.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/KFAnimatedImage.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/KFAnimatedImage.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/KFAnimatedImage.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/KFAnimatedImage.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/Kingfisher/Sources/SwiftUI/KFImage.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/KFImage.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/KFImage.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/KFImage.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/KFImage.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/KFImage.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/Kingfisher/Sources/SwiftUI/KFImageOptions.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/KFImageOptions.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/KFImageOptions.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/KFImageOptions.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/KFImageOptions.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/KFImageOptions.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/Kingfisher/Sources/SwiftUI/KFImageProtocol.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/KFImageProtocol.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/KFImageProtocol.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/KFImageProtocol.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/KFImageProtocol.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Kingfisher.build/Debug-iphoneos/Kingfisher.build/Objects-normal/arm64/KFImageProtocol.swiftdeps"
+  }
+}

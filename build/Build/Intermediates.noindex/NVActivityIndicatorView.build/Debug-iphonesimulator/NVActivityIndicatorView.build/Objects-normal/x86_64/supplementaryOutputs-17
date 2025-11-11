@@ -1,0 +1,23 @@
+{
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/NVActivityIndicatorView/Sources/Base/NVActivityIndicatorAnimationDelegate.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/x86_64/NVActivityIndicatorAnimationDelegate.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/x86_64/NVActivityIndicatorAnimationDelegate.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/x86_64/NVActivityIndicatorAnimationDelegate.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/x86_64/NVActivityIndicatorAnimationDelegate.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/x86_64/NVActivityIndicatorAnimationDelegate.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/NVActivityIndicatorView/Sources/Base/NVActivityIndicatorShape.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/x86_64/NVActivityIndicatorShape.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/x86_64/NVActivityIndicatorShape.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/x86_64/NVActivityIndicatorShape.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/x86_64/NVActivityIndicatorShape.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/x86_64/NVActivityIndicatorShape.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/NVActivityIndicatorView/Sources/Base/NVActivityIndicatorView.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/x86_64/NVActivityIndicatorView.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/x86_64/NVActivityIndicatorView.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/x86_64/NVActivityIndicatorView.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/x86_64/NVActivityIndicatorView.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/x86_64/NVActivityIndicatorView.swiftdeps"
+  }
+}

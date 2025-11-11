@@ -1,0 +1,23 @@
+{
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/NVActivityIndicatorView/Sources/Base/Animations/NVActivityIndicatorAnimationSemiCircleSpin.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationSemiCircleSpin.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationSemiCircleSpin.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationSemiCircleSpin.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationSemiCircleSpin.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationSemiCircleSpin.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/NVActivityIndicatorView/Sources/Base/Animations/NVActivityIndicatorAnimationSquareSpin.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationSquareSpin.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationSquareSpin.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationSquareSpin.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationSquareSpin.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationSquareSpin.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/NVActivityIndicatorView/Sources/Base/Animations/NVActivityIndicatorAnimationTriangleSkewSpin.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationTriangleSkewSpin.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationTriangleSkewSpin.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationTriangleSkewSpin.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationTriangleSkewSpin.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphonesimulator/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationTriangleSkewSpin.swiftdeps"
+  }
+}

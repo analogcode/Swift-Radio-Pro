@@ -1,0 +1,30 @@
+{
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/NVActivityIndicatorView/Sources/Base/Animations/NVActivityIndicatorAnimationBallClipRotatePulse.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphoneos/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationBallClipRotatePulse.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphoneos/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationBallClipRotatePulse.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphoneos/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationBallClipRotatePulse.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphoneos/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationBallClipRotatePulse.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphoneos/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationBallClipRotatePulse.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/NVActivityIndicatorView/Sources/Base/Animations/NVActivityIndicatorAnimationBallDoubleBounce.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphoneos/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationBallDoubleBounce.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphoneos/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationBallDoubleBounce.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphoneos/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationBallDoubleBounce.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphoneos/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationBallDoubleBounce.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphoneos/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationBallDoubleBounce.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/NVActivityIndicatorView/Sources/Base/Animations/NVActivityIndicatorAnimationBallGridBeat.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphoneos/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationBallGridBeat.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphoneos/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationBallGridBeat.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphoneos/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationBallGridBeat.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphoneos/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationBallGridBeat.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphoneos/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationBallGridBeat.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/NVActivityIndicatorView/Sources/Base/Animations/NVActivityIndicatorAnimationBallGridPulse.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphoneos/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationBallGridPulse.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphoneos/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationBallGridPulse.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphoneos/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationBallGridPulse.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphoneos/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationBallGridPulse.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/NVActivityIndicatorView.build/Debug-iphoneos/NVActivityIndicatorView.build/Objects-normal/arm64/NVActivityIndicatorAnimationBallGridPulse.swiftdeps"
+  }
+}

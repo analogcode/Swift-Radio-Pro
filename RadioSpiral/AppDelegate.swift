@@ -15,32 +15,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     var coordinator: MainCoordinator?
-    
-    // CarPlay
-    var playableContentManager: MPPlayableContentManager?
-    
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+
         // FRadioPlayer config
         FRadioPlayer.shared.isAutoPlay = true
         FRadioPlayer.shared.enableArtwork = true
         FRadioPlayer.shared.artworkAPI = iTunesAPI(artworkSize: 600)
-        
+
         // AudioSession & RemotePlay
         activateAudioSession()
         setupRemoteCommandCenter()
         UIApplication.shared.beginReceivingRemoteControlEvents()
-        
+
         // Make status bar white
         UINavigationBar.appearance().barStyle = .black
         UINavigationBar.appearance().tintColor = .white
         UINavigationBar.appearance().prefersLargeTitles = true
-        
-        // `CarPlay` is defined only in SwiftRadio-CarPlay target:
-        // Build Settings > Swift Compiler - Custom Flags
-        #if CarPlay
-        setupCarPlay()
-        #endif
         
         // Start the coordinator
         coordinator = MainCoordinator(navigationController: UINavigationController())

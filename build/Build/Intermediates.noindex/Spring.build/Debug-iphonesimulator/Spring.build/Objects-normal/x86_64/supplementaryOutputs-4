@@ -1,0 +1,23 @@
+{
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/Spring/Sources/Spring/DesignableTextView.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/x86_64/DesignableTextView.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/x86_64/DesignableTextView.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/x86_64/DesignableTextView.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/x86_64/DesignableTextView.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/x86_64/DesignableTextView.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/Spring/Sources/Spring/DesignableView.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/x86_64/DesignableView.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/x86_64/DesignableView.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/x86_64/DesignableView.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/x86_64/DesignableView.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/x86_64/DesignableView.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/Spring/Sources/Spring/ImageLoader.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/x86_64/ImageLoader.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/x86_64/ImageLoader.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/x86_64/ImageLoader.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/x86_64/ImageLoader.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/x86_64/ImageLoader.swiftdeps"
+  }
+}

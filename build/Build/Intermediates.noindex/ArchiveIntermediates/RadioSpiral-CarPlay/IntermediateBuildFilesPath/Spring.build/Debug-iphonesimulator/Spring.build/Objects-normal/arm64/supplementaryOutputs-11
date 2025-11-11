@@ -1,0 +1,23 @@
+{
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/Spring/Sources/Spring/AsyncButton.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/ArchiveIntermediates/RadioSpiral-CarPlay/IntermediateBuildFilesPath/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/arm64/AsyncButton.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/ArchiveIntermediates/RadioSpiral-CarPlay/IntermediateBuildFilesPath/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/arm64/AsyncButton.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/ArchiveIntermediates/RadioSpiral-CarPlay/IntermediateBuildFilesPath/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/arm64/AsyncButton.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/ArchiveIntermediates/RadioSpiral-CarPlay/IntermediateBuildFilesPath/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/arm64/AsyncButton.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/ArchiveIntermediates/RadioSpiral-CarPlay/IntermediateBuildFilesPath/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/arm64/AsyncButton.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/Spring/Sources/Spring/AsyncImageView.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/ArchiveIntermediates/RadioSpiral-CarPlay/IntermediateBuildFilesPath/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/arm64/AsyncImageView.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/ArchiveIntermediates/RadioSpiral-CarPlay/IntermediateBuildFilesPath/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/arm64/AsyncImageView.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/ArchiveIntermediates/RadioSpiral-CarPlay/IntermediateBuildFilesPath/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/arm64/AsyncImageView.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/ArchiveIntermediates/RadioSpiral-CarPlay/IntermediateBuildFilesPath/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/arm64/AsyncImageView.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/ArchiveIntermediates/RadioSpiral-CarPlay/IntermediateBuildFilesPath/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/arm64/AsyncImageView.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/Spring/Sources/Spring/AutoTextView.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/ArchiveIntermediates/RadioSpiral-CarPlay/IntermediateBuildFilesPath/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/arm64/AutoTextView.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/ArchiveIntermediates/RadioSpiral-CarPlay/IntermediateBuildFilesPath/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/arm64/AutoTextView.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/ArchiveIntermediates/RadioSpiral-CarPlay/IntermediateBuildFilesPath/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/arm64/AutoTextView.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/ArchiveIntermediates/RadioSpiral-CarPlay/IntermediateBuildFilesPath/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/arm64/AutoTextView.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/ArchiveIntermediates/RadioSpiral-CarPlay/IntermediateBuildFilesPath/Spring.build/Debug-iphonesimulator/Spring.build/Objects-normal/arm64/AutoTextView.swiftdeps"
+  }
+}

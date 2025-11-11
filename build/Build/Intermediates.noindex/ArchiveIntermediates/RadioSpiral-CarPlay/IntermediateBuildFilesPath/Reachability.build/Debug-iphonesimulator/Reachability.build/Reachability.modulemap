@@ -1,0 +1,4 @@
+module Reachability {
+header "Reachability-Swift.h"
+export *
+}

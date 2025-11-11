@@ -1,0 +1,22 @@
+# pack-refs with: peeled fully-peeled sorted 
+dc4ac9169facf9e26f1e14005cada5c3044f444a refs/heads/feature-inspectables
+3515bf843f0ab28addf55d4b9f08d359f608f27e refs/heads/feature/cocoapods
+53b6a408e80e45f7d01210cbc53ead89dd873376 refs/heads/feature/loading-view
+1d7507ab536b801a2b63bcf431f39c8d17f28a27 refs/heads/feature/objc-spring-animation
+63d6b2b4339606181617caddea3a988aa65bcadd refs/heads/master
+6e5ca4474e48943ced503e09d792a1095a260c81 refs/heads/swift2
+8201b5c93bd7ebdf4cd18160bcde1e6e88c2be64 refs/heads/swift3
+8d04081f4b27ff85161addee45b21c1156f0143f refs/heads/swift4
+459b979c4335d4178fb05771019f6dda916f6998 refs/heads/swift5
+309557756d0deee4c4f706948252d5c81a2632d5 refs/tags/1.0.0
+^490a2666efb994af2fdbf9c2a55fd96963d5e19a
+a082f682eb29e5355571ed0c61f9c37b30d35ef6 refs/tags/1.0.1
+^3bff24924c5ed3becf57ff1a8ac0e56a5bf84eaa
+f62202caad7160cdd5f4f5922883064d72525f11 refs/tags/1.0.2
+^ad95955ddd4c5f1e86e9067a943f0023cd242df0
+3cd19a1fda5d779dcbe57e2a223a5b8a2f5f8e8f refs/tags/1.0.3
+^e4c8c09b96b68d1bc6dc64f3c388f018748ad33a
+3671d9953f8afd07ddfa939fca6507f08b8afa4e refs/tags/1.0.3-swift2
+^c257a69b0dea35757ef8f966497a367f034ce036
+e0b125b847de4a348dc6cb4fb5efc33e75af6587 refs/tags/1.0.4
+19b04d730d3edabbb02a39e58121d1d3220690ee refs/tags/1.0.5

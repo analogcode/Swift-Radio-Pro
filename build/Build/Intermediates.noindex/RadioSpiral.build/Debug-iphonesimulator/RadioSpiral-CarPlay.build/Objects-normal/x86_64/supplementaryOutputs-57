@@ -1,0 +1,30 @@
+{
+  "/Users/joemcmahon/Code/current-Radiospiral/RadioSpiral/CarPlay/AppDelegate+CarPlay.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral-CarPlay.build/Objects-normal/x86_64/AppDelegate+CarPlay.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral-CarPlay.build/Objects-normal/x86_64/AppDelegate+CarPlay.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral-CarPlay.build/Objects-normal/x86_64/AppDelegate+CarPlay.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral-CarPlay.build/Objects-normal/x86_64/AppDelegate+CarPlay.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral-CarPlay.build/Objects-normal/x86_64/AppDelegate+CarPlay.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/RadioSpiral/Coordinators/Coordinator.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral-CarPlay.build/Objects-normal/x86_64/Coordinator.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral-CarPlay.build/Objects-normal/x86_64/Coordinator.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral-CarPlay.build/Objects-normal/x86_64/Coordinator.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral-CarPlay.build/Objects-normal/x86_64/Coordinator.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral-CarPlay.build/Objects-normal/x86_64/Coordinator.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/RadioSpiral/Helpers/Bundle+appName.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral-CarPlay.build/Objects-normal/x86_64/Bundle+appName.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral-CarPlay.build/Objects-normal/x86_64/Bundle+appName.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral-CarPlay.build/Objects-normal/x86_64/Bundle+appName.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral-CarPlay.build/Objects-normal/x86_64/Bundle+appName.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral-CarPlay.build/Objects-normal/x86_64/Bundle+appName.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/RadioSpiral/ViewControllers/InfoDetailViewController.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral-CarPlay.build/Objects-normal/x86_64/InfoDetailViewController.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral-CarPlay.build/Objects-normal/x86_64/InfoDetailViewController.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral-CarPlay.build/Objects-normal/x86_64/InfoDetailViewController.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral-CarPlay.build/Objects-normal/x86_64/InfoDetailViewController.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral-CarPlay.build/Objects-normal/x86_64/InfoDetailViewController.swiftdeps"
+  }
+}

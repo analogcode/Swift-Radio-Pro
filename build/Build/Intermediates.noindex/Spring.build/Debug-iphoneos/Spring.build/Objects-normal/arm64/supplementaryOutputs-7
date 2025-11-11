@@ -1,0 +1,23 @@
+{
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/Spring/Sources/Spring/SpringButton.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringButton.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringButton.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringButton.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringButton.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringButton.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/Spring/Sources/Spring/SpringImageView.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringImageView.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringImageView.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringImageView.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringImageView.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringImageView.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/build/SourcePackages/checkouts/Spring/Sources/Spring/SpringLabel.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringLabel.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringLabel.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringLabel.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringLabel.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringLabel.swiftdeps"
+  }
+}
