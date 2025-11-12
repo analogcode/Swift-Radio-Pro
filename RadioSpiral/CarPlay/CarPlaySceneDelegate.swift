@@ -2,71 +2,43 @@
 //  CarPlaySceneDelegate.swift
 //  RadioSpiral
 //
-//  Created by Joe McMahon on 2025-11-11.
-//  Copyright © 2025 matthewfecher.com. All rights reserved.
+//  Created on 2025-11-11.
 //
 
 import CarPlay
 import MediaPlayer
+import FRadioPlayer
 
 /// CarPlay scene delegate for modern CarPlay framework (iOS 14+)
 /// Handles CarPlay interface setup, station browsing, and playback
-///
-/// This implementation replaces the deprecated MPPlayableContentManager with
-/// the modern CarPlay framework (iOS 14+), providing better UX and future compatibility.
-/// Uses a tab bar for modern navigation between stations and now playing.
-class CarPlaySceneDelegate: NSObject, CPTemplateApplicationSceneDelegate {
+@objc public class CarPlaySceneDelegate: NSObject, CPTemplateApplicationSceneDelegate {
 
     // MARK: - Properties
 
     var interfaceController: CPInterfaceController?
-    private var stationsObservationToken: NSObjectProtocol?
     private var stationsListTemplate: CPListTemplate?
-    private var nowPlayingTemplate: CPNowPlayingTemplate?
 
     // MARK: - CPTemplateApplicationSceneDelegate
 
-    func templateApplicationScene(
+    @objc public func templateApplicationScene(
         _ templateApplicationScene: CPTemplateApplicationScene,
         didConnect interfaceController: CPInterfaceController
     ) {
         self.interfaceController = interfaceController
 
-        // Set up the root tab bar template when CarPlay connects
-        let tabBarTemplate = createTabBarTemplate()
-        interfaceController.setRootTemplate(tabBarTemplate, animated: false)
+        // Set up the stations list as the root template when CarPlay connects
+        // The currently playing info is shown through MPNowPlayingInfoCenter (system media controls)
+        let stationsTemplate = createStationsListTemplate()
+        self.stationsListTemplate = stationsTemplate
+        interfaceController.setRootTemplate(stationsTemplate, animated: false)
     }
 
-    func templateApplicationScene(
+    @objc public func templateApplicationScene(
         _ templateApplicationScene: CPTemplateApplicationScene,
         didDisconnect interfaceController: CPInterfaceController
     ) {
         self.interfaceController = nil
         self.stationsListTemplate = nil
-        self.nowPlayingTemplate = nil
-
-        // Stop observing station updates
-        if let token = stationsObservationToken {
-            NotificationCenter.default.removeObserver(token)
-            stationsObservationToken = nil
-        }
-    }
-
-    // MARK: - Tab Bar Template Creation
-
-    /// Creates a tab bar template with stations and now playing tabs
-    private func createTabBarTemplate() -> CPTabBarTemplate {
-        let stationsTab = createStationsListTemplate()
-        let nowPlayingTab = CPNowPlayingTemplate.shared
-
-        self.stationsListTemplate = stationsTab
-        self.nowPlayingTemplate = nowPlayingTab
-
-        // Update now playing template immediately
-        updateNowPlayingTemplate()
-
-        let tabBar = CPTabBarTemplate(templates: [stationsTab, nowPlayingTab])
-        return tabBar
     }
 
     // MARK: - Template Creation
@@ -116,47 +88,14 @@ class CarPlaySceneDelegate: NSObject, CPTemplateApplicationSceneDelegate {
         // Set the station in the manager
         StationsManager.shared.set(station: station)
 
-        // Start playback
-        FRadioPlayer.shared.play()
+        // Update now playing info for CarPlay display
+        updateMPNowPlayingInfo(station: station)
 
-        // Update now playing template
-        updateNowPlayingTemplate()
+        // Note: Audio playback is managed by the phone app's audio session
+        // CarPlay UI just controls what's already playing on the phone
 
         // Dismiss the selection handler
         completionHandler()
-
-        // Switch to now playing tab
-        if let nowPlayingTemplate = CPNowPlayingTemplate.shared as? CPTabBarTemplate {
-            // Tab bar automatically switches
-        }
-    }
-
-    /// Updates the now playing template with current station info
-    private func updateNowPlayingTemplate() {
-        let nowPlayingTemplate = CPNowPlayingTemplate.shared
-        let station = StationsManager.shared.currentStation
-        let client = ACWebSocketClient.shared
-
-        // Set station info
-        nowPlayingTemplate.title = station?.name ?? "No Station"
-        nowPlayingTemplate.subtitle = station?.desc
-
-        // Set artwork
-        if let station = station {
-            station.getImage { image in
-                nowPlayingTemplate.artworkView.image = image
-            }
-        }
-
-        // Update MPNowPlayingInfoCenter for lock screen and other integrations
-        updateMPNowPlayingInfo(station: station)
-
-        // Set track info from metadata
-        nowPlayingTemplate.albumArtistName = client.status.artist
-        nowPlayingTemplate.albumTitle = client.status.track
-
-        // Subscribe to metadata updates
-        subscribeToMetadataUpdates()
     }
 
     /// Updates the MPNowPlayingInfoCenter for system integration
@@ -169,11 +108,11 @@ class CarPlaySceneDelegate: NSObject, CPTemplateApplicationSceneDelegate {
 
         let client = ACWebSocketClient.shared
         nowPlayingInfo[MPMediaItemPropertyArtist] = client.status.artist
-        nowPlayingInfo[MPMediaItemPropertyAlbumTitle] = client.status.album
+        nowPlayingInfo[MPMediaItemPropertyAlbumTitle] = client.status.track
         nowPlayingInfo[MPMediaItemPropertyPlaybackDuration] = 0 // Unknown for streaming
 
-        if let artwork = client.status.artwork {
-            station?.getImage { image in
+        if let station = station {
+            station.getImage { image in
                 let artworkItem = MPMediaItemArtwork(boundsSize: image.size) { _ in
                     return image
                 }
@@ -182,14 +121,6 @@ class CarPlaySceneDelegate: NSObject, CPTemplateApplicationSceneDelegate {
             }
         } else {
             MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
-        }
-    }
-
-    /// Subscribes to metadata updates from WebSocket client
-    private func subscribeToMetadataUpdates() {
-        // Use the client's subscriber mechanism to update CarPlay when metadata changes
-        ACWebSocketClient.shared.addSubscriber { [weak self] status in
-            self?.updateMPNowPlayingInfo(station: StationsManager.shared.currentStation)
         }
     }
 }

@@ -37,12 +37,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         // Return the appropriate scene configuration based on the session role
-        // For phone/window scenes, use SceneDelegate
-        // For CarPlay scenes, use CarPlaySceneDelegate (from Info.plist)
+        let roleString = connectingSceneSession.role.rawValue
 
-        let config = UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
-        config.delegateClass = SceneDelegate.self
-        return config
+        if roleString.contains("CPTemplate") {
+            // CarPlay scene - use CarPlaySceneDelegate
+            let delegateClass = NSClassFromString("RadioSpiral.CarPlaySceneDelegate")
+            let config = UISceneConfiguration(name: "CarPlay Configuration", sessionRole: connectingSceneSession.role)
+            config.delegateClass = delegateClass
+            return config
+        } else {
+            // Phone/window scene - use SceneDelegate
+            let config = UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+            config.delegateClass = SceneDelegate.self
+            return config
+        }
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

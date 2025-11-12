@@ -1,4 +1,0 @@
-module FRadioPlayer {
-header "FRadioPlayer-Swift.h"
-export *
-}

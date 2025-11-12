@@ -1,0 +1,5 @@
+---
+triple:          'x86_64-apple-darwin'
+binary-path:     '/Users/joemcmahon/Code/current-Radiospiral/build/Build/Products/Debug-iphonesimulator/RadioSpiral.app/RadioSpiral'
+relocations:     []
+...

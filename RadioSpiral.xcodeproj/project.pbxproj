@@ -14,32 +14,25 @@
 		6258DCDA22D93A5400166C65 /* LogoShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6258DCD922D93A5400166C65 /* LogoShareView.xib */; };
 		710310052D6C1E8E00828968 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 710310042D6C1E8E00828968 /* Reachability */; };
 		710A17712D39FFE100D951C6 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 710A17702D39FFE100D951C6 /* Reachability */; };
-		710A17732D39FFEE00D951C6 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 710A17722D39FFEE00D951C6 /* Reachability */; };
 		715C87A62B23E141003FC57A /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C87A52B23E141003FC57A /* SnapshotHelper.swift */; };
 		7165121C2B35519B00473770 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF72ACE621F714D000461EED /* Main.storyboard */; };
-		717B8C602EC449D30080EFE8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B8C5F2EC449D30080EFE8 /* SceneDelegate.swift */; };
 		717B8C612EC449D30080EFE8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B8C5F2EC449D30080EFE8 /* SceneDelegate.swift */; };
 		717B8C622EC449D30080EFE8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B8C5F2EC449D30080EFE8 /* SceneDelegate.swift */; };
+		717B8C642EC44DDD0080EFE8 /* CarPlaySceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B8C632EC44DDD0080EFE8 /* CarPlaySceneDelegate.swift */; };
+		717B8C662EC44DDD0080EFE8 /* CarPlaySceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B8C632EC44DDD0080EFE8 /* CarPlaySceneDelegate.swift */; };
 		719678592D27A72000DCD7CE /* ACStreamStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719678552D27A72000DCD7CE /* ACStreamStatus.swift */; };
 		7196785A2D27A72000DCD7CE /* ParseWebSocketData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719678582D27A72000DCD7CE /* ParseWebSocketData.swift */; };
 		7196785B2D27A72000DCD7CE /* ACConnectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719678542D27A72000DCD7CE /* ACConnectionState.swift */; };
 		7196785C2D27A72000DCD7CE /* ACWebSocketClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719678572D27A72000DCD7CE /* ACWebSocketClient.swift */; };
-		7196785D2D27A72000DCD7CE /* ACStreamStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719678552D27A72000DCD7CE /* ACStreamStatus.swift */; };
-		7196785E2D27A72000DCD7CE /* ParseWebSocketData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719678582D27A72000DCD7CE /* ParseWebSocketData.swift */; };
-		7196785F2D27A72000DCD7CE /* ACConnectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719678542D27A72000DCD7CE /* ACConnectionState.swift */; };
-		719678602D27A72000DCD7CE /* ACWebSocketClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719678572D27A72000DCD7CE /* ACWebSocketClient.swift */; };
 		719678612D27A72000DCD7CE /* ACStreamStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719678552D27A72000DCD7CE /* ACStreamStatus.swift */; };
 		719678622D27A72000DCD7CE /* ParseWebSocketData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719678582D27A72000DCD7CE /* ParseWebSocketData.swift */; };
 		719678632D27A72000DCD7CE /* ACConnectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719678542D27A72000DCD7CE /* ACConnectionState.swift */; };
 		719678642D27A72000DCD7CE /* ACWebSocketClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719678572D27A72000DCD7CE /* ACWebSocketClient.swift */; };
 		719678672D27AA6D00DCD7CE /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 719678662D27AA6D00DCD7CE /* Kingfisher */; };
-		719678692D27AA8E00DCD7CE /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 719678682D27AA8E00DCD7CE /* Kingfisher */; };
 		7196786B2D27AAA500DCD7CE /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 7196786A2D27AAA500DCD7CE /* Kingfisher */; };
 		71B3D01F2E2989C5001E8F5A /* StationMetadataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3D01E2E2989C5001E8F5A /* StationMetadataManager.swift */; };
-		71B3D0202E2989C5001E8F5A /* StationMetadataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3D01E2E2989C5001E8F5A /* StationMetadataManager.swift */; };
 		71B3D0212E2989C5001E8F5A /* StationMetadataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3D01E2E2989C5001E8F5A /* StationMetadataManager.swift */; };
 		71E9B4E22D2DE23A002D6496 /* ResizeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E9B4E12D2DE23A002D6496 /* ResizeImage.swift */; };
-		71E9B4E32D2DE23A002D6496 /* ResizeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E9B4E12D2DE23A002D6496 /* ResizeImage.swift */; };
 		9409E11C1ABF6FEA00312E2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */; };
 		9409E1261ABF6FEA00312E2B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9409E1251ABF6FEA00312E2B /* Images.xcassets */; };
 		9409E1401ABF78B000312E2B /* NowPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9409E13F1ABF78B000312E2B /* NowPlayingViewController.swift */; };
@@ -54,59 +47,22 @@
 		94D260961B45E3FA00DE671C /* AnimationFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D260951B45E3FA00DE671C /* AnimationFrames.swift */; };
 		94E9761C1B1A8F3200F52B1E /* UIImage+DropShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9761B1B1A8F3200F52B1E /* UIImage+DropShadow.swift */; };
 		CE321FF329371140001572BD /* Bundle+appName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE321FF229371140001572BD /* Bundle+appName.swift */; };
-		CE321FF429371140001572BD /* Bundle+appName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE321FF229371140001572BD /* Bundle+appName.swift */; };
 		CE37D7B4290F47E000B0933B /* Spring in Frameworks */ = {isa = PBXBuildFile; productRef = CE37D7B3290F47E000B0933B /* Spring */; };
 		CE37D7B7290F4A9700B0933B /* FRadioPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = CE37D7B6290F4A9700B0933B /* FRadioPlayer */; };
 		CE6036132A47A87A00E15E15 /* StationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6036122A47A87A00E15E15 /* StationsViewController.swift */; };
-		CE6036142A47A87A00E15E15 /* StationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6036122A47A87A00E15E15 /* StationsViewController.swift */; };
 		CE6036162A47B88600E15E15 /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6036152A47B88600E15E15 /* StationTableViewCell.swift */; };
-		CE6036172A47B88600E15E15 /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6036152A47B88600E15E15 /* StationTableViewCell.swift */; };
 		CE6036192A48BA2500E15E15 /* UITableViewCell+reuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6036182A48BA2500E15E15 /* UITableViewCell+reuseIdentifier.swift */; };
-		CE60361A2A48BA2500E15E15 /* UITableViewCell+reuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6036182A48BA2500E15E15 /* UITableViewCell+reuseIdentifier.swift */; };
 		CE6036212A48C51A00E15E15 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = CE6036202A48C51A00E15E15 /* NVActivityIndicatorView */; };
 		CE6036232A48C51A00E15E15 /* NVActivityIndicatorViewExtended in Frameworks */ = {isa = PBXBuildFile; productRef = CE6036222A48C51A00E15E15 /* NVActivityIndicatorViewExtended */; };
-		CE6036242A48F68D00E15E15 /* NowPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE60361C2A48C4A400E15E15 /* NowPlayingView.swift */; };
 		CE6036252A48F68D00E15E15 /* NowPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE60361C2A48C4A400E15E15 /* NowPlayingView.swift */; };
-		CE6036282A48F70A00E15E15 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = CE6036272A48F70A00E15E15 /* NVActivityIndicatorView */; };
-		CE60362A2A48F70A00E15E15 /* NVActivityIndicatorViewExtended in Frameworks */ = {isa = PBXBuildFile; productRef = CE6036292A48F70A00E15E15 /* NVActivityIndicatorViewExtended */; };
-		CE6A3E31291F376D0058C82A /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D260901B45D20000DE671C /* Config.swift */; };
-		CE6A3E33291F376D0058C82A /* ShareActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53113F38230C720900462C0E /* ShareActivity.swift */; };
-		CE6A3E34291F376D0058C82A /* NowPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9409E13F1ABF78B000312E2B /* NowPlayingViewController.swift */; };
-		CE6A3E35291F376D0058C82A /* StationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE963ECB29135A6F004F299E /* StationsManager.swift */; };
-		CE6A3E36291F376D0058C82A /* InfoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D1D0A41AD6D6230022CA11 /* InfoDetailViewController.swift */; };
-		CE6A3E37291F376D0058C82A /* LogoShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258DCD722D93A3500166C65 /* LogoShareView.swift */; };
-		CE6A3E38291F376D0058C82A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949BBB3F1ACC9DEE005B7C26 /* DataManager.swift */; };
-		CE6A3E39291F376D0058C82A /* UIImage+DropShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9761B1B1A8F3200F52B1E /* UIImage+DropShadow.swift */; };
-		CE6A3E3A291F376D0058C82A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94452E541AD7086800BFE7A5 /* AboutViewController.swift */; };
-		CE6A3E3B291F376D0058C82A /* PopUpMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94452E4E1AD6F24700BFE7A5 /* PopUpMenuViewController.swift */; };
-		CE6A3E3C291F376D0058C82A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */; };
-		CE6A3E3D291F376D0058C82A /* AnimationFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D260951B45E3FA00DE671C /* AnimationFrames.swift */; };
-		CE6A3E3E291F376D0058C82A /* UIImage+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDABBEC29121BBA00C0367F /* UIImage+Cache.swift */; };
-		CE6A3E40291F376D0058C82A /* RadioStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AC70AD1AD05C6200652982 /* RadioStation.swift */; };
-		CE6A3E41291F376D0058C82A /* UIImageView+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDABBEA291217AF00C0367F /* UIImageView+Cache.swift */; };
-		CE6A3E43291F376D0058C82A /* FRadioPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = CE6A3E2E291F376D0058C82A /* FRadioPlayer */; };
-		CE6A3E44291F376D0058C82A /* Spring in Frameworks */ = {isa = PBXBuildFile; productRef = CE6A3E2C291F376D0058C82A /* Spring */; };
-		CE6A3E46291F376D0058C82A /* stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 945DB3C11AD58E3A00495EBB /* stations.json */; };
-		CE6A3E47291F376D0058C82A /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 945DB3C41AD5A6E200495EBB /* NothingFoundCell.xib */; };
-		CE6A3E48291F376D0058C82A /* LogoShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6258DCD922D93A5400166C65 /* LogoShareView.xib */; };
-		CE6A3E49291F376D0058C82A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF72ACE621F714D000461EED /* Main.storyboard */; };
-		CE6A3E4A291F376D0058C82A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FDEE0211F72FF980064333C /* LaunchScreen.storyboard */; };
-		CE6A3E4B291F376D0058C82A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9409E1251ABF6FEA00312E2B /* Images.xcassets */; };
 		CE6ECCFA292F13DF008B3C16 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6ECCF9292F13DF008B3C16 /* Coordinator.swift */; };
-		CE6ECCFB292F13E6008B3C16 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6ECCF9292F13DF008B3C16 /* Coordinator.swift */; };
 		CE6ECCFD292F1445008B3C16 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6ECCFC292F1445008B3C16 /* MainCoordinator.swift */; };
-		CE6ECCFE292F1448008B3C16 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6ECCFC292F1445008B3C16 /* MainCoordinator.swift */; };
 		CE6ECD00292F215F008B3C16 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6ECCFF292F215F008B3C16 /* Storyboard.swift */; };
-		CE6ECD01292F215F008B3C16 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6ECCFF292F215F008B3C16 /* Storyboard.swift */; };
 		CE6ECD03292F358C008B3C16 /* UIViewController+Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6ECD02292F358C008B3C16 /* UIViewController+Email.swift */; };
-		CE6ECD04292F358C008B3C16 /* UIViewController+Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6ECD02292F358C008B3C16 /* UIViewController+Email.swift */; };
 		CE963ECC29135A6F004F299E /* StationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE963ECB29135A6F004F299E /* StationsManager.swift */; };
 		CE9EE8DE293BB41300F62041 /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9EE8DD293BB41300F62041 /* BaseController.swift */; };
-		CE9EE8DF293BB41300F62041 /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9EE8DD293BB41300F62041 /* BaseController.swift */; };
 		CE9EE8E1293C048A00F62041 /* LoaderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9EE8E0293C048A00F62041 /* LoaderController.swift */; };
-		CE9EE8E2293C048A00F62041 /* LoaderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9EE8E0293C048A00F62041 /* LoaderController.swift */; };
 		CED6353B293081ED002B216F /* Handoffable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6353A293081ED002B216F /* Handoffable.swift */; };
-		CED6353C293081ED002B216F /* Handoffable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6353A293081ED002B216F /* Handoffable.swift */; };
 		CEDABBEB291217AF00C0367F /* UIImageView+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDABBEA291217AF00C0367F /* UIImageView+Cache.swift */; };
 		CEDABBED29121BBA00C0367F /* UIImage+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDABBEC29121BBA00C0367F /* UIImage+Cache.swift */; };
 		CF72ACE721F7155200461EED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF72ACE621F714D000461EED /* Main.storyboard */; };
@@ -133,6 +89,8 @@
 		715C87A52B23E141003FC57A /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		717B8C562EC433E10080EFE8 /* RadioSpiral.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RadioSpiral.entitlements; sourceTree = "<group>"; };
 		717B8C5F2EC449D30080EFE8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		717B8C632EC44DDD0080EFE8 /* CarPlaySceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarPlaySceneDelegate.swift; sourceTree = "<group>"; };
+		717B8C672EC44F120080EFE8 /* CarPlaySceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CarPlaySceneDelegate.swift; path = RadioSpiral/CarPlay/CarPlaySceneDelegate.swift; sourceTree = "<group>"; };
 		719678542D27A72000DCD7CE /* ACConnectionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACConnectionState.swift; sourceTree = "<group>"; };
 		719678552D27A72000DCD7CE /* ACStreamStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACStreamStatus.swift; sourceTree = "<group>"; };
 		719678562D27A72000DCD7CE /* ACWebSocketClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACWebSocketClient.h; sourceTree = "<group>"; };
@@ -160,7 +118,6 @@
 		CE6036152A47B88600E15E15 /* StationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationTableViewCell.swift; sourceTree = "<group>"; };
 		CE6036182A48BA2500E15E15 /* UITableViewCell+reuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+reuseIdentifier.swift"; sourceTree = "<group>"; };
 		CE60361C2A48C4A400E15E15 /* NowPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingView.swift; sourceTree = "<group>"; };
-		CE6A3E4F291F376D0058C82A /* RadioSpiral-CarPlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RadioSpiral-CarPlay.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE6ECCF9292F13DF008B3C16 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		CE6ECCFC292F1445008B3C16 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		CE6ECCFF292F215F008B3C16 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
@@ -195,19 +152,6 @@
 				CE37D7B4290F47E000B0933B /* Spring in Frameworks */,
 				CE6036212A48C51A00E15E15 /* NVActivityIndicatorView in Frameworks */,
 				719678672D27AA6D00DCD7CE /* Kingfisher in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE6A3E42291F376D0058C82A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CE6A3E43291F376D0058C82A /* FRadioPlayer in Frameworks */,
-				710A17732D39FFEE00D951C6 /* Reachability in Frameworks */,
-				CE60362A2A48F70A00E15E15 /* NVActivityIndicatorViewExtended in Frameworks */,
-				CE6A3E44291F376D0058C82A /* Spring in Frameworks */,
-				CE6036282A48F70A00E15E15 /* NVActivityIndicatorView in Frameworks */,
-				719678692D27AA8E00DCD7CE /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +193,7 @@
 		9409E10D1ABF6FE900312E2B = {
 			isa = PBXGroup;
 			children = (
+				717B8C672EC44F120080EFE8 /* CarPlaySceneDelegate.swift */,
 				9409E1181ABF6FEA00312E2B /* RadioSpiral */,
 				2C5545BB1C1124DE00728469 /* RadioSpiralUITests */,
 				9409E1171ABF6FEA00312E2B /* Products */,
@@ -260,7 +205,6 @@
 			children = (
 				9409E1161ABF6FEA00312E2B /* RadioSpiral.app */,
 				2C5545BA1C1124DE00728469 /* RadioSpiralUITests.xctest */,
-				CE6A3E4F291F376D0058C82A /* RadioSpiral-CarPlay.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -293,6 +237,7 @@
 		CE0A4993291F39660071C0CC /* CarPlay */ = {
 			isa = PBXGroup;
 			children = (
+				717B8C632EC44DDD0080EFE8 /* CarPlaySceneDelegate.swift */,
 			);
 			path = CarPlay;
 			sourceTree = "<group>";
@@ -428,31 +373,6 @@
 			productReference = 9409E1161ABF6FEA00312E2B /* RadioSpiral.app */;
 			productType = "com.apple.product-type.application";
 		};
-		CE6A3E2B291F376D0058C82A /* RadioSpiral-CarPlay */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CE6A3E4C291F376D0058C82A /* Build configuration list for PBXNativeTarget "RadioSpiral-CarPlay" */;
-			buildPhases = (
-				CE6A3E30291F376D0058C82A /* Sources */,
-				CE6A3E42291F376D0058C82A /* Frameworks */,
-				CE6A3E45291F376D0058C82A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "RadioSpiral-CarPlay";
-			packageProductDependencies = (
-				CE6A3E2C291F376D0058C82A /* Spring */,
-				CE6A3E2E291F376D0058C82A /* FRadioPlayer */,
-				CE6036272A48F70A00E15E15 /* NVActivityIndicatorView */,
-				CE6036292A48F70A00E15E15 /* NVActivityIndicatorViewExtended */,
-				719678682D27AA8E00DCD7CE /* Kingfisher */,
-				710A17722D39FFEE00D951C6 /* Reachability */,
-			);
-			productName = RadioPro;
-			productReference = CE6A3E4F291F376D0058C82A /* RadioSpiral-CarPlay.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -502,7 +422,6 @@
 			projectRoot = "";
 			targets = (
 				9409E1151ABF6FEA00312E2B /* RadioSpiral */,
-				CE6A3E2B291F376D0058C82A /* RadioSpiral-CarPlay */,
 				2C5545B91C1124DE00728469 /* RadioSpiralUITests */,
 			);
 		};
@@ -530,19 +449,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CE6A3E45291F376D0058C82A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CE6A3E46291F376D0058C82A /* stations.json in Resources */,
-				CE6A3E47291F376D0058C82A /* NothingFoundCell.xib in Resources */,
-				CE6A3E48291F376D0058C82A /* LogoShareView.xib in Resources */,
-				CE6A3E49291F376D0058C82A /* Main.storyboard in Resources */,
-				CE6A3E4A291F376D0058C82A /* LaunchScreen.storyboard in Resources */,
-				CE6A3E4B291F376D0058C82A /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -550,6 +456,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				717B8C642EC44DDD0080EFE8 /* CarPlaySceneDelegate.swift in Sources */,
 				719678592D27A72000DCD7CE /* ACStreamStatus.swift in Sources */,
 				7196785A2D27A72000DCD7CE /* ParseWebSocketData.swift in Sources */,
 				7196785B2D27A72000DCD7CE /* ACConnectionState.swift in Sources */,
@@ -565,6 +472,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				717B8C662EC44DDD0080EFE8 /* CarPlaySceneDelegate.swift in Sources */,
 				94D260911B45D20000DE671C /* Config.swift in Sources */,
 				CE6036192A48BA2500E15E15 /* UITableViewCell+reuseIdentifier.swift in Sources */,
 				CE6036162A47B88600E15E15 /* StationTableViewCell.swift in Sources */,
@@ -599,47 +507,6 @@
 				719678622D27A72000DCD7CE /* ParseWebSocketData.swift in Sources */,
 				719678632D27A72000DCD7CE /* ACConnectionState.swift in Sources */,
 				719678642D27A72000DCD7CE /* ACWebSocketClient.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE6A3E30291F376D0058C82A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CE6A3E31291F376D0058C82A /* Config.swift in Sources */,
-				CE60361A2A48BA2500E15E15 /* UITableViewCell+reuseIdentifier.swift in Sources */,
-				CE6036172A47B88600E15E15 /* StationTableViewCell.swift in Sources */,
-				CE9EE8DF293BB41300F62041 /* BaseController.swift in Sources */,
-				CE6A3E33291F376D0058C82A /* ShareActivity.swift in Sources */,
-				71B3D0202E2989C5001E8F5A /* StationMetadataManager.swift in Sources */,
-				CE6A3E34291F376D0058C82A /* NowPlayingViewController.swift in Sources */,
-				717B8C602EC449D30080EFE8 /* SceneDelegate.swift in Sources */,
-				CE6A3E35291F376D0058C82A /* StationsManager.swift in Sources */,
-				CE321FF429371140001572BD /* Bundle+appName.swift in Sources */,
-				CE6ECCFB292F13E6008B3C16 /* Coordinator.swift in Sources */,
-				CE6A3E36291F376D0058C82A /* InfoDetailViewController.swift in Sources */,
-				CE6A3E37291F376D0058C82A /* LogoShareView.swift in Sources */,
-				CE6A3E38291F376D0058C82A /* DataManager.swift in Sources */,
-				CE6ECD01292F215F008B3C16 /* Storyboard.swift in Sources */,
-				71E9B4E32D2DE23A002D6496 /* ResizeImage.swift in Sources */,
-				CE6A3E39291F376D0058C82A /* UIImage+DropShadow.swift in Sources */,
-				CE6A3E3A291F376D0058C82A /* AboutViewController.swift in Sources */,
-				CED6353C293081ED002B216F /* Handoffable.swift in Sources */,
-				CE6A3E3B291F376D0058C82A /* PopUpMenuViewController.swift in Sources */,
-				CE6ECCFE292F1448008B3C16 /* MainCoordinator.swift in Sources */,
-				CE6A3E3C291F376D0058C82A /* AppDelegate.swift in Sources */,
-				CE6A3E3D291F376D0058C82A /* AnimationFrames.swift in Sources */,
-				CE6ECD04292F358C008B3C16 /* UIViewController+Email.swift in Sources */,
-				CE6A3E3E291F376D0058C82A /* UIImage+Cache.swift in Sources */,
-				CE6036242A48F68D00E15E15 /* NowPlayingView.swift in Sources */,
-				CE6A3E40291F376D0058C82A /* RadioStation.swift in Sources */,
-				CE9EE8E2293C048A00F62041 /* LoaderController.swift in Sources */,
-				CE6A3E41291F376D0058C82A /* UIImageView+Cache.swift in Sources */,
-				CE6036142A47A87A00E15E15 /* StationsViewController.swift in Sources */,
-				7196785D2D27A72000DCD7CE /* ACStreamStatus.swift in Sources */,
-				7196785E2D27A72000DCD7CE /* ParseWebSocketData.swift in Sources */,
-				7196785F2D27A72000DCD7CE /* ACConnectionState.swift in Sources */,
-				719678602D27A72000DCD7CE /* ACWebSocketClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -879,78 +746,6 @@
 			};
 			name = Release;
 		};
-		CE6A3E4D291F376D0058C82A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = RadioSpiral/RadioSpiral.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 61;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 6PLL9M5SE2;
-				ENABLE_MODULE_VERIFIER = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/RadioSpiral",
-				);
-				INFOPLIST_FILE = "RadioSpiral/Info-CarPlay.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "RadioSpiral-CarPlay";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 2.3;
-				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
-				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu99 gnu++11";
-				OTHER_SWIFT_FLAGS = "-D CarPlay";
-				PRODUCT_BUNDLE_IDENTIFIER = com.pemungkah.radiospiral;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_INSTALL_OBJC_HEADER = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		CE6A3E4E291F376D0058C82A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = RadioSpiral/RadioSpiral.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 61;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 6PLL9M5SE2;
-				ENABLE_MODULE_VERIFIER = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/RadioSpiral",
-				);
-				INFOPLIST_FILE = "RadioSpiral/Info-CarPlay.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "RadioSpiral-CarPlay";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 2.3;
-				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
-				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu99 gnu++11";
-				OTHER_SWIFT_FLAGS = "-D CarPlay";
-				PRODUCT_BUNDLE_IDENTIFIER = com.pemungkah.radiospiral;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_INSTALL_OBJC_HEADER = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -977,15 +772,6 @@
 			buildConfigurations = (
 				9409E1391ABF6FEA00312E2B /* Debug */,
 				9409E13A1ABF6FEA00312E2B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CE6A3E4C291F376D0058C82A /* Build configuration list for PBXNativeTarget "RadioSpiral-CarPlay" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CE6A3E4D291F376D0058C82A /* Debug */,
-				CE6A3E4E291F376D0058C82A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1033,22 +819,6 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		CE6A3E2D291F376D0058C82A /* XCRemoteSwiftPackageReference "Spring" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/fethica/Spring.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-		CE6A3E2F291F376D0058C82A /* XCRemoteSwiftPackageReference "FRadioPlayer" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/fethica/FRadioPlayer.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1062,17 +832,7 @@
 			package = 710A176F2D39FFE100D951C6 /* XCRemoteSwiftPackageReference "Reachability" */;
 			productName = Reachability;
 		};
-		710A17722D39FFEE00D951C6 /* Reachability */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 710A176F2D39FFE100D951C6 /* XCRemoteSwiftPackageReference "Reachability" */;
-			productName = Reachability;
-		};
 		719678662D27AA6D00DCD7CE /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 719678652D27AA4800DCD7CE /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
-		};
-		719678682D27AA8E00DCD7CE /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 719678652D27AA4800DCD7CE /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
@@ -1101,26 +861,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CE60361F2A48C51A00E15E15 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
 			productName = NVActivityIndicatorViewExtended;
-		};
-		CE6036272A48F70A00E15E15 /* NVActivityIndicatorView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CE60361F2A48C51A00E15E15 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
-			productName = NVActivityIndicatorView;
-		};
-		CE6036292A48F70A00E15E15 /* NVActivityIndicatorViewExtended */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CE60361F2A48C51A00E15E15 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
-			productName = NVActivityIndicatorViewExtended;
-		};
-		CE6A3E2C291F376D0058C82A /* Spring */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CE6A3E2D291F376D0058C82A /* XCRemoteSwiftPackageReference "Spring" */;
-			productName = Spring;
-		};
-		CE6A3E2E291F376D0058C82A /* FRadioPlayer */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CE6A3E2F291F376D0058C82A /* XCRemoteSwiftPackageReference "FRadioPlayer" */;
-			productName = FRadioPlayer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

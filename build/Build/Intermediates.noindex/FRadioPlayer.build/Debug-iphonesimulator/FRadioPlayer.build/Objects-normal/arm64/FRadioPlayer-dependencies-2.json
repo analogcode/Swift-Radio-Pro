@@ -11,11 +11,6 @@
   },
   {
     "isFramework" : true,
-    "moduleName" : "Accessibility",
-    "modulePath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Toolchains\/XcodeDefault.xctoolchain\/usr\/lib\/swift\/iphonesimulator\/prebuilt-modules\/26.1\/Accessibility.swiftmodule\/arm64-apple-ios-simulator.swiftmodule"
-  },
-  {
-    "isFramework" : true,
     "moduleName" : "AudioToolbox",
     "modulePath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Toolchains\/XcodeDefault.xctoolchain\/usr\/lib\/swift\/iphonesimulator\/prebuilt-modules\/26.1\/AudioToolbox.swiftmodule\/arm64-apple-ios-simulator.swiftmodule"
   },
@@ -56,16 +51,6 @@
   },
   {
     "isFramework" : true,
-    "moduleName" : "CoreText",
-    "modulePath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Toolchains\/XcodeDefault.xctoolchain\/usr\/lib\/swift\/iphonesimulator\/prebuilt-modules\/26.1\/CoreText.swiftmodule\/arm64-apple-ios-simulator.swiftmodule"
-  },
-  {
-    "isFramework" : true,
-    "moduleName" : "CoreTransferable",
-    "modulePath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Toolchains\/XcodeDefault.xctoolchain\/usr\/lib\/swift\/iphonesimulator\/prebuilt-modules\/26.1\/CoreTransferable.swiftmodule\/arm64-apple-ios-simulator.swiftmodule"
-  },
-  {
-    "isFramework" : true,
     "moduleName" : "CoreVideo",
     "modulePath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Toolchains\/XcodeDefault.xctoolchain\/usr\/lib\/swift\/iphonesimulator\/prebuilt-modules\/26.1\/CoreVideo.swiftmodule\/arm64-apple-ios-simulator.swiftmodule"
   },
@@ -73,16 +58,6 @@
     "isFramework" : false,
     "moduleName" : "Darwin",
     "modulePath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Toolchains\/XcodeDefault.xctoolchain\/usr\/lib\/swift\/iphonesimulator\/prebuilt-modules\/26.1\/Darwin.swiftmodule\/arm64-apple-ios-simulator.swiftmodule"
-  },
-  {
-    "isFramework" : true,
-    "moduleName" : "DataDetection",
-    "modulePath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Toolchains\/XcodeDefault.xctoolchain\/usr\/lib\/swift\/iphonesimulator\/prebuilt-modules\/26.1\/DataDetection.swiftmodule\/arm64-apple-ios-simulator.swiftmodule"
-  },
-  {
-    "isFramework" : true,
-    "moduleName" : "DeveloperToolsSupport",
-    "modulePath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Toolchains\/XcodeDefault.xctoolchain\/usr\/lib\/swift\/iphonesimulator\/prebuilt-modules\/26.1\/DeveloperToolsSupport.swiftmodule\/arm64-apple-ios-simulator.swiftmodule"
   },
   {
     "isFramework" : false,
@@ -93,11 +68,6 @@
     "isFramework" : false,
     "moduleName" : "Distributed",
     "modulePath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Toolchains\/XcodeDefault.xctoolchain\/usr\/lib\/swift\/iphonesimulator\/prebuilt-modules\/26.1\/Distributed.swiftmodule\/arm64-apple-ios-simulator.swiftmodule"
-  },
-  {
-    "isFramework" : true,
-    "moduleName" : "FileProvider",
-    "modulePath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Toolchains\/XcodeDefault.xctoolchain\/usr\/lib\/swift\/iphonesimulator\/prebuilt-modules\/26.1\/FileProvider.swiftmodule\/arm64-apple-ios-simulator.swiftmodule"
   },
   {
     "isFramework" : true,
@@ -113,11 +83,6 @@
     "isFramework" : true,
     "moduleName" : "Network",
     "modulePath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Toolchains\/XcodeDefault.xctoolchain\/usr\/lib\/swift\/iphonesimulator\/prebuilt-modules\/26.1\/Network.swiftmodule\/arm64-apple-ios-simulator.swiftmodule"
-  },
-  {
-    "isFramework" : false,
-    "moduleName" : "OSLog",
-    "modulePath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Toolchains\/XcodeDefault.xctoolchain\/usr\/lib\/swift\/iphonesimulator\/prebuilt-modules\/26.1\/OSLog.swiftmodule\/arm64-apple-ios-simulator.swiftmodule"
   },
   {
     "isFramework" : false,
@@ -145,16 +110,6 @@
     "modulePath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Toolchains\/XcodeDefault.xctoolchain\/usr\/lib\/swift\/iphonesimulator\/prebuilt-modules\/26.1\/SwiftOnoneSupport.swiftmodule\/arm64-apple-ios-simulator.swiftmodule"
   },
   {
-    "isFramework" : true,
-    "moduleName" : "SwiftUICore",
-    "modulePath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Toolchains\/XcodeDefault.xctoolchain\/usr\/lib\/swift\/iphonesimulator\/prebuilt-modules\/26.1\/SwiftUICore.swiftmodule\/arm64-apple-ios-simulator.swiftmodule"
-  },
-  {
-    "isFramework" : true,
-    "moduleName" : "Symbols",
-    "modulePath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Toolchains\/XcodeDefault.xctoolchain\/usr\/lib\/swift\/iphonesimulator\/prebuilt-modules\/26.1\/Symbols.swiftmodule\/arm64-apple-ios-simulator.swiftmodule"
-  },
-  {
     "isFramework" : false,
     "moduleName" : "Synchronization",
     "modulePath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Toolchains\/XcodeDefault.xctoolchain\/usr\/lib\/swift\/iphonesimulator\/prebuilt-modules\/26.1\/Synchronization.swiftmodule\/arm64-apple-ios-simulator.swiftmodule"
@@ -163,11 +118,6 @@
     "isFramework" : false,
     "moduleName" : "System",
     "modulePath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Toolchains\/XcodeDefault.xctoolchain\/usr\/lib\/swift\/iphonesimulator\/prebuilt-modules\/26.1\/System.swiftmodule\/arm64-apple-ios-simulator.swiftmodule"
-  },
-  {
-    "isFramework" : true,
-    "moduleName" : "UIKit",
-    "modulePath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Toolchains\/XcodeDefault.xctoolchain\/usr\/lib\/swift\/iphonesimulator\/prebuilt-modules\/26.1\/UIKit.swiftmodule\/arm64-apple-ios-simulator.swiftmodule"
   },
   {
     "isFramework" : false,
@@ -241,13 +191,6 @@
     "moduleName" : "AVRouting"
   },
   {
-    "clangModuleMapPath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Platforms\/iPhoneSimulator.platform\/Developer\/SDKs\/iPhoneSimulator.sdk\/System\/Library\/Frameworks\/Accessibility.framework\/Modules\/module.modulemap",
-    "clangModulePath" : "\/Users\/joemcmahon\/Code\/current-Radiospiral\/build\/ModuleCache.noindex\/Accessibility-1222F4D7IJ8QWHQADJ2D35OQB.pcm",
-    "isBridgingHeaderDependency" : false,
-    "isFramework" : false,
-    "moduleName" : "Accessibility"
-  },
-  {
     "clangModuleMapPath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Platforms\/iPhoneSimulator.platform\/Developer\/SDKs\/iPhoneSimulator.sdk\/System\/Library\/Frameworks\/AudioToolbox.framework\/Modules\/module.modulemap",
     "clangModulePath" : "\/Users\/joemcmahon\/Code\/current-Radiospiral\/build\/ModuleCache.noindex\/AudioToolbox-4Y9QASVGLWLYWUSTC3FZGSOV2.pcm",
     "isBridgingHeaderDependency" : false,
@@ -311,20 +254,6 @@
     "moduleName" : "CoreMedia"
   },
   {
-    "clangModuleMapPath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Platforms\/iPhoneSimulator.platform\/Developer\/SDKs\/iPhoneSimulator.sdk\/System\/Library\/Frameworks\/CoreText.framework\/Modules\/module.modulemap",
-    "clangModulePath" : "\/Users\/joemcmahon\/Code\/current-Radiospiral\/build\/ModuleCache.noindex\/CoreText-RTLHAXJ0L0RQRNKN38F6OHV4.pcm",
-    "isBridgingHeaderDependency" : false,
-    "isFramework" : false,
-    "moduleName" : "CoreText"
-  },
-  {
-    "clangModuleMapPath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Platforms\/iPhoneSimulator.platform\/Developer\/SDKs\/iPhoneSimulator.sdk\/System\/Library\/Frameworks\/CoreTransferable.framework\/Modules\/module.modulemap",
-    "clangModulePath" : "\/Users\/joemcmahon\/Code\/current-Radiospiral\/build\/ModuleCache.noindex\/CoreTransferable-86BLCE4ZPAGFSOHHGUCWW4PS0.pcm",
-    "isBridgingHeaderDependency" : false,
-    "isFramework" : false,
-    "moduleName" : "CoreTransferable"
-  },
-  {
     "clangModuleMapPath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Platforms\/iPhoneSimulator.platform\/Developer\/SDKs\/iPhoneSimulator.sdk\/System\/Library\/Frameworks\/CoreVideo.framework\/Modules\/module.modulemap",
     "clangModulePath" : "\/Users\/joemcmahon\/Code\/current-Radiospiral\/build\/ModuleCache.noindex\/CoreVideo-71VYLJURLZEDVPNJRBRKFHULA.pcm",
     "isBridgingHeaderDependency" : false,
@@ -339,32 +268,11 @@
     "moduleName" : "Darwin"
   },
   {
-    "clangModuleMapPath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Platforms\/iPhoneSimulator.platform\/Developer\/SDKs\/iPhoneSimulator.sdk\/System\/Library\/Frameworks\/DataDetection.framework\/Modules\/module.modulemap",
-    "clangModulePath" : "\/Users\/joemcmahon\/Code\/current-Radiospiral\/build\/ModuleCache.noindex\/DataDetection-5VTLAMP282PFZ8RPSQ0XUDYVF.pcm",
-    "isBridgingHeaderDependency" : false,
-    "isFramework" : false,
-    "moduleName" : "DataDetection"
-  },
-  {
-    "clangModuleMapPath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Platforms\/iPhoneSimulator.platform\/Developer\/SDKs\/iPhoneSimulator.sdk\/System\/Library\/Frameworks\/DeveloperToolsSupport.framework\/Modules\/module.modulemap",
-    "clangModulePath" : "\/Users\/joemcmahon\/Code\/current-Radiospiral\/build\/ModuleCache.noindex\/DeveloperToolsSupport-CBY2IBLYK7JVU9HO61IK4MDUT.pcm",
-    "isBridgingHeaderDependency" : false,
-    "isFramework" : false,
-    "moduleName" : "DeveloperToolsSupport"
-  },
-  {
     "clangModuleMapPath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Platforms\/iPhoneSimulator.platform\/Developer\/SDKs\/iPhoneSimulator.sdk\/usr\/include\/dispatch.modulemap",
     "clangModulePath" : "\/Users\/joemcmahon\/Code\/current-Radiospiral\/build\/ModuleCache.noindex\/Dispatch-HA3NX753SJYTNFG3SYADHB6L.pcm",
     "isBridgingHeaderDependency" : false,
     "isFramework" : false,
     "moduleName" : "Dispatch"
-  },
-  {
-    "clangModuleMapPath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Platforms\/iPhoneSimulator.platform\/Developer\/SDKs\/iPhoneSimulator.sdk\/System\/Library\/Frameworks\/FileProvider.framework\/Modules\/module.modulemap",
-    "clangModulePath" : "\/Users\/joemcmahon\/Code\/current-Radiospiral\/build\/ModuleCache.noindex\/FileProvider-E0ZAPNT6OWFMOREEH7182RUXU.pcm",
-    "isBridgingHeaderDependency" : false,
-    "isFramework" : false,
-    "moduleName" : "FileProvider"
   },
   {
     "clangModuleMapPath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Platforms\/iPhoneSimulator.platform\/Developer\/SDKs\/iPhoneSimulator.sdk\/System\/Library\/Frameworks\/Foundation.framework\/Modules\/module.modulemap",
@@ -416,13 +324,6 @@
     "moduleName" : "Network"
   },
   {
-    "clangModuleMapPath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Platforms\/iPhoneSimulator.platform\/Developer\/SDKs\/iPhoneSimulator.sdk\/System\/Library\/Frameworks\/OSLog.framework\/Modules\/module.modulemap",
-    "clangModulePath" : "\/Users\/joemcmahon\/Code\/current-Radiospiral\/build\/ModuleCache.noindex\/OSLog-DTYFP468W7L7TQQWP8KPPP5LT.pcm",
-    "isBridgingHeaderDependency" : false,
-    "isFramework" : false,
-    "moduleName" : "OSLog"
-  },
-  {
     "clangModuleMapPath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Platforms\/iPhoneSimulator.platform\/Developer\/SDKs\/iPhoneSimulator.sdk\/usr\/include\/ObjectiveC.modulemap",
     "clangModulePath" : "\/Users\/joemcmahon\/Code\/current-Radiospiral\/build\/ModuleCache.noindex\/ObjectiveC-4ZWBQV8EN9O8T8HH7PUFVAK1O.pcm",
     "isBridgingHeaderDependency" : false,
@@ -458,20 +359,6 @@
     "moduleName" : "SwiftShims"
   },
   {
-    "clangModuleMapPath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Platforms\/iPhoneSimulator.platform\/Developer\/SDKs\/iPhoneSimulator.sdk\/System\/Library\/Frameworks\/SwiftUICore.framework\/Modules\/module.modulemap",
-    "clangModulePath" : "\/Users\/joemcmahon\/Code\/current-Radiospiral\/build\/ModuleCache.noindex\/SwiftUICore-DHBWLWE11BQ7N7MF7LRQV9KPT.pcm",
-    "isBridgingHeaderDependency" : false,
-    "isFramework" : false,
-    "moduleName" : "SwiftUICore"
-  },
-  {
-    "clangModuleMapPath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Platforms\/iPhoneSimulator.platform\/Developer\/SDKs\/iPhoneSimulator.sdk\/System\/Library\/Frameworks\/Symbols.framework\/Modules\/module.modulemap",
-    "clangModulePath" : "\/Users\/joemcmahon\/Code\/current-Radiospiral\/build\/ModuleCache.noindex\/Symbols-7WGSV6BBSVQPYOCXK4JKHPOLK.pcm",
-    "isBridgingHeaderDependency" : false,
-    "isFramework" : false,
-    "moduleName" : "Symbols"
-  },
-  {
     "clangModuleMapPath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Platforms\/iPhoneSimulator.platform\/Developer\/SDKs\/iPhoneSimulator.sdk\/System\/Library\/Frameworks\/SystemConfiguration.framework\/Modules\/module.modulemap",
     "clangModulePath" : "\/Users\/joemcmahon\/Code\/current-Radiospiral\/build\/ModuleCache.noindex\/SystemConfiguration-5B5QGGDOL7IGOXINN9U8PKHYK.pcm",
     "isBridgingHeaderDependency" : false,
@@ -479,32 +366,11 @@
     "moduleName" : "SystemConfiguration"
   },
   {
-    "clangModuleMapPath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Platforms\/iPhoneSimulator.platform\/Developer\/SDKs\/iPhoneSimulator.sdk\/System\/Library\/Frameworks\/UIKit.framework\/Modules\/module.modulemap",
-    "clangModulePath" : "\/Users\/joemcmahon\/Code\/current-Radiospiral\/build\/ModuleCache.noindex\/UIKit-2J7BKIY7JGE9F9H508PX3GSNP.pcm",
-    "isBridgingHeaderDependency" : false,
-    "isFramework" : false,
-    "moduleName" : "UIKit"
-  },
-  {
-    "clangModuleMapPath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Platforms\/iPhoneSimulator.platform\/Developer\/SDKs\/iPhoneSimulator.sdk\/System\/Library\/SubFrameworks\/UIUtilities.framework\/Modules\/module.modulemap",
-    "clangModulePath" : "\/Users\/joemcmahon\/Code\/current-Radiospiral\/build\/ModuleCache.noindex\/UIUtilities-A4ROU4RVTYPK6RPTZEP8W0WRE.pcm",
-    "isBridgingHeaderDependency" : false,
-    "isFramework" : false,
-    "moduleName" : "UIUtilities"
-  },
-  {
     "clangModuleMapPath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Platforms\/iPhoneSimulator.platform\/Developer\/SDKs\/iPhoneSimulator.sdk\/System\/Library\/Frameworks\/UniformTypeIdentifiers.framework\/Modules\/module.modulemap",
     "clangModulePath" : "\/Users\/joemcmahon\/Code\/current-Radiospiral\/build\/ModuleCache.noindex\/UniformTypeIdentifiers-1OZJOR3TC5R0090FBA0A2VTT3.pcm",
     "isBridgingHeaderDependency" : false,
     "isFramework" : false,
     "moduleName" : "UniformTypeIdentifiers"
-  },
-  {
-    "clangModuleMapPath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Platforms\/iPhoneSimulator.platform\/Developer\/SDKs\/iPhoneSimulator.sdk\/System\/Library\/Frameworks\/UserNotifications.framework\/Modules\/module.modulemap",
-    "clangModulePath" : "\/Users\/joemcmahon\/Code\/current-Radiospiral\/build\/ModuleCache.noindex\/UserNotifications-184FFKY5EGLVCX2RD7XV433R8.pcm",
-    "isBridgingHeaderDependency" : false,
-    "isFramework" : false,
-    "moduleName" : "UserNotifications"
   },
   {
     "clangModuleMapPath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Platforms\/iPhoneSimulator.platform\/Developer\/SDKs\/iPhoneSimulator.sdk\/usr\/include\/xpc.modulemap",
