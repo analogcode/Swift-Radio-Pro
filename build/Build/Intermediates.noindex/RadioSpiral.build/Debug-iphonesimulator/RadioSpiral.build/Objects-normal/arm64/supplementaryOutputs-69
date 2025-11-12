@@ -1,0 +1,30 @@
+{
+  "/Users/joemcmahon/Code/current-Radiospiral/RadioSpiral/Helpers/Handoffable.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/Handoffable.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/Handoffable.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/Handoffable.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/Handoffable.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/Handoffable.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/RadioSpiral/Helpers/UIImage+DropShadow.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/UIImage+DropShadow.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/UIImage+DropShadow.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/UIImage+DropShadow.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/UIImage+DropShadow.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/UIImage+DropShadow.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/RadioSpiral/Model/ResizeImage.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/ResizeImage.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/ResizeImage.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/ResizeImage.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/ResizeImage.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/ResizeImage.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/RadioSpiral/ViewControllers/AboutViewController.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/AboutViewController.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/AboutViewController.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/AboutViewController.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/AboutViewController.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/AboutViewController.swiftdeps"
+  }
+}

@@ -14,8 +14,8 @@
         },
         "state" : {
           "checkoutState" : {
-            "branch" : "v0.2.0",
-            "revision" : "c3f472ed8cb59b442312362bca363863962c88b3"
+            "branch" : "main",
+            "revision" : "243cd9246b79a186c39b3c53dbe725c8c01bab59"
           },
           "name" : "sourceControlCheckout"
         },
@@ -61,7 +61,7 @@
           "identity" : "reachability.swift",
           "kind" : "remoteSourceControl",
           "location" : "https://github.com/ashleymills/Reachability.swift",
-          "name" : "Reachability"
+          "name" : "Reachability.swift"
         },
         "state" : {
           "checkoutState" : {

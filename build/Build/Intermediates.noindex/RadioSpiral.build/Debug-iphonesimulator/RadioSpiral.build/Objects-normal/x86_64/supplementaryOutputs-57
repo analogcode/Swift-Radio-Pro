@@ -1,0 +1,30 @@
+{
+  "/Users/joemcmahon/Code/current-Radiospiral/RadioSpiral/Coordinators/Coordinator.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/x86_64/Coordinator.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/x86_64/Coordinator.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/x86_64/Coordinator.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/x86_64/Coordinator.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/x86_64/Coordinator.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/RadioSpiral/Helpers/Bundle+appName.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/x86_64/Bundle+appName.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/x86_64/Bundle+appName.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/x86_64/Bundle+appName.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/x86_64/Bundle+appName.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/x86_64/Bundle+appName.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/RadioSpiral/Model/StationsManager.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/x86_64/StationsManager.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/x86_64/StationsManager.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/x86_64/StationsManager.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/x86_64/StationsManager.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/x86_64/StationsManager.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/RadioSpiral/SceneDelegate.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/x86_64/SceneDelegate.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/x86_64/SceneDelegate.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/x86_64/SceneDelegate.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/x86_64/SceneDelegate.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/x86_64/SceneDelegate.swiftdeps"
+  }
+}

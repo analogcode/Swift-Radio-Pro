@@ -1,13 +1,13 @@
 {
-  "originHash" : "7a9a38df4ab75b79caace7604292f35d0e6066fbd8c8f6e19dc2a5c32d87ae89",
+  "originHash" : "93be1cd8b824b63bb556b1ee19c38ff3ab2a74e5f86745f0db3fa6033b16ec57",
   "pins" : [
     {
       "identity" : "fradioplayer",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/fethica/FRadioPlayer.git",
       "state" : {
-        "branch" : "v0.2.0",
-        "revision" : "c3f472ed8cb59b442312362bca363863962c88b3"
+        "branch" : "main",
+        "revision" : "243cd9246b79a186c39b3c53dbe725c8c01bab59"
       }
     },
     {
