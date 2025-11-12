@@ -150,11 +150,7 @@ class StationsViewController: BaseController, Handoffable {
     @objc func handleMenuTap() {
         delegate?.presentPopUpMenuController(self)
     }
-    
-    func nowPlayingPressed(_ sender: UIButton) {
-        pushNowPlayingController()
-    }
-    
+
     func pushNowPlayingController(with station: RadioStation? = nil) {
         title = ""
         
