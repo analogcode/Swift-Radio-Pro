@@ -19,9 +19,8 @@ public struct UnifiedMetadata: Equatable {
     let duration: TimeInterval?
     let djName: String?
     let isLiveDJ: Bool
-    let source: MetadataSource
-    
-    public init(trackName: String, artistName: String, albumName: String? = nil, artworkURL: URL? = nil, duration: TimeInterval? = nil, djName: String? = nil, isLiveDJ: Bool = false, source: MetadataSource) {
+
+    public init(trackName: String, artistName: String, albumName: String? = nil, artworkURL: URL? = nil, duration: TimeInterval? = nil, djName: String? = nil, isLiveDJ: Bool = false) {
         self.trackName = trackName
         self.artistName = artistName
         self.albumName = albumName
@@ -29,7 +28,6 @@ public struct UnifiedMetadata: Equatable {
         self.duration = duration
         self.djName = djName
         self.isLiveDJ = isLiveDJ
-        self.source = source
     }
     
     public static func == (lhs: UnifiedMetadata, rhs: UnifiedMetadata) -> Bool {
@@ -46,13 +44,6 @@ public extension UnifiedMetadata {
     var isValid: Bool {
         !trackName.isEmpty && !artistName.isEmpty
     }
-}
-
-/// Indicates the source of the metadata
-public enum MetadataSource {
-    case fradioPlayer
-    case azuracast
-    case fallback
 }
 
 /// Indicates the current connection state of the metadata system
@@ -141,22 +132,17 @@ public class StationMetadataManager: ObservableObject {
         let removed = before - after
         StationMetadataManager.activeSubscribers -= removed
     }
-    
+
     /// Get current unified metadata
     public func getCurrentMetadata() -> UnifiedMetadata? {
         return currentMetadata
     }
-    
+
     /// Trigger metadata update (called when FRadioPlayer metadata changes)
     public func triggerMetadataUpdate() {
         updateMetadata()
     }
-    
-    public func removeAllSubscribers() {
-        subscribers.removeAll()
-        StationMetadataManager.activeSubscribers = 0
-    }
-    
+
     // MARK: - Private Methods
     
     private func setupPlayerObserver() {
@@ -226,8 +212,7 @@ public class StationMetadataManager: ObservableObject {
             artworkURL: status.artwork,
             duration: status.duration > 0 ? status.duration : nil,
             djName: status.dj.isEmpty ? nil : status.dj,
-            isLiveDJ: status.isLiveDJ,
-            source: .azuracast
+            isLiveDJ: status.isLiveDJ
         )
     }
     
@@ -241,8 +226,7 @@ public class StationMetadataManager: ObservableObject {
             artworkURL: player.currentArtworkURL,
             duration: nil, // FRadioPlayer doesn't provide duration
             djName: nil,
-            isLiveDJ: false,
-            source: .fradioPlayer
+            isLiveDJ: false
         )
     }
     
@@ -256,8 +240,7 @@ public class StationMetadataManager: ObservableObject {
             artworkURL: nil,
             duration: nil,
             djName: station.defaultDJ,
-            isLiveDJ: false,
-            source: .fallback
+            isLiveDJ: false
         )
     }
     

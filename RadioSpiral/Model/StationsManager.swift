@@ -152,12 +152,7 @@ extension StationsManager {
         let id = ObjectIdentifier(observer)
         observations[id] = Observation(observer: observer)
     }
-    
-    func removeObserver(_ observer: StationsManagerObserver) {
-        let id = ObjectIdentifier(observer)
-        observations.removeValue(forKey: id)
-    }
-    
+
     private func notifiyObservers(with action: (_ observer: StationsManagerObserver) -> Void) {
         for (id, observation) in observations {
             guard let observer = observation.observer else {
@@ -228,17 +223,6 @@ extension StationsManager {
             }
         }
         // If no artworkURL, set nowPlayingInfo immediately
-        MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
-    }
-    
-    // Legacy method for backward compatibility
-    func updateLockscreenStatus(status: ACStreamStatus) {
-        let nowPLayingInfoCenter = MPNowPlayingInfoCenter.default()
-        var nowPlayingInfo = nowPLayingInfoCenter.nowPlayingInfo ?? [String : Any]()
-        nowPlayingInfo[MPMediaItemPropertyArtist] = status.artist
-        nowPlayingInfo[MPMediaItemPropertyTitle] = status.track
-        nowPlayingInfo[MPMediaItemPropertyAlbumTitle] = status.album
-        nowPlayingInfo[MPMediaItemPropertyPlaybackDuration] = status.duration
         MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
     }
 }

@@ -21,7 +21,6 @@ public struct RadioStation: Codable {
     var serverName: String
     var shortCode: String
     var defaultDJ: String
-    var metadataClient: ACWebSocketClient?
     var defaultArtwork: UIImage?
     
     enum CodingKeys: String, CodingKey {
@@ -102,14 +101,5 @@ extension RadioStation {
     
     var artistName: String {
         FRadioPlayer.shared.currentMetadata?.artistName ?? desc
-    }
-    
-    var releaseName: String {
-        let raw = FRadioPlayer.shared.currentMetadata?.rawValue
-        let parts = raw?.components(separatedBy: " - ")
-        if parts?.count == 3 {
-            return (parts?[1])!
-        }
-        return ""
     }
 }
