@@ -9,8 +9,7 @@
 import UIKit
 import MessageUI
 
-class MainCoordinator: NavigationCoordinator {
-    var childCoordinators: [Coordinator] = []
+class MainCoordinator: Coordinator {
     let navigationController: UINavigationController
     
     func start() {
