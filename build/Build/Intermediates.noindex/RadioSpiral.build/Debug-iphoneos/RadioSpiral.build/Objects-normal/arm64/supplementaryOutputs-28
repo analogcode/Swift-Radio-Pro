@@ -1,0 +1,30 @@
+{
+  "/Users/joemcmahon/Code/current-Radiospiral/RadioSpiral/Cells/StationTableViewCell.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphoneos/RadioSpiral.build/Objects-normal/arm64/StationTableViewCell.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphoneos/RadioSpiral.build/Objects-normal/arm64/StationTableViewCell.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphoneos/RadioSpiral.build/Objects-normal/arm64/StationTableViewCell.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphoneos/RadioSpiral.build/Objects-normal/arm64/StationTableViewCell.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphoneos/RadioSpiral.build/Objects-normal/arm64/StationTableViewCell.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/RadioSpiral/Config.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphoneos/RadioSpiral.build/Objects-normal/arm64/Config.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphoneos/RadioSpiral.build/Objects-normal/arm64/Config.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphoneos/RadioSpiral.build/Objects-normal/arm64/Config.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphoneos/RadioSpiral.build/Objects-normal/arm64/Config.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphoneos/RadioSpiral.build/Objects-normal/arm64/Config.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/RadioSpiral/Helpers/UITableViewCell+reuseIdentifier.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphoneos/RadioSpiral.build/Objects-normal/arm64/UITableViewCell+reuseIdentifier.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphoneos/RadioSpiral.build/Objects-normal/arm64/UITableViewCell+reuseIdentifier.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphoneos/RadioSpiral.build/Objects-normal/arm64/UITableViewCell+reuseIdentifier.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphoneos/RadioSpiral.build/Objects-normal/arm64/UITableViewCell+reuseIdentifier.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphoneos/RadioSpiral.build/Objects-normal/arm64/UITableViewCell+reuseIdentifier.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/RadioSpiral/ViewControllers/BaseController.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphoneos/RadioSpiral.build/Objects-normal/arm64/BaseController.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphoneos/RadioSpiral.build/Objects-normal/arm64/BaseController.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphoneos/RadioSpiral.build/Objects-normal/arm64/BaseController.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphoneos/RadioSpiral.build/Objects-normal/arm64/BaseController.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/Build/Intermediates.noindex/RadioSpiral.build/Debug-iphoneos/RadioSpiral.build/Objects-normal/arm64/BaseController.swiftdeps"
+  }
+}

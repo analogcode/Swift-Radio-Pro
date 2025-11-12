@@ -1,0 +1,34 @@
+Target dependency graph (15 targets)
+Target 'RadioSpiral' in project 'RadioSpiral'
+➜ Explicit dependency on target 'FRadioPlayer' in project 'FRadioPlayer'
+➜ Explicit dependency on target 'Reachability' in project 'Reachability'
+➜ Explicit dependency on target 'NVActivityIndicatorViewExtended' in project 'NVActivityIndicatorView'
+➜ Explicit dependency on target 'Spring' in project 'Spring'
+➜ Explicit dependency on target 'NVActivityIndicatorView' in project 'NVActivityIndicatorView'
+➜ Explicit dependency on target 'Kingfisher' in project 'Kingfisher'
+Target 'Kingfisher' in project 'Kingfisher'
+➜ Explicit dependency on target 'Kingfisher' in project 'Kingfisher'
+➜ Explicit dependency on target 'Kingfisher_Kingfisher' in project 'Kingfisher'
+Target 'Kingfisher' in project 'Kingfisher'
+➜ Explicit dependency on target 'Kingfisher_Kingfisher' in project 'Kingfisher'
+Target 'Kingfisher_Kingfisher' in project 'Kingfisher' (no dependencies)
+Target 'NVActivityIndicatorView' in project 'NVActivityIndicatorView'
+➜ Explicit dependency on target 'NVActivityIndicatorView' in project 'NVActivityIndicatorView'
+Target 'Spring' in project 'Spring'
+➜ Explicit dependency on target 'Spring' in project 'Spring'
+Target 'Spring' in project 'Spring' (no dependencies)
+Target 'NVActivityIndicatorViewExtended' in project 'NVActivityIndicatorView'
+➜ Explicit dependency on target 'NVActivityIndicatorViewExtended' in project 'NVActivityIndicatorView'
+➜ Explicit dependency on target 'NVActivityIndicatorView' in project 'NVActivityIndicatorView'
+Target 'NVActivityIndicatorViewExtended' in project 'NVActivityIndicatorView'
+➜ Explicit dependency on target 'NVActivityIndicatorView' in project 'NVActivityIndicatorView'
+Target 'NVActivityIndicatorView' in project 'NVActivityIndicatorView' (no dependencies)
+Target 'Reachability' in project 'Reachability'
+➜ Explicit dependency on target 'Reachability' in project 'Reachability'
+➜ Explicit dependency on target 'Reachability_Reachability' in project 'Reachability'
+Target 'Reachability' in project 'Reachability'
+➜ Explicit dependency on target 'Reachability_Reachability' in project 'Reachability'
+Target 'Reachability_Reachability' in project 'Reachability' (no dependencies)
+Target 'FRadioPlayer' in project 'FRadioPlayer'
+➜ Explicit dependency on target 'FRadioPlayer' in project 'FRadioPlayer'
+Target 'FRadioPlayer' in project 'FRadioPlayer' (no dependencies)
