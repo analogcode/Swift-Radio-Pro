@@ -20,6 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FRadioPlayer.shared.enableArtwork = true
         FRadioPlayer.shared.artworkAPI = iTunesAPI(artworkSize: 600)
 
+        // AzuraCast WebSocket debug - disable by default
+        ACWebSocketClient.shared.debug(to: 0)
+
         // AudioSession & RemotePlay
         activateAudioSession()
         setupRemoteCommandCenter()

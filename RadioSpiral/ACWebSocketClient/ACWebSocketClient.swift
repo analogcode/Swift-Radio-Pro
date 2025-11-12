@@ -216,20 +216,6 @@ public class ACWebSocketClient: ObservableObject {
         self.lastResult = ACStreamStatus()
     }
     
-    /// Call this method to update the configuration of the `ACWebSocketClient` and reconnect it.
-    /// Diisconnects the client if  it's connected, changes the parameters, and reconnects with the new
-    /// server and station, and clears the  last recorded stream status.
-    public func configurationDidChange(serverName: String, shortCode: String) {
-        if self.debugLevel & ACActivityTrace != 0 { print("Reconfiguring") }
-
-        self.serverName = serverName
-        self.shortCode = shortCode
-        self.disconnect()
-        self.constructWebSocketURL(serverName: serverName)
-        self.connect()
-        self.lastResult = ACStreamStatus()
-    }
-    
     /// Connects to the websocket API and sends the subscription message. Can be used to connect a
     /// currently-disconnected `ACWebSocketClient` or to reconnect an already-connected one.
     /// Marks the global status as `connected`.
