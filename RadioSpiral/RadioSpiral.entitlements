@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+	IMPORTANT: application-identifier MUST use $(AppIdentifierPrefix) variable.
+	Apple's provisioning profiles include your Team ID prefix (e.g., 6PLL9M5SE2.com.pemungkah.radiospiral).
+	If you hardcode the bundle ID without the prefix, Xcode will fail with:
+	"Provisioning profile doesn't match the entitlements file's value for the application-identifier entitlement"
+	Always use: $(AppIdentifierPrefix)YOUR.BUNDLE.ID
+-->
 <plist version="1.0">
 <dict>
 	<key>application-identifier</key>
