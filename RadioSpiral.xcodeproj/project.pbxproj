@@ -1013,7 +1013,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/fethica/FRadioPlayer.git";
 			requirement = {
-				branch = v0.2.0;
+				branch = main;
 				kind = branch;
 			};
 		};
@@ -1037,7 +1037,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/fethica/FRadioPlayer.git";
 			requirement = {
-				branch = v0.2.0;
+				branch = main;
 				kind = branch;
 			};
 		};
