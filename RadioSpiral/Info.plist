@@ -62,6 +62,17 @@
 	<string>Dark</string>
 	<key>UISceneConfigurations</key>
 	<dict>
+		<key>UIWindowSceneSessionRoleApplication</key>
+		<array>
+			<dict>
+				<key>UISceneClassName</key>
+				<string>UIWindowScene</string>
+				<key>UISceneConfigurationName</key>
+				<string>Default Configuration</string>
+				<key>UISceneDelegateClassName</key>
+				<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
+			</dict>
+		</array>
 		<key>CPTemplateApplicationSceneSessionRoleApplication</key>
 		<array>
 			<dict>

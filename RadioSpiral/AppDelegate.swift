@@ -12,9 +12,6 @@ import FRadioPlayer
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
-    var window: UIWindow?
-    var coordinator: MainCoordinator?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
@@ -32,19 +29,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barStyle = .black
         UINavigationBar.appearance().tintColor = .white
         UINavigationBar.appearance().prefersLargeTitles = true
-        
-        // Start the coordinator
-        coordinator = MainCoordinator(navigationController: UINavigationController())
-        
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = coordinator?.navigationController
-        window?.makeKeyAndVisible()
-        
-        coordinator?.start()
-        
+
         return true
     }
-    
+
+    // MARK: - UISceneSession Lifecycle
+
+    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        // Return the appropriate scene configuration based on the session role
+        // For phone/window scenes, use SceneDelegate
+        // For CarPlay scenes, use CarPlaySceneDelegate (from Info.plist)
+
+        let config = UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+        config.delegateClass = SceneDelegate.self
+        return config
+    }
+
     func applicationWillResignActive(_ application: UIApplication) {
         // Only disconnect websocket if audio is NOT playing
         if !FRadioPlayer.shared.isPlaying {
