@@ -357,4 +357,40 @@ class ConfigClientTests: XCTestCase {
 
         waitForExpectations(timeout: 5.0)
     }
+
+    // MARK: - ConfigClient Fallback Lookup Tests
+
+    func testConfigClientCachingForFallback() {
+        let expectation = self.expectation(description: "ConfigClient caches stations for fallback lookup")
+
+        // Fetch stations to populate cache
+        sut.fetchStations { result in
+            switch result {
+            case .success(let stationConfigs):
+                XCTAssertFalse(stationConfigs.isEmpty, "Should fetch at least one station")
+
+                // Verify we can look up a station from the cache by shortCode
+                if let firstConfig = stationConfigs.first {
+                    let lookedUpStation = self.sut.getStationInfo(byShortCode: firstConfig.shortCode)
+
+                    // Verify the looked-up station matches the original
+                    XCTAssertNotNil(lookedUpStation, "Should find station in cache by shortCode")
+                    XCTAssertEqual(lookedUpStation?.name, firstConfig.name, "Station name should match")
+                    XCTAssertEqual(lookedUpStation?.shortCode, firstConfig.shortCode, "Station shortCode should match")
+
+                    // Verify all fields are available for metadata fallback
+                    XCTAssertFalse(lookedUpStation?.desc.isEmpty ?? true, "Station description should not be empty")
+                    XCTAssertFalse(lookedUpStation?.defaultDJ.isEmpty ?? true, "Station defaultDJ should not be empty")
+
+                    expectation.fulfill()
+                } else {
+                    XCTFail("No stations were fetched")
+                }
+            case .failure(let error):
+                XCTFail("Failed to fetch stations: \(error)")
+            }
+        }
+
+        waitForExpectations(timeout: 5.0)
+    }
 }

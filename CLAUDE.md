@@ -229,8 +229,23 @@ Implementing ConfigClient from RadioSpiral3 into RadioSpiral app. ConfigClient p
    - Modified: `RadioSpiral.xcodeproj/project.pbxproj` (registered StationConfig in build phases)
    - Modified: `RadioSpiral/ConfigClientTests/ConfigClientTests.swift` (added converter tests)
 
+4. ✅ **Implement ConfigClient Fallback Lookups in MetadataManager** - Fallback chain enhanced with ConfigClient
+   - **Implementation:**
+     - Added ConfigClient.shared property to StationMetadataManager (line 74)
+     - Enhanced getFallbackMetadata() to lookup station info from ConfigClient by shortCode
+     - Fallback metadata now prioritizes: Azuracast > FRadioPlayer > ConfigClient+RadioStation > RadioStation
+     - Made ConfigClient and public methods public for cross-module access
+   - **Name Conflict Resolution:**
+     - Renamed internal error type: `DataError` → `ConfigClientError`
+     - Renamed internal config struct: `Config` → `ConfigClientDebug`
+     - Fixed pbxproj: Added ConfigClient.swift to RadioSpiral target's Compile Sources
+   - **Test Coverage:**
+     - New test: `testConfigClientCachingForFallback` - Verifies station lookup by shortCode
+     - Confirms all fallback fields available: name, desc, defaultDJ
+     - 17 ConfigClientTests passing (16 previous + 1 new)
+   - **Build Status:** BUILD SUCCEEDED - All tests passing
+
 ## Remaining Tasks
-- [ ] Integrate with MetadataManager for fallback lookups
 - [ ] Update DataManager to use ConfigClient for stations
 - [ ] Test integrated system on device
 
@@ -254,15 +269,26 @@ Implementing ConfigClient from RadioSpiral3 into RadioSpiral app. ConfigClient p
 - Project structure clean with StationConfig in dedicated file
 
 ## Session Summary (Session 2)
-**Duration**: Token budget management successful
+**Duration**: Efficient token usage with checkpoint commit
 **Work Completed**:
-1. Fixed build error by extracting StationConfig to separate file
-2. Properly registered StationConfig.swift in project.pbxproj
-3. Implemented and tested converter extension on RadioStation
-4. Created 2 new converter tests (both passing)
-5. Updated CLAUDE.md with completion status
+1. ✅ Fixed build error by extracting StationConfig to separate file
+2. ✅ Properly registered StationConfig.swift in project.pbxproj
+3. ✅ Implemented and tested converter extension on RadioStation
+4. ✅ Created converter tests (both passing)
+5. ✅ Integrated ConfigClient into MetadataManager for fallback lookups
+6. ✅ Resolved naming conflicts (DataError → ConfigClientError, Config → ConfigClientDebug)
+7. ✅ Added ConfigClient.swift to RadioSpiral target's compile sources
+8. ✅ Created fallback chain test (testConfigClientCachingForFallback)
+9. ✅ Updated CLAUDE.md with completion status
+10. ✅ Checkpoint commit: "Extract StationConfig and implement RadioStation converter"
+
+**Session 2 Results**:
+- Completed: StationConfig extraction + Converter implementation + Fallback lookups
+- Tests: 17/17 ConfigClientTests passing
+- Build: SUCCESS with no errors
+- Code quality: Resolved naming conflicts, public API properly exposed
 
 **Next Steps for Future Sessions**:
 - DataManager integration (use ConfigClient for station loading)
-- MetadataManager integration (fallback chain support)
 - Device testing of full integrated system
+- Performance optimization if needed

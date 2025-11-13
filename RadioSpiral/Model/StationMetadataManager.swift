@@ -71,6 +71,7 @@ public class StationMetadataManager: ObservableObject {
     // MARK: - Private Properties
     private let player = FRadioPlayer.shared
     private let azuracastClient = ACWebSocketClient.shared
+    private let configClient = ConfigClient.shared
     private var subscribers: [MetadataChangeCallback] = []
     private var currentStation: RadioStation?
     private var cancellables = Set<AnyCancellable>()
@@ -232,14 +233,22 @@ public class StationMetadataManager: ObservableObject {
     
     private func getFallbackMetadata() -> UnifiedMetadata? {
         guard let station = currentStation else { return nil }
-        
+
+        // Try to get enhanced station info from ConfigClient
+        let stationInfo = configClient.getStationInfo(byShortCode: station.shortCode)
+
+        // Use ConfigClient's station info if available, otherwise fall back to RadioStation data
+        let trackName = stationInfo?.name ?? station.name
+        let artistName = stationInfo?.desc ?? station.desc
+        let djName = !station.defaultDJ.isEmpty ? station.defaultDJ : stationInfo?.defaultDJ
+
         return UnifiedMetadata(
-            trackName: station.name,
-            artistName: station.desc,
+            trackName: trackName,
+            artistName: artistName,
             albumName: nil,
             artworkURL: nil,
             duration: nil,
-            djName: station.defaultDJ,
+            djName: djName,
             isLiveDJ: false
         )
     }

@@ -11,14 +11,14 @@ import UIKit
 /// Client for fetching server configuration and stations
 /// Supports multiple config sources: primary Azuracast, fallback Azuracast, static JSON
 /// Returns portable StationConfig objects
-class ConfigClient {
-    static let shared = ConfigClient()
+public class ConfigClient {
+    public static let shared = ConfigClient()
 
     private let configURL: String
     private let apiKey: String?
     private var cachedStations: [StationConfig] = []
 
-    init(configURL: String = "https://raw.githubusercontent.com/joemcmahon/radiospiral-config/master/config.json", apiKey: String? = nil) {
+    public init(configURL: String = "https://raw.githubusercontent.com/joemcmahon/radiospiral-config/master/config.json", apiKey: String? = nil) {
         self.configURL = configURL
         self.apiKey = apiKey
     }
@@ -26,7 +26,7 @@ class ConfigClient {
     /// Fetch stations from configured sources in order
     /// Tries each config in sequence until one succeeds
     /// Returns portable StationConfig objects
-    func fetchStations(completion: @escaping (Result<[StationConfig], Error>) -> Void) {
+    public func fetchStations(completion: @escaping (Result<[StationConfig], Error>) -> Void) {
         fetchServerConfig { [weak self] configResult in
             switch configResult {
             case .success(let configs):
@@ -36,7 +36,7 @@ class ConfigClient {
                 if let cached = self?.cachedStations, !cached.isEmpty {
                     completion(.success(cached))
                 } else {
-                    completion(.failure(DataError.dataNotFound))
+                    completion(.failure(ConfigClientError.dataNotFound))
                 }
             }
         }
@@ -44,7 +44,7 @@ class ConfigClient {
 
     /// Get station info by short code (for metadata fallback)
     /// Returns station data when metadata server is unavailable
-    func getStationInfo(byShortCode shortCode: String) -> StationConfig? {
+    public func getStationInfo(byShortCode shortCode: String) -> StationConfig? {
         return cachedStations.first { $0.shortCode == shortCode }
     }
 
@@ -52,7 +52,7 @@ class ConfigClient {
 
     private func fetchServerConfig(completion: @escaping (Result<[ConfigSource], Error>) -> Void) {
         guard let url = URL(string: configURL) else {
-            completion(.failure(DataError.urlNotValid))
+            completion(.failure(ConfigClientError.urlNotValid))
             return
         }
 
@@ -61,10 +61,10 @@ class ConfigClient {
             do {
                 let data = try Data(contentsOf: url)
                 let configWrapper = try JSONDecoder().decode(ConfigWrapper.self, from: data)
-                if Config.debugLog { print("ConfigClient: Server config loaded from file with \(configWrapper.configs.count) sources") }
+                if ConfigClientDebug.debugLog { print("ConfigClient: Server config loaded from file with \(configWrapper.configs.count) sources") }
                 completion(.success(configWrapper.configs))
             } catch {
-                if Config.debugLog { print("ConfigClient: Failed to load file config: \(error)") }
+                if ConfigClientDebug.debugLog { print("ConfigClient: Failed to load file config: \(error)") }
                 completion(.failure(error))
             }
             return
@@ -78,28 +78,28 @@ class ConfigClient {
         let session = URLSession(configuration: config)
         let task = session.dataTask(with: url) { data, response, error in
             if let error = error {
-                if Config.debugLog { print("ConfigClient: Failed to fetch server config: \(error)") }
+                if ConfigClientDebug.debugLog { print("ConfigClient: Failed to fetch server config: \(error)") }
                 completion(.failure(error))
                 return
             }
 
             guard let httpResponse = response as? HTTPURLResponse, 200...299 ~= httpResponse.statusCode else {
-                if Config.debugLog { print("ConfigClient: Invalid HTTP response") }
-                completion(.failure(DataError.httpResponseNotValid))
+                if ConfigClientDebug.debugLog { print("ConfigClient: Invalid HTTP response") }
+                completion(.failure(ConfigClientError.httpResponseNotValid))
                 return
             }
 
             guard let data = data else {
-                completion(.failure(DataError.dataNotFound))
+                completion(.failure(ConfigClientError.dataNotFound))
                 return
             }
 
             do {
                 let configWrapper = try JSONDecoder().decode(ConfigWrapper.self, from: data)
-                if Config.debugLog { print("ConfigClient: Server config fetched with \(configWrapper.configs.count) sources") }
+                if ConfigClientDebug.debugLog { print("ConfigClient: Server config fetched with \(configWrapper.configs.count) sources") }
                 completion(.success(configWrapper.configs))
             } catch {
-                if Config.debugLog { print("ConfigClient: Failed to decode config: \(error)") }
+                if ConfigClientDebug.debugLog { print("ConfigClient: Failed to decode config: \(error)") }
                 completion(.failure(error))
             }
         }
@@ -113,7 +113,7 @@ class ConfigClient {
             if !cachedStations.isEmpty {
                 completion(.success(cachedStations))
             } else {
-                completion(.failure(DataError.dataNotFound))
+                completion(.failure(ConfigClientError.dataNotFound))
             }
             return
         }
@@ -128,7 +128,7 @@ class ConfigClient {
                     self?.cachedStations = stations
                     completion(.success(stations))
                 case .failure:
-                    if Config.debugLog { print("ConfigClient: Azuracast config \(index) failed, trying next...") }
+                    if ConfigClientDebug.debugLog { print("ConfigClient: Azuracast config \(index) failed, trying next...") }
                     self?.tryConfigsInOrder(configs, index: index + 1, completion: completion)
                 }
             })
@@ -140,7 +140,7 @@ class ConfigClient {
                     self?.cachedStations = stations
                     completion(.success(stations))
                 case .failure:
-                    if Config.debugLog { print("ConfigClient: Static config \(index) failed, trying next...") }
+                    if ConfigClientDebug.debugLog { print("ConfigClient: Static config \(index) failed, trying next...") }
                     self?.tryConfigsInOrder(configs, index: index + 1, completion: completion)
                 }
             })
@@ -152,7 +152,7 @@ class ConfigClient {
         completion: @escaping (Result<[StationConfig], Error>) -> Void
     ) {
         guard let server = config.server else {
-            completion(.failure(DataError.dataNotValid))
+            completion(.failure(ConfigClientError.dataNotValid))
             return
         }
 
@@ -160,11 +160,11 @@ class ConfigClient {
         tryPublicAzuracastAPI(server: server, exclude: config.exclude ?? []) { [weak self] result in
             switch result {
             case .success(let stations):
-                if Config.debugLog { print("ConfigClient: Fetched \(stations.count) stations from public Azuracast API") }
+                if ConfigClientDebug.debugLog { print("ConfigClient: Fetched \(stations.count) stations from public Azuracast API") }
                 completion(.success(stations))
             case .failure:
                 // Fall back to admin API if public API fails
-                if Config.debugLog { print("ConfigClient: Public API failed, trying admin API...") }
+                if ConfigClientDebug.debugLog { print("ConfigClient: Public API failed, trying admin API...") }
                 self?.tryAdminAzuracastAPI(server: server, exclude: config.exclude ?? [], completion: completion)
             }
         }
@@ -178,7 +178,7 @@ class ConfigClient {
         let urlString = "https://\(server)/api/stations"
 
         guard let url = URL(string: urlString) else {
-            completion(.failure(DataError.urlNotValid))
+            completion(.failure(ConfigClientError.urlNotValid))
             return
         }
 
@@ -189,23 +189,23 @@ class ConfigClient {
         let session = URLSession(configuration: sessionConfig)
         let task = session.dataTask(with: url) { data, response, error in
             if let error = error {
-                if Config.debugLog { print("ConfigClient: Public API request failed: \(error)") }
+                if ConfigClientDebug.debugLog { print("ConfigClient: Public API request failed: \(error)") }
                 completion(.failure(error))
                 return
             }
 
             guard let httpResponse = response as? HTTPURLResponse, 200...299 ~= httpResponse.statusCode else {
-                if Config.debugLog {
+                if ConfigClientDebug.debugLog {
                     if let httpResponse = response as? HTTPURLResponse {
                         print("ConfigClient: HTTP \(httpResponse.statusCode) from public API")
                     }
                 }
-                completion(.failure(DataError.httpResponseNotValid))
+                completion(.failure(ConfigClientError.httpResponseNotValid))
                 return
             }
 
             guard let data = data else {
-                completion(.failure(DataError.dataNotFound))
+                completion(.failure(ConfigClientError.dataNotFound))
                 return
             }
 
@@ -215,15 +215,15 @@ class ConfigClient {
 
                 // If all stations are excluded, treat as failure to try next config
                 guard !filtered.isEmpty else {
-                    if Config.debugLog { print("ConfigClient: All stations excluded from public API") }
-                    completion(.failure(DataError.dataNotFound))
+                    if ConfigClientDebug.debugLog { print("ConfigClient: All stations excluded from public API") }
+                    completion(.failure(ConfigClientError.dataNotFound))
                     return
                 }
 
                 let stationConfigs = filtered.map { self.convertFromPublicAzuracastStation($0, serverDomain: server) }
                 completion(.success(stationConfigs))
             } catch {
-                if Config.debugLog { print("ConfigClient: Failed to decode public API response: \(error)") }
+                if ConfigClientDebug.debugLog { print("ConfigClient: Failed to decode public API response: \(error)") }
                 completion(.failure(error))
             }
         }
@@ -239,7 +239,7 @@ class ConfigClient {
         let urlString = "https://\(server)/api/admin/stations"
 
         guard let url = URL(string: urlString) else {
-            completion(.failure(DataError.urlNotValid))
+            completion(.failure(ConfigClientError.urlNotValid))
             return
         }
 
@@ -258,23 +258,23 @@ class ConfigClient {
         let session = URLSession(configuration: sessionConfig)
         let task = session.dataTask(with: request) { data, response, error in
             if let error = error {
-                if Config.debugLog { print("ConfigClient: Admin API request failed: \(error)") }
+                if ConfigClientDebug.debugLog { print("ConfigClient: Admin API request failed: \(error)") }
                 completion(.failure(error))
                 return
             }
 
             guard let httpResponse = response as? HTTPURLResponse, 200...299 ~= httpResponse.statusCode else {
-                if Config.debugLog {
+                if ConfigClientDebug.debugLog {
                     if let httpResponse = response as? HTTPURLResponse {
                         print("ConfigClient: HTTP \(httpResponse.statusCode) from admin API")
                     }
                 }
-                completion(.failure(DataError.httpResponseNotValid))
+                completion(.failure(ConfigClientError.httpResponseNotValid))
                 return
             }
 
             guard let data = data else {
-                completion(.failure(DataError.dataNotFound))
+                completion(.failure(ConfigClientError.dataNotFound))
                 return
             }
 
@@ -284,15 +284,15 @@ class ConfigClient {
 
                 // If all stations are excluded, treat as failure to try next config
                 guard !filtered.isEmpty else {
-                    if Config.debugLog { print("ConfigClient: All stations excluded from admin API") }
-                    completion(.failure(DataError.dataNotFound))
+                    if ConfigClientDebug.debugLog { print("ConfigClient: All stations excluded from admin API") }
+                    completion(.failure(ConfigClientError.dataNotFound))
                     return
                 }
 
                 let stationConfigs = filtered.map { self.convertToStationConfig($0, serverDomain: server) }
                 completion(.success(stationConfigs))
             } catch {
-                if Config.debugLog { print("ConfigClient: Failed to decode admin API response: \(error)") }
+                if ConfigClientDebug.debugLog { print("ConfigClient: Failed to decode admin API response: \(error)") }
                 completion(.failure(error))
             }
         }
@@ -306,11 +306,11 @@ class ConfigClient {
     ) {
         let stations = config.safeStations
         guard !stations.isEmpty else {
-            completion(.failure(DataError.dataNotValid))
+            completion(.failure(ConfigClientError.dataNotValid))
             return
         }
 
-        if Config.debugLog { print("ConfigClient: Loaded \(stations.count) stations from static config") }
+        if ConfigClientDebug.debugLog { print("ConfigClient: Loaded \(stations.count) stations from static config") }
         completion(.success(stations))
     }
 
@@ -441,7 +441,7 @@ struct PublicAzuracastStation: Codable {
 // MARK: - Internal Helpers
 
 /// Error types for configuration loading
-enum DataError: Error {
+enum ConfigClientError: Error {
     case urlNotValid
     case dataNotValid
     case dataNotFound
@@ -450,6 +450,6 @@ enum DataError: Error {
 }
 
 /// Debug configuration
-struct Config {
+struct ConfigClientDebug {
     static let debugLog = false
 }

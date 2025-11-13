@@ -571,6 +571,7 @@
 				CE9EE8DE293BB41300F62041 /* BaseController.swift in Sources */,
 				53113F39230C720900462C0E /* ShareActivity.swift in Sources */,
 				71B3D01F2E2989C5001E8F5A /* StationMetadataManager.swift in Sources */,
+				71CA8E892EC57A5000F7F157 /* ConfigClient.swift in Sources */,
 				71CA8E8A2EC57A5200F7F157 /* StationConfig.swift in Sources */,
 				9409E1401ABF78B000312E2B /* NowPlayingViewController.swift in Sources */,
 				717B8C612EC449D30080EFE8 /* SceneDelegate.swift in Sources */,
