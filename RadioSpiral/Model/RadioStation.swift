@@ -103,3 +103,22 @@ extension RadioStation {
         FRadioPlayer.shared.currentMetadata?.artistName ?? desc
     }
 }
+
+// MARK: - ConfigClient Integration
+
+extension RadioStation {
+    /// Initialize from ConfigClient's portable StationConfig format
+    /// - Parameter stationConfig: Portable station configuration from ConfigClient
+    init(from stationConfig: StationConfig) {
+        self.init(
+            name: stationConfig.name,
+            streamURL: stationConfig.streamURL,
+            imageURL: stationConfig.imageURL,
+            desc: stationConfig.desc,
+            longDesc: stationConfig.longDesc,
+            serverName: stationConfig.serverName,
+            shortCode: stationConfig.shortCode,
+            defaultDJ: stationConfig.defaultDJ
+        )
+    }
+}

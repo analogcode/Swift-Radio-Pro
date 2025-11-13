@@ -10,6 +10,7 @@
 		2C5545BD1C1124DE00728469 /* SwiftRadioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5545BC1C1124DE00728469 /* SwiftRadioUITests.swift */; };
 		53113F39230C720900462C0E /* ShareActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53113F38230C720900462C0E /* ShareActivity.swift */; };
 		5FDEE0221F72FF980064333C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FDEE0211F72FF980064333C /* LaunchScreen.storyboard */; };
+		60A288069DE14CA0B96295FA /* test-config-with-real-server.json in Resources */ = {isa = PBXBuildFile; fileRef = 6F4444B16407430F8A42EFDD /* test-config-with-real-server.json */; };
 		6258DCD822D93A3500166C65 /* LogoShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258DCD722D93A3500166C65 /* LogoShareView.swift */; };
 		6258DCDA22D93A5400166C65 /* LogoShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6258DCD922D93A5400166C65 /* LogoShareView.xib */; };
 		710310052D6C1E8E00828968 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 710310042D6C1E8E00828968 /* Reachability */; };
@@ -34,10 +35,10 @@
 		71B3D0212E2989C5001E8F5A /* StationMetadataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3D01E2E2989C5001E8F5A /* StationMetadataManager.swift */; };
 		71CA8E882EC57A5000F7F157 /* ConfigClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CA8E852EC57A5000F7F157 /* ConfigClient.swift */; };
 		71CA8E892EC57A5000F7F157 /* ConfigClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CA8E852EC57A5000F7F157 /* ConfigClient.swift */; };
+		71CA8E8A2EC57A5100F7F157 /* StationConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CA8E8A2EC57A5000F7F157 /* StationConfig.swift */; };
+		71CA8E8A2EC57A5200F7F157 /* StationConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CA8E8A2EC57A5000F7F157 /* StationConfig.swift */; };
 		71CA8E8E2EC57AD400F7F157 /* ConfigClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CA8E8B2EC57AD400F7F157 /* ConfigClientTests.swift */; };
 		71CA8E8F2EC57AD400F7F157 /* test-config-with-fallback.json in Resources */ = {isa = PBXBuildFile; fileRef = 71CA8E8C2EC57AD400F7F157 /* test-config-with-fallback.json */; };
-		60A288069DE14CA0B96295FA /* test-config-with-real-server.json in Resources */ = {isa = PBXBuildFile; fileRef = 6F4444B16407430F8A42EFDD /* test-config-with-real-server.json */; };
-		B2C601433BBD45CD9F6DE9A3 /* test-config-live-azuracast.json in Resources */ = {isa = PBXBuildFile; fileRef = 8AAF0ECFA82245D0A3C4E3A1 /* test-config-live-azuracast.json */; };
 		9409E11C1ABF6FEA00312E2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */; };
 		9409E1261ABF6FEA00312E2B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9409E1251ABF6FEA00312E2B /* Images.xcassets */; };
 		9409E1401ABF78B000312E2B /* NowPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9409E13F1ABF78B000312E2B /* NowPlayingViewController.swift */; };
@@ -51,6 +52,7 @@
 		94D260911B45D20000DE671C /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D260901B45D20000DE671C /* Config.swift */; };
 		94D260961B45E3FA00DE671C /* AnimationFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D260951B45E3FA00DE671C /* AnimationFrames.swift */; };
 		94E9761C1B1A8F3200F52B1E /* UIImage+DropShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9761B1B1A8F3200F52B1E /* UIImage+DropShadow.swift */; };
+		B2C601433BBD45CD9F6DE9A3 /* test-config-live-azuracast.json in Resources */ = {isa = PBXBuildFile; fileRef = 8AAF0ECFA82245D0A3C4E3A1 /* test-config-live-azuracast.json */; };
 		CE321FF329371140001572BD /* Bundle+appName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE321FF229371140001572BD /* Bundle+appName.swift */; };
 		CE37D7B4290F47E000B0933B /* Spring in Frameworks */ = {isa = PBXBuildFile; productRef = CE37D7B3290F47E000B0933B /* Spring */; };
 		CE37D7B7290F4A9700B0933B /* FRadioPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = CE37D7B6290F4A9700B0933B /* FRadioPlayer */; };
@@ -97,6 +99,7 @@
 		5FDEE0211F72FF980064333C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6258DCD722D93A3500166C65 /* LogoShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoShareView.swift; sourceTree = "<group>"; };
 		6258DCD922D93A5400166C65 /* LogoShareView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoShareView.xib; sourceTree = "<group>"; };
+		6F4444B16407430F8A42EFDD /* test-config-with-real-server.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "test-config-with-real-server.json"; sourceTree = "<group>"; };
 		715C87A52B23E141003FC57A /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		717B8C562EC433E10080EFE8 /* RadioSpiral.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RadioSpiral.entitlements; sourceTree = "<group>"; };
 		717B8C5F2EC449D30080EFE8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -110,9 +113,9 @@
 		71B3D01E2E2989C5001E8F5A /* StationMetadataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationMetadataManager.swift; sourceTree = "<group>"; };
 		71CA8E7A2EC579C300F7F157 /* ConfigClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConfigClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		71CA8E852EC57A5000F7F157 /* ConfigClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigClient.swift; sourceTree = "<group>"; };
+		71CA8E8A2EC57A5000F7F157 /* StationConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationConfig.swift; sourceTree = "<group>"; };
 		71CA8E8B2EC57AD400F7F157 /* ConfigClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigClientTests.swift; sourceTree = "<group>"; };
 		71CA8E8C2EC57AD400F7F157 /* test-config-with-fallback.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "test-config-with-fallback.json"; sourceTree = "<group>"; };
-		6F4444B16407430F8A42EFDD /* test-config-with-real-server.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "test-config-with-real-server.json"; sourceTree = "<group>"; };
 		8AAF0ECFA82245D0A3C4E3A1 /* test-config-live-azuracast.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "test-config-live-azuracast.json"; sourceTree = "<group>"; };
 		9409E1161ABF6FEA00312E2B /* RadioSpiral.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioSpiral.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9409E11A1ABF6FEA00312E2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -216,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				71CA8E852EC57A5000F7F157 /* ConfigClient.swift */,
+				71CA8E8A2EC57A5000F7F157 /* StationConfig.swift */,
 			);
 			path = ConfigClient;
 			sourceTree = "<group>";
@@ -552,6 +556,7 @@
 			files = (
 				71CA8E8E2EC57AD400F7F157 /* ConfigClientTests.swift in Sources */,
 				71CA8E882EC57A5000F7F157 /* ConfigClient.swift in Sources */,
+				71CA8E8A2EC57A5100F7F157 /* StationConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -566,6 +571,7 @@
 				CE9EE8DE293BB41300F62041 /* BaseController.swift in Sources */,
 				53113F39230C720900462C0E /* ShareActivity.swift in Sources */,
 				71B3D01F2E2989C5001E8F5A /* StationMetadataManager.swift in Sources */,
+				71CA8E8A2EC57A5200F7F157 /* StationConfig.swift in Sources */,
 				9409E1401ABF78B000312E2B /* NowPlayingViewController.swift in Sources */,
 				717B8C612EC449D30080EFE8 /* SceneDelegate.swift in Sources */,
 				CE963ECC29135A6F004F299E /* StationsManager.swift in Sources */,
@@ -615,6 +621,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 6PLL9M5SE2;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = RadioSpiralUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -636,6 +643,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 6PLL9M5SE2;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = RadioSpiralUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;

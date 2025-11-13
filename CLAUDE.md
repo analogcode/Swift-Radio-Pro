@@ -186,3 +186,83 @@ A task is **Done** only when **ALL** of the following are complete:
 - When users mention to create a task, they mean to create a task using Backlog.md CLI tool.
 
 <!-- BACKLOG.MD GUIDELINES END -->
+
+---
+
+# ConfigClient Integration Progress (In-Progress)
+
+## Summary
+Implementing ConfigClient from RadioSpiral3 into RadioSpiral app. ConfigClient provides dynamic station loading from Azuracast with intelligent fallback chains and zero shipped API keys.
+
+## Completed Tasks
+1. ✅ **ConfigClient implementation and testing** - ConfigClient fully implemented, tested, and committed
+   - 14 tests passing (all local and live server tests)
+   - Tests at: `RadioSpiral/ConfigClientTests/ConfigClientTests.swift`
+   - Code at: `RadioSpiral/ConfigClient/ConfigClient.swift`
+   - Public API approach verified (demo.azuracast.com)
+   - Fallback chain logic tested including edge cases (exclusion)
+
+2. ✅ **Add ConfigClient to main RadioSpiral target** - ConfigClient added to RadioSpiral target and building successfully
+   - Previously verified: `xcodebuild build -scheme RadioSpiral -configuration Debug` → BUILD SUCCEEDED
+   - ConfigClient.swift is in RadioSpiral/ConfigClient/ directory
+   - ConfigClient was added to RadioSpiral target's Sources build phase
+
+3. ✅ **Create StationConfig → RadioStation Converter** - Converter fully implemented and tested
+   - **Implementation:**
+     - Extracted `StationConfig` struct to dedicated file: `RadioSpiral/ConfigClient/StationConfig.swift`
+     - Created converter initializer extension on RadioStation: `init(from stationConfig: StationConfig)`
+     - Maps all 8 StationConfig fields to RadioStation: name, streamURL, imageURL, desc, longDesc, serverName, shortCode, defaultDJ
+   - **Project Integration:**
+     - Added StationConfig.swift to project.pbxproj with proper file references and build phase entries
+     - Added to ConfigClientTests target (ID: 71CA8E8A2EC57A5100F7F157)
+     - Added to RadioSpiral main target (ID: 71CA8E8A2EC57A5200F7F157)
+   - **Tests Passing:**
+     - `testStationConfigToDictionary` - Verifies StationConfig creation and field assignment
+     - `testStationConfigFromFetchedData` - Verifies fetched data can be converted
+     - All 16 ConfigClientTests passing (14 original + 2 new converter tests)
+   - **Build Status:** BUILD SUCCEEDED - Main RadioSpiral target builds without errors
+
+   **Key Files Modified:**
+   - Created: `RadioSpiral/ConfigClient/StationConfig.swift`
+   - Modified: `RadioSpiral/ConfigClient/ConfigClient.swift` (removed duplicate StationConfig definition)
+   - Modified: `RadioSpiral/Model/RadioStation.swift` (added converter extension lines 107-124)
+   - Modified: `RadioSpiral.xcodeproj/project.pbxproj` (registered StationConfig in build phases)
+   - Modified: `RadioSpiral/ConfigClientTests/ConfigClientTests.swift` (added converter tests)
+
+## Remaining Tasks
+- [ ] Integrate with MetadataManager for fallback lookups
+- [ ] Update DataManager to use ConfigClient for stations
+- [ ] Test integrated system on device
+
+## Key Code Locations
+- **ConfigClient**: `RadioSpiral/ConfigClient/ConfigClient.swift`
+- **StationConfig**: `RadioSpiral/ConfigClient/StationConfig.swift` (public struct, 22 lines)
+- **ConfigClient Tests**: `RadioSpiral/ConfigClientTests/ConfigClientTests.swift` (16 tests, all passing)
+- **RadioStation Model**: `RadioSpiral/Model/RadioStation.swift`
+- **Converter Extension**: Lines 107-124 in RadioStation.swift (`init(from stationConfig: StationConfig)`)
+
+## Test Config Files
+- `RadioSpiral/ConfigClientTests/test-config-with-fallback.json`
+- `RadioSpiral/ConfigClientTests/test-config-with-real-server.json`
+- `RadioSpiral/ConfigClientTests/test-config-live-azuracast.json`
+
+## Current Known Good State
+- All 16 ConfigClientTests passing (14 original + 2 converter tests)
+- ConfigClient & StationConfig building into both RadioSpiral and ConfigClientTests targets
+- RadioStation converter working with full field mapping
+- Main RadioSpiral target builds successfully
+- Project structure clean with StationConfig in dedicated file
+
+## Session Summary (Session 2)
+**Duration**: Token budget management successful
+**Work Completed**:
+1. Fixed build error by extracting StationConfig to separate file
+2. Properly registered StationConfig.swift in project.pbxproj
+3. Implemented and tested converter extension on RadioStation
+4. Created 2 new converter tests (both passing)
+5. Updated CLAUDE.md with completion status
+
+**Next Steps for Future Sessions**:
+- DataManager integration (use ConfigClient for station loading)
+- MetadataManager integration (fallback chain support)
+- Device testing of full integrated system

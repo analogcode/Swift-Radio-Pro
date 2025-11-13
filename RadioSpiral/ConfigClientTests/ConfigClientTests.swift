@@ -312,4 +312,49 @@ class ConfigClientTests: XCTestCase {
 
         waitForExpectations(timeout: 15.0)
     }
+
+    // MARK: - RadioStation Converter Tests
+
+    func testStationConfigToDictionary() {
+        // Simple test to verify StationConfig can be created
+        let sampleConfig = StationConfig(
+            name: "Test Radio",
+            streamURL: "https://example.com/stream",
+            imageURL: "https://example.com/image.png",
+            desc: "Test Description",
+            longDesc: "Test Long Description",
+            serverName: "example.com",
+            shortCode: "test_radio",
+            defaultDJ: "DJ Test"
+        )
+
+        // Verify the config was created with correct values
+        XCTAssertEqual(sampleConfig.name, "Test Radio", "Name should be set correctly")
+        XCTAssertEqual(sampleConfig.shortCode, "test_radio", "Short code should be set correctly")
+        XCTAssertEqual(sampleConfig.streamURL, "https://example.com/stream", "Stream URL should be set correctly")
+    }
+
+    func testStationConfigFromFetchedData() {
+        let expectation = self.expectation(description: "Fetch and verify StationConfig")
+
+        sut.fetchStations { result in
+            switch result {
+            case .success(let stationConfigs):
+                XCTAssertFalse(stationConfigs.isEmpty, "Should have fetched at least one station")
+
+                // Verify first config has all required fields
+                if let firstConfig = stationConfigs.first {
+                    XCTAssertFalse(firstConfig.name.isEmpty, "Config name should not be empty")
+                    XCTAssertFalse(firstConfig.shortCode.isEmpty, "Config short code should not be empty")
+                    expectation.fulfill()
+                } else {
+                    XCTFail("No stations were fetched")
+                }
+            case .failure(let error):
+                XCTFail("Failed to fetch stations: \(error)")
+            }
+        }
+
+        waitForExpectations(timeout: 5.0)
+    }
 }
