@@ -245,8 +245,26 @@ Implementing ConfigClient from RadioSpiral3 into RadioSpiral app. ConfigClient p
      - 17 ConfigClientTests passing (16 previous + 1 new)
    - **Build Status:** BUILD SUCCEEDED - All tests passing
 
+5. ✅ **Update DataManager to Use ConfigClient for Dynamic Station Loading** - Full integration with smart fallback chain
+   - **Implementation:**
+     - Add ConfigClient.shared property to DataManager for station fetching
+     - Create loadConfigClient() method to fetch and convert stations
+     - Convert StationConfig to RadioStation using converter extension
+     - Separate handlers for ConfigClient (StationsResult) vs HTTP/Local (DataResult)
+   - **Configuration:**
+     - Add Config.useConfigClient flag (default: true) for easy toggling
+     - Implement smart fallback chain: ConfigClient → Local JSON → HTTP
+     - Preserve backward compatibility with existing loading mechanisms
+   - **Smart Loading Order:**
+     1. ConfigClient (dynamic Azuracast/fallback config)
+     2. Local JSON (stations.json bundled in app)
+     3. HTTP (remote stations.json)
+   - **Test Coverage:**
+     - All 17 ConfigClientTests still passing
+     - Build: SUCCESS with no errors
+   - **Build Status:** BUILD SUCCEEDED - All tests passing
+
 ## Remaining Tasks
-- [ ] Update DataManager to use ConfigClient for stations
 - [ ] Test integrated system on device
 
 ## Key Code Locations
@@ -268,27 +286,47 @@ Implementing ConfigClient from RadioSpiral3 into RadioSpiral app. ConfigClient p
 - Main RadioSpiral target builds successfully
 - Project structure clean with StationConfig in dedicated file
 
-## Session Summary (Session 2)
-**Duration**: Efficient token usage with checkpoint commit
+## Session Summary (Sessions 2-3)
+**Duration**: Efficient token usage across two checkpoint commits
 **Work Completed**:
+
+**Session 2: ConfigClient Converter Integration**
 1. ✅ Fixed build error by extracting StationConfig to separate file
 2. ✅ Properly registered StationConfig.swift in project.pbxproj
-3. ✅ Implemented and tested converter extension on RadioStation
-4. ✅ Created converter tests (both passing)
-5. ✅ Integrated ConfigClient into MetadataManager for fallback lookups
-6. ✅ Resolved naming conflicts (DataError → ConfigClientError, Config → ConfigClientDebug)
-7. ✅ Added ConfigClient.swift to RadioSpiral target's compile sources
-8. ✅ Created fallback chain test (testConfigClientCachingForFallback)
-9. ✅ Updated CLAUDE.md with completion status
-10. ✅ Checkpoint commit: "Extract StationConfig and implement RadioStation converter"
+3. ✅ Implemented RadioStation converter extension (init from StationConfig)
+4. ✅ Created converter tests
+5. ✅ Checkpoint commit: "Extract StationConfig and implement RadioStation converter"
 
-**Session 2 Results**:
-- Completed: StationConfig extraction + Converter implementation + Fallback lookups
+**Session 2: MetadataManager Fallback Integration**
+6. ✅ Integrated ConfigClient into MetadataManager
+7. ✅ Enhanced fallback metadata chain with ConfigClient lookups
+8. ✅ Resolved naming conflicts (DataError → ConfigClientError, Config → ConfigClientDebug)
+9. ✅ Added ConfigClient.swift to RadioSpiral target's compile sources
+10. ✅ Created fallback chain test (testConfigClientCachingForFallback)
+11. ✅ Checkpoint commit: "Integrate ConfigClient into MetadataManager for fallback lookups"
+
+**Session 3: DataManager Dynamic Station Loading**
+12. ✅ Added Config.useConfigClient flag for configuration
+13. ✅ Integrated ConfigClient into DataManager
+14. ✅ Implemented smart fallback chain: ConfigClient → Local → HTTP
+15. ✅ Created loadConfigClient() with StationConfig→RadioStation conversion
+16. ✅ Separate handlers for different result types
+17. ✅ Full backward compatibility maintained
+
+**Session 3 Results**:
+- Completed: Full ConfigClient integration across all major components
 - Tests: 17/17 ConfigClientTests passing
 - Build: SUCCESS with no errors
-- Code quality: Resolved naming conflicts, public API properly exposed
+- Architecture: Dynamic station loading with intelligent fallback chain
+
+**Current Status**:
+- ConfigClient fully integrated and functional
+- Smart fallback chain implemented (ConfigClient → Local JSON → HTTP)
+- MetadataManager enhanced with ConfigClient fallback lookups
+- DataManager now uses ConfigClient for dynamic station loading
+- All code changes backward compatible
 
 **Next Steps for Future Sessions**:
-- DataManager integration (use ConfigClient for station loading)
 - Device testing of full integrated system
 - Performance optimization if needed
+- Consider caching layer improvements

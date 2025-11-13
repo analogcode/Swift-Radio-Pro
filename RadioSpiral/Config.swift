@@ -9,12 +9,13 @@
 import UIKit
 
 struct Config {
-    
+
     static let debugLog = true
 
-    // If this is set to "true", it will use the JSON file in the app
-    // Set it to "false" to use the JSON file at the stationDataURL
-    static let useLocalStations = false
+    // Station loading configuration
+    // Priority: useConfigClient → useLocalStations → stationsURL
+    static let useConfigClient = true  // Use dynamic ConfigClient for stations
+    static let useLocalStations = false  // Fall back to local JSON if enabled
     static let stationsURL = "https://raw.githubusercontent.com/joemcmahon/radiospiral-config/master/stations.json"
 
     // Set this to "true" to enable the search bar
@@ -22,7 +23,7 @@ struct Config {
 
     // Set this to "false" to show the next/previous player buttons
     static let hideNextPreviousButtons = true
-    
+
     // Contact infos
     static let website = "https://radiospiral.net"
     static let email = "radio@pemungkah.com"

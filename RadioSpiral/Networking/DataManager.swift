@@ -16,14 +16,20 @@ typealias StationsResult = Result<[RadioStation], Error>
 typealias StationsCompletion = (StationsResult) -> Void
 
 struct DataManager {
-    
-    // Helper struct to get either local or remote JSON
-    
+
+    // Helper struct to load stations from multiple sources
+    private static let configClient = ConfigClient.shared
+
     static func getStation(completion: @escaping StationsCompletion) {
-        
+
         DispatchQueue.global(qos: .userInitiated).async {
-            
-            if Config.useLocalStations {
+
+            // Priority order: ConfigClient → Local → HTTP
+            if Config.useConfigClient {
+                loadConfigClient { result in
+                    handleStations(result, completion)
+                }
+            } else if Config.useLocalStations {
                 loadLocal() { dataResult in
                     handle(dataResult, completion)
                 }
@@ -34,10 +40,18 @@ struct DataManager {
             }
         }
     }
-    
+
     private typealias DataResult = Result<Data?, Error>
     private typealias DataCompletion = (DataResult) -> Void
-    
+
+    // Handler for direct StationsResult (from ConfigClient)
+    private static func handleStations(_ stationsResult: StationsResult, _ completion: @escaping StationsCompletion) {
+        DispatchQueue.main.async {
+            completion(stationsResult)
+        }
+    }
+
+    // Handler for DataResult (from Local/HTTP)
     private static func handle(_ dataResult: DataResult, _ completion: @escaping StationsCompletion) {
         DispatchQueue.main.async {
             switch dataResult {
@@ -52,26 +66,42 @@ struct DataManager {
     
     private static func decode(_ data: Data?) -> Result<[RadioStation], Error> {
         if Config.debugLog { print("Stations JSON Found") }
-        
+
         guard let data = data else {
             return .failure(DataError.dataNotFound)
         }
-        
+
         let jsonDictionary: [String: [RadioStation]]
-        
+
         do {
             jsonDictionary = try JSONDecoder().decode([String: [RadioStation]].self, from: data)
         } catch let error {
             return .failure(error)
         }
-        
+
         guard let stations = jsonDictionary["station"] else {
             return .failure(DataError.dataNotValid)
         }
-        
+
         return .success(stations)
     }
-    
+
+    // Load stations from ConfigClient
+    private static func loadConfigClient(_ completion: @escaping (StationsResult) -> Void) {
+        configClient.fetchStations { result in
+            switch result {
+            case .success(let stationConfigs):
+                if Config.debugLog { print("Loaded \(stationConfigs.count) stations from ConfigClient") }
+                // Convert StationConfig to RadioStation using the converter extension
+                let radioStations = stationConfigs.map { RadioStation(from: $0) }
+                completion(.success(radioStations))
+            case .failure(let error):
+                if Config.debugLog { print("ConfigClient fetch failed: \(error)") }
+                completion(.failure(error))
+            }
+        }
+    }
+
     // Load local JSON Data
     
     private static func loadLocal(_ completion: DataCompletion) {
