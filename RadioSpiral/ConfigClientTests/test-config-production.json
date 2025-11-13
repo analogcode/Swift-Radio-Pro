@@ -1,0 +1,24 @@
+{
+  "configs": [
+    {
+      "format": "azuracast",
+      "server": "spiral.radio",
+      "exclude": []
+    },
+    {
+      "format": "static",
+      "stations": [
+        {
+          "name": "RadioSpiral",
+          "streamURL": "https://spiral.radio:8000/stream.mp3",
+          "imageURL": "https://raw.githubusercontent.com/joemcmahon/radiospiral-config/master/logo.png",
+          "desc": "captivating electronica",
+          "longDesc": "Our primary stream, featuring a selected set of our library of captivating electronica, 24/7.\nFeaturing live DJs and live performances, every day of the week.",
+          "serverName": "spiral.radio",
+          "shortCode": "radiospiral",
+          "defaultDJ": "Spud the Ambient Robot"
+        }
+      ]
+    }
+  ]
+}

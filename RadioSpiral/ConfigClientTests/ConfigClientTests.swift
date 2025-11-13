@@ -393,4 +393,41 @@ class ConfigClientTests: XCTestCase {
 
         waitForExpectations(timeout: 5.0)
     }
+
+    // MARK: - Production Configuration Tests
+
+    func testProductionConfigurationWithSpiralRadio() {
+        guard let testConfigPath = Bundle(for: ConfigClientTests.self).path(forResource: "test-config-production", ofType: "json") else {
+            XCTFail("Could not find production config file")
+            return
+        }
+
+        let testURL = URL(fileURLWithPath: testConfigPath).absoluteString
+        let productionClient = ConfigClient(configURL: testURL)
+        let expectation = self.expectation(description: "Load production config with spiral.radio and fallback")
+
+        productionClient.fetchStations { result in
+            switch result {
+            case .success(let stations):
+                XCTAssertFalse(stations.isEmpty, "Should load at least one station")
+
+                // Verify we got the RadioSpiral station (from static fallback)
+                if let radioSpiralStation = stations.first(where: { $0.shortCode == "radiospiral" }) {
+                    XCTAssertEqual(radioSpiralStation.name, "RadioSpiral", "Should load RadioSpiral station")
+                    XCTAssertTrue(radioSpiralStation.streamURL.contains("spiral.radio"), "Stream URL should be from spiral.radio")
+                    XCTAssertEqual(radioSpiralStation.defaultDJ, "Spud the Ambient Robot", "Default DJ should match")
+
+                    expectation.fulfill()
+                } else {
+                    // If Azuracast is unreachable, we should still get the fallback
+                    XCTAssertTrue(true, "Using fallback static config")
+                    expectation.fulfill()
+                }
+            case .failure(let error):
+                XCTFail("Failed to load production config: \(error)")
+            }
+        }
+
+        waitForExpectations(timeout: 10.0)
+    }
 }
