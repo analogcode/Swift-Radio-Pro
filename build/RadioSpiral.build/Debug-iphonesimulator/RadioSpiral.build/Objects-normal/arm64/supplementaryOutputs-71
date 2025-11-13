@@ -1,0 +1,23 @@
+{
+  "/Users/joemcmahon/Code/current-Radiospiral/RadioSpiral/Helpers/AnimationFrames.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/AnimationFrames.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/AnimationFrames.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/AnimationFrames.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/AnimationFrames.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/AnimationFrames.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/RadioSpiral/Helpers/UIImage+Cache.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/UIImage+Cache.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/UIImage+Cache.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/UIImage+Cache.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/UIImage+Cache.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/UIImage+Cache.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/RadioSpiral/Helpers/UIViewController+Email.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/UIViewController+Email.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/UIViewController+Email.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/UIViewController+Email.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/UIViewController+Email.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/UIViewController+Email.swiftdeps"
+  }
+}

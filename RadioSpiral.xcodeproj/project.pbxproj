@@ -32,6 +32,12 @@
 		7196786B2D27AAA500DCD7CE /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 7196786A2D27AAA500DCD7CE /* Kingfisher */; };
 		71B3D01F2E2989C5001E8F5A /* StationMetadataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3D01E2E2989C5001E8F5A /* StationMetadataManager.swift */; };
 		71B3D0212E2989C5001E8F5A /* StationMetadataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3D01E2E2989C5001E8F5A /* StationMetadataManager.swift */; };
+		71CA8E882EC57A5000F7F157 /* ConfigClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CA8E852EC57A5000F7F157 /* ConfigClient.swift */; };
+		71CA8E892EC57A5000F7F157 /* ConfigClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CA8E852EC57A5000F7F157 /* ConfigClient.swift */; };
+		71CA8E8E2EC57AD400F7F157 /* ConfigClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CA8E8B2EC57AD400F7F157 /* ConfigClientTests.swift */; };
+		71CA8E8F2EC57AD400F7F157 /* test-config-with-fallback.json in Resources */ = {isa = PBXBuildFile; fileRef = 71CA8E8C2EC57AD400F7F157 /* test-config-with-fallback.json */; };
+		60A288069DE14CA0B96295FA /* test-config-with-real-server.json in Resources */ = {isa = PBXBuildFile; fileRef = 6F4444B16407430F8A42EFDD /* test-config-with-real-server.json */; };
+		B2C601433BBD45CD9F6DE9A3 /* test-config-live-azuracast.json in Resources */ = {isa = PBXBuildFile; fileRef = 8AAF0ECFA82245D0A3C4E3A1 /* test-config-live-azuracast.json */; };
 		9409E11C1ABF6FEA00312E2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */; };
 		9409E1261ABF6FEA00312E2B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9409E1251ABF6FEA00312E2B /* Images.xcassets */; };
 		9409E1401ABF78B000312E2B /* NowPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9409E13F1ABF78B000312E2B /* NowPlayingViewController.swift */; };
@@ -74,6 +80,13 @@
 			remoteGlobalIDString = 9409E1151ABF6FEA00312E2B;
 			remoteInfo = SwiftRadio;
 		};
+		71CA8E7E2EC579C300F7F157 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9409E10E1ABF6FE900312E2B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9409E1151ABF6FEA00312E2B;
+			remoteInfo = RadioSpiral;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +108,12 @@
 		719678572D27A72000DCD7CE /* ACWebSocketClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACWebSocketClient.swift; sourceTree = "<group>"; };
 		719678582D27A72000DCD7CE /* ParseWebSocketData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseWebSocketData.swift; sourceTree = "<group>"; };
 		71B3D01E2E2989C5001E8F5A /* StationMetadataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationMetadataManager.swift; sourceTree = "<group>"; };
+		71CA8E7A2EC579C300F7F157 /* ConfigClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConfigClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		71CA8E852EC57A5000F7F157 /* ConfigClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigClient.swift; sourceTree = "<group>"; };
+		71CA8E8B2EC57AD400F7F157 /* ConfigClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigClientTests.swift; sourceTree = "<group>"; };
+		71CA8E8C2EC57AD400F7F157 /* test-config-with-fallback.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "test-config-with-fallback.json"; sourceTree = "<group>"; };
+		6F4444B16407430F8A42EFDD /* test-config-with-real-server.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "test-config-with-real-server.json"; sourceTree = "<group>"; };
+		8AAF0ECFA82245D0A3C4E3A1 /* test-config-live-azuracast.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "test-config-live-azuracast.json"; sourceTree = "<group>"; };
 		9409E1161ABF6FEA00312E2B /* RadioSpiral.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioSpiral.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9409E11A1ABF6FEA00312E2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +154,13 @@
 			files = (
 				7196786B2D27AAA500DCD7CE /* Kingfisher in Frameworks */,
 				710310052D6C1E8E00828968 /* Reachability in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		71CA8E772EC579C300F7F157 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,9 +212,29 @@
 			path = ACWebSocketClient;
 			sourceTree = "<group>";
 		};
+		71CA8E862EC57A5000F7F157 /* ConfigClient */ = {
+			isa = PBXGroup;
+			children = (
+				71CA8E852EC57A5000F7F157 /* ConfigClient.swift */,
+			);
+			path = ConfigClient;
+			sourceTree = "<group>";
+		};
+		71CA8E8D2EC57AD400F7F157 /* RadioSpiral/ConfigClientTests */ = {
+			isa = PBXGroup;
+			children = (
+				71CA8E8B2EC57AD400F7F157 /* ConfigClientTests.swift */,
+				71CA8E8C2EC57AD400F7F157 /* test-config-with-fallback.json */,
+				6F4444B16407430F8A42EFDD /* test-config-with-real-server.json */,
+				8AAF0ECFA82245D0A3C4E3A1 /* test-config-live-azuracast.json */,
+			);
+			path = RadioSpiral/ConfigClientTests;
+			sourceTree = "<group>";
+		};
 		9409E10D1ABF6FE900312E2B = {
 			isa = PBXGroup;
 			children = (
+				71CA8E8D2EC57AD400F7F157 /* RadioSpiral/ConfigClientTests */,
 				717B8C672EC44F120080EFE8 /* CarPlaySceneDelegate.swift */,
 				9409E1181ABF6FEA00312E2B /* RadioSpiral */,
 				2C5545BB1C1124DE00728469 /* RadioSpiralUITests */,
@@ -201,6 +247,7 @@
 			children = (
 				9409E1161ABF6FEA00312E2B /* RadioSpiral.app */,
 				2C5545BA1C1124DE00728469 /* RadioSpiralUITests.xctest */,
+				71CA8E7A2EC579C300F7F157 /* ConfigClientTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -208,6 +255,7 @@
 		9409E1181ABF6FEA00312E2B /* RadioSpiral */ = {
 			isa = PBXGroup;
 			children = (
+				71CA8E862EC57A5000F7F157 /* ConfigClient */,
 				717B8C5F2EC449D30080EFE8 /* SceneDelegate.swift */,
 				717B8C562EC433E10080EFE8 /* RadioSpiral.entitlements */,
 				719678532D27A6E100DCD7CE /* ACWebSocketClient */,
@@ -342,6 +390,26 @@
 			productReference = 2C5545BA1C1124DE00728469 /* RadioSpiralUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		71CA8E792EC579C300F7F157 /* ConfigClientTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 71CA8E822EC579C300F7F157 /* Build configuration list for PBXNativeTarget "ConfigClientTests" */;
+			buildPhases = (
+				71CA8E762EC579C300F7F157 /* Sources */,
+				71CA8E772EC579C300F7F157 /* Frameworks */,
+				71CA8E782EC579C300F7F157 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				71CA8E7F2EC579C300F7F157 /* PBXTargetDependency */,
+			);
+			name = ConfigClientTests;
+			packageProductDependencies = (
+			);
+			productName = ConfigClientTests;
+			productReference = 71CA8E7A2EC579C300F7F157 /* ConfigClientTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		9409E1151ABF6FEA00312E2B /* RadioSpiral */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9409E1381ABF6FEA00312E2B /* Build configuration list for PBXNativeTarget "RadioSpiral" */;
@@ -375,13 +443,17 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastSwiftMigration = 0700;
-				LastSwiftUpdateCheck = 0710;
+				LastSwiftUpdateCheck = 2610;
 				LastUpgradeCheck = 1620;
 				ORGANIZATIONNAME = matthewfecher.com;
 				TargetAttributes = {
 					2C5545B91C1124DE00728469 = {
 						CreatedOnToolsVersion = 7.1;
 						LastSwiftMigration = 1020;
+						TestTargetID = 9409E1151ABF6FEA00312E2B;
+					};
+					71CA8E792EC579C300F7F157 = {
+						CreatedOnToolsVersion = 26.1.1;
 						TestTargetID = 9409E1151ABF6FEA00312E2B;
 					};
 					9409E1151ABF6FEA00312E2B = {
@@ -417,6 +489,7 @@
 			targets = (
 				9409E1151ABF6FEA00312E2B /* RadioSpiral */,
 				2C5545B91C1124DE00728469 /* RadioSpiralUITests */,
+				71CA8E792EC579C300F7F157 /* ConfigClientTests */,
 			);
 		};
 /* End PBXProject section */
@@ -427,6 +500,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				7165121C2B35519B00473770 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		71CA8E782EC579C300F7F157 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71CA8E8F2EC57AD400F7F157 /* test-config-with-fallback.json in Resources */,
+				60A288069DE14CA0B96295FA /* test-config-with-real-server.json in Resources */,
+				B2C601433BBD45CD9F6DE9A3 /* test-config-live-azuracast.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,6 +535,7 @@
 			files = (
 				717B8C642EC44DDD0080EFE8 /* CarPlaySceneDelegate.swift in Sources */,
 				719678592D27A72000DCD7CE /* ACStreamStatus.swift in Sources */,
+				71CA8E892EC57A5000F7F157 /* ConfigClient.swift in Sources */,
 				7196785A2D27A72000DCD7CE /* ParseWebSocketData.swift in Sources */,
 				7196785B2D27A72000DCD7CE /* ACConnectionState.swift in Sources */,
 				7196785C2D27A72000DCD7CE /* ACWebSocketClient.swift in Sources */,
@@ -459,6 +543,15 @@
 				2C5545BD1C1124DE00728469 /* SwiftRadioUITests.swift in Sources */,
 				715C87A62B23E141003FC57A /* SnapshotHelper.swift in Sources */,
 				717B8C622EC449D30080EFE8 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		71CA8E762EC579C300F7F157 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71CA8E8E2EC57AD400F7F157 /* ConfigClientTests.swift in Sources */,
+				71CA8E882EC57A5000F7F157 /* ConfigClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,7 +575,6 @@
 				6258DCD822D93A3500166C65 /* LogoShareView.swift in Sources */,
 				949BBB401ACC9DEE005B7C26 /* DataManager.swift in Sources */,
 				CE6ECD00292F215F008B3C16 /* Storyboard.swift in Sources */,
-				71E9B4E22D2DE23A002D6496 /* ResizeImage.swift in Sources */,
 				94E9761C1B1A8F3200F52B1E /* UIImage+DropShadow.swift in Sources */,
 				94452E551AD7086800BFE7A5 /* AboutViewController.swift in Sources */,
 				CED6353B293081ED002B216F /* Handoffable.swift in Sources */,
@@ -495,7 +587,6 @@
 				CE6036252A48F68D00E15E15 /* NowPlayingView.swift in Sources */,
 				94AC70AE1AD05C6200652982 /* RadioStation.swift in Sources */,
 				CE9EE8E1293C048A00F62041 /* LoaderController.swift in Sources */,
-				CEDABBEB291217AF00C0367F /* UIImageView+Cache.swift in Sources */,
 				CE6036132A47A87A00E15E15 /* StationsViewController.swift in Sources */,
 				719678612D27A72000DCD7CE /* ACStreamStatus.swift in Sources */,
 				719678622D27A72000DCD7CE /* ParseWebSocketData.swift in Sources */,
@@ -511,6 +602,11 @@
 			isa = PBXTargetDependency;
 			target = 9409E1151ABF6FEA00312E2B /* RadioSpiral */;
 			targetProxy = 2C5545BF1C1124DE00728469 /* PBXContainerItemProxy */;
+		};
+		71CA8E7F2EC579C300F7F157 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9409E1151ABF6FEA00312E2B /* RadioSpiral */;
+			targetProxy = 71CA8E7E2EC579C300F7F157 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -554,6 +650,72 @@
 				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = RadioSpiral;
 				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+		71CA8E802EC579C300F7F157 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 6PLL9M5SE2;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pemungkah.radiospiral.ConfigClientTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RadioSpiral.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RadioSpiral";
+			};
+			name = Debug;
+		};
+		71CA8E812EC579C300F7F157 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 6PLL9M5SE2;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pemungkah.radiospiral.ConfigClientTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RadioSpiral.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RadioSpiral";
 			};
 			name = Release;
 		};
@@ -748,6 +910,15 @@
 			buildConfigurations = (
 				2C5545C11C1124DE00728469 /* Debug */,
 				2C5545C21C1124DE00728469 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		71CA8E822EC579C300F7F157 /* Build configuration list for PBXNativeTarget "ConfigClientTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				71CA8E802EC579C300F7F157 /* Debug */,
+				71CA8E812EC579C300F7F157 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

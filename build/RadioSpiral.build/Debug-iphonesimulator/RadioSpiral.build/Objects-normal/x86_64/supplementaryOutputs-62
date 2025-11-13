@@ -1,0 +1,23 @@
+{
+  "/Users/joemcmahon/Code/current-Radiospiral/RadioSpiral/Model/RadioStation.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/x86_64/RadioStation.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/x86_64/RadioStation.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/x86_64/RadioStation.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/x86_64/RadioStation.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/x86_64/RadioStation.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/RadioSpiral/ViewControllers/LoaderController.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/x86_64/LoaderController.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/x86_64/LoaderController.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/x86_64/LoaderController.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/x86_64/LoaderController.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/x86_64/LoaderController.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/RadioSpiral/Views/NowPlayingView.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/x86_64/NowPlayingView.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/x86_64/NowPlayingView.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/x86_64/NowPlayingView.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/x86_64/NowPlayingView.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/x86_64/NowPlayingView.swiftdeps"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "configs": [
+    {
+      "format": "static",
+      "stations": [
+        {
+          "name": "Test Station - Direct Static",
+          "streamURL": "http://example.com/stream1",
+          "imageURL": "http://example.com/logo1.png",
+          "desc": "First static station to verify early-stop",
+          "longDesc": "This static station is in the first position to verify we stop at first success",
+          "serverName": "test1.local",
+          "shortCode": "test_static_1",
+          "defaultDJ": "Test DJ 1"
+        },
+        {
+          "name": "Test Station 2",
+          "streamURL": "http://example.com/stream2",
+          "imageURL": "http://example.com/logo2.png",
+          "desc": "Second static station (should not be reached)",
+          "longDesc": "This station should not be in the results if early-stop works",
+          "serverName": "test2.local",
+          "shortCode": "test_static_2",
+          "defaultDJ": "Test DJ 2"
+        }
+      ]
+    },
+    {
+      "format": "static",
+      "stations": [
+        {
+          "name": "Fallback Station",
+          "streamURL": "http://example.com/fallback",
+          "imageURL": "http://example.com/fallback.png",
+          "desc": "Fallback station (should not be reached)",
+          "longDesc": "This station should not be reached if early-stop works",
+          "serverName": "fallback.local",
+          "shortCode": "fallback_station",
+          "defaultDJ": "Fallback DJ"
+        }
+      ]
+    }
+  ]
+}

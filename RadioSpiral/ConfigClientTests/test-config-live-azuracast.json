@@ -1,0 +1,24 @@
+{
+  "configs": [
+    {
+      "format": "azuracast",
+      "server": "demo.azuracast.com",
+      "exclude": ["azuratest_radio"]
+    },
+    {
+      "format": "static",
+      "stations": [
+        {
+          "name": "Test Fallback Station",
+          "streamURL": "http://example.com/test",
+          "imageURL": "http://example.com/test.png",
+          "desc": "Fallback station used when excluded or when Azuracast is unavailable",
+          "longDesc": "This station is returned because the Azuracast station is excluded",
+          "serverName": "test.local",
+          "shortCode": "test_fallback",
+          "defaultDJ": "Test DJ"
+        }
+      ]
+    }
+  ]
+}

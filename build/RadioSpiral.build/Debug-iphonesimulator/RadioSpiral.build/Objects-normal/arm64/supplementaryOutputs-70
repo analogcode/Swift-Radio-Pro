@@ -1,0 +1,23 @@
+{
+  "/Users/joemcmahon/Code/current-Radiospiral/RadioSpiral/AppDelegate.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/AppDelegate.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/AppDelegate.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/AppDelegate.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/AppDelegate.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/AppDelegate.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/RadioSpiral/Coordinators/MainCoordinator.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/MainCoordinator.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/MainCoordinator.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/MainCoordinator.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/MainCoordinator.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/MainCoordinator.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/RadioSpiral/ViewControllers/PopUpMenuViewController.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/PopUpMenuViewController.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/PopUpMenuViewController.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/PopUpMenuViewController.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/PopUpMenuViewController.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphonesimulator/RadioSpiral.build/Objects-normal/arm64/PopUpMenuViewController.swiftdeps"
+  }
+}

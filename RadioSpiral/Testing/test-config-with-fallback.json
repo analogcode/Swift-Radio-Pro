@@ -1,0 +1,29 @@
+{
+  "configs": [
+    {
+      "format": "azuracast",
+      "server": "primary.example.com",
+      "exclude": ["rstest"]
+    },
+    {
+      "format": "azuracast",
+      "server": "fallback.example.com",
+      "exclude": ["rstest"]
+    },
+    {
+      "format": "static",
+      "stations": [
+        {
+          "name": "Test Station",
+          "streamURL": "http://example.com/stream",
+          "imageURL": "",
+          "desc": "A test station for fallback",
+          "longDesc": "This is a static test station used when both Azuracast servers are down",
+          "serverName": "test.local",
+          "shortCode": "test_station",
+          "defaultDJ": "Test DJ"
+        }
+      ]
+    }
+  ]
+}

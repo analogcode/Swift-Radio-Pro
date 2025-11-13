@@ -1,0 +1,9 @@
+{
+  "configs": [
+    {
+      "format": "azuracast",
+      "server": "spiral.radio",
+      "exclude": ["rstest"]
+    }
+  ]
+}

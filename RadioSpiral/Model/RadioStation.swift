@@ -94,11 +94,11 @@ extension RadioStation {
 }
 
 extension RadioStation {
-    
+
     var trackName: String {
         FRadioPlayer.shared.currentMetadata?.trackName ?? name
     }
-    
+
     var artistName: String {
         FRadioPlayer.shared.currentMetadata?.artistName ?? desc
     }

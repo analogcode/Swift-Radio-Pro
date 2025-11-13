@@ -23,6 +23,28 @@
                ReferencedContainer = "container:RadioSpiral.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "71F6CAA02EC563FC00134766"
+               BuildableName = "RadioSpiralTests.xctest"
+               BlueprintName = "RadioSpiralTests"
+               ReferencedContainer = "container:RadioSpiral.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "71CA8E792EC579C300F7F157"
+               BuildableName = "ConfigClientTests.xctest"
+               BlueprintName = "ConfigClientTests"
+               ReferencedContainer = "container:RadioSpiral.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

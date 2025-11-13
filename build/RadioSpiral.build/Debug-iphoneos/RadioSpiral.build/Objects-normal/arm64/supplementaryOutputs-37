@@ -1,0 +1,23 @@
+{
+  "/Users/joemcmahon/Code/current-Radiospiral/RadioSpiral/ACWebSocketClient/ACConnectionState.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphoneos/RadioSpiral.build/Objects-normal/arm64/ACConnectionState.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphoneos/RadioSpiral.build/Objects-normal/arm64/ACConnectionState.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphoneos/RadioSpiral.build/Objects-normal/arm64/ACConnectionState.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphoneos/RadioSpiral.build/Objects-normal/arm64/ACConnectionState.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphoneos/RadioSpiral.build/Objects-normal/arm64/ACConnectionState.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/RadioSpiral/ACWebSocketClient/ACWebSocketClient.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphoneos/RadioSpiral.build/Objects-normal/arm64/ACWebSocketClient.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphoneos/RadioSpiral.build/Objects-normal/arm64/ACWebSocketClient.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphoneos/RadioSpiral.build/Objects-normal/arm64/ACWebSocketClient.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphoneos/RadioSpiral.build/Objects-normal/arm64/ACWebSocketClient.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphoneos/RadioSpiral.build/Objects-normal/arm64/ACWebSocketClient.swiftdeps"
+  },
+  "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphoneos/RadioSpiral.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphoneos/RadioSpiral.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphoneos/RadioSpiral.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphoneos/RadioSpiral.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "object" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphoneos/RadioSpiral.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/joemcmahon/Code/current-Radiospiral/build/RadioSpiral.build/Debug-iphoneos/RadioSpiral.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps"
+  }
+}

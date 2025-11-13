@@ -1,0 +1,279 @@
+{
+  "" : {
+    "diagnostics" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/Spring-primary.dia",
+    "emit-module-dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/Spring-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/Spring-primary-emit-module.dia",
+    "pch" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/Spring-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/Spring-primary.swiftdeps"
+  },
+  "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/Sources/Spring/AsyncButton.swift" : {
+    "const-values" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/AsyncButton.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/AsyncButton.d",
+    "diagnostics" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/AsyncButton.dia",
+    "index-unit-output-path" : "/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/AsyncButton.o",
+    "llvm-bc" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/AsyncButton.bc",
+    "object" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/AsyncButton.o",
+    "swift-dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/AsyncButton.swiftdeps",
+    "swiftmodule" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/AsyncButton~partial.swiftmodule"
+  },
+  "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/Sources/Spring/AsyncImageView.swift" : {
+    "const-values" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/AsyncImageView.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/AsyncImageView.d",
+    "diagnostics" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/AsyncImageView.dia",
+    "index-unit-output-path" : "/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/AsyncImageView.o",
+    "llvm-bc" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/AsyncImageView.bc",
+    "object" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/AsyncImageView.o",
+    "swift-dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/AsyncImageView.swiftdeps",
+    "swiftmodule" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/AsyncImageView~partial.swiftmodule"
+  },
+  "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/Sources/Spring/AutoTextView.swift" : {
+    "const-values" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/AutoTextView.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/AutoTextView.d",
+    "diagnostics" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/AutoTextView.dia",
+    "index-unit-output-path" : "/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/AutoTextView.o",
+    "llvm-bc" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/AutoTextView.bc",
+    "object" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/AutoTextView.o",
+    "swift-dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/AutoTextView.swiftdeps",
+    "swiftmodule" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/AutoTextView~partial.swiftmodule"
+  },
+  "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/Sources/Spring/BlurView.swift" : {
+    "const-values" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/BlurView.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/BlurView.d",
+    "diagnostics" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/BlurView.dia",
+    "index-unit-output-path" : "/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/BlurView.o",
+    "llvm-bc" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/BlurView.bc",
+    "object" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/BlurView.o",
+    "swift-dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/BlurView.swiftdeps",
+    "swiftmodule" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/BlurView~partial.swiftmodule"
+  },
+  "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/Sources/Spring/DesignableButton.swift" : {
+    "const-values" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableButton.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableButton.d",
+    "diagnostics" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableButton.dia",
+    "index-unit-output-path" : "/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableButton.o",
+    "llvm-bc" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableButton.bc",
+    "object" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableButton.o",
+    "swift-dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableButton.swiftdeps",
+    "swiftmodule" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableButton~partial.swiftmodule"
+  },
+  "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/Sources/Spring/DesignableImageView.swift" : {
+    "const-values" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableImageView.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableImageView.d",
+    "diagnostics" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableImageView.dia",
+    "index-unit-output-path" : "/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableImageView.o",
+    "llvm-bc" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableImageView.bc",
+    "object" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableImageView.o",
+    "swift-dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableImageView.swiftdeps",
+    "swiftmodule" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableImageView~partial.swiftmodule"
+  },
+  "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/Sources/Spring/DesignableLabel.swift" : {
+    "const-values" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableLabel.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableLabel.d",
+    "diagnostics" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableLabel.dia",
+    "index-unit-output-path" : "/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableLabel.o",
+    "llvm-bc" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableLabel.bc",
+    "object" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableLabel.o",
+    "swift-dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableLabel.swiftdeps",
+    "swiftmodule" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableLabel~partial.swiftmodule"
+  },
+  "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/Sources/Spring/DesignableTabBarController.swift" : {
+    "const-values" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableTabBarController.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableTabBarController.d",
+    "diagnostics" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableTabBarController.dia",
+    "index-unit-output-path" : "/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableTabBarController.o",
+    "llvm-bc" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableTabBarController.bc",
+    "object" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableTabBarController.o",
+    "swift-dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableTabBarController.swiftdeps",
+    "swiftmodule" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableTabBarController~partial.swiftmodule"
+  },
+  "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/Sources/Spring/DesignableTextField.swift" : {
+    "const-values" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableTextField.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableTextField.d",
+    "diagnostics" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableTextField.dia",
+    "index-unit-output-path" : "/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableTextField.o",
+    "llvm-bc" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableTextField.bc",
+    "object" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableTextField.o",
+    "swift-dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableTextField.swiftdeps",
+    "swiftmodule" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableTextField~partial.swiftmodule"
+  },
+  "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/Sources/Spring/DesignableTextView.swift" : {
+    "const-values" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableTextView.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableTextView.d",
+    "diagnostics" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableTextView.dia",
+    "index-unit-output-path" : "/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableTextView.o",
+    "llvm-bc" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableTextView.bc",
+    "object" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableTextView.o",
+    "swift-dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableTextView.swiftdeps",
+    "swiftmodule" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableTextView~partial.swiftmodule"
+  },
+  "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/Sources/Spring/DesignableView.swift" : {
+    "const-values" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableView.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableView.d",
+    "diagnostics" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableView.dia",
+    "index-unit-output-path" : "/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableView.o",
+    "llvm-bc" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableView.bc",
+    "object" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableView.o",
+    "swift-dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableView.swiftdeps",
+    "swiftmodule" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/DesignableView~partial.swiftmodule"
+  },
+  "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/Sources/Spring/ImageLoader.swift" : {
+    "const-values" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/ImageLoader.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/ImageLoader.d",
+    "diagnostics" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/ImageLoader.dia",
+    "index-unit-output-path" : "/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/ImageLoader.o",
+    "llvm-bc" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/ImageLoader.bc",
+    "object" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/ImageLoader.o",
+    "swift-dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/ImageLoader.swiftdeps",
+    "swiftmodule" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/ImageLoader~partial.swiftmodule"
+  },
+  "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/Sources/Spring/KeyboardLayoutConstraint.swift" : {
+    "const-values" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/KeyboardLayoutConstraint.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/KeyboardLayoutConstraint.d",
+    "diagnostics" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/KeyboardLayoutConstraint.dia",
+    "index-unit-output-path" : "/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/KeyboardLayoutConstraint.o",
+    "llvm-bc" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/KeyboardLayoutConstraint.bc",
+    "object" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/KeyboardLayoutConstraint.o",
+    "swift-dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/KeyboardLayoutConstraint.swiftdeps",
+    "swiftmodule" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/KeyboardLayoutConstraint~partial.swiftmodule"
+  },
+  "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/Sources/Spring/LoadingView.swift" : {
+    "const-values" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/LoadingView.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/LoadingView.d",
+    "diagnostics" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/LoadingView.dia",
+    "index-unit-output-path" : "/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/LoadingView.o",
+    "llvm-bc" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/LoadingView.bc",
+    "object" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/LoadingView.o",
+    "swift-dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/LoadingView.swiftdeps",
+    "swiftmodule" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/LoadingView~partial.swiftmodule"
+  },
+  "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/Sources/Spring/Misc.swift" : {
+    "const-values" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/Misc.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/Misc.d",
+    "diagnostics" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/Misc.dia",
+    "index-unit-output-path" : "/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/Misc.o",
+    "llvm-bc" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/Misc.bc",
+    "object" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/Misc.o",
+    "swift-dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/Misc.swiftdeps",
+    "swiftmodule" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/Misc~partial.swiftmodule"
+  },
+  "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/Sources/Spring/SoundPlayer.swift" : {
+    "const-values" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SoundPlayer.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SoundPlayer.d",
+    "diagnostics" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SoundPlayer.dia",
+    "index-unit-output-path" : "/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SoundPlayer.o",
+    "llvm-bc" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SoundPlayer.bc",
+    "object" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SoundPlayer.o",
+    "swift-dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SoundPlayer.swiftdeps",
+    "swiftmodule" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SoundPlayer~partial.swiftmodule"
+  },
+  "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/Sources/Spring/Spring.swift" : {
+    "const-values" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/Spring.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/Spring.d",
+    "diagnostics" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/Spring.dia",
+    "index-unit-output-path" : "/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/Spring.o",
+    "llvm-bc" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/Spring.bc",
+    "object" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/Spring.o",
+    "swift-dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/Spring.swiftdeps",
+    "swiftmodule" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/Spring~partial.swiftmodule"
+  },
+  "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/Sources/Spring/SpringAnimation.swift" : {
+    "const-values" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringAnimation.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringAnimation.d",
+    "diagnostics" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringAnimation.dia",
+    "index-unit-output-path" : "/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringAnimation.o",
+    "llvm-bc" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringAnimation.bc",
+    "object" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringAnimation.o",
+    "swift-dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringAnimation.swiftdeps",
+    "swiftmodule" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringAnimation~partial.swiftmodule"
+  },
+  "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/Sources/Spring/SpringButton.swift" : {
+    "const-values" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringButton.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringButton.d",
+    "diagnostics" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringButton.dia",
+    "index-unit-output-path" : "/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringButton.o",
+    "llvm-bc" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringButton.bc",
+    "object" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringButton.o",
+    "swift-dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringButton.swiftdeps",
+    "swiftmodule" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringButton~partial.swiftmodule"
+  },
+  "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/Sources/Spring/SpringImageView.swift" : {
+    "const-values" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringImageView.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringImageView.d",
+    "diagnostics" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringImageView.dia",
+    "index-unit-output-path" : "/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringImageView.o",
+    "llvm-bc" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringImageView.bc",
+    "object" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringImageView.o",
+    "swift-dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringImageView.swiftdeps",
+    "swiftmodule" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringImageView~partial.swiftmodule"
+  },
+  "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/Sources/Spring/SpringLabel.swift" : {
+    "const-values" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringLabel.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringLabel.d",
+    "diagnostics" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringLabel.dia",
+    "index-unit-output-path" : "/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringLabel.o",
+    "llvm-bc" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringLabel.bc",
+    "object" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringLabel.o",
+    "swift-dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringLabel.swiftdeps",
+    "swiftmodule" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringLabel~partial.swiftmodule"
+  },
+  "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/Sources/Spring/SpringTextField.swift" : {
+    "const-values" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringTextField.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringTextField.d",
+    "diagnostics" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringTextField.dia",
+    "index-unit-output-path" : "/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringTextField.o",
+    "llvm-bc" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringTextField.bc",
+    "object" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringTextField.o",
+    "swift-dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringTextField.swiftdeps",
+    "swiftmodule" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringTextField~partial.swiftmodule"
+  },
+  "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/Sources/Spring/SpringTextView.swift" : {
+    "const-values" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringTextView.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringTextView.d",
+    "diagnostics" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringTextView.dia",
+    "index-unit-output-path" : "/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringTextView.o",
+    "llvm-bc" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringTextView.bc",
+    "object" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringTextView.o",
+    "swift-dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringTextView.swiftdeps",
+    "swiftmodule" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringTextView~partial.swiftmodule"
+  },
+  "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/Sources/Spring/SpringView.swift" : {
+    "const-values" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringView.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringView.d",
+    "diagnostics" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringView.dia",
+    "index-unit-output-path" : "/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringView.o",
+    "llvm-bc" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringView.bc",
+    "object" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringView.o",
+    "swift-dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringView.swiftdeps",
+    "swiftmodule" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/SpringView~partial.swiftmodule"
+  },
+  "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/Sources/Spring/TransitionManager.swift" : {
+    "const-values" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/TransitionManager.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/TransitionManager.d",
+    "diagnostics" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/TransitionManager.dia",
+    "index-unit-output-path" : "/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/TransitionManager.o",
+    "llvm-bc" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/TransitionManager.bc",
+    "object" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/TransitionManager.o",
+    "swift-dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/TransitionManager.swiftdeps",
+    "swiftmodule" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/TransitionManager~partial.swiftmodule"
+  },
+  "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/Sources/Spring/TransitionZoom.swift" : {
+    "const-values" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/TransitionZoom.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/TransitionZoom.d",
+    "diagnostics" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/TransitionZoom.dia",
+    "index-unit-output-path" : "/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/TransitionZoom.o",
+    "llvm-bc" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/TransitionZoom.bc",
+    "object" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/TransitionZoom.o",
+    "swift-dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/TransitionZoom.swiftdeps",
+    "swiftmodule" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/TransitionZoom~partial.swiftmodule"
+  },
+  "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/Sources/Spring/UnwindSegue.swift" : {
+    "const-values" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/UnwindSegue.swiftconstvalues",
+    "dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/UnwindSegue.d",
+    "diagnostics" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/UnwindSegue.dia",
+    "index-unit-output-path" : "/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/UnwindSegue.o",
+    "llvm-bc" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/UnwindSegue.bc",
+    "object" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/UnwindSegue.o",
+    "swift-dependencies" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/UnwindSegue.swiftdeps",
+    "swiftmodule" : "/Users/joemcmahon/Library/Developer/Xcode/DerivedData/RadioSpiral-edcnkqfoqqsjzdavcmjnwzxfozge/SourcePackages/checkouts/Spring/build/Spring.build/Debug-iphoneos/Spring.build/Objects-normal/arm64/UnwindSegue~partial.swiftmodule"
+  }
+}
