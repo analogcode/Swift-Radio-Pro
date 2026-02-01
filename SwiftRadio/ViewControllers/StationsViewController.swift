@@ -52,9 +52,7 @@ class StationsViewController: BaseController, Handoffable {
         return tableView
     }()
     
-    private let nowPlayingView: NowPlayingView = {
-        return NowPlayingView()
-    }()
+    private let nowPlayingView = NowPlayingView()
     
     override func loadView() {
         super.loadView()
@@ -64,6 +62,7 @@ class StationsViewController: BaseController, Handoffable {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.backButtonDisplayMode = .minimal
         
         // NavigationBar items
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-hamburger"), style: .plain, target: self, action: #selector(handleMenuTap))
@@ -82,6 +81,11 @@ class StationsViewController: BaseController, Handoffable {
         nowPlayingView.tapHandler = { [weak self] in
             self?.nowPlayingBarButtonPressed()
         }
+        
+        // Set defaults station if the app started from CarPlay
+        updateNowPlayingButton(station: manager.currentStation)
+        updateHandoffUserActivity(userActivity, station: manager.currentStation)
+        startNowPlayingAnimation(player.isPlaying)
     }
     
     override func viewWillAppear(_ animated: Bool) {

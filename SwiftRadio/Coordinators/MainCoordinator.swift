@@ -12,42 +12,55 @@ import MessageUI
 class MainCoordinator: NavigationCoordinator {
     var childCoordinators: [Coordinator] = []
     let navigationController: UINavigationController
-    
+
     func start() {
         let loaderVC = LoaderController()
         loaderVC.delegate = self
         navigationController.setViewControllers([loaderVC], animated: false)
     }
-    
+
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
-    
+
     // MARK: - Shared
-    
-    func openWebsite() {
-        guard let url = URL(string: Config.website) else { return }
+
+    func openEmail(to email: String, from coordinator: AboutCoordinator) {
+        guard let aboutVC = coordinator.navigationController.viewControllers.first as? AboutViewController else { return }
+        guard MFMailComposeViewController.canSendMail() else {
+            aboutVC.showSendMailErrorAlert()
+            return
+        }
+
+        let mailComposer = MFMailComposeViewController()
+        mailComposer.mailComposeDelegate = coordinator
+        mailComposer.setToRecipients([email])
+        mailComposer.setSubject(Config.emailSubject)
+        mailComposer.setMessageBody("", isHTML: false)
+        aboutVC.present(mailComposer, animated: true)
+    }
+
+    func openAbout() {
+        let modalNav = UINavigationController()
+        let aboutCoordinator = AboutCoordinator(navigationController: modalNav)
+        aboutCoordinator.parentCoordinator = self
+        aboutCoordinator.start()
+        childCoordinators.append(aboutCoordinator)
+        navigationController.present(modalNav, animated: true)
+    }
+
+    func openWebsite(url: URL, from viewController: UIViewController) {
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
-    
-    func openEmail(in viewController: UIViewController & MFMailComposeViewControllerDelegate) {
-        let receipients = [Config.email]
-        let subject = Config.emailSubject
-        let messageBody = ""
-        
-        let configuredMailComposeViewController = viewController.configureMailComposeViewController(recepients: receipients, subject: subject, messageBody: messageBody)
-        
-        if viewController.canSendMail {
-            viewController.present(configuredMailComposeViewController, animated: true, completion: nil)
-        } else {
-            viewController.showSendMailErrorAlert()
+
+    func share(_ text: String, from viewController: UIViewController) {
+        let activityViewController = UIActivityViewController(activityItems: [text], applicationActivities: nil)
+        if let popoverController = activityViewController.popoverPresentationController {
+            popoverController.sourceView = viewController.view
+            popoverController.sourceRect = CGRect(x: viewController.view.bounds.midX, y: viewController.view.bounds.midY, width: 0, height: 0)
+            popoverController.permittedArrowDirections = []
         }
-    }
-    
-    func openAbout(in viewController: UIViewController) {
-        let aboutController = Storyboard.viewController as AboutViewController
-        aboutController.delegate = self
-        viewController.present(aboutController, animated: true)
+        viewController.present(activityViewController, animated: true)
     }
 }
 
@@ -64,63 +77,43 @@ extension MainCoordinator: LoaderControllerDelegate {
 // MARK: - StationsViewControllerDelegate
 
 extension MainCoordinator: StationsViewControllerDelegate {
-    
+
     func pushNowPlayingController(_ stationsViewController: StationsViewController, newStation: Bool) {
-        let nowPlayingController = Storyboard.viewController as NowPlayingViewController
+        let nowPlayingController = NowPlayingViewController()
         nowPlayingController.delegate = self
         nowPlayingController.isNewStation = newStation
         navigationController.pushViewController(nowPlayingController, animated: true)
     }
-    
+
     func presentPopUpMenuController(_ stationsViewController: StationsViewController) {
-        let popUpMenuController = Storyboard.viewController as PopUpMenuViewController
-        popUpMenuController.delegate = self
-        navigationController.present(popUpMenuController, animated: true)
+        openAbout()
     }
 }
 
 // MARK: - NowPlayingViewControllerDelegate
 
 extension MainCoordinator: NowPlayingViewControllerDelegate {
-    
-    func didTapInfoButton(_ nowPlayingViewController: NowPlayingViewController, station: RadioStation) {
-        let infoController = Storyboard.viewController as InfoDetailViewController
-        infoController.currentStation = station
-        navigationController.pushViewController(infoController, animated: true)
+
+    func didSelectBottomSheetOption(_ option: BottomSheetViewController.Option, from controller: NowPlayingViewController) {
+        guard let station = StationsManager.shared.currentStation else { return }
+        BottomSheetHandler.handle(option, station: station, from: controller)
     }
-    
+
     func didTapCompanyButton(_ nowPlayingViewController: NowPlayingViewController) {
-        openAbout(in: nowPlayingViewController)
-    }
-    
-    func didTapShareButton(_ nowPlayingViewController: NowPlayingViewController, station: RadioStation, artworkURL: URL?) {
-        ShareActivity.activityController(station: station, artworkURL: artworkURL, sourceView: nowPlayingViewController.view) { [weak nowPlayingViewController] controller in
-            nowPlayingViewController?.present(controller, animated: true, completion: nil)
-        }
+        openAbout()
     }
 }
 
 // MARK: - PopUpMenuViewControllerDelegate
 
 extension MainCoordinator: PopUpMenuViewControllerDelegate {
-    
+
     func didTapWebsiteButton(_ popUpMenuViewController: PopUpMenuViewController) {
-        openWebsite()
+        guard let url = URL(string: Config.website) else { return }
+        openWebsite(url: url, from: popUpMenuViewController)
     }
-    
+
     func didTapAboutButton(_ popUpMenuViewController: PopUpMenuViewController) {
-        openAbout(in: popUpMenuViewController)
-    }
-}
-
-// MARK: - PopUpMenuViewControllerDelegate
-
-extension MainCoordinator: AboutViewControllerDelegate {
-    func didTapEmailButton(_ aboutViewController: AboutViewController) {
-        openEmail(in: aboutViewController)
-    }
-    
-    func didTapWebsiteButton(_ aboutViewController: AboutViewController) {
-        openWebsite()
+        openAbout()
     }
 }

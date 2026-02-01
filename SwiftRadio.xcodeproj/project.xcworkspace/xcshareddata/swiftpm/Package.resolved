@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/fethica/FRadioPlayer.git",
       "state" : {
-        "branch" : "v0.2.0",
-        "revision" : "c3f472ed8cb59b442312362bca363863962c88b3"
+        "branch" : "v0.2.1",
+        "revision" : "a14ce692f28ece480b5eeb9e208aa98493ee4922"
       }
     },
     {
