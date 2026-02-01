@@ -17,12 +17,15 @@
 		94452E551AD7086800BFE7A5 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94452E541AD7086800BFE7A5 /* AboutViewController.swift */; };
 		945DB3C21AD58E3A00495EBB /* stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 945DB3C11AD58E3A00495EBB /* stations.json */; };
 		945DB3C51AD5A6E200495EBB /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 945DB3C41AD5A6E200495EBB /* NothingFoundCell.xib */; };
-		AA0000011ACC9DEE005B7C26 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000001ACC9DEE005B7C26 /* NetworkService.swift */; };
 		94AC70AE1AD05C6200652982 /* RadioStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AC70AD1AD05C6200652982 /* RadioStation.swift */; };
 		94D1D0A51AD6D6230022CA11 /* InfoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D1D0A41AD6D6230022CA11 /* InfoDetailViewController.swift */; };
 		94D260911B45D20000DE671C /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D260901B45D20000DE671C /* Config.swift */; };
 		94D260961B45E3FA00DE671C /* AnimationFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D260951B45E3FA00DE671C /* AnimationFrames.swift */; };
 		94E9761C1B1A8F3200F52B1E /* UIImage+DropShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9761B1B1A8F3200F52B1E /* UIImage+DropShadow.swift */; };
+		AA0000011ACC9DEE005B7C26 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000001ACC9DEE005B7C26 /* NetworkService.swift */; };
+		AA000002291F376D0058C82A /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000001ACC9DEE005B7C26 /* NetworkService.swift */; };
+		AA0000101ACC9DEE005B7C26 /* LNPopupController in Frameworks */ = {isa = PBXBuildFile; productRef = AA0000111ACC9DEE005B7C26 /* LNPopupController */; };
+		AA0000121ACC9DEE005B7C26 /* LNPopupController in Frameworks */ = {isa = PBXBuildFile; productRef = AA0000131ACC9DEE005B7C26 /* LNPopupController */; };
 		CA142F672D3D8E2F0071A388 /* NSLayoutConstraint+with.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA142F662D3D8E280071A388 /* NSLayoutConstraint+with.swift */; };
 		CA142F682D3D8E2F0071A388 /* NSLayoutConstraint+with.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA142F662D3D8E280071A388 /* NSLayoutConstraint+with.swift */; };
 		CA142F6A2D3D9A0D0071A388 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA142F692D3D9A0D0071A388 /* BottomSheetViewController.swift */; };
@@ -59,8 +62,6 @@
 		CE60361A2A48BA2500E15E15 /* UITableViewCell+reuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6036182A48BA2500E15E15 /* UITableViewCell+reuseIdentifier.swift */; };
 		CE6036212A48C51A00E15E15 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = CE6036202A48C51A00E15E15 /* NVActivityIndicatorView */; };
 		CE6036232A48C51A00E15E15 /* NVActivityIndicatorViewExtended in Frameworks */ = {isa = PBXBuildFile; productRef = CE6036222A48C51A00E15E15 /* NVActivityIndicatorViewExtended */; };
-		CE6036242A48F68D00E15E15 /* NowPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE60361C2A48C4A400E15E15 /* NowPlayingView.swift */; };
-		CE6036252A48F68D00E15E15 /* NowPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE60361C2A48C4A400E15E15 /* NowPlayingView.swift */; };
 		CE6036282A48F70A00E15E15 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = CE6036272A48F70A00E15E15 /* NVActivityIndicatorView */; };
 		CE60362A2A48F70A00E15E15 /* NVActivityIndicatorViewExtended in Frameworks */ = {isa = PBXBuildFile; productRef = CE6036292A48F70A00E15E15 /* NVActivityIndicatorViewExtended */; };
 		CE6A3E31291F376D0058C82A /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D260901B45D20000DE671C /* Config.swift */; };
@@ -68,7 +69,6 @@
 		CE6A3E35291F376D0058C82A /* StationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE963ECB29135A6F004F299E /* StationsManager.swift */; };
 		CE6A3E36291F376D0058C82A /* InfoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D1D0A41AD6D6230022CA11 /* InfoDetailViewController.swift */; };
 		CE6A3E37291F376D0058C82A /* LogoShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258DCD722D93A3500166C65 /* LogoShareView.swift */; };
-		AA000002291F376D0058C82A /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000001ACC9DEE005B7C26 /* NetworkService.swift */; };
 		CE6A3E39291F376D0058C82A /* UIImage+DropShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9761B1B1A8F3200F52B1E /* UIImage+DropShadow.swift */; };
 		CE6A3E3A291F376D0058C82A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94452E541AD7086800BFE7A5 /* AboutViewController.swift */; };
 		CE6A3E3C291F376D0058C82A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */; };
@@ -131,12 +131,12 @@
 		94452E541AD7086800BFE7A5 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		945DB3C11AD58E3A00495EBB /* stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stations.json; sourceTree = "<group>"; };
 		945DB3C41AD5A6E200495EBB /* NothingFoundCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
-		AA0000001ACC9DEE005B7C26 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		94AC70AD1AD05C6200652982 /* RadioStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioStation.swift; sourceTree = "<group>"; };
 		94D1D0A41AD6D6230022CA11 /* InfoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoDetailViewController.swift; sourceTree = "<group>"; };
 		94D260901B45D20000DE671C /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		94D260951B45E3FA00DE671C /* AnimationFrames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationFrames.swift; sourceTree = "<group>"; };
 		94E9761B1B1A8F3200F52B1E /* UIImage+DropShadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+DropShadow.swift"; sourceTree = "<group>"; };
+		AA0000001ACC9DEE005B7C26 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		CA142F662D3D8E280071A388 /* NSLayoutConstraint+with.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+with.swift"; sourceTree = "<group>"; };
 		CA142F692D3D9A0D0071A388 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
 		CA142F6C2D3D9DFB0071A388 /* BottomSheetHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetHandler.swift; sourceTree = "<group>"; };
@@ -154,7 +154,6 @@
 		CE6036122A47A87A00E15E15 /* StationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsViewController.swift; sourceTree = "<group>"; };
 		CE6036152A47B88600E15E15 /* StationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationTableViewCell.swift; sourceTree = "<group>"; };
 		CE6036182A48BA2500E15E15 /* UITableViewCell+reuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+reuseIdentifier.swift"; sourceTree = "<group>"; };
-		CE60361C2A48C4A400E15E15 /* NowPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingView.swift; sourceTree = "<group>"; };
 		CE6A3E4F291F376D0058C82A /* SwiftRadio-CarPlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftRadio-CarPlay.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE6ECCF9292F13DF008B3C16 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		CE6ECCFC292F1445008B3C16 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
@@ -187,6 +186,7 @@
 				CE6036232A48C51A00E15E15 /* NVActivityIndicatorViewExtended in Frameworks */,
 				CE37D7B4290F47E000B0933B /* Spring in Frameworks */,
 				CE6036212A48C51A00E15E15 /* NVActivityIndicatorView in Frameworks */,
+				AA0000101ACC9DEE005B7C26 /* LNPopupController in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +198,7 @@
 				CE60362A2A48F70A00E15E15 /* NVActivityIndicatorViewExtended in Frameworks */,
 				CE6A3E44291F376D0058C82A /* Spring in Frameworks */,
 				CE6036282A48F70A00E15E15 /* NVActivityIndicatorView in Frameworks */,
+				AA0000121ACC9DEE005B7C26 /* LNPopupController in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,7 +298,6 @@
 			children = (
 				6258DCD722D93A3500166C65 /* LogoShareView.swift */,
 				6258DCD922D93A5400166C65 /* LogoShareView.xib */,
-				CE60361C2A48C4A400E15E15 /* NowPlayingView.swift */,
 				CEE9A27A2B535C780018FE68 /* AlbumArtworkView.swift */,
 				CEE9A27D2B54A5520018FE68 /* ControlsView.swift */,
 			);
@@ -429,6 +429,7 @@
 				CE37D7B6290F4A9700B0933B /* FRadioPlayer */,
 				CE6036202A48C51A00E15E15 /* NVActivityIndicatorView */,
 				CE6036222A48C51A00E15E15 /* NVActivityIndicatorViewExtended */,
+				AA0000111ACC9DEE005B7C26 /* LNPopupController */,
 			);
 			productName = RadioPro;
 			productReference = 9409E1161ABF6FEA00312E2B /* SwiftRadio.app */;
@@ -452,6 +453,7 @@
 				CE6A3E2E291F376D0058C82A /* FRadioPlayer */,
 				CE6036272A48F70A00E15E15 /* NVActivityIndicatorView */,
 				CE6036292A48F70A00E15E15 /* NVActivityIndicatorViewExtended */,
+				AA0000131ACC9DEE005B7C26 /* LNPopupController */,
 			);
 			productName = RadioPro;
 			productReference = CE6A3E4F291F376D0058C82A /* SwiftRadio-CarPlay.app */;
@@ -497,6 +499,7 @@
 				CE37D7B2290F47E000B0933B /* XCRemoteSwiftPackageReference "Spring" */,
 				CE37D7B5290F4A9700B0933B /* XCRemoteSwiftPackageReference "FRadioPlayer" */,
 				CE60361F2A48C51A00E15E15 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
+				AA0000141ACC9DEE005B7C26 /* XCRemoteSwiftPackageReference "LNPopupController" */,
 			);
 			productRefGroup = 9409E1171ABF6FEA00312E2B /* Products */;
 			projectDirPath = "";
@@ -588,7 +591,6 @@
 				CAB4E82A2D3D7DC7001282E9 /* SceneDelegate.swift in Sources */,
 				CE6ECD03292F358C008B3C16 /* UIViewController+Email.swift in Sources */,
 				CEDABBED29121BBA00C0367F /* UIImage+Cache.swift in Sources */,
-				CE6036252A48F68D00E15E15 /* NowPlayingView.swift in Sources */,
 				94AC70AE1AD05C6200652982 /* RadioStation.swift in Sources */,
 				CA142F6A2D3D9A0D0071A388 /* BottomSheetViewController.swift in Sources */,
 				CE9EE8E1293C048A00F62041 /* LoaderController.swift in Sources */,
@@ -634,7 +636,6 @@
 				CAB4E8292D3D7DC7001282E9 /* SceneDelegate.swift in Sources */,
 				CE6ECD04292F358C008B3C16 /* UIViewController+Email.swift in Sources */,
 				CE6A3E3E291F376D0058C82A /* UIImage+Cache.swift in Sources */,
-				CE6036242A48F68D00E15E15 /* NowPlayingView.swift in Sources */,
 				CE6A3E40291F376D0058C82A /* RadioStation.swift in Sources */,
 				CA142F6B2D3D9A0D0071A388 /* BottomSheetViewController.swift in Sources */,
 				CE9EE8E2293C048A00F62041 /* LoaderController.swift in Sources */,
@@ -973,6 +974,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		AA0000141ACC9DEE005B7C26 /* XCRemoteSwiftPackageReference "LNPopupController" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/LeoNatan/LNPopupController.git";
+			requirement = {
+				kind = exactVersion;
+				version = 4.4.1;
+			};
+		};
 		CE37D7B2290F47E000B0933B /* XCRemoteSwiftPackageReference "Spring" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/fethica/Spring.git";
@@ -1016,6 +1025,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		AA0000111ACC9DEE005B7C26 /* LNPopupController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA0000141ACC9DEE005B7C26 /* XCRemoteSwiftPackageReference "LNPopupController" */;
+			productName = LNPopupController;
+		};
+		AA0000131ACC9DEE005B7C26 /* LNPopupController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA0000141ACC9DEE005B7C26 /* XCRemoteSwiftPackageReference "LNPopupController" */;
+			productName = LNPopupController;
+		};
 		CE37D7B3290F47E000B0933B /* Spring */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CE37D7B2290F47E000B0933B /* XCRemoteSwiftPackageReference "Spring" */;

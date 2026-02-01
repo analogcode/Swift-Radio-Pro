@@ -221,6 +221,10 @@ class InfoDetailViewController: BaseController {
         return button
     }
 
+    @objc func dismissSelf() {
+        dismiss(animated: true)
+    }
+
     @objc private func linkTapped(_ sender: UIButton) {
         guard sender.tag < links.count else { return }
         UIApplication.shared.open(links[sender.tag].url)

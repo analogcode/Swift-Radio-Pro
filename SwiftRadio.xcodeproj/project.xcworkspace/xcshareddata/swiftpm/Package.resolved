@@ -1,5 +1,5 @@
 {
-  "originHash" : "c03022914e54a7652fd2a88118474c6bd04be8d7b4eb153d776df85ac35986a7",
+  "originHash" : "e37648914484d17da6b942c8977f96f4c1f61c966fda5c0511b8f2a5000a0b22",
   "pins" : [
     {
       "identity" : "fradioplayer",
@@ -8,6 +8,15 @@
       "state" : {
         "revision" : "243cd9246b79a186c39b3c53dbe725c8c01bab59",
         "version" : "0.2.2"
+      }
+    },
+    {
+      "identity" : "lnpopupcontroller",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/LeoNatan/LNPopupController.git",
+      "state" : {
+        "revision" : "6f4bfa89a32cc7254599869b4bca8d2638e74671",
+        "version" : "4.4.1"
       }
     },
     {

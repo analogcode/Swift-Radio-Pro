@@ -8,10 +8,19 @@
 
 import UIKit
 import MessageUI
+import LNPopupController
 
 class MainCoordinator: NavigationCoordinator {
     var childCoordinators: [Coordinator] = []
     let navigationController: UINavigationController
+
+    private lazy var nowPlayingViewController: NowPlayingViewController = {
+        let vc = NowPlayingViewController()
+        vc.delegate = self
+        return vc
+    }()
+
+    private var isPopupBarPresented = false
 
     func start() {
         let loaderVC = LoaderController()
@@ -21,6 +30,18 @@ class MainCoordinator: NavigationCoordinator {
 
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
+    }
+
+    // MARK: - Popup Bar
+
+    func presentPopupBarIfNeeded() {
+        guard !isPopupBarPresented else { return }
+        navigationController.popupBar.barStyle = .prominent
+        navigationController.popupBar.tintColor = .white
+        navigationController.popupBar.progressViewStyle = .bottom
+        navigationController.popupContentView.popupCloseButtonStyle = .chevron
+        navigationController.presentPopupBar(withContentViewController: nowPlayingViewController, animated: true)
+        isPopupBarPresented = true
     }
 
     // MARK: - Shared
@@ -78,11 +99,16 @@ extension MainCoordinator: LoaderControllerDelegate {
 
 extension MainCoordinator: StationsViewControllerDelegate {
 
-    func pushNowPlayingController(_ stationsViewController: StationsViewController, newStation: Bool) {
-        let nowPlayingController = NowPlayingViewController()
-        nowPlayingController.delegate = self
-        nowPlayingController.isNewStation = newStation
-        navigationController.pushViewController(nowPlayingController, animated: true)
+    func didSelectStation(_ station: RadioStation, from stationsViewController: StationsViewController) {
+        let isNewStation = station != StationsManager.shared.currentStation
+        if isNewStation {
+            StationsManager.shared.set(station: station)
+        }
+        presentPopupBarIfNeeded()
+    }
+
+    func didTapNowPlaying(_ stationsViewController: StationsViewController) {
+        navigationController.openPopup(animated: true)
     }
 
     func presentAbout(_ stationsViewController: StationsViewController) {
@@ -96,7 +122,15 @@ extension MainCoordinator: NowPlayingViewControllerDelegate {
 
     func didSelectBottomSheetOption(_ option: BottomSheetViewController.Option, from controller: NowPlayingViewController) {
         guard let station = StationsManager.shared.currentStation else { return }
-        BottomSheetHandler.handle(option, station: station, from: controller)
+
+        switch option {
+        case .info:
+            let infoController = InfoDetailViewController(station: station)
+            navigationController.pushViewController(infoController, animated: true)
+            navigationController.closePopup(animated: true)
+        default:
+            BottomSheetHandler.handle(option, station: station, from: controller)
+        }
     }
 
     func didTapCompanyButton(_ nowPlayingViewController: NowPlayingViewController) {
