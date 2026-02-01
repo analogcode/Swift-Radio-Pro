@@ -14,7 +14,6 @@
 		6258DCDA22D93A5400166C65 /* LogoShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6258DCD922D93A5400166C65 /* LogoShareView.xib */; };
 		9409E11C1ABF6FEA00312E2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */; };
 		9409E1261ABF6FEA00312E2B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9409E1251ABF6FEA00312E2B /* Images.xcassets */; };
-		94452E4F1AD6F24700BFE7A5 /* PopUpMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94452E4E1AD6F24700BFE7A5 /* PopUpMenuViewController.swift */; };
 		94452E551AD7086800BFE7A5 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94452E541AD7086800BFE7A5 /* AboutViewController.swift */; };
 		945DB3C21AD58E3A00495EBB /* stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 945DB3C11AD58E3A00495EBB /* stations.json */; };
 		945DB3C51AD5A6E200495EBB /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 945DB3C41AD5A6E200495EBB /* NothingFoundCell.xib */; };
@@ -72,7 +71,6 @@
 		AA000002291F376D0058C82A /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000001ACC9DEE005B7C26 /* NetworkService.swift */; };
 		CE6A3E39291F376D0058C82A /* UIImage+DropShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9761B1B1A8F3200F52B1E /* UIImage+DropShadow.swift */; };
 		CE6A3E3A291F376D0058C82A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94452E541AD7086800BFE7A5 /* AboutViewController.swift */; };
-		CE6A3E3B291F376D0058C82A /* PopUpMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94452E4E1AD6F24700BFE7A5 /* PopUpMenuViewController.swift */; };
 		CE6A3E3C291F376D0058C82A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */; };
 		CE6A3E3D291F376D0058C82A /* AnimationFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D260951B45E3FA00DE671C /* AnimationFrames.swift */; };
 		CE6A3E3E291F376D0058C82A /* UIImage+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDABBEC29121BBA00C0367F /* UIImage+Cache.swift */; };
@@ -130,7 +128,6 @@
 		9409E11A1ABF6FEA00312E2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9409E1251ABF6FEA00312E2B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		94452E4E1AD6F24700BFE7A5 /* PopUpMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpMenuViewController.swift; sourceTree = "<group>"; };
 		94452E541AD7086800BFE7A5 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		945DB3C11AD58E3A00495EBB /* stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stations.json; sourceTree = "<group>"; };
 		945DB3C41AD5A6E200495EBB /* NothingFoundCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
@@ -248,19 +245,43 @@
 				CE8062F5291EF598008BD097 /* Model */,
 				CE8062F4291EF57D008BD097 /* Data */,
 				CE8062F3291EF566008BD097 /* Networking */,
+				BB0000032D4E000000000003 /* Services */,
 				CE8062F2291EF545008BD097 /* Cells */,
-				94D260901B45D20000DE671C /* Config.swift */,
-				CA3A11032D4E000000111002 /* Content.swift */,
-				CA3A11002D4E000000111001 /* InfoSection.swift */,
-				9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */,
-				CAB4E8282D3D7DC7001282E9 /* SceneDelegate.swift */,
-				CA2511B42D458033006D1A99 /* AudioSetupService.swift */,
+				BB0000012D4E000000000001 /* App */,
+				BB0000022D4E000000000002 /* Config */,
 				9409E1251ABF6FEA00312E2B /* Images.xcassets */,
 				9409E11A1ABF6FEA00312E2B /* Info.plist */,
 				CEA82F492921F260009E9FA0 /* Info-CarPlay.plist */,
 				5FDEE0211F72FF980064333C /* LaunchScreen.storyboard */,
 			);
 			path = SwiftRadio;
+			sourceTree = "<group>";
+		};
+		BB0000012D4E000000000001 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */,
+				CAB4E8282D3D7DC7001282E9 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		BB0000022D4E000000000002 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				94D260901B45D20000DE671C /* Config.swift */,
+				CA3A11032D4E000000111002 /* Content.swift */,
+				CA3A11002D4E000000111001 /* InfoSection.swift */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		BB0000032D4E000000000003 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CA2511B42D458033006D1A99 /* AudioSetupService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		CE0A4993291F39660071C0CC /* CarPlay */ = {
@@ -279,7 +300,6 @@
 				CE60361C2A48C4A400E15E15 /* NowPlayingView.swift */,
 				CEE9A27A2B535C780018FE68 /* AlbumArtworkView.swift */,
 				CEE9A27D2B54A5520018FE68 /* ControlsView.swift */,
-				CA142F6C2D3D9DFB0071A388 /* BottomSheetHandler.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -346,7 +366,6 @@
 				CA142F692D3D9A0D0071A388 /* BottomSheetViewController.swift */,
 				94452E541AD7086800BFE7A5 /* AboutViewController.swift */,
 				94D1D0A41AD6D6230022CA11 /* InfoDetailViewController.swift */,
-				94452E4E1AD6F24700BFE7A5 /* PopUpMenuViewController.swift */,
 				CE6036122A47A87A00E15E15 /* StationsViewController.swift */,
 				CEE9A2772B5345C30018FE68 /* NowPlayingViewController.swift */,
 			);
@@ -366,6 +385,7 @@
 				CED6353A293081ED002B216F /* Handoffable.swift */,
 				CE321FF229371140001572BD /* Bundle+appName.swift */,
 				CE6036182A48BA2500E15E15 /* UITableViewCell+reuseIdentifier.swift */,
+				CA142F6C2D3D9DFB0071A388 /* BottomSheetHandler.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -559,7 +579,6 @@
 				94E9761C1B1A8F3200F52B1E /* UIImage+DropShadow.swift in Sources */,
 				94452E551AD7086800BFE7A5 /* AboutViewController.swift in Sources */,
 				CED6353B293081ED002B216F /* Handoffable.swift in Sources */,
-				94452E4F1AD6F24700BFE7A5 /* PopUpMenuViewController.swift in Sources */,
 				CEE9A27B2B535C780018FE68 /* AlbumArtworkView.swift in Sources */,
 				CE6ECCFD292F1445008B3C16 /* MainCoordinator.swift in Sources */,
 				CA2511B32D4E100000111003 /* AboutCoordinator.swift in Sources */,
@@ -605,7 +624,6 @@
 				CE6A3E39291F376D0058C82A /* UIImage+DropShadow.swift in Sources */,
 				CE6A3E3A291F376D0058C82A /* AboutViewController.swift in Sources */,
 				CED6353C293081ED002B216F /* Handoffable.swift in Sources */,
-				CE6A3E3B291F376D0058C82A /* PopUpMenuViewController.swift in Sources */,
 				CEE9A27C2B535C780018FE68 /* AlbumArtworkView.swift in Sources */,
 				CA2511B82D45B1B6006D1A99 /* FeaturesViewController.swift in Sources */,
 				CE6ECCFE292F1448008B3C16 /* MainCoordinator.swift in Sources */,

@@ -85,7 +85,7 @@ extension MainCoordinator: StationsViewControllerDelegate {
         navigationController.pushViewController(nowPlayingController, animated: true)
     }
 
-    func presentPopUpMenuController(_ stationsViewController: StationsViewController) {
+    func presentAbout(_ stationsViewController: StationsViewController) {
         openAbout()
     }
 }
@@ -100,20 +100,6 @@ extension MainCoordinator: NowPlayingViewControllerDelegate {
     }
 
     func didTapCompanyButton(_ nowPlayingViewController: NowPlayingViewController) {
-        openAbout()
-    }
-}
-
-// MARK: - PopUpMenuViewControllerDelegate
-
-extension MainCoordinator: PopUpMenuViewControllerDelegate {
-
-    func didTapWebsiteButton(_ popUpMenuViewController: PopUpMenuViewController) {
-        guard let url = URL(string: Config.website) else { return }
-        openWebsite(url: url, from: popUpMenuViewController)
-    }
-
-    func didTapAboutButton(_ popUpMenuViewController: PopUpMenuViewController) {
         openAbout()
     }
 }

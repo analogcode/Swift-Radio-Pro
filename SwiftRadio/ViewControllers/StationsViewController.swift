@@ -11,7 +11,7 @@ import FRadioPlayer
 
 protocol StationsViewControllerDelegate: AnyObject {
     func pushNowPlayingController(_ stationsViewController: StationsViewController, newStation: Bool)
-    func presentPopUpMenuController(_ stationsViewController: StationsViewController)
+    func presentAbout(_ stationsViewController: StationsViewController)
 }
 
 class StationsViewController: BaseController, Handoffable {
@@ -142,7 +142,7 @@ class StationsViewController: BaseController, Handoffable {
     }
     
     @objc func handleMenuTap() {
-        delegate?.presentPopUpMenuController(self)
+        delegate?.presentAbout(self)
     }
     
     func nowPlayingPressed(_ sender: UIButton) {
