@@ -50,21 +50,22 @@ class StationsManager {
         self.player.addObserver(self)
     }
     
-    func fetch(_ completion: StationsCompletion? = nil) {
-        DataManager.getStation { [weak self] result in
-            guard case .success(let stations) = result, self?.stations != stations else {
-                completion?(result)
-                return
+    @MainActor
+    func fetch() async throws {
+        let stations = try await NetworkService.fetchStations()
+        guard self.stations != stations else { return }
+        self.stations = stations
+        if let currentStation, !stations.contains(currentStation) { reset() }
+    }
+
+    func fetch(_ completion: ((Result<[RadioStation], Error>) -> Void)? = nil) {
+        Task { @MainActor in
+            do {
+                try await fetch()
+                completion?(.success(stations))
+            } catch {
+                completion?(.failure(error))
             }
-            
-            self?.stations = stations
-            
-            // Reset everything if the new stations list doesn't have the current station
-            if let currentStation = self?.currentStation, self?.stations.firstIndex(of: currentStation) == nil {
-                self?.reset()
-            }
-            
-            completion?(result)
         }
     }
     
@@ -192,19 +193,17 @@ extension StationsManager: FRadioPlayerObserver {
     }
     
     func radioPlayer(_ player: FRadioPlayer, artworkDidChange artworkURL: URL?) {
-        
-        guard let artworkURL = artworkURL else {
+        guard let artworkURL else {
             resetArtwork(with: currentStation)
             return
         }
-        
-        UIImage.image(from: artworkURL) { [weak self] image in
-            guard let image = image else {
-                self?.resetArtwork(with: self?.currentStation)
+
+        Task { [weak self] in
+            guard let image = await NetworkService.fetchImage(from: artworkURL) else {
+                await MainActor.run { self?.resetArtwork(with: self?.currentStation) }
                 return
             }
-            
-            self?.updateLockScreen(with: image)
+            await MainActor.run { self?.updateLockScreen(with: image) }
         }
     }
 }

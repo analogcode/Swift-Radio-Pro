@@ -18,7 +18,7 @@
 		94452E551AD7086800BFE7A5 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94452E541AD7086800BFE7A5 /* AboutViewController.swift */; };
 		945DB3C21AD58E3A00495EBB /* stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 945DB3C11AD58E3A00495EBB /* stations.json */; };
 		945DB3C51AD5A6E200495EBB /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 945DB3C41AD5A6E200495EBB /* NothingFoundCell.xib */; };
-		949BBB401ACC9DEE005B7C26 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949BBB3F1ACC9DEE005B7C26 /* DataManager.swift */; };
+		AA0000011ACC9DEE005B7C26 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000001ACC9DEE005B7C26 /* NetworkService.swift */; };
 		94AC70AE1AD05C6200652982 /* RadioStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AC70AD1AD05C6200652982 /* RadioStation.swift */; };
 		94D1D0A51AD6D6230022CA11 /* InfoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D1D0A41AD6D6230022CA11 /* InfoDetailViewController.swift */; };
 		94D260911B45D20000DE671C /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D260901B45D20000DE671C /* Config.swift */; };
@@ -69,7 +69,7 @@
 		CE6A3E35291F376D0058C82A /* StationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE963ECB29135A6F004F299E /* StationsManager.swift */; };
 		CE6A3E36291F376D0058C82A /* InfoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D1D0A41AD6D6230022CA11 /* InfoDetailViewController.swift */; };
 		CE6A3E37291F376D0058C82A /* LogoShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258DCD722D93A3500166C65 /* LogoShareView.swift */; };
-		CE6A3E38291F376D0058C82A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949BBB3F1ACC9DEE005B7C26 /* DataManager.swift */; };
+		AA000002291F376D0058C82A /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000001ACC9DEE005B7C26 /* NetworkService.swift */; };
 		CE6A3E39291F376D0058C82A /* UIImage+DropShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9761B1B1A8F3200F52B1E /* UIImage+DropShadow.swift */; };
 		CE6A3E3A291F376D0058C82A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94452E541AD7086800BFE7A5 /* AboutViewController.swift */; };
 		CE6A3E3B291F376D0058C82A /* PopUpMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94452E4E1AD6F24700BFE7A5 /* PopUpMenuViewController.swift */; };
@@ -134,7 +134,7 @@
 		94452E541AD7086800BFE7A5 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		945DB3C11AD58E3A00495EBB /* stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stations.json; sourceTree = "<group>"; };
 		945DB3C41AD5A6E200495EBB /* NothingFoundCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
-		949BBB3F1ACC9DEE005B7C26 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		AA0000001ACC9DEE005B7C26 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		94AC70AD1AD05C6200652982 /* RadioStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioStation.swift; sourceTree = "<group>"; };
 		94D1D0A41AD6D6230022CA11 /* InfoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoDetailViewController.swift; sourceTree = "<group>"; };
 		94D260901B45D20000DE671C /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -313,7 +313,7 @@
 		CE8062F3291EF566008BD097 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				949BBB3F1ACC9DEE005B7C26 /* DataManager.swift */,
+				AA0000001ACC9DEE005B7C26 /* NetworkService.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -555,7 +555,7 @@
 				CE6ECCFA292F13DF008B3C16 /* Coordinator.swift in Sources */,
 				94D1D0A51AD6D6230022CA11 /* InfoDetailViewController.swift in Sources */,
 				6258DCD822D93A3500166C65 /* LogoShareView.swift in Sources */,
-				949BBB401ACC9DEE005B7C26 /* DataManager.swift in Sources */,
+				AA0000011ACC9DEE005B7C26 /* NetworkService.swift in Sources */,
 				94E9761C1B1A8F3200F52B1E /* UIImage+DropShadow.swift in Sources */,
 				94452E551AD7086800BFE7A5 /* AboutViewController.swift in Sources */,
 				CED6353B293081ED002B216F /* Handoffable.swift in Sources */,
@@ -601,7 +601,7 @@
 				CE6ECCFB292F13E6008B3C16 /* Coordinator.swift in Sources */,
 				CE6A3E36291F376D0058C82A /* InfoDetailViewController.swift in Sources */,
 				CE6A3E37291F376D0058C82A /* LogoShareView.swift in Sources */,
-				CE6A3E38291F376D0058C82A /* DataManager.swift in Sources */,
+				AA000002291F376D0058C82A /* NetworkService.swift in Sources */,
 				CE6A3E39291F376D0058C82A /* UIImage+DropShadow.swift in Sources */,
 				CE6A3E3A291F376D0058C82A /* AboutViewController.swift in Sources */,
 				CED6353C293081ED002B216F /* Handoffable.swift in Sources */,

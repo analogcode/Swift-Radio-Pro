@@ -82,15 +82,13 @@ final class LibrariesViewController: UITableViewController {
         do {
             // Run tasks in parallel with ThrowingTaskGroup
             try await withThrowingTaskGroup(of: (Int, String, String?).self) { group in
-                // Add a task for each library, capturing the index so we know where to store the result
                 for (index, lib) in libraries.enumerated() {
                     group.addTask {
-                        let repoData = try await self.fetchGitHubRepo(owner: lib.owner, repo: lib.repo)
-                        return (index, repoData.name, repoData.description)
+                        let repo = try await NetworkService.fetchRepository(owner: lib.owner, repo: lib.repo)
+                        return (index, repo.name, repo.description)
                     }
                 }
-                
-                // Collect results as they finish
+
                 for try await (index, name, desc) in group {
                     libraries[index].name = name
                     libraries[index].description = desc
@@ -111,28 +109,6 @@ final class LibrariesViewController: UITableViewController {
                 // Optionally show an alert or fallback UI
             }
         }
-    }
-    
-    /// Basic GitHub fetch to retrieve name, description, and HTML URL
-    private func fetchGitHubRepo(owner: String, repo: String) async throws -> (name: String, description: String?) {
-        let urlString = "https://api.github.com/repos/\(owner)/\(repo)"
-        guard let url = URL(string: urlString) else {
-            throw URLError(.badURL)
-        }
-        
-        let request = URLRequest(url: url)
-        // If you need higher rate limits, add an Authorization header with a personal token
-        // request.setValue("Bearer YOUR_TOKEN", forHTTPHeaderField: "Authorization")
-        
-        let (data, response) = try await URLSession.shared.data(for: request)
-        guard let httpResponse = response as? HTTPURLResponse,
-              (200...299).contains(httpResponse.statusCode) else {
-            throw URLError(.badServerResponse)
-        }
-        
-        let decoder = JSONDecoder()
-        let ghRepo = try decoder.decode(GitHubRepo.self, from: data)
-        return (ghRepo.name, ghRepo.description)
     }
     
     // MARK: - UITableViewDataSource
@@ -191,18 +167,5 @@ final class LibrariesViewController: UITableViewController {
             default:
                 break
         }
-    }
-}
-
-// MARK: - Helper Data Model
-
-/// Minimal model for GitHub's repo JSON
-struct GitHubRepo: Decodable {
-    let name: String
-    let description: String?
-    
-    enum CodingKeys: String, CodingKey {
-        case name
-        case description
     }
 }
