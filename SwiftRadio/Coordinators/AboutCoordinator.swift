@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 import MessageUI
 
 class AboutCoordinator: NSObject, NavigationCoordinator {
@@ -44,7 +45,8 @@ extension AboutCoordinator: AboutViewControllerDelegate {
 
         case .link(_, _, let urlString, _):
             if let url = URL(string: urlString) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                let safariVC = SFSafariViewController(url: url)
+                navigationController.present(safariVC, animated: true)
             }
 
         case .email(_, _, let address, _):
