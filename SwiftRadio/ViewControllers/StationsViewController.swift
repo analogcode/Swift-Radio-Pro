@@ -62,6 +62,7 @@ class StationsViewController: BaseController, Handoffable {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.backButtonDisplayMode = .minimal
         
         // NavigationBar items
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-hamburger"), style: .plain, target: self, action: #selector(handleMenuTap))

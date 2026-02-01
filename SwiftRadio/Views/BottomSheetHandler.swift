@@ -15,8 +15,7 @@ class BottomSheetHandler {
                        from viewController: UIViewController) {
         switch option {
         case .info:
-            let infoController = Storyboard.viewController as InfoDetailViewController
-            infoController.currentStation = station
+            let infoController = InfoDetailViewController(station: station)
             viewController.navigationController?.pushViewController(infoController, animated: true)
             
         case .share(let image):

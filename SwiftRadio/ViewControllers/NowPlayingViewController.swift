@@ -46,8 +46,8 @@ class NowPlayingViewController: BaseController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         navigationItem.largeTitleDisplayMode = .never
+        navigationItem.backButtonDisplayMode = .minimal
         
         player.addObserver(self)
         manager.addObserver(self)
