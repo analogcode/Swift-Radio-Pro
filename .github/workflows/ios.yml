@@ -9,11 +9,19 @@ on:
 jobs:
   build:
     name: Build and Test the SwiftRadio iOS target using any available iPhone simulator
-    runs-on: macos-15
-    
+    runs-on: macos-26
+
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+      - name: Select latest Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+      - name: Verify toolchain
+        run: |
+          xcodebuild -version
+          swift --version
       - name: Set Default Scheme
         run: |
           scheme_list=$(xcodebuild -list -json | tr -d "\n")
