@@ -162,7 +162,7 @@ class StationsViewController: BaseController, Handoffable {
 extension StationsViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        90.0
+        100.0
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -187,11 +187,9 @@ extension StationsViewController: UITableViewDataSource {
         } else {
             let cell = tableView.dequeueReusableCell(for: indexPath) as StationTableViewCell
 
-            // alternate background color
-            cell.backgroundColor = (indexPath.row % 2 == 0) ? .clear : .black.withAlphaComponent(0.2)
-
             let station = searchController.isActive ? manager.searchedStations[indexPath.row] : manager.stations[indexPath.row]
             cell.configureStationCell(station: station)
+            cell.setNowPlaying(isPlaying: player.isPlaying, isCurrentStation: station == manager.currentStation)
             return cell
         }
     }
@@ -236,6 +234,7 @@ extension StationsViewController: FRadioPlayerObserver {
 
     func radioPlayer(_ player: FRadioPlayer, playbackStateDidChange state: FRadioPlayer.PlaybackState) {
         startNowPlayingAnimation(player.isPlaying)
+        tableView.reloadData()
     }
 
     func radioPlayer(_ player: FRadioPlayer, metadataDidChange metadata: FRadioPlayer.Metadata?) {
@@ -251,5 +250,6 @@ extension StationsViewController: StationsManagerObserver {
 
     func stationsManager(_ manager: StationsManager, stationDidChange station: RadioStation?) {
         updateNowPlayingBarButton(station: station)
+        tableView.reloadData()
     }
 }
