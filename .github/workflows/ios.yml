@@ -9,8 +9,8 @@ on:
 jobs:
   build:
     name: Build and Test the SwiftRadio iOS target using any available iPhone simulator
-    runs-on: macos-latest
-
+    runs-on: macos-15
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v3
