@@ -242,8 +242,14 @@ class NowPlayingViewController: UIViewController {
     // MARK: - Popup Bar
 
     private func updatePopupBarMetadata() {
-        popupItem.title = manager.currentStation?.trackName ?? manager.currentStation?.name
-        popupItem.subtitle = manager.currentStation?.artistName
+        if let trackName = player.currentMetadata?.trackName {
+            let artistName = player.currentMetadata?.artistName
+            popupItem.title = [trackName, artistName].compactMap { $0 }.joined(separator: " — ")
+            popupItem.subtitle = manager.currentStation?.name
+        } else {
+            popupItem.title = manager.currentStation?.name
+            popupItem.subtitle = manager.currentStation?.desc
+        }
     }
 
     private func updatePopupBarImage(_ image: UIImage?) {
