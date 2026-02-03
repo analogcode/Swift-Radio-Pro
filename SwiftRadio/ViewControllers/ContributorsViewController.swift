@@ -9,20 +9,6 @@
 import UIKit
 import SafariServices
 
-struct Contributor: Decodable {
-    let login: String
-    let avatarURL: URL
-    let htmlURL: URL
-    let contributions: Int
-    
-    enum CodingKeys: String, CodingKey {
-        case login
-        case avatarURL = "avatar_url"
-        case htmlURL = "html_url"
-        case contributions
-    }
-}
-
 final class ContributorCell: UICollectionViewCell {
     
     static let reuseIdentifier = "ContributorCell"
@@ -172,34 +158,20 @@ final class ContributorsViewController: UICollectionViewController {
     }
     
     // MARK: - Data Fetch
-    
+
     private func fetchContributors() async {
         do {
-            let urlString = "https://api.github.com/repos/\(owner)/\(repo)/contributors"
-            guard let url = URL(string: urlString) else { return }
-            
-            // Make request
-            let (data, response) = try await URLSession.shared.data(from: url)
-            guard let httpResponse = response as? HTTPURLResponse,
-                  (200...299).contains(httpResponse.statusCode) else {
-                throw URLError(.badServerResponse)
-            }
-            
-            // Decode
-            let decoded = try JSONDecoder().decode([Contributor].self, from: data)
-            
-            // Sort by contributions descending, or keep as is
+            let decoded = try await NetworkService.fetchContributors(owner: owner, repo: repo)
             let sortedContribs = decoded.sorted { $0.contributions > $1.contributions }
-            
-            // Update on main thread
-            DispatchQueue.main.async {
+
+            await MainActor.run {
                 self.contributors = sortedContribs
                 self.spinner.stopAnimating()
                 self.collectionView.reloadData()
             }
         } catch {
             print("Failed to fetch contributors:", error)
-            DispatchQueue.main.async {
+            await MainActor.run {
                 self.spinner.stopAnimating()
             }
         }

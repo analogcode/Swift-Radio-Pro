@@ -54,16 +54,13 @@ extension RadioStation: Equatable {
 
 extension RadioStation {
     func getImage(completion: @escaping (_ image: UIImage) -> Void) {
-        
-        if imageURL.range(of: "http") != nil, let url = URL(string: imageURL) {
-            // load current station image from network
-            UIImage.image(from: url) { image in
-                completion(image ?? #imageLiteral(resourceName: "stationImage"))
+        if imageURL.contains("http"), let url = URL(string: imageURL) {
+            Task {
+                let image = await NetworkService.fetchImage(from: url)
+                await MainActor.run { completion(image ?? UIImage(named: "stationImage")!) }
             }
         } else {
-            // load local station image
-            let image = UIImage(named: imageURL) ?? #imageLiteral(resourceName: "stationImage")
-            completion(image)
+            completion(UIImage(named: imageURL) ?? UIImage(named: "stationImage")!)
         }
     }
 }

@@ -34,6 +34,7 @@ struct Config {
             LibraryItem(owner: "fethica", repo: "FRadioPlayer"),
             LibraryItem(owner: "MengTo", repo: "Spring"),
             LibraryItem(owner: "ninjaprox", repo: "NVActivityIndicatorView"),
+            LibraryItem(owner: "LeoNatan", repo: "LNPopupController"),
         ]
     }
 

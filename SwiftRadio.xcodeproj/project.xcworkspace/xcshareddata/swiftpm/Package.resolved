@@ -1,12 +1,31 @@
 {
+  "originHash" : "24f0db90c75ed5f653eada87f7d95556c0402697fad6a7e177755952ff1eefe5",
   "pins" : [
     {
       "identity" : "fradioplayer",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/fethica/FRadioPlayer.git",
       "state" : {
-        "branch" : "v0.2.1",
-        "revision" : "a14ce692f28ece480b5eeb9e208aa98493ee4922"
+        "revision" : "243cd9246b79a186c39b3c53dbe725c8c01bab59",
+        "version" : "0.2.2"
+      }
+    },
+    {
+      "identity" : "lnpopupcontroller",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/LeoNatan/LNPopupController.git",
+      "state" : {
+        "revision" : "6f4bfa89a32cc7254599869b4bca8d2638e74671",
+        "version" : "4.4.1"
+      }
+    },
+    {
+      "identity" : "marqueelabel",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/cbpowell/MarqueeLabel.git",
+      "state" : {
+        "revision" : "c6b4da400c00dfd5db7a4f6e4915ca531d95fc49",
+        "version" : "4.5.3"
       }
     },
     {
@@ -28,5 +47,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

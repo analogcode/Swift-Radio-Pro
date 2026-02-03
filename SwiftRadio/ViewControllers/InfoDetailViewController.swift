@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class InfoDetailViewController: BaseController {
 
@@ -221,8 +222,13 @@ class InfoDetailViewController: BaseController {
         return button
     }
 
+    @objc func dismissSelf() {
+        dismiss(animated: true)
+    }
+
     @objc private func linkTapped(_ sender: UIButton) {
         guard sender.tag < links.count else { return }
-        UIApplication.shared.open(links[sender.tag].url)
+        let safariVC = SFSafariViewController(url: links[sender.tag].url)
+        present(safariVC, animated: true)
     }
 }

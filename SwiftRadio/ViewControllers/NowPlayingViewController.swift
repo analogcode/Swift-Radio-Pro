@@ -11,214 +11,234 @@ import MediaPlayer
 import AVKit
 import FRadioPlayer
 import NVActivityIndicatorView
+import LNPopupController
 
 protocol NowPlayingViewControllerDelegate: AnyObject {
     func didSelectBottomSheetOption(_ option: BottomSheetViewController.Option, from controller: NowPlayingViewController)
     func didTapCompanyButton(_ nowPlayingViewController: NowPlayingViewController)
 }
 
-class NowPlayingViewController: BaseController {
-    
+class NowPlayingViewController: UIViewController {
+
     // MARK: - Delegate
     weak var delegate: NowPlayingViewControllerDelegate?
-    
+
     // MARK: - UI
-    private let animationView: NVActivityIndicatorView = {
-        let activityIndicatorView = NVActivityIndicatorView(frame: .zero, type: .audioEqualizer, color: .white, padding: nil)
-        NSLayoutConstraint.activate([
-            activityIndicatorView.widthAnchor.constraint(equalToConstant: 30),
-            activityIndicatorView.widthAnchor.constraint(equalToConstant: 30),
-            activityIndicatorView.heightAnchor.constraint(equalToConstant: 20)
-        ])
-        return activityIndicatorView
+    private let backgroundImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
-    
+
+    private let backgroundBlurView: UIVisualEffectView = {
+        let blur = UIBlurEffect(style: .systemThickMaterialDark)
+        let view = UIVisualEffectView(effect: blur)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    private let backgroundDimView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
     private let albumArtworkView = AlbumArtworkView()
     private let controlsView = ControlsView()
-    
+    private var topConstraint: NSLayoutConstraint?
+
+    // MARK: - Popup Bar
+    private lazy var playPauseButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(image: UIImage(systemName: "play.fill"), style: .plain, target: self, action: #selector(popupBarPlayPauseTapped))
+        return button
+    }()
+
     // MARK: - Properties
     private let player = FRadioPlayer.shared
     private let manager = StationsManager.shared
-    
-    var isNewStation = true
-        
+
     // MARK: - Lifecycle Methods
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.largeTitleDisplayMode = .never
-        navigationItem.backButtonDisplayMode = .minimal
-        
+
         player.addObserver(self)
         manager.addObserver(self)
-        
-        title = manager.currentStation?.name
-        
-        // Set UI - Reset UI
-        
-        // Check for station change
-        if isNewStation {
-            stationDidChange()
-        } else {
-            updateTrackArtwork()
-            playerStateDidChange(player.state, animate: false)
-        }
-        
+
         setupViews()
-        
+        stationDidChange()
         isPlayingDidChange(player.isPlaying)
         controlsView.setLive(player.duration == 0)
+
+        // Popup bar button items
+        popupItem.barButtonItems = [playPauseButton]
     }
-    
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        topConstraint?.constant = navigationController != nil ? 16 : 48
+    }
+
     private func isPlayingDidChange(_ isPlaying: Bool) {
         controlsView.setPlaying(isPlaying)
-        controlsView.setStop(isPlaying)
-        isPlaying ? animationView.startAnimating() : animationView.stopAnimating()
+        albumArtworkView.setPlaying(isPlaying)
+        updatePopupBarPlayPauseButton(isPlaying: isPlaying)
     }
-    
+
     func stationDidChange() {
         albumArtworkView.setImage(nil)
+        updateBackground(with: nil)
         manager.currentStation?.getImage { [weak self] image in
             self?.albumArtworkView.setImage(image)
+            self?.updateBackground(with: image)
+            self?.updatePopupBarImage(image)
         }
 
-        title = manager.currentStation?.name
+        updatePopupBarMetadata()
         updateLabels()
         controlsView.setLive(player.duration == 0)
     }
-    
-    func updateLabels(with statusMessage: String? = nil, animate: Bool = true) {
-        guard let statusMessage = statusMessage else {
-            controlsView.updateLabels(with: .track(song: manager.currentStation?.trackName,
-                                                   artist: manager.currentStation?.artistName))
-            return
-        }
-        
-        controlsView.updateLabels(with: .status(message: statusMessage, name: manager.currentStation?.name))
+
+    func updateLabels() {
+        controlsView.updateNowPlaying(
+            song: player.currentMetadata?.trackName,
+            artist: player.currentMetadata?.artistName,
+            stationName: manager.currentStation?.name,
+            stationDesc: manager.currentStation?.desc
+        )
     }
-    
-    func playbackStateDidChange(_ playbackState: FRadioPlayer.PlaybackState, animate: Bool) {
-        
-        let message: String?
-        
-        switch playbackState {
-        case .paused:
-            message = "Paused..."
-        case .playing:
-            message = nil
-        case .stopped:
-            message = "Stopped..."
-        }
-        
-        updateLabels(with: message, animate: animate)
+
+    func playbackStateDidChange(_ playbackState: FRadioPlayer.PlaybackState) {
         isPlayingDidChange(player.isPlaying)
     }
-    
-    func playerStateDidChange(_ state: FRadioPlayer.State, animate: Bool) {
-        
-        let message: String?
-        
+
+    func playerStateDidChange(_ state: FRadioPlayer.State) {
         switch state {
-        case .loading:
-            message = "Loading ..."
-        case .urlNotSet:
-            message = "URL not valide"
         case .readyToPlay, .loadingFinished:
-            playbackStateDidChange(player.playbackState, animate: animate)
-            return
-        case .error:
-            message = "Error Playing"
+            playbackStateDidChange(player.playbackState)
+        default:
+            break
         }
-        
-        updateLabels(with: message, animate: animate)
     }
-    
+
     // MARK: - Setup Methods
-    
-    override func setupViews() {
-        super.setupViews()
-        
+
+    private func setupViews() {
+        // Dynamic blurred background
+        view.addSubview(backgroundImageView)
+        view.addSubview(backgroundBlurView)
+        view.addSubview(backgroundDimView)
+
+        NSLayoutConstraint.activate([
+            backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
+            backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+
+            backgroundBlurView.topAnchor.constraint(equalTo: view.topAnchor),
+            backgroundBlurView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            backgroundBlurView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            backgroundBlurView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+
+            backgroundDimView.topAnchor.constraint(equalTo: view.topAnchor),
+            backgroundDimView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            backgroundDimView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            backgroundDimView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ])
+
         let mainStackView = UIStackView(arrangedSubviews: [albumArtworkView, controlsView])
         mainStackView.axis = .vertical
-        mainStackView.spacing = 20
-        mainStackView.distribution = .fillEqually
+        mainStackView.spacing = 24
+        mainStackView.distribution = .fill
         mainStackView.translatesAutoresizingMaskIntoConstraints = false
-        
+
         controlsView.playingAction = { [unowned self] in
             player.togglePlaying()
         }
-        
-        controlsView.stopAction = { [unowned self] in
-            player.stop()
-        }
-        
+
         controlsView.nextAction = { [unowned self] in
             manager.setNext()
         }
-        
+
         controlsView.previousAction = { [unowned self] in
             manager.setPrevious()
         }
-        
-        controlsView.logoAction = { [unowned self] in
-            delegate?.didTapCompanyButton(self)
-        }
-        
+
         controlsView.moreAction = { [unowned self] in
             handleMoreMenu()
         }
-        
+
         controlsView.timeAction = { [unowned self] slider, event in
             handleTimeSlider(slider: slider, event: event)
         }
-        
+
         view.addSubview(mainStackView)
-        
+
+        topConstraint = mainStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8)
+
+        let artworkHeight = albumArtworkView.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.55)
+        artworkHeight.priority = .defaultHigh
+
         NSLayoutConstraint.activate([
-            mainStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
-            mainStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            mainStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            mainStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            topConstraint!,
+            mainStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24),
+            mainStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24),
+            mainStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            artworkHeight,
         ])
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: animationView)
     }
-    
+
+    // MARK: - Dynamic Background
+
+    private func updateBackground(with image: UIImage?) {
+        UIView.transition(
+            with: backgroundImageView,
+            duration: 0.5,
+            options: .transitionCrossDissolve
+        ) {
+            self.backgroundImageView.image = image
+        }
+    }
+
     func updateTrackArtwork() {
-        getTrackArtwork { [weak self] image, isAnimated in
+        getTrackArtwork { [weak self] image in
             DispatchQueue.main.async {
-                self?.albumArtworkView.setImage(image)
-                if isAnimated { self?.albumArtworkView.animate() }
+                self?.albumArtworkView.setImage(image, animated: true)
+                self?.updateBackground(with: image)
+                self?.updatePopupBarImage(image)
             }
         }
     }
-    
-    private func getTrackArtwork(completion: @escaping (UIImage?, Bool) -> Void) {
+
+    private func getTrackArtwork(completion: @escaping (UIImage?) -> Void) {
         guard let artworkURL = player.currentArtworkURL else {
             manager.currentStation?.getImage { image in
-                completion(image, false)
+                completion(image)
             }
             return
         }
-        
+
         UIImage.image(from: artworkURL) { image in
-            completion(image, true)
+            completion(image)
         }
     }
-    
+
     func handleMoreMenu() {
         guard let station = manager.currentStation else { return }
         let bottomSheet = BottomSheetViewController(station: station)
         bottomSheet.delegate = self
         present(bottomSheet, animated: true)
     }
-    
+
     private func handleTimeSlider(slider: UISlider, event: UIControl.Event) {
-        
+
         guard player.duration != 0 else { return }
-        
+
         let seekTime =  TimeInterval(slider.value) * player.duration
-        
+
         switch event {
         case .valueChanged:
             controlsView.setCurrentTime(seekTime)
@@ -231,52 +251,86 @@ class NowPlayingViewController: BaseController {
             break
         }
     }
+
+    // MARK: - Popup Bar
+
+    private func updatePopupBarMetadata() {
+        if let trackName = player.currentMetadata?.trackName {
+            let artistName = player.currentMetadata?.artistName
+            popupItem.title = [trackName, artistName].compactMap { $0 }.joined(separator: " — ")
+            popupItem.subtitle = manager.currentStation?.name
+        } else {
+            popupItem.title = manager.currentStation?.name
+            popupItem.subtitle = manager.currentStation?.desc
+        }
+    }
+
+    private func updatePopupBarImage(_ image: UIImage?) {
+        popupItem.image = image
+        DispatchQueue.main.async {
+            self.popupPresentationContainer?.popupBar.imageView.contentMode = .scaleAspectFill
+            self.popupPresentationContainer?.popupBar.imageView.clipsToBounds = true
+        }
+    }
+
+    private func updatePopupBarPlayPauseButton(isPlaying: Bool) {
+        let imageName = isPlaying ? "pause.fill" : "play.fill"
+        playPauseButton.image = UIImage(systemName: imageName)
+    }
+
+    @objc private func popupBarPlayPauseTapped() {
+        player.togglePlaying()
+    }
 }
 
 extension NowPlayingViewController: FRadioPlayerObserver {
-    
+
     func radioPlayer(_ player: FRadioPlayer, playerStateDidChange state: FRadioPlayer.State) {
-        playerStateDidChange(state, animate: true)
+        playerStateDidChange(state)
     }
-    
+
     func radioPlayer(_ player: FRadioPlayer, playbackStateDidChange state: FRadioPlayer.PlaybackState) {
-        playbackStateDidChange(state, animate: true)
+        playbackStateDidChange(state)
     }
-    
+
     func radioPlayer(_ player: FRadioPlayer, metadataDidChange metadata: FRadioPlayer.Metadata?) {
         updateLabels()
+        updatePopupBarMetadata()
     }
-    
+
     func radioPlayer(_ player: FRadioPlayer, artworkDidChange artworkURL: URL?) {
         updateTrackArtwork()
     }
-    
+
     func radioPlayer(_ player: FRadioPlayer, durationDidChange duration: TimeInterval) {
         controlsView.setLive(player.duration == 0)
     }
-    
+
     func radioPlayer(_ player: FRadioPlayer, playTimeDidChange currentTime: TimeInterval, duration: TimeInterval) {
         guard !controlsView.isSliderSliding, player.duration != 0 else { return }
-        
+
         // Update timer labels
         controlsView.setCurrentTime(currentTime)
         controlsView.setTotalTime(duration - currentTime)
         controlsView.setTimeSilder(value: Float(currentTime / duration))
+
+        // Update popup bar progress
+        popupItem.progress = Float(currentTime / duration)
     }
 }
 
 extension NowPlayingViewController: StationsManagerObserver {
-    
+
     func stationsManager(_ manager: StationsManager, stationDidChange station: RadioStation?) {
         stationDidChange()
     }
 }
 
 extension NowPlayingViewController: BottomSheetViewControllerDelegate {
-    
+
     func bottomSheet(_ controller: BottomSheetViewController, didSelect option: BottomSheetViewController.Option) {
         if case .share = option {
-            getTrackArtwork { [weak self] image, _ in
+            getTrackArtwork { [weak self] image in
                 guard let self = self else { return }
                 self.delegate?.didSelectBottomSheetOption(.share(image), from: self)
             }

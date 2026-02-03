@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 import FRadioPlayer
 
 class BottomSheetHandler {
@@ -27,7 +28,8 @@ class BottomSheetHandler {
             
         case .website:
             if let website = station.website, let websiteURL = URL(string: website) {
-                UIApplication.shared.open(websiteURL)
+                let safariVC = SFSafariViewController(url: websiteURL)
+                viewController.present(safariVC, animated: true)
             }
             
         case .openInMusic(let url):
