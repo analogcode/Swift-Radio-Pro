@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     name: Build and Test The SwiftRadio-CarPlay using any available iPhone simulator
-    runs-on: macos-latest
+    runs-on: macos-15
 
     steps:
       - name: Checkout
