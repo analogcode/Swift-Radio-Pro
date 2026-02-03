@@ -1,5 +1,5 @@
 {
-  "originHash" : "e37648914484d17da6b942c8977f96f4c1f61c966fda5c0511b8f2a5000a0b22",
+  "originHash" : "24f0db90c75ed5f653eada87f7d95556c0402697fad6a7e177755952ff1eefe5",
   "pins" : [
     {
       "identity" : "fradioplayer",
@@ -17,6 +17,15 @@
       "state" : {
         "revision" : "6f4bfa89a32cc7254599869b4bca8d2638e74671",
         "version" : "4.4.1"
+      }
+    },
+    {
+      "identity" : "marqueelabel",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/cbpowell/MarqueeLabel.git",
+      "state" : {
+        "revision" : "c6b4da400c00dfd5db7a4f6e4915ca531d95fc49",
+        "version" : "4.5.3"
       }
     },
     {
