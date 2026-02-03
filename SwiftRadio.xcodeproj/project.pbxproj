@@ -25,7 +25,6 @@
 		AA0000011ACC9DEE005B7C26 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000001ACC9DEE005B7C26 /* NetworkService.swift */; };
 		AA000002291F376D0058C82A /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000001ACC9DEE005B7C26 /* NetworkService.swift */; };
 		AA0000101ACC9DEE005B7C26 /* LNPopupController in Frameworks */ = {isa = PBXBuildFile; productRef = AA0000111ACC9DEE005B7C26 /* LNPopupController */; };
-		CA900001200000000000000A /* MarqueeLabel in Frameworks */ = {isa = PBXBuildFile; productRef = CA900002200000000000000A /* MarqueeLabel */; };
 		AA0000121ACC9DEE005B7C26 /* LNPopupController in Frameworks */ = {isa = PBXBuildFile; productRef = AA0000131ACC9DEE005B7C26 /* LNPopupController */; };
 		CA142F672D3D8E2F0071A388 /* NSLayoutConstraint+with.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA142F662D3D8E280071A388 /* NSLayoutConstraint+with.swift */; };
 		CA142F682D3D8E2F0071A388 /* NSLayoutConstraint+with.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA142F662D3D8E280071A388 /* NSLayoutConstraint+with.swift */; };
@@ -43,12 +42,14 @@
 		CA2511BC2D45C2D1006D1A99 /* LibrariesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2511BA2D45C2CA006D1A99 /* LibrariesViewController.swift */; };
 		CA2511BE2D45CD13006D1A99 /* ContributorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2511BD2D45CD11006D1A99 /* ContributorsViewController.swift */; };
 		CA2511BF2D45CD13006D1A99 /* ContributorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2511BD2D45CD11006D1A99 /* ContributorsViewController.swift */; };
+		CA2B6C6F2F31B769000CB4D4 /* MarqueeLabel in Frameworks */ = {isa = PBXBuildFile; productRef = CA2B6C6E2F31B769000CB4D4 /* MarqueeLabel */; };
 		CA3A11012D4E000000111001 /* InfoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3A11002D4E000000111001 /* InfoSection.swift */; };
 		CA3A11022D4E000000111001 /* InfoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3A11002D4E000000111001 /* InfoSection.swift */; };
 		CA3A11042D4E000000111002 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3A11032D4E000000111002 /* Content.swift */; };
 		CA3A11052D4E000000111002 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3A11032D4E000000111002 /* Content.swift */; };
 		CA58087D2D40BAC000F8082B /* CarPlaySceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA58087B2D40BAC000F8082B /* CarPlaySceneDelegate.swift */; };
 		CA58087E2D40C11300F8082B /* Info-CarPlay.plist in Resources */ = {isa = PBXBuildFile; fileRef = CEA82F492921F260009E9FA0 /* Info-CarPlay.plist */; };
+		CA900001200000000000000A /* MarqueeLabel in Frameworks */ = {isa = PBXBuildFile; productRef = CA900002200000000000000A /* MarqueeLabel */; };
 		CAB4E8292D3D7DC7001282E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB4E8282D3D7DC7001282E9 /* SceneDelegate.swift */; };
 		CAB4E82A2D3D7DC7001282E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB4E8282D3D7DC7001282E9 /* SceneDelegate.swift */; };
 		CE321FF329371140001572BD /* Bundle+appName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE321FF229371140001572BD /* Bundle+appName.swift */; };
@@ -198,6 +199,7 @@
 			files = (
 				CE6A3E43291F376D0058C82A /* FRadioPlayer in Frameworks */,
 				CE60362A2A48F70A00E15E15 /* NVActivityIndicatorViewExtended in Frameworks */,
+				CA2B6C6F2F31B769000CB4D4 /* MarqueeLabel in Frameworks */,
 				CE6A3E44291F376D0058C82A /* Spring in Frameworks */,
 				CE6036282A48F70A00E15E15 /* NVActivityIndicatorView in Frameworks */,
 				AA0000121ACC9DEE005B7C26 /* LNPopupController in Frameworks */,
@@ -457,6 +459,7 @@
 				CE6036272A48F70A00E15E15 /* NVActivityIndicatorView */,
 				CE6036292A48F70A00E15E15 /* NVActivityIndicatorViewExtended */,
 				AA0000131ACC9DEE005B7C26 /* LNPopupController */,
+				CA2B6C6E2F31B769000CB4D4 /* MarqueeLabel */,
 			);
 			productName = RadioPro;
 			productReference = CE6A3E4F291F376D0058C82A /* SwiftRadio-CarPlay.app */;
@@ -986,6 +989,14 @@
 				version = 4.4.1;
 			};
 		};
+		CA900003200000000000000A /* XCRemoteSwiftPackageReference "MarqueeLabel" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/cbpowell/MarqueeLabel.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 		CE37D7B2290F47E000B0933B /* XCRemoteSwiftPackageReference "Spring" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/fethica/Spring.git";
@@ -1026,14 +1037,6 @@
 				kind = branch;
 			};
 		};
-		CA900003200000000000000A /* XCRemoteSwiftPackageReference "MarqueeLabel" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/cbpowell/MarqueeLabel.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1046,6 +1049,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AA0000141ACC9DEE005B7C26 /* XCRemoteSwiftPackageReference "LNPopupController" */;
 			productName = LNPopupController;
+		};
+		CA2B6C6E2F31B769000CB4D4 /* MarqueeLabel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CA900003200000000000000A /* XCRemoteSwiftPackageReference "MarqueeLabel" */;
+			productName = MarqueeLabel;
+		};
+		CA900002200000000000000A /* MarqueeLabel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CA900003200000000000000A /* XCRemoteSwiftPackageReference "MarqueeLabel" */;
+			productName = MarqueeLabel;
 		};
 		CE37D7B3290F47E000B0933B /* Spring */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1086,11 +1099,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CE6A3E2F291F376D0058C82A /* XCRemoteSwiftPackageReference "FRadioPlayer" */;
 			productName = FRadioPlayer;
-		};
-		CA900002200000000000000A /* MarqueeLabel */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CA900003200000000000000A /* XCRemoteSwiftPackageReference "MarqueeLabel" */;
-			productName = MarqueeLabel;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
