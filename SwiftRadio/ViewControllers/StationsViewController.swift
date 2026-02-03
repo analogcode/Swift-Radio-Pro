@@ -220,6 +220,7 @@ extension StationsViewController: UISearchResultsUpdating {
         searchController.searchResultsUpdater = self
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = true
+        navigationItem.preferredSearchBarPlacement = .stacked
     }
 
     func updateSearchResults(for searchController: UISearchController) {
