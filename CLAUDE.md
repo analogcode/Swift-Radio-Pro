@@ -145,6 +145,7 @@ A task is **Done** only when **ALL** of the following are complete:
 2. **Implementation plan** was followed or deviations were documented in Implementation Notes.
 3. **Automated tests** (unit + integration) cover new logic.
 4. **Static analysis**: linter & formatter succeed.
+5. **Testing**: Automated tests succeed. Aim for 70% coverage. If there are UI components, test them on-device or have the user do so.
 5. **Documentation**:
     - All relevant docs updated (any relevant README file, backlog/docs, backlog/decisions, etc.).
     - Task file **MUST** have an `## Implementation Notes` section added summarising:
@@ -330,3 +331,41 @@ Implementing ConfigClient from RadioSpiral3 into RadioSpiral app. ConfigClient p
 - Device testing of full integrated system
 - Performance optimization if needed
 - Consider caching layer improvements
+
+## Session 4: Production Deployment & Device Testing
+
+**Completed**:
+1. ✅ Created production config.json in radiospiral-config repo
+   - Primary: Azuracast API from spiral.radio
+   - Fallback: Static RadioSpiral station
+   - Exclude list: ["rstest"]
+   - Commit: `83258af` pushed to GitHub
+
+2. ✅ Verified app uses remote ConfigClient
+   - Config.useConfigClient = true
+   - ConfigClient default URL points to remote config.json
+   - Smart fallback chain: ConfigClient → Local → HTTP
+
+3. ✅ Device testing completed
+   - App builds and runs successfully on physical device
+   - CarPlay Simulator working correctly
+   - Station loading from Azuracast via ConfigClient working
+   - Exclude list ("rstest") filtering properly
+
+**Known Issues Found (For Next Session)**:
+- ⚠️ **Station Icons Not Displaying**: All stations showing generic icon instead of actual station artwork
+  - Location: Likely in station list UI or image loading pipeline
+  - Potential causes:
+    - StationConfig.imageURL not being populated from Azuracast API
+    - UI not loading images from imageURL field
+    - Image caching/loading issue
+    - Timing issues
+  - Reproduce: Run app on device, view stations list
+  - Status: Non-critical (functional, cosmetic only)
+
+**Current Production Status**:
+- ✅ ConfigClient integration: COMPLETE and WORKING
+- ✅ Device testing: PASSED
+- ✅ Remote config deployment: ACTIVE
+- ✅ Fallback chain: OPERATIONAL
+- ⚠️ Station icons: NEEDS INVESTIGATION

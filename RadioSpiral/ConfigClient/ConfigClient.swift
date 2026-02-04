@@ -318,7 +318,7 @@ public class ConfigClient {
         return StationConfig(
             name: azStation.name,
             streamURL: "https://\(serverDomain)/radio/\(azStation.shortCode)/live",
-            imageURL: "",
+            imageURL: "https://\(serverDomain)/static/uploads/\(azStation.shortCode)/album_art.png",
             desc: azStation.description ?? "",
             longDesc: azStation.description ?? "",
             serverName: serverDomain,
@@ -331,7 +331,7 @@ public class ConfigClient {
         return StationConfig(
             name: station.name,
             streamURL: station.listen_url,
-            imageURL: "",
+            imageURL: "https://\(serverDomain)/static/uploads/\(station.shortcode)/album_art.png",
             desc: station.description,
             longDesc: station.description,
             serverName: serverDomain,

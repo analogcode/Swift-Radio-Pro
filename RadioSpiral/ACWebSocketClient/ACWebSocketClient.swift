@@ -258,7 +258,27 @@ public class ACWebSocketClient: ObservableObject {
         }
         connect()
     }
-    
+
+    // Schedules a reconnection attempt after WebSocket error.
+    // Only reconnects if network is reachable and we're still disconnected.
+    private func scheduleReconnect() {
+        let reconnectDelay: TimeInterval = 5.0
+        if debugLevel & ACConnectivityChecks != 0 {
+            print("Scheduling reconnect in \(reconnectDelay) seconds")
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + reconnectDelay) { [weak self] in
+            guard let self = self else { return }
+            // Only reconnect if still disconnected and network is reachable
+            if self.status.connection == .disconnected &&
+               self.reachabilityMonitor.connection != .unavailable {
+                if self.debugLevel & ACConnectivityChecks != 0 {
+                    print("Reconnecting after WebSocket error")
+                }
+                self.connect()
+            }
+        }
+    }
+
     // Sends the subscription message for the specified station.
     // If the websocket task is already running, does nothing.
     // If the necessary parameters aren't set, does nothing and marks
@@ -317,9 +337,12 @@ public class ACWebSocketClient: ObservableObject {
                     self.status.connection = ACConnectionState.disconnected
                     self.status.changed = true
                 }
+                // Don't keep listening on dead socket - schedule reconnection instead
+                self.scheduleReconnect()
+                return
             }
-            
-            // Keep listening for new messages
+
+            // Keep listening for new messages (only on success)
             self.listenForMessages()
         }
     }

@@ -199,7 +199,7 @@ class NowPlayingViewController: UIViewController {
         if player.isPlaying {
             player.stop()
         } else {
-            _ = StationsManager.reloadCurrent(StationsManager.shared)
+            manager.reloadCurrent()  // Reconnect to stream
             player.play()
             updateLabels()
         }

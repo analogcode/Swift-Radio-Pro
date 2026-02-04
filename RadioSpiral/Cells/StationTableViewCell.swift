@@ -81,9 +81,9 @@ class StationTableViewCell: UITableViewCell {
             hStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             hStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor)
         ])
-        // Optionally, constrain image view to a max size
-        stationImageView.heightAnchor.constraint(lessThanOrEqualToConstant: 75).isActive = true
-        stationImageView.widthAnchor.constraint(lessThanOrEqualToConstant: 110).isActive = true
+        // Fixed size for consistent appearance in list
+        stationImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        stationImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
     }
 }
 
