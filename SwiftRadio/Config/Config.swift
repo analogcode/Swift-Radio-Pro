@@ -35,6 +35,7 @@ struct Config {
             LibraryItem(owner: "MengTo", repo: "Spring"),
             LibraryItem(owner: "ninjaprox", repo: "NVActivityIndicatorView"),
             LibraryItem(owner: "LeoNatan", repo: "LNPopupController"),
+            LibraryItem(owner: "cbpowell", repo: "MarqueeLabel"),
         ]
     }
 
