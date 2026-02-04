@@ -40,13 +40,37 @@ class StationsViewController: BaseController, Handoffable {
         return controller
     }()
 
-    private let animationView: NVActivityIndicatorView = {
-        let activityIndicatorView = NVActivityIndicatorView(frame: .zero, type: .audioEqualizer, color: .white, padding: nil)
+    private var isBuffering = false
+
+    private let equalizerView: NVActivityIndicatorView = {
+        let view = NVActivityIndicatorView(frame: .zero, type: .audioEqualizer, color: .white, padding: nil)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    private let bufferingView: NVActivityIndicatorView = {
+        let view = NVActivityIndicatorView(frame: .zero, type: .ballPulse, color: .white, padding: nil)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    private lazy var nowPlayingIndicator: UIView = {
+        let container = UIView()
+        container.addSubview(equalizerView)
+        container.addSubview(bufferingView)
         NSLayoutConstraint.activate([
-            activityIndicatorView.widthAnchor.constraint(equalToConstant: 30),
-            activityIndicatorView.heightAnchor.constraint(equalToConstant: 20)
+            container.widthAnchor.constraint(equalToConstant: 30),
+            container.heightAnchor.constraint(equalToConstant: 20),
+            equalizerView.centerXAnchor.constraint(equalTo: container.centerXAnchor),
+            equalizerView.centerYAnchor.constraint(equalTo: container.centerYAnchor),
+            equalizerView.widthAnchor.constraint(equalTo: container.widthAnchor),
+            equalizerView.heightAnchor.constraint(equalTo: container.heightAnchor),
+            bufferingView.centerXAnchor.constraint(equalTo: container.centerXAnchor),
+            bufferingView.centerYAnchor.constraint(equalTo: container.centerYAnchor),
+            bufferingView.widthAnchor.constraint(equalTo: container.widthAnchor),
+            bufferingView.heightAnchor.constraint(equalTo: container.heightAnchor),
         ])
-        return activityIndicatorView
+        return container
     }()
 
     private lazy var tableView: UITableView = {
@@ -114,20 +138,45 @@ class StationsViewController: BaseController, Handoffable {
         }
 
         guard navigationItem.rightBarButtonItem == nil else { return }
-        let barButton = UIBarButtonItem(customView: animationView)
+        let barButton = UIBarButtonItem(customView: nowPlayingIndicator)
         barButton.target = self
         barButton.action = #selector(nowPlayingBarButtonPressed)
 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(nowPlayingBarButtonPressed))
-        animationView.addGestureRecognizer(tapGesture)
-        animationView.isUserInteractionEnabled = true
+        nowPlayingIndicator.addGestureRecognizer(tapGesture)
+        nowPlayingIndicator.isUserInteractionEnabled = true
 
         navigationItem.rightBarButtonItem = barButton
-        startNowPlayingAnimation(player.isPlaying)
+        updateNowPlayingAnimation()
     }
 
-    private func startNowPlayingAnimation(_ animate: Bool) {
-        animate ? animationView.startAnimating() : animationView.stopAnimating()
+    private func updateNowPlayingAnimation() {
+        if isBuffering {
+            equalizerView.stopAnimating()
+            bufferingView.startAnimating()
+        } else if player.isPlaying {
+            bufferingView.stopAnimating()
+            equalizerView.startAnimating()
+        } else {
+            equalizerView.stopAnimating()
+            bufferingView.stopAnimating()
+        }
+    }
+
+    private func updateVisibleCellsNowPlaying() {
+        if !Thread.isMainThread {
+            DispatchQueue.main.async { [weak self] in
+                self?.updateVisibleCellsNowPlaying()
+            }
+            return
+        }
+
+        for case let cell as StationTableViewCell in tableView.visibleCells {
+            guard let indexPath = tableView.indexPath(for: cell) else { continue }
+            let station = searchController.isActive ? manager.searchedStations[indexPath.row] : manager.stations[indexPath.row]
+            let isCurrentStation = station == manager.currentStation
+            cell.setNowPlaying(isPlaying: player.isPlaying, isBuffering: isBuffering, isCurrentStation: isCurrentStation)
+        }
     }
 
     @objc private func nowPlayingBarButtonPressed() {
@@ -162,7 +211,7 @@ class StationsViewController: BaseController, Handoffable {
 extension StationsViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        100.0
+        104.0
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -189,7 +238,8 @@ extension StationsViewController: UITableViewDataSource {
 
             let station = searchController.isActive ? manager.searchedStations[indexPath.row] : manager.stations[indexPath.row]
             cell.configureStationCell(station: station)
-            cell.setNowPlaying(isPlaying: player.isPlaying, isCurrentStation: station == manager.currentStation)
+            let isCurrentStation = station == manager.currentStation
+            cell.setNowPlaying(isPlaying: player.isPlaying, isBuffering: isBuffering, isCurrentStation: isCurrentStation)
             return cell
         }
     }
@@ -232,9 +282,22 @@ extension StationsViewController: UISearchResultsUpdating {
 
 extension StationsViewController: FRadioPlayerObserver {
 
+    func radioPlayer(_ player: FRadioPlayer, playerStateDidChange state: FRadioPlayer.State) {
+        switch state {
+        case .loading:
+            isBuffering = true
+        case .readyToPlay, .loadingFinished, .error:
+            isBuffering = false
+        default:
+            break
+        }
+        updateNowPlayingAnimation()
+        updateVisibleCellsNowPlaying()
+    }
+
     func radioPlayer(_ player: FRadioPlayer, playbackStateDidChange state: FRadioPlayer.PlaybackState) {
-        startNowPlayingAnimation(player.isPlaying)
-        tableView.reloadData()
+        updateNowPlayingAnimation()
+        updateVisibleCellsNowPlaying()
     }
 
     func radioPlayer(_ player: FRadioPlayer, metadataDidChange metadata: FRadioPlayer.Metadata?) {
@@ -249,7 +312,7 @@ extension StationsViewController: StationsManagerObserver {
     }
 
     func stationsManager(_ manager: StationsManager, stationDidChange station: RadioStation?) {
+        updateVisibleCellsNowPlaying()
         updateNowPlayingBarButton(station: station)
-        tableView.reloadData()
     }
 }

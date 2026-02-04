@@ -12,6 +12,7 @@ import NVActivityIndicatorView
 class StationTableViewCell: UITableViewCell {
 
     // MARK: - UI
+    private var representedStation: RadioStation?
 
     private let cardBlurView: UIVisualEffectView = {
         let blur = UIBlurEffect(style: .systemUltraThinMaterialDark)
@@ -107,6 +108,22 @@ class StationTableViewCell: UITableViewCell {
         return view
     }()
 
+    private let bufferingOverlay: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        view.layer.cornerRadius = 12
+        view.clipsToBounds = true
+        view.alpha = 0
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    private let bufferingIndicator: NVActivityIndicatorView = {
+        let view = NVActivityIndicatorView(frame: .zero, type: .ballPulse, color: .white, padding: nil)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
     private var isAnimatingPulse = false
 
     // MARK: - Init
@@ -122,6 +139,7 @@ class StationTableViewCell: UITableViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
+        representedStation = nil
         titleLabel.text = nil
         subtitleLabel.text = nil
         stationImageView.image = nil
@@ -129,6 +147,8 @@ class StationTableViewCell: UITableViewCell {
         pulseRingView.alpha = 0
         equalizerView.stopAnimating()
         equalizerView.alpha = 0
+        bufferingIndicator.stopAnimating()
+        bufferingOverlay.alpha = 0
     }
 
     // MARK: - Highlight / Tap Feedback
@@ -160,6 +180,8 @@ class StationTableViewCell: UITableViewCell {
         artworkContainer.addSubview(artworkShadowView)
         artworkContainer.addSubview(pulseRingView)
         artworkContainer.addSubview(stationImageView)
+        artworkContainer.addSubview(bufferingOverlay)
+        bufferingOverlay.addSubview(bufferingIndicator)
 
         // Subtitle stack: label + equalizer
         subtitleStack.addArrangedSubview(equalizerView)
@@ -223,25 +245,51 @@ class StationTableViewCell: UITableViewCell {
             pulseRingView.bottomAnchor.constraint(equalTo: stationImageView.bottomAnchor, constant: -pulseInset),
             pulseRingView.leadingAnchor.constraint(equalTo: stationImageView.leadingAnchor, constant: pulseInset),
             pulseRingView.trailingAnchor.constraint(equalTo: stationImageView.trailingAnchor, constant: -pulseInset),
+
+            // Buffering overlay on top of image
+            bufferingOverlay.topAnchor.constraint(equalTo: stationImageView.topAnchor),
+            bufferingOverlay.bottomAnchor.constraint(equalTo: stationImageView.bottomAnchor),
+            bufferingOverlay.leadingAnchor.constraint(equalTo: stationImageView.leadingAnchor),
+            bufferingOverlay.trailingAnchor.constraint(equalTo: stationImageView.trailingAnchor),
+            bufferingIndicator.centerXAnchor.constraint(equalTo: bufferingOverlay.centerXAnchor),
+            bufferingIndicator.centerYAnchor.constraint(equalTo: bufferingOverlay.centerYAnchor),
+            bufferingIndicator.widthAnchor.constraint(equalToConstant: 30),
+            bufferingIndicator.heightAnchor.constraint(equalToConstant: 20),
         ])
     }
 
     // MARK: - Now Playing
 
-    func setNowPlaying(isPlaying: Bool, isCurrentStation: Bool) {
+    func setNowPlaying(isPlaying: Bool, isBuffering: Bool, isCurrentStation: Bool) {
         guard isCurrentStation else {
             stopPulseAnimation()
             pulseRingView.alpha = 0
             equalizerView.stopAnimating()
             equalizerView.alpha = 0
+            bufferingIndicator.stopAnimating()
+            bufferingOverlay.alpha = 0
             return
         }
 
-        if isPlaying {
+        if isBuffering {
+            // Dark overlay + buffering indicator on artwork
+            stopPulseAnimation()
+            pulseRingView.alpha = 0
+            equalizerView.stopAnimating()
+            equalizerView.alpha = 0
+            bufferingIndicator.startAnimating()
+            bufferingOverlay.alpha = 1
+        } else if isPlaying {
+            // Pulse ring + equalizer
+            bufferingIndicator.stopAnimating()
+            bufferingOverlay.alpha = 0
             startPulseAnimation()
             equalizerView.startAnimating()
             equalizerView.alpha = 0.7
         } else {
+            // Stopped — subtle indicators
+            bufferingIndicator.stopAnimating()
+            bufferingOverlay.alpha = 0
             stopPulseAnimation()
             pulseRingView.alpha = 0.25
             pulseRingView.transform = .identity
@@ -277,11 +325,13 @@ class StationTableViewCell: UITableViewCell {
 
 extension StationTableViewCell {
     func configureStationCell(station: RadioStation) {
+        representedStation = station
         titleLabel.text = station.name
         subtitleLabel.text = station.desc
 
         station.getImage { [weak self] image in
-            self?.stationImageView.image = image
+            guard let self = self, self.representedStation == station else { return }
+            self.stationImageView.image = image
         }
     }
 }
