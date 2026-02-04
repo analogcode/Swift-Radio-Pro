@@ -117,8 +117,13 @@ class NowPlayingViewController: UIViewController {
 
     func playerStateDidChange(_ state: FRadioPlayer.State) {
         switch state {
+        case .loading:
+            albumArtworkView.setBuffering(true)
         case .readyToPlay, .loadingFinished:
+            albumArtworkView.setBuffering(false)
             playbackStateDidChange(player.playbackState)
+        case .error:
+            albumArtworkView.setBuffering(false)
         default:
             break
         }
@@ -156,7 +161,11 @@ class NowPlayingViewController: UIViewController {
         mainStackView.translatesAutoresizingMaskIntoConstraints = false
 
         controlsView.playingAction = { [unowned self] in
-            player.togglePlaying()
+            if player.isPlaying, player.duration == 0 {
+                player.stop()
+            } else {
+                player.togglePlaying()
+            }
         }
 
         controlsView.nextAction = { [unowned self] in
@@ -274,12 +283,17 @@ class NowPlayingViewController: UIViewController {
     }
 
     private func updatePopupBarPlayPauseButton(isPlaying: Bool) {
-        let imageName = isPlaying ? "pause.fill" : "play.fill"
+        let isLive = player.duration == 0
+        let imageName = isPlaying ? (isLive ? "stop.fill" : "pause.fill") : "play.fill"
         playPauseButton.image = UIImage(systemName: imageName)
     }
 
     @objc private func popupBarPlayPauseTapped() {
-        player.togglePlaying()
+        if player.isPlaying, player.duration == 0 {
+            player.stop()
+        } else {
+            player.togglePlaying()
+        }
     }
 }
 

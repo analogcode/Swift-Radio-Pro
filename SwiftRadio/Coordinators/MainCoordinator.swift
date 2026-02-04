@@ -8,6 +8,7 @@
 
 import UIKit
 import MessageUI
+import SafariServices
 import LNPopupController
 
 class MainCoordinator: NavigationCoordinator {
@@ -70,10 +71,6 @@ class MainCoordinator: NavigationCoordinator {
         navigationController.present(modalNav, animated: true)
     }
 
-    func openWebsite(url: URL, from viewController: UIViewController) {
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
-    }
-
     func share(_ text: String, from viewController: UIViewController) {
         let activityViewController = UIActivityViewController(activityItems: [text], applicationActivities: nil)
         if let popoverController = activityViewController.popoverPresentationController {
@@ -128,6 +125,13 @@ extension MainCoordinator: NowPlayingViewControllerDelegate {
             let infoController = InfoDetailViewController(station: station)
             navigationController.pushViewController(infoController, animated: true)
             navigationController.closePopup(animated: true)
+        case .website:
+            if let website = station.website, let url = URL(string: website) {
+                let safariVC = SFSafariViewController(url: url)
+                navigationController.closePopup(animated: true, completion: { [weak self] in
+                    self?.navigationController.present(safariVC, animated: true)
+                })
+            }
         default:
             BottomSheetHandler.handle(option, station: station, from: controller)
         }

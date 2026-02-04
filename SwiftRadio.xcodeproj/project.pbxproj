@@ -43,6 +43,8 @@
 		CA2511BE2D45CD13006D1A99 /* ContributorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2511BD2D45CD11006D1A99 /* ContributorsViewController.swift */; };
 		CA2511BF2D45CD13006D1A99 /* ContributorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2511BD2D45CD11006D1A99 /* ContributorsViewController.swift */; };
 		CA2B6C6F2F31B769000CB4D4 /* MarqueeLabel in Frameworks */ = {isa = PBXBuildFile; productRef = CA2B6C6E2F31B769000CB4D4 /* MarqueeLabel */; };
+		CA2B6C702F327016000CB4D4 /* LNPopupController in Embed Frameworks */ = {isa = PBXBuildFile; productRef = AA0000131ACC9DEE005B7C26 /* LNPopupController */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		CA2B6C722F327107000CB4D4 /* LNPopupController in Embed Frameworks */ = {isa = PBXBuildFile; productRef = AA0000111ACC9DEE005B7C26 /* LNPopupController */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		CA3A11012D4E000000111001 /* InfoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3A11002D4E000000111001 /* InfoSection.swift */; };
 		CA3A11022D4E000000111001 /* InfoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3A11002D4E000000111001 /* InfoSection.swift */; };
 		CA3A11042D4E000000111002 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3A11032D4E000000111002 /* Content.swift */; };
@@ -117,6 +119,31 @@
 			remoteInfo = SwiftRadio;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CA2B6C712F327016000CB4D4 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CA2B6C702F327016000CB4D4 /* LNPopupController in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA2B6C732F327107000CB4D4 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CA2B6C722F327107000CB4D4 /* LNPopupController in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2C5545BA1C1124DE00728469 /* SwiftRadioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftRadioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -422,6 +449,7 @@
 				9409E1121ABF6FEA00312E2B /* Sources */,
 				9409E1131ABF6FEA00312E2B /* Frameworks */,
 				9409E1141ABF6FEA00312E2B /* Resources */,
+				CA2B6C732F327107000CB4D4 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -447,6 +475,7 @@
 				CE6A3E30291F376D0058C82A /* Sources */,
 				CE6A3E42291F376D0058C82A /* Frameworks */,
 				CE6A3E45291F376D0058C82A /* Resources */,
+				CA2B6C712F327016000CB4D4 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -897,7 +926,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = swiftradiocarplay2;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = swiftradiocarplay3;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -932,7 +961,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = swiftradiocarplay2;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = swiftradiocarplay3;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

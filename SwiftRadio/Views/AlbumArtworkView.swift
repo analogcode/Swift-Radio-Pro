@@ -8,6 +8,7 @@
 
 import UIKit
 import Spring
+import NVActivityIndicatorView
 
 class AlbumArtworkView: UIView {
 
@@ -23,6 +24,19 @@ class AlbumArtworkView: UIView {
         let view = SpringImageView()
         view.contentMode = .scaleAspectFill
         view.clipsToBounds = true
+        return view
+    }()
+
+    private let bufferingOverlay: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        view.alpha = 0
+        return view
+    }()
+
+    private let bufferingIndicator: NVActivityIndicatorView = {
+        let view = NVActivityIndicatorView(frame: .zero, type: .ballPulse, color: .white, padding: nil)
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
@@ -42,6 +56,16 @@ class AlbumArtworkView: UIView {
         }
         UIView.transition(with: imageView, duration: 0.3, options: .transitionCrossDissolve) {
             self.imageView.image = image
+        }
+    }
+
+    func setBuffering(_ isBuffering: Bool) {
+        if isBuffering {
+            bufferingIndicator.startAnimating()
+            UIView.animate(withDuration: 0.3) { self.bufferingOverlay.alpha = 1 }
+        } else {
+            UIView.animate(withDuration: 0.3) { self.bufferingOverlay.alpha = 0 }
+            bufferingIndicator.stopAnimating()
         }
     }
 
@@ -69,7 +93,11 @@ class AlbumArtworkView: UIView {
         containerView.translatesAutoresizingMaskIntoConstraints = false
 
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        bufferingOverlay.translatesAutoresizingMaskIntoConstraints = false
+
         containerView.addSubview(imageView)
+        containerView.addSubview(bufferingOverlay)
+        bufferingOverlay.addSubview(bufferingIndicator)
         addSubview(containerView)
 
         NSLayoutConstraint.activate([
@@ -87,6 +115,16 @@ class AlbumArtworkView: UIView {
             imageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
             imageView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+
+            // Buffering overlay fills container
+            bufferingOverlay.topAnchor.constraint(equalTo: containerView.topAnchor),
+            bufferingOverlay.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            bufferingOverlay.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            bufferingOverlay.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            bufferingIndicator.centerXAnchor.constraint(equalTo: bufferingOverlay.centerXAnchor),
+            bufferingIndicator.centerYAnchor.constraint(equalTo: bufferingOverlay.centerYAnchor),
+            bufferingIndicator.widthAnchor.constraint(equalToConstant: 40),
+            bufferingIndicator.heightAnchor.constraint(equalToConstant: 30),
         ])
     }
 }
