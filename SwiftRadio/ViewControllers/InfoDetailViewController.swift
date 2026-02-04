@@ -36,8 +36,8 @@ class InfoDetailViewController: BaseController {
 
     private let stationImageView: UIImageView = {
         let iv = UIImageView(image: UIImage(named: "stationImage"))
-        iv.contentMode = .scaleAspectFit
-        iv.layer.cornerRadius = 12
+        iv.contentMode = .scaleAspectFill
+        iv.layer.cornerRadius = 20
         iv.clipsToBounds = true
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
