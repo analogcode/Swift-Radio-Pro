@@ -39,8 +39,13 @@
     <array>
         <string>audio</string>
     </array>
-    <key>UILaunchStoryboardName</key>
-    <string>LaunchScreen</string>
+    <key>UILaunchScreen</key>
+    <dict>
+        <key>UIColorName</key>
+        <string>LaunchBackground</string>
+        <key>UIImageName</key>
+        <string>logo</string>
+    </dict>
     <key>UIRequiredDeviceCapabilities</key>
     <array>
         <string>armv7</string>
