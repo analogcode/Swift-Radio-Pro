@@ -173,14 +173,19 @@ extension StationsManager {
             nowPlayingInfo[MPMediaItemPropertyTitle] = trackName
         }
         
-        if player.duration != 0 {
+        let isLive = player.duration == 0
+
+        if isLive {
+            nowPlayingInfo[MPNowPlayingInfoPropertyIsLiveStream] = true
+        } else {
             nowPlayingInfo[MPNowPlayingInfoPropertyElapsedPlaybackTime] = player.currentTime
             nowPlayingInfo[MPMediaItemPropertyPlaybackDuration] = player.duration
             nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = player.rate
         }
-        
+
         // Set the metadata
         MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
+        AudioSetupService.shared.updateLiveCommands(isLive: isLive)
     }
 }
 
