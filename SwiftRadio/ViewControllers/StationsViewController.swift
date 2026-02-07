@@ -43,13 +43,13 @@ class StationsViewController: BaseController, Handoffable {
     private var isBuffering = false
 
     private let equalizerView: NVActivityIndicatorView = {
-        let view = NVActivityIndicatorView(frame: .zero, type: .audioEqualizer, color: .white, padding: nil)
+        let view = NVActivityIndicatorView(frame: .zero, type: .audioEqualizer, color: Config.tintColor, padding: nil)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
     private let bufferingView: NVActivityIndicatorView = {
-        let view = NVActivityIndicatorView(frame: .zero, type: .ballPulse, color: .white, padding: nil)
+        let view = NVActivityIndicatorView(frame: .zero, type: .ballPulse, color: Config.tintColor, padding: nil)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

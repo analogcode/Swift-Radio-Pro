@@ -9,8 +9,14 @@
 import UIKit
 
 struct Config {
-    
+
     static let debugLog = true
+
+    // Tint color used across the app (navigation bar, controls, etc.)
+    static let tintColor: UIColor = .white
+
+    // Gradient background color (independent from tintColor)
+    static let gradientColor: UIColor = .white
 
     // If this is set to "true", it will use the JSON file in the app
     // Set it to "false" to use the JSON file at the stationDataURL

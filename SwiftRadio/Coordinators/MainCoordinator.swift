@@ -38,7 +38,7 @@ class MainCoordinator: NavigationCoordinator {
     func presentPopupBarIfNeeded() {
         guard !isPopupBarPresented else { return }
         navigationController.popupBar.barStyle = .prominent
-        navigationController.popupBar.tintColor = .white
+        navigationController.popupBar.tintColor = Config.tintColor
         navigationController.popupBar.progressViewStyle = .bottom
         navigationController.popupContentView.popupCloseButtonStyle = .chevron
         navigationController.presentPopupBar(withContentViewController: nowPlayingViewController, animated: true)

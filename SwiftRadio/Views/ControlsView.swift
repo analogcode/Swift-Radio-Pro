@@ -48,8 +48,8 @@ class ControlsView: UIView {
         let slider = ThinSlider()
         slider.value = 0.0
         slider.translatesAutoresizingMaskIntoConstraints = false
-        slider.minimumTrackTintColor = .white
-        slider.maximumTrackTintColor = .white.withAlphaComponent(0.3)
+        slider.minimumTrackTintColor = Config.tintColor
+        slider.maximumTrackTintColor = Config.tintColor.withAlphaComponent(0.3)
         return slider
     }()
 
@@ -111,7 +111,7 @@ class ControlsView: UIView {
         let config = UIImage.SymbolConfiguration(pointSize: 60, weight: .regular)
         button.setImage(UIImage(systemName: "play.circle.fill", withConfiguration: config), for: .normal)
         button.setImage(UIImage(systemName: "stop.circle.fill", withConfiguration: config), for: .selected)
-        button.tintColor = .white
+        button.tintColor = Config.tintColor
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -120,7 +120,7 @@ class ControlsView: UIView {
         let button = UIButton()
         let config = UIImage.SymbolConfiguration(pointSize: 28, weight: .bold)
         button.setImage(UIImage(systemName: "forward.fill", withConfiguration: config), for: .normal)
-        button.tintColor = .white.withAlphaComponent(0.7)
+        button.tintColor = Config.tintColor.withAlphaComponent(0.7)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -129,15 +129,15 @@ class ControlsView: UIView {
         let button = UIButton()
         let config = UIImage.SymbolConfiguration(pointSize: 28, weight: .bold)
         button.setImage(UIImage(systemName: "backward.fill", withConfiguration: config), for: .normal)
-        button.tintColor = .white.withAlphaComponent(0.7)
+        button.tintColor = Config.tintColor.withAlphaComponent(0.7)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
     private let airPlayButton: AVRoutePickerView = {
         let button = AVRoutePickerView()
-        button.activeTintColor = .white
-        button.tintColor = .white.withAlphaComponent(0.7)
+        button.activeTintColor = Config.tintColor
+        button.tintColor = Config.tintColor.withAlphaComponent(0.7)
         button.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             button.widthAnchor.constraint(equalToConstant: 44),
@@ -149,7 +149,7 @@ class ControlsView: UIView {
     private let moreButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "list.dash"), for: .normal)
-        button.tintColor = .white.withAlphaComponent(0.7)
+        button.tintColor = Config.tintColor.withAlphaComponent(0.7)
         button.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             button.widthAnchor.constraint(equalToConstant: 44),
@@ -404,7 +404,7 @@ private class ThinSlider: UISlider {
     private func makeThumbImage(size: CGFloat) -> UIImage {
         let renderer = UIGraphicsImageRenderer(size: CGSize(width: size, height: size))
         return renderer.image { context in
-            UIColor.white.setFill()
+            Config.tintColor.setFill()
             context.cgContext.fillEllipse(in: CGRect(x: 0, y: 0, width: size, height: size))
         }
     }

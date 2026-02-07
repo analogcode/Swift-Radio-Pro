@@ -210,7 +210,7 @@ class InfoDetailViewController: BaseController {
 
         // Add a chevron on the trailing side
         let chevron = UIImageView(image: UIImage(systemName: "chevron.right"))
-        chevron.tintColor = .init(white: 1, alpha: 0.3)
+        chevron.tintColor = Config.tintColor.withAlphaComponent(0.3)
         chevron.translatesAutoresizingMaskIntoConstraints = false
         chevron.setContentHuggingPriority(.required, for: .horizontal)
         button.addSubview(chevron)

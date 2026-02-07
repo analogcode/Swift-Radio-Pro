@@ -10,12 +10,10 @@ import UIKit
 
 class BaseController: UIViewController {
     
-    let backgroundImageView: UIImageView = {
-        let image = UIImage(named: "background")
-        let imageView = UIImageView(image: image)
-        imageView.contentMode = .scaleAspectFill
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
+    let gradientBackgroundView: GradientBackgroundView = {
+        let view = GradientBackgroundView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     override func loadView() {
@@ -24,13 +22,13 @@ class BaseController: UIViewController {
     }
     
     func setupViews() {
-        view.addSubview(backgroundImageView)
-        
+        view.addSubview(gradientBackgroundView)
+
         NSLayoutConstraint.activate([
-            backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
-            backgroundImageView.rightAnchor.constraint(equalTo: view.rightAnchor),
-            backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            backgroundImageView.leftAnchor.constraint(equalTo: view.leftAnchor)
+            gradientBackgroundView.topAnchor.constraint(equalTo: view.topAnchor),
+            gradientBackgroundView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            gradientBackgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            gradientBackgroundView.leftAnchor.constraint(equalTo: view.leftAnchor)
         ])
     }
 }
