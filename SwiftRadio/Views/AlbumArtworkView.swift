@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Spring
 import NVActivityIndicatorView
 
 class AlbumArtworkView: UIView {
@@ -20,8 +19,8 @@ class AlbumArtworkView: UIView {
         return view
     }()
 
-    private let imageView: SpringImageView = {
-        let view = SpringImageView()
+    private let imageView: UIImageView = {
+        let view = UIImageView()
         view.contentMode = .scaleAspectFill
         view.clipsToBounds = true
         return view

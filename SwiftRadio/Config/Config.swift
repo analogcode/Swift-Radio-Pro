@@ -32,7 +32,6 @@ struct Config {
         static let items: [LibraryItem] = [
             LibraryItem(owner: "analogcode", repo: "Swift-Radio-Pro"),
             LibraryItem(owner: "fethica", repo: "FRadioPlayer"),
-            LibraryItem(owner: "MengTo", repo: "Spring"),
             LibraryItem(owner: "ninjaprox", repo: "NVActivityIndicatorView"),
             LibraryItem(owner: "LeoNatan", repo: "LNPopupController"),
             LibraryItem(owner: "cbpowell", repo: "MarqueeLabel"),
