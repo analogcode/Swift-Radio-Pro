@@ -138,6 +138,11 @@ class ControlsView: UIView {
         let button = AVRoutePickerView()
         button.activeTintColor = .white
         button.tintColor = .white.withAlphaComponent(0.7)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            button.widthAnchor.constraint(equalToConstant: 44),
+            button.heightAnchor.constraint(equalToConstant: 44),
+        ])
         return button
     }()
 
@@ -145,6 +150,11 @@ class ControlsView: UIView {
         let button = UIButton()
         button.setImage(UIImage(systemName: "list.dash"), for: .normal)
         button.tintColor = .white.withAlphaComponent(0.7)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            button.widthAnchor.constraint(equalToConstant: 44),
+            button.heightAnchor.constraint(equalToConstant: 44),
+        ])
         return button
     }()
 
