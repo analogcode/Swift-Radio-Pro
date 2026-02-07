@@ -32,7 +32,7 @@ struct ShareActivity {
     private static func generateImage(from image: UIImage?, station: RadioStation) -> UIImage {
         let logoShareView = LogoShareView.instanceFromNib()
         
-        logoShareView.shareSetup(albumArt: image ?? #imageLiteral(resourceName: "albumArt"), radioShoutout: station.shoutout, trackTitle: station.trackName, trackArtist: station.artistName)
+        logoShareView.shareSetup(albumArt: image ?? UIImage(named: "stationImage")!, radioShoutout: station.shoutout, trackTitle: station.trackName, trackArtist: station.artistName)
                 
         let renderer = UIGraphicsImageRenderer(size: logoShareView.bounds.size)
         let shareImage = renderer.image { ctx in

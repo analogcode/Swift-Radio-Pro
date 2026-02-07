@@ -98,7 +98,7 @@ class StationsViewController: BaseController, Handoffable {
         navigationItem.backButtonDisplayMode = .minimal
 
         // NavigationBar items
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-hamburger"), style: .plain, target: self, action: #selector(handleMenuTap))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal"), style: .plain, target: self, action: #selector(handleMenuTap))
 
         // Setup Player
         player.addObserver(self)
