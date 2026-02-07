@@ -100,8 +100,10 @@ extension MainCoordinator: StationsViewControllerDelegate {
         let isNewStation = station != StationsManager.shared.currentStation
         if isNewStation {
             StationsManager.shared.set(station: station)
+            presentPopupBarIfNeeded()
+        } else {
+            navigationController.openPopup(animated: true)
         }
-        presentPopupBarIfNeeded()
     }
 
     func didTapNowPlaying(_ stationsViewController: StationsViewController) {
