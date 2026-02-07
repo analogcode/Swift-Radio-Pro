@@ -294,6 +294,9 @@ extension StationsViewController: FRadioPlayerObserver {
     }
 
     func radioPlayer(_ player: FRadioPlayer, playbackStateDidChange state: FRadioPlayer.PlaybackState) {
+        if state == .playing, player.state == .loading {
+            isBuffering = true
+        }
         updateNowPlayingAnimation()
         updateVisibleCellsNowPlaying()
     }

@@ -113,6 +113,9 @@ class NowPlayingViewController: UIViewController {
 
     func playbackStateDidChange(_ playbackState: FRadioPlayer.PlaybackState) {
         isPlayingDidChange(player.isPlaying)
+        if playbackState == .playing, player.state == .loading {
+            albumArtworkView.setBuffering(true)
+        }
     }
 
     func playerStateDidChange(_ state: FRadioPlayer.State) {
