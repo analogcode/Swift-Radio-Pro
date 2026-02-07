@@ -84,13 +84,16 @@ class LoaderController: BaseController {
         // Logo Image
         let logoImage = UIImage(named: "logo")
         let logoImageView = UIImageView(image: logoImage)
+        logoImageView.contentMode = .scaleAspectFit
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
-        
+
         view.addSubview(logoImageView)
-        
+
         NSLayoutConstraint.activate([
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            logoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            logoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            logoImageView.widthAnchor.constraint(equalToConstant: 220),
+            logoImageView.heightAnchor.constraint(equalTo: logoImageView.widthAnchor, multiplier: 71.0 / 180.0),
         ])
         
         // Activity Indicator
