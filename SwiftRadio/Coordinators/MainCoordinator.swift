@@ -10,6 +10,7 @@ import UIKit
 import MessageUI
 import SafariServices
 import LNPopupController
+import FRadioPlayer
 
 class MainCoordinator: NavigationCoordinator {
     var childCoordinators: [Coordinator] = []
@@ -21,6 +22,7 @@ class MainCoordinator: NavigationCoordinator {
         return vc
     }()
 
+    private let player = FRadioPlayer.shared
     private var isPopupBarPresented = false
 
     func start() {
@@ -101,8 +103,10 @@ extension MainCoordinator: StationsViewControllerDelegate {
         if isNewStation {
             StationsManager.shared.set(station: station)
             presentPopupBarIfNeeded()
-        } else {
+        } else if player.isPlaying {
             navigationController.openPopup(animated: true)
+        } else {
+            player.togglePlaying()
         }
     }
 
