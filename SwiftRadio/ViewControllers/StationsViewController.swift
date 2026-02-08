@@ -117,7 +117,7 @@ class StationsViewController: BaseController, Handoffable {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = "Swift Radio"
+        title = Content.Stations.title
     }
 
     @objc func refresh(sender: AnyObject) {
@@ -232,6 +232,9 @@ extension StationsViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "NothingFound", for: indexPath)
             cell.backgroundColor = .clear
             cell.selectionStyle = .none
+            if let label = cell.contentView.viewWithTag(100) as? UILabel {
+                label.text = Content.Stations.loadingMessage
+            }
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(for: indexPath) as StationTableViewCell

@@ -76,7 +76,7 @@ class InfoDetailViewController: BaseController {
         if station.hasValidWebsite,
            let website = station.website,
            let url = URL(string: website) {
-            links.append(Link(title: "Visit the official station page", image: UIImage(systemName: "safari"), url: url))
+            links.append(Link(title: Content.StationDetail.visitWebsite, image: UIImage(systemName: "safari"), url: url))
         }
     }
 
@@ -86,7 +86,7 @@ class InfoDetailViewController: BaseController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "About Station"
+        title = Content.StationDetail.title
         setupLayout()
         populateData()
     }
@@ -164,7 +164,7 @@ class InfoDetailViewController: BaseController {
         descLabel.text = station.desc
 
         let text = station.longDesc.isEmpty
-            ? "You are listening to Swift Radio. This is a sweet open source project. Tell your friends, swiftly!"
+            ? Content.StationDetail.defaultDescription
             : station.longDesc
         longDescLabel.text = text
 

@@ -29,10 +29,12 @@ struct Config {
     // Set this to "false" to show the next/previous player buttons
     static let hideNextPreviousButtons = false
     
-    // Contact infos
+    // Contact & links
     static let website = "https://github.com/analogcode/Swift-Radio-Pro"
     static let email = "contact@fethica.com"
     static let emailSubject = "From \(Bundle.main.appName) App"
+    static let feedbackURL = "https://fethica.com/#contact"
+    static let licenseURL = "https://raw.githubusercontent.com/analogcode/Swift-Radio-Pro/refs/heads/master/LICENSE"
 
     struct Libraries {
         static let items: [LibraryItem] = [
@@ -63,7 +65,7 @@ struct Config {
             ]),
             InfoSection(title: Content.About.Sections.contact, items: [
                 .email(address: Config.email),
-                .link(title: Content.About.feedback.0, subtitle: Content.About.feedback.1, url: "https://fethica.com/#contact")
+                .link(title: Content.About.feedback.0, subtitle: Content.About.feedback.1, url: Config.feedbackURL)
             ]),
             InfoSection(title: Content.About.Sections.support, items: [
                 .rateApp(appID: "YOUR_APP_ID"),
@@ -74,7 +76,7 @@ struct Config {
                 .credits(owner: "analogcode", repo: "Swift-Radio-Pro")
             ]),
             InfoSection(title: Content.About.Sections.legal, items: [
-                .link(title: Content.About.license.0, subtitle: Content.About.license.1, url: "https://raw.githubusercontent.com/analogcode/Swift-Radio-Pro/refs/heads/master/LICENSE")
+                .link(title: Content.About.license.0, subtitle: Content.About.license.1, url: Config.licenseURL)
             ]),
             InfoSection(title: Content.About.Sections.version, items: [
                 .version()

@@ -29,7 +29,7 @@ class LoaderController: BaseController {
         label.textAlignment = .center
         label.font = UIFont.preferredFont(forTextStyle: .headline)
         label.numberOfLines = 0
-        label.text = "Something went wrong!"
+        label.text = Content.Loader.errorTitle
         return label
     }()
     
@@ -106,7 +106,7 @@ class LoaderController: BaseController {
         
         // Retry button
         let retryButton = UIButton(type: .system)
-        retryButton.setTitle("Try again", for: .normal)
+        retryButton.setTitle(Content.Loader.retryButton, for: .normal)
         retryButton.addTarget(self, action: #selector(handleRetry), for: .touchUpInside)
         
         // Stack view

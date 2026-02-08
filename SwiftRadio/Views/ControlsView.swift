@@ -85,7 +85,7 @@ class ControlsView: UIView {
         blur.translatesAutoresizingMaskIntoConstraints = false
 
         let label = UILabel()
-        label.text = "LIVE"
+        label.text = Content.Player.liveBadge
         label.font = UIFont.systemFont(ofSize: 11, weight: .semibold)
         label.textColor = .white.withAlphaComponent(0.9)
         label.textAlignment = .center
