@@ -93,7 +93,7 @@ class LoaderController: BaseController {
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             logoImageView.widthAnchor.constraint(equalToConstant: 220),
-            logoImageView.heightAnchor.constraint(equalTo: logoImageView.widthAnchor, multiplier: 71.0 / 180.0),
+            logoImageView.heightAnchor.constraint(equalToConstant: 220),
         ])
         
         // Activity Indicator
