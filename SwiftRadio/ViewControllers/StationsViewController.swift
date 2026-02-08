@@ -54,6 +54,14 @@ class StationsViewController: BaseController, Handoffable {
         return view
     }()
 
+    private lazy var nowPlayingBarButton: UIBarButtonItem = {
+        let barButton = UIBarButtonItem(customView: nowPlayingIndicator)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(nowPlayingBarButtonPressed))
+        nowPlayingIndicator.addGestureRecognizer(tapGesture)
+        nowPlayingIndicator.isUserInteractionEnabled = true
+        return barButton
+    }()
+
     private lazy var nowPlayingIndicator: UIView = {
         let container = UIView()
         container.addSubview(equalizerView)
@@ -136,17 +144,6 @@ class StationsViewController: BaseController, Handoffable {
             navigationItem.rightBarButtonItem = nil
             return
         }
-
-        guard navigationItem.rightBarButtonItem == nil else { return }
-        let barButton = UIBarButtonItem(customView: nowPlayingIndicator)
-        barButton.target = self
-        barButton.action = #selector(nowPlayingBarButtonPressed)
-
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(nowPlayingBarButtonPressed))
-        nowPlayingIndicator.addGestureRecognizer(tapGesture)
-        nowPlayingIndicator.isUserInteractionEnabled = true
-
-        navigationItem.rightBarButtonItem = barButton
         updateNowPlayingAnimation()
     }
 
@@ -154,12 +151,15 @@ class StationsViewController: BaseController, Handoffable {
         if isBuffering {
             equalizerView.stopAnimating()
             bufferingView.startAnimating()
+            navigationItem.rightBarButtonItem = nowPlayingBarButton
         } else if player.isPlaying {
             bufferingView.stopAnimating()
             equalizerView.startAnimating()
+            navigationItem.rightBarButtonItem = nowPlayingBarButton
         } else {
             equalizerView.stopAnimating()
             bufferingView.stopAnimating()
+            navigationItem.rightBarButtonItem = nil
         }
     }
 

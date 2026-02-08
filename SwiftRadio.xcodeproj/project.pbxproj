@@ -50,6 +50,8 @@
 		CA58087D2D40BAC000F8082B /* CarPlaySceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA58087B2D40BAC000F8082B /* CarPlaySceneDelegate.swift */; };
 		CA5F00022F40A00000000002 /* GradientBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F00012F40A00000000001 /* GradientBackgroundView.swift */; };
 		CA5F00032F40A00000000003 /* GradientBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F00012F40A00000000001 /* GradientBackgroundView.swift */; };
+		CA5F00042F41000000000001 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CA5F00062F41000000000003 /* Localizable.xcstrings */; };
+		CA5F00052F41000000000002 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CA5F00062F41000000000003 /* Localizable.xcstrings */; };
 		CA900001200000000000000A /* MarqueeLabel in Frameworks */ = {isa = PBXBuildFile; productRef = CA900002200000000000000A /* MarqueeLabel */; };
 		CAB4E8292D3D7DC7001282E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB4E8282D3D7DC7001282E9 /* SceneDelegate.swift */; };
 		CAB4E82A2D3D7DC7001282E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB4E8282D3D7DC7001282E9 /* SceneDelegate.swift */; };
@@ -103,8 +105,6 @@
 		CEE9A27C2B535C780018FE68 /* AlbumArtworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE9A27A2B535C780018FE68 /* AlbumArtworkView.swift */; };
 		CEE9A27E2B54A5520018FE68 /* ControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE9A27D2B54A5520018FE68 /* ControlsView.swift */; };
 		CEE9A27F2B54A5520018FE68 /* ControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE9A27D2B54A5520018FE68 /* ControlsView.swift */; };
-		CA5F00042F41000000000001 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CA5F00062F41000000000003 /* Localizable.xcstrings */; };
-		CA5F00052F41000000000002 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CA5F00062F41000000000003 /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -173,6 +173,7 @@
 		CA3A11032D4E000000111002 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		CA58087B2D40BAC000F8082B /* CarPlaySceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarPlaySceneDelegate.swift; sourceTree = "<group>"; };
 		CA5F00012F40A00000000001 /* GradientBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientBackgroundView.swift; sourceTree = "<group>"; };
+		CA5F00062F41000000000003 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		CAB4E8282D3D7DC7001282E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CE0A4994291F3A220071C0CC /* SwiftRadio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftRadio.entitlements; sourceTree = "<group>"; };
 		CE321FF229371140001572BD /* Bundle+appName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+appName.swift"; sourceTree = "<group>"; };
@@ -193,7 +194,6 @@
 		CEE9A2772B5345C30018FE68 /* NowPlayingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingViewController.swift; sourceTree = "<group>"; };
 		CEE9A27A2B535C780018FE68 /* AlbumArtworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumArtworkView.swift; sourceTree = "<group>"; };
 		CEE9A27D2B54A5520018FE68 /* ControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsView.swift; sourceTree = "<group>"; };
-		CA5F00062F41000000000003 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -856,7 +856,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.8;
+				MARKETING_VERSION = 3.0.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu99 gnu++11";
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewfecher.SwiftRadio;
 				PRODUCT_NAME = SwiftRadio;
@@ -888,7 +888,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.8;
+				MARKETING_VERSION = 3.0.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu99 gnu++11";
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewfecher.SwiftRadio;
 				PRODUCT_NAME = SwiftRadio;
@@ -923,7 +923,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.8;
+				MARKETING_VERSION = 3.0.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu99 gnu++11";
 				OTHER_SWIFT_FLAGS = "-D CarPlay";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fethica.SwiftRadio;
@@ -960,7 +960,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.8;
+				MARKETING_VERSION = 3.0.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu99 gnu++11";
 				OTHER_SWIFT_FLAGS = "-D CarPlay";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fethica.SwiftRadio;
