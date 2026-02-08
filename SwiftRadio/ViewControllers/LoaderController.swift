@@ -19,7 +19,7 @@ class LoaderController: BaseController {
     private let manager = StationsManager.shared
     
     private let activityIndicatorView: UIActivityIndicatorView = {
-        let view = UIActivityIndicatorView(style: .white)
+        let view = UIActivityIndicatorView(style: .medium)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

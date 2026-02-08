@@ -204,11 +204,12 @@ extension StationsManager: FRadioPlayerObserver {
         }
 
         Task { [weak self] in
+            guard let self else { return }
             guard let image = await NetworkService.fetchImage(from: artworkURL) else {
-                await MainActor.run { self?.resetArtwork(with: self?.currentStation) }
+                await MainActor.run { self.resetArtwork(with: self.currentStation) }
                 return
             }
-            await MainActor.run { self?.updateLockScreen(with: image) }
+            await MainActor.run { self.updateLockScreen(with: image) }
         }
     }
 }

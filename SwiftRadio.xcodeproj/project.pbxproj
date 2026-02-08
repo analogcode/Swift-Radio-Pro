@@ -48,7 +48,8 @@
 		CA3A11042D4E000000111002 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3A11032D4E000000111002 /* Content.swift */; };
 		CA3A11052D4E000000111002 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3A11032D4E000000111002 /* Content.swift */; };
 		CA58087D2D40BAC000F8082B /* CarPlaySceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA58087B2D40BAC000F8082B /* CarPlaySceneDelegate.swift */; };
-		CA58087E2D40C11300F8082B /* Info-CarPlay.plist in Resources */ = {isa = PBXBuildFile; fileRef = CEA82F492921F260009E9FA0 /* Info-CarPlay.plist */; };
+		CA5F00022F40A00000000002 /* GradientBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F00012F40A00000000001 /* GradientBackgroundView.swift */; };
+		CA5F00032F40A00000000003 /* GradientBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F00012F40A00000000001 /* GradientBackgroundView.swift */; };
 		CA900001200000000000000A /* MarqueeLabel in Frameworks */ = {isa = PBXBuildFile; productRef = CA900002200000000000000A /* MarqueeLabel */; };
 		CAB4E8292D3D7DC7001282E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB4E8282D3D7DC7001282E9 /* SceneDelegate.swift */; };
 		CAB4E82A2D3D7DC7001282E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB4E8282D3D7DC7001282E9 /* SceneDelegate.swift */; };
@@ -102,8 +103,6 @@
 		CEE9A27C2B535C780018FE68 /* AlbumArtworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE9A27A2B535C780018FE68 /* AlbumArtworkView.swift */; };
 		CEE9A27E2B54A5520018FE68 /* ControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE9A27D2B54A5520018FE68 /* ControlsView.swift */; };
 		CEE9A27F2B54A5520018FE68 /* ControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE9A27D2B54A5520018FE68 /* ControlsView.swift */; };
-		CA5F00022F40A00000000002 /* GradientBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F00012F40A00000000001 /* GradientBackgroundView.swift */; };
-		CA5F00032F40A00000000003 /* GradientBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F00012F40A00000000001 /* GradientBackgroundView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -171,6 +170,7 @@
 		CA3A11002D4E000000111001 /* InfoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoSection.swift; sourceTree = "<group>"; };
 		CA3A11032D4E000000111002 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		CA58087B2D40BAC000F8082B /* CarPlaySceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarPlaySceneDelegate.swift; sourceTree = "<group>"; };
+		CA5F00012F40A00000000001 /* GradientBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientBackgroundView.swift; sourceTree = "<group>"; };
 		CAB4E8282D3D7DC7001282E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CE0A4994291F3A220071C0CC /* SwiftRadio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftRadio.entitlements; sourceTree = "<group>"; };
 		CE321FF229371140001572BD /* Bundle+appName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+appName.swift"; sourceTree = "<group>"; };
@@ -191,7 +191,6 @@
 		CEE9A2772B5345C30018FE68 /* NowPlayingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingViewController.swift; sourceTree = "<group>"; };
 		CEE9A27A2B535C780018FE68 /* AlbumArtworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumArtworkView.swift; sourceTree = "<group>"; };
 		CEE9A27D2B54A5520018FE68 /* ControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsView.swift; sourceTree = "<group>"; };
-		CA5F00012F40A00000000001 /* GradientBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientBackgroundView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -490,9 +489,10 @@
 		9409E10E1ABF6FE900312E2B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 1400;
+				LastUpgradeCheck = 2620;
 				ORGANIZATIONNAME = matthewfecher.com;
 				TargetAttributes = {
 					2C5545B91C1124DE00728469 = {
@@ -560,7 +560,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA58087E2D40C11300F8082B /* Info-CarPlay.plist in Resources */,
 				CE6A3E46291F376D0058C82A /* stations.json in Resources */,
 				CE6A3E47291F376D0058C82A /* NothingFoundCell.xib in Resources */,
 				CE6A3E48291F376D0058C82A /* LogoShareView.xib in Resources */,
@@ -723,6 +722,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -752,6 +752,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -771,6 +772,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -779,6 +781,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -808,6 +811,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -819,6 +823,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
@@ -834,6 +839,7 @@
 				CURRENT_PROJECT_VERSION = 6;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 6G96AERJ7Q;
+				ENABLE_MODULE_VERIFIER = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SwiftRadio",
@@ -845,6 +851,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.0.8;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu99 gnu++11";
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewfecher.SwiftRadio;
 				PRODUCT_NAME = SwiftRadio;
 				PROVISIONING_PROFILE = "";
@@ -864,6 +871,7 @@
 				CURRENT_PROJECT_VERSION = 6;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 6G96AERJ7Q;
+				ENABLE_MODULE_VERIFIER = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SwiftRadio",
@@ -875,6 +883,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.0.8;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu99 gnu++11";
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewfecher.SwiftRadio;
 				PRODUCT_NAME = SwiftRadio;
 				PROVISIONING_PROFILE = "";
@@ -897,6 +906,7 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6G96AERJ7Q;
+				ENABLE_MODULE_VERIFIER = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SwiftRadio",
@@ -908,6 +918,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.0.8;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu99 gnu++11";
 				OTHER_SWIFT_FLAGS = "-D CarPlay";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fethica.SwiftRadio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -932,6 +943,7 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6G96AERJ7Q;
+				ENABLE_MODULE_VERIFIER = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SwiftRadio",
@@ -943,6 +955,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.0.8;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu99 gnu++11";
 				OTHER_SWIFT_FLAGS = "-D CarPlay";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fethica.SwiftRadio;
 				PRODUCT_NAME = "$(TARGET_NAME)";

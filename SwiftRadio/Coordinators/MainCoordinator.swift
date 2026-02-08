@@ -41,7 +41,7 @@ class MainCoordinator: NavigationCoordinator {
         navigationController.popupBar.tintColor = Config.tintColor
         navigationController.popupBar.progressViewStyle = .bottom
         navigationController.popupContentView.popupCloseButtonStyle = .chevron
-        navigationController.presentPopupBar(withContentViewController: nowPlayingViewController, animated: true)
+        navigationController.presentPopupBar(with: nowPlayingViewController, animated: true)
         isPopupBarPresented = true
     }
 
