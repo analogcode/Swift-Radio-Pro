@@ -81,7 +81,7 @@ final class ContributorCell: UICollectionViewCell {
         rankUsernameLabel.text = "#\(rank) \(contributor.login)"
         
         // e.g., "42 commits"
-        commitsLabel.text = "\(contributor.contributions) commits"
+        commitsLabel.text = String(format: Content.Common.commitsFormat, contributor.contributions)
         
         // Set placeholder and load image using cache
         avatarImageView.image = UIImage(systemName: "person.crop.circle")

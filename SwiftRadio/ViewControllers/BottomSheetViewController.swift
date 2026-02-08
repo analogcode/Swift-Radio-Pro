@@ -32,10 +32,10 @@ class BottomSheetViewController: UIViewController {
         
         var title: String {
             switch self {
-                case .info: return "About Station"
-                case .share: return "Share Now Playing"
-                case .website: return "Station Website"
-                case .openInMusic: return "Play in Music App"
+                case .info: return Content.BottomSheet.aboutStation
+                case .share: return Content.BottomSheet.shareNowPlaying
+                case .website: return Content.BottomSheet.stationWebsite
+                case .openInMusic: return Content.BottomSheet.playInMusicApp
             }
         }
         

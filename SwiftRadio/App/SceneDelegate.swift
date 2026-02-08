@@ -27,7 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private func setupUIAppearance() {
         UINavigationBar.appearance().barStyle = .black
-        UINavigationBar.appearance().tintColor = .white
+        UINavigationBar.appearance().tintColor = Config.tintColor
         UINavigationBar.appearance().prefersLargeTitles = true
     }
     

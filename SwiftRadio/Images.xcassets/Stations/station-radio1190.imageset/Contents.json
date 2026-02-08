@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "station-classicrock.jpg",
+      "filename" : "station-radio1190.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "station-classicrock@2x.jpg",
+      "filename" : "station-radio1190@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "station-classicrock@3x.jpg",
+      "filename" : "station-radio1190@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

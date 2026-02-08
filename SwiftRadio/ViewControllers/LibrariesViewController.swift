@@ -133,7 +133,7 @@ final class LibrariesViewController: UITableViewController {
             case 0:
                 content.text = library.name.isEmpty ? "\(library.owner)/\(library.repo)" : library.name
                 content.textProperties.font = .boldSystemFont(ofSize: 17)
-                content.secondaryText = library.description ?? "No description"
+                content.secondaryText = library.description ?? Content.Common.noDescription
                 cell.selectionStyle = .default
                 cell.accessoryType = .disclosureIndicator
                 

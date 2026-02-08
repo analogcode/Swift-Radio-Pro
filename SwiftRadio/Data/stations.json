@@ -5,7 +5,7 @@
             "name": "Absolute Country Hits",
             "website": "https://www.1.fm/station/acountry",
             "streamURL": "http://strm112.1.fm/acountry_mobile_mp3",
-            "imageURL": "station-absolutecountry.png",
+            "imageURL": "station-absolutecountry",
             "desc": "The Music Starts Here",
             "longDesc": "All your favorite country hits and artists, from Johnny Cash to Taylor Swift, on 1.FM's Absolute Country, playing non-stop crooners and banjos, dance-tunes and fiddles, ballads and harmonicas. Absolute Country focuses on 5th, 6th and 7th generation Country (from the 90s on) but often delves into classic, older tunes as well."
         },
@@ -21,7 +21,7 @@
             "name": "The Rock FM",
             "website": "https://www.therock.net.nz",
             "streamURL": "https://20593.live.streamtheworld.com/CKGEFMAAC.aac",
-            "imageURL": "https://fethica.com/assets/swift-radio/949-the-rock-radio.png",
+            "imageURL": "station-therockfm",
             "desc": "Rock Music",
             "longDesc": "NZ's number one Rock music station."
         },
@@ -36,7 +36,7 @@
             "name": "Radio 1190",
             "website": "https://radio1190.org",
             "streamURL": "http://kvcu.streamguys1.com/live",
-            "imageURL": "",
+            "imageURL": "station-radio1190",
             "desc": "KVCU - Boulder, CO",
             "longDesc": "Radio 1190 is the bomb."
         },

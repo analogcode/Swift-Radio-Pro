@@ -21,7 +21,7 @@ class AudioSetupService {
     func setupAudioSession() {
         do {
             let session = AVAudioSession.sharedInstance()
-            try session.setCategory(.playback, mode: .default, options: [.mixWithOthers, .allowBluetooth])
+            try session.setCategory(.playback, mode: .default, options: [.mixWithOthers, .allowBluetoothHFP])
             try session.setActive(true)
         } catch {
             if Config.debugLog {
@@ -48,9 +48,20 @@ class AudioSetupService {
             self?.player.pause()
             return .success
         }
-        
+
+        commandCenter.stopCommand.addTarget { [weak self] _ in
+            self?.player.stop()
+            return .success
+        }
+        commandCenter.stopCommand.isEnabled = false
+
         commandCenter.togglePlayPauseCommand.addTarget { [weak self] _ in
-            self?.player.togglePlaying()
+            guard let self else { return .commandFailed }
+            if self.player.isPlaying, self.player.duration == 0 {
+                self.player.stop()
+            } else {
+                self.player.togglePlaying()
+            }
             return .success
         }
         
@@ -67,6 +78,12 @@ class AudioSetupService {
         UIApplication.shared.beginReceivingRemoteControlEvents()
     }
     
+    func updateLiveCommands(isLive: Bool) {
+        let commandCenter = MPRemoteCommandCenter.shared()
+        commandCenter.pauseCommand.isEnabled = !isLive
+        commandCenter.stopCommand.isEnabled = isLive
+    }
+
     func activateAudioSession() {
         do {
             try AVAudioSession.sharedInstance().setActive(true)

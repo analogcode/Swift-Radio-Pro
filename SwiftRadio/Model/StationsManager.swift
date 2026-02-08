@@ -173,14 +173,19 @@ extension StationsManager {
             nowPlayingInfo[MPMediaItemPropertyTitle] = trackName
         }
         
-        if player.duration != 0 {
+        let isLive = player.duration == 0
+
+        if isLive {
+            nowPlayingInfo[MPNowPlayingInfoPropertyIsLiveStream] = true
+        } else {
             nowPlayingInfo[MPNowPlayingInfoPropertyElapsedPlaybackTime] = player.currentTime
             nowPlayingInfo[MPMediaItemPropertyPlaybackDuration] = player.duration
             nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = player.rate
         }
-        
+
         // Set the metadata
         MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
+        AudioSetupService.shared.updateLiveCommands(isLive: isLive)
     }
 }
 
@@ -199,11 +204,12 @@ extension StationsManager: FRadioPlayerObserver {
         }
 
         Task { [weak self] in
+            guard let self else { return }
             guard let image = await NetworkService.fetchImage(from: artworkURL) else {
-                await MainActor.run { self?.resetArtwork(with: self?.currentStation) }
+                await MainActor.run { self.resetArtwork(with: self.currentStation) }
                 return
             }
-            await MainActor.run { self?.updateLockScreen(with: image) }
+            await MainActor.run { self.updateLockScreen(with: image) }
         }
     }
 }

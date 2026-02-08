@@ -9,8 +9,14 @@
 import UIKit
 
 struct Config {
-    
+
     static let debugLog = true
+
+    // Tint color used across the app (navigation bar, controls, etc.)
+    static let tintColor: UIColor = .white
+
+    // Gradient background color (independent from tintColor)
+    static let gradientColor: UIColor = .white
 
     // If this is set to "true", it will use the JSON file in the app
     // Set it to "false" to use the JSON file at the stationDataURL
@@ -23,16 +29,17 @@ struct Config {
     // Set this to "false" to show the next/previous player buttons
     static let hideNextPreviousButtons = false
     
-    // Contact infos
+    // Contact & links
     static let website = "https://github.com/analogcode/Swift-Radio-Pro"
     static let email = "contact@fethica.com"
     static let emailSubject = "From \(Bundle.main.appName) App"
+    static let feedbackURL = "https://fethica.com/#contact"
+    static let licenseURL = "https://raw.githubusercontent.com/analogcode/Swift-Radio-Pro/refs/heads/master/LICENSE"
 
     struct Libraries {
         static let items: [LibraryItem] = [
             LibraryItem(owner: "analogcode", repo: "Swift-Radio-Pro"),
             LibraryItem(owner: "fethica", repo: "FRadioPlayer"),
-            LibraryItem(owner: "MengTo", repo: "Spring"),
             LibraryItem(owner: "ninjaprox", repo: "NVActivityIndicatorView"),
             LibraryItem(owner: "LeoNatan", repo: "LNPopupController"),
             LibraryItem(owner: "cbpowell", repo: "MarqueeLabel"),
@@ -58,7 +65,7 @@ struct Config {
             ]),
             InfoSection(title: Content.About.Sections.contact, items: [
                 .email(address: Config.email),
-                .link(title: Content.About.feedback.0, subtitle: Content.About.feedback.1, url: "https://fethica.com/#contact")
+                .link(title: Content.About.feedback.0, subtitle: Content.About.feedback.1, url: Config.feedbackURL)
             ]),
             InfoSection(title: Content.About.Sections.support, items: [
                 .rateApp(appID: "YOUR_APP_ID"),
@@ -69,7 +76,7 @@ struct Config {
                 .credits(owner: "analogcode", repo: "Swift-Radio-Pro")
             ]),
             InfoSection(title: Content.About.Sections.legal, items: [
-                .link(title: Content.About.license.0, subtitle: Content.About.license.1, url: "https://raw.githubusercontent.com/analogcode/Swift-Radio-Pro/refs/heads/master/LICENSE")
+                .link(title: Content.About.license.0, subtitle: Content.About.license.1, url: Config.licenseURL)
             ]),
             InfoSection(title: Content.About.Sections.version, items: [
                 .version()

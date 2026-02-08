@@ -19,7 +19,7 @@ class LoaderController: BaseController {
     private let manager = StationsManager.shared
     
     private let activityIndicatorView: UIActivityIndicatorView = {
-        let view = UIActivityIndicatorView(style: .white)
+        let view = UIActivityIndicatorView(style: .medium)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -29,7 +29,7 @@ class LoaderController: BaseController {
         label.textAlignment = .center
         label.font = UIFont.preferredFont(forTextStyle: .headline)
         label.numberOfLines = 0
-        label.text = "Something went wrong!"
+        label.text = Content.Loader.errorTitle
         return label
     }()
     
@@ -84,13 +84,16 @@ class LoaderController: BaseController {
         // Logo Image
         let logoImage = UIImage(named: "logo")
         let logoImageView = UIImageView(image: logoImage)
+        logoImageView.contentMode = .scaleAspectFit
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
-        
+
         view.addSubview(logoImageView)
-        
+
         NSLayoutConstraint.activate([
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            logoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            logoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            logoImageView.widthAnchor.constraint(equalToConstant: 220),
+            logoImageView.heightAnchor.constraint(equalToConstant: 220),
         ])
         
         // Activity Indicator
@@ -103,7 +106,7 @@ class LoaderController: BaseController {
         
         // Retry button
         let retryButton = UIButton(type: .system)
-        retryButton.setTitle("Try again", for: .normal)
+        retryButton.setTitle(Content.Loader.retryButton, for: .normal)
         retryButton.addTarget(self, action: #selector(handleRetry), for: .touchUpInside)
         
         // Stack view

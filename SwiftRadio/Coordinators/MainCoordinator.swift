@@ -38,10 +38,10 @@ class MainCoordinator: NavigationCoordinator {
     func presentPopupBarIfNeeded() {
         guard !isPopupBarPresented else { return }
         navigationController.popupBar.barStyle = .prominent
-        navigationController.popupBar.tintColor = .white
+        navigationController.popupBar.tintColor = Config.tintColor
         navigationController.popupBar.progressViewStyle = .bottom
         navigationController.popupContentView.popupCloseButtonStyle = .chevron
-        navigationController.presentPopupBar(withContentViewController: nowPlayingViewController, animated: true)
+        navigationController.presentPopupBar(with: nowPlayingViewController, animated: true)
         isPopupBarPresented = true
     }
 
@@ -100,8 +100,10 @@ extension MainCoordinator: StationsViewControllerDelegate {
         let isNewStation = station != StationsManager.shared.currentStation
         if isNewStation {
             StationsManager.shared.set(station: station)
+            presentPopupBarIfNeeded()
+        } else {
+            navigationController.openPopup(animated: true)
         }
-        presentPopupBarIfNeeded()
     }
 
     func didTapNowPlaying(_ stationsViewController: StationsViewController) {

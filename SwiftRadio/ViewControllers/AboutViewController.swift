@@ -193,8 +193,8 @@ class AboutViewController: UITableViewController {
         stackView.addArrangedSubview(footerLabel)
 
         NSLayoutConstraint.activate([
-            logoImageView.heightAnchor.constraint(equalToConstant: 44),
-            logoImageView.widthAnchor.constraint(equalToConstant: 88),
+            logoImageView.heightAnchor.constraint(equalToConstant: 60),
+            logoImageView.widthAnchor.constraint(equalToConstant: 60),
             stackView.topAnchor.constraint(equalTo: footerView.topAnchor, constant: 32),
             stackView.leadingAnchor.constraint(equalTo: footerView.leadingAnchor, constant: 16),
             stackView.trailingAnchor.constraint(equalTo: footerView.trailingAnchor, constant: -16),

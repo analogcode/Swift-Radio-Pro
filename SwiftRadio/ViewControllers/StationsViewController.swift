@@ -43,13 +43,13 @@ class StationsViewController: BaseController, Handoffable {
     private var isBuffering = false
 
     private let equalizerView: NVActivityIndicatorView = {
-        let view = NVActivityIndicatorView(frame: .zero, type: .audioEqualizer, color: .white, padding: nil)
+        let view = NVActivityIndicatorView(frame: .zero, type: .audioEqualizer, color: Config.tintColor, padding: nil)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
     private let bufferingView: NVActivityIndicatorView = {
-        let view = NVActivityIndicatorView(frame: .zero, type: .ballPulse, color: .white, padding: nil)
+        let view = NVActivityIndicatorView(frame: .zero, type: .ballPulse, color: Config.tintColor, padding: nil)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -98,7 +98,7 @@ class StationsViewController: BaseController, Handoffable {
         navigationItem.backButtonDisplayMode = .minimal
 
         // NavigationBar items
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-hamburger"), style: .plain, target: self, action: #selector(handleMenuTap))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal"), style: .plain, target: self, action: #selector(handleMenuTap))
 
         // Setup Player
         player.addObserver(self)
@@ -117,7 +117,7 @@ class StationsViewController: BaseController, Handoffable {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = "Swift Radio"
+        title = Content.Stations.title
     }
 
     @objc func refresh(sender: AnyObject) {
@@ -232,6 +232,9 @@ extension StationsViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "NothingFound", for: indexPath)
             cell.backgroundColor = .clear
             cell.selectionStyle = .none
+            if let label = cell.contentView.viewWithTag(100) as? UILabel {
+                label.text = Content.Stations.loadingMessage
+            }
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(for: indexPath) as StationTableViewCell
@@ -294,6 +297,9 @@ extension StationsViewController: FRadioPlayerObserver {
     }
 
     func radioPlayer(_ player: FRadioPlayer, playbackStateDidChange state: FRadioPlayer.PlaybackState) {
+        if state == .playing, player.state == .loading {
+            isBuffering = true
+        }
         updateNowPlayingAnimation()
         updateVisibleCellsNowPlaying()
     }
