@@ -27,9 +27,22 @@ struct Content {
             static let version = String(localized: "about.sections.version")
         }
 
+        static let copyright = String(localized: "about.copyright")
+
         static let feedback = (String(localized: "about.feedback.title"), String(localized: "about.feedback.message"))
         static let shareText = String(localized: "about.shareText")
         static let license = (String(localized: "about.license.title"), String(localized: "about.license.detail"))
+
+        struct Items {
+            static let features = String(localized: "about.items.features")
+            static let email = String(localized: "about.items.email")
+            static let rateApp = String(localized: "about.items.rateApp")
+            static let shareApp = String(localized: "about.items.shareApp")
+            static let libraries = String(localized: "about.items.libraries")
+            static let contributors = String(localized: "about.items.contributors")
+            static let specialThanks = String(localized: "about.items.specialThanks")
+            static let appVersion = String(localized: "about.items.appVersion")
+        }
     }
 
     struct Contributors {

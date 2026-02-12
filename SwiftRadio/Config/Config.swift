@@ -61,25 +61,25 @@ struct Config {
     struct About {
         static let sections: [InfoSection] = [
             InfoSection(title: Content.About.Sections.features, items: [
-                .features()
+                .features(title: Content.About.Items.features)
             ]),
             InfoSection(title: Content.About.Sections.contact, items: [
-                .email(address: Config.email),
+                .email(title: Content.About.Items.email, address: Config.email),
                 .link(title: Content.About.feedback.0, subtitle: Content.About.feedback.1, url: Config.feedbackURL)
             ]),
             InfoSection(title: Content.About.Sections.support, items: [
-                .rateApp(appID: "YOUR_APP_ID"),
-                .share(text: Content.About.shareText)
+                .rateApp(title: Content.About.Items.rateApp, appID: "YOUR_APP_ID"),
+                .share(title: Content.About.Items.shareApp, text: Content.About.shareText)
             ]),
             InfoSection(title: Content.About.Sections.credits, items: [
-                .libraries(),
-                .credits(owner: "analogcode", repo: "Swift-Radio-Pro")
+                .libraries(title: Content.About.Items.libraries),
+                .credits(title: Content.About.Items.contributors, subtitle: Content.About.Items.specialThanks, owner: "analogcode", repo: "Swift-Radio-Pro")
             ]),
             InfoSection(title: Content.About.Sections.legal, items: [
                 .link(title: Content.About.license.0, subtitle: Content.About.license.1, url: Config.licenseURL)
             ]),
             InfoSection(title: Content.About.Sections.version, items: [
-                .version()
+                .version(title: Content.About.Items.appVersion)
             ])
         ]
     }
