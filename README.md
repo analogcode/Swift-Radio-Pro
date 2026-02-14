@@ -49,35 +49,37 @@ Images can be local (asset name without `http`) or remote (full URL).
 
 ### Customizing Text and Translation
 
-All user-facing strings are managed through `Localizable.xcstrings` (the String Catalog). Open it in Xcode to change the default English text or add new languages — no code changes required.
+All user-facing strings are managed through `Localizable.xcstrings` (the String Catalog). Open it in Xcode to change the default English text or add new languages. No code changes required.
 
 ## Dependencies
 
-- [FRadioPlayer](https://github.com/fethica/FRadioPlayer) — streaming and metadata
-- [LNPopupController](https://github.com/LeoNatan/LNPopupController) — now playing popup bar
-- [NVActivityIndicatorView](https://github.com/ninjaprox/NVActivityIndicatorView) — loading indicators
-- [MarqueeLabel](https://github.com/cbpowell/MarqueeLabel) — scrolling text labels
+- [FRadioPlayer](https://github.com/fethica/FRadioPlayer) --streaming and metadata
+- [LNPopupController](https://github.com/LeoNatan/LNPopupController) --now playing popup bar
+- [NVActivityIndicatorView](https://github.com/ninjaprox/NVActivityIndicatorView) --loading indicators
+- [MarqueeLabel](https://github.com/cbpowell/MarqueeLabel) --scrolling text labels
 
 All managed via Swift Package Manager.
 
 ## Contributing
 
-Contributions are welcome. Please branch off [`dev`](https://github.com/analogcode/Swift-Radio-Pro/tree/dev) and open a pull request — do not commit directly to `master`.
+Contributions are welcome. Please branch off [`dev`](https://github.com/analogcode/Swift-Radio-Pro/tree/dev) and open a pull request --do not commit directly to `master`.
 
 ## Single Station Version
 
-Looking for a simpler, single-station version of this app? We offer a ready-to-go codebase for **$50** — no extra fees.
+Looking for a simpler, single-station version? It skips the station list and launches straight into the player.
 
-PayPal [fethica@me.com](mailto:fethica@me.com) or use [PayPal.Me](https://www.paypal.me/fethicaEH), and we will send the code within 24 hours with setup instructions. All funds support the project.
+[![Buy on Payhip](https://img.shields.io/badge/Buy-Single%20Station-blue)](https://payhip.com/b/x15QB)
+
+All proceeds go directly toward maintaining and improving Swift Radio.
 
 For custom work or more advanced needs, reach out to [Fethi](mailto:contact@fethica.com).
 
-**Built something with Swift Radio?** We'd love to see it — drop us a line at [contact@fethica.com](mailto:contact@fethica.com).
+**Built something with Swift Radio?** We'd love to see it --drop us a line at [contact@fethica.com](mailto:contact@fethica.com).
 
 ## Credits
 
-- [Fethi](https://fethica.com) — co-organizer and lead developer
-- [Matthew Fecher](http://matthewfecher.com) — creator, [AudioKit Pro](https://audiokitpro.com)
+- [Fethi](https://fethica.com) --co-organizer and lead developer
+- [Matthew Fecher](http://matthewfecher.com) --creator, [AudioKit Pro](https://audiokitpro.com)
 - [All contributors](https://github.com/analogcode/Swift-Radio-Pro/graphs/contributors)
 
 ## License

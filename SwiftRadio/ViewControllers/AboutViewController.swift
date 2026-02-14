@@ -186,7 +186,7 @@ class AboutViewController: UITableViewController {
         footerLabel.text =
         """
         \(Content.About.footerAuthors)
-        Copyright © \(Calendar.current.component(.year, from: Date())) \(Content.About.footerCopyright)
+        \(Content.About.copyright) © \(Calendar.current.component(.year, from: Date())) \(Content.About.footerCopyright)
         """
 
         stackView.addArrangedSubview(logoImageView)
