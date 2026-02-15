@@ -78,6 +78,7 @@ public class ACWebSocketClient: ObservableObject {
     public var debugLevel: Int = 0
     
     private var lastResult: ACStreamStatus?
+    private var consecutiveFailures: Int = 0
 
     /// Constructs an empty `ACWebSoscketClient`, which must be initialized with
     /// `configurationDidChange` and `setDefaultDJ`.
@@ -87,29 +88,38 @@ public class ACWebSocketClient: ObservableObject {
         do {
             try reachabilityMonitor.startNotifier()
             reachabilityMonitor.whenReachable = { _ in
+                if self.debugLevel & ACConnectivityChecks != 0 {
+                    print("[Reachability] whenReachable fired, current state: \(self.status.connection), networkUp was: \(self.status.networkUp)")
+                }
                 self.status.networkUp = true
-                if self.status.connection == .disconnected {
-                    if self.debugLevel & ACConnectivityChecks != 0 { print("Network up detected") }
-                    // If we are disconnected, we can try to connect
-                    // if we have all the necessary values. Else we do
-                    // nothing.
+                if self.status.connection != .connected && self.status.connection != .connecting {
+                    if self.debugLevel & ACConnectivityChecks != 0 { print("[Reachability] Network up detected, connection is \(self.status.connection)") }
+                    // If we are not connected/connecting, try to connect
+                    // if we have all the necessary values.
                     if let _ = self.serverName, let _ = self.shortCode {
-                        if self.debugLevel & ACConnectivityChecks != 0 { print("Can reconnect, trying...") }
+                        if self.debugLevel & ACConnectivityChecks != 0 { print("[Reachability] Have server/shortCode, calling connect()") }
                         self.connect()
+                    } else {
+                        if self.debugLevel & ACConnectivityChecks != 0 { print("[Reachability] Missing server/shortCode, cannot reconnect") }
                     }
+                } else {
+                    if self.debugLevel & ACConnectivityChecks != 0 { print("[Reachability] Already connected/connecting, ignoring") }
                 }
             }
             reachabilityMonitor.whenUnreachable = { _ in
+                if self.debugLevel & ACConnectivityChecks != 0 {
+                    print("[Reachability] whenUnreachable fired, current state: \(self.status.connection)")
+                }
                 self.status.networkUp = false
                 // We have disconnected. Set the state to disconnected, kill any
                 // timers, and wait for reconnection.
                 if self.debugLevel & ACConnectivityChecks != 0 {
-                    print("Network drop detected")
+                    print("[Reachability] Network drop detected, setting disconnected state")
                 }
                 self.status.connection = .disconnected
                 self.stillAliveTimer?.invalidate()
                 self.disconnect()
-                if self.debugLevel & ACConnectivityChecks != 0 { print("Disconnected") }
+                if self.debugLevel & ACConnectivityChecks != 0 { print("[Reachability] Disconnected and timer invalidated") }
             }
         } catch {
             print("unable to start notifier")
@@ -127,22 +137,29 @@ public class ACWebSocketClient: ObservableObject {
         do {
             try reachabilityMonitor.startNotifier()
             reachabilityMonitor.whenReachable = { _ in
+                if self.debugLevel & ACConnectivityChecks != 0 {
+                    print("[Reachability] whenReachable fired (configured init), current state: \(self.status.connection)")
+                }
                 self.status.networkUp = true
-                if self.status.connection == .disconnected {
-                    // If we are disconnected, we can try to connect
-                    // if we have all the necessary values. Else we do
-                    // nothing.
+                if self.status.connection != .connected && self.status.connection != .connecting {
+                    // If we are not connected/connecting, try to connect
+                    // if we have all the necessary values.
                     if let _ = serverName, let _ = shortCode {
+                        if self.debugLevel & ACConnectivityChecks != 0 { print("[Reachability] Calling connect()") }
                         self.connect()
                     }
                 }
             }
             reachabilityMonitor.whenUnreachable = { _ in
+                if self.debugLevel & ACConnectivityChecks != 0 {
+                    print("[Reachability] whenUnreachable fired (configured init), current state: \(self.status.connection)")
+                }
                 self.status.networkUp = false
                 // We have disconnected. Set the state to disconnected, kill any
                 // timers, and wait for reconnection.
                 self.status.connection = .disconnected
                 self.stillAliveTimer?.invalidate()
+                if self.debugLevel & ACConnectivityChecks != 0 { print("[Reachability] Disconnected state set, timer invalidated") }
             }
         } catch {
             print("unable to start notifier")
@@ -226,55 +243,75 @@ public class ACWebSocketClient: ObservableObject {
     public func connect() {
         // turn off the liveness check; the first parse of the connect data will
         // turn it back on.
-        if self.debugLevel & ACActivityTrace != 0 { print("connecting") }
+        if self.debugLevel & (ACActivityTrace | ACConnectivityChecks) != 0 {
+            print("[Connect] connect() called, current state: \(status.connection), networkUp: \(status.networkUp)")
+        }
         self.stillAliveTimer?.invalidate()
-        if status.connection == ACConnectionState.connected { disconnect() }
+        if status.connection == ACConnectionState.connected {
+            if self.debugLevel & ACConnectivityChecks != 0 { print("[Connect] Already connected, disconnecting first") }
+            disconnect()
+        }
         if let _ = self.webSocketURL {
-            if self.debugLevel & ACActivityTrace != 0 { print("restarting websocket task") }
+            if self.debugLevel & (ACActivityTrace | ACConnectivityChecks) != 0 {
+                print("[Connect] Starting websocket task to \(self.webSocketURL!)")
+            }
             webSocketTask = urlSession.webSocketTask(with: self.webSocketURL!)
             webSocketTask?.resume()
-            DispatchQueue.main.async {
-                self.status.connection = ACConnectionState.connected
-            }
+            status.connection = .connecting
+            if self.debugLevel & ACConnectivityChecks != 0 { print("[Connect] State set to connecting") }
             sendSubscriptionMessage()
             listenForMessages()
+        } else {
+            if self.debugLevel & ACConnectivityChecks != 0 { print("[Connect] No webSocketURL, cannot connect") }
         }
      }
     
     /// Disconnects from the WebSocket API.  Sets the global status to `disconnected`.
     public func disconnect() {
-        if self.debugLevel & ACActivityTrace != 0 { print("disconnecting") }
+        if self.debugLevel & (ACActivityTrace | ACConnectivityChecks) != 0 {
+            print("[Disconnect] disconnect() called, current state: \(status.connection)")
+        }
         webSocketTask?.cancel(with: .goingAway, reason: nil)
         webSocketTask = nil
-        DispatchQueue.main.async {
-            self.status.connection = ACConnectionState.disconnected
-        }
+        status.connection = .disconnected
+        if self.debugLevel & ACConnectivityChecks != 0 { print("[Disconnect] State set to disconnected") }
     }
     
     // Called if the liveness timer goes off.
     @objc func fellOver() {
-        if debugLevel & (ACConnectivityChecks | ACActivityTrace) != 0 {
-            print("metadata server failed to respond within \(String(describing: status.pingInterval)) seconds")
+        if debugLevel & ACConnectivityChecks != 0 {
+            print("[FellOver] Liveness timer expired after \(String(describing: status.pingInterval)) seconds, state: \(status.connection)")
         }
         connect()
     }
 
     // Schedules a reconnection attempt after WebSocket error.
     // Only reconnects if network is reachable and we're still disconnected.
+    // Uses exponential backoff: 5s, 10s, 20s, 40s, 60s max.
     private func scheduleReconnect() {
-        let reconnectDelay: TimeInterval = 5.0
+        let baseDelay: TimeInterval = 5.0
+        let maxDelay: TimeInterval = 60.0
+        let reconnectDelay = min(baseDelay * pow(2.0, Double(consecutiveFailures)), maxDelay)
+        consecutiveFailures += 1
         if debugLevel & ACConnectivityChecks != 0 {
-            print("Scheduling reconnect in \(reconnectDelay) seconds")
+            print("[ScheduleReconnect] Scheduling reconnect in \(reconnectDelay) seconds (attempt \(consecutiveFailures)), current state: \(status.connection)")
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + reconnectDelay) { [weak self] in
             guard let self = self else { return }
-            // Only reconnect if still disconnected and network is reachable
-            if self.status.connection == .disconnected &&
-               self.reachabilityMonitor.connection != .unavailable {
+            let reachability = self.reachabilityMonitor.connection
+            if self.debugLevel & ACConnectivityChecks != 0 {
+                print("[ScheduleReconnect] Timer fired, state: \(self.status.connection), reachability: \(reachability)")
+            }
+            // Reconnect from any non-connected state (fixes .failedSubscribe/.stationNotFound dead ends)
+            if self.status.connection != .connected && self.status.connection != .connecting && reachability != .unavailable {
                 if self.debugLevel & ACConnectivityChecks != 0 {
-                    print("Reconnecting after WebSocket error")
+                    print("[ScheduleReconnect] Conditions met, calling connect()")
                 }
                 self.connect()
+            } else {
+                if self.debugLevel & ACConnectivityChecks != 0 {
+                    print("[ScheduleReconnect] Conditions not met, skipping reconnect")
+                }
             }
         }
     }
@@ -332,10 +369,15 @@ public class ACWebSocketClient: ObservableObject {
                     print("Received unknown message type")
                 }
             case .failure(let error):
-                print("WebSocket error: \(error)")
-                DispatchQueue.main.async {
-                    self.status.connection = ACConnectionState.disconnected
-                    self.status.changed = true
+                if self.debugLevel & ACConnectivityChecks != 0 {
+                    print("[WebSocket] Error received: \(error), scheduling reconnect")
+                } else {
+                    print("WebSocket error: \(error)")
+                }
+                self.status.connection = .disconnected
+                self.status.changed = true
+                if self.debugLevel & ACConnectivityChecks != 0 {
+                    print("[WebSocket] State set to disconnected after error")
                 }
                 // Don't keep listening on dead socket - schedule reconnection instead
                 self.scheduleReconnect()
@@ -350,7 +392,14 @@ public class ACWebSocketClient: ObservableObject {
     // Handles incoming messages and updates the status.
     private func handleMessage(_ message: String) {
         if self.debugLevel & ACActivityTrace != 0 { print("Handling message") }
-        // Print the raw JSON message for debugging
+
+        // First successful message confirms connection
+        if status.connection == .connecting {
+            status.connection = .connected
+            consecutiveFailures = 0
+            if self.debugLevel & ACConnectivityChecks != 0 { print("[HandleMessage] First message received, state set to connected") }
+        }
+
         // Decode into data for parseWebSocketData.
         guard let data = message.data(using: .utf8) else {
             print("Failed to decode message to data")
@@ -379,7 +428,15 @@ public class ACWebSocketClient: ObservableObject {
                     // messages may contain the same data; if they do, we'll
                     // skip this.) Record the new status and call all the
                     // callbacks.
+                    // Preserve connection and network state - these are managed
+                    // separately from parsed data. The parser creates a new
+                    // ACStreamStatus with connection = .disconnected by default,
+                    // which would overwrite the actual connection state.
+                    let currentConnection = self.status.connection
+                    let currentNetworkUp = self.status.networkUp
                     self.status = result
+                    self.status.connection = currentConnection
+                    self.status.networkUp = currentNetworkUp
                     self.notifySubscribers(with: self.status)
                 }
             }

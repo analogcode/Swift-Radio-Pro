@@ -79,8 +79,9 @@ public class StationMetadataManager: ObservableObject {
     
     // MARK: - Initialization
     private init() {
-        // Reduce debug output for ACWebSocketClient to only essential
-        azuracastClient.debugLevel = 0 /* ACExtractedData | ACActivityTrace */
+        // Debug flags: ACExtractedData(1) | ACRawSubsections(2) | ACFullDump(4) | ACConnectivityChecks(8) | ACActivityTrace(16)
+        // Enable ACConnectivityChecks for connection debugging on device
+        azuracastClient.debugLevel = ACConnectivityChecks
         setupPlayerObserver()
         setupAzuracastObserver()
     }
@@ -165,6 +166,8 @@ public class StationMetadataManager: ObservableObject {
         switch status.connection {
         case .connected:
             connectionState = .connected
+        case .connecting:
+            connectionState = .connecting
         case .disconnected:
             connectionState = .disconnected
         case .failedSubscribe:

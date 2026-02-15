@@ -14,6 +14,7 @@ import Foundation
 ///   - `failedSubscribe`: we could connect to the server, but could not enable streaming
 public enum ACConnectionState {
     case connected
+    case connecting
     case disconnected
     case stationNotFound
     case failedSubscribe

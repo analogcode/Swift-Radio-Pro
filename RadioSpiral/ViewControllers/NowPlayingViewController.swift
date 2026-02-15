@@ -9,6 +9,7 @@
 import UIKit
 import MediaPlayer
 import AVKit
+import Combine
 import Spring
 import FRadioPlayer
 import Kingfisher
@@ -50,6 +51,8 @@ class NowPlayingViewController: UIViewController {
     var mpVolumeSlider: UISlider?
     private var metadataCallback: MetadataChangeCallback?
     private var lastStatusMessage: String?
+    private var wasPlaying = false
+    private var cancellables = Set<AnyCancellable>()
     
     // MARK: - ViewDidLoad
     
@@ -99,7 +102,31 @@ class NowPlayingViewController: UIViewController {
             self?.handleMetadataUpdate(metadata)
         }
         metadataManager.subscribeToMetadataChanges(metadataCallback!)
-        
+
+        // Observe connection state for audio restart after WiFi recovery.
+        // Use removeDuplicates + scan to detect transitions TO .connected
+        // from a non-connected state. Only restart the audio player -
+        // do NOT call reloadCurrent() as that triggers connectToStation()
+        // via currentStation didSet, creating a feedback loop.
+        metadataManager.$connectionState
+            .removeDuplicates()
+            .scan((MetadataConnectionState.disconnected, MetadataConnectionState.disconnected)) { previous, current in
+                (previous.1, current)
+            }
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] (previous, current) in
+                guard let self = self else { return }
+                if current == .connected && previous != .connected && self.wasPlaying {
+                    self.player.radioURL = URL(string: self.manager.currentStation?.streamURL ?? "")
+                    self.player.play()
+                } else if previous == .connected && current != .connected && self.wasPlaying {
+                    // Stop AVPlayer to prevent aggressive internal retries while offline.
+                    // wasPlaying stays true so audio restarts on recovery.
+                    self.player.stop()
+                }
+            }
+            .store(in: &cancellables)
+
         isPlayingDidChange(player.isPlaying)
     }
     
@@ -197,8 +224,10 @@ class NowPlayingViewController: UIViewController {
         
     @IBAction func playingPressed(_ sender: Any) {
         if player.isPlaying {
+            wasPlaying = false
             player.stop()
         } else {
+            wasPlaying = true
             manager.reloadCurrent()  // Reconnect to stream
             player.play()
             updateLabels()
