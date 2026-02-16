@@ -11,7 +11,6 @@ import MediaPlayer
 import AVKit
 import Combine
 import Spring
-import FRadioPlayer
 import Kingfisher
 
 protocol NowPlayingViewControllerDelegate: AnyObject {
@@ -42,7 +41,7 @@ class NowPlayingViewController: UIViewController {
     
     // MARK: - Properties
     
-    private let player = FRadioPlayer.shared
+    private let player = RadioPlayer.shared
     private let manager = StationsManager.shared
     
     var isNewStation = true
@@ -63,7 +62,6 @@ class NowPlayingViewController: UIViewController {
         if manager.stations.count < 2 {
             navigationItem.hidesBackButton = true
         }
-        player.addObserver(self)
         manager.addObserver(self)
         
         let viewSize = CGSize(width:  self.view.bounds.width, height:  self.view.bounds.height)
@@ -124,6 +122,24 @@ class NowPlayingViewController: UIViewController {
                     // wasPlaying stays true so audio restarts on recovery.
                     self.player.stop()
                 }
+            }
+            .store(in: &cancellables)
+
+        // Observe playback state changes (replaces FRadioPlayerObserver.playbackStateDidChange)
+        RadioPlayer.shared.$playbackState
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] playbackState in
+                guard let self = self else { return }
+                self.playbackStateDidChange(playbackState, animate: true)
+            }
+            .store(in: &cancellables)
+
+        // Observe player state changes (replaces FRadioPlayerObserver.playerStateDidChange)
+        RadioPlayer.shared.$state
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] state in
+                guard let self = self else { return }
+                self.playerStateDidChange(state, animate: true)
             }
             .store(in: &cancellables)
 
@@ -275,10 +291,8 @@ class NowPlayingViewController: UIViewController {
         startNowPlayingAnimation(isPlaying)
     }
     
-    func playbackStateDidChange(_ playbackState: FRadioPlayer.PlaybackState, animate: Bool) {
-        
+    func playbackStateDidChange(_ playbackState: RadioPlayer.PlaybackState, animate: Bool) {
         let message: String?
-        
         switch playbackState {
         case .paused:
             message = "Station Paused..."
@@ -287,25 +301,22 @@ class NowPlayingViewController: UIViewController {
         case .stopped:
             message = "Station Stopped..."
         }
-        
         updateLabels(with: message, animate: animate)
         isPlayingDidChange(player.isPlaying)
     }
     
-    func playerStateDidChange(_ state: FRadioPlayer.State, animate: Bool) {
-        
+    func playerStateDidChange(_ state: RadioPlayer.State, animate: Bool) {
         let message: String?
-        
         switch state {
         case .loading:
-            if songLabel.text != ""{
+            if songLabel.text != "" {
                 message = songLabel.text
             } else {
                 message = "Station loading..."
             }
-        case .urlNotSet:
+        case .idle:
             message = "Station URL not valid"
-        case .readyToPlay, .loadingFinished:
+        case .readyToPlay:
             playbackStateDidChange(player.playbackState, animate: animate)
             return
         case .error:
@@ -426,7 +437,7 @@ class NowPlayingViewController: UIViewController {
     
     @IBAction func shareButtonPressed(_ sender: UIButton) {
         guard let station = manager.currentStation else { return }
-        let artworkURL = metadataManager.getCurrentMetadata()?.artworkURL ?? player.currentArtworkURL
+        let artworkURL = metadataManager.getCurrentMetadata()?.artworkURL
         delegate?.didTapShareButton(self, station: station, artworkURL: artworkURL)
     }
     
@@ -435,24 +446,6 @@ class NowPlayingViewController: UIViewController {
     }
 }
 
-extension NowPlayingViewController: FRadioPlayerObserver {
-    
-    func radioPlayer(_ player: FRadioPlayer, playerStateDidChange state: FRadioPlayer.State) {
-        playerStateDidChange(state, animate: true)
-    }
-    
-    func radioPlayer(_ player: FRadioPlayer, playbackStateDidChange state: FRadioPlayer.PlaybackState) {
-        playbackStateDidChange(state, animate: true)
-    }
-    
-    func radioPlayer(_ player: FRadioPlayer, metadataDidChange metadata: FRadioPlayer.Metadata?) {
-        updateLabels()
-    }
-    
-    func radioPlayer(_ player: FRadioPlayer, artworkDidChange artworkURL: URL?) {
-        updateTrackArtwork()
-    }
-}
 
 extension NowPlayingViewController: StationsManagerObserver {
     func stationsManager(_ manager: StationsManager, stationDidChange station: RadioStation?) {
