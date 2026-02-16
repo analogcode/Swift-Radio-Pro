@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FRadioPlayer
 
 protocol Handoffable: UIResponder {}
 
@@ -24,21 +23,14 @@ extension Handoffable {
         defer { updateUserActivityState(activity) }
         
         let metadataManager = StationMetadataManager.shared
-        var track: String
-        var artist: String
-        
-        if let metadata = metadataManager.getCurrentMetadata(), !metadata.trackName.isEmpty && !metadata.artistName.isEmpty {
-            track = metadata.trackName
-            artist = metadata.artistName
-        } else {
-            guard let metadata = FRadioPlayer.shared.currentMetadata, let artistName = metadata.artistName, let trackName = metadata.trackName else {
-                activity.webpageURL = nil
-                return
-            }
-            track = trackName
-            artist = artistName
+
+        guard let metadata = metadataManager.getCurrentMetadata(), !metadata.trackName.isEmpty && !metadata.artistName.isEmpty else {
+            activity.webpageURL = nil
+            return
         }
-        
+        let track = metadata.trackName
+        let artist = metadata.artistName
+
         activity.webpageURL = getHandoffURL(artistName: artist, trackName: track)
     }
     

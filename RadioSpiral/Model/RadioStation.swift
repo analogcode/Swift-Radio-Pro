@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FRadioPlayer
 
 // Radio Station
 
@@ -90,17 +89,6 @@ extension RadioStation {
             imageCache[imageURL] = finalImage
             completion(finalImage)
         }
-    }
-}
-
-extension RadioStation {
-
-    var trackName: String {
-        FRadioPlayer.shared.currentMetadata?.trackName ?? name
-    }
-
-    var artistName: String {
-        FRadioPlayer.shared.currentMetadata?.artistName ?? desc
     }
 }
 

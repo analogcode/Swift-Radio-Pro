@@ -7,10 +7,9 @@
 //
 
 import Foundation
-import FRadioPlayer
 import Combine
 
-/// Unified metadata structure that combines FRadioPlayer and Azuracast metadata
+/// Unified metadata structure from Azuracast with ConfigClient fallback
 public struct UnifiedMetadata: Equatable {
     let trackName: String
     let artistName: String
@@ -58,7 +57,7 @@ public enum MetadataConnectionState {
 /// Protocol for metadata change callbacks
 public typealias MetadataChangeCallback = (UnifiedMetadata?) -> Void
 
-/// Manages unified metadata from multiple sources (FRadioPlayer and Azuracast)
+/// Manages unified metadata from Azuracast with ConfigClient fallback
 public class StationMetadataManager: ObservableObject {
     
     // MARK: - Singleton
@@ -69,7 +68,6 @@ public class StationMetadataManager: ObservableObject {
     @Published public private(set) var connectionState: MetadataConnectionState = .disconnected
     
     // MARK: - Private Properties
-    private let player = FRadioPlayer.shared
     private let azuracastClient = ACWebSocketClient.shared
     private let configClient = ConfigClient.shared
     private var subscribers: [MetadataChangeCallback] = []
@@ -148,8 +146,7 @@ public class StationMetadataManager: ObservableObject {
     // MARK: - Private Methods
     
     private func setupPlayerObserver() {
-        // FRadioPlayer uses a delegate pattern, so we'll handle metadata updates
-        // through the StationsManager which observes FRadioPlayer
+        // Player observer - metadata updates come through Azuracast WebSocket
     }
     
     private func setupAzuracastObserver() {
@@ -195,12 +192,7 @@ public class StationMetadataManager: ObservableObject {
             return azuracastMetadata
         }
         
-        // Priority 2: FRadioPlayer metadata
-        if let fradioMetadata = getFRadioPlayerMetadata() {
-            return fradioMetadata
-        }
-        
-        // Priority 3: Fallback to station info
+        // Priority 2: Fallback to station info
         return getFallbackMetadata()
     }
     
@@ -217,20 +209,6 @@ public class StationMetadataManager: ObservableObject {
             duration: status.duration > 0 ? status.duration : nil,
             djName: status.dj.isEmpty ? nil : status.dj,
             isLiveDJ: status.isLiveDJ
-        )
-    }
-    
-    private func getFRadioPlayerMetadata() -> UnifiedMetadata? {
-        guard let metadata = player.currentMetadata else { return nil }
-        
-        return UnifiedMetadata(
-            trackName: metadata.trackName ?? "",
-            artistName: metadata.artistName ?? "",
-            albumName: nil, // FRadioPlayer doesn't provide album info
-            artworkURL: player.currentArtworkURL,
-            duration: nil, // FRadioPlayer doesn't provide duration
-            djName: nil,
-            isLiveDJ: false
         )
     }
     
