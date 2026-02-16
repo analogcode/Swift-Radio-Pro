@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import FRadioPlayer
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -43,7 +42,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillResignActive(_ scene: UIScene) {
         // Called when the scene will move from an active state to an inactive state.
         // Only disconnect websocket if audio is NOT playing
-        if !FRadioPlayer.shared.isPlaying {
+        if !RadioPlayer.shared.isPlaying {
             ACWebSocketClient.shared.disconnect()
         }
     }

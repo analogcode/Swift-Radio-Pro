@@ -8,17 +8,10 @@
 
 import UIKit
 import MediaPlayer
-import FRadioPlayer
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-
-        // FRadioPlayer config
-        FRadioPlayer.shared.isAutoPlay = true
-        FRadioPlayer.shared.enableArtwork = true
-        FRadioPlayer.shared.artworkAPI = iTunesAPI(artworkSize: 600)
 
         // AzuraCast WebSocket debug - disable by default
         ACWebSocketClient.shared.debug(to: 0)
@@ -72,22 +65,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Add handler for Play Command
         commandCenter.playCommand.addTarget { event in
             StationsManager.shared.reloadCurrent()
-            FRadioPlayer.shared.play()
+            RadioPlayer.shared.play()
             return .success
         }
         
         // Add handler for Pause Command
         commandCenter.pauseCommand.addTarget { event in
-            FRadioPlayer.shared.stop()
+            RadioPlayer.shared.stop()
             return .success
         }
         
         // Add handler for Toggle Command
         commandCenter.togglePlayPauseCommand.addTarget { event in
-            if FRadioPlayer.shared.isPlaying {
-                FRadioPlayer.shared.stop()
+            if RadioPlayer.shared.isPlaying {
+                RadioPlayer.shared.stop()
             } else {
-                FRadioPlayer.shared.play()
+                RadioPlayer.shared.play()
             }
             return .success
         }

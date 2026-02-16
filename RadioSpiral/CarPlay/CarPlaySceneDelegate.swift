@@ -7,7 +7,6 @@
 
 import CarPlay
 import MediaPlayer
-import FRadioPlayer
 
 /// CarPlay scene delegate for modern CarPlay framework (iOS 14+)
 /// Handles CarPlay interface setup, station browsing, and playback
