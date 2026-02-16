@@ -56,7 +56,6 @@
 		B2C601433BBD45CD9F6DE9A3 /* test-config-live-azuracast.json in Resources */ = {isa = PBXBuildFile; fileRef = 8AAF0ECFA82245D0A3C4E3A1 /* test-config-live-azuracast.json */; };
 		CE321FF329371140001572BD /* Bundle+appName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE321FF229371140001572BD /* Bundle+appName.swift */; };
 		CE37D7B4290F47E000B0933B /* Spring in Frameworks */ = {isa = PBXBuildFile; productRef = CE37D7B3290F47E000B0933B /* Spring */; };
-		CE37D7B7290F4A9700B0933B /* FRadioPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = CE37D7B6290F4A9700B0933B /* FRadioPlayer */; };
 		CE6036132A47A87A00E15E15 /* StationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6036122A47A87A00E15E15 /* StationsViewController.swift */; };
 		CE6036162A47B88600E15E15 /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6036152A47B88600E15E15 /* StationTableViewCell.swift */; };
 		CE6036192A48BA2500E15E15 /* UITableViewCell+reuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6036182A48BA2500E15E15 /* UITableViewCell+reuseIdentifier.swift */; };
@@ -173,7 +172,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE37D7B7290F4A9700B0933B /* FRadioPlayer in Frameworks */,
 				710A17712D39FFE100D951C6 /* Reachability in Frameworks */,
 				CE6036232A48C51A00E15E15 /* NVActivityIndicatorViewExtended in Frameworks */,
 				CE37D7B4290F47E000B0933B /* Spring in Frameworks */,
@@ -440,7 +438,6 @@
 			name = RadioSpiral;
 			packageProductDependencies = (
 				CE37D7B3290F47E000B0933B /* Spring */,
-				CE37D7B6290F4A9700B0933B /* FRadioPlayer */,
 				CE6036202A48C51A00E15E15 /* NVActivityIndicatorView */,
 				CE6036222A48C51A00E15E15 /* NVActivityIndicatorViewExtended */,
 				719678662D27AA6D00DCD7CE /* Kingfisher */,
@@ -493,7 +490,6 @@
 			mainGroup = 9409E10D1ABF6FE900312E2B;
 			packageReferences = (
 				CE37D7B2290F47E000B0933B /* XCRemoteSwiftPackageReference "Spring" */,
-				CE37D7B5290F4A9700B0933B /* XCRemoteSwiftPackageReference "FRadioPlayer" */,
 				CE60361F2A48C51A00E15E15 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
 				719678652D27AA4800DCD7CE /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				710A176F2D39FFE100D951C6 /* XCRemoteSwiftPackageReference "Reachability" */,
@@ -989,14 +985,6 @@
 				kind = branch;
 			};
 		};
-		CE37D7B5290F4A9700B0933B /* XCRemoteSwiftPackageReference "FRadioPlayer" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/fethica/FRadioPlayer.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 		CE60361F2A48C51A00E15E15 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView.git";
@@ -1032,11 +1020,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CE37D7B2290F47E000B0933B /* XCRemoteSwiftPackageReference "Spring" */;
 			productName = Spring;
-		};
-		CE37D7B6290F4A9700B0933B /* FRadioPlayer */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CE37D7B5290F4A9700B0933B /* XCRemoteSwiftPackageReference "FRadioPlayer" */;
-			productName = FRadioPlayer;
 		};
 		CE6036202A48C51A00E15E15 /* NVActivityIndicatorView */ = {
 			isa = XCSwiftPackageProductDependency;

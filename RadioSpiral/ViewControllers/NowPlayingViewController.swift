@@ -125,7 +125,7 @@ class NowPlayingViewController: UIViewController {
             }
             .store(in: &cancellables)
 
-        // Observe playback state changes (replaces FRadioPlayerObserver.playbackStateDidChange)
+        // Observe playback state changes
         RadioPlayer.shared.$playbackState
             .receive(on: DispatchQueue.main)
             .sink { [weak self] playbackState in
@@ -134,7 +134,7 @@ class NowPlayingViewController: UIViewController {
             }
             .store(in: &cancellables)
 
-        // Observe player state changes (replaces FRadioPlayerObserver.playerStateDidChange)
+        // Observe player state changes
         RadioPlayer.shared.$state
             .receive(on: DispatchQueue.main)
             .sink { [weak self] state in

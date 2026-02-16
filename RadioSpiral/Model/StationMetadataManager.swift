@@ -138,7 +138,7 @@ public class StationMetadataManager: ObservableObject {
         return currentMetadata
     }
 
-    /// Trigger metadata update (called when FRadioPlayer metadata changes)
+    /// Trigger metadata update
     public func triggerMetadataUpdate() {
         updateMetadata()
     }
