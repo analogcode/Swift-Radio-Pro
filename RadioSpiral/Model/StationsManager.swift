@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FRadioPlayer
 import MediaPlayer
 import Combine
 
@@ -52,12 +51,11 @@ class StationsManager {
     var searchedStations: [RadioStation] = []
     
     private var observations = [ObjectIdentifier : Observation]()
-    private let player = FRadioPlayer.shared
+    private let player = RadioPlayer.shared
     private let metadataManager = StationMetadataManager.shared
     private var cancellables = Set<AnyCancellable>()
     
     private init() {
-        self.player.addObserver(self)
         setupMetadataObserver()
     }
     
@@ -224,20 +222,5 @@ extension StationsManager {
         }
         // If no artworkURL, set nowPlayingInfo immediately
         MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
-    }
-}
-
-// MARK: - FRadioPlayerObserver
-
-extension StationsManager: FRadioPlayerObserver {
-    
-    func radioPlayer(_ player: FRadioPlayer, metadataDidChange metadata: FRadioPlayer.Metadata?) {
-        // Trigger metadata update in the unified metadata manager
-        metadataManager.triggerMetadataUpdate()
-    }
-    
-    func radioPlayer(_ player: FRadioPlayer, artworkDidChange artworkURL: URL?) {
-        // Trigger metadata update in the unified metadata manager
-        metadataManager.triggerMetadataUpdate()
     }
 }
