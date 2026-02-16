@@ -52,6 +52,7 @@ class NowPlayingViewController: UIViewController {
     private var lastStatusMessage: String?
     private var wasPlaying = false
     private var cancellables = Set<AnyCancellable>()
+    private var connectionBanner: UILabel!
     
     // MARK: - ViewDidLoad
     
@@ -85,6 +86,9 @@ class NowPlayingViewController: UIViewController {
             playerStateDidChange(player.state, animate: false)
         }
         
+        // Setup connection status banner
+        setupConnectionBanner()
+
         // Setup volumeSlider
         setupVolumeSlider()
         
@@ -114,13 +118,21 @@ class NowPlayingViewController: UIViewController {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] (previous, current) in
                 guard let self = self else { return }
-                if current == .connected && previous != .connected && self.wasPlaying {
-                    self.player.radioURL = URL(string: self.manager.currentStation?.streamURL ?? "")
-                    self.player.play()
-                } else if previous == .connected && current != .connected && self.wasPlaying {
-                    // Stop AVPlayer to prevent aggressive internal retries while offline.
-                    // wasPlaying stays true so audio restarts on recovery.
-                    self.player.stop()
+                if current == .connected && previous != .connected {
+                    self.hideConnectionBanner()
+                    if self.wasPlaying {
+                        self.player.radioURL = URL(string: self.manager.currentStation?.streamURL ?? "")
+                        self.player.play()
+                    }
+                } else if current == .disconnected && previous == .connected {
+                    self.showConnectionBanner("Connection lost — reconnecting…")
+                    if self.wasPlaying {
+                        // Stop AVPlayer to prevent aggressive internal retries while offline.
+                        // wasPlaying stays true so audio restarts on recovery.
+                        self.player.stop()
+                    }
+                } else if current == .connecting {
+                    self.showConnectionBanner("Reconnecting…")
                 }
             }
             .store(in: &cancellables)
@@ -132,6 +144,9 @@ class NowPlayingViewController: UIViewController {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] playbackState in
                 guard let self = self else { return }
+                if playbackState == .playing {
+                    self.hideConnectionBanner()
+                }
                 self.playbackStateDidChange(playbackState, animate: true)
             }
             .store(in: &cancellables)
@@ -193,6 +208,38 @@ class NowPlayingViewController: UIViewController {
               
     // MARK: - Setup
     
+    func setupConnectionBanner() {
+        connectionBanner = UILabel()
+        connectionBanner.textAlignment = .center
+        connectionBanner.textColor = .white
+        connectionBanner.font = .systemFont(ofSize: 14, weight: .medium)
+        connectionBanner.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+        connectionBanner.layer.cornerRadius = 8
+        connectionBanner.clipsToBounds = true
+        connectionBanner.alpha = 0
+        connectionBanner.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(connectionBanner)
+        NSLayoutConstraint.activate([
+            connectionBanner.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 4),
+            connectionBanner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            connectionBanner.widthAnchor.constraint(lessThanOrEqualTo: view.widthAnchor, constant: -32),
+            connectionBanner.heightAnchor.constraint(equalToConstant: 30),
+        ])
+    }
+
+    private func showConnectionBanner(_ message: String) {
+        connectionBanner.text = "  \(message)  "
+        UIView.animate(withDuration: 0.3) {
+            self.connectionBanner.alpha = 1
+        }
+    }
+
+    private func hideConnectionBanner() {
+        UIView.animate(withDuration: 0.5) {
+            self.connectionBanner.alpha = 0
+        }
+    }
+
     func setupVolumeSlider() {
         // Note: This slider implementation uses a MPVolumeView
         // The volume slider only works in devices, not the simulator.

@@ -293,16 +293,13 @@ public class ACWebSocketClient: ObservableObject {
             guard let self = self else { return }
             let reachability = self.reachabilityMonitor.connection
             self.debugLog("[ScheduleReconnect]", "Timer fired, state: \(self.status.connection), reachability: \(reachability)")
-            // Reconnect from any non-connected state (fixes .failedSubscribe/.stationNotFound dead ends)
-            if self.status.connection != .connected && self.status.connection != .connecting && reachability != .unavailable {
-                self.debugLog("[ScheduleReconnect]", "Conditions met, calling connect()")
+            // Always attempt to connect if we're not already connected/connecting.
+            // Do NOT trust Reachability — iOS can report "No Connection" for
+            // minutes after WiFi is actually restored. The connection attempt
+            // itself is the real test of network availability.
+            if self.status.connection != .connected && self.status.connection != .connecting {
+                self.debugLog("[ScheduleReconnect]", "Attempting connect (reachability: \(reachability))")
                 self.connect()
-            } else if reachability == .unavailable {
-                // Network still down — re-schedule with continued backoff
-                // instead of giving up. Reachability can take 30+ minutes
-                // to fire on iOS, so we can't rely solely on whenReachable.
-                self.debugLog("[ScheduleReconnect]", "Network still unavailable, re-scheduling")
-                self.scheduleReconnect()
             } else {
                 self.debugLog("[ScheduleReconnect]", "Already connected/connecting, skipping reconnect")
             }
