@@ -6,7 +6,6 @@
 
 import Foundation
 import Combine
-import Reachability
 
 public let ACExtractedData = 1
 public let ACRawSubsections = 2
@@ -43,10 +42,6 @@ public class ACWebSocketClient: ObservableObject {
     // If we don't get a message before then, the timer pops, we disconnect the API,
     // reconnect, and set a new timer when the connect message is received.
     //
-    // We set up a reacability monitor during init, which fires a connect() if
-    // we've come online and we have the necessary info to connect, and which
-    // kills any live timers and disconnects if we go offline.
-    
     private var stillAliveTimer: Timer? {
         willSet {
             if let timer = stillAliveTimer {
@@ -58,8 +53,6 @@ public class ACWebSocketClient: ObservableObject {
             }
         }
     }
-    public var reachabilityMonitor: Reachability
-    
     /// `serverName` is the name of the Azuracast server we're connecting to for the metadata stream
     var serverName: String?
     
@@ -93,40 +86,7 @@ public class ACWebSocketClient: ObservableObject {
     /// Constructs an empty `ACWebSoscketClient`, which must be initialized with
     /// `configurationDidChange` and `setDefaultDJ`.
     public init() {
-        reachabilityMonitor = try! Reachability()
         debugLog("[Init]", "Creating empty client", ACActivityTrace)
-        do {
-            try reachabilityMonitor.startNotifier()
-            reachabilityMonitor.whenReachable = { _ in
-                self.debugLog("[Reachability]", "whenReachable fired, current state: \(self.status.connection), networkUp was: \(self.status.networkUp)")
-                self.status.networkUp = true
-                if self.status.connection != .connected && self.status.connection != .connecting {
-                    self.debugLog("[Reachability]", "Network up detected, connection is \(self.status.connection)")
-                    // If we are not connected/connecting, try to connect
-                    // if we have all the necessary values.
-                    if let _ = self.serverName, let _ = self.shortCode {
-                        self.debugLog("[Reachability]", "Have server/shortCode, calling connect()")
-                        self.connect()
-                    } else {
-                        self.debugLog("[Reachability]", "Missing server/shortCode, cannot reconnect")
-                    }
-                } else {
-                    self.debugLog("[Reachability]", "Already connected/connecting, ignoring")
-                }
-            }
-            reachabilityMonitor.whenUnreachable = { _ in
-                self.debugLog("[Reachability]", "whenUnreachable fired, current state: \(self.status.connection)")
-                self.status.networkUp = false
-                // Network lost. Kill the liveness timer and disconnect.
-                // disconnect() handles setting state and notifying subscribers.
-                self.debugLog("[Reachability]", "Network drop detected, disconnecting")
-                self.stillAliveTimer?.invalidate()
-                self.disconnect()
-                self.debugLog("[Reachability]", "Disconnected and timer invalidated")
-            }
-        } catch {
-            print("unable to start notifier")
-        }
     }
     
     ///  Initializes an `ACWebSocketClient` instance with a preset server and station.
@@ -135,34 +95,7 @@ public class ACWebSocketClient: ObservableObject {
     ///   - `shortCode`: The Azuracast-defined shortcode from the station's profile page
     ///   - `defaultDJ`: The DJ name to supply if no streamer is active. Useful if the station is configured to play music when no streamer is active. Defaults to `""` if no value is specified.
     public init (serverName: String?, shortCode: String?, defaultDJ: String? = "") {
-        reachabilityMonitor = try! Reachability()
         debugLog("[Init]", "Creating configured client", ACActivityTrace)
-        do {
-            try reachabilityMonitor.startNotifier()
-            reachabilityMonitor.whenReachable = { _ in
-                self.debugLog("[Reachability]", "whenReachable fired (configured init), current state: \(self.status.connection)")
-                self.status.networkUp = true
-                if self.status.connection != .connected && self.status.connection != .connecting {
-                    // If we are not connected/connecting, try to connect
-                    // if we have all the necessary values.
-                    if let _ = serverName, let _ = shortCode {
-                        self.debugLog("[Reachability]", "Calling connect()")
-                        self.connect()
-                    }
-                }
-            }
-            reachabilityMonitor.whenUnreachable = { _ in
-                self.debugLog("[Reachability]", "whenUnreachable fired (configured init), current state: \(self.status.connection)")
-                self.status.networkUp = false
-                // Network lost. Kill the liveness timer and disconnect.
-                // disconnect() handles setting state and notifying subscribers.
-                self.stillAliveTimer?.invalidate()
-                self.disconnect()
-                self.debugLog("[Reachability]", "Disconnected state set, timer invalidated")
-            }
-        } catch {
-            print("unable to start notifier")
-        }
 
         if let defaultDJ {
             self.defaultDJ = defaultDJ
@@ -242,7 +175,7 @@ public class ACWebSocketClient: ObservableObject {
     public func connect() {
         // turn off the liveness check; the first parse of the connect data will
         // turn it back on.
-        debugLog("[Connect]", "connect() called, current state: \(status.connection), networkUp: \(status.networkUp)", ACActivityTrace | ACConnectivityChecks)
+        debugLog("[Connect]", "connect() called, current state: \(status.connection)", ACActivityTrace | ACConnectivityChecks)
         self.stillAliveTimer?.invalidate()
         if status.connection == ACConnectionState.connected {
             debugLog("[Connect]", "Already connected, disconnecting first")
@@ -291,14 +224,9 @@ public class ACWebSocketClient: ObservableObject {
         debugLog("[ScheduleReconnect]", "Scheduling reconnect in \(reconnectDelay) seconds (attempt \(consecutiveFailures)), current state: \(status.connection)")
         DispatchQueue.main.asyncAfter(deadline: .now() + reconnectDelay) { [weak self] in
             guard let self = self else { return }
-            let reachability = self.reachabilityMonitor.connection
-            self.debugLog("[ScheduleReconnect]", "Timer fired, state: \(self.status.connection), reachability: \(reachability)")
-            // Always attempt to connect if we're not already connected/connecting.
-            // Do NOT trust Reachability — iOS can report "No Connection" for
-            // minutes after WiFi is actually restored. The connection attempt
-            // itself is the real test of network availability.
+            self.debugLog("[ScheduleReconnect]", "Timer fired, state: \(self.status.connection)")
             if self.status.connection != .connected && self.status.connection != .connecting {
-                self.debugLog("[ScheduleReconnect]", "Attempting connect (reachability: \(reachability))")
+                self.debugLog("[ScheduleReconnect]", "Attempting connect")
                 self.connect()
             } else {
                 self.debugLog("[ScheduleReconnect]", "Already connected/connecting, skipping reconnect")
@@ -450,10 +378,8 @@ public class ACWebSocketClient: ObservableObject {
                     // ACStreamStatus with connection = .disconnected by default,
                     // which would overwrite the actual connection state.
                     let currentConnection = self.status.connection
-                    let currentNetworkUp = self.status.networkUp
                     self.status = result
                     self.status.connection = currentConnection
-                    self.status.networkUp = currentNetworkUp
                     self.notifySubscribers(with: self.status)
                 }
             }

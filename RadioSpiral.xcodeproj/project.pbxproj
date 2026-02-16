@@ -13,8 +13,6 @@
 		60A288069DE14CA0B96295FA /* test-config-with-real-server.json in Resources */ = {isa = PBXBuildFile; fileRef = 6F4444B16407430F8A42EFDD /* test-config-with-real-server.json */; };
 		6258DCD822D93A3500166C65 /* LogoShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258DCD722D93A3500166C65 /* LogoShareView.swift */; };
 		6258DCDA22D93A5400166C65 /* LogoShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6258DCD922D93A5400166C65 /* LogoShareView.xib */; };
-		710310052D6C1E8E00828968 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 710310042D6C1E8E00828968 /* Reachability */; };
-		710A17712D39FFE100D951C6 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 710A17702D39FFE100D951C6 /* Reachability */; };
 		715C87A62B23E141003FC57A /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C87A52B23E141003FC57A /* SnapshotHelper.swift */; };
 		7165121C2B35519B00473770 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF72ACE621F714D000461EED /* Main.storyboard */; };
 		717B8C612EC449D30080EFE8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B8C5F2EC449D30080EFE8 /* SceneDelegate.swift */; };
@@ -157,7 +155,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7196786B2D27AAA500DCD7CE /* Kingfisher in Frameworks */,
-				710310052D6C1E8E00828968 /* Reachability in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,7 +169,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				710A17712D39FFE100D951C6 /* Reachability in Frameworks */,
 				CE6036232A48C51A00E15E15 /* NVActivityIndicatorViewExtended in Frameworks */,
 				CE37D7B4290F47E000B0933B /* Spring in Frameworks */,
 				CE6036212A48C51A00E15E15 /* NVActivityIndicatorView in Frameworks */,
@@ -441,7 +437,6 @@
 				CE6036202A48C51A00E15E15 /* NVActivityIndicatorView */,
 				CE6036222A48C51A00E15E15 /* NVActivityIndicatorViewExtended */,
 				719678662D27AA6D00DCD7CE /* Kingfisher */,
-				710A17702D39FFE100D951C6 /* Reachability */,
 			);
 			productName = RadioPro;
 			productReference = 9409E1161ABF6FEA00312E2B /* RadioSpiral.app */;
@@ -492,7 +487,6 @@
 				CE37D7B2290F47E000B0933B /* XCRemoteSwiftPackageReference "Spring" */,
 				CE60361F2A48C51A00E15E15 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
 				719678652D27AA4800DCD7CE /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				710A176F2D39FFE100D951C6 /* XCRemoteSwiftPackageReference "Reachability" */,
 			);
 			productRefGroup = 9409E1171ABF6FEA00312E2B /* Products */;
 			projectDirPath = "";
@@ -961,14 +955,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		710A176F2D39FFE100D951C6 /* XCRemoteSwiftPackageReference "Reachability" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ashleymills/Reachability.swift";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		719678652D27AA4800DCD7CE /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -996,16 +982,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		710310042D6C1E8E00828968 /* Reachability */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 710A176F2D39FFE100D951C6 /* XCRemoteSwiftPackageReference "Reachability" */;
-			productName = Reachability;
-		};
-		710A17702D39FFE100D951C6 /* Reachability */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 710A176F2D39FFE100D951C6 /* XCRemoteSwiftPackageReference "Reachability" */;
-			productName = Reachability;
-		};
 		719678662D27AA6D00DCD7CE /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 719678652D27AA4800DCD7CE /* XCRemoteSwiftPackageReference "Kingfisher" */;
