@@ -39,6 +39,7 @@
 		71CA8E8A2EC57A5200F7F157 /* StationConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CA8E8A2EC57A5000F7F157 /* StationConfig.swift */; };
 		71CA8E8E2EC57AD400F7F157 /* ConfigClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CA8E8B2EC57AD400F7F157 /* ConfigClientTests.swift */; };
 		71CA8E8F2EC57AD400F7F157 /* test-config-with-fallback.json in Resources */ = {isa = PBXBuildFile; fileRef = 71CA8E8C2EC57AD400F7F157 /* test-config-with-fallback.json */; };
+		71A0B0022ED0000000000001 /* RadioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A0B0012ED0000000000001 /* RadioPlayer.swift */; };
 		9409E11C1ABF6FEA00312E2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */; };
 		9409E1261ABF6FEA00312E2B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9409E1251ABF6FEA00312E2B /* Images.xcassets */; };
 		9409E1401ABF78B000312E2B /* NowPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9409E13F1ABF78B000312E2B /* NowPlayingViewController.swift */; };
@@ -112,6 +113,7 @@
 		719678582D27A72000DCD7CE /* ParseWebSocketData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseWebSocketData.swift; sourceTree = "<group>"; };
 		71B3D01E2E2989C5001E8F5A /* StationMetadataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationMetadataManager.swift; sourceTree = "<group>"; };
 		71CA8E7A2EC579C300F7F157 /* ConfigClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConfigClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		71A0B0012ED0000000000001 /* RadioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioPlayer.swift; sourceTree = "<group>"; };
 		71CA8E852EC57A5000F7F157 /* ConfigClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigClient.swift; sourceTree = "<group>"; };
 		71CA8E8A2EC57A5000F7F157 /* StationConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationConfig.swift; sourceTree = "<group>"; };
 		71CA8E8B2EC57AD400F7F157 /* ConfigClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigClientTests.swift; sourceTree = "<group>"; };
@@ -215,6 +217,14 @@
 			path = ACWebSocketClient;
 			sourceTree = "<group>";
 		};
+		71A0B0032ED0000000000001 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				71A0B0012ED0000000000001 /* RadioPlayer.swift */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
 		71CA8E862EC57A5000F7F157 /* ConfigClient */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +269,7 @@
 		9409E1181ABF6FEA00312E2B /* RadioSpiral */ = {
 			isa = PBXGroup;
 			children = (
+				71A0B0032ED0000000000001 /* Player */,
 				71CA8E862EC57A5000F7F157 /* ConfigClient */,
 				717B8C5F2EC449D30080EFE8 /* SceneDelegate.swift */,
 				717B8C562EC433E10080EFE8 /* RadioSpiral.entitlements */,
@@ -599,6 +610,7 @@
 				719678622D27A72000DCD7CE /* ParseWebSocketData.swift in Sources */,
 				719678632D27A72000DCD7CE /* ACConnectionState.swift in Sources */,
 				719678642D27A72000DCD7CE /* ACWebSocketClient.swift in Sources */,
+				71A0B0022ED0000000000001 /* RadioPlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
