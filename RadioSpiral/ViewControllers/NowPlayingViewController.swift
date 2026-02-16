@@ -125,8 +125,10 @@ class NowPlayingViewController: UIViewController {
             }
             .store(in: &cancellables)
 
-        // Observe playback state changes
+        // Observe playback state changes (dropFirst skips the initial
+        // .stopped emission — viewDidLoad already sets initial UI state)
         RadioPlayer.shared.$playbackState
+            .dropFirst()
             .receive(on: DispatchQueue.main)
             .sink { [weak self] playbackState in
                 guard let self = self else { return }
@@ -134,8 +136,9 @@ class NowPlayingViewController: UIViewController {
             }
             .store(in: &cancellables)
 
-        // Observe player state changes
+        // Observe player state changes (dropFirst skips initial .idle)
         RadioPlayer.shared.$state
+            .dropFirst()
             .receive(on: DispatchQueue.main)
             .sink { [weak self] state in
                 guard let self = self else { return }

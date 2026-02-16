@@ -100,13 +100,12 @@ class StationsManager {
         player.radioURL = URL(string: station.streamURL)
     }
     
-    // Exists because with Azuracast, resuming from stop/pause is not working
-    // consistently, but "previous" or "next" DOES properly restart play.
-    // Will add this into the play() function and see if it helps.
+    // Refreshes the audio stream connection for the current station.
+    // Does NOT re-assign currentStation to avoid triggering the full
+    // station-change cycle (observers, metadata reconnect, player.stop()).
     func reloadCurrent() {
-        guard let index = getIndex(of: currentStation) else { return }
-        currentStation = stations[index]
-        player.radioURL = URL(string: currentStation!.streamURL)
+        guard let station = currentStation else { return }
+        player.radioURL = URL(string: station.streamURL)
     }
     
     func updateSearch(with filter: String) {

@@ -79,6 +79,7 @@ public class ACWebSocketClient: ObservableObject {
     
     private var lastResult: ACStreamStatus?
     private var consecutiveFailures: Int = 0
+    private var lastKnownPingInterval: TimeInterval = 25.0
 
     /// Centralized debug logging with ISO timestamps and component tags.
     private func debugLog(_ tag: String, _ message: String, _ flag: Int = ACConnectivityChecks) {
@@ -116,10 +117,9 @@ public class ACWebSocketClient: ObservableObject {
             reachabilityMonitor.whenUnreachable = { _ in
                 self.debugLog("[Reachability]", "whenUnreachable fired, current state: \(self.status.connection)")
                 self.status.networkUp = false
-                // We have disconnected. Set the state to disconnected, kill any
-                // timers, and wait for reconnection.
-                self.debugLog("[Reachability]", "Network drop detected, setting disconnected state")
-                self.status.connection = .disconnected
+                // Network lost. Kill the liveness timer and disconnect.
+                // disconnect() handles setting state and notifying subscribers.
+                self.debugLog("[Reachability]", "Network drop detected, disconnecting")
                 self.stillAliveTimer?.invalidate()
                 self.disconnect()
                 self.debugLog("[Reachability]", "Disconnected and timer invalidated")
@@ -154,10 +154,10 @@ public class ACWebSocketClient: ObservableObject {
             reachabilityMonitor.whenUnreachable = { _ in
                 self.debugLog("[Reachability]", "whenUnreachable fired (configured init), current state: \(self.status.connection)")
                 self.status.networkUp = false
-                // We have disconnected. Set the state to disconnected, kill any
-                // timers, and wait for reconnection.
-                self.status.connection = .disconnected
+                // Network lost. Kill the liveness timer and disconnect.
+                // disconnect() handles setting state and notifying subscribers.
                 self.stillAliveTimer?.invalidate()
+                self.disconnect()
                 self.debugLog("[Reachability]", "Disconnected state set, timer invalidated")
             }
         } catch {
@@ -262,12 +262,16 @@ public class ACWebSocketClient: ObservableObject {
      }
     
     /// Disconnects from the WebSocket API.  Sets the global status to `disconnected`.
+    /// Always notifies subscribers so downstream consumers (StationMetadataManager)
+    /// track the actual connection state. Duplicate .disconnected notifications are
+    /// harmless — removeDuplicates() on the Combine chain handles idempotency.
     public func disconnect() {
         debugLog("[Disconnect]", "disconnect() called, current state: \(status.connection)", ACActivityTrace | ACConnectivityChecks)
         webSocketTask?.cancel(with: .goingAway, reason: nil)
         webSocketTask = nil
         status.connection = .disconnected
         debugLog("[Disconnect]", "State set to disconnected")
+        notifySubscribers(with: status)
     }
     
     // Called if the liveness timer goes off.
@@ -293,8 +297,14 @@ public class ACWebSocketClient: ObservableObject {
             if self.status.connection != .connected && self.status.connection != .connecting && reachability != .unavailable {
                 self.debugLog("[ScheduleReconnect]", "Conditions met, calling connect()")
                 self.connect()
+            } else if reachability == .unavailable {
+                // Network still down — re-schedule with continued backoff
+                // instead of giving up. Reachability can take 30+ minutes
+                // to fire on iOS, so we can't rely solely on whenReachable.
+                self.debugLog("[ScheduleReconnect]", "Network still unavailable, re-scheduling")
+                self.scheduleReconnect()
             } else {
-                self.debugLog("[ScheduleReconnect]", "Conditions not met, skipping reconnect")
+                self.debugLog("[ScheduleReconnect]", "Already connected/connecting, skipping reconnect")
             }
         }
     }
@@ -360,6 +370,9 @@ public class ACWebSocketClient: ObservableObject {
                 self.status.connection = .disconnected
                 self.status.changed = true
                 self.debugLog("[WebSocket]", "State set to disconnected after error")
+                // Notify subscribers of disconnection so NowPlayingVC can
+                // stop AVPlayer (prevents aggressive internal retries).
+                self.notifySubscribers(with: self.status)
                 // Don't keep listening on dead socket - schedule reconnection instead
                 self.scheduleReconnect()
                 return
@@ -379,6 +392,26 @@ public class ACWebSocketClient: ObservableObject {
             status.connection = .connected
             consecutiveFailures = 0
             debugLog("[HandleMessage]", "First message received, state set to connected")
+            // Notify subscribers immediately so downstream consumers
+            // (StationMetadataManager) learn about reconnection even if
+            // the metadata hasn't changed (e.g. same track still playing).
+            notifySubscribers(with: status)
+        }
+
+        // Reset liveness timer BEFORE parsing. Any message at all proves
+        // the WebSocket is alive — we don't need a successful parse for that.
+        // Must schedule on main run loop because handleMessage runs on
+        // URLSession's background thread.
+        DispatchQueue.main.async {
+            self.stillAliveTimer?.invalidate()
+            let interval = self.lastKnownPingInterval * 1.5
+            self.stillAliveTimer = Timer.scheduledTimer(
+                timeInterval: interval,
+                target: self,
+                selector: #selector(self.fellOver),
+                userInfo: nil,
+                repeats: false)
+            self.debugLog("[HandleMessage]", "liveness timer reset to \(interval)s (pingInterval \(self.lastKnownPingInterval)s + 50% leeway)")
         }
 
         // Decode into data for parseWebSocketData.
@@ -386,22 +419,28 @@ public class ACWebSocketClient: ObservableObject {
             print("Failed to decode message to data")
             return
         }
-        
+
         // Save last result.
         lastResult?.album = status.album
         lastResult?.artist = status.artist
         lastResult?.track = status.track
         lastResult?.artwork = status.artwork
         lastResult?.dj = status.dj
-        
+
         do {
             // Attempt to parse the data. Parser will throw if it fails to work.
             let parser = ParseWebSocketData(data: data, defaultDJ: defaultDJ)
             parser.debug(to: debugLevel)
-            
+
             // I can hard-unwrap this because I had to have a value to connect
             // at all. The shortCode is needed because one key contains it.
             let result = try parser.parse(shortCode: shortCode!)
+
+            // Update stored pingInterval from successful parse
+            if let ping = result.pingInterval, ping > 0 {
+                lastKnownPingInterval = Double(ping)
+            }
+
             DispatchQueue.main.async {
                 if result != self.lastResult && result.changed {
                     // Status changed from old values. (Note that the initial
@@ -421,22 +460,11 @@ public class ACWebSocketClient: ObservableObject {
                     self.notifySubscribers(with: self.status)
                 }
             }
-            // If this is a connect, we have a valid push interval. Use it to
-            // set up the forced reconnect.
-            if result.recordType == .connect {
-                debugLog("[HandleMessage]", "Invalidate previous timer")
-                self.stillAliveTimer?.invalidate()
-                let interval = TimeInterval(Double(result.pingInterval ?? 25))
-                self.stillAliveTimer = Timer.scheduledTimer(
-                    timeInterval: interval,
-                    target: self,
-                    selector: #selector(fellOver),
-                    userInfo: nil,
-                    repeats: false)
-                debugLog("[HandleMessage]", "liveness timer set to \(interval)")
-            }
         } catch {
-            print("Failed to parse JSON: \(error)")
+            // Parse should NEVER fail — the parser has been thoroughly tested.
+            // If this fires, something fundamentally unexpected happened.
+            debugLog("[HandleMessage]", "PARSE FAILURE — THIS SHOULD NEVER HAPPEN: \(error)", ACConnectivityChecks)
+            debugLog("[HandleMessage]", "Raw message (\(message.count) chars): \(String(message.prefix(500)))", ACConnectivityChecks)
         }
     }
 }
