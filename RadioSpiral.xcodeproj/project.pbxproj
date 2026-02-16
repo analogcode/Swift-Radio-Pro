@@ -16,13 +16,7 @@
 		715C87A62B23E141003FC57A /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C87A52B23E141003FC57A /* SnapshotHelper.swift */; };
 		7165121C2B35519B00473770 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF72ACE621F714D000461EED /* Main.storyboard */; };
 		717B8C612EC449D30080EFE8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B8C5F2EC449D30080EFE8 /* SceneDelegate.swift */; };
-		717B8C622EC449D30080EFE8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B8C5F2EC449D30080EFE8 /* SceneDelegate.swift */; };
-		717B8C642EC44DDD0080EFE8 /* CarPlaySceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B8C632EC44DDD0080EFE8 /* CarPlaySceneDelegate.swift */; };
 		717B8C662EC44DDD0080EFE8 /* CarPlaySceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B8C632EC44DDD0080EFE8 /* CarPlaySceneDelegate.swift */; };
-		719678592D27A72000DCD7CE /* ACStreamStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719678552D27A72000DCD7CE /* ACStreamStatus.swift */; };
-		7196785A2D27A72000DCD7CE /* ParseWebSocketData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719678582D27A72000DCD7CE /* ParseWebSocketData.swift */; };
-		7196785B2D27A72000DCD7CE /* ACConnectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719678542D27A72000DCD7CE /* ACConnectionState.swift */; };
-		7196785C2D27A72000DCD7CE /* ACWebSocketClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719678572D27A72000DCD7CE /* ACWebSocketClient.swift */; };
 		719678612D27A72000DCD7CE /* ACStreamStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719678552D27A72000DCD7CE /* ACStreamStatus.swift */; };
 		719678622D27A72000DCD7CE /* ParseWebSocketData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719678582D27A72000DCD7CE /* ParseWebSocketData.swift */; };
 		719678632D27A72000DCD7CE /* ACConnectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719678542D27A72000DCD7CE /* ACConnectionState.swift */; };
@@ -30,7 +24,6 @@
 		719678672D27AA6D00DCD7CE /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 719678662D27AA6D00DCD7CE /* Kingfisher */; };
 		7196786B2D27AAA500DCD7CE /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 7196786A2D27AAA500DCD7CE /* Kingfisher */; };
 		71B3D01F2E2989C5001E8F5A /* StationMetadataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3D01E2E2989C5001E8F5A /* StationMetadataManager.swift */; };
-		71B3D0212E2989C5001E8F5A /* StationMetadataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3D01E2E2989C5001E8F5A /* StationMetadataManager.swift */; };
 		71CA8E882EC57A5000F7F157 /* ConfigClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CA8E852EC57A5000F7F157 /* ConfigClient.swift */; };
 		71CA8E892EC57A5000F7F157 /* ConfigClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CA8E852EC57A5000F7F157 /* ConfigClient.swift */; };
 		71CA8E8A2EC57A5100F7F157 /* StationConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CA8E8A2EC57A5000F7F157 /* StationConfig.swift */; };
@@ -538,16 +531,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				717B8C642EC44DDD0080EFE8 /* CarPlaySceneDelegate.swift in Sources */,
-				719678592D27A72000DCD7CE /* ACStreamStatus.swift in Sources */,
-				71CA8E892EC57A5000F7F157 /* ConfigClient.swift in Sources */,
-				7196785A2D27A72000DCD7CE /* ParseWebSocketData.swift in Sources */,
-				7196785B2D27A72000DCD7CE /* ACConnectionState.swift in Sources */,
-				7196785C2D27A72000DCD7CE /* ACWebSocketClient.swift in Sources */,
-				71B3D0212E2989C5001E8F5A /* StationMetadataManager.swift in Sources */,
 				2C5545BD1C1124DE00728469 /* SwiftRadioUITests.swift in Sources */,
 				715C87A62B23E141003FC57A /* SnapshotHelper.swift in Sources */,
-				717B8C622EC449D30080EFE8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
