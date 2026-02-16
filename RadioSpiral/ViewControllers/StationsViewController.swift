@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import FRadioPlayer
+import Combine
 
 protocol StationsViewControllerDelegate: AnyObject {
     func pushNowPlayingController(_ stationsViewController: StationsViewController, newStation: Bool)
@@ -20,8 +20,9 @@ class StationsViewController: BaseController, Handoffable {
     weak var delegate: StationsViewControllerDelegate?
     
     // MARK: - Properties
-    private let player = FRadioPlayer.shared
+    private let player = RadioPlayer.shared
     private let manager = StationsManager.shared
+    private var cancellables = Set<AnyCancellable>()
     
     // MARK: - UI
     
@@ -71,7 +72,13 @@ class StationsViewController: BaseController, Handoffable {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-hamburger"), style: .plain, target: self, action: #selector(handleMenuTap))
         
         // Setup Player
-        player.addObserver(self)
+        RadioPlayer.shared.$playbackState
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                self.startNowPlayingAnimation(self.player.isPlaying)
+            }
+            .store(in: &cancellables)
         manager.addObserver(self)
         
         // Setup Handoff User Activity
@@ -126,8 +133,6 @@ class StationsViewController: BaseController, Handoffable {
         
         if let metadata = metadataManager.getCurrentMetadata(), !metadata.trackName.isEmpty && !metadata.artistName.isEmpty {
             playingTitle = "\(metadata.trackName) + \(metadata.artistName)"
-        } else if player.currentMetadata != nil {
-            playingTitle = station.trackName + " - " + station.artistName
         }
         
         nowPlayingView.update(with: playingTitle, subtitle: station.name)
@@ -258,20 +263,6 @@ extension StationsViewController: UISearchResultsUpdating {
         guard let filter = searchController.searchBar.text else { return }
         manager.updateSearch(with: filter)
         tableView.reloadData()
-    }
-}
-
-// MARK: - FRadioPlayerObserver
-
-extension StationsViewController: FRadioPlayerObserver {
-    
-    func radioPlayer(_ player: FRadioPlayer, playbackStateDidChange state: FRadioPlayer.PlaybackState) {
-        startNowPlayingAnimation(player.isPlaying)
-    }
-    
-    func radioPlayer(_ player: FRadioPlayer, metadataDidChange metadata: FRadioPlayer.Metadata?) {
-        updateNowPlayingButton(station: manager.currentStation)
-        updateHandoffUserActivity(userActivity, station: manager.currentStation)
     }
 }
 
