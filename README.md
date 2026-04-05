@@ -9,7 +9,7 @@ Open-source radio station app built entirely in Swift. Used by **80+ apps** on t
     <img alt="Swift Radio" src="swift-radio-preview.png" width="700">
 </p>
 
-**Looking for Android?** See [Swift Radio Android](https://github.com/fethica/Swift-Radio-Android) — same station format, native Kotlin and Jetpack Compose.
+**Looking for Android?** See [Swift Radio Android](https://github.com/fethica/Swift-Radio-Android). Same station format, native Kotlin and Jetpack Compose.
 
 ## Features
 
