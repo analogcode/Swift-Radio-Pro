@@ -31,12 +31,13 @@ jobs:
       - name: Build
         env:
           scheme: ${{ 'default' }}
-          platform: ${{ 'iOS Simulator' }}
         run: |
+          # Generic simulator destination: no dependency on which simulator
+          # runtimes the runner image ships (device-name matching is flaky)
           if [ $scheme = default ]; then scheme=$(cat default); fi
           if [ "`ls -A | grep -i \\.xcworkspace\$`" ]; then filetype_parameter="workspace" && file_to_build="`ls -A | grep -i \\.xcworkspace\$`"; else filetype_parameter="project" && file_to_build="`ls -A | grep -i \\.xcodeproj\$`"; fi
           file_to_build=`echo $file_to_build | awk '{$1=$1;print}'`
-          xcodebuild build-for-testing -scheme "$scheme" -"$filetype_parameter" "$file_to_build" -destination "platform=$platform,name=iPhone 17 Pro"
+          xcodebuild build-for-testing -scheme "$scheme" -"$filetype_parameter" "$file_to_build" -destination "generic/platform=iOS Simulator"
 # Disable testing for now
 #       - name: Test
 #         env:
