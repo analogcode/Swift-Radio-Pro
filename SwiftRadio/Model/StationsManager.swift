@@ -192,7 +192,15 @@ extension StationsManager {
 // MARK: - FRadioPlayerObserver
 
 extension StationsManager: FRadioPlayerObserver {
-    
+
+    func radioPlayer(_ player: FRadioPlayer, playerStateDidChange state: FRadioPlayer.State) {
+        // Update lock screen when player finishes loading so duration is accurate
+        // (fixes live indicator sticking when switching from live to MP3)
+        if state == .readyToPlay || state == .loadingFinished {
+            resetArtwork(with: currentStation)
+        }
+    }
+
     func radioPlayer(_ player: FRadioPlayer, metadataDidChange metadata: FRadioPlayer.Metadata?) {
         resetArtwork(with: currentStation)
     }

@@ -96,8 +96,13 @@ extension CarPlaySceneDelegate: StationsManagerObserver {
     }
     
     func stationsManager(_ manager: StationsManager, stationDidChange station: RadioStation?) {
-        if let station {
-            print("Station changed to: \(station.name)")
+        guard let listTemplate = interfaceController?.rootTemplate as? CPListTemplate else { return }
+        let items = listTemplate.sections.flatMap { $0.items }.compactMap { $0 as? CPListItem }
+        let stations = manager.stations
+
+        for (index, item) in items.enumerated() {
+            guard index < stations.count else { break }
+            item.isPlaying = (stations[index] == station)
         }
     }
 }
