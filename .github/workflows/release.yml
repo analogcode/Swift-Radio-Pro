@@ -1,0 +1,63 @@
+name: Release
+
+# Pushing a tag like v3.1.0 builds the app, packages an unsigned .ipa,
+# and creates a GitHub release with generated notes. No signing identity
+# or Apple developer account is required: the .ipa is unsigned and meant
+# for sideloading (AltStore, Sideloadly), where the installer tool
+# re-signs it with the user's own Apple ID.
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: macos-26
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Select latest Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+
+      # Tags must be vMAJOR.MINOR.PATCH. Build number packs the tag into a
+      # monotonically increasing integer: v3.1.0 -> 30100.
+      - name: Derive version from tag
+        run: |
+          VERSION_NAME="${GITHUB_REF_NAME#v}"
+          IFS=. read -r MAJOR MINOR PATCH <<< "$VERSION_NAME"
+          BUILD_NUMBER=$((MAJOR * 10000 + MINOR * 100 + ${PATCH:-0}))
+          echo "VERSION_NAME=$VERSION_NAME" >> "$GITHUB_ENV"
+          echo "BUILD_NUMBER=$BUILD_NUMBER" >> "$GITHUB_ENV"
+
+      - name: Build unsigned archive
+        run: |
+          xcodebuild archive \
+            -project SwiftRadio.xcodeproj \
+            -scheme SwiftRadio \
+            -destination 'generic/platform=iOS' \
+            -archivePath build/SwiftRadio.xcarchive \
+            CODE_SIGNING_ALLOWED=NO \
+            MARKETING_VERSION="$VERSION_NAME" \
+            CURRENT_PROJECT_VERSION="$BUILD_NUMBER"
+
+      - name: Package unsigned IPA
+        run: |
+          mkdir -p Payload
+          cp -R "build/SwiftRadio.xcarchive/Products/Applications/SwiftRadio.app" Payload/
+          zip -qr "swift-radio-$GITHUB_REF_NAME-unsigned.ipa" Payload
+
+      - name: Create GitHub release
+        run: |
+          gh release create "$GITHUB_REF_NAME" "swift-radio-$GITHUB_REF_NAME-unsigned.ipa" \
+            --title "Swift Radio $GITHUB_REF_NAME" \
+            --generate-notes \
+            --notes "The attached \`.ipa\` is unsigned. Install it by sideloading with [AltStore](https://altstore.io) or [Sideloadly](https://sideloadly.io), which re-sign it with your own Apple ID. Or clone the repo and run it from Xcode with your personal team."
+        env:
+          GH_TOKEN: ${{ github.token }}
