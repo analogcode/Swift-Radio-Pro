@@ -55,10 +55,12 @@ All user-facing strings are managed through `Localizable.xcstrings` (the String 
 
 ## Dependencies
 
-- [FRadioPlayer](https://github.com/fethica/FRadioPlayer) --streaming and metadata
-- [LNPopupController](https://github.com/LeoNatan/LNPopupController) --now playing popup bar
-- [NVActivityIndicatorView](https://github.com/ninjaprox/NVActivityIndicatorView) --loading indicators
-- [MarqueeLabel](https://github.com/cbpowell/MarqueeLabel) --scrolling text labels
+| Library | Purpose |
+|---------|---------|
+| [FRadioPlayer](https://github.com/fethica/FRadioPlayer) | Streaming, metadata parsing, iTunes album art |
+| [LNPopupController](https://github.com/LeoNatan/LNPopupController) | Now playing popup bar |
+| [NVActivityIndicatorView](https://github.com/ninjaprox/NVActivityIndicatorView) | Loading indicators |
+| [MarqueeLabel](https://github.com/cbpowell/MarqueeLabel) | Scrolling text labels |
 
 All managed via Swift Package Manager.
 
@@ -68,9 +70,9 @@ Contributions are welcome. Please branch off [`dev`](https://github.com/analogco
 
 ## Single Station Version
 
-Looking for a simpler, single-station version? It skips the station list and launches straight into the player.
+Looking for a simpler, single-station version? It skips the station list and launches straight into the player. One purchase now includes **both the iOS and Android** single-station projects.
 
-[![Buy on Payhip](https://img.shields.io/badge/Buy-Single%20Station-blue)](https://payhip.com/b/x15QB)
+[![Buy on Payhip](https://img.shields.io/badge/Buy-Single%20Station%20iOS%20%2B%20Android-blue)](https://payhip.com/b/x15QB)
 
 All proceeds go directly toward maintaining and improving Swift Radio.
 
