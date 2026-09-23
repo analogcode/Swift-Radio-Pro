@@ -15,8 +15,17 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/LeoNatan/LNPopupController.git",
       "state" : {
-        "revision" : "6f4bfa89a32cc7254599869b4bca8d2638e74671",
-        "version" : "4.4.1"
+        "revision" : "2c441458a4ed37a940ec01d63748f26375cae6e9",
+        "version" : "4.5.12"
+      }
+    },
+    {
+      "identity" : "lnsystemmarqueelabel",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/LeoNatan/LNSystemMarqueeLabel",
+      "state" : {
+        "revision" : "a87c80c36e8cc84f05a691da33c838a8e93015f6",
+        "version" : "0.1.2"
       }
     },
     {
