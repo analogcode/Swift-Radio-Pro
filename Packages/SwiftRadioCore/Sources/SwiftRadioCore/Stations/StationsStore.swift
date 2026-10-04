@@ -96,6 +96,9 @@ import Observation
     ///   reports a buffering stream as playing, so that opens the player, as in UIKit.
     /// - `.carPlay` never restarts or cancels: playing or loading is left alone, paused or stopped plays.
     @discardableResult public func activate(_ station: RadioStation, on surface: ActivationSurface) -> Activation {
+        // Cached phone and CarPlay rows may retain an older value after a metadata-only refresh.
+        // Resolve their stable identity at tap time before selecting a different station too.
+        let station = stations.first(where: { $0.id == station.id }) ?? station
         guard let currentStation, station.id == currentStation.id else {
             return select(station) ? .selected : .unavailable
         }

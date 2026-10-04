@@ -178,6 +178,43 @@ import Testing
         #expect(engine.loadedURLs.count == loadedURLs.count + 1)
     }
 
+    @Test(arguments: StationsStore.ActivationSurface.allCases, [false, true])
+    func cachedRowSelectionUsesLatestWebsiteAfterRefresh(surface: StationsStore.ActivationSurface,
+                                                        hasSelection: Bool) async throws {
+        for website: String? in ["https://example.com/new-website", nil] {
+            var stations = try RadioStationTests.fixtures()
+            stations[1].website = "https://example.com/old-website"
+            let old = stations[1]
+            let loader = FakeStationsLoader(stations: stations)
+            let engine = FakeRadioPlayer(fidelity: .vendor)
+            let player = PlayerServiceTests.service(engine)
+            let store = StationsStore(loader: loader, player: player)
+            await store.load()
+            if hasSelection { store.select(stations[0]) }
+            let cachedAction = { store.activate(old, on: surface) }
+            let cachedContent = CatalogListContent(stations: store.stations, loadState: .loaded,
+                                                   maximumItemCount: 12)
+            stations[1].website = website
+            await loader.replace(with: stations)
+            await store.refresh()
+
+            // Website is not displayed by either row. Their equality/cache may retain the old
+            // value and action, but activating it must select the current catalog metadata.
+            #expect(old == stations[1])
+            #expect(cachedContent == CatalogListContent(stations: store.stations, loadState: .loaded,
+                                                        maximumItemCount: 12))
+            #expect(store.stations[1].website == website)
+            let loads = engine.loadedURLs.count
+            #expect(cachedAction() == .selected)
+            #expect(store.currentStation?.id == old.id)
+            #expect(store.currentStation?.website == website)
+            #expect(store.stations[1].website == website)
+            #expect(engine.loadedURLs.count == loads + 1)
+            #expect(engine.radioURL == URL(string: old.streamURL))
+            #expect(player.state == .playing)
+        }
+    }
+
     @Test func nextAndPreviousStepOverUnusableStations() async throws {
         var stations = try RadioStationTests.fixtures()
         let unusable = Self.invalidStreamURLs.enumerated().map { Self.unusable("Broken \($0.offset)", url: $0.element) }
