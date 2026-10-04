@@ -2,13 +2,17 @@ name: iOS build
 
 on:
   push:
-    branches: [ "master", "dev" ]
+    branches: [master, dev]
   pull_request:
-    branches: [ "master", "dev" ]
+    branches: [master, dev]
+
+permissions:
+  contents: read
 
 jobs:
   build:
     name: Build SwiftRadio (Xcode ${{ matrix.xcode }})
+    timeout-minutes: 25
     strategy:
       fail-fast: false
       matrix:
@@ -18,44 +22,19 @@ jobs:
           - runner: xcode-27
             xcode: '27.0'
     runs-on: ${{ matrix.runner }}
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Select Xcode
-        uses: maxim-lobanov/setup-xcode@v1
+      - uses: actions/checkout@v4
+      - uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: ${{ matrix.xcode }}
       - name: Verify toolchain
         run: |
           xcodebuild -version
-          xcodebuild -showsdks
           swift --version
-      - name: Set Default Scheme
+      - name: Build for testing
         run: |
-          scheme_list=$(xcodebuild -list -json | tr -d "\n")
-          default=$(echo $scheme_list | ruby -e "require 'json'; puts JSON.parse(STDIN.gets)['project']['targets'][0]")
-          echo $default | cat >default
-          echo Using default scheme: $default
-      - name: Build
-        env:
-          scheme: ${{ 'default' }}
-        run: |
-          # Generic simulator destination: no dependency on which simulator
-          # runtimes the runner image ships (device-name matching is flaky)
-          if [ $scheme = default ]; then scheme=$(cat default); fi
-          if [ "`ls -A | grep -i \\.xcworkspace\$`" ]; then filetype_parameter="workspace" && file_to_build="`ls -A | grep -i \\.xcworkspace\$`"; else filetype_parameter="project" && file_to_build="`ls -A | grep -i \\.xcodeproj\$`"; fi
-          file_to_build=`echo $file_to_build | awk '{$1=$1;print}'`
-          xcodebuild build-for-testing -scheme "$scheme" -"$filetype_parameter" "$file_to_build" -destination "generic/platform=iOS Simulator"
-# Disable testing for now
-#       - name: Test
-#         env:
-#           scheme: ${{ 'default' }}
-#           platform: ${{ 'iOS Simulator' }}
-#         run: |
-#           # xcrun xctrace returns via stderr, not the expected stdout (see https://developer.apple.com/forums/thread/663959)
-#           device=`xcrun xctrace list devices 2>&1 | grep -oE 'iPhone.*?[^\(]+' | head -1 | awk '{$1=$1;print}' | sed -e "s/ Simulator$//"`
-#           if [ $scheme = default ]; then scheme=$(cat default); fi
-#           if [ "`ls -A | grep -i \\.xcworkspace\$`" ]; then filetype_parameter="workspace" && file_to_build="`ls -A | grep -i \\.xcworkspace\$`"; else filetype_parameter="project" && file_to_build="`ls -A | grep -i \\.xcodeproj\$`"; fi
-#           file_to_build=`echo $file_to_build | awk '{$1=$1;print}'`
-#           xcodebuild test-without-building -scheme "$scheme" -"$filetype_parameter" "$file_to_build" -destination "platform=$platform,name=$device"
+          xcodebuild build-for-testing \
+            -project SwiftRadio.xcodeproj -scheme SwiftRadio \
+            -destination 'generic/platform=iOS Simulator' \
+            -onlyUsePackageVersionsFromResolvedFile -jobs 2 \
+            CODE_SIGNING_ALLOWED=NO

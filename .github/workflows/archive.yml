@@ -1,0 +1,51 @@
+name: Archive
+
+on:
+  push:
+    branches: [master, dev]
+  pull_request:
+    branches: [master, dev]
+
+permissions:
+  contents: read
+
+jobs:
+  archive:
+    name: Unsigned archive and IPA (Xcode 26.6)
+    runs-on: macos-26
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '26.6'
+      - name: Read project version
+        run: |
+          xcodebuild -showBuildSettings -json -project SwiftRadio.xcodeproj \
+            -scheme SwiftRadio -configuration Release > "$RUNNER_TEMP/settings.json"
+          python3 - "$RUNNER_TEMP/settings.json" >> "$GITHUB_ENV" <<'PY'
+          import json, sys
+          settings = next(item['buildSettings'] for item in json.load(open(sys.argv[1])) if item['target'] == 'SwiftRadio')
+          print('VERSION_NAME=' + settings['MARKETING_VERSION'])
+          print('BUILD_NUMBER=' + settings['CURRENT_PROJECT_VERSION'])
+          PY
+      - name: Build unsigned Release archive
+        run: |
+          set -o pipefail
+          mkdir -p artifacts
+          xcodebuild archive -project SwiftRadio.xcodeproj -scheme SwiftRadio \
+            -configuration Release -destination 'generic/platform=iOS' \
+            -archivePath "$RUNNER_TEMP/SwiftRadio.xcarchive" \
+            -onlyUsePackageVersionsFromResolvedFile -jobs 2 \
+            CODE_SIGNING_ALLOWED=NO 2>&1 | tee artifacts/archive.log
+      - name: Package and validate IPA
+        run: |
+          python3 .github/scripts/package-unsigned-app.py \
+            "$RUNNER_TEMP/SwiftRadio.xcarchive" artifacts/SwiftRadio-unsigned.ipa \
+            "$VERSION_NAME" "$BUILD_NUMBER"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: unsigned-archive-validation
+          path: artifacts/
+          retention-days: 14

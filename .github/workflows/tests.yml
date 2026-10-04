@@ -1,0 +1,61 @@
+name: Tests
+
+on:
+  push:
+    branches: [master, dev]
+  pull_request:
+    branches: [master, dev]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Core and UI tests (iOS 27)
+    runs-on: xcode-27
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '27.0'
+      - name: Boot available iOS 27 simulator
+        run: |
+          device_id=$(python3 .github/scripts/select-simulator.py)
+          xcrun simctl bootstatus "$device_id" -b
+          echo "IOS_SIMULATOR_ID=$device_id" >> "$GITHUB_ENV"
+          mkdir -p artifacts
+      - name: Core and real-engine tests
+        working-directory: Packages/SwiftRadioCore
+        run: |
+          set -o pipefail
+          xcodebuild test -scheme SwiftRadioCore \
+            -destination "platform=iOS Simulator,id=$IOS_SIMULATOR_ID" \
+            -derivedDataPath "$RUNNER_TEMP/SwiftRadioCore" \
+            -resultBundlePath "$GITHUB_WORKSPACE/artifacts/Core.xcresult" \
+            -onlyUsePackageVersionsFromResolvedFile \
+            -parallel-testing-enabled NO -collect-test-diagnostics never \
+            -test-timeouts-enabled YES -maximum-test-execution-time-allowance 180 \
+            -jobs 2 CODE_SIGNING_ALLOWED=NO 2>&1 | tee "$GITHUB_WORKSPACE/artifacts/core.log"
+      - name: UI regression tests
+        # Live radio availability is a separate integration check. All seven
+        # remaining UI tests run; failures are retained rather than retried away.
+        run: |
+          set -o pipefail
+          xcodebuild test -project SwiftRadio.xcodeproj -scheme SwiftRadio \
+            -destination "platform=iOS Simulator,id=$IOS_SIMULATOR_ID" \
+            -derivedDataPath "$RUNNER_TEMP/SwiftRadioUI" \
+            -resultBundlePath "$GITHUB_WORKSPACE/artifacts/UI.xcresult" \
+            -skip-testing:SwiftRadioUITests/SwiftRadioUITests/testPopupNavigationAndRefresh \
+            -onlyUsePackageVersionsFromResolvedFile \
+            -parallel-testing-enabled NO -collect-test-diagnostics never \
+            -test-timeouts-enabled YES -default-test-execution-time-allowance 120 \
+            -maximum-test-execution-time-allowance 180 \
+            -jobs 2 CODE_SIGNING_ALLOWED=NO 2>&1 | tee artifacts/ui.log
+      - name: Retain test results and screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-ios27
+          path: artifacts/
+          retention-days: 14
