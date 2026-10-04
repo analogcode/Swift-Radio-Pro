@@ -46,6 +46,57 @@ import Testing
         gate.release()
     }
 
+    /// A deadline bounds playback's wait, not the lifetime of the blocking session call. Play and
+    /// selection after that deadline must reuse it, and its late success or failure cannot undo Stop.
+    @Test(arguments: [false, true])
+    func commandsAfterTimeoutShareTheUnderlyingActivation(lateFailure: Bool) async throws {
+        let engine = FakeRadioPlayer(fidelity: .vendor)
+        let gate = ActivationGate()
+        let service = Self.gated(engine, gate: gate)
+        service.activationDeadline = .milliseconds(50)
+        let stations = try RadioStationTests.fixtures()
+        let first = try #require(URL(string: stations[0].streamURL))
+        let second = try #require(URL(string: stations[1].streamURL))
+        service.updateStation(stations[0])
+        service.load(url: first)
+        await gate.waitForPending(1)
+        let operation = try #require(service.underlyingActivation)
+        await service.activation?.value
+        #expect(engine.radioURL == first)
+
+        service.pause()
+        service.play()
+        await service.activation?.value
+        #expect(engine.isPlaying)
+        #expect(gate.requests == 1)
+        #expect(gate.pendingCount == 1)
+
+        service.updateStation(stations[1])
+        service.load(url: second)
+        await service.activation?.value
+        #expect(engine.loadedURLs == [first, second])
+        #expect(gate.requests == 1)
+        #expect(gate.pendingCount == 1)
+
+        service.stop()
+        let calls = engine.calls
+        if lateFailure { gate.fail() } else { gate.release() }
+        _ = await operation.result
+        #expect(service.underlyingActivation == nil)
+        #expect(engine.calls == calls)
+        #expect(service.state == .stopped)
+        #expect(engine.radioURL == second)
+
+        // A completed operation permits a fresh attempt, including after a late failure.
+        service.play()
+        await gate.waitForPending(1)
+        #expect(gate.requests == 2)
+        gate.release()
+        await service.activation?.value
+        #expect(service.state == .playing)
+        #expect(engine.radioURL == second)
+    }
+
     /// A non-mixable session activated early would silence other apps just by opening this one,
     /// and the session only applies its category when it activates, so the engine must not get a
     /// stream, Play or a seek until activation has finished.

@@ -80,7 +80,13 @@ public struct RadioStation: Codable, Hashable, Sendable, Identifiable {
         ["http", "https"].contains(url.scheme?.lowercased() ?? "") && !(url.host ?? "").isEmpty
     }
 
-    // Preserve the UIKit catalog's unchanged-list behavior: website is deliberately ignored.
+    /// Full catalog comparison, separate from the legacy equality/hash contract below.
+    func hasSameCatalogContent(as other: Self) -> Bool {
+        self == other && website == other.website
+    }
+
+    // Preserve legacy model equality: website is deliberately ignored. Catalog refreshes use
+    // hasSameCatalogContent(as:) so website-only edits are still installed.
     public static func == (lhs: Self, rhs: Self) -> Bool {
         lhs.name == rhs.name && lhs.streamURL == rhs.streamURL && lhs.imageURL == rhs.imageURL
             && lhs.desc == rhs.desc && lhs.longDesc == rhs.longDesc

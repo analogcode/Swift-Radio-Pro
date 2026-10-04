@@ -45,8 +45,11 @@ import FRadioPlayer
     /// Session arbitration can stall in the audio server; past this deadline the engine starts
     /// anyway (the pre-ownership behaviour) rather than leaving Play dead. Tests shorten it.
     @ObservationIgnored var activationDeadline: Duration = .seconds(4)
-    /// The latest activation; each one waits for the previous so session calls never overlap.
+    /// The latest bounded playback request; each one waits for the previous request.
     @ObservationIgnored private(set) var activation: Task<Void, Never>?
+    /// The actual session operation outlives its deadline. Later requests share it until it ends,
+    /// because cancelling a task cannot interrupt a blocked AVAudioSession.setActive call.
+    @ObservationIgnored private(set) var underlyingActivation: Task<Void, any Error>?
     /// A load, play or seek is waiting for the session and will start playback when it is active.
     @ObservationIgnored private var hasPendingStart = false
     /// A stream selected while the session was activating that the engine has not received yet.
@@ -99,6 +102,14 @@ import FRadioPlayer
             updateDuration(0)
             publish()
         }
+    }
+
+    /// Refreshes the selected station's presentation without disturbing transport, a pending seek,
+    /// stream metadata or artwork. Artwork loaders replace the old image when the new one is ready.
+    func refreshStation(_ station: RadioStation) {
+        guard self.station?.id == station.id else { return }
+        self.station = station
+        publish()
     }
 
     /// Rejects artwork that finished after selection or track artwork identity changed.
@@ -226,7 +237,8 @@ import FRadioPlayer
             guard self?.startGeneration == generation else { return }
             let failure: (any Error)?
             let deadline = self?.activationDeadline ?? .seconds(4)
-            do { try await Self.awaitActivation(activateAudioSession, deadline: deadline); failure = nil }
+            guard let operation = self?.sessionActivation(activateAudioSession) else { return }
+            do { try await Self.awaitActivation(operation, deadline: deadline); failure = nil }
             catch { failure = error }
             guard let self, self.startGeneration == generation else { return }
             self.hasPendingStart = false
@@ -234,10 +246,20 @@ import FRadioPlayer
         }
     }
 
+    private func sessionActivation(_ activate: @escaping @MainActor () async throws -> Void) -> Task<Void, any Error> {
+        if let underlyingActivation { return underlyingActivation }
+        let operation = Task { @MainActor [weak self] in
+            defer { self?.underlyingActivation = nil }
+            try await activate()
+        }
+        underlyingActivation = operation
+        return operation
+    }
+
     /// Races the activation against `deadline`. A timeout is not a failure: the engine starts
-    /// without confirmed ownership and the next command tries the session again. Awaiting a
-    /// blocked `setActive` cannot be cancelled, so the loser simply finds the continuation gone.
-    private static func awaitActivation(_ activate: @escaping @MainActor () async throws -> Void,
+    /// without confirmed ownership. Later commands await the same underlying operation while it
+    /// remains blocked; only a completed operation allows a fresh activation attempt.
+    private static func awaitActivation(_ operation: Task<Void, any Error>,
                                         deadline: Duration) async throws {
         let activated: Bool = try await withCheckedThrowingContinuation { continuation in
             let slot = OSAllocatedUnfairLock<CheckedContinuation<Bool, any Error>?>(initialState: continuation)
@@ -248,7 +270,7 @@ import FRadioPlayer
                 }?.resume(with: result)
             }
             Task { @MainActor in
-                do { try await activate(); resume(.success(true)) } catch { resume(.failure(error)) }
+                do { try await operation.value; resume(.success(true)) } catch { resume(.failure(error)) }
             }
             Task {
                 try? await Task.sleep(for: deadline)

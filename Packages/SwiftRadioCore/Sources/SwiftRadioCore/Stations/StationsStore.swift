@@ -40,13 +40,29 @@ import Observation
             let loaded = try await loader.load()
             try Task.checkCancellation()
             guard generation == loadGeneration else { return }
-            if loaded != stations {
-                stations = loaded
-                if let currentStation, !loaded.contains(currentStation) {
-                    self.currentStation = nil
-                    // Clearing selection must not leave audio playing behind hidden controls, nor
-                    // leave the removed stream loaded and resumable from a remote Play command.
-                    player.unload()
+            if !loaded.elementsEqual(stations, by: { $0.hasSameCatalogContent(as: $1) }) {
+                if loaded == stations {
+                    // Legacy equality omits website. Observation would store website-only edits
+                    // without notifying the UI, so explicitly invalidate this content change.
+                    withMutation(keyPath: \.stations) { stations = loaded }
+                } else {
+                    stations = loaded
+                }
+                if let currentStation {
+                    if let refreshed = loaded.first(where: { $0.id == currentStation.id }) {
+                        if !currentStation.hasSameCatalogContent(as: refreshed) {
+                            if currentStation == refreshed {
+                                withMutation(keyPath: \.currentStation) { self.currentStation = refreshed }
+                            } else {
+                                self.currentStation = refreshed
+                            }
+                            player.refreshStation(refreshed)
+                        }
+                    } else {
+                        self.currentStation = nil
+                        // Removed streams must not keep playing or remain resumable by remote Play.
+                        player.unload()
+                    }
                 }
             }
             loadState = .loaded
@@ -80,12 +96,14 @@ import Observation
     ///   reports a buffering stream as playing, so that opens the player, as in UIKit.
     /// - `.carPlay` never restarts or cancels: playing or loading is left alone, paused or stopped plays.
     @discardableResult public func activate(_ station: RadioStation, on surface: ActivationSurface) -> Activation {
-        guard station == currentStation else { return select(station) ? .selected : .unavailable }
+        guard let currentStation, station.id == currentStation.id else {
+            return select(station) ? .selected : .unavailable
+        }
         switch (player.state, surface) {
         case (.playing, _):
             return .alreadyActive
         case (.failed, _):
-            return select(station) ? .selected : .unavailable
+            return select(currentStation) ? .selected : .unavailable
         case (.idle, .carPlay) where player.isBuffering:
             return .alreadyActive // The pending load starts once the session is active.
         case (_, .carPlay):
@@ -106,7 +124,7 @@ import Observation
     private func selectRelative(offset: Int) -> Bool {
         let count = stations.count
         guard count > 0 else { return false }
-        guard let currentStation, let index = stations.firstIndex(of: currentStation) else {
+        guard let currentStation, let index = stations.firstIndex(where: { $0.id == currentStation.id }) else {
             return stations.contains { select($0) }
         }
         for step in 1..<count {
@@ -117,7 +135,17 @@ import Observation
     }
 
     private static func streamURL(for station: RadioStation) -> URL? {
-        guard let url = URL(string: station.streamURL), url.scheme != nil else { return nil }
-        return url
+        guard let url = URL(string: station.streamURL), let scheme = url.scheme?.lowercased() else { return nil }
+        switch scheme {
+        case "http", "https":
+            return (url.host ?? "").isEmpty ? nil : url
+        case "file":
+            // Local files are supported by the engine; a relative path or remote file host is not.
+            guard url.path.hasPrefix("/"), url.path != "/",
+                  ["", "localhost"].contains(url.host?.lowercased() ?? "") else { return nil }
+            return url
+        default:
+            return nil
+        }
     }
 }

@@ -20,9 +20,13 @@ import Testing
         return (store, player)
     }
 
-    private static func unusable(_ name: String) -> RadioStation {
-        // No scheme: URL(string:) succeeds but the engine cannot open it.
-        RadioStation(name: name, streamURL: "stream.example.com/live", imageURL: "", desc: "")
+    nonisolated private static let invalidStreamURLs = [
+        "stream.example.com/live", "https://", "http:///live", "ftp://example.com/live",
+        "custom://example.com/live", "file:relative.mp3", "file://server/music.mp3", "file:///"
+    ]
+
+    private static func unusable(_ name: String, url: String = "stream.example.com/live") -> RadioStation {
+        RadioStation(name: name, streamURL: url, imageURL: "", desc: "")
     }
 
     @Test(arguments: StationsStore.ActivationSurface.allCases) func activatingADifferentStationSelectsIt(surface: StationsStore.ActivationSurface) async throws {
@@ -119,30 +123,70 @@ import Testing
         #expect(engine.radioURL == URL(string: stations[0].streamURL))
     }
 
-    @Test(arguments: StationsStore.ActivationSurface.allCases) func unusableStationIsNotSelectedAndDoesNotPlayThePreviousOne(surface: StationsStore.ActivationSurface) async throws {
+    @Test(arguments: StationsStore.ActivationSurface.allCases, StationActivationTests.invalidStreamURLs)
+    func unusableStationIsNotSelectedAndDoesNotPlayThePreviousOne(surface: StationsStore.ActivationSurface,
+                                                                 streamURL: String) async throws {
         var stations = try RadioStationTests.fixtures()
-        stations.insert(Self.unusable("Broken"), at: 1)
+        stations.insert(Self.unusable("Broken", url: streamURL), at: 1)
         let engine = FakeRadioPlayer()
         let (store, player) = await Self.store(stations, engine: engine)
         store.activate(stations[0], on: surface)
         player.pause()
         let calls = engine.calls
+        let loadedURLs = engine.loadedURLs
         #expect(store.select(stations[1]) == false)
         #expect(store.activate(stations[1], on: surface) == .unavailable)
         #expect(store.currentStation == stations[0])
         #expect(engine.calls == calls)
+        #expect(engine.loadedURLs == loadedURLs)
+        #expect(player.state == .paused)
         #expect(engine.radioURL == URL(string: stations[0].streamURL))
+    }
+
+    @Test(arguments: StationsStore.ActivationSurface.allCases,
+          ["http://example.com/live", "https://example.com/live", "HTTPS://example.com/live",
+           "file:///tmp/sample.mp3", "file://localhost/tmp/sample.mp3"])
+    func supportedStreamURLsSelectAndActivate(surface: StationsStore.ActivationSurface, streamURL: String) async {
+        let station = RadioStation(name: "Supported", streamURL: streamURL, imageURL: "", desc: "")
+        let engine = FakeRadioPlayer()
+        let (store, _) = await Self.store([station], engine: engine)
+        #expect(store.select(station))
+        #expect(engine.radioURL == URL(string: streamURL))
+        let second = RadioStation(name: "Another", streamURL: streamURL, imageURL: "", desc: "")
+        #expect(store.activate(second, on: surface) == .selected)
+        #expect(store.currentStation?.id == second.id)
+        #expect(engine.radioURL == URL(string: streamURL))
+    }
+
+    @Test(arguments: StationsStore.ActivationSurface.allCases)
+    func staleMetadataDoesNotReloadTheSameStation(surface: StationsStore.ActivationSurface) async throws {
+        let old = try RadioStationTests.fixtures()[0]
+        var updated = old
+        updated.desc = "New metadata"
+        let engine = FakeRadioPlayer(fidelity: .vendor)
+        let (store, player) = await Self.store([updated], engine: engine)
+        store.select(updated)
+        let calls = engine.calls
+        let loadedURLs = engine.loadedURLs
+        #expect(store.activate(old, on: surface) == .alreadyActive)
+        #expect(store.currentStation?.desc == updated.desc)
+        #expect(engine.calls == calls)
+        #expect(engine.loadedURLs == loadedURLs)
+        player.playerStateDidChange(.failed("offline"))
+        #expect(store.activate(old, on: surface) == .selected)
+        #expect(store.currentStation?.desc == updated.desc)
+        #expect(engine.loadedURLs.count == loadedURLs.count + 1)
     }
 
     @Test func nextAndPreviousStepOverUnusableStations() async throws {
         var stations = try RadioStationTests.fixtures()
-        stations.insert(Self.unusable("Broken A"), at: 1)
-        stations.insert(Self.unusable("Broken B"), at: 2)
+        let unusable = Self.invalidStreamURLs.enumerated().map { Self.unusable("Broken \($0.offset)", url: $0.element) }
+        stations.insert(contentsOf: unusable, at: 1)
         let engine = FakeRadioPlayer()
         let (store, _) = await Self.store(stations, engine: engine)
         store.select(stations[0])
         store.selectNext()
-        #expect(store.currentStation == stations[3])
+        #expect(store.currentStation == stations[unusable.count + 1])
         store.selectPrevious()
         #expect(store.currentStation == stations[0])
         store.selectPrevious() // Wraps around to the last usable entry.
