@@ -282,17 +282,17 @@ import XCTest
     /// Never mistake the popup's covered Close button for a ready share-sheet control.
     private func shareSheetCloseButton(_ app: XCUIApplication,
                                        file: StaticString = #filePath, line: UInt = #line) throws -> XCUIElement {
-        let activity = app.otherElements["ActivityListView"].firstMatch
-        let candidates = app.buttons.matching(NSPredicate(
-            format: "identifier == %@ OR label IN %@", "header.closeButton", ["Close", "Cancel"]))
-        let deadline = Date().addingTimeInterval(60)
-        while Date() < deadline, activity.exists {
-            for button in candidates.allElementsBoundByIndex.reversed() where button.isHittable {
-                return button
-            }
-            RunLoop.current.run(until: Date().addingTimeInterval(0.5))
-        }
+        // The share controls live in a remote process. Binding a mixed app/remote query by index
+        // can count both Close buttons, then resolve index 1 against just the remote match.
+        let close = app.buttons["header.closeButton"].firstMatch
+        let ready = XCTNSPredicateExpectation(
+            predicate: NSPredicate(format: "exists == true AND isHittable == true"), object: close)
+        if XCTWaiter.wait(for: [ready], timeout: 60) == .completed { return close }
         capture("share-close-unavailable", app: app)
+        let hierarchy = XCTAttachment(string: app.debugDescription)
+        hierarchy.name = "share-close-unavailable-hierarchy"
+        hierarchy.lifetime = .keepAlways
+        add(hierarchy)
         return try XCTUnwrap(nil as XCUIElement?, "Share must render a hittable close control before cancellation",
                              file: file, line: line)
     }
