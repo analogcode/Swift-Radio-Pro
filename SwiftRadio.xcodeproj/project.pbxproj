@@ -3,108 +3,23 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		2C5545BD1C1124DE00728469 /* SwiftRadioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5545BC1C1124DE00728469 /* SwiftRadioUITests.swift */; };
-		53113F39230C720900462C0E /* ShareActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53113F38230C720900462C0E /* ShareActivity.swift */; };
-		6258DCD822D93A3500166C65 /* LogoShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258DCD722D93A3500166C65 /* LogoShareView.swift */; };
-		6258DCDA22D93A5400166C65 /* LogoShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6258DCD922D93A5400166C65 /* LogoShareView.xib */; };
-		9409E11C1ABF6FEA00312E2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */; };
-		9409E1261ABF6FEA00312E2B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9409E1251ABF6FEA00312E2B /* Images.xcassets */; };
-		94452E551AD7086800BFE7A5 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94452E541AD7086800BFE7A5 /* AboutViewController.swift */; };
-		945DB3C21AD58E3A00495EBB /* stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 945DB3C11AD58E3A00495EBB /* stations.json */; };
-		945DB3C51AD5A6E200495EBB /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 945DB3C41AD5A6E200495EBB /* NothingFoundCell.xib */; };
-		94AC70AE1AD05C6200652982 /* RadioStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AC70AD1AD05C6200652982 /* RadioStation.swift */; };
-		94D1D0A51AD6D6230022CA11 /* InfoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D1D0A41AD6D6230022CA11 /* InfoDetailViewController.swift */; };
-		94D260911B45D20000DE671C /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D260901B45D20000DE671C /* Config.swift */; };
-		94E9761C1B1A8F3200F52B1E /* UIImage+DropShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9761B1B1A8F3200F52B1E /* UIImage+DropShadow.swift */; };
-		AA0000011ACC9DEE005B7C26 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000001ACC9DEE005B7C26 /* NetworkService.swift */; };
-		AA000002291F376D0058C82A /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000001ACC9DEE005B7C26 /* NetworkService.swift */; };
-		AA0000101ACC9DEE005B7C26 /* LNPopupController in Frameworks */ = {isa = PBXBuildFile; productRef = AA0000111ACC9DEE005B7C26 /* LNPopupController */; };
-		AA0000121ACC9DEE005B7C26 /* LNPopupController in Frameworks */ = {isa = PBXBuildFile; productRef = AA0000131ACC9DEE005B7C26 /* LNPopupController */; };
-		CA142F672D3D8E2F0071A388 /* NSLayoutConstraint+with.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA142F662D3D8E280071A388 /* NSLayoutConstraint+with.swift */; };
-		CA142F682D3D8E2F0071A388 /* NSLayoutConstraint+with.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA142F662D3D8E280071A388 /* NSLayoutConstraint+with.swift */; };
-		CA142F6A2D3D9A0D0071A388 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA142F692D3D9A0D0071A388 /* BottomSheetViewController.swift */; };
-		CA142F6B2D3D9A0D0071A388 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA142F692D3D9A0D0071A388 /* BottomSheetViewController.swift */; };
-		CA142F6D2D3D9DFB0071A388 /* BottomSheetHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA142F6C2D3D9DFB0071A388 /* BottomSheetHandler.swift */; };
-		CA142F6E2D3D9DFB0071A388 /* BottomSheetHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA142F6C2D3D9DFB0071A388 /* BottomSheetHandler.swift */; };
-		CA2511B32D4E100000111003 /* AboutCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2511B22D4E100000111003 /* AboutCoordinator.swift */; };
-		CA2511B32D4E100000111004 /* AboutCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2511B22D4E100000111003 /* AboutCoordinator.swift */; };
-		CA2511B52D458033006D1A99 /* AudioSetupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2511B42D458033006D1A99 /* AudioSetupService.swift */; };
-		CA2511B62D458033006D1A99 /* AudioSetupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2511B42D458033006D1A99 /* AudioSetupService.swift */; };
-		CA2511B82D45B1B6006D1A99 /* FeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2511B72D45B1B6006D1A99 /* FeaturesViewController.swift */; };
-		CA2511B92D45B1B6006D1A99 /* FeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2511B72D45B1B6006D1A99 /* FeaturesViewController.swift */; };
-		CA2511BB2D45C2D1006D1A99 /* LibrariesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2511BA2D45C2CA006D1A99 /* LibrariesViewController.swift */; };
-		CA2511BC2D45C2D1006D1A99 /* LibrariesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2511BA2D45C2CA006D1A99 /* LibrariesViewController.swift */; };
-		CA2511BE2D45CD13006D1A99 /* ContributorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2511BD2D45CD11006D1A99 /* ContributorsViewController.swift */; };
-		CA2511BF2D45CD13006D1A99 /* ContributorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2511BD2D45CD11006D1A99 /* ContributorsViewController.swift */; };
-		CA2B6C6F2F31B769000CB4D4 /* MarqueeLabel in Frameworks */ = {isa = PBXBuildFile; productRef = CA2B6C6E2F31B769000CB4D4 /* MarqueeLabel */; };
-		CA2B6C702F327016000CB4D4 /* LNPopupController in Embed Frameworks */ = {isa = PBXBuildFile; productRef = AA0000131ACC9DEE005B7C26 /* LNPopupController */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		CA2B6C722F327107000CB4D4 /* LNPopupController in Embed Frameworks */ = {isa = PBXBuildFile; productRef = AA0000111ACC9DEE005B7C26 /* LNPopupController */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		CA3A11012D4E000000111001 /* InfoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3A11002D4E000000111001 /* InfoSection.swift */; };
-		CA3A11022D4E000000111001 /* InfoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3A11002D4E000000111001 /* InfoSection.swift */; };
-		CA3A11042D4E000000111002 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3A11032D4E000000111002 /* Content.swift */; };
-		CA3A11052D4E000000111002 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3A11032D4E000000111002 /* Content.swift */; };
-		CA58087D2D40BAC000F8082B /* CarPlaySceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA58087B2D40BAC000F8082B /* CarPlaySceneDelegate.swift */; };
-		CA5F00022F40A00000000002 /* GradientBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F00012F40A00000000001 /* GradientBackgroundView.swift */; };
-		CA5F00032F40A00000000003 /* GradientBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F00012F40A00000000001 /* GradientBackgroundView.swift */; };
-		CA5F00042F41000000000001 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CA5F00062F41000000000003 /* Localizable.xcstrings */; };
-		CA5F00052F41000000000002 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CA5F00062F41000000000003 /* Localizable.xcstrings */; };
-		CA900001200000000000000A /* MarqueeLabel in Frameworks */ = {isa = PBXBuildFile; productRef = CA900002200000000000000A /* MarqueeLabel */; };
-		CAB4E8292D3D7DC7001282E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB4E8282D3D7DC7001282E9 /* SceneDelegate.swift */; };
-		CAB4E82A2D3D7DC7001282E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB4E8282D3D7DC7001282E9 /* SceneDelegate.swift */; };
-		CE321FF329371140001572BD /* Bundle+appName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE321FF229371140001572BD /* Bundle+appName.swift */; };
-		CE321FF429371140001572BD /* Bundle+appName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE321FF229371140001572BD /* Bundle+appName.swift */; };
+		AB1000020000000000000001 /* SwiftRadioCore in Frameworks */ = {isa = PBXBuildFile; productRef = AB1000030000000000000001 /* SwiftRadioCore */; };
+		AB1000020000000000000002 /* SwiftRadioCore in Frameworks */ = {isa = PBXBuildFile; productRef = AB1000030000000000000002 /* SwiftRadioCore */; };
+		AB1A00032F5A0001000AB003 /* LNPopupUI in Frameworks */ = {isa = PBXBuildFile; productRef = AB1A00022F5A0001000AB002 /* LNPopupUI */; };
+		AB2000010000000000000001 /* LNPopupUI in Frameworks */ = {isa = PBXBuildFile; productRef = AB2000010000000000000002 /* LNPopupUI */; };
+		AB3000000000000000000001 /* MarqueeLabel in Frameworks */ = {isa = PBXBuildFile; productRef = AB3000000000000000000011 /* MarqueeLabel */; };
+		AB3000000000000000000002 /* MarqueeLabel in Frameworks */ = {isa = PBXBuildFile; productRef = AB3000000000000000000012 /* MarqueeLabel */; };
+		AB3000000000000000000003 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = AB3000000000000000000013 /* NVActivityIndicatorView */; };
+		AB3000000000000000000004 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = AB3000000000000000000014 /* NVActivityIndicatorView */; };
+		AB4000010000000000000001 /* LNPopupUI in Embed Frameworks */ = {isa = PBXBuildFile; productRef = AB1A00022F5A0001000AB002 /* LNPopupUI */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AB4000010000000000000002 /* LNPopupUI in Embed Frameworks */ = {isa = PBXBuildFile; productRef = AB2000010000000000000002 /* LNPopupUI */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CE37D7B7290F4A9700B0933B /* FRadioPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = CE37D7B6290F4A9700B0933B /* FRadioPlayer */; };
-		CE6036132A47A87A00E15E15 /* StationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6036122A47A87A00E15E15 /* StationsViewController.swift */; };
-		CE6036142A47A87A00E15E15 /* StationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6036122A47A87A00E15E15 /* StationsViewController.swift */; };
-		CE6036162A47B88600E15E15 /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6036152A47B88600E15E15 /* StationTableViewCell.swift */; };
-		CE6036172A47B88600E15E15 /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6036152A47B88600E15E15 /* StationTableViewCell.swift */; };
-		CE6036192A48BA2500E15E15 /* UITableViewCell+reuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6036182A48BA2500E15E15 /* UITableViewCell+reuseIdentifier.swift */; };
-		CE60361A2A48BA2500E15E15 /* UITableViewCell+reuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6036182A48BA2500E15E15 /* UITableViewCell+reuseIdentifier.swift */; };
-		CE6036212A48C51A00E15E15 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = CE6036202A48C51A00E15E15 /* NVActivityIndicatorView */; };
-		CE6036232A48C51A00E15E15 /* NVActivityIndicatorViewExtended in Frameworks */ = {isa = PBXBuildFile; productRef = CE6036222A48C51A00E15E15 /* NVActivityIndicatorViewExtended */; };
-		CE6036282A48F70A00E15E15 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = CE6036272A48F70A00E15E15 /* NVActivityIndicatorView */; };
-		CE60362A2A48F70A00E15E15 /* NVActivityIndicatorViewExtended in Frameworks */ = {isa = PBXBuildFile; productRef = CE6036292A48F70A00E15E15 /* NVActivityIndicatorViewExtended */; };
-		CE6A3E31291F376D0058C82A /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D260901B45D20000DE671C /* Config.swift */; };
-		CE6A3E33291F376D0058C82A /* ShareActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53113F38230C720900462C0E /* ShareActivity.swift */; };
-		CE6A3E35291F376D0058C82A /* StationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE963ECB29135A6F004F299E /* StationsManager.swift */; };
-		CE6A3E36291F376D0058C82A /* InfoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D1D0A41AD6D6230022CA11 /* InfoDetailViewController.swift */; };
-		CE6A3E37291F376D0058C82A /* LogoShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258DCD722D93A3500166C65 /* LogoShareView.swift */; };
-		CE6A3E39291F376D0058C82A /* UIImage+DropShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9761B1B1A8F3200F52B1E /* UIImage+DropShadow.swift */; };
-		CE6A3E3A291F376D0058C82A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94452E541AD7086800BFE7A5 /* AboutViewController.swift */; };
-		CE6A3E3C291F376D0058C82A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */; };
-		CE6A3E3E291F376D0058C82A /* UIImage+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDABBEC29121BBA00C0367F /* UIImage+Cache.swift */; };
-		CE6A3E40291F376D0058C82A /* RadioStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AC70AD1AD05C6200652982 /* RadioStation.swift */; };
-		CE6A3E41291F376D0058C82A /* UIImageView+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDABBEA291217AF00C0367F /* UIImageView+Cache.swift */; };
 		CE6A3E43291F376D0058C82A /* FRadioPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = CE6A3E2E291F376D0058C82A /* FRadioPlayer */; };
-		CE6A3E46291F376D0058C82A /* stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 945DB3C11AD58E3A00495EBB /* stations.json */; };
-		CE6A3E47291F376D0058C82A /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 945DB3C41AD5A6E200495EBB /* NothingFoundCell.xib */; };
-		CE6A3E48291F376D0058C82A /* LogoShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6258DCD922D93A5400166C65 /* LogoShareView.xib */; };
-		CE6A3E4B291F376D0058C82A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9409E1251ABF6FEA00312E2B /* Images.xcassets */; };
-		CE6ECCFA292F13DF008B3C16 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6ECCF9292F13DF008B3C16 /* Coordinator.swift */; };
-		CE6ECCFB292F13E6008B3C16 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6ECCF9292F13DF008B3C16 /* Coordinator.swift */; };
-		CE6ECCFD292F1445008B3C16 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6ECCFC292F1445008B3C16 /* MainCoordinator.swift */; };
-		CE6ECCFE292F1448008B3C16 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6ECCFC292F1445008B3C16 /* MainCoordinator.swift */; };
-		CE6ECD03292F358C008B3C16 /* UIViewController+Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6ECD02292F358C008B3C16 /* UIViewController+Email.swift */; };
-		CE6ECD04292F358C008B3C16 /* UIViewController+Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6ECD02292F358C008B3C16 /* UIViewController+Email.swift */; };
-		CE963ECC29135A6F004F299E /* StationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE963ECB29135A6F004F299E /* StationsManager.swift */; };
-		CE9EE8DE293BB41300F62041 /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9EE8DD293BB41300F62041 /* BaseController.swift */; };
-		CE9EE8DF293BB41300F62041 /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9EE8DD293BB41300F62041 /* BaseController.swift */; };
-		CE9EE8E1293C048A00F62041 /* LoaderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9EE8E0293C048A00F62041 /* LoaderController.swift */; };
-		CE9EE8E2293C048A00F62041 /* LoaderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9EE8E0293C048A00F62041 /* LoaderController.swift */; };
-		CED6353B293081ED002B216F /* Handoffable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6353A293081ED002B216F /* Handoffable.swift */; };
-		CED6353C293081ED002B216F /* Handoffable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6353A293081ED002B216F /* Handoffable.swift */; };
-		CEDABBEB291217AF00C0367F /* UIImageView+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDABBEA291217AF00C0367F /* UIImageView+Cache.swift */; };
-		CEDABBED29121BBA00C0367F /* UIImage+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDABBEC29121BBA00C0367F /* UIImage+Cache.swift */; };
-		CEE9A2782B5345C30018FE68 /* NowPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE9A2772B5345C30018FE68 /* NowPlayingViewController.swift */; };
-		CEE9A2792B5345C30018FE68 /* NowPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE9A2772B5345C30018FE68 /* NowPlayingViewController.swift */; };
-		CEE9A27B2B535C780018FE68 /* AlbumArtworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE9A27A2B535C780018FE68 /* AlbumArtworkView.swift */; };
-		CEE9A27C2B535C780018FE68 /* AlbumArtworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE9A27A2B535C780018FE68 /* AlbumArtworkView.swift */; };
-		CEE9A27E2B54A5520018FE68 /* ControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE9A27D2B54A5520018FE68 /* ControlsView.swift */; };
-		CEE9A27F2B54A5520018FE68 /* ControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE9A27D2B54A5520018FE68 /* ControlsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,7 +39,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CA2B6C702F327016000CB4D4 /* LNPopupController in Embed Frameworks */,
+				AB4000010000000000000002 /* LNPopupUI in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -135,7 +50,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CA2B6C722F327107000CB4D4 /* LNPopupController in Embed Frameworks */,
+				AB4000010000000000000001 /* LNPopupUI in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -146,55 +61,40 @@
 		2C5545BA1C1124DE00728469 /* SwiftRadioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftRadioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C5545BC1C1124DE00728469 /* SwiftRadioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftRadioUITests.swift; sourceTree = "<group>"; };
 		2C5545BE1C1124DE00728469 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		53113F38230C720900462C0E /* ShareActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareActivity.swift; sourceTree = "<group>"; };
-		6258DCD722D93A3500166C65 /* LogoShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoShareView.swift; sourceTree = "<group>"; };
-		6258DCD922D93A5400166C65 /* LogoShareView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoShareView.xib; sourceTree = "<group>"; };
 		9409E1161ABF6FEA00312E2B /* SwiftRadio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftRadio.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9409E11A1ABF6FEA00312E2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9409E1251ABF6FEA00312E2B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		94452E541AD7086800BFE7A5 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
-		945DB3C11AD58E3A00495EBB /* stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stations.json; sourceTree = "<group>"; };
-		945DB3C41AD5A6E200495EBB /* NothingFoundCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
-		94AC70AD1AD05C6200652982 /* RadioStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioStation.swift; sourceTree = "<group>"; };
-		94D1D0A41AD6D6230022CA11 /* InfoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoDetailViewController.swift; sourceTree = "<group>"; };
-		94D260901B45D20000DE671C /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
-		94E9761B1B1A8F3200F52B1E /* UIImage+DropShadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+DropShadow.swift"; sourceTree = "<group>"; };
-		AA0000001ACC9DEE005B7C26 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		CA142F662D3D8E280071A388 /* NSLayoutConstraint+with.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+with.swift"; sourceTree = "<group>"; };
-		CA142F692D3D9A0D0071A388 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
-		CA142F6C2D3D9DFB0071A388 /* BottomSheetHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetHandler.swift; sourceTree = "<group>"; };
-		CA2511B22D4E100000111003 /* AboutCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCoordinator.swift; sourceTree = "<group>"; };
-		CA2511B42D458033006D1A99 /* AudioSetupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSetupService.swift; sourceTree = "<group>"; };
-		CA2511B72D45B1B6006D1A99 /* FeaturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturesViewController.swift; sourceTree = "<group>"; };
-		CA2511BA2D45C2CA006D1A99 /* LibrariesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibrariesViewController.swift; sourceTree = "<group>"; };
-		CA2511BD2D45CD11006D1A99 /* ContributorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContributorsViewController.swift; sourceTree = "<group>"; };
-		CA3A11002D4E000000111001 /* InfoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoSection.swift; sourceTree = "<group>"; };
-		CA3A11032D4E000000111002 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
-		CA58087B2D40BAC000F8082B /* CarPlaySceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarPlaySceneDelegate.swift; sourceTree = "<group>"; };
-		CA5F00012F40A00000000001 /* GradientBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientBackgroundView.swift; sourceTree = "<group>"; };
-		CA5F00062F41000000000003 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
-		CAB4E8282D3D7DC7001282E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CE0A4994291F3A220071C0CC /* SwiftRadio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftRadio.entitlements; sourceTree = "<group>"; };
-		CE321FF229371140001572BD /* Bundle+appName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+appName.swift"; sourceTree = "<group>"; };
-		CE6036122A47A87A00E15E15 /* StationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsViewController.swift; sourceTree = "<group>"; };
-		CE6036152A47B88600E15E15 /* StationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationTableViewCell.swift; sourceTree = "<group>"; };
-		CE6036182A48BA2500E15E15 /* UITableViewCell+reuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+reuseIdentifier.swift"; sourceTree = "<group>"; };
 		CE6A3E4F291F376D0058C82A /* SwiftRadio-CarPlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftRadio-CarPlay.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE6ECCF9292F13DF008B3C16 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		CE6ECCFC292F1445008B3C16 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
-		CE6ECD02292F358C008B3C16 /* UIViewController+Email.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Email.swift"; sourceTree = "<group>"; };
-		CE963ECB29135A6F004F299E /* StationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsManager.swift; sourceTree = "<group>"; };
-		CE9EE8DD293BB41300F62041 /* BaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseController.swift; sourceTree = "<group>"; };
-		CE9EE8E0293C048A00F62041 /* LoaderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderController.swift; sourceTree = "<group>"; };
-		CEA82F492921F260009E9FA0 /* Info-CarPlay.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-CarPlay.plist"; sourceTree = "<group>"; };
-		CED6353A293081ED002B216F /* Handoffable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handoffable.swift; sourceTree = "<group>"; };
-		CEDABBEA291217AF00C0367F /* UIImageView+Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Cache.swift"; sourceTree = "<group>"; };
-		CEDABBEC29121BBA00C0367F /* UIImage+Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Cache.swift"; sourceTree = "<group>"; };
-		CEE9A2772B5345C30018FE68 /* NowPlayingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingViewController.swift; sourceTree = "<group>"; };
-		CEE9A27A2B535C780018FE68 /* AlbumArtworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumArtworkView.swift; sourceTree = "<group>"; };
-		CEE9A27D2B54A5520018FE68 /* ControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		AB1000010000000000000001 /* Exceptions for "SwiftRadio" folder in "SwiftRadio" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Info-CarPlay.plist",
+				Info.plist,
+			);
+			target = 9409E1151ABF6FEA00312E2B /* SwiftRadio */;
+		};
+		AB1000010000000000000002 /* Exceptions for "SwiftRadio" folder in "SwiftRadio-CarPlay" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Info-CarPlay.plist",
+				Info.plist,
+			);
+			target = CE6A3E2B291F376D0058C82A /* SwiftRadio-CarPlay */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		9409E1181ABF6FEA00312E2B /* SwiftRadio */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				AB1000010000000000000001 /* Exceptions for "SwiftRadio" folder in "SwiftRadio" target */,
+				AB1000010000000000000002 /* Exceptions for "SwiftRadio" folder in "SwiftRadio-CarPlay" target */,
+			);
+			path = SwiftRadio;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		2C5545B71C1124DE00728469 /* Frameworks */ = {
@@ -208,11 +108,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB3000000000000000000001 /* MarqueeLabel in Frameworks */,
+				AB3000000000000000000003 /* NVActivityIndicatorView in Frameworks */,
+				AB1000020000000000000001 /* SwiftRadioCore in Frameworks */,
 				CE37D7B7290F4A9700B0933B /* FRadioPlayer in Frameworks */,
-				CE6036232A48C51A00E15E15 /* NVActivityIndicatorViewExtended in Frameworks */,
-				CE6036212A48C51A00E15E15 /* NVActivityIndicatorView in Frameworks */,
-				AA0000101ACC9DEE005B7C26 /* LNPopupController in Frameworks */,
-				CA900001200000000000000A /* MarqueeLabel in Frameworks */,
+				AB1A00032F5A0001000AB003 /* LNPopupUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,11 +120,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB3000000000000000000002 /* MarqueeLabel in Frameworks */,
+				AB3000000000000000000004 /* NVActivityIndicatorView in Frameworks */,
+				AB1000020000000000000002 /* SwiftRadioCore in Frameworks */,
+				AB2000010000000000000001 /* LNPopupUI in Frameworks */,
 				CE6A3E43291F376D0058C82A /* FRadioPlayer in Frameworks */,
-				CE60362A2A48F70A00E15E15 /* NVActivityIndicatorViewExtended in Frameworks */,
-				CA2B6C6F2F31B769000CB4D4 /* MarqueeLabel in Frameworks */,
-				CE6036282A48F70A00E15E15 /* NVActivityIndicatorView in Frameworks */,
-				AA0000121ACC9DEE005B7C26 /* LNPopupController in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,160 +160,11 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9409E1181ABF6FEA00312E2B /* SwiftRadio */ = {
-			isa = PBXGroup;
-			children = (
-				CE0A4994291F3A220071C0CC /* SwiftRadio.entitlements */,
-				CE0A4993291F39660071C0CC /* CarPlay */,
-				CE8062F7291EF5D9008BD097 /* Helpers */,
-				CE6ECCF8292F139D008B3C16 /* Coordinators */,
-				CE60361B2A48C43D00E15E15 /* Views */,
-				CE8062F6291EF5B3008BD097 /* ViewControllers */,
-				CE8062F5291EF598008BD097 /* Model */,
-				CE8062F4291EF57D008BD097 /* Data */,
-				CE8062F3291EF566008BD097 /* Networking */,
-				BB0000032D4E000000000003 /* Services */,
-				CE8062F2291EF545008BD097 /* Cells */,
-				BB0000012D4E000000000001 /* App */,
-				BB0000022D4E000000000002 /* Config */,
-				9409E1251ABF6FEA00312E2B /* Images.xcassets */,
-				CA5F00062F41000000000003 /* Localizable.xcstrings */,
-				9409E11A1ABF6FEA00312E2B /* Info.plist */,
-				CEA82F492921F260009E9FA0 /* Info-CarPlay.plist */,
-			);
-			path = SwiftRadio;
-			sourceTree = "<group>";
-		};
-		BB0000012D4E000000000001 /* App */ = {
-			isa = PBXGroup;
-			children = (
-				9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */,
-				CAB4E8282D3D7DC7001282E9 /* SceneDelegate.swift */,
-			);
-			path = App;
-			sourceTree = "<group>";
-		};
-		BB0000022D4E000000000002 /* Config */ = {
-			isa = PBXGroup;
-			children = (
-				94D260901B45D20000DE671C /* Config.swift */,
-				CA3A11032D4E000000111002 /* Content.swift */,
-				CA3A11002D4E000000111001 /* InfoSection.swift */,
-			);
-			path = Config;
-			sourceTree = "<group>";
-		};
-		BB0000032D4E000000000003 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				CA2511B42D458033006D1A99 /* AudioSetupService.swift */,
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
-		CE0A4993291F39660071C0CC /* CarPlay */ = {
-			isa = PBXGroup;
-			children = (
-				CA58087B2D40BAC000F8082B /* CarPlaySceneDelegate.swift */,
-			);
-			path = CarPlay;
-			sourceTree = "<group>";
-		};
-		CE60361B2A48C43D00E15E15 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				6258DCD722D93A3500166C65 /* LogoShareView.swift */,
-				6258DCD922D93A5400166C65 /* LogoShareView.xib */,
-				CEE9A27A2B535C780018FE68 /* AlbumArtworkView.swift */,
-				CEE9A27D2B54A5520018FE68 /* ControlsView.swift */,
-				CA5F00012F40A00000000001 /* GradientBackgroundView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		CE6036262A48F70A00E15E15 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		CE6ECCF8292F139D008B3C16 /* Coordinators */ = {
-			isa = PBXGroup;
-			children = (
-				CE6ECCF9292F13DF008B3C16 /* Coordinator.swift */,
-				CE6ECCFC292F1445008B3C16 /* MainCoordinator.swift */,
-				CA2511B22D4E100000111003 /* AboutCoordinator.swift */,
-			);
-			path = Coordinators;
-			sourceTree = "<group>";
-		};
-		CE8062F2291EF545008BD097 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				945DB3C41AD5A6E200495EBB /* NothingFoundCell.xib */,
-				CE6036152A47B88600E15E15 /* StationTableViewCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		CE8062F3291EF566008BD097 /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-				AA0000001ACC9DEE005B7C26 /* NetworkService.swift */,
-			);
-			path = Networking;
-			sourceTree = "<group>";
-		};
-		CE8062F4291EF57D008BD097 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				945DB3C11AD58E3A00495EBB /* stations.json */,
-			);
-			path = Data;
-			sourceTree = "<group>";
-		};
-		CE8062F5291EF598008BD097 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				94AC70AD1AD05C6200652982 /* RadioStation.swift */,
-				CE963ECB29135A6F004F299E /* StationsManager.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		CE8062F6291EF5B3008BD097 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				CA2511BD2D45CD11006D1A99 /* ContributorsViewController.swift */,
-				CA2511BA2D45C2CA006D1A99 /* LibrariesViewController.swift */,
-				CA2511B72D45B1B6006D1A99 /* FeaturesViewController.swift */,
-				CE9EE8DD293BB41300F62041 /* BaseController.swift */,
-				CE9EE8E0293C048A00F62041 /* LoaderController.swift */,
-				CA142F692D3D9A0D0071A388 /* BottomSheetViewController.swift */,
-				94452E541AD7086800BFE7A5 /* AboutViewController.swift */,
-				94D1D0A41AD6D6230022CA11 /* InfoDetailViewController.swift */,
-				CE6036122A47A87A00E15E15 /* StationsViewController.swift */,
-				CEE9A2772B5345C30018FE68 /* NowPlayingViewController.swift */,
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		CE8062F7291EF5D9008BD097 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				CA142F662D3D8E280071A388 /* NSLayoutConstraint+with.swift */,
-				CEDABBEA291217AF00C0367F /* UIImageView+Cache.swift */,
-				CEDABBEC29121BBA00C0367F /* UIImage+Cache.swift */,
-				CE6ECD02292F358C008B3C16 /* UIViewController+Email.swift */,
-				94E9761B1B1A8F3200F52B1E /* UIImage+DropShadow.swift */,
-				53113F38230C720900462C0E /* ShareActivity.swift */,
-				CED6353A293081ED002B216F /* Handoffable.swift */,
-				CE321FF229371140001572BD /* Bundle+appName.swift */,
-				CE6036182A48BA2500E15E15 /* UITableViewCell+reuseIdentifier.swift */,
-				CA142F6C2D3D9DFB0071A388 /* BottomSheetHandler.swift */,
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -450,13 +201,16 @@
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				9409E1181ABF6FEA00312E2B /* SwiftRadio */,
+			);
 			name = SwiftRadio;
 			packageProductDependencies = (
+				AB3000000000000000000011 /* MarqueeLabel */,
+				AB3000000000000000000013 /* NVActivityIndicatorView */,
+				AB1000030000000000000001 /* SwiftRadioCore */,
 				CE37D7B6290F4A9700B0933B /* FRadioPlayer */,
-				CE6036202A48C51A00E15E15 /* NVActivityIndicatorView */,
-				CE6036222A48C51A00E15E15 /* NVActivityIndicatorViewExtended */,
-				AA0000111ACC9DEE005B7C26 /* LNPopupController */,
-				CA900002200000000000000A /* MarqueeLabel */,
+				AB1A00022F5A0001000AB002 /* LNPopupUI */,
 			);
 			productName = RadioPro;
 			productReference = 9409E1161ABF6FEA00312E2B /* SwiftRadio.app */;
@@ -475,13 +229,16 @@
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				9409E1181ABF6FEA00312E2B /* SwiftRadio */,
+			);
 			name = "SwiftRadio-CarPlay";
 			packageProductDependencies = (
+				AB3000000000000000000012 /* MarqueeLabel */,
+				AB3000000000000000000014 /* NVActivityIndicatorView */,
+				AB1000030000000000000002 /* SwiftRadioCore */,
+				AB2000010000000000000002 /* LNPopupUI */,
 				CE6A3E2E291F376D0058C82A /* FRadioPlayer */,
-				CE6036272A48F70A00E15E15 /* NVActivityIndicatorView */,
-				CE6036292A48F70A00E15E15 /* NVActivityIndicatorViewExtended */,
-				AA0000131ACC9DEE005B7C26 /* LNPopupController */,
-				CA2B6C6E2F31B769000CB4D4 /* MarqueeLabel */,
 			);
 			productName = RadioPro;
 			productReference = CE6A3E4F291F376D0058C82A /* SwiftRadio-CarPlay.app */;
@@ -516,7 +273,6 @@
 				};
 			};
 			buildConfigurationList = 9409E1111ABF6FE900312E2B /* Build configuration list for PBXProject "SwiftRadio" */;
-			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -525,11 +281,13 @@
 			);
 			mainGroup = 9409E10D1ABF6FE900312E2B;
 			packageReferences = (
+				AB3000000000000000000021 /* XCRemoteSwiftPackageReference "MarqueeLabel" */,
+				AB3000000000000000000022 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
+				AB1000040000000000000001 /* XCLocalSwiftPackageReference "Packages/SwiftRadioCore" */,
 				CE37D7B5290F4A9700B0933B /* XCRemoteSwiftPackageReference "FRadioPlayer" */,
-				CE60361F2A48C51A00E15E15 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
-				AA0000141ACC9DEE005B7C26 /* XCRemoteSwiftPackageReference "LNPopupController" */,
-				CA900003200000000000000A /* XCRemoteSwiftPackageReference "MarqueeLabel" */,
+				AB1A00012F5A0001000AB001 /* XCRemoteSwiftPackageReference "LNPopupUI" */,
 			);
+			preferredProjectObjectVersion = 77;
 			productRefGroup = 9409E1171ABF6FEA00312E2B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -553,11 +311,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				945DB3C21AD58E3A00495EBB /* stations.json in Resources */,
-				945DB3C51AD5A6E200495EBB /* NothingFoundCell.xib in Resources */,
-				6258DCDA22D93A5400166C65 /* LogoShareView.xib in Resources */,
-				9409E1261ABF6FEA00312E2B /* Images.xcassets in Resources */,
-				CA5F00042F41000000000001 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -565,11 +318,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE6A3E46291F376D0058C82A /* stations.json in Resources */,
-				CE6A3E47291F376D0058C82A /* NothingFoundCell.xib in Resources */,
-				CE6A3E48291F376D0058C82A /* LogoShareView.xib in Resources */,
-				CE6A3E4B291F376D0058C82A /* Images.xcassets in Resources */,
-				CA5F00052F41000000000002 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,43 +336,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA2511BF2D45CD13006D1A99 /* ContributorsViewController.swift in Sources */,
-				CA2511BC2D45C2D1006D1A99 /* LibrariesViewController.swift in Sources */,
-				CA2511B92D45B1B6006D1A99 /* FeaturesViewController.swift in Sources */,
-				94D260911B45D20000DE671C /* Config.swift in Sources */,
-				CA3A11012D4E000000111001 /* InfoSection.swift in Sources */,
-				CA3A11042D4E000000111002 /* Content.swift in Sources */,
-				CE6036192A48BA2500E15E15 /* UITableViewCell+reuseIdentifier.swift in Sources */,
-				CE6036162A47B88600E15E15 /* StationTableViewCell.swift in Sources */,
-				CE9EE8DE293BB41300F62041 /* BaseController.swift in Sources */,
-				CA142F6D2D3D9DFB0071A388 /* BottomSheetHandler.swift in Sources */,
-				CEE9A2782B5345C30018FE68 /* NowPlayingViewController.swift in Sources */,
-				53113F39230C720900462C0E /* ShareActivity.swift in Sources */,
-				CA142F682D3D8E2F0071A388 /* NSLayoutConstraint+with.swift in Sources */,
-				CE963ECC29135A6F004F299E /* StationsManager.swift in Sources */,
-				CE321FF329371140001572BD /* Bundle+appName.swift in Sources */,
-				CE6ECCFA292F13DF008B3C16 /* Coordinator.swift in Sources */,
-				94D1D0A51AD6D6230022CA11 /* InfoDetailViewController.swift in Sources */,
-				6258DCD822D93A3500166C65 /* LogoShareView.swift in Sources */,
-				AA0000011ACC9DEE005B7C26 /* NetworkService.swift in Sources */,
-				94E9761C1B1A8F3200F52B1E /* UIImage+DropShadow.swift in Sources */,
-				94452E551AD7086800BFE7A5 /* AboutViewController.swift in Sources */,
-				CED6353B293081ED002B216F /* Handoffable.swift in Sources */,
-				CEE9A27B2B535C780018FE68 /* AlbumArtworkView.swift in Sources */,
-				CE6ECCFD292F1445008B3C16 /* MainCoordinator.swift in Sources */,
-				CA2511B32D4E100000111003 /* AboutCoordinator.swift in Sources */,
-				9409E11C1ABF6FEA00312E2B /* AppDelegate.swift in Sources */,
-				CA2511B52D458033006D1A99 /* AudioSetupService.swift in Sources */,
-				CAB4E82A2D3D7DC7001282E9 /* SceneDelegate.swift in Sources */,
-				CE6ECD03292F358C008B3C16 /* UIViewController+Email.swift in Sources */,
-				CEDABBED29121BBA00C0367F /* UIImage+Cache.swift in Sources */,
-				94AC70AE1AD05C6200652982 /* RadioStation.swift in Sources */,
-				CA142F6A2D3D9A0D0071A388 /* BottomSheetViewController.swift in Sources */,
-				CE9EE8E1293C048A00F62041 /* LoaderController.swift in Sources */,
-				CEE9A27E2B54A5520018FE68 /* ControlsView.swift in Sources */,
-				CA5F00022F40A00000000002 /* GradientBackgroundView.swift in Sources */,
-				CEDABBEB291217AF00C0367F /* UIImageView+Cache.swift in Sources */,
-				CE6036132A47A87A00E15E15 /* StationsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -632,44 +343,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA2511BB2D45C2D1006D1A99 /* LibrariesViewController.swift in Sources */,
-				CE6A3E31291F376D0058C82A /* Config.swift in Sources */,
-				CA3A11022D4E000000111001 /* InfoSection.swift in Sources */,
-				CA3A11052D4E000000111002 /* Content.swift in Sources */,
-				CA2511BE2D45CD13006D1A99 /* ContributorsViewController.swift in Sources */,
-				CE60361A2A48BA2500E15E15 /* UITableViewCell+reuseIdentifier.swift in Sources */,
-				CE6036172A47B88600E15E15 /* StationTableViewCell.swift in Sources */,
-				CE9EE8DF293BB41300F62041 /* BaseController.swift in Sources */,
-				CA142F6E2D3D9DFB0071A388 /* BottomSheetHandler.swift in Sources */,
-				CA2511B62D458033006D1A99 /* AudioSetupService.swift in Sources */,
-				CEE9A2792B5345C30018FE68 /* NowPlayingViewController.swift in Sources */,
-				CE6A3E33291F376D0058C82A /* ShareActivity.swift in Sources */,
-				CA142F672D3D8E2F0071A388 /* NSLayoutConstraint+with.swift in Sources */,
-				CE6A3E35291F376D0058C82A /* StationsManager.swift in Sources */,
-				CE321FF429371140001572BD /* Bundle+appName.swift in Sources */,
-				CE6ECCFB292F13E6008B3C16 /* Coordinator.swift in Sources */,
-				CE6A3E36291F376D0058C82A /* InfoDetailViewController.swift in Sources */,
-				CE6A3E37291F376D0058C82A /* LogoShareView.swift in Sources */,
-				AA000002291F376D0058C82A /* NetworkService.swift in Sources */,
-				CE6A3E39291F376D0058C82A /* UIImage+DropShadow.swift in Sources */,
-				CE6A3E3A291F376D0058C82A /* AboutViewController.swift in Sources */,
-				CED6353C293081ED002B216F /* Handoffable.swift in Sources */,
-				CEE9A27C2B535C780018FE68 /* AlbumArtworkView.swift in Sources */,
-				CA2511B82D45B1B6006D1A99 /* FeaturesViewController.swift in Sources */,
-				CE6ECCFE292F1448008B3C16 /* MainCoordinator.swift in Sources */,
-				CA2511B32D4E100000111004 /* AboutCoordinator.swift in Sources */,
-				CA58087D2D40BAC000F8082B /* CarPlaySceneDelegate.swift in Sources */,
-				CE6A3E3C291F376D0058C82A /* AppDelegate.swift in Sources */,
-				CAB4E8292D3D7DC7001282E9 /* SceneDelegate.swift in Sources */,
-				CE6ECD04292F358C008B3C16 /* UIViewController+Email.swift in Sources */,
-				CE6A3E3E291F376D0058C82A /* UIImage+Cache.swift in Sources */,
-				CE6A3E40291F376D0058C82A /* RadioStation.swift in Sources */,
-				CA142F6B2D3D9A0D0071A388 /* BottomSheetViewController.swift in Sources */,
-				CE9EE8E2293C048A00F62041 /* LoaderController.swift in Sources */,
-				CEE9A27F2B54A5520018FE68 /* ControlsView.swift in Sources */,
-				CA5F00032F40A00000000003 /* GradientBackgroundView.swift in Sources */,
-				CE6A3E41291F376D0058C82A /* UIImageView+Cache.swift in Sources */,
-				CE6036142A47A87A00E15E15 /* StationsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -690,7 +363,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = SwiftRadioUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -698,7 +371,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jonah.SwiftRadioUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TEST_TARGET_NAME = SwiftRadio;
 				USES_XCTRUNNER = YES;
 			};
@@ -710,7 +383,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = SwiftRadioUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -718,7 +391,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jonah.SwiftRadioUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TEST_TARGET_NAME = SwiftRadio;
 				USES_XCTRUNNER = YES;
 			};
@@ -774,11 +447,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -826,7 +500,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -851,7 +525,7 @@
 					"$(PROJECT_DIR)/SwiftRadio",
 				);
 				INFOPLIST_FILE = SwiftRadio/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -863,7 +537,8 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
-				SWIFT_VERSION = 5.0;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -883,7 +558,7 @@
 					"$(PROJECT_DIR)/SwiftRadio",
 				);
 				INFOPLIST_FILE = SwiftRadio/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -895,7 +570,8 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
-				SWIFT_VERSION = 5.0;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -918,7 +594,7 @@
 					"$(PROJECT_DIR)/SwiftRadio",
 				);
 				INFOPLIST_FILE = "SwiftRadio/Info-CarPlay.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -932,7 +608,8 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = swiftradiocarplay3;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
-				SWIFT_VERSION = 5.0;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -955,7 +632,7 @@
 					"$(PROJECT_DIR)/SwiftRadio",
 				);
 				INFOPLIST_FILE = "SwiftRadio/Info-CarPlay.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -969,7 +646,8 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = swiftradiocarplay3;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
-				SWIFT_VERSION = 5.0;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1015,98 +693,97 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		AB1000040000000000000001 /* XCLocalSwiftPackageReference "Packages/SwiftRadioCore" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/SwiftRadioCore;
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCRemoteSwiftPackageReference section */
-		AA0000141ACC9DEE005B7C26 /* XCRemoteSwiftPackageReference "LNPopupController" */ = {
+		AB1A00012F5A0001000AB001 /* XCRemoteSwiftPackageReference "LNPopupUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/LeoNatan/LNPopupController.git";
+			repositoryURL = "https://github.com/LeoNatan/LNPopupUI.git";
 			requirement = {
-				kind = exactVersion;
-				version = 4.5.12;
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.1;
 			};
 		};
-		CA900003200000000000000A /* XCRemoteSwiftPackageReference "MarqueeLabel" */ = {
+		AB3000000000000000000021 /* XCRemoteSwiftPackageReference "MarqueeLabel" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/cbpowell/MarqueeLabel.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
+				kind = exactVersion;
+				version = 4.5.3;
+			};
+		};
+		AB3000000000000000000022 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.1.1;
 			};
 		};
 		CE37D7B5290F4A9700B0933B /* XCRemoteSwiftPackageReference "FRadioPlayer" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/fethica/FRadioPlayer.git";
 			requirement = {
-				kind = exactVersion;
-				version = 0.2.2;
-			};
-		};
-		CE60361F2A48C51A00E15E15 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-		CE6A3E2F291F376D0058C82A /* XCRemoteSwiftPackageReference "FRadioPlayer" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/fethica/FRadioPlayer.git";
-			requirement = {
-				branch = v0.2.2;
-				kind = branch;
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.4.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		AA0000111ACC9DEE005B7C26 /* LNPopupController */ = {
+		AB1000030000000000000001 /* SwiftRadioCore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = AA0000141ACC9DEE005B7C26 /* XCRemoteSwiftPackageReference "LNPopupController" */;
-			productName = LNPopupController;
+			package = AB1000040000000000000001 /* XCLocalSwiftPackageReference "Packages/SwiftRadioCore" */;
+			productName = SwiftRadioCore;
 		};
-		AA0000131ACC9DEE005B7C26 /* LNPopupController */ = {
+		AB1000030000000000000002 /* SwiftRadioCore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = AA0000141ACC9DEE005B7C26 /* XCRemoteSwiftPackageReference "LNPopupController" */;
-			productName = LNPopupController;
+			package = AB1000040000000000000001 /* XCLocalSwiftPackageReference "Packages/SwiftRadioCore" */;
+			productName = SwiftRadioCore;
 		};
-		CA2B6C6E2F31B769000CB4D4 /* MarqueeLabel */ = {
+		AB1A00022F5A0001000AB002 /* LNPopupUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CA900003200000000000000A /* XCRemoteSwiftPackageReference "MarqueeLabel" */;
+			package = AB1A00012F5A0001000AB001 /* XCRemoteSwiftPackageReference "LNPopupUI" */;
+			productName = LNPopupUI;
+		};
+		AB2000010000000000000002 /* LNPopupUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB1A00012F5A0001000AB001 /* XCRemoteSwiftPackageReference "LNPopupUI" */;
+			productName = LNPopupUI;
+		};
+		AB3000000000000000000011 /* MarqueeLabel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB3000000000000000000021 /* XCRemoteSwiftPackageReference "MarqueeLabel" */;
 			productName = MarqueeLabel;
 		};
-		CA900002200000000000000A /* MarqueeLabel */ = {
+		AB3000000000000000000012 /* MarqueeLabel */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CA900003200000000000000A /* XCRemoteSwiftPackageReference "MarqueeLabel" */;
+			package = AB3000000000000000000021 /* XCRemoteSwiftPackageReference "MarqueeLabel" */;
 			productName = MarqueeLabel;
+		};
+		AB3000000000000000000013 /* NVActivityIndicatorView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB3000000000000000000022 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
+			productName = NVActivityIndicatorView;
+		};
+		AB3000000000000000000014 /* NVActivityIndicatorView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB3000000000000000000022 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
+			productName = NVActivityIndicatorView;
 		};
 		CE37D7B6290F4A9700B0933B /* FRadioPlayer */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CE37D7B5290F4A9700B0933B /* XCRemoteSwiftPackageReference "FRadioPlayer" */;
 			productName = FRadioPlayer;
 		};
-		CE6036202A48C51A00E15E15 /* NVActivityIndicatorView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CE60361F2A48C51A00E15E15 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
-			productName = NVActivityIndicatorView;
-		};
-		CE6036222A48C51A00E15E15 /* NVActivityIndicatorViewExtended */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CE60361F2A48C51A00E15E15 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
-			productName = NVActivityIndicatorViewExtended;
-		};
-		CE6036272A48F70A00E15E15 /* NVActivityIndicatorView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CE60361F2A48C51A00E15E15 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
-			productName = NVActivityIndicatorView;
-		};
-		CE6036292A48F70A00E15E15 /* NVActivityIndicatorViewExtended */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CE60361F2A48C51A00E15E15 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
-			productName = NVActivityIndicatorViewExtended;
-		};
 		CE6A3E2E291F376D0058C82A /* FRadioPlayer */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CE6A3E2F291F376D0058C82A /* XCRemoteSwiftPackageReference "FRadioPlayer" */;
+			package = CE37D7B5290F4A9700B0933B /* XCRemoteSwiftPackageReference "FRadioPlayer" */;
 			productName = FRadioPlayer;
 		};
 /* End XCSwiftPackageProductDependency section */

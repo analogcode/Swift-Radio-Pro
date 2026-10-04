@@ -76,7 +76,17 @@ struct Content {
         static let playInMusicApp = String(localized: "bottomSheet.playInMusicApp")
     }
 
+    /// Titles used by the CarPlay catalog.
+    struct CarPlay {
+        static let title = String(localized: "carPlay.title")
+        /// Opens the next page when the car limits how many rows a list may show.
+        static let more = String(localized: "carPlay.more")
+    }
+
     struct Player {
+        static let play = String(localized: "player.play")
+        static let pause = String(localized: "player.pause")
+        static let stop = String(localized: "player.stop")
         static let liveBadge = String(localized: "player.liveBadge")
     }
 
@@ -85,7 +95,10 @@ struct Content {
         static let couldNotSendEmail = String(localized: "common.couldNotSendEmail")
         static let emailErrorMessage = String(localized: "common.emailErrorMessage")
         static let noDescription = String(localized: "common.noDescription")
-        static let commitsFormat = String(localized: "common.commitsFormat")
+        /// The count travels with the lookup so the catalog's plural variations ("1 commit") apply.
+        static func commits(_ count: Int) -> String {
+            String(localized: "common.commitsFormat", defaultValue: "\(count) commits")
+        }
     }
 
     struct Features {
