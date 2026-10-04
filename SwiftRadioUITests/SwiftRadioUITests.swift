@@ -128,6 +128,7 @@ import XCTest
 
     func testFilePauseSeekAndShareReturnToPlayer() throws {
         continueAfterFailure = false
+        executionTimeAllowance = 180
         let app = fixtureApp()
         let station = app.staticTexts["MP3 file sample"].firstMatch
         if !station.isHittable { app.collectionViews.firstMatch.swipeUp() }
@@ -160,10 +161,10 @@ import XCTest
             share.tap()
             let activity = app.otherElements["ActivityListView"].firstMatch
             XCTAssertTrue(activity.waitForExistence(timeout: 10))
+            let close = try shareSheetCloseButton(app)
             capture("share-presented-\(iteration)", app: app)
-            let close = shareSheetCloseButton(app)
-            XCTAssertTrue(close.exists)
             close.tap()
+            assertGone(activity, "Cancelling Share dismisses the activity sheet")
             // The share sheet's dismissal animation keeps the player covered for a moment after the
             // button already exists; wait for it to become hittable rather than asserting at once.
             let options = app.buttons["playerOptions"].firstMatch
@@ -277,14 +278,23 @@ import XCTest
         XCTAssertEqual(XCTWaiter.wait(for: [appears], timeout: duration), .timedOut, file: file, line: line)
     }
 
-    /// Recent iOS releases identify the share sheet's close button as `header.closeButton`; older
-    /// ones only label it, and the label has changed between releases.
-    private func shareSheetCloseButton(_ app: XCUIApplication) -> XCUIElement {
-        let byIdentifier = app.buttons["header.closeButton"].firstMatch
-        if byIdentifier.waitForExistence(timeout: 5) { return byIdentifier }
-        let byLabel = app.buttons.matching(NSPredicate(format: "label IN %@", ["Close", "Cancel"]))
-        // The sheet is the frontmost presentation, so its button comes last.
-        return byLabel.element(boundBy: max(0, byLabel.count - 1))
+    /// The activity container can exist before its remote content finishes rendering on CI.
+    /// Never mistake the popup's covered Close button for a ready share-sheet control.
+    private func shareSheetCloseButton(_ app: XCUIApplication,
+                                       file: StaticString = #filePath, line: UInt = #line) throws -> XCUIElement {
+        let activity = app.otherElements["ActivityListView"].firstMatch
+        let candidates = app.buttons.matching(NSPredicate(
+            format: "identifier == %@ OR label IN %@", "header.closeButton", ["Close", "Cancel"]))
+        let deadline = Date().addingTimeInterval(60)
+        while Date() < deadline, activity.exists {
+            for button in candidates.allElementsBoundByIndex.reversed() where button.isHittable {
+                return button
+            }
+            RunLoop.current.run(until: Date().addingTimeInterval(0.5))
+        }
+        capture("share-close-unavailable", app: app)
+        return try XCTUnwrap(nil as XCUIElement?, "Share must render a hittable close control before cancellation",
+                             file: file, line: line)
     }
 
     private func assertLabel(_ label: String, on element: XCUIElement, timeout: TimeInterval = 15,
