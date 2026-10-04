@@ -133,7 +133,9 @@ import XCTest
         if !station.isHittable { app.collectionViews.firstMatch.swipeUp() }
         station.tap()
         let toggle = app.buttons["playbackToggle"].firstMatch
-        assertLabel("Pause", on: toggle)
+        // A cold CI simulator can spend over 25 seconds compiling its first graphics pipeline
+        // on the main thread. Allow that one-time setup before exercising transport transitions.
+        assertLabel("Pause", on: toggle, timeout: 60)
         toggle.tap()
         assertLabel("Play", on: toggle)
         assertGone(app.buttons["showNowPlaying"].firstMatch, "The equalizer leaves the toolbar when paused")
@@ -285,9 +287,10 @@ import XCTest
         return byLabel.element(boundBy: max(0, byLabel.count - 1))
     }
 
-    private func assertLabel(_ label: String, on element: XCUIElement) {
+    private func assertLabel(_ label: String, on element: XCUIElement, timeout: TimeInterval = 15,
+                             file: StaticString = #filePath, line: UInt = #line) {
         let expected = XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", label), object: element)
-        XCTAssertEqual(XCTWaiter.wait(for: [expected], timeout: 15), .completed)
+        XCTAssertEqual(XCTWaiter.wait(for: [expected], timeout: timeout), .completed, file: file, line: line)
     }
 
     private func openPopup(_ app: XCUIApplication) {
