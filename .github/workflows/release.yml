@@ -32,11 +32,8 @@ jobs:
           echo "BUILD_NUMBER=$BUILD_NUMBER" >> "$GITHUB_ENV"
       - name: Build unsigned Release archive
         run: |
-          xcodebuild archive -project SwiftRadio.xcodeproj -scheme SwiftRadio \
-            -configuration Release -destination 'generic/platform=iOS' \
-            -archivePath build/SwiftRadio.xcarchive \
-            -onlyUsePackageVersionsFromResolvedFile -jobs 2 \
-            CODE_SIGNING_ALLOWED=NO
+          bash .github/scripts/archive-unsigned-app.sh \
+            build/SwiftRadio.xcarchive "$VERSION_NAME" "$BUILD_NUMBER"
       - name: Package and validate unsigned IPA
         run: |
           python3 .github/scripts/package-unsigned-app.py \
