@@ -12,6 +12,10 @@ struct Config {
 
     static let debugLog = true
 
+    // Set to "true" to keep other apps' audio playing under the radio. This disables the
+    // lock-screen, Control Center and CarPlay Now Playing controls.
+    static let mixesWithOtherAudio = false
+
     // Tint color used across the app (navigation bar, controls, etc.)
     static let tintColor: UIColor = .white
 
@@ -37,12 +41,13 @@ struct Config {
     static let licenseURL = "https://raw.githubusercontent.com/analogcode/Swift-Radio-Pro/refs/heads/master/LICENSE"
 
     struct Libraries {
+        // The app's actual package dependencies, plus the template itself.
         static let items: [LibraryItem] = [
             LibraryItem(owner: "analogcode", repo: "Swift-Radio-Pro"),
             LibraryItem(owner: "fethica", repo: "FRadioPlayer"),
-            LibraryItem(owner: "ninjaprox", repo: "NVActivityIndicatorView"),
-            LibraryItem(owner: "LeoNatan", repo: "LNPopupController"),
+            LibraryItem(owner: "LeoNatan", repo: "LNPopupUI"),
             LibraryItem(owner: "cbpowell", repo: "MarqueeLabel"),
+            LibraryItem(owner: "ninjaprox", repo: "NVActivityIndicatorView"),
         ]
     }
 
@@ -84,4 +89,3 @@ struct Config {
         ]
     }
 }
-

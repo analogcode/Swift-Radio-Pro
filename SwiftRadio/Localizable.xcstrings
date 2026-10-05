@@ -1,6 +1,17 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "about.copyright" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copyright"
+          }
+        }
+      }
+    },
     "about.feedback.message" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -23,17 +34,6 @@
         }
       }
     },
-    "about.copyright" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Copyright"
-          }
-        }
-      }
-    },
     "about.footerAuthors" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -52,6 +52,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Swift Radio"
+          }
+        }
+      }
+    },
+    "about.headerText" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Swift Radio** is a fully featured, open-source radio station app written entirely in **Swift**. It provides robust, professional functionality out of the box, complete with **Apple CarPlay** support, making it the perfect foundation for **building** or **customizing** your own streaming radio experience."
           }
         }
       }
@@ -140,17 +151,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Special Thanks"
-          }
-        }
-      }
-    },
-    "about.headerText" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "**Swift Radio** is a fully featured, open-source radio station app written entirely in **Swift**. It provides robust, professional functionality out of the box, complete with **Apple CarPlay** support, making it the perfect foundation for **building** or **customizing** your own streaming radio experience."
           }
         }
       }
@@ -309,13 +309,36 @@
         }
       }
     },
-    "common.couldNotSendEmail" : {
+    "carPlay.more" : {
+      "comment" : "CarPlay list row that opens the next page of stations when the car limits list length.",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Could Not Send Email"
+            "value" : "More"
+          }
+        }
+      }
+    },
+    "carPlay.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Radio Stations"
+          }
+        }
+      }
+    },
+    "common.close" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
           }
         }
       }
@@ -324,9 +347,32 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld commit"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld commits"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "common.couldNotSendEmail" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%d commits"
+            "value" : "Could Not Send Email"
           }
         }
       }
@@ -580,6 +626,106 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LIVE"
+          }
+        }
+      }
+    },
+    "player.next" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next station"
+          }
+        }
+      }
+    },
+    "player.nowPlaying" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Now Playing"
+          }
+        }
+      }
+    },
+    "player.options" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Player options"
+          }
+        }
+      }
+    },
+    "player.pause" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pause"
+          }
+        }
+      }
+    },
+    "player.play" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Play"
+          }
+        }
+      }
+    },
+    "player.previous" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Previous station"
+          }
+        }
+      }
+    },
+    "player.seek" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Playback position"
+          }
+        }
+      }
+    },
+    "player.seekValue" : {
+      "comment" : "Elapsed playback time followed by total duration",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ of %2$@"
+          }
+        }
+      }
+    },
+    "player.stop" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop"
           }
         }
       }

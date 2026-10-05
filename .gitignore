@@ -2,3 +2,8 @@
 *.xccheckout
 *.xcscmblueprint
 xcuserdata
+
+# Build and test artifacts
+*.xcresult/
+*.log
+DerivedData/
