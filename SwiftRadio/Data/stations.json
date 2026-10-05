@@ -26,11 +26,12 @@
             "longDesc": "NZ's number one Rock music station."
         },
         {
-            "name": "Classic Rock",
-            "streamURL": "https://rfcm.streamguys1.com/classicrock-mp3",
-            "imageURL": "station-classicrock",
-            "desc": "Classic Rock Hits",
-            "longDesc": "Classic rock is a radio format which developed from the album-oriented rock (AOR) format in the early 1980s. In the United States, the classic rock format features music ranging generally from the late 1960s to the late 1980s, primarily focusing on commercially successful hard rock popularized in the 1970s. The radio format became increasingly popular with the baby boomer demographic by the end of the 1990s."
+            "name": "Choice Classic Rock",
+            "website": "https://www.choiceclassicrock.com",
+            "streamURL": "https://streamer.radio.co/s66f2626b4/listen",
+            "imageURL": "https://www.choiceclassicrock.com/wp-content/uploads/2022/08/Choice-Classic-Rock-flaming-guitar-200-x-200.jpg",
+            "desc": "Classic rock hits and deep tracks",
+            "longDesc": "Classic rock hits and deep tracks."
         },
         {
             "name": "Radio 1190",

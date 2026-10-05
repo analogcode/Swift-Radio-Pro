@@ -8,24 +8,24 @@
 
 import Foundation
 
-struct FeatureItem {
+struct FeatureItem: Sendable {
     let title: String
     let subtitle: String
     let icon: String // SF Symbol name
 }
 
-struct LibraryItem {
+struct LibraryItem: Sendable {
     let owner: String
     let repo: String
 }
 
-struct InfoSection {
+struct InfoSection: Sendable {
     let title: String
     let items: [InfoItem]
     var isEnabled: Bool = true
 }
 
-enum InfoItem {
+enum InfoItem: Sendable {
     // Navigation (pushes to a screen)
     case features(title: String = "Features", icon: String? = nil)
     case libraries(title: String = "Open Source Libraries", subtitle: String? = nil, icon: String? = nil)

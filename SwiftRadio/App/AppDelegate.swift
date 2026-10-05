@@ -7,39 +7,33 @@
 //
 
 import UIKit
+#if CarPlay
+import CarPlay
+#endif
 
-@main
-class AppDelegate: UIResponder, UIApplicationDelegate {
-    
-    private let audioService = AudioSetupService.shared
-    
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        // Setup all audio-related configurations at app launch
-        audioService.setupFRadioPlayer()
-        audioService.setupAudioSession()
-        audioService.setupRemoteCommandCenter()
-        
+/// Initializes the shared composition and routes CarPlay scenes alongside SwiftUI's phone scene.
+@MainActor final class AppDelegate: UIResponder, UIApplicationDelegate {
+    let environment = AppEnvironment.shared
+
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        UINavigationBar.appearance().barStyle = .black
+        UINavigationBar.appearance().tintColor = Config.tintColor
+        UINavigationBar.appearance().prefersLargeTitles = true
         return true
     }
-    
-    // MARK: UISceneSession Lifecycle
-    
+
+#if CarPlay
     func application(_ application: UIApplication,
                      configurationForConnecting connectingSceneSession: UISceneSession,
                      options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-#if CarPlay
         if connectingSceneSession.role == .carTemplateApplication {
             let config = UISceneConfiguration(name: "CarPlay Configuration", sessionRole: connectingSceneSession.role)
             config.delegateClass = CarPlaySceneDelegate.self
             return config
         }
+        // Leave delegateClass unset so SwiftUI supplies its own phone scene delegate.
+        return UISceneConfiguration(name: nil, sessionRole: connectingSceneSession.role)
+    }
 #endif
-        
-        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
-    }
-    
-    func application(_ application: UIApplication,
-                     didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-    }
 }
