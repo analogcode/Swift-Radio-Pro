@@ -206,7 +206,7 @@ import XCTest
         return app
     }
 
-    func testReselectionPreviousNextAndWebsiteHandoff() throws {
+    func testReselectionPreviousAndNext() throws {
         continueAfterFailure = false
         let app = fixtureApp()
         let station = app.staticTexts["Absolute Country Hits"].firstMatch
@@ -236,6 +236,20 @@ import XCTest
         assertLabel("Stop", on: transport)
         assertGone(app.sliders["playbackSeek"].firstMatch, "Live streams have no scrubber")
         capture("next-wraps-to-live", app: app)
+    }
+
+    // Safari's remote view startup and accessibility queries can consume much of CI's
+    // per-test allowance. Keep its handoff/return contract independent of transport coverage.
+    func testWebsiteHandoffReturnsToStationList() throws {
+        continueAfterFailure = false
+        let app = fixtureApp()
+        let station = app.staticTexts["Absolute Country Hits"].firstMatch
+        station.tap()
+        let toggle = app.buttons["playbackToggle"].firstMatch
+        assertLabel("Stop", on: toggle)
+        station.tap()
+        let transport = app.buttons["playerTransport"]
+        XCTAssertTrue(transport.waitForExistence(timeout: 10))
         app.buttons["playerOptions"].tap()
         let website = app.buttons["Station Website"].firstMatch
         XCTAssertTrue(website.waitForExistence(timeout: 10))

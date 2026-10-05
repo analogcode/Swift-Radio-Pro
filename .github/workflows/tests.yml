@@ -38,7 +38,7 @@ jobs:
             -test-timeouts-enabled YES -maximum-test-execution-time-allowance 180 \
             -jobs 2 CODE_SIGNING_ALLOWED=NO 2>&1 | tee "$GITHUB_WORKSPACE/artifacts/core.log"
       - name: UI regression tests
-        # Live radio availability is a separate integration check. All seven
+        # Live radio availability is a separate integration check. All
         # remaining UI tests run; failures are retained rather than retried away.
         run: |
           set -o pipefail
