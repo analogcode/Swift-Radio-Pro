@@ -186,7 +186,10 @@ import XCTest
         }
         XCTAssertTrue(libraries.isHittable)
         libraries.tap()
-        let library = app.buttons.containing(.staticText, identifier: "FRadioPlayer").firstMatch
+        // GitHub metadata is optional. The same repository row uses owner/name while
+        // metadata loads or falls back, and the fetched name after a successful request.
+        let library = app.buttons.containing(NSPredicate(
+            format: "label IN %@", ["FRadioPlayer", "fethica/FRadioPlayer"])).firstMatch
         XCTAssertTrue(library.waitForExistence(timeout: 15))
         capture("library-disclosures", app: app)
         library.tap()
@@ -250,6 +253,9 @@ import XCTest
         station.tap()
         let transport = app.buttons["playerTransport"]
         XCTAssertTrue(transport.waitForExistence(timeout: 10))
+        XCTAssertTrue(transport.isHittable)
+        XCTAssertEqual(XCTWaiter.wait(for: collapsedPlayerExpectations(app), timeout: 1), .timedOut,
+                       "An open player must fail the collapsed-state check")
         app.buttons["playerOptions"].tap()
         let website = app.buttons["Station Website"].firstMatch
         XCTAssertTrue(website.waitForExistence(timeout: 10))
@@ -260,7 +266,24 @@ import XCTest
         close.tap()
         XCTAssertTrue(app.navigationBars["Swift Radio"].waitForExistence(timeout: 10))
         XCTAssertTrue(toggle.isHittable)
-        assertGone(transport, "Closing the website returns to the list, not the player")
+        // LNPopupUI may retain closed content in the accessibility tree. Check the
+        // interactive presentation, rather than requiring its views to be destroyed.
+        XCTAssertEqual(XCTWaiter.wait(for: collapsedPlayerExpectations(app), timeout: 10), .completed,
+                       "Closing the website returns to an interactive list and collapsed player")
+        capture("website-returned-to-list", app: app)
+    }
+
+    private func collapsedPlayerExpectations(_ app: XCUIApplication) -> [XCTNSPredicateExpectation] {
+        let controls: [(XCUIElement, Bool)] = [
+            (app.staticTexts["Absolute Country Hits"].firstMatch, true),
+            (app.buttons["playbackToggle"].firstMatch, true),
+            (app.buttons["playerTransport"].firstMatch, false),
+            (app.buttons["playerOptions"].firstMatch, false)
+        ]
+        return controls.map { element, hittable in
+            XCTNSPredicateExpectation(predicate: NSPredicate(format: "isHittable == %@", NSNumber(value: hittable)),
+                                      object: element)
+        }
     }
 
     /// Motion is asserted by comparing element screenshots over time. Polling instead of one fixed
